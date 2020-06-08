@@ -1,0 +1,24 @@
+{
+  "name": "@joystream/api-examples",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "status": "node lib/status"
+  },
+  "dependencies": {
+    "@joystream/types": "^0.9.1",
+    "@polkadot/api": "^0.96.1",
+    "@polkadot/keyring": "^1.7.0-beta.5",
+    "@polkadot/types": "^0.96.1",
+    "@polkadot/util": "^1.7.0-beta.5",
+    "@polkadot/util-crypto": "^1.7.0-beta.5",
+    "@types/bn.js": "^4.11.5",
+    "bn.js": "^4.11.8"
+  },
+  "devDependencies": {
+    "@polkadot/ts": "^0.1.56",
+    "typescript": "3.7.2"
+  }
+}
