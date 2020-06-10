@@ -2,8 +2,8 @@
 This is a report which explains the current state of the Joystream network in numbers. It pulls figures from the chain and tries to provide a basic level of information about the network, tokens and more. 
 
 ## 1.0 Basic Information
-* Date Range: DD/MM/YYYY - DD/MM/YYYY
-* Council session #: XX
+* Date Range: {dateStart} - {dateEnd}
+* Council session #: {councilRound}
 * Starting block: {startBlock}
 * Block range: {startBlock} - {endBlock}
 
@@ -17,23 +17,23 @@ This is a report which explains the current state of the Joystream network in nu
 ### 1.2 Token + USD Information
 | Property       | This Session | All Sessions | % Change |
 |----------------|--------------|--------------|----------|
-| Token Issuance | {newIssuance}|              |          |
-| Token Burn     | {newTokensBurn}    |              |          |
-| USD Backing    | {usdBacking} |              |          |
+| Token Issuance | {newIssuance}   | {totalIssuance}| {percNewIssuance}|
+| Token Burn     | {newTokensBurn} |              |          |
+| USD Backing    |                 |              |          |
 
 ### 1.3 Membership Information
 | Property          | This Session | All Sessions | % Change |
 |-------------------|--------------|--------------|----------|
-| Number of members | {NR_MEMBERS}             |              |          |
+| Number of members |{newMembers}  |{totalMembers}|{percNewMembers}|
 
 ## 2.0 Tokenomics
 ### 2.1 Token generation breakdown
 | Property                    | This Session | All Sessions | % Change |
 |-----------------------------|--------------|--------------|----------|
-| Total Tokens Minted        |              |              |          |
-| Validator Role        |              |              |          |
-| Storage Role       |              |              |          |
-| Council Role |              |              |          |
+| Total Tokens Minted         |              |              |          |
+| Validator Role              |              |              |          |
+| Storage Role                |              |              |          |
+| Council Role                |              |              |          |
 
 ### 2.2 Mints 
 | Property                    | This Session | All Sessions | % Change |
@@ -44,16 +44,16 @@ This is a report which explains the current state of the Joystream network in nu
 | Curator Mint Total Minted |              |              |          |
 
 ## 3.0 Council
-* Council session #: XX
-* Number of council members:
-* Total number of proposals:
+* Council session #: {councilRound}
+* Number of council members: {councilMembers}
+* Total number of proposals: {newProposals}
 ### 3.1 Elections
 | Property                    | This Session | All Sessions | % Change |
 |-----------------------------|--------------|--------------|----------|
-| Total Applicants       |              |              |          |
-| Total Applicant Stake       |              |              |          |
-| Total Votes       |              |              |          |
-| Avg Votes per Applicant       |              |              |          |
+| Total Applicants            |{councilApplicants}|{councilAvgApplicants}||
+| Total Applicant Stake       |{councilApplicants}|              |          |
+| Total Votes                 |                   |              |          |
+| Avg Votes per Applicant     |                   |              |          |
 
 ### 3.2 Proposals
 | Proposal Type                           | # of proposals during this session | Total number of proposal type |
@@ -109,8 +109,8 @@ This is a report which explains the current state of the Joystream network in nu
 ### 5.2 Forum Activity
 | Property          | This Session | All Sessions | % Change |
 |-------------------|--------------|--------------|----------|
-| Number of threads | {newThreads} |{totalThreads}|          |
-| Number of posts   | {newPosts}   |{totalPosts}  |          |
+| Number of threads | {newThreads} |{totalThreads}| {percNewThreads}|
+| Number of posts   | {newPosts}   |{totalPosts}  | {percNewPosts}|
 
 ## 6 Todo / Ideas
 * Video duration

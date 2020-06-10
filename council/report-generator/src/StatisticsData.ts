@@ -1,16 +1,42 @@
 export class StatisticsData {
+    councilRound: number;
+    councilMembers: number;
+
+    councilApplicants: number;
+    councilAvgApplicants: number;
+    perCouncilApplicants: number;
+
+    dateStart: string;
+    dateEnd: string;
+
     startBlock: number;
     endBlock: number;
     percNewBlocks: number
 
+    newIssuance: number;
+    totalIssuance: number;
+    percNewIssuance: number;
+
+    newMembers: number;
+    totalMembers: number;
+    percNewMembers: number;
+
+
+
     newBlocks: number;
     avgBlockProduction: number;
     nrValidators: number;
-    newPosts: number;
+
     newThreads: number;
+    totalThreads: number;
+    percNewThreads: number;
+
+    newPosts: number;
+    totalPosts: number;
+    percNewPosts: number;
+
     newCategories: number;
-    totalIssuance: number;
-    newMembers: number;
+
     newProposals: number;
     newMedia: number;
     deletedMedia: number;

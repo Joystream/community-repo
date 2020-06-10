@@ -1,7 +1,7 @@
 import {rpc} from "@polkadot/types/interfaces/definitions";
 import {ApiPromise, WsProvider} from "@polkadot/api";
 import {registerJoystreamTypes} from '@joystream/types';
-import {Balance, Hash, Moment} from "@polkadot/types/interfaces";
+import {AccountId, Balance, Hash, Moment} from "@polkadot/types/interfaces";
 import {ClassId, ClassPropertyValue, Entity} from "@joystream/types/lib/versioned-store";
 import {Mint} from "@joystream/types/lib/mint";
 import {Option, u32, Vec} from "@polkadot/types";
@@ -12,9 +12,11 @@ import {CategoryId, PostId, ThreadId} from "@joystream/types/lib/forum";
 import {MemberId} from "@joystream/types/lib/members";
 import number from "@polkadot/util/is/number";
 import {StatisticsData} from "./StatisticsData";
+import {Seats} from "@joystream/types/lib/proposals";
 
 const BURN_ADDRESS = '5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu';
 
+const FIRST_COUNCIL_BLOCK = 908796;
 
 class Media {
 
@@ -26,23 +28,51 @@ export class StatisticsCollector {
     static async getStatistics(startBlock: number, endBlock: number): Promise<StatisticsData> {
 
         // Initialise the provider to connect to the local node
-        const provider = new WsProvider('wss://rome-rpc-endpoint.joystream.org:9944');
+        // const provider = new WsProvider('ws://127.0.0.1:9944');
 
+        const provider = new WsProvider('ws://127.0.0.1:9944');
         // register types before creating the api
         registerJoystreamTypes();
 
         // Create the API and wait until ready
         const api = await ApiPromise.create({provider});
 
+        let startHash = await api.rpc.chain.getBlockHash(startBlock);
+        let endHash = await api.rpc.chain.getBlockHash(endBlock);
+
         let statistics = new StatisticsData();
+
+        statistics.councilRound = (await api.query.councilElection.round.at(startHash) as u32).toNumber() - 5;
+        let seats = await api.query.council.activeCouncil.at(startHash) as Seats;
+
+        statistics.councilMembers = seats.length;
+        let applicants = await api.query.councilElection.applicants() as Vec<AccountId>;
+        statistics.councilApplicants = applicants.length;
+
+        let startDate = await api.query.timestamp.now.at(startHash) as Moment;
+        let endDate = await api.query.timestamp.now.at(endHash) as Moment;
+
+        statistics.dateStart = new Date(startDate.toNumber()).toLocaleDateString("en-US");
+        statistics.dateEnd = new Date(endDate.toNumber()).toLocaleDateString("en-US");
 
         statistics.startBlock = startBlock;
         statistics.endBlock = endBlock;
         statistics.newBlocks = endBlock - startBlock;
-        statistics.percNewBlocks = Number((statistics.newBlocks / endBlock * 100).toFixed(2));
+        statistics.percNewBlocks = this.convertToPercentage(statistics.newBlocks, endBlock);
 
-        let startHash = await api.rpc.chain.getBlockHash(startBlock);
-        let endHash = await api.rpc.chain.getBlockHash(endBlock);
+
+        let startIssuance = await api.query.balances.totalIssuance.at(startHash) as unknown as Balance;
+        let endIssuance = await api.query.balances.totalIssuance.at(endHash) as unknown as Balance;
+        statistics.newIssuance = endIssuance.toNumber() - startIssuance.toNumber();
+        statistics.totalIssuance = endIssuance.toNumber();
+        statistics.percNewIssuance = this.convertToPercentage(statistics.newIssuance, statistics.totalIssuance);
+
+        let startNrMembers = await api.query.members.membersCreated.at(startHash) as unknown as MemberId;
+        let endNrNumber = await api.query.members.membersCreated.at(endHash) as unknown as MemberId;
+        statistics.newMembers = endNrNumber.toNumber() - startNrMembers.toNumber();
+        statistics.totalMembers = endNrNumber.toNumber();
+        statistics.percNewMembers = this.convertToPercentage(statistics.newMembers, statistics.totalMembers);
+
 
         let startNrStakes = await api.query.stake.stakesCreated.at(startHash) as StakeId;
         let endNrStakes = await api.query.stake.stakesCreated.at(endHash) as StakeId;
@@ -110,22 +140,19 @@ export class StatisticsCollector {
         let startPostId = await api.query.forum.nextPostId.at(startHash) as unknown as PostId;
         let endPostId = await api.query.forum.nextPostId.at(endHash) as unknown as PostId;
         statistics.newPosts = endPostId.toNumber() - startPostId.toNumber();
+        statistics.totalPosts = endPostId.toNumber() - 1;
+        statistics.percNewPosts = this.convertToPercentage(statistics.newPosts, statistics.totalPosts);
 
         let startThreadId = await api.query.forum.nextThreadId.at(startHash) as unknown as ThreadId;
         let endThreadId = await api.query.forum.nextThreadId.at(endHash) as unknown as ThreadId;
         statistics.newThreads = endThreadId.toNumber() - startThreadId.toNumber();
+        statistics.totalThreads = endThreadId.toNumber() - 1;
+        statistics.percNewThreads = this.convertToPercentage(statistics.newThreads, statistics.totalThreads);
 
         let startCategoryId = await api.query.forum.nextCategoryId.at(startHash) as unknown as CategoryId;
         let endCategoryId = await api.query.forum.nextCategoryId.at(endHash) as unknown as CategoryId;
         statistics.newCategories = endCategoryId.toNumber() - startCategoryId.toNumber();
 
-        let startIssuance = await api.query.balances.totalIssuance.at(startHash) as unknown as Balance;
-        let endIssuance = await api.query.balances.totalIssuance.at(endHash) as unknown as Balance;
-        statistics.totalIssuance = Number(endIssuance.toNumber() - startIssuance.toNumber());
-
-        let startNrMembers = await api.query.members.membersCreated.at(startHash) as unknown as MemberId;
-        let endNrNumber = await api.query.members.membersCreated.at(endHash) as unknown as MemberId;
-        statistics.newMembers = endNrNumber.toNumber() - startNrMembers.toNumber();
 
         let startNrProposals = await api.query.proposalsEngine.proposalCount.at(startHash) as unknown as u32;
         let endNrProposals = await api.query.proposalsEngine.proposalCount.at(endHash) as unknown as u32;
@@ -133,6 +160,10 @@ export class StatisticsCollector {
 
 
         return statistics;
+    }
+
+   static convertToPercentage(value: number, totalValue: number): number{
+        return Number((value / totalValue * 100).toFixed(2));
     }
 
 
