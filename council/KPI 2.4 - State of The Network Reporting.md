@@ -1,4 +1,5 @@
-**Council #0 **
+**Council #0**
+
 Block range: 
 \[995611-1096410\]
 
@@ -50,7 +51,7 @@ We fail to make the first report for the 2.4 KPI Report.
 
 ----------------------------------
 
-**Council #1 **
+**Council #1**
 
 Block range: \[995611 1096410\]
 
