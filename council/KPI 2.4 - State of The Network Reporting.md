@@ -11,7 +11,7 @@ https://testnet.joystream.org/#/forum/threads/32/page/1 and we were able to agre
 
 Was the first time for everyone, so understanding what were the responsibilities of the council since everything was a bit new.
 
-Create bounties since nothing make sures that a person will do what we ask for, for example for the proposal "We need more cartoons on Joystream".
+Create bounties since nothing make sures that a person will do what we ask for, for example, for the proposal "We need more cartoons on Joystream".
 
 The difference of timezones of the council members.
 
