@@ -1,5 +1,6 @@
 **Council #0 **
-Block range: \[995611-1096410\]
+Block range: 
+\[995611-1096410\]
 
 **Workflow**
 
