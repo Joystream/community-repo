@@ -55,12 +55,15 @@ We fail to make the first report for the 2.4 KPI Report.
 Block range: \[995611 1096410\]
 
 **Workflow**
+
 We tried to discuss the payments and the Curator Lead using the forum.
 
 **Challenges** 
+
 Getting everyone to agree on the payments for the content working group.
 
 **Thinking** 
+
 Getting a good candidate for the Curator Lead.
 
 **Performance**
@@ -68,11 +71,13 @@ Getting a good candidate for the Curator Lead.
 In total were created 6 proposals but in the end only 2 were "correct":
 
 **Content Working Group 01.06.2020**
+
 https://testnet.joystream.org/#/proposals/8
 
 Voted on: 12 mints
 
 **Curator Lead proposal 01.06.2020**
+
 https://testnet.joystream.org/#/proposals/9
 
 Voted on: 12 mints
