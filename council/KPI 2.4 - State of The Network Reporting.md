@@ -1,7 +1,6 @@
 **Council #0**
 
-Block range: 
-\[995611-1096410\]
+Block range: \[995611-1096410\]
 
 **Workflow**
 
@@ -53,7 +52,7 @@ We fail to make the first report for the 2.4 KPI Report.
 
 **Council #1**
 
-Block range: \[995611 1096410\]
+Block range: \[995611-1096410\]
 
 **Workflow**
 
