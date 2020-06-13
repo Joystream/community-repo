@@ -2,9 +2,13 @@ export class StatisticsData {
     councilRound: number;
     councilMembers: number;
 
-    councilApplicants: number;
-    councilAvgApplicants: number;
-    perCouncilApplicants: number;
+    electionApplicants: number;
+    electionAvgApplicants: number = 0;
+    perElectionApplicants: number;
+
+    electionApplicantsStakes: number;
+    electionVotes: number;
+    avgVotePerApplicant: number;
 
     dateStart: string;
     dateEnd: string;
@@ -21,11 +25,13 @@ export class StatisticsData {
     totalMembers: number;
     percNewMembers: number;
 
-
-
     newBlocks: number;
     avgBlockProduction: number;
-    nrValidators: number;
+
+    avgValidators: number;
+    newValidatorReward: number;
+
+    newStorageProviderReward: number;
 
     newThreads: number;
     totalThreads: number;
@@ -38,17 +44,75 @@ export class StatisticsData {
     newCategories: number;
 
     newProposals: number;
+
+    newChannels: number;
+    totalChannels: number;
+    percNewChannels: number;
+
     newMedia: number;
+    totalMedia: number;
+    percNewMedia: number;
+
     deletedMedia: number;
     createdMints: number;
     totalMinted: number;
     totalMintCapacityIncrease: number;
-    // totalBurned: number;
-    totalNewUsedSpace: number;
+
+    newCouncilMinted: number;
+    newCuratorMinted: number;
+
+    newTokensBurn: number;
+
+    newUsedSpace: number;
+    totalUsedSpace: number;
+    percNewUsedSpace: number;
+
+    avgNewSizePerContent: number;
+    totalAvgSizePerContent: number;
+    percAvgSizePerContent: number;
+
     newStakes: number;
     totalNewStakeValue: number;
+
+    newTextProposals: number = 0;
+    newRuntimeUpgradeProposal: number = 0;
+    newSetElectionParametersProposal: number = 0;
+    newSpendingProposal: number = 0;
+    newSetLeadProposal:number = 0;
+    newSetContentWorkingGroupMintCapacityProposal: number = 0;
+    newEvictStorageProviderProposal: number = 0;
+    newSetValidatorCountProposal: number = 0;
+    newSetStorageRoleParametersProposal: number = 0;
+
 
     constructor() {
     }
 
+}
+
+export class ValidatorReward{
+    sharedReward: number;
+    remainingReward: number;
+    validators: number;
+    slotStake: number;
+    blockNumber: number;
+}
+
+export class Exchange{
+    sender: string;
+    amount: number;
+    fees: number;
+    blockNumber: number;
+}
+
+export enum ProposalTypes {
+    Text= "Text",
+    RuntimeUpgrade = "RuntimeUpgrade",
+    SetElectionParameters = "SetElectionParameters",
+    Spending = "Spending",
+    SetLead = "SetLead",
+    SetContentWorkingGroupMintCapacity = "SetContentWorkingGroupMintCapacity",
+    EvictStorageProvider = "EvictStorageProvider",
+    SetValidatorCount = "SetValidatorCount",
+    SetStorageRoleParameters = "SetStorageRoleParameters",
 }

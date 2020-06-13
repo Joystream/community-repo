@@ -30,18 +30,16 @@ This is a report which explains the current state of the Joystream network in nu
 ### 2.1 Token generation breakdown
 | Property                    | This Session | All Sessions | % Change |
 |-----------------------------|--------------|--------------|----------|
-| Total Tokens Minted         |              |              |          |
-| Validator Role              |              |              |          |
-| Storage Role                |              |              |          |
+| Total Tokens Minted         |{totalMinted}            |              |          |
+| Validator Role              |{newValidatorReward}|              |          |
+| Storage Role                |{newStorageProviderReward}              |              |          |
 | Council Role                |              |              |          |
 
 ### 2.2 Mints 
-| Property                    | This Session | All Sessions | % Change |
-|-----------------------------|--------------|--------------|----------|
-| Council Mint Capacity        |              |              |          |
-| Council Mint Total Minted       |              |              |          |
-| Curator Mint Capacity |              |              |          |
-| Curator Mint Total Minted |              |              |          |
+| Property                  | This Session | All Sessions | % Change |
+|---------------------------|--------------|--------------|----------|
+| Council Mint Total Minted |{newCouncilMinted}|              |          |
+| Curator Mint Total Minted |{newCuratorMinted}|              |          |
 
 ## 3.0 Council
 * Council session #: {councilRound}
@@ -50,23 +48,23 @@ This is a report which explains the current state of the Joystream network in nu
 ### 3.1 Elections
 | Property                    | This Session | All Sessions | % Change |
 |-----------------------------|--------------|--------------|----------|
-| Total Applicants            |{councilApplicants}|{councilAvgApplicants}||
-| Total Applicant Stake       |{councilApplicants}|              |          |
-| Total Votes                 |                   |              |          |
-| Avg Votes per Applicant     |                   |              |          |
+| Total Applicants            |{electionApplicants}      |{electionAvgApplicants}||
+| Total Applicant Stake       |{electionApplicantsStakes}|              |          |
+| Total Votes                 |{electionVotes}           |              |          |
+| Avg Votes per Applicant     |{avgVotePerApplicant}     |              |          |
 
 ### 3.2 Proposals
 | Proposal Type                           | # of proposals during this session | Total number of proposal type |
 |-----------------------------------------|------------------------------------|-------------------------------|
-| Text                                    |                                    |                               |
-| Runtime Upgrade                         |                                    |                               |
-| Set Election Parameters                 |                                    |                               |
-| Spending                                |                                    |                               |
-| Set Lead                                |                                    |                               |
-| Set Content Working Group Mint Capacity |                                    |                               |
-| Evict Storage Provider                  |                                    |                               |
-| Set Validator Count                     |                                    |                               |
-| Set Storage Role Parameters             |                                    |                               |
+| Text                                    | {newTextProposals}                              |                               |
+| Runtime Upgrade                         | {newRuntimeUpgradeProposal}                    |                               |
+| Set Election Parameters                 | {newSetElectionParametersProposal}              |                               |
+| Spending                                | {newSpendingProposal}                           |                               |
+| Set Lead                                | {newSetLeadProposal}                            |                               |
+| Set Content Working Group Mint Capacity | {newSetContentWorkingGroupMintCapacityProposal} |                               |
+| Evict Storage Provider                  | {newEvictStorageProviderProposal}               |                               |
+| Set Validator Count                     | {newSetValidatorCountProposal}                  |                               |
+| Set Storage Role Parameters             | {newSetStorageRoleParametersProposal}           |                               |
 * Average time for proposal vote success:
 * Average overall time for proposal vote success:
 
@@ -74,10 +72,10 @@ This is a report which explains the current state of the Joystream network in nu
 ### 4.1 Validator Information
 | Property                    | This Session | All Sessions | % Change |
 |-----------------------------|--------------|--------------|----------|
-| Number of validators        | {nrValidators}             |              |          |
+| Number of validators        | {avgValidators}             |              |          |
 | Validator total stake       |              |              |          |
 | Average stake per validator |              |              |          |
-| Tokens generated by validator role |              |              |          |
+| Tokens generated by validator role |{newValidatorReward}            |              |          |
 
 ### 4.2 Storage Role
 | Property                | This Session | All Sessions | % Change |
@@ -91,8 +89,6 @@ This is a report which explains the current state of the Joystream network in nu
 ### 4.3 Curator Role
 | Property                | This Session | All Sessions | % Change |
 |-------------------------|--------------|--------------|----------|
-| Mint Capacity |              |              |          |
-| Mint Tokens Generated (Total)    |              |              |          |
 | Curator roles filled     |              |              |          |
 
 
@@ -100,10 +96,10 @@ This is a report which explains the current state of the Joystream network in nu
 ### 5.1 Media & Uploads
 | Property                | This Session | All Sessions | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of uploads       |      {newMedia}        |              |          |
-| Size of content         |   {totalNewUsedSpace}           |              |          |
-| Average size of content |   {avgNewContentSize}           |              |          |
-| Number of channels      |  {newChannels}        | {nrTotalChannels}             |          |
+| Number of uploads       | {newMedia}       |{totalMedia} | {percNewMedia} |
+| Size of content         | {newUsedSpace} | {totalUsedSpace} | {percNewUsedSpace} |
+| Average size of content | {avgNewSizePerContent} |  {totalAvgSizePerContent} | {percAvgSizePerContent}|
+| Number of channels      | {newChannels} | {totalChannels} | {percNewChannels} |
 | Avg. uploads per channel      |              |              |          |
 
 ### 5.2 Forum Activity
