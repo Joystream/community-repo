@@ -46,7 +46,7 @@ Although the community is meant to control the repo, Jsgenesis will approve and 
 The workflow for changing the repo depends on the reason and purpose behind the change.
 A consistent part is for the contributor to fork the repo, and create a pull request to the applicable branch.
 
-### KPI Related Submittals
+### KPI Related Submissions
 When a KPI requires a deliverable to be successful, the following steps must be made:
 - A pull request is made to the master branch.
 - A proposal is made to the [Joystream testnet](https://testnet.joystream.org/).
@@ -55,19 +55,19 @@ When a KPI requires a deliverable to be successful, the following steps must be 
   - The time of the latest commit will be used as the time of submission
 - The PR is reviewed, and as long as it does not contain anything malicious or does not comply with license, it is merged.
 
-### Individual Submittals
+### Individual Submissions
 **Placeholder: ->**
 If the deliverable is made by an individual, eg. for an existing or upcoming funding proposal, the following steps must be made:
 - A pull request is made to the community branch?
 - Action?
 - Merged to community branch?
 - PR to master
-- The PR is reviewed, and as long as it does not contain anything malicious or does not comply with license, it is merged.
+- The PR is reviewed, and as long as it does not contain anything malicious or does not comply with the license of the repo, it is merged.
 **<- Placeholder**
 
-### Jsgenesis Submittals
+### Jsgenesis Submissions
 **Placeholder: ->**
-If a member Jsgenesis wants to make changes to the repo, the following steps must be made:
+If a member of the Jsgenesis team wants to make changes to the repo, the following steps must be taken:
 - A pull request is made to the master branch
 - A `Text` proposal is made to the [Joystream testnet](https://testnet.joystream.org/).
   - The proposal contains a link to the PR and other relevant information
