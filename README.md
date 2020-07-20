@@ -28,9 +28,14 @@ Table of Contents
 <!-- TOC START min:1 max:3 link:true asterisk:false update:true -->
 - [Overview](#overview)
   - [Workflow](#workflow)
-    - [KPI Related Submittals](#kpi-related-submittals)
-    - [Individual Submittals](#individual-submittals)
-    - [Jsgenesis Submittals](#jsgenesis-submittals)
+    - [KPI Related Submissions](#kpi-related-submissions)
+    - [Individual Submissions](#individual-submissions)
+    - [Jsgenesis Submissions](#jsgenesis-submissions)
+  - [Currrent Directories](#currrent-directories)
+    - [`community-contributions`](#community-contributions)
+    - [`council-reports`](#council-reports)
+    - [`tokenomics-reports`](#tokenomics-reports)
+    - [`submission-log`](#submission-log)
 <!-- TOC END -->
 
 # Overview
@@ -54,22 +59,36 @@ When a KPI requires a deliverable to be successful, the following steps must be 
   - When (if) the proposal is voted through, @bwhm and @blrhc is tagged
   - The time of the latest commit will be used as the time of submission
 - The PR is reviewed, and as long as it does not contain anything malicious or does not comply with license, it is merged.
+- The submission is added to the `Submission Log`
 
 ### Individual Submissions
-**Placeholder: ->**
 If the deliverable is made by an individual, eg. for an existing or upcoming funding proposal, the following steps must be made:
-- A pull request is made to the community branch?
-- Action?
-- Merged to community branch?
-- PR to master
+- A pull request is made to the community branch, in a new folder within the `Community Contributions` directory.
+  - Example: `Slow bot project - Author Name`
+- A proposal is made to the [Joystream testnet](https://testnet.joystream.org/).
+  - The proposal (`Text`, or in some cases, `Spending`) contains a link to the PR and other relevant information.
+  - When (if) the proposal is voted through, @bwhm and @blrhc is tagged
 - The PR is reviewed, and as long as it does not contain anything malicious or does not comply with the license of the repo, it is merged.
-**<- Placeholder**
+- The submission is added to the `Submission Log`
 
 ### Jsgenesis Submissions
-**Placeholder: ->**
 If a member of the Jsgenesis team wants to make changes to the repo, the following steps must be taken:
 - A pull request is made to the master branch
 - A `Text` proposal is made to the [Joystream testnet](https://testnet.joystream.org/).
   - The proposal contains a link to the PR and other relevant information
   - When (if) the proposal is voted through, the PR is merged.
-**<- Placeholder**
+- The submission is added to the `Submission Log`
+
+## Currrent Directories
+### `community-contributions`
+This folder can be used for community coded bots and projects and anything that doesn't fit elsewhere. Each submission should be in a unique folder within this directory.
+### `council-reports`
+This folder can be used for creating council reports. The council reports submitted should be formatted in the following way:
+`Council Round #n - DD/MM/YYYY - Council Report.md`
+### `tokenomics-reports`
+This folder can be used for creating tokenomics reports, tokenomics reports are to be submitted during each `Council Round`. The tokenomics reports submitted should be formatted in the following way:
+`Council Round #n - DD/MM/YYYY - Tokenomics Report.md`
+### `submission-log`
+This folder can be used for maintaining a log of submissions. If the testnet is started from fresh, a new file should be made.
+Each entry in the log should include the Joystream username of the submission, a link to the proposal, a link to the PR and the amount of tokens awarded to the user (if applicable).
+`#1 - Rome Testnet - Community Repo Submission Log.md`

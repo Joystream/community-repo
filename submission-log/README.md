@@ -1,10 +1,12 @@
-Tokenomics Reports
+Submission Log
 ===
 
 Table of Contents
 --
 
 <!-- TOC START min:1 max:3 link:true asterisk:false update:true -->
+- [Submission Log](#submission-log)
+  - [Table of Contents](#table-of-contents)
 - [Overview](#overview)
   - [Instructions](#instructions)
   - [Report History](#report-history)
