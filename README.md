@@ -8,7 +8,7 @@
 <div align="center">
   <h4>
     <a href="/council-reports">
-      Council Reports
+    Council Reports
     </a>
     <span> | </span>
     <a href="/tokenomics-reports">
@@ -16,7 +16,7 @@
     </a>
     <span> | </span>
     <a href="/community-contributions">
-      Contributions
+    Community Contributions
     </a>
     </a>
   </h4>
@@ -31,9 +31,10 @@ Table of Contents
     - [KPI Related Submissions](#kpi-related-submissions)
     - [Individual Submissions](#individual-submissions)
     - [Jsgenesis Submissions](#jsgenesis-submissions)
-  - [Currrent Directories](#currrent-directories)
-    - [`community-contributions`](#community-contributions)
+    - [Revisions & Improvements of Submissions](#revisions--improvements-of-submissions)
+  - [Current Directories](#current-directories)
     - [`council-reports`](#council-reports)
+    - [`community-contributions`](#community-contributions)
     - [`tokenomics-reports`](#tokenomics-reports)
     - [`submission-log`](#submission-log)
 <!-- TOC END -->
@@ -64,7 +65,7 @@ When a KPI requires a deliverable to be successful, the following steps must be 
 ### Individual Submissions
 If the deliverable is made by an individual, eg. for an existing or upcoming funding proposal, the following steps must be made:
 - A pull request is made to the community branch, in a new folder within the `Community Contributions` directory.
-  - Example: `Slow bot project - Author Name`
+  - Example: `Bot project - Author Name`
 - A proposal is made to the [Joystream testnet](https://testnet.joystream.org/).
   - The proposal (`Text`, or in some cases, `Spending`) contains a link to the PR and other relevant information.
   - When (if) the proposal is voted through, @bwhm and @blrhc is tagged
@@ -79,12 +80,15 @@ If a member of the Jsgenesis team wants to make changes to the repo, the followi
   - When (if) the proposal is voted through, the PR is merged.
 - The submission is added to the `Submission Log`
 
-## Currrent Directories
-### `community-contributions`
-This folder can be used for community coded bots and projects and anything that doesn't fit elsewhere. Each submission should be in a unique folder within this directory.
+### Revisions & Improvements of Submissions
+It is likely in the future we will have to accomodate revisions and improvements of previous submissions. This process will be refined when this becomes a necessary task.
+
+## Current Directories
 ### `council-reports`
 This folder can be used for creating council reports. The council reports submitted should be formatted in the following way:
 `Council Round #n - DD/MM/YYYY - Council Report.md`
+### `community-contributions`
+This folder can be used for community coded bots and projects and anything that doesn't fit elsewhere. Each submission should be in a unique folder within this directory.
 ### `tokenomics-reports`
 This folder can be used for creating tokenomics reports, tokenomics reports are to be submitted during each `Council Round`. The tokenomics reports submitted should be formatted in the following way:
 `Council Round #n - DD/MM/YYYY - Tokenomics Report.md`
