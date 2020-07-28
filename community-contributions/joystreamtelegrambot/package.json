@@ -1,0 +1,7 @@
+{
+   "dependencies": {
+      "@joystream/types": "^0.9.1",
+      "@polkadot/api": "^0.96.1",
+      "node-telegram-bot-api": "^0.50.0"
+   }
+}
