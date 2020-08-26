@@ -30,12 +30,11 @@ This is a report which explains the current state of the Joystream network in nu
 * Total number of proposals:
 * Total number of Approved proposals:
 
-* ### 3.1 Elections
-| Property                    | Start Block | End Block | % Change |
-|-----------------------------|--------------|--------------|----------|
-| Total Applicants       |              |              |          |
-| Total Applicant Stake       |              |              |          |
-| Total Votes       |              |              |          |
+### 3.1 Elections
+* Total Applicants:
+* Total Applicant Stake:
+* Total Votes:
+* Total Voter Stake:
 
 ## 4 Roles
 ### 4.1 Validator Information
@@ -43,7 +42,11 @@ This is a report which explains the current state of the Joystream network in nu
 
 | Property                    | Start Block | End Block | % Change |
 |-----------------------------|--------------|--------------|----------|
+| Validator slotStake       |              |              |          |
 | Validator total stake       |              |              |          |
+| Nominators total stake       |              |              |          |
+<!---Validator stotStake is taken from chain state>staking>slotstake--->
+
 
 ### 4.2 Storage Role
 | Property                | Start Block | End Block | % Change |
