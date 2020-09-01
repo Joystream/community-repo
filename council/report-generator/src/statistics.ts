@@ -2,21 +2,23 @@ import {rpc} from "@polkadot/types/interfaces/definitions";
 import {ApiPromise, WsProvider} from "@polkadot/api";
 import {registerJoystreamTypes} from '@joystream/types';
 import {AccountId, Balance, BlockNumber, EventRecord, Hash, Moment} from "@polkadot/types/interfaces";
-import {ClassId, ClassPropertyValue, Entity, EntityId} from "@joystream/types/lib/versioned-store";
-import {Mint, MintId} from "@joystream/types/lib/mint";
-import {Option, u32, Vec} from "@polkadot/types";
-import {ContentId, DataObject} from "@joystream/types/lib/media";
-import {Stake, StakeId} from "@joystream/types/lib/stake";
-import Linkage from "@polkadot/types/codec/Linkage";
-import {CategoryId, PostId, ThreadId} from "@joystream/types/lib/forum";
-import {MemberId} from "@joystream/types/lib/members";
-import number from "@polkadot/util/is/number";
+
 import {Exchange, ProposalTypes, StatisticsData, ValidatorReward} from "./StatisticsData";
-import {ProposalDetails, Seats} from "@joystream/types/lib/proposals";
-import {ApplicationStage} from "@joystream/types/lib/hiring";
-import {Stake as ApplicantStake} from "@joystream/types/lib";
-import {RoleParameters} from "@joystream/types/lib/roles";
-import {ChannelId, CuratorId} from "@joystream/types/lib/content-working-group";
+
+import {u32, Vec} from "@polkadot/types";
+import {ElectionStake, Seats} from "@joystream/types/council";
+import {MemberId} from "@joystream/types/members";
+import {Stake, StakeId} from "@joystream/types/stake";
+import {Mint, MintId} from "@joystream/types/mint";
+import {ChannelId} from "@joystream/types/content-working-group";
+import {ContentId, DataObject} from "@joystream/types/media";
+import {PostId, ThreadId} from "@joystream/types/common";
+import {CategoryId} from "@joystream/types/forum";
+import {ProposalDetails} from "@joystream/types/proposals";
+import {RoleParameters} from "@joystream/types/roles";
+import {Entity, EntityId} from "@joystream/types/versioned-store";
+import Option from "@polkadot/types/codec/Option";
+import Linkage from "@polkadot/types/codec/Linkage";
 
 const BURN_ADDRESS = '5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu';
 
@@ -49,7 +51,7 @@ export class StatisticsCollector {
 
         statistics.electionApplicantsStakes = 0;
         for (let applicant of applicants) {
-            let applicantStakes = await api.query.councilElection.applicantStakes.at(startHash, applicant) as unknown as ApplicantStake;
+            let applicantStakes = await api.query.councilElection.applicantStakes.at(startHash, applicant) as unknown as ElectionStake;
             statistics.electionApplicantsStakes += applicantStakes.new.toNumber();
         }
         statistics.electionVotes = seats.map((seat) => seat.backers.length).reduce((a, b) => a + b);
@@ -396,7 +398,8 @@ export class StatisticsCollector {
     }
 
     static async connectApi(): Promise<ApiPromise> {
-        const provider = new WsProvider('ws://127.0.0.1:9944');
+        // const provider = new WsProvider('wss://testnet.joystream.org:9944');
+        const provider = new WsProvider('wss://rome-rpc-endpoint.joystream.org:9944');
         // register types before creating the api
         registerJoystreamTypes();
 

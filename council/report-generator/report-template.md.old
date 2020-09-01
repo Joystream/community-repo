@@ -2,69 +2,69 @@
 This is a report which explains the current state of the Joystream network in numbers. It pulls figures from the chain and tries to provide a basic level of information about the network, tokens and more. 
 
 ## 1.0 Basic Information
-* Date Range: 5/26/2020 - 6/2/2020
-* Council session #: 2
-* Starting block: 995611
-* Block range: 995611 - 1096410
+* Date Range: {dateStart} - {dateEnd}
+* Council session #: {councilRound}
+* Starting block: {startBlock}
+* Block range: {startBlock} - {endBlock}
 
 ### 1.1 Block Generation Information
 | Property                        | This Session | All Sessions | % Change |
 |---------------------------------|--------------|--------------|----------|
-| Number of blocks                | 100799       | 1096410   |   9.19       |
-| Block generation time (average) | 6.02|              |          |
+| Number of blocks                | {newBlocks}       | {endBlock}   |   {percNewBlocks}       |
+| Block generation time (average) | {avgBlockProduction}|              |          |
 | Number of nodes (average)       |                     |              |          |
 
 ### 1.2 Token + USD Information
 | Property       | This Session | All Sessions | % Change |
 |----------------|--------------|--------------|----------|
-| Token Issuance | 6120596   | 106810416| 5.73|
-| Token Burn     | 1126315 |              |          |
+| Token Issuance | {newIssuance}   | {totalIssuance}| {percNewIssuance}|
+| Token Burn     | {newTokensBurn} |              |          |
 | USD Backing    |                 |              |          |
 
 ### 1.3 Membership Information
 | Property          | This Session | All Sessions | % Change |
 |-------------------|--------------|--------------|----------|
-| Number of members |7  |443|1.58|
+| Number of members |{newMembers}  |{totalMembers}|{percNewMembers}|
 
 ## 2.0 Tokenomics
 ### 2.1 Token generation breakdown
 | Property                    | This Session | All Sessions | % Change |
 |-----------------------------|--------------|--------------|----------|
-| Total Tokens Minted         |2401000            |              |          |
-| Validator Role              |78929|              |          |
-| Storage Role                |4972800              |              |          |
+| Total Tokens Minted         |{totalMinted}            |              |          |
+| Validator Role              |{newValidatorReward}|              |          |
+| Storage Role                |{newStorageProviderReward}              |              |          |
 | Council Role                |              |              |          |
 
 ### 2.2 Mints 
 | Property                  | This Session | All Sessions | % Change |
 |---------------------------|--------------|--------------|----------|
-| Council Mint Total Minted |2401000|              |          |
-| Curator Mint Total Minted |0|              |          |
+| Council Mint Total Minted |{newCouncilMinted}|              |          |
+| Curator Mint Total Minted |{newCuratorMinted}|              |          |
 
 ## 3.0 Council
-* Council session #: 2
-* Number of council members: 10
-* Total number of proposals: 6
+* Council session #: {councilRound}
+* Number of council members: {councilMembers}
+* Total number of proposals: {newProposals}
 ### 3.1 Elections
 | Property                    | This Session | All Sessions | % Change |
 |-----------------------------|--------------|--------------|----------|
-| Total Applicants            |0      |0||
-| Total Applicant Stake       |0|              |          |
-| Total Votes                 |0           |              |          |
-| Avg Votes per Applicant     |0     |              |          |
+| Total Applicants            |{electionApplicants}      |{electionAvgApplicants}||
+| Total Applicant Stake       |{electionApplicantsStakes}|              |          |
+| Total Votes                 |{electionVotes}           |              |          |
+| Avg Votes per Applicant     |{avgVotePerApplicant}     |              |          |
 
 ### 3.2 Proposals
 | Proposal Type                           | # of proposals during this session | Total number of proposal type |
 |-----------------------------------------|------------------------------------|-------------------------------|
-| Text                                    | 4                              |                               |
-| Runtime Upgrade                         | 0                    |                               |
-| Set Election Parameters                 | 0              |                               |
-| Spending                                | 0                           |                               |
-| Set Lead                                | 0                            |                               |
-| Set Content Working Group Mint Capacity | 2 |                               |
-| Evict Storage Provider                  | 0               |                               |
-| Set Validator Count                     | 0                  |                               |
-| Set Storage Role Parameters             | 0           |                               |
+| Text                                    | {newTextProposals}                              |                               |
+| Runtime Upgrade                         | {newRuntimeUpgradeProposal}                    |                               |
+| Set Election Parameters                 | {newSetElectionParametersProposal}              |                               |
+| Spending                                | {newSpendingProposal}                           |                               |
+| Set Lead                                | {newSetLeadProposal}                            |                               |
+| Set Content Working Group Mint Capacity | {newSetContentWorkingGroupMintCapacityProposal} |                               |
+| Evict Storage Provider                  | {newEvictStorageProviderProposal}               |                               |
+| Set Validator Count                     | {newSetValidatorCountProposal}                  |                               |
+| Set Storage Role Parameters             | {newSetStorageRoleParametersProposal}           |                               |
 * Average time for proposal vote success:
 * Average overall time for proposal vote success:
 
@@ -72,10 +72,10 @@ This is a report which explains the current state of the Joystream network in nu
 ### 4.1 Validator Information
 | Property                    | This Session | All Sessions | % Change |
 |-----------------------------|--------------|--------------|----------|
-| Number of validators        | 19.88             |              |          |
+| Number of validators        | {avgValidators}             |              |          |
 | Validator total stake       |              |              |          |
 | Average stake per validator |              |              |          |
-| Tokens generated by validator role |78929            |              |          |
+| Tokens generated by validator role |{newValidatorReward}            |              |          |
 
 ### 4.2 Storage Role
 | Property                | This Session | All Sessions | % Change |
@@ -96,17 +96,17 @@ This is a report which explains the current state of the Joystream network in nu
 ### 5.1 Media & Uploads
 | Property                | This Session | All Sessions | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of uploads       | 17       |44 | 38.64 |
-| Size of content         | 2740796992 | 8889147068 | 30.83 |
-| Average size of content | 161223352.47 |  202026069.73 | 79.8|
-| Number of channels      | 5 | 23 | 21.74 |
+| Number of uploads       | {newMedia}       |{totalMedia} | {percNewMedia} |
+| Size of content         | {newUsedSpace} | {totalUsedSpace} | {percNewUsedSpace} |
+| Average size of content | {avgNewSizePerContent} |  {totalAvgSizePerContent} | {percAvgSizePerContent}|
+| Number of channels      | {newChannels} | {totalChannels} | {percNewChannels} |
 | Avg. uploads per channel      |              |              |          |
 
 ### 5.2 Forum Activity
 | Property          | This Session | All Sessions | % Change |
 |-------------------|--------------|--------------|----------|
-| Number of threads | 6 |40| 15|
-| Number of posts   | 45   |267  | 16.85|
+| Number of threads | {newThreads} |{totalThreads}| {percNewThreads}|
+| Number of posts   | {newPosts}   |{totalPosts}  | {percNewPosts}|
 
 ## 6 Todo / Ideas
 * Video duration

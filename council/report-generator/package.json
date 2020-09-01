@@ -8,7 +8,7 @@
     "status": "node lib/status"
   },
   "dependencies": {
-    "@joystream/types": "^0.9.1",
+    "@joystream/types": "^0.12.0",
     "@polkadot/api": "^0.96.1",
     "@polkadot/keyring": "^1.7.0-beta.5",
     "@polkadot/types": "^0.96.1",
@@ -18,7 +18,7 @@
     "bn.js": "^4.11.8"
   },
   "devDependencies": {
-    "@polkadot/ts": "^0.1.56",
-    "typescript": "3.7.2"
+    "@polkadot/ts": "^0.3.40",
+    "typescript": "4.0.2"
   }
 }

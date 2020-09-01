@@ -2,117 +2,98 @@
 This is a report which explains the current state of the Joystream network in numbers. It pulls figures from the chain and tries to provide a basic level of information about the network, tokens and more. 
 
 ## 1.0 Basic Information
+* Block range: {startBlock} - {endBlock}
 * Date Range: {dateStart} - {dateEnd}
 * Council session #: {councilRound}
-* Starting block: {startBlock}
-* Block range: {startBlock} - {endBlock}
-
-### 1.1 Block Generation Information
-| Property                        | This Session | All Sessions | % Change |
-|---------------------------------|--------------|--------------|----------|
-| Number of blocks                | {newBlocks}       | {endBlock}   |   {percNewBlocks}       |
-| Block generation time (average) | {avgBlockProduction}|              |          |
-| Number of nodes (average)       |                     |              |          |
-
-### 1.2 Token + USD Information
-| Property       | This Session | All Sessions | % Change |
-|----------------|--------------|--------------|----------|
-| Token Issuance | {newIssuance}   | {totalIssuance}| {percNewIssuance}|
-| Token Burn     | {newTokensBurn} |              |          |
-| USD Backing    |                 |              |          |
-
-### 1.3 Membership Information
-| Property          | This Session | All Sessions | % Change |
-|-------------------|--------------|--------------|----------|
-| Number of members |{newMembers}  |{totalMembers}|{percNewMembers}|
 
 ## 2.0 Tokenomics
 ### 2.1 Token generation breakdown
-| Property                    | This Session | All Sessions | % Change |
+| Property                    | Start Block | End Block | % Change |
 |-----------------------------|--------------|--------------|----------|
-| Total Tokens Minted         |{totalMinted}            |              |          |
-| Validator Role              |{newValidatorReward}|              |          |
-| Storage Role                |{newStorageProviderReward}              |              |          |
-| Council Role                |              |              |          |
+| Total Tokens Minted        |              |              |          |
+| Total Tokens Burned        |              |              |          |
+| Validator Role        |              |              |          |
+| Council Role |              |              |          |
+| Storage Role       |              |              |          |
+| Curator Role       |              |              |          |
 
 ### 2.2 Mints 
-| Property                  | This Session | All Sessions | % Change |
-|---------------------------|--------------|--------------|----------|
-| Council Mint Total Minted |{newCouncilMinted}|              |          |
-| Curator Mint Total Minted |{newCuratorMinted}|              |          |
+| Property                    | Start Block | End Block | % Change |
+|-----------------------------|--------------|--------------|----------|
+| Council Mint Total Minted       |              |              |          |
+| Curator Mint Total Minted |              |              |          |
+| Storage Mint Total Minted |              |              |          |
 
 ## 3.0 Council
 * Council session #: {councilRound}
 * Number of council members: {councilMembers}
 * Total number of proposals: {newProposals}
-### 3.1 Elections
-| Property                    | This Session | All Sessions | % Change |
-|-----------------------------|--------------|--------------|----------|
-| Total Applicants            |{electionApplicants}      |{electionAvgApplicants}||
-| Total Applicant Stake       |{electionApplicantsStakes}|              |          |
-| Total Votes                 |{electionVotes}           |              |          |
-| Avg Votes per Applicant     |{avgVotePerApplicant}     |              |          |
+* Total number of Approved proposals:
 
-### 3.2 Proposals
-| Proposal Type                           | # of proposals during this session | Total number of proposal type |
-|-----------------------------------------|------------------------------------|-------------------------------|
-| Text                                    | {newTextProposals}                              |                               |
-| Runtime Upgrade                         | {newRuntimeUpgradeProposal}                    |                               |
-| Set Election Parameters                 | {newSetElectionParametersProposal}              |                               |
-| Spending                                | {newSpendingProposal}                           |                               |
-| Set Lead                                | {newSetLeadProposal}                            |                               |
-| Set Content Working Group Mint Capacity | {newSetContentWorkingGroupMintCapacityProposal} |                               |
-| Evict Storage Provider                  | {newEvictStorageProviderProposal}               |                               |
-| Set Validator Count                     | {newSetValidatorCountProposal}                  |                               |
-| Set Storage Role Parameters             | {newSetStorageRoleParametersProposal}           |                               |
-* Average time for proposal vote success:
-* Average overall time for proposal vote success:
+* ### 3.1 Elections
+| Property                    | Start Block  |
+|-----------------------------|--------------|
+| Total Applicants            |{electionApplicants}              |
+| Total Applicant Stake       |{electionApplicantsStakes}              |
+| Total Votes                 |{electionVotes}             |
 
 ## 4 Roles
 ### 4.1 Validator Information
-| Property                    | This Session | All Sessions | % Change |
+* Block generation time (average):
+
+| Property                    | Start Block | End Block | % Change |
 |-----------------------------|--------------|--------------|----------|
-| Number of validators        | {avgValidators}             |              |          |
 | Validator total stake       |              |              |          |
-| Average stake per validator |              |              |          |
-| Tokens generated by validator role |{newValidatorReward}            |              |          |
 
 ### 4.2 Storage Role
-| Property                | This Session | All Sessions | % Change |
+| Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of storage nodes |              |              |          |
-| Content storage size    |              |              |          |
-| Total storage stake     |              |              |          |
-| Average storage stake   |              |              |          |
-| Storage Role Reward (/24h)   |              |              |          |
+| Mint Tokens Generated (Total)    |              |              |          |
+| Number of storage workers |              |              |          |
+| Total storage stake (workers + lead)  |              |              |          |
+| Total lead earned rewards   |              |              |          |
+| Total worker earned rewards   |              |              |          |
+| Total missed rewards   |              |              |          |
+| Total rewards   |              |              |          |
 
 ### 4.3 Curator Role
-| Property                | This Session | All Sessions | % Change |
+| Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
+| Mint Tokens Generated (Total)    |              |              |          |
+| Total lead earned rewards   |              |              |          |
+| Total worker earned rewards   |              |              |          |
+| Total missed rewards   |              |              |          |
 | Curator roles filled     |              |              |          |
 
-
 ## 5.0 User Generated Content
-### 5.1 Media & Uploads
-| Property                | This Session | All Sessions | % Change |
-|-------------------------|--------------|--------------|----------|
-| Number of uploads       | {newMedia}       |{totalMedia} | {percNewMedia} |
-| Size of content         | {newUsedSpace} | {totalUsedSpace} | {percNewUsedSpace} |
-| Average size of content | {avgNewSizePerContent} |  {totalAvgSizePerContent} | {percAvgSizePerContent}|
-| Number of channels      | {newChannels} | {totalChannels} | {percNewChannels} |
-| Avg. uploads per channel      |              |              |          |
-
-### 5.2 Forum Activity
-| Property          | This Session | All Sessions | % Change |
+### 5.1 Membership Information
+| Property          | Start Block | End Block | % Change |
 |-------------------|--------------|--------------|----------|
-| Number of threads | {newThreads} |{totalThreads}| {percNewThreads}|
-| Number of posts   | {newPosts}   |{totalPosts}  | {percNewPosts}|
+| Number of members |              |              |          |
+
+### 5.2 Media & Uploads
+| Property                | Start Block | End Block | % Change |
+|-------------------------|--------------|--------------|----------|
+| Number of uploads       |              |              |          |
+| Size of content         |              |              |          |
+| Number of channels      |              |              |          |
+
+### 5.3 Forum Activity
+| Property          | Start Block | End Block | % Change |
+|-------------------|--------------|--------------|----------|
+| Number of categories | {startCategories} | {endCategories} | {perNewCategories}         |
+| Number of threads    | {startThreads}| {endThreads} | {newThreads}         |
+| Number of posts      | {startPosts} | {endPosts}            |  {percNewPosts}        |
 
 ## 6 Todo / Ideas
+These are properties that are a bit difficult to currently work with, but can be added in future reports:
 * Video duration
-* KPIs
 * Unique channels
 * Verified channels
 * Censored channels
 * Forum posts by subcategory
 * Total staked across platform
+* Avg. uploads per channel
+* Average time for proposal vote success:
+* Average overall time for proposal vote success:
+* USD backing

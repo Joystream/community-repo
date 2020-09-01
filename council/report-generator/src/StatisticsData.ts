@@ -33,15 +33,22 @@ export class StatisticsData {
 
     newStorageProviderReward: number;
 
+    startThreads: number;
+    endThreads: number;
     newThreads: number;
     totalThreads: number;
     percNewThreads: number;
 
+    startPosts: number;
+    endPosts: number;
     newPosts: number;
     totalPosts: number;
     percNewPosts: number;
 
+    startCategories: number;
+    endCategories: number;
     newCategories: number;
+    perNewCategories: number;
 
     newProposals: number;
 
