@@ -44,7 +44,7 @@ This report was compiled by @tomato with assistance from @freakstatic
 * End minted: 44363363 tokens
 * Total minted during council round: 5400000 tokens (+13.85% from start)
 	* Minted from Spending proposals: 3000000 tokens
-	* Minted for CM payments: 24000000 tokens
+	* Minted for CM payments: 2400000 tokens
 
 Budget proposal link: https://testnet.joystream.org/#/proposals/75
 Total budget: 10384331 tokens
