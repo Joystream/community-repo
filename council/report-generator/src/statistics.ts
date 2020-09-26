@@ -264,6 +264,9 @@ export class StatisticsCollector {
         for (let i = 0; i < startNrMints; ++i) {
             let startMintResult = await this.api.query.minting.mints.at(startHash, i) as unknown as [Mint, Linkage<MintId>];
             let startMint = startMintResult[0];
+            if (!startMint){
+                continue;
+            }
 
             let endMintResult = await this.api.query.minting.mints.at(endHash, i) as unknown as [Mint, Linkage<MintId>];
             let endMint = endMintResult[0];
@@ -279,6 +282,9 @@ export class StatisticsCollector {
 
         for (let i = startNrMints; i < endNrMints; ++i) {
             let endMintResult = await this.api.query.minting.mints.at(endHash, i) as unknown as [Mint, Linkage<MintId>];
+            if (!endMintResult){
+                return;
+            }
             let endMint = endMintResult[0] as Mint;
             statistics.totalMinted = parseInt(endMint.getField('total_minted').toString());
         }
@@ -310,15 +316,21 @@ export class StatisticsCollector {
         if (mintId.toString() == "0"){
             return new MintStatistics(0, 0, 0);
         }
-        let startCouncilMintResult = await this.api.query.minting.mints.at(startHash, mintId) as unknown as [Mint, Linkage<MintId>];
-        let startCouncilMint = startCouncilMintResult[0] as unknown as Mint;
+        let startMintResult = await this.api.query.minting.mints.at(startHash, mintId) as unknown as [Mint, Linkage<MintId>];
+        let startMint = startMintResult[0] as unknown as Mint;
+        if(!startMint){
+            return new MintStatistics(0, 0, 0);
+        }
 
-        let endCouncilMintResult = await this.api.query.minting.mints.at(endHash, mintId) as unknown as [Mint, Linkage<MintId>];
-        let endCouncilMint = endCouncilMintResult[0] as unknown as Mint;
+        let endMintResult = await this.api.query.minting.mints.at(endHash, mintId) as unknown as [Mint, Linkage<MintId>];
+        let endMint = endMintResult[0] as unknown as Mint;
+        if(!endMint){
+            return new MintStatistics(0, 0, 0);
+        }
 
         let mintStatistics = new MintStatistics();
-        mintStatistics.startMinted = parseInt(startCouncilMint.getField('total_minted').toString());
-        mintStatistics.endMinted = parseInt(endCouncilMint.getField('total_minted').toString());
+        mintStatistics.startMinted = parseInt(startMint.getField('total_minted').toString());
+        mintStatistics.endMinted = parseInt(endMint.getField('total_minted').toString());
         mintStatistics.diffMinted = mintStatistics.endMinted - mintStatistics.startMinted;
         mintStatistics.percMinted = StatisticsCollector.convertToPercentage(mintStatistics.diffMinted, mintStatistics.endMinted);
         return mintStatistics;
