@@ -1,20 +1,13 @@
-import {rpc} from "@polkadot/types/interfaces/definitions";
 import {ApiPromise, WsProvider} from "@polkadot/api";
-import {registerJoystreamTypes} from '@joystream/types';
+import { types } from '@joystream/types'
 import {AccountId, Balance, BlockNumber, EventRecord, Hash, Moment} from "@polkadot/types/interfaces";
 
 import {Exchange, MintStatistics, ProposalTypes, StatisticsData, ValidatorReward} from "./StatisticsData";
 
 import {u32, Vec} from "@polkadot/types";
 import {ElectionStake, Seats} from "@joystream/types/council";
-import {MemberId} from "@joystream/types/members";
-import {Stake, StakeId} from "@joystream/types/stake";
 import {Mint, MintId} from "@joystream/types/mint";
-import {ChannelId} from "@joystream/types/content-working-group";
 import {ContentId, DataObject} from "@joystream/types/media";
-import {PostId, ThreadId} from "@joystream/types/common";
-import {CategoryId} from "@joystream/types/forum";
-import {ProposalDetails} from "@joystream/types/proposals";
 import {RoleParameters} from "@joystream/types/roles";
 import {Entity, EntityId} from "@joystream/types/versioned-store";
 import Option from "@polkadot/types/codec/Option";
@@ -34,7 +27,7 @@ class Media {
 
 export class StatisticsCollector {
 
-    private api: ApiPromise;
+    private api?: ApiPromise;
 
     constructor() {
 
@@ -42,11 +35,10 @@ export class StatisticsCollector {
 
 
     async getStatistics(startBlock: number, endBlock: number): Promise<StatisticsData> {
-
         this.api = await StatisticsCollector.connectApi();
 
-        let startHash = await this.api.rpc.chain.getBlockHash(startBlock);
-        let endHash = await this.api.rpc.chain.getBlockHash(endBlock);
+        let startHash = await this.api.query.system.blockHash(startBlock) as Hash;
+        let endHash = await this.api.query.system.blockHash(endBlock) as Hash;
 
         let statistics = new StatisticsData();
 
@@ -56,7 +48,7 @@ export class StatisticsCollector {
         statistics.percNewBlocks = StatisticsCollector.convertToPercentage(statistics.newBlocks, endBlock);
         await this.fillBasicInfo(startHash, endHash, statistics);
         await this.fillMintsData(startHash, endHash, statistics);
-        await this.fillCouncilElectionInfo(startHash, endHash, startBlock, statistics);
+        // await this.fillCouncilElectionInfo(startHash, endHash, startBlock, statistics);
         this.api.disconnect();
         return statistics;
 
@@ -288,8 +280,8 @@ export class StatisticsCollector {
             statistics.totalMinted = parseInt(endMint.getField('total_minted').toString());
         }
 
-        let councilMint = await this.api.query.council.councilMint.at(endHash) as Option<MintId>;
-        let councilMintStatistics = await this.computeMintInfo(councilMint.unwrap(), startHash, endHash);
+        let councilMint = await this.api.query.council.councilMint.at(endHash) as MintId;
+        let councilMintStatistics = await this.computeMintInfo(councilMint, startHash, endHash);
 
         statistics.startCouncilMinted = councilMintStatistics.startMinted;
         statistics.endCouncilMinted = councilMintStatistics.endMinted
@@ -312,6 +304,9 @@ export class StatisticsCollector {
     }
 
     async computeMintInfo(mintId: MintId, startHash: Hash, endHash: Hash): Promise<MintStatistics> {
+        if (mintId.toString() == "0"){
+            return new MintStatistics(0, 0, 0);
+        }
         let startCouncilMintResult = await this.api.query.minting.mints.at(startHash, mintId) as unknown as [Mint, Linkage<MintId>];
         let startCouncilMint = startCouncilMintResult[0] as unknown as Mint;
 
@@ -334,7 +329,7 @@ export class StatisticsCollector {
         let applicants: Vec<AccountId>
         let currentSearchBlock = startBlock - 1;
         do {
-            let applicantHash = await this.api.rpc.chain.getBlockHash(currentSearchBlock);
+            let applicantHash = await this.api.query.system.blockHash(currentSearchBlock);
             applicants = await this.api.query.councilElection.applicants.at(applicantHash) as Vec<AccountId>;
             --currentSearchBlock;
         } while (applicants.length == 0);
@@ -356,7 +351,7 @@ export class StatisticsCollector {
             if (event.section === 'staking' && event.method === 'Reward') {
                 const sharedReward = event.data[0] as Balance;
                 const remainingReward = event.data[1] as Balance;
-                const oldHash: Hash = await api.rpc.chain.getBlockHash(blockNumber - 1)
+                const oldHash: Hash = await api.query.system.blockHash(blockNumber - 1);
                 const slotStake = await api.query.staking.slotStake.at(oldHash) as Balance;
                 const validatorInfo = await api.query.staking.currentElected.at(oldHash) as AccountId;
                 const valReward = new ValidatorReward();
@@ -457,11 +452,9 @@ export class StatisticsCollector {
     static async connectApi(): Promise<ApiPromise> {
         // const provider = new WsProvider('wss://testnet.joystream.org:9944');
         const provider = new WsProvider('wss://rome-rpc-endpoint.joystream.org:9944');
-        // register types before creating the api
-        registerJoystreamTypes();
 
         // Create the API and wait until ready
-        return await ApiPromise.create({provider});
+        return await ApiPromise.create({provider, types});
     }
 
 }
