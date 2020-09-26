@@ -155,3 +155,9 @@ export class MintStatistics {
     }
 
 }
+
+export class Media {
+
+    constructor(public id: number, public title: string) {
+    }
+}

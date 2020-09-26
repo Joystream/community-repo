@@ -2,7 +2,7 @@ import {ApiPromise, WsProvider} from "@polkadot/api";
 import { types } from '@joystream/types'
 import {AccountId, Balance, BlockNumber, EventRecord, Hash, Moment} from "@polkadot/types/interfaces";
 
-import {Exchange, MintStatistics, ProposalTypes, StatisticsData, ValidatorReward} from "./StatisticsData";
+import {Exchange, Media, MintStatistics, ProposalTypes, StatisticsData, ValidatorReward} from "./StatisticsData";
 
 import {u32, Vec} from "@polkadot/types";
 import {ElectionStake, Seats} from "@joystream/types/council";
@@ -12,18 +12,13 @@ import {RoleParameters} from "@joystream/types/roles";
 import {Entity, EntityId} from "@joystream/types/versioned-store";
 import Option from "@polkadot/types/codec/Option";
 import Linkage from "@polkadot/types/codec/Linkage";
+import {PostId, ThreadId} from "@joystream/types/common";
+import {CategoryId} from "@joystream/types/forum";
 
 const BURN_ADDRESS = '5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu';
 
 const FIRST_COUNCIL_BLOCK = 908796;
 const COUNCIL_ROUND_OFFSET = 5;
-
-
-class Media {
-
-    constructor(public id: number, public title: string) {
-    }
-}
 
 export class StatisticsCollector {
 
@@ -37,8 +32,8 @@ export class StatisticsCollector {
     async getStatistics(startBlock: number, endBlock: number): Promise<StatisticsData> {
         this.api = await StatisticsCollector.connectApi();
 
-        let startHash = await this.api.query.system.blockHash(startBlock) as Hash;
-        let endHash = await this.api.query.system.blockHash(endBlock) as Hash;
+        let startHash = await this.api.rpc.chain.getBlockHash(startBlock) as Hash;
+        let endHash = await this.api.rpc.chain.getBlockHash(endBlock) as Hash;
 
         let statistics = new StatisticsData();
 
@@ -47,8 +42,9 @@ export class StatisticsCollector {
         statistics.newBlocks = endBlock - startBlock;
         statistics.percNewBlocks = StatisticsCollector.convertToPercentage(statistics.newBlocks, endBlock);
         await this.fillBasicInfo(startHash, endHash, statistics);
-        await this.fillMintsData(startHash, endHash, statistics);
+        await this.fillMintsInfo(startHash, endHash, statistics);
         // await this.fillCouncilElectionInfo(startHash, endHash, startBlock, statistics);
+        await this.fillForumInfo(startHash, endHash, statistics);
         this.api.disconnect();
         return statistics;
 
@@ -253,7 +249,7 @@ export class StatisticsCollector {
     }
 
 
-    async fillMintsData(startHash: Hash, endHash: Hash, statistics: StatisticsData) {
+    async fillMintsInfo(startHash: Hash, endHash: Hash, statistics: StatisticsData) {
 
         let startNrMints = parseInt((await this.api.query.minting.mintsCreated.at(startHash)).toString());
         let endNrMints = parseInt((await this.api.query.minting.mintsCreated.at(endHash)).toString());
@@ -270,6 +266,9 @@ export class StatisticsCollector {
 
             let endMintResult = await this.api.query.minting.mints.at(endHash, i) as unknown as [Mint, Linkage<MintId>];
             let endMint = endMintResult[0];
+            if (!endMint){
+                continue;
+            }
 
             let startMintTotal = parseInt(startMint.getField('total_minted').toString());
             let endMintTotal = parseInt(endMint.getField('total_minted').toString());
@@ -282,10 +281,11 @@ export class StatisticsCollector {
 
         for (let i = startNrMints; i < endNrMints; ++i) {
             let endMintResult = await this.api.query.minting.mints.at(endHash, i) as unknown as [Mint, Linkage<MintId>];
-            if (!endMintResult){
+
+            let endMint = endMintResult[0] as Mint;
+            if (!endMint){
                 return;
             }
-            let endMint = endMintResult[0] as Mint;
             statistics.totalMinted = parseInt(endMint.getField('total_minted').toString());
         }
 
@@ -344,7 +344,7 @@ export class StatisticsCollector {
         let applicants: Vec<AccountId>
         let currentSearchBlock = startBlock - 1;
         do {
-            let applicantHash = await this.api.query.system.blockHash(currentSearchBlock);
+            let applicantHash = await this.api.rpc.chain.getBlockHash(currentSearchBlock);
             applicants = await this.api.query.councilElection.applicants.at(applicantHash) as Vec<AccountId>;
             --currentSearchBlock;
         } while (applicants.length == 0);
@@ -359,6 +359,31 @@ export class StatisticsCollector {
         statistics.electionVotes = seats.map((seat) => seat.backers.length).reduce((a, b) => a + b);
     }
 
+    async fillForumInfo(startHash: Hash, endHash: Hash, statistics: StatisticsData)
+    {
+        let startPostId = await this.api.query.forum.nextPostId.at(startHash) as PostId;
+        let endPostId = await this.api.query.forum.nextPostId.at(endHash) as PostId;
+        statistics.startPosts = startPostId.toNumber();
+        statistics.endPosts = endPostId.toNumber() + 1;
+        statistics.newPosts = statistics.endPosts - statistics.startPosts;
+        statistics.percNewPosts = StatisticsCollector.convertToPercentage(statistics.newPosts, statistics.endPosts);
+
+        let startThreadId = await this.api.query.forum.nextThreadId.at(startHash) as unknown as ThreadId;
+        let endThreadId = await this.api.query.forum.nextThreadId.at(endHash) as unknown as ThreadId;
+        statistics.startThreads = startThreadId.toNumber();
+        statistics.endThreads = endThreadId.toNumber() + 1;
+        statistics.newThreads = statistics.endThreads - statistics.startThreads;
+        statistics.percNewThreads = StatisticsCollector.convertToPercentage(statistics.newThreads, statistics.endThreads);
+
+
+        let startCategoryId = await this.api.query.forum.nextCategoryId.at(startHash) as CategoryId;
+        let endCategoryId = await this.api.query.forum.nextCategoryId.at(endHash) as CategoryId;
+        statistics.startCategories = startCategoryId.toNumber();
+        statistics.endCategories = endCategoryId.toNumber() + 1;
+        statistics.newCategories = statistics.endCategories - statistics.startCategories;
+        statistics.perNewCategories = StatisticsCollector.convertToPercentage(statistics.startCategories, statistics.endCategories);
+    }
+
     static async extractValidatorsRewards(api: ApiPromise, blockNumber: number, events: Vec<EventRecord>): Promise<ValidatorReward[]> {
         let valRewards = [];
         // const api = await this.connectApi();
@@ -366,7 +391,7 @@ export class StatisticsCollector {
             if (event.section === 'staking' && event.method === 'Reward') {
                 const sharedReward = event.data[0] as Balance;
                 const remainingReward = event.data[1] as Balance;
-                const oldHash: Hash = await api.query.system.blockHash(blockNumber - 1);
+                const oldHash: Hash = await api.rpc.chain.getBlockHash(blockNumber - 1);
                 const slotStake = await api.query.staking.slotStake.at(oldHash) as Balance;
                 const validatorInfo = await api.query.staking.currentElected.at(oldHash) as AccountId;
                 const valReward = new ValidatorReward();

@@ -82,7 +82,7 @@ This is a report which explains the current state of the Joystream network in nu
 | Property          | Start Block | End Block | % Change |
 |-------------------|--------------|--------------|----------|
 | Number of categories | {startCategories} | {endCategories} | {perNewCategories}         |
-| Number of threads    | {startThreads}| {endThreads} | {newThreads}         |
+| Number of threads    | {startThreads}| {endThreads} | {percNewThreads}         |
 | Number of posts      | {startPosts} | {endPosts}            |  {percNewPosts}        |
 
 ## 6 Todo / Ideas
