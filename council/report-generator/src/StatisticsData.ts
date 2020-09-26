@@ -40,9 +40,9 @@ export class StatisticsData {
     percNewThreads: number;
 
     startPosts: number;
-    endPosts: number;
+    // endPosts: number;
     newPosts: number;
-    totalPosts: number;
+    endPosts: number;
     percNewPosts: number;
 
     startCategories: number;
@@ -61,12 +61,29 @@ export class StatisticsData {
     percNewMedia: number;
 
     deletedMedia: number;
-    createdMints: number;
+    newMints: number;
+
+    startMinted: number;
     totalMinted: number;
+    endMinted: number;
+
     totalMintCapacityIncrease: number;
 
+    startCouncilMinted: number;
+    endCouncilMinted: number;
     newCouncilMinted: number;
+    percNewCouncilMinted: number;
+
+    startCuratorMinted: number;
+    endCuratorMinted: number;
     newCuratorMinted: number;
+    percCuratorMinted: number;
+
+    startStorageMinted: number;
+    endStorageMinted: number;
+    newStorageMinted: number;
+    percStorageMinted: number;
+
 
     newTokensBurn: number;
 
@@ -122,4 +139,12 @@ export enum ProposalTypes {
     EvictStorageProvider = "EvictStorageProvider",
     SetValidatorCount = "SetValidatorCount",
     SetStorageRoleParameters = "SetStorageRoleParameters",
+}
+
+export class MintStatistics
+{
+    startMinted: number;
+    endMinted: number;
+    diffMinted: number;
+    percMinted: number;
 }

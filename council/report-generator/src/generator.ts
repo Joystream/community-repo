@@ -23,7 +23,8 @@ async function main() {
             encoding: "utf8"
         });
         console.log('Getting report info...');
-        let statistics =  await StatisticsCollector.getStatistics(startBlock, endBlock);
+        let staticCollecttor = new StatisticsCollector();
+        let statistics =  await staticCollecttor.getStatistics(startBlock, endBlock);
         console.log('Writing info in the report...');
 
         let entries = Object.entries(statistics);

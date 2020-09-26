@@ -8,21 +8,21 @@ This is a report which explains the current state of the Joystream network in nu
 
 ## 2.0 Tokenomics
 ### 2.1 Token generation breakdown
-| Property                    | Start Block | End Block | % Change |
-|-----------------------------|--------------|--------------|----------|
-| Total Tokens Minted        |              |              |          |
-| Total Tokens Burned        |              |              |          |
-| Validator Role        |              |              |          |
-| Council Role |              |              |          |
-| Storage Role       |              |              |          |
-| Curator Role       |              |              |          |
+| Property            | Start Block | End Block | % Change |
+|---------------------|--------------|--------------|----------|
+| Total Tokens Minted |              |              |          |
+| Total Tokens Burned |              |              |          |
+| Validator Role      |              |              |          |
+| Council Role        |              |              |          |
+| Storage Role        |              |              |          |
+| Curator Role        |              |              |          |
 
 ### 2.2 Mints 
-| Property                    | Start Block | End Block | % Change |
-|-----------------------------|--------------|--------------|----------|
-| Council Mint Total Minted       |              |              |          |
-| Curator Mint Total Minted |              |              |          |
-| Storage Mint Total Minted |              |              |          |
+| Property                    | Start Block           | End Block | % Change |
+|-----------------------------|-----------------------|--------------|----------|
+| Council Mint Total Minted   | {startCouncilMinted}  |  {endCouncilMinted} |{percNewCouncilMinted}          |
+| Curator Mint Total Minted   |  {startCuratorMinted} | {endCuratorMinted}| {percCuratorMinted}          |
+| Storage Mint Total Minted   |  {startStorageMinted} |  {endStorageMinted}            |  {percStorageMinted}        |
 
 ## 3.0 Council
 * Council session #: {councilRound}
@@ -39,7 +39,7 @@ This is a report which explains the current state of the Joystream network in nu
 
 ## 4 Roles
 ### 4.1 Validator Information
-* Block generation time (average):
+* Block generation time (average): {avgBlockProduction}
 
 | Property                    | Start Block | End Block | % Change |
 |-----------------------------|--------------|--------------|----------|
