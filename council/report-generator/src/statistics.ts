@@ -155,9 +155,12 @@ export class StatisticsCollector {
         // statistics.totalThreads = endThreadId.toNumber() - 1;
         // statistics.percNewThreads = this.convertToPercentage(statistics.newThreads, statistics.totalThreads);
         //
-        // let startCategoryId = await this.api.query.forum.nextCategoryId.at(startHash) as unknown as CategoryId;
-        // let endCategoryId = await this.api.query.forum.nextCategoryId.at(endHash) as unknown as CategoryId;
-        // statistics.newCategories = endCategoryId.toNumber() - startCategoryId.toNumber();
+        // Updated Code
+        // let startCategoryId = (await this.api.query.forum.nextCategoryId.at(startHash) as unknown as CategoryId).toNumber();
+        // let endCategoryId = (await this.api.query.forum.nextCategoryId.at(endHash) as unknown as CategoryId).toNumber();
+        // statistics.startCategories = startCategoryId;
+        // statistics.endCategories = endCategoryId;
+        // statistics.newCategories = endCategoryId - startCategoryId;
         //
         // let startNrProposals = await this.api.query.proposalsEngine.proposalCount.at(startHash) as unknown as u32;
         // let endNrProposals = await this.api.query.proposalsEngine.proposalCount.at(endHash) as unknown as u32;
