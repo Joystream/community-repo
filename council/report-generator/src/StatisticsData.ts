@@ -1,3 +1,6 @@
+import {Vec} from "@polkadot/types";
+import {EventRecord} from "@polkadot/types/interfaces";
+
 export class StatisticsData {
     councilRound: number = 0;
     councilMembers: number = 0;
