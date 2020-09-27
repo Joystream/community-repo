@@ -22,6 +22,7 @@ import Linkage from "@polkadot/types/codec/Linkage";
 import {PostId, ThreadId} from "@joystream/types/common";
 import {CategoryId} from "@joystream/types/forum";
 import {Event} from "@polkadot/types/interfaces/system/types";
+import number from "@polkadot/util/is/number";
 
 const fsSync = require('fs');
 const fs = fsSync.promises;
@@ -57,7 +58,7 @@ export class StatisticsCollector {
         await this.buildBlocksEventCache(startBlock, endBlock);
         await this.fillBasicInfo(startHash, endHash);
         await this.fillMintsInfo(startHash, endHash);
-        // await this.fillCouncilElectionInfo(startHash, endHash, startBlock, statistics);
+        await this.fillCouncilElectionInfo(startBlock, endBlock);
         await this.fillForumInfo(startHash, endHash);
         this.api.disconnect();
         return this.statistics;
@@ -323,27 +324,26 @@ export class StatisticsCollector {
         return mintStatistics;
     }
 
-    async fillCouncilElectionInfo(startHash: Hash, endHash: Hash, startBlock: number) {
-        this.statistics.councilRound = ((await this.api.query.councilElection.round.at(startHash)) as u32).toNumber() - COUNCIL_ROUND_OFFSET;
-        let seats = (await this.api.query.council.activeCouncil.at(startHash)) as Seats;
-        this.statistics.councilMembers = seats.length;
+    async fillCouncilElectionInfo(startBlock: number, endBlock: number) {
 
-        let applicants: Vec<AccountId>;
-        let currentSearchBlock = startBlock - 1;
-        do {
-            let applicantHash = await this.api.rpc.chain.getBlockHash(currentSearchBlock);
-            applicants = (await this.api.query.councilElection.applicants.at(applicantHash)) as Vec<AccountId>;
-            --currentSearchBlock;
-        } while (applicants.length == 0);
-
-        this.statistics.electionApplicants = applicants.length;
-
-        this.statistics.electionApplicantsStakes = 0;
-        for (let applicant of applicants) {
-            let applicantStakes = ((await this.api.query.councilElection.applicantStakes.at(startHash, applicant)) as unknown) as ElectionStake;
-            this.statistics.electionApplicantsStakes += applicantStakes.new.toNumber();
+        for (let i = startBlock; i < endBlock; i++) {
+            let events = this.blocksEventsCache.get(i);
+            for (let [key, event] of events.entries()){
+                if (event.section == "councilElection" && event.method == "Applied"){
+                    ++this.statistics.electionApplicants;
+                    if (key == 0){
+                        continue;
+                    }
+                    let previousEvent = events[key - 1];
+                    if (previousEvent.section == "balances" && previousEvent.method == "Reserved"){
+                        let stake = Number(previousEvent.data[1]);
+                        this.statistics.electionApplicantsStakes += stake;
+                    }
+                }else if (event.section == "councilElection" && event.method == "Voted"){
+                    ++this.statistics.electionVotes;
+                }
+            }
         }
-        this.statistics.electionVotes = seats.map((seat) => seat.backers.length).reduce((a, b) => a + b);
     }
 
     async fillForumInfo(startHash: Hash, endHash: Hash) {
