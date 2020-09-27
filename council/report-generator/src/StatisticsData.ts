@@ -1,5 +1,6 @@
 import {Vec} from "@polkadot/types";
 import {EventRecord} from "@polkadot/types/interfaces";
+import {EventData} from "@polkadot/types/generic/Event";
 
 export class StatisticsData {
     councilRound: number = 0;
@@ -162,5 +163,11 @@ export class MintStatistics {
 export class Media {
 
     constructor(public id: number, public title: string) {
+    }
+}
+
+export class CacheEvent {
+
+    constructor(public section: string, public method: string, public data: EventData) {
     }
 }

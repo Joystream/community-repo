@@ -3,6 +3,7 @@ import {types} from '@joystream/types'
 import {AccountId, Balance, EventRecord, Hash, Moment} from "@polkadot/types/interfaces";
 
 import {
+    CacheEvent,
     Exchange,
     Media,
     MintStatistics,
@@ -20,6 +21,7 @@ import Option from "@polkadot/types/codec/Option";
 import Linkage from "@polkadot/types/codec/Linkage";
 import {PostId, ThreadId} from "@joystream/types/common";
 import {CategoryId} from "@joystream/types/forum";
+import {Event} from "@polkadot/types/interfaces/system/types";
 
 const fsSync = require('fs');
 const fs = fsSync.promises;
@@ -34,7 +36,13 @@ const CACHE_FOLDER = "cache";
 export class StatisticsCollector {
 
     private api?: ApiPromise;
-    private blocksEventsCache: Map<number, Vec<EventRecord>> = new Map<number, Vec<EventRecord>>();
+    private blocksEventsCache: Map<number, CacheEvent[]>;
+    private statistics: StatisticsData;
+
+    constructor() {
+        this.blocksEventsCache = new Map<number, CacheEvent[]>();
+        this.statistics = new StatisticsData();
+    }
 
     async getStatistics(startBlock: number, endBlock: number): Promise<StatisticsData> {
         this.api = await StatisticsCollector.connectApi();
@@ -42,19 +50,17 @@ export class StatisticsCollector {
         let startHash = (await this.api.rpc.chain.getBlockHash(startBlock)) as Hash;
         let endHash = (await this.api.rpc.chain.getBlockHash(endBlock)) as Hash;
 
-        let statistics = new StatisticsData();
-
-        statistics.startBlock = startBlock;
-        statistics.endBlock = endBlock;
-        statistics.newBlocks = endBlock - startBlock;
-        statistics.percNewBlocks = StatisticsCollector.convertToPercentage(statistics.newBlocks, endBlock);
+        this.statistics.startBlock = startBlock;
+        this.statistics.endBlock = endBlock;
+        this.statistics.newBlocks = endBlock - startBlock;
+        this.statistics.percNewBlocks = StatisticsCollector.convertToPercentage(this.statistics.newBlocks, endBlock);
         await this.buildBlocksEventCache(startBlock, endBlock);
-        await this.fillBasicInfo(startHash, endHash, statistics);
-        await this.fillMintsInfo(startHash, endHash, statistics);
+        await this.fillBasicInfo(startHash, endHash);
+        await this.fillMintsInfo(startHash, endHash);
         // await this.fillCouncilElectionInfo(startHash, endHash, startBlock, statistics);
-        await this.fillForumInfo(startHash, endHash, statistics);
+        await this.fillForumInfo(startHash, endHash);
         this.api.disconnect();
-        return statistics;
+        return this.statistics;
 
 
         //
@@ -223,18 +229,18 @@ export class StatisticsCollector {
         // return statistics;
     }
 
-    async fillBasicInfo(startHash: Hash, endHash: Hash, statistics: StatisticsData) {
+    async fillBasicInfo(startHash: Hash, endHash: Hash) {
         let startDate = (await this.api.query.timestamp.now.at(startHash)) as Moment;
         let endDate = (await this.api.query.timestamp.now.at(endHash)) as Moment;
-        statistics.dateStart = new Date(startDate.toNumber()).toLocaleDateString("en-US");
-        statistics.dateEnd = new Date(endDate.toNumber()).toLocaleDateString("en-US");
+        this.statistics.dateStart = new Date(startDate.toNumber()).toLocaleDateString("en-US");
+        this.statistics.dateEnd = new Date(endDate.toNumber()).toLocaleDateString("en-US");
     }
 
-    async fillMintsInfo(startHash: Hash, endHash: Hash, statistics: StatisticsData) {
+    async fillMintsInfo(startHash: Hash, endHash: Hash) {
         let startNrMints = parseInt((await this.api.query.minting.mintsCreated.at(startHash)).toString());
         let endNrMints = parseInt((await this.api.query.minting.mintsCreated.at(endHash)).toString());
 
-        statistics.newMints = endNrMints - startNrMints;
+        this.statistics.newMints = endNrMints - startNrMints;
         // statistics.startMinted = 0;
         // statistics.endMinted = 0;
         for (let i = 0; i < startNrMints; ++i) {
@@ -255,8 +261,8 @@ export class StatisticsCollector {
 
             // statistics.startMinted += startMintTotal;
 
-            statistics.totalMinted += endMintTotal - startMintTotal;
-            statistics.totalMintCapacityIncrease += parseInt(endMint.getField("capacity").toString()) - parseInt(startMint.getField("capacity").toString());
+            this.statistics.totalMinted += endMintTotal - startMintTotal;
+            this.statistics.totalMintCapacityIncrease += parseInt(endMint.getField("capacity").toString()) - parseInt(startMint.getField("capacity").toString());
         }
 
         for (let i = startNrMints; i < endNrMints; ++i) {
@@ -266,30 +272,30 @@ export class StatisticsCollector {
             if (!endMint) {
                 return;
             }
-            statistics.totalMinted = parseInt(endMint.getField("total_minted").toString());
+            this.statistics.totalMinted = parseInt(endMint.getField("total_minted").toString());
         }
 
         let councilMint = (await this.api.query.council.councilMint.at(endHash)) as MintId;
         let councilMintStatistics = await this.computeMintInfo(councilMint, startHash, endHash);
 
-        statistics.startCouncilMinted = councilMintStatistics.startMinted;
-        statistics.endCouncilMinted = councilMintStatistics.endMinted;
-        statistics.newCouncilMinted = councilMintStatistics.diffMinted;
-        statistics.percNewCouncilMinted = councilMintStatistics.percMinted;
+        this.statistics.startCouncilMinted = councilMintStatistics.startMinted;
+        this.statistics.endCouncilMinted = councilMintStatistics.endMinted;
+        this.statistics.newCouncilMinted = councilMintStatistics.diffMinted;
+        this.statistics.percNewCouncilMinted = councilMintStatistics.percMinted;
 
         let curatorMint = (await this.api.query.contentWorkingGroup.mint.at(endHash)) as MintId;
         let curatorMintStatistics = await this.computeMintInfo(curatorMint, startHash, endHash);
-        statistics.startCuratorMinted = curatorMintStatistics.startMinted;
-        statistics.endCuratorMinted = curatorMintStatistics.endMinted;
-        statistics.newCuratorMinted = curatorMintStatistics.diffMinted;
-        statistics.percCuratorMinted = curatorMintStatistics.percMinted;
+        this.statistics.startCuratorMinted = curatorMintStatistics.startMinted;
+        this.statistics.endCuratorMinted = curatorMintStatistics.endMinted;
+        this.statistics.newCuratorMinted = curatorMintStatistics.diffMinted;
+        this.statistics.percCuratorMinted = curatorMintStatistics.percMinted;
 
         let storageProviderMint = (await this.api.query.storageWorkingGroup.mint.at(endHash)) as MintId;
         let storageProviderMintStatistics = await this.computeMintInfo(storageProviderMint, startHash, endHash);
-        statistics.startStorageMinted = storageProviderMintStatistics.startMinted;
-        statistics.endStorageMinted = storageProviderMintStatistics.endMinted;
-        statistics.newStorageMinted = storageProviderMintStatistics.diffMinted;
-        statistics.percStorageMinted = storageProviderMintStatistics.percMinted;
+        this.statistics.startStorageMinted = storageProviderMintStatistics.startMinted;
+        this.statistics.endStorageMinted = storageProviderMintStatistics.endMinted;
+        this.statistics.newStorageMinted = storageProviderMintStatistics.diffMinted;
+        this.statistics.percStorageMinted = storageProviderMintStatistics.percMinted;
     }
 
 
@@ -317,10 +323,10 @@ export class StatisticsCollector {
         return mintStatistics;
     }
 
-    async fillCouncilElectionInfo(startHash: Hash, endHash: Hash, startBlock: number, statistics: StatisticsData) {
-        statistics.councilRound = ((await this.api.query.councilElection.round.at(startHash)) as u32).toNumber() - COUNCIL_ROUND_OFFSET;
+    async fillCouncilElectionInfo(startHash: Hash, endHash: Hash, startBlock: number) {
+        this.statistics.councilRound = ((await this.api.query.councilElection.round.at(startHash)) as u32).toNumber() - COUNCIL_ROUND_OFFSET;
         let seats = (await this.api.query.council.activeCouncil.at(startHash)) as Seats;
-        statistics.councilMembers = seats.length;
+        this.statistics.councilMembers = seats.length;
 
         let applicants: Vec<AccountId>;
         let currentSearchBlock = startBlock - 1;
@@ -330,37 +336,37 @@ export class StatisticsCollector {
             --currentSearchBlock;
         } while (applicants.length == 0);
 
-        statistics.electionApplicants = applicants.length;
+        this.statistics.electionApplicants = applicants.length;
 
-        statistics.electionApplicantsStakes = 0;
+        this.statistics.electionApplicantsStakes = 0;
         for (let applicant of applicants) {
             let applicantStakes = ((await this.api.query.councilElection.applicantStakes.at(startHash, applicant)) as unknown) as ElectionStake;
-            statistics.electionApplicantsStakes += applicantStakes.new.toNumber();
+            this.statistics.electionApplicantsStakes += applicantStakes.new.toNumber();
         }
-        statistics.electionVotes = seats.map((seat) => seat.backers.length).reduce((a, b) => a + b);
+        this.statistics.electionVotes = seats.map((seat) => seat.backers.length).reduce((a, b) => a + b);
     }
 
-    async fillForumInfo(startHash: Hash, endHash: Hash, statistics: StatisticsData) {
+    async fillForumInfo(startHash: Hash, endHash: Hash) {
         let startPostId = await this.api.query.forum.nextPostId.at(startHash) as PostId;
         let endPostId = await this.api.query.forum.nextPostId.at(endHash) as PostId;
-        statistics.startPosts = startPostId.toNumber();
-        statistics.endPosts = endPostId.toNumber() + 1;
-        statistics.newPosts = statistics.endPosts - statistics.startPosts;
-        statistics.percNewPosts = StatisticsCollector.convertToPercentage(statistics.newPosts, statistics.endPosts);
+        this.statistics.startPosts = startPostId.toNumber();
+        this.statistics.endPosts = endPostId.toNumber() + 1;
+        this.statistics.newPosts = this.statistics.endPosts - this.statistics.startPosts;
+        this.statistics.percNewPosts = StatisticsCollector.convertToPercentage(this.statistics.newPosts, this.statistics.endPosts);
 
         let startThreadId = ((await this.api.query.forum.nextThreadId.at(startHash)) as unknown) as ThreadId;
         let endThreadId = ((await this.api.query.forum.nextThreadId.at(endHash)) as unknown) as ThreadId;
-        statistics.startThreads = startThreadId.toNumber();
-        statistics.endThreads = endThreadId.toNumber() + 1;
-        statistics.newThreads = statistics.endThreads - statistics.startThreads;
-        statistics.percNewThreads = StatisticsCollector.convertToPercentage(statistics.newThreads, statistics.endThreads);
+        this.statistics.startThreads = startThreadId.toNumber();
+        this.statistics.endThreads = endThreadId.toNumber() + 1;
+        this.statistics.newThreads = this.statistics.endThreads - this.statistics.startThreads;
+        this.statistics.percNewThreads = StatisticsCollector.convertToPercentage(this.statistics.newThreads, this.statistics.endThreads);
 
         let startCategoryId = (await this.api.query.forum.nextCategoryId.at(startHash)) as CategoryId;
         let endCategoryId = (await this.api.query.forum.nextCategoryId.at(endHash)) as CategoryId;
-        statistics.startCategories = startCategoryId.toNumber();
-        statistics.endCategories = endCategoryId.toNumber() + 1;
-        statistics.newCategories = statistics.endCategories - statistics.startCategories;
-        statistics.perNewCategories = StatisticsCollector.convertToPercentage(statistics.startCategories, statistics.endCategories);
+        this.statistics.startCategories = startCategoryId.toNumber();
+        this.statistics.endCategories = endCategoryId.toNumber() + 1;
+        this.statistics.newCategories = this.statistics.endCategories - this.statistics.startCategories;
+        this.statistics.perNewCategories = StatisticsCollector.convertToPercentage(this.statistics.newCategories, this.statistics.endCategories);
     }
 
     static async extractValidatorsRewards(api: ApiPromise, blockNumber: number, events: Vec<EventRecord>): Promise<ValidatorReward[]> {
@@ -467,15 +473,21 @@ export class StatisticsCollector {
         let cacheFile = CACHE_FOLDER + '/' + startBlock + '-' + endBlock + '.json';
         let exists = await fs.access(cacheFile, fsSync.constants.R_OK).then(() => true)
             .catch(() => false);
-
+        // let exists = false;
         if (!exists) {
             console.log('Building events cache...');
             for (let i = startBlock; i < endBlock; ++i) {
-                process.stdout.write('\rGetting block: ' + i + ' of ' + endBlock);
+                process.stdout.write('\rCaching block: ' + i + ' until ' + endBlock);
                 const blockHash: Hash = await this.api.rpc.chain.getBlockHash(i);
-                this.blocksEventsCache.set(i, await this.api.query.system.events.at(blockHash) as Vec<EventRecord>);
+                let eventRecord = await this.api.query.system.events.at(blockHash) as Vec<EventRecord>;
+                let cacheEvents = new Array<CacheEvent>();
+                for (let event of eventRecord){
+                    cacheEvents.push(new CacheEvent(event.event.section, event.event.method, event.event.data));
+                }
+                this.blocksEventsCache.set(i, cacheEvents);
             }
-            console.log('Finish events cache...');
+
+            console.log('\nFinish events cache...');
             await fs.writeFile(cacheFile, JSON.stringify(Array.from(this.blocksEventsCache.entries()), null, 2));
         } else {
             console.log('Cache file found, loading it...');
