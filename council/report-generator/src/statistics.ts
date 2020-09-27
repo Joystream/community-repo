@@ -19,7 +19,7 @@ const BURN_ADDRESS = "5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu";
 
 const FIRST_COUNCIL_BLOCK = 908796;
 const COUNCIL_ROUND_OFFSET = 5;
-
+const PROVIDER_URL = "wss://rome-rpc-endpoint.joystream.org:9944";
 export class StatisticsCollector {
   private api?: ApiPromise;
 
@@ -476,7 +476,7 @@ export class StatisticsCollector {
 
   static async connectApi(): Promise<ApiPromise> {
     // const provider = new WsProvider('wss://testnet.joystream.org:9944');
-    const provider = new WsProvider("wss://rome-rpc-endpoint.joystream.org:9944");
+    const provider = new WsProvider(PROVIDER_URL);
 
     // Create the API and wait until ready
     return await ApiPromise.create({ provider, types });
