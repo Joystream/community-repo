@@ -28,7 +28,7 @@ This is a report which explains the current state of the Joystream network in nu
 * Council session #: {councilRound}
 * Number of council members: {councilMembers}
 * Total number of proposals: {newProposals}
-* Total number of Approved proposals:
+* Total number of Approved proposals: {newApprovedProposals}
 
 * ### 3.1 Elections
 | Property                    | Start Block  |

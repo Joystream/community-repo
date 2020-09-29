@@ -55,6 +55,7 @@ export class StatisticsData {
     perNewCategories: number = 0;
 
     newProposals: number = 0;
+    newApprovedProposals: number = 0;
 
     newChannels: number = 0;
     totalChannels: number = 0;

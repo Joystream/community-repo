@@ -23,6 +23,7 @@ import {PostId, ThreadId} from "@joystream/types/common";
 import {CategoryId} from "@joystream/types/forum";
 import {Event} from "@polkadot/types/interfaces/system/types";
 import number from "@polkadot/util/is/number";
+import toNumber from "@polkadot/util/hex/toNumber";
 
 const fsSync = require('fs');
 const fs = fsSync.promises;
@@ -58,6 +59,7 @@ export class StatisticsCollector {
         await this.buildBlocksEventCache(startBlock, endBlock);
         await this.fillBasicInfo(startHash, endHash);
         await this.fillMintsInfo(startHash, endHash);
+        await this.fillCouncilInfo(startHash, endHash);
         await this.fillCouncilElectionInfo(startBlock, endBlock);
         await this.fillForumInfo(startHash, endHash);
         this.api.disconnect();
@@ -148,9 +150,7 @@ export class StatisticsCollector {
         // // }
         //
         //
-        // let startNrProposals = await this.api.query.proposalsEngine.proposalCount.at(startHash) as unknown as u32;
-        // let endNrProposals = await this.api.query.proposalsEngine.proposalCount.at(endHash) as unknown as u32;
-        // statistics.newProposals = endNrProposals.toNumber() - startNrProposals.toNumber();
+
         //
         // for (let i = startNrProposals.toNumber(); i < endNrProposals.toNumber(); ++i) {
         //     let proposalNumber = i - 1;
@@ -235,6 +235,7 @@ export class StatisticsCollector {
         let endDate = (await this.api.query.timestamp.now.at(endHash)) as Moment;
         this.statistics.dateStart = new Date(startDate.toNumber()).toLocaleDateString("en-US");
         this.statistics.dateEnd = new Date(endDate.toNumber()).toLocaleDateString("en-US");
+
     }
 
     async fillMintsInfo(startHash: Hash, endHash: Hash) {
@@ -324,22 +325,45 @@ export class StatisticsCollector {
         return mintStatistics;
     }
 
+    async fillCouncilInfo(startHash: Hash, endHash: Hash) {
+        this.statistics.councilRound = (await this.api.query.councilElection.round.at(endHash) as u32).toNumber();
+        this.statistics.councilMembers = (await this.api.query.councilElection.councilSize.at(endHash) as u32).toNumber();
+        let startNrProposals = await this.api.query.proposalsEngine.proposalCount.at(startHash) as u32;
+        let endNrProposals = await this.api.query.proposalsEngine.proposalCount.at(endHash) as u32;
+        this.statistics.newProposals = endNrProposals.toNumber() - startNrProposals.toNumber();
+
+        let approvedProposals = new Set();
+        for (let [key, blockEvents] of this.blocksEventsCache) {
+            for (let event of blockEvents) {
+                if (event.section == "proposalsEngine" && event.method == "ProposalStatusUpdated") {
+                    let statusUpdateData = event.data[1] as any;
+                    let finalizedData = statusUpdateData["Finalized"];
+                    if (finalizedData.proposalStatus["Approved"]){
+                        approvedProposals.add(Number(event.data[0]))
+                    }
+                }
+            }
+        }
+
+        this.statistics.newApprovedProposals = approvedProposals.size;
+    }
+
     async fillCouncilElectionInfo(startBlock: number, endBlock: number) {
 
         for (let i = startBlock; i < endBlock; i++) {
             let events = this.blocksEventsCache.get(i);
-            for (let [key, event] of events.entries()){
-                if (event.section == "councilElection" && event.method == "Applied"){
+            for (let [key, event] of events.entries()) {
+                if (event.section == "councilElection" && event.method == "Applied") {
                     ++this.statistics.electionApplicants;
-                    if (key == 0){
+                    if (key == 0) {
                         continue;
                     }
                     let previousEvent = events[key - 1];
-                    if (previousEvent.section == "balances" && previousEvent.method == "Reserved"){
+                    if (previousEvent.section == "balances" && previousEvent.method == "Reserved") {
                         let stake = Number(previousEvent.data[1]);
                         this.statistics.electionApplicantsStakes += stake;
                     }
-                }else if (event.section == "councilElection" && event.method == "Voted"){
+                } else if (event.section == "councilElection" && event.method == "Voted") {
                     ++this.statistics.electionVotes;
                 }
             }
@@ -481,7 +505,7 @@ export class StatisticsCollector {
                 const blockHash: Hash = await this.api.rpc.chain.getBlockHash(i);
                 let eventRecord = await this.api.query.system.events.at(blockHash) as Vec<EventRecord>;
                 let cacheEvents = new Array<CacheEvent>();
-                for (let event of eventRecord){
+                for (let event of eventRecord) {
                     cacheEvents.push(new CacheEvent(event.event.section, event.event.method, event.event.data));
                 }
                 this.blocksEventsCache.set(i, cacheEvents);
