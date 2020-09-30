@@ -7,7 +7,7 @@ Table of Contents
 --
 
 <!-- TOC START min:1 max:3 link:true asterisk:false update:true -->
-- [# Submission Log](#h1-idsubmission-log-42submission-logh1)
+- [# Submission Log](#h1-idsubmission-log-55submission-logh1)
   - [Table of Contents](#table-of-contents)
   - [Current Testnet](#current-testnet)
     - [Alexandria Council Report Submissions](#alexandria-council-report-submissions)
@@ -49,7 +49,7 @@ Table of Contents
 |   | Testnet            | Link (KPI Round)                                               | Block Range         | PR                                                        | Proposal Link                                                                      | Submitted By    |   |
 |---|--------------------|----------------------------------------------------------------|---------------------|-----------------------------------------------------------|------------------------------------------------------------------------------------|-----------------|---|
 |   | :----------------: | :---------------------:                                        | :-----------------: |                                                           | :--------------------------------------------------:                               | :-------------: |   |
-|   | `Constantinople`   | [3](https://blog.joystream.org/constantinople-kpis/#previous)  | `1139611-1240411`   | [PR](https://github.com/Joystream/community-repo/pull/5)  | [Historical proposal #17](https://testnet.joystream.org/#/proposals/historical/17) | @tomato         |   |
+|   | `Constantinople`   | [3](https://blog.joystream.org/constantinople-kpis/#previous)  | `1039361-1139743`   | [PR](https://github.com/Joystream/community-repo/pull/5)  | [Historical proposal #17](https://testnet.joystream.org/#/proposals/historical/17) | @tomato         |   |
 |   | `Constantinople`   | [4](https://blog.joystream.org/constantinople-kpis/#previous)  | `1139611-1240411`   | [PR](https://github.com/Joystream/community-repo/pull/6)  | [Historical proposal #26](https://testnet.joystream.org/#/proposals/historical/26) | @tomato         |   |
 |   | `Constantinople`   | [5](https://blog.joystream.org/constantinople-kpis/#previous)  | `1240411-1341211`   | N/A                                                       | N/A                                                                                | N/A             |   |
 |   | `Constantinople`   | [6](https://blog.joystream.org/constantinople-kpis/#previous)  | `1341211-1442010`   | N/A                                                       | N/A                                                                                | N/A             |   |
@@ -69,7 +69,7 @@ Table of Contents
 |   | Testnet            | Link (KPI Round)                                               | Block Range         | PR  | Proposal Link                                        | Submitted By    |   |
 |---|--------------------|----------------------------------------------------------------|---------------------|-----|------------------------------------------------------|-----------------|---|
 |   | :----------------: | :---------------------:                                        | :-----------------: |     | :--------------------------------------------------: | :-------------: |   |
-|   | `Constantinople`   | [3](https://blog.joystream.org/constantinople-kpis/#previous)  | `1139611-1240411`   | N/A | N/A                                                  | N/A             |   |
+|   | `Constantinople`   | [3](https://blog.joystream.org/constantinople-kpis/#previous)  | `1039361-1139743`   | N/A | N/A                                                  | N/A             |   |
 |   | `Constantinople`   | [4](https://blog.joystream.org/constantinople-kpis/#previous)  | `1139611-1240411`   | N/A | N/A                                                  | N/A             |   |
 |   | `Constantinople`   | [5](https://blog.joystream.org/constantinople-kpis/#previous)  | `1240411-1341211`   | N/A | N/A                                                  | N/A             |   |
 |   | `Constantinople`   | [6](https://blog.joystream.org/constantinople-kpis/#previous)  | `1341211-1442010`   | N/A | N/A                                                  | N/A             |   |
