@@ -69,7 +69,7 @@ This is a report which explains the current state of the Joystream network in nu
 ### 5.1 Membership Information
 | Property          | Start Block | End Block | % Change |
 |-------------------|--------------|--------------|----------|
-| Number of members |              |              |          |
+| Number of members | {startMembers}|  {endMembers} | {percNewMembers} |
 
 ### 5.2 Media & Uploads
 | Property                | Start Block | End Block | % Change |

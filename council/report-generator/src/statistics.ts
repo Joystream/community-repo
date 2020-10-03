@@ -31,6 +31,7 @@ import {
     Finalized,
     IProposalStatus, Approved
 } from "@joystream/types/proposals";
+import {MemberId} from "@joystream/types/members";
 
 const fsSync = require('fs');
 const fs = fsSync.promises;
@@ -67,7 +68,8 @@ export class StatisticsCollector {
         await this.fillBasicInfo(startHash, endHash);
         await this.fillMintsInfo(startHash, endHash);
         await this.fillCouncilInfo(startHash, endHash);
-        await this.fillCouncilElectionInfo(startBlock, endBlock);
+        await this.fillCouncilElectionInfo(startBlock);
+        await this.fillMembershipInfo(startHash, endHash);
         await this.fillForumInfo(startHash, endHash);
         this.api.disconnect();
         return this.statistics;
@@ -91,11 +93,7 @@ export class StatisticsCollector {
         // statistics.totalIssuance = endIssuance.toNumber();
         // statistics.percNewIssuance = this.convertToPercentage(statistics.newIssuance, statistics.totalIssuance);
         //
-        // let startNrMembers = await this.api.query.members.membersCreated.at(startHash) as unknown as MemberId;
-        // let endNrNumber = await this.api.query.members.membersCreated.at(endHash) as unknown as MemberId;
-        // statistics.newMembers = endNrNumber.toNumber() - startNrMembers.toNumber();
-        // statistics.totalMembers = endNrNumber.toNumber();
-        // statistics.percNewMembers = this.convertToPercentage(statistics.newMembers, statistics.totalMembers);
+
         //
         //
         // let startNrStakes = await this.api.query.stake.stakesCreated.at(startHash) as StakeId;
@@ -356,7 +354,7 @@ export class StatisticsCollector {
         this.statistics.newApprovedProposals = approvedProposals.size;
     }
 
-    async fillCouncilElectionInfo(startBlock: number, endBlock: number) {
+    async fillCouncilElectionInfo(startBlock: number) {
 
         let startBlockHash = await this.api.rpc.chain.getBlockHash(startBlock);
         let events = await this.api.query.system.events.at(startBlockHash) as Vec<EventRecord>;
@@ -380,6 +378,13 @@ export class StatisticsCollector {
         let seats = await this.api.query.council.activeCouncil.at(startBlockHash) as Seats;
         //TODO: Find a more accurate way of getting the votes
         this.statistics.electionVotes = seats.map((seat) => seat.backers.length).reduce((a, b) => a + b);
+    }
+
+    async fillMembershipInfo(startHash: Hash, endHash: Hash){
+        this.statistics.startMembers = (await this.api.query.members.nextMemberId.at(startHash) as MemberId).toNumber();
+        this.statistics.endMembers = (await this.api.query.members.nextMemberId.at(endHash) as MemberId).toNumber() + 1;
+        this.statistics.newMembers = this.statistics.endMembers - this.statistics.startMembers;
+        this.statistics.percNewMembers = StatisticsCollector.convertToPercentage(this.statistics.newMembers, this.statistics.endMembers);
     }
 
     async fillForumInfo(startHash: Hash, endHash: Hash) {

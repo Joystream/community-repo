@@ -25,8 +25,9 @@ export class StatisticsData {
     totalIssuance: number = 0;
     percNewIssuance: number = 0;
 
+    startMembers: number = 0;
+    endMembers: number = 0;
     newMembers: number = 0;
-    totalMembers: number = 0;
     percNewMembers: number = 0;
 
     newBlocks: number = 0;
