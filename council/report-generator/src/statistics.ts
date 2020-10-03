@@ -12,7 +12,7 @@ import {
 } from "./StatisticsData";
 
 import {u32, Vec} from "@polkadot/types";
-import {ElectionStake, Seats} from "@joystream/types/council";
+import {ElectionStake, SealedVote, Seats} from "@joystream/types/council";
 import {Mint, MintId} from "@joystream/types/mint";
 import {ContentId, DataObject} from "@joystream/types/media";
 import {RoleParameters} from "@joystream/types/roles";
@@ -24,6 +24,13 @@ import {CategoryId} from "@joystream/types/forum";
 import {Event} from "@polkadot/types/interfaces/system/types";
 import number from "@polkadot/util/is/number";
 import toNumber from "@polkadot/util/hex/toNumber";
+import {
+    ProposalStatus,
+    FinalizationData,
+    ProposalDecisionStatus,
+    Finalized,
+    IProposalStatus, Approved
+} from "@joystream/types/proposals";
 
 const fsSync = require('fs');
 const fs = fsSync.promises;
@@ -337,10 +344,11 @@ export class StatisticsCollector {
             for (let event of blockEvents) {
                 if (event.section == "proposalsEngine" && event.method == "ProposalStatusUpdated") {
                     let statusUpdateData = event.data[1] as any;
-                    let finalizedData = statusUpdateData["Finalized"];
-                    if (finalizedData.proposalStatus["Approved"]){
-                        approvedProposals.add(Number(event.data[0]))
+                    let finalizeData = statusUpdateData.Finalized as any
+                    if (finalizeData && finalizeData.proposalStatus.Approved) {
+                        approvedProposals.add(Number(event.data[0]));
                     }
+
                 }
             }
         }
@@ -350,24 +358,28 @@ export class StatisticsCollector {
 
     async fillCouncilElectionInfo(startBlock: number, endBlock: number) {
 
-        for (let i = startBlock; i < endBlock; i++) {
-            let events = this.blocksEventsCache.get(i);
-            for (let [key, event] of events.entries()) {
-                if (event.section == "councilElection" && event.method == "Applied") {
-                    ++this.statistics.electionApplicants;
-                    if (key == 0) {
-                        continue;
-                    }
-                    let previousEvent = events[key - 1];
-                    if (previousEvent.section == "balances" && previousEvent.method == "Reserved") {
-                        let stake = Number(previousEvent.data[1]);
-                        this.statistics.electionApplicantsStakes += stake;
-                    }
-                } else if (event.section == "councilElection" && event.method == "Voted") {
-                    ++this.statistics.electionVotes;
-                }
-            }
+        let startBlockHash = await this.api.rpc.chain.getBlockHash(startBlock);
+        let events = await this.api.query.system.events.at(startBlockHash) as Vec<EventRecord>;
+        let isStartBlockFirstCouncilBlock = events.some((event) => {
+            return event.event.section == "councilElection" && event.event.method == "CouncilElected";
+        });
+
+        if (!isStartBlockFirstCouncilBlock) {
+            console.warn('The given start block is not the first block of the council round so council election information will be empty');
+            return;
         }
+        let previousCouncilRoundLastBlock = startBlock - 1;
+        let previousCouncilRoundLastBlockHash = await this.api.rpc.chain.getBlockHash(previousCouncilRoundLastBlock);
+
+        let applicants = await this.api.query.councilElection.applicants.at(previousCouncilRoundLastBlockHash) as Vec<AccountId>;
+        this.statistics.electionApplicants = applicants.length;
+        for (let applicant of applicants) {
+            let applicantStakes = await this.api.query.councilElection.applicantStakes.at(previousCouncilRoundLastBlockHash, applicant) as unknown as ElectionStake;
+            this.statistics.electionApplicantsStakes += applicantStakes.new.toNumber();
+        }
+        let seats = await this.api.query.council.activeCouncil.at(startBlockHash) as Seats;
+        //TODO: Find a more accurate way of getting the votes
+        this.statistics.electionVotes = seats.map((seat) => seat.backers.length).reduce((a, b) => a + b);
     }
 
     async fillForumInfo(startHash: Hash, endHash: Hash) {
