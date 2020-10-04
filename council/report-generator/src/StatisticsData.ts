@@ -21,10 +21,6 @@ export class StatisticsData {
     endBlock: number = 0;
     percNewBlocks: number = 0;
 
-    newIssuance: number = 0;
-    totalIssuance: number = 0;
-    percNewIssuance: number = 0;
-
     startMembers: number = 0;
     endMembers: number = 0;
     newMembers: number = 0;
@@ -32,9 +28,6 @@ export class StatisticsData {
 
     newBlocks: number = 0;
     avgBlockProduction: number = 0;
-
-    avgValidators: number = 0;
-    newValidatorReward: number = 0;
 
     newStorageProviderReward: number = 0;
 
@@ -71,6 +64,7 @@ export class StatisticsData {
 
     startMinted: number = 0;
     totalMinted: number = 0;
+    percMinted: number = 0;
     endMinted: number = 0;
 
     totalMintCapacityIncrease: number = 0;
@@ -90,8 +84,18 @@ export class StatisticsData {
     newStorageMinted: number = 0;
     percStorageMinted: number = 0;
 
+    startIssuance: number = 0;
+    endIssuance: number = 0;
+    newIssuance: number = 0;
+    percNewIssuance: number = 0;
 
     newTokensBurn: number = 0;
+    newValidatorRewards: number = 0;
+    avgValidators: number = 0;
+
+    newCouncilRewards: number = 0;
+    newStorageRewards: number = 0;
+    newCuratorRewards: number = 0;
 
     newUsedSpace: number = 0;
     totalUsedSpace: number = 0;

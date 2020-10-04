@@ -1,6 +1,6 @@
 import {ApiPromise, WsProvider} from "@polkadot/api";
 import {types} from '@joystream/types'
-import {AccountId, Balance, EventRecord, Hash, Moment} from "@polkadot/types/interfaces";
+import {AccountId, Balance, BalanceOf, BlockNumber, EventRecord, Hash, Moment} from "@polkadot/types/interfaces";
 
 import {
     CacheEvent,
@@ -66,6 +66,7 @@ export class StatisticsCollector {
         this.statistics.percNewBlocks = StatisticsCollector.convertToPercentage(this.statistics.newBlocks, endBlock);
         await this.buildBlocksEventCache(startBlock, endBlock);
         await this.fillBasicInfo(startHash, endHash);
+        await this.fillTokenGenerationInfo(startBlock, endBlock, startHash, endHash);
         await this.fillMintsInfo(startHash, endHash);
         await this.fillCouncilInfo(startHash, endHash);
         await this.fillCouncilElectionInfo(startBlock);
@@ -87,11 +88,7 @@ export class StatisticsCollector {
 
         //
         //
-        // let startIssuance = await this.api.query.balances.totalIssuance.at(startHash) as unknown as Balance;
-        // let endIssuance = await this.api.query.balances.totalIssuance.at(endHash) as unknown as Balance;
-        // statistics.newIssuance = endIssuance.toNumber() - startIssuance.toNumber();
-        // statistics.totalIssuance = endIssuance.toNumber();
-        // statistics.percNewIssuance = this.convertToPercentage(statistics.newIssuance, statistics.totalIssuance);
+
         //
 
         //
@@ -240,7 +237,61 @@ export class StatisticsCollector {
         let endDate = (await this.api.query.timestamp.now.at(endHash)) as Moment;
         this.statistics.dateStart = new Date(startDate.toNumber()).toLocaleDateString("en-US");
         this.statistics.dateEnd = new Date(endDate.toNumber()).toLocaleDateString("en-US");
+    }
 
+    async fillTokenGenerationInfo(startBlock: number, endBlock: number, startHash: Hash, endHash: Hash){
+        this.statistics.startIssuance = (await this.api.query.balances.totalIssuance.at(startHash) as Balance).toNumber();
+        this.statistics.endIssuance = (await this.api.query.balances.totalIssuance.at(endHash) as Balance).toNumber();
+        this.statistics.newIssuance = this.statistics.endIssuance - this.statistics.startIssuance;
+        this.statistics.percNewIssuance = StatisticsCollector.convertToPercentage(this.statistics.newIssuance, this.statistics.endIssuance);
+
+        for (let [key, blockEvents] of this.blocksEventsCache) {
+            let validatorRewards = blockEvents.filter((event) => {
+                 return event.section == "staking" && event.method == "Reward";
+            });
+            for (let validatorReward of validatorRewards){
+                this.statistics.newValidatorRewards += Number(validatorReward.data[1]);
+            }
+
+            let transfers = blockEvents.filter((event) => {
+                return event.section == "balances" && event.method == "Transfer";
+            });
+            for (let transfer of transfers){
+                let receiver = transfer.data[1] as AccountId;
+                let amount = transfer.data[2] as Balance;
+                if (receiver.toString() == BURN_ADDRESS){
+                    this.statistics.newTokensBurn = Number(amount);
+                }
+            }
+        }
+
+        this.statistics.newCouncilRewards = await this.computeCouncilReward(startBlock, endBlock, endHash);
+        this.statistics.newCouncilRewards = Number(this.statistics.newCouncilRewards.toFixed(2));
+    }
+
+    async computeCouncilReward(startBlock: number, endBlock: number, endHash: Hash): Promise<number>{
+        const payoutInterval = Number((await this.api.query.council.payoutInterval.at(endHash) as Option<BlockNumber>).unwrapOr(0));
+        const amountPerPayout = (await this.api.query.council.amountPerPayout.at(endHash) as BalanceOf).toNumber();
+
+        const announcing_period = (await this.api.query.councilElection.announcingPeriod.at(endHash)) as BlockNumber;
+        const voting_period = (await this.api.query.councilElection.votingPeriod.at(endHash)) as BlockNumber;
+        const revealing_period = (await this.api.query.councilElection.revealingPeriod.at(endHash)) as BlockNumber;
+        const new_term_duration = (await this.api.query.councilElection.newTermDuration.at(endHash)) as BlockNumber;
+
+        const termDuration = new_term_duration.toNumber();
+        const votingPeriod = voting_period.toNumber();
+        const revealingPeriod = revealing_period.toNumber();
+        const announcingPeriod = announcing_period.toNumber();
+
+        const nrCouncilMembers = (await this.api.query.council.activeCouncil.at(endHash) as Seats).length
+        const totalCouncilRewardsPerBlock = (amountPerPayout && payoutInterval)
+            ? (amountPerPayout * nrCouncilMembers) / payoutInterval
+            : 0;
+
+        const councilTermDurationRatio = termDuration / (termDuration + votingPeriod + revealingPeriod + announcingPeriod);
+        const avgCouncilRewardPerBlock = councilTermDurationRatio * totalCouncilRewardsPerBlock;
+        const nrBlocksBetween = (endBlock - startBlock);
+        return avgCouncilRewardPerBlock * nrBlocksBetween;
     }
 
     async fillMintsInfo(startHash: Hash, endHash: Hash) {

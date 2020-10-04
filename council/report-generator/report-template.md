@@ -10,12 +10,17 @@ This is a report which explains the current state of the Joystream network in nu
 ### 2.1 Token generation breakdown
 | Property            | Start Block | End Block | % Change |
 |---------------------|--------------|--------------|----------|
-| Total Tokens Minted |              |              |          |
-| Total Tokens Burned |              |              |          |
-| Validator Role      |              |              |          |
-| Council Role        |              |              |          |
-| Storage Role        |              |              |          |
-| Curator Role        |              |              |          |
+| Total Tokens Minted |  {startIssuance} | {endIssuance} | {percNewIssuance} |
+
+| Property            | Value        |
+|---------------------|--------------|
+| Total Tokens Burned | {newTokensBurn} | 
+| Validator Role      |  {newValidatorRewards}            | 
+| Council Role        | {newCouncilRewards}             | 
+| Storage Role        | {newStorageRewards}             | 
+| Curator Role        | {newCuratorRewards}             | 
+
+
 
 ### 2.2 Mints 
 | Property                    | Start Block           | End Block | % Change |
