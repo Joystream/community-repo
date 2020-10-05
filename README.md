@@ -18,6 +18,9 @@
     <a href="/community-contributions">
     Community Contributions
     </a>
+        <span> | </span>
+    <a href="/submission-log">
+    Submission Log
     </a>
   </h4>
 </div>
@@ -27,6 +30,7 @@ Table of Contents
 
 <!-- TOC START min:1 max:3 link:true asterisk:false update:true -->
 - [Overview](#overview)
+  - [Community Bounties](#community-bounties)
   - [Workflow](#workflow)
     - [KPI Related Submissions](#kpi-related-submissions)
     - [Individual Submissions](#individual-submissions)
@@ -46,6 +50,16 @@ The Joystream Community Repo is meant both as a resource for the community membe
 If a KPI requires submitting a deliverable, eg. reports or some code, it is expected that a PR is made to this repo in order to qualify.
 
 Although the community is meant to control the repo, Jsgenesis will approve and merge any pull requests for now. Note that the repo is licensed under [GPLv3](/LICENSE).
+
+## Community Bounties
+
+Community Bounties are bounties made available for the community to work on, with a reward available for completing some or all of the work for each bounty. Bounties are created by Jsgenesis and managed by the council. The bounties can be for a variety of tasks including coding, producing documentation or producing media content. Community Bounties are submitted via a proposal on the platform and may also include a Pull Request within this repo.
+
+The forum is the primary place for discussion of bounties, and you can look through the "Joystream Bounties" forum category for more details about current bounties. Each time a new bounty is added there will be a forum thread created for discussion of the bounty: https://testnet.joystream.org/#/forum/categories/10
+
+If you have questions about a bounty or want to apply for a bounty, you should primarily use the forum. but you can also ask on Telegram. If you plan to work on a bounty, you should let others know this via the forum so that multiple people do not work on the same thing.
+
+You can read more about Community Bounties on the Joystream Helpdesk repo: https://github.com/Joystream/helpdesk/tree/master/roles/builders#community-bounties
 
 ## Workflow
 
