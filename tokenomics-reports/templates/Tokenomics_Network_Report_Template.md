@@ -84,16 +84,3 @@ This is a report which explains the current state of the Joystream network in nu
 | Number of categories |              |              |          |
 | Number of threads |              |              |          |
 | Number of posts   |              |              |          |
-
-## 6 Todo / Ideas
-These are properties that are a bit difficult to currently work with, but can be added in future reports:
-* Video duration
-* Unique channels
-* Verified channels
-* Censored channels
-* Forum posts by subcategory
-* Total staked across platform
-* Avg. uploads per channel
-* Average time for proposal vote success:
-* Average overall time for proposal vote success:
-* USD backing
