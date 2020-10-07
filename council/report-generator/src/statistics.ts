@@ -1,6 +1,15 @@
 import {ApiPromise, WsProvider} from "@polkadot/api";
 import {types} from '@joystream/types'
-import {AccountId, Balance, BalanceOf, BlockNumber, EventRecord, Hash, Moment} from "@polkadot/types/interfaces";
+import {
+    AccountId,
+    Balance,
+    BalanceOf,
+    BlockNumber,
+    EraIndex,
+    EventRecord,
+    Hash,
+    Moment
+} from "@polkadot/types/interfaces";
 
 import {
     CacheEvent,
@@ -32,6 +41,9 @@ import {
     IProposalStatus, Approved
 } from "@joystream/types/proposals";
 import {MemberId} from "@joystream/types/members";
+import {RewardRelationship, RewardRelationshipId} from "@joystream/types/recurring-rewards";
+import {StorageProviderId, WorkerId, Worker} from "@joystream/types/working-group";
+import workingGroup from "@joystream/types/src/working-group/index";
 
 const fsSync = require('fs');
 const fs = fsSync.promises;
@@ -70,6 +82,7 @@ export class StatisticsCollector {
         await this.fillMintsInfo(startHash, endHash);
         await this.fillCouncilInfo(startHash, endHash);
         await this.fillCouncilElectionInfo(startBlock);
+        await this.fillValidatorInfo(startHash, endHash);
         await this.fillMembershipInfo(startHash, endHash);
         await this.fillForumInfo(startHash, endHash);
         this.api.disconnect();
@@ -239,7 +252,7 @@ export class StatisticsCollector {
         this.statistics.dateEnd = new Date(endDate.toNumber()).toLocaleDateString("en-US");
     }
 
-    async fillTokenGenerationInfo(startBlock: number, endBlock: number, startHash: Hash, endHash: Hash){
+    async fillTokenGenerationInfo(startBlock: number, endBlock: number, startHash: Hash, endHash: Hash) {
         this.statistics.startIssuance = (await this.api.query.balances.totalIssuance.at(startHash) as Balance).toNumber();
         this.statistics.endIssuance = (await this.api.query.balances.totalIssuance.at(endHash) as Balance).toNumber();
         this.statistics.newIssuance = this.statistics.endIssuance - this.statistics.startIssuance;
@@ -247,29 +260,35 @@ export class StatisticsCollector {
 
         for (let [key, blockEvents] of this.blocksEventsCache) {
             let validatorRewards = blockEvents.filter((event) => {
-                 return event.section == "staking" && event.method == "Reward";
+                return event.section == "staking" && event.method == "Reward";
             });
-            for (let validatorReward of validatorRewards){
+            for (let validatorReward of validatorRewards) {
                 this.statistics.newValidatorRewards += Number(validatorReward.data[1]);
             }
 
             let transfers = blockEvents.filter((event) => {
                 return event.section == "balances" && event.method == "Transfer";
             });
-            for (let transfer of transfers){
+            for (let transfer of transfers) {
                 let receiver = transfer.data[1] as AccountId;
                 let amount = transfer.data[2] as Balance;
-                if (receiver.toString() == BURN_ADDRESS){
+                if (receiver.toString() == BURN_ADDRESS) {
                     this.statistics.newTokensBurn = Number(amount);
                 }
             }
         }
-
-        this.statistics.newCouncilRewards = await this.computeCouncilReward(startBlock, endBlock, endHash);
+        let roundNrBlocks = endBlock - startBlock;
+        this.statistics.newCouncilRewards = await this.computeCouncilReward(roundNrBlocks, endHash);
         this.statistics.newCouncilRewards = Number(this.statistics.newCouncilRewards.toFixed(2));
+
+        this.statistics.newStorageProviderReward = await this.computeStorageProviderReward(roundNrBlocks, startHash, endHash);
+        this.statistics.newStorageProviderReward = Number(this.statistics.newStorageProviderReward.toFixed(2));
+
+        this.statistics.newCuratorRewards = await this.computeCuratorsReward(roundNrBlocks, startHash, endHash);
+        this.statistics.newCuratorRewards = Number(this.statistics.newCuratorRewards.toFixed(2));
     }
 
-    async computeCouncilReward(startBlock: number, endBlock: number, endHash: Hash): Promise<number>{
+    async computeCouncilReward(roundNrBlocks: number, endHash: Hash): Promise<number> {
         const payoutInterval = Number((await this.api.query.council.payoutInterval.at(endHash) as Option<BlockNumber>).unwrapOr(0));
         const amountPerPayout = (await this.api.query.council.amountPerPayout.at(endHash) as BalanceOf).toNumber();
 
@@ -290,8 +309,52 @@ export class StatisticsCollector {
 
         const councilTermDurationRatio = termDuration / (termDuration + votingPeriod + revealingPeriod + announcingPeriod);
         const avgCouncilRewardPerBlock = councilTermDurationRatio * totalCouncilRewardsPerBlock;
-        const nrBlocksBetween = (endBlock - startBlock);
-        return avgCouncilRewardPerBlock * nrBlocksBetween;
+
+        return avgCouncilRewardPerBlock * roundNrBlocks;
+    }
+
+    async computeStorageProviderReward(roundNrBlocks: number, startHash: Hash, endHash: Hash) {
+        let nextWorkerId = (await this.api.query.storageWorkingGroup.nextWorkerId.at(endHash) as WorkerId).toNumber();
+
+        let rewardRelationshipIds = Array<RewardRelationshipId>();
+        for (let i = 0; i < nextWorkerId; ++i) {
+            let worker = await this.api.query.storageWorkingGroup.workerById(i) as Worker;
+            if (worker.reward_relationship.isSome) {
+                rewardRelationshipIds.push(worker.reward_relationship.unwrap());
+            }
+        }
+        return this.computeReward(roundNrBlocks, rewardRelationshipIds, endHash);
+    }
+
+    async computeCuratorsReward(roundNrBlocks: number, startHash: Hash, endHash: Hash) {
+        let nextCuratorId = (await this.api.query.contentWorkingGroup.nextCuratorId.at(endHash) as WorkerId).toNumber();
+
+        let rewardRelationshipIds = Array<RewardRelationshipId>();
+        for (let i = 0; i < nextCuratorId; ++i) {
+            let worker = await this.api.query.contentWorkingGroup.curatorById(i) as Worker;
+            if (worker.reward_relationship.isSome) {
+                rewardRelationshipIds.push(worker.reward_relationship.unwrap());
+            }
+        }
+        return this.computeReward(roundNrBlocks, rewardRelationshipIds, endHash);
+    }
+
+    async computeReward(roundNrBlocks: number, rewardRelationshipIds: RewardRelationshipId[], hash: Hash) {
+        let recurringRewards = await Promise.all(rewardRelationshipIds.map(async (rewardRelationshipId) => {
+            return await this.api.query.recurringRewards.rewardRelationships.at(hash, rewardRelationshipId) as RewardRelationship;
+        }));
+
+        let rewardPerBlock = 0;
+        for (let recurringReward of recurringRewards) {
+            const amount = recurringReward.amount_per_payout.toNumber();
+            const payoutInterval = recurringReward.payout_interval.unwrapOr(null);
+
+            if (amount && payoutInterval) {
+                rewardPerBlock += amount / payoutInterval;
+            }
+
+        }
+        return rewardPerBlock * roundNrBlocks;
     }
 
     async fillMintsInfo(startHash: Hash, endHash: Hash) {
@@ -302,17 +365,16 @@ export class StatisticsCollector {
         // statistics.startMinted = 0;
         // statistics.endMinted = 0;
         for (let i = 0; i < startNrMints; ++i) {
-            let startMintResult = ((await this.api.query.minting.mints.at(startHash, i)) as unknown) as [Mint, Linkage<MintId>];
-            let startMint = startMintResult[0];
-            if (!startMint) {
-                continue;
-            }
+            let startMint = (await this.api.query.minting.mints.at(startHash, i)) as Mint;
+            // if (!startMint) {
+            //     continue;
+            // }
 
-            let endMintResult = ((await this.api.query.minting.mints.at(endHash, i)) as unknown) as [Mint, Linkage<MintId>];
-            let endMint = endMintResult[0];
-            if (!endMint) {
-                continue;
-            }
+            let endMint = (await this.api.query.minting.mints.at(endHash, i)) as Mint;
+            // let  = endMintResult[0];
+            // if (!endMint) {
+            //     continue;
+            // }
 
             let startMintTotal = parseInt(startMint.getField("total_minted").toString());
             let endMintTotal = parseInt(endMint.getField("total_minted").toString());
@@ -340,7 +402,7 @@ export class StatisticsCollector {
         this.statistics.endCouncilMinted = councilMintStatistics.endMinted;
         this.statistics.newCouncilMinted = councilMintStatistics.diffMinted;
         this.statistics.percNewCouncilMinted = councilMintStatistics.percMinted;
-
+6
         let curatorMint = (await this.api.query.contentWorkingGroup.mint.at(endHash)) as MintId;
         let curatorMintStatistics = await this.computeMintInfo(curatorMint, startHash, endHash);
         this.statistics.startCuratorMinted = curatorMintStatistics.startMinted;
@@ -358,20 +420,20 @@ export class StatisticsCollector {
 
 
     async computeMintInfo(mintId: MintId, startHash: Hash, endHash: Hash): Promise<MintStatistics> {
-        if (mintId.toString() == "0") {
-            return new MintStatistics(0, 0, 0);
-        }
-        let startMintResult = await this.api.query.minting.mints.at(startHash, mintId) as unknown as [Mint, Linkage<MintId>];
-        let startMint = startMintResult[0] as unknown as Mint;
-        if (!startMint) {
-            return new MintStatistics(0, 0, 0);
-        }
+        // if (mintId.toString() == "0") {
+        //     return new MintStatistics(0, 0, 0);
+        // }
+        let startMint = await this.api.query.minting.mints.at(startHash, mintId) as Mint;
+        // let startMint = startMintResult[0] as unknown as Mint;
+        // if (!startMint) {
+        //     return new MintStatistics(0, 0, 0);
+        // }
 
-        let endMintResult = await this.api.query.minting.mints.at(endHash, mintId) as unknown as [Mint, Linkage<MintId>];
-        let endMint = endMintResult[0] as unknown as Mint;
-        if (!endMint) {
-            return new MintStatistics(0, 0, 0);
-        }
+        let endMint = await this.api.query.minting.mints.at(endHash, mintId) as Mint;
+        // let endMint = endMintResult[0] as unknown as Mint;
+        // if (!endMint) {
+        //     return new MintStatistics(0, 0, 0);
+        // }
 
         let mintStatistics = new MintStatistics();
         mintStatistics.startMinted = parseInt(startMint.getField('total_minted').toString());
@@ -431,7 +493,23 @@ export class StatisticsCollector {
         this.statistics.electionVotes = seats.map((seat) => seat.backers.length).reduce((a, b) => a + b);
     }
 
-    async fillMembershipInfo(startHash: Hash, endHash: Hash){
+
+    async fillValidatorInfo(startHash: Hash, endHash: Hash) {
+        this.statistics.startValidators = (await this.api.query.staking.validatorCount.at(startHash) as u32).toNumber();
+        this.statistics.endValidators = (await this.api.query.staking.validatorCount.at(endHash) as u32).toNumber();
+        this.statistics.percValidators = StatisticsCollector.convertToPercentage(this.statistics.endValidators - this.statistics.startValidators, this.statistics.endValidators);
+
+        const startEra = await this.api.query.staking.currentEra.at(startHash) as Option<EraIndex>;
+        this.statistics.startValidatorsStake = (await this.api.query.staking.erasTotalStake.at(startHash, startEra.unwrap())).toNumber();
+
+        const endEra = await this.api.query.staking.currentEra.at(endHash) as Option<EraIndex>;
+        this.statistics.endValidatorsStake = (await this.api.query.staking.erasTotalStake.at(endHash, endEra.unwrap())).toNumber();
+
+        this.statistics.percNewValidatorsStake = StatisticsCollector.convertToPercentage(this.statistics.endValidatorsStake - this.statistics.startValidatorsStake, this.statistics.endValidatorsStake);
+
+    }
+
+    async fillMembershipInfo(startHash: Hash, endHash: Hash) {
         this.statistics.startMembers = (await this.api.query.members.nextMemberId.at(startHash) as MemberId).toNumber();
         this.statistics.endMembers = (await this.api.query.members.nextMemberId.at(endHash) as MemberId).toNumber() + 1;
         this.statistics.newMembers = this.statistics.endMembers - this.statistics.startMembers;
@@ -488,49 +566,52 @@ export class StatisticsCollector {
         return valRewards;
     }
 
-    static async computeStorageRewards(api: ApiPromise, startBlock: number, endBlock: number): Promise<number> {
-        let estimateOfStorageReward = 0;
-        for (let blockHeight = startBlock; blockHeight < endBlock; blockHeight += 600) {
-            const blockHash: Hash = await api.rpc.chain.getBlockHash(blockHeight);
-            const storageProviders = ((await api.query.actors.actorAccountIds.at(blockHash)) as Vec<AccountId>).length;
-            const storageParameters = ((await api.query.actors.parameters.at(blockHash, "StorageProvider")) as Option<RoleParameters>).unwrap();
-            const reward = storageParameters.reward.toNumber();
-            const rewardPeriod = storageParameters.reward_period.toNumber();
-            estimateOfStorageReward += (storageProviders * reward * rewardPeriod) / 600;
-        }
-        return estimateOfStorageReward;
-    }
+    // static async computeStorageRewards(api: ApiPromise, startBlock: number, endBlock: number): Promise<number> {
+    //     let estimateOfStorageReward = 0;
+    //     for (let blockHeight = startBlock; blockHeight < endBlock; blockHeight += 600) {
+    //         const blockHash: Hash = await api.rpc.chain.getBlockHash(blockHeight);
+    //         const storageProviders = ((await api.query.actors.actorAccountIds.at(blockHash)) as Vec<AccountId>).length;
+    //         const storageParameters = ((await api.query.actors.parameters.at(blockHash, "StorageProvider")) as Option<RoleParameters>).unwrap();
+    //         const reward = storageParameters.reward.toNumber();
+    //         const rewardPeriod = storageParameters.reward_period.toNumber();
+    //         estimateOfStorageReward += (storageProviders * reward * rewardPeriod) / 600;
+    //     }
+    //     return estimateOfStorageReward;
+    // }
 
-    static extractExchanges(blockNumber: number, events: Vec<EventRecord>): Exchange[] {
-        let exchanges = [];
-        for (let {event} of events) {
-            if (event.section === "balances" && event.method === "Transfer") {
-                const recipient = event.data[1] as AccountId;
-                if (recipient.toString() === BURN_ADDRESS) {
-                    // For all events of "Transfer" type with matching recipient...
-                    const sender = event.data[0] as AccountId;
-                    const amountJOY = event.data[2] as Balance;
-                    const feesJOY = event.data[3] as Balance;
-                    //const memo = await api.query.memo.memo.at(blockHash, sender) as Text;
-                    let exchange = new Exchange();
-
-                    exchange.sender = sender.toString();
-                    // recipient: recipient.toString(),
-                    exchange.amount = amountJOY.toNumber();
-                    exchange.fees = feesJOY.toNumber();
-                    // date: new Date(timestamp.toNumber()),
-                    exchange.blockNumber = blockNumber;
-                    // session: session.toNumber(),
-                    // era: era.toNumber()
-
-                    exchanges.push(exchange);
-                }
-            }
-        }
-        return exchanges;
-    }
+    // static extractExchanges(blockNumber: number, events: Vec<EventRecord>): Exchange[] {
+    //     let exchanges = [];
+    //     for (let {event} of events) {
+    //         if (event.section === "balances" && event.method === "Transfer") {
+    //             const recipient = event.data[1] as AccountId;
+    //             if (recipient.toString() === BURN_ADDRESS) {
+    //                 // For all events of "Transfer" type with matching recipient...
+    //                 const sender = event.data[0] as AccountId;
+    //                 const amountJOY = event.data[2] as Balance;
+    //                 const feesJOY = event.data[3] as Balance;
+    //                 //const memo = await api.query.memo.memo.at(blockHash, sender) as Text;
+    //                 let exchange = new Exchange();
+    //
+    //                 exchange.sender = sender.toString();
+    //                 // recipient: recipient.toString(),
+    //                 exchange.amount = amountJOY.toNumber();
+    //                 exchange.fees = feesJOY.toNumber();
+    //                 // date: new Date(timestamp.toNumber()),
+    //                 exchange.blockNumber = blockNumber;
+    //                 // session: session.toNumber(),
+    //                 // era: era.toNumber()
+    //
+    //                 exchanges.push(exchange);
+    //             }
+    //         }
+    //     }
+    //     return exchanges;
+    // }
 
     static convertToPercentage(value: number, totalValue: number): number {
+        if (totalValue == 0) {
+            return 0;
+        }
         return Number(((value / totalValue) * 100).toFixed(2));
     }
 

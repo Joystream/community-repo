@@ -29,7 +29,6 @@ export class StatisticsData {
     newBlocks: number = 0;
     avgBlockProduction: number = 0;
 
-    newStorageProviderReward: number = 0;
 
     startThreads: number = 0;
     endThreads: number = 0;
@@ -92,9 +91,26 @@ export class StatisticsData {
     newTokensBurn: number = 0;
     newValidatorRewards: number = 0;
     avgValidators: number = 0;
+    startValidators: number = 0;
+    endValidators: number = 0;
+    percValidators: number = 0;
+    startValidatorsStake: number = 0;
+    endValidatorsStake: number = 0;
+    percNewValidatorsStake: number = 0;
+
+    startStorageProviders: number = 0;
+    endStorageProviders: number = 0;
+    percNewStorageProviders: number = 0;
+    newStorageProviderReward: number = 0;
+    startStorageProvidersStake: number = 0;
+    endStorageProvidersStake: number = 0;
+    percNewStorageProviderStake: number = 0;
 
     newCouncilRewards: number = 0;
-    newStorageRewards: number = 0;
+
+    startCurators: number = 0;
+    endCurators: number = 0;
+    percNewCurators: number = 0;
     newCuratorRewards: number = 0;
 
     newUsedSpace: number = 0;

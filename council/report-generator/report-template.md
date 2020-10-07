@@ -17,7 +17,7 @@ This is a report which explains the current state of the Joystream network in nu
 | Total Tokens Burned | {newTokensBurn} | 
 | Validator Role      |  {newValidatorRewards}            | 
 | Council Role        | {newCouncilRewards}             | 
-| Storage Role        | {newStorageRewards}             | 
+| Storage Role        | {newStorageProviderReward}             | 
 | Curator Role        | {newCuratorRewards}             | 
 
 
@@ -48,27 +48,20 @@ This is a report which explains the current state of the Joystream network in nu
 
 | Property                    | Start Block | End Block | % Change |
 |-----------------------------|--------------|--------------|----------|
-| Validator total stake       |              |              |          |
+| Number of Validators       |  {startValidators} | {endValidators} | {percValidators} |
+| Validator Total Stake       | {startValidatorsStake} | {endValidatorsStake} | {percNewValidatorsStake} |
+
 
 ### 4.2 Storage Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Mint Tokens Generated (Total)    |              |              |          |
-| Number of storage workers |              |              |          |
-| Total storage stake (workers + lead)  |              |              |          |
-| Total lead earned rewards   |              |              |          |
-| Total worker earned rewards   |              |              |          |
-| Total missed rewards   |              |              |          |
-| Total rewards   |              |              |          |
+| Number of Storage Workers | {startStorageProviders}  |  {endStorageProviders} | {percStorageProviders} |
+| Total Storage Stake (workers + lead)  | {startStorageProvidersStake} |  {endStorageProvidersStake} | {percNewStorageProviderStake} |
 
 ### 4.3 Curator Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Mint Tokens Generated (Total)    |              |              |          |
-| Total lead earned rewards   |              |              |          |
-| Total worker earned rewards   |              |              |          |
-| Total missed rewards   |              |              |          |
-| Curator roles filled     |              |              |          |
+| Number of Curators      | {startCurators} | {endCurators} | {percNewCurators} |
 
 ## 5.0 User Generated Content
 ### 5.1 Membership Information
