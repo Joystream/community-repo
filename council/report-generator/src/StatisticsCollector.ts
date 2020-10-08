@@ -459,8 +459,8 @@ export class StatisticsCollector {
     }
 
     async fillCouncilInfo(startHash: Hash, endHash: Hash) {
-        this.statistics.councilRound = (await this.api.query.councilElection.round.at(endHash) as u32).toNumber();
-        this.statistics.councilMembers = (await this.api.query.councilElection.councilSize.at(endHash) as u32).toNumber();
+        this.statistics.councilRound = (await this.api.query.councilElection.round.at(startHash) as u32).toNumber();
+        this.statistics.councilMembers = (await this.api.query.councilElection.councilSize.at(startHash) as u32).toNumber();
         let startNrProposals = await this.api.query.proposalsEngine.proposalCount.at(startHash) as u32;
         let endNrProposals = await this.api.query.proposalsEngine.proposalCount.at(endHash) as u32;
         this.statistics.newProposals = endNrProposals.toNumber() - startNrProposals.toNumber();
