@@ -30,7 +30,7 @@ This is a report which explains the current state of the Joystream network in nu
 * Total number of proposals:
 * Total number of Approved proposals:
 
-* ### 3.1 Elections
+### 3.1 Elections
 | Property                    | Start Block | End Block | % Change |
 |-----------------------------|--------------|--------------|----------|
 | Total Applicants       |              |              |          |
