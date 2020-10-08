@@ -50,12 +50,14 @@ export class StatisticsData {
     newProposals: number = 0;
     newApprovedProposals: number = 0;
 
+    startChannels: number = 0;
     newChannels: number = 0;
-    totalChannels: number = 0;
+    endChannels: number = 0;
     percNewChannels: number = 0;
 
+    startMedia: number = 0;
     newMedia: number = 0;
-    totalMedia: number = 0;
+    endMedia: number = 0;
     percNewMedia: number = 0;
 
     deletedMedia: number = 0;
@@ -113,8 +115,9 @@ export class StatisticsData {
     percNewCurators: number = 0;
     newCuratorRewards: number = 0;
 
+    startUsedSpace: number = 0;
     newUsedSpace: number = 0;
-    totalUsedSpace: number = 0;
+    endUsedSpace: number = 0;
     percNewUsedSpace: number = 0;
 
     avgNewSizePerContent: number = 0;
@@ -146,6 +149,14 @@ export class ValidatorReward {
     validators: number = 0;
     slotStake: number = 0;
     blockNumber: number = 0;
+}
+
+export class WorkersInfo {
+    rewards: number = 0;
+    startStake: number = 0;
+    endStake: number = 0;
+    startNrOfWorkers: number = 0;
+    endNrOfWorkers: number = 0;
 }
 
 export class Exchange {

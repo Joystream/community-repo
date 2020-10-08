@@ -1,4 +1,4 @@
-import {StatisticsCollector} from "./statistics";
+import {StatisticsCollector} from "./StatisticsCollector";
 
 const fs = require('fs').promises;
 

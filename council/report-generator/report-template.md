@@ -55,7 +55,7 @@ This is a report which explains the current state of the Joystream network in nu
 ### 4.2 Storage Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of Storage Workers | {startStorageProviders}  |  {endStorageProviders} | {percStorageProviders} |
+| Number of Storage Workers | {startStorageProviders}  |  {endStorageProviders} | {percNewStorageProviders} |
 | Total Storage Stake (workers + lead)  | {startStorageProvidersStake} |  {endStorageProvidersStake} | {percNewStorageProviderStake} |
 
 ### 4.3 Curator Role
@@ -72,9 +72,9 @@ This is a report which explains the current state of the Joystream network in nu
 ### 5.2 Media & Uploads
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of uploads       |              |              |          |
-| Size of content         |              |              |          |
-| Number of channels      |              |              |          |
+| Number of uploads       | {startMedia} | {endMedia}  |  {percNewMedia} |
+| Size of content         |  {startUsedSpace} |  {endUsedSpace} | {percNewUsedSpace}          |
+| Number of channels      |  {startChannels} | {endChannels} | {percNewChannels} |
 
 ### 5.3 Forum Activity
 | Property          | Start Block | End Block | % Change |
@@ -82,16 +82,3 @@ This is a report which explains the current state of the Joystream network in nu
 | Number of categories | {startCategories} | {endCategories} | {perNewCategories}         |
 | Number of threads    | {startThreads}| {endThreads} | {percNewThreads}         |
 | Number of posts      | {startPosts} | {endPosts}            |  {percNewPosts}        |
-
-## 6 Todo / Ideas
-These are properties that are a bit difficult to currently work with, but can be added in future reports:
-* Video duration
-* Unique channels
-* Verified channels
-* Censored channels
-* Forum posts by subcategory
-* Total staked across platform
-* Avg. uploads per channel
-* Average time for proposal vote success:
-* Average overall time for proposal vote success:
-* USD backing
