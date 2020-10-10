@@ -13,7 +13,7 @@ This report was compiled by @tomato with assistance from @freakstatic
 * Testnet: Alexandria
 * Council Election Round: #1
 * Start Block: #57601
-* End Block: #
+* End Block: #201601
 * Forum thread for round feedback: https://testnet.joystream.org/#/forum/threads/127
 
 ### 1.3 - Council members & vote participation
@@ -38,10 +38,10 @@ This report was compiled by @tomato with assistance from @freakstatic
 
 ### 1.5 - Council Mint & Budget Status
 * Start minted: 0 tokens
-* End minted: 6,664,000 tokens
-* Total minted during council round: 6,664,000 tokens (+% from start)
-	* Minted from Spending proposals: 4,000,000 tokens
-	* Minted for CM payments: 2,664,000 tokens
+* End minted: 4,553,000 tokens
+* Total minted during council round: 4,553,000 tokens (+% from start)
+	* Minted from Spending proposals: 2,000,000 tokens
+	* Minted for CM payments: 2,553,000 tokens
 
 * Budget proposal link: 
 	* No budget was submitted during this council session
