@@ -25,7 +25,7 @@ This is a report which explains the current state of the Joystream network in nu
 | Storage Mint Total Minted |              |              |          |
 
 ## 3.0 Council
-* Council session #:
+* Council session #: XX
 * Number of council members:
 * Total number of proposals:
 * Total number of Approved proposals:
