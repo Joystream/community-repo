@@ -5,7 +5,6 @@ The council is expected to produce reports during each round and provide feedbac
 
 Usernames referenced are Joystream usernames.
 All times are calculated based on 6 second blocktimes and not actual blocktimes.
-The Council Round number is taken from the chain, the KPI rounds have an offset number.
 
 This report was compiled by @tomato with assistance from @freakstatic
 
@@ -13,6 +12,7 @@ This report was compiled by @tomato with assistance from @freakstatic
 * Council Election Round: #2
 * Start Block: #259201
 * End Block: #460801
+* Date range: 10/9/2020 - 10/24/2020
 * Forum thread for round feedback: https://testnet.joystream.org/#/forum/threads/137
 
 ### 1.3 - Council members & vote participation
@@ -22,12 +22,12 @@ This report was compiled by @tomato with assistance from @freakstatic
 
 | Username             | Member ID | Prop. Votes Cast | CM Own Stake | CM Voter Stake |
 |----------------------|-----------|------------------|--------------|----------------|
-| @anthony             | 129       |      tbc            | 3900000      | 800100         |
-| @supunssw            | 318       |                  | 3900000      | 1100000        |
-| @freakstatic_council | 321       |                  | 3900000      | 1100000        |
-| @nexusfallout        | 4         |                  | 3900000      | 1100000        |
-| @tomato              | 2         |                  | 3900000      | 1001000        |
-| @sparky              | 319       |                  | 3730000      | 100400         |
+| @anthony             | 129       | 7                | 3900000      | 800100         |
+| @supunssw            | 318       | 5                | 3900000      | 1100000        |
+| @freakstatic_council | 321       | 10               | 3900000      | 1100000        |
+| @nexusfallout        | 4         | 9                | 3900000      | 1100000        |
+| @tomato              | 2         | 11               | 3900000      | 1001000        |
+| @sparky              | 319       | 4                | 3730000      | 100400         |
 |                      |           |                  |              |                |
 | Total Stake          |           |                  |              | 28431500       |
 
@@ -37,36 +37,41 @@ This report was compiled by @tomato with assistance from @freakstatic
 
 ### 1.5 - Council Mint & Budget Status
 * Start minted: 6553000 tokens
-* End minted:  tokens
-* Total minted during council round:  tokens (+% from start)
-	* Minted from Spending proposals: 0 tokens
-	* Minted for CM payments: tokens
+* End minted:  14493000 tokens
+* Total minted during council round: 7940000 tokens (+121% from start)
+	* Minted from Spending proposals: 3500000 tokens
+	* Minted for CM payments: 4440000 tokens
 
 * Budget proposal link: https://testnet.joystream.org/#/proposals/25
 * Budget forum link: https://testnet.joystream.org/#/forum/threads/136
 
-(Note: The council budget is now based on the rewards for roles, council payments and validator payments. Jsgenesis decides how much to set the mint to.)
+(Note: The council budget is now based on the balance of rewards for roles, council payments and validator payments. Jsgenesis decides how much to set the mint to.)
 
 ## 2 - Minutes
 ### 2.1 - Proposal Overview
--  Proposals Created
-	-  Text Proposals
-	-  Spending Proposals
-	-  SetWorkingGroupMintCapacity Proposals
-	-  SetContentWorkingGroupMintCapacity Proposals
+- 13 Proposals Created
+	- 5 Text Proposals
+	- 4 Spending Proposals
+	- 1 SetWorkingGroupMintCapacity Proposals
+	- 1 SetContentWorkingGroupMintCapacity Proposals
+	- 1 SetValidatorCount Proposals
+	- 1 SetWorkingGroupLeaderReward Proposals
 
--  Approved & executed proposals
-	- Token value:  tokens
+- 11 Approved & executed proposals
+  - Token value: 8500000 tokens
 - 0 Canceled proposals
 - 0 Rejected proposals
 - 0 Slashed proposals
 - 0 Expired proposals
-	- Token value:  tokens
+  - Token value: 0 tokens
 - 0 NotEnoughCapacity failures
+- 2 Proposals carried to next council session (lack of council vote quorum)
+  - Token value: 1000000 tokens
 
-- Total time for proposals to finalize: 
-- Average time for proposals to finalize:  hours
+- Total time for proposals to finalize: 292.31 hours
+- Average time for proposals to finalize: 22.48 hours
 	- This average is calculated from all proposals, including canceled and expired proposals.
+	- Proposals which are not successfully voted by the current council are considered finalized at the final blockheight of the current council. So if the current council has 50 hours to vote on proposal, but does not fully vote and the proposal is passed onto the next council, this 50 hours is included in the average time to finalize.
 
 ### 2.2 - Proposal Breakdown
 #### Proposal 16 - Alexandria - Council 01 report
@@ -168,16 +173,23 @@ This report was compiled by @tomato with assistance from @freakstatic
 - Created by: @tomato
 - Participants: @tomato, @nexusfallout, @sparky, @freakstatic_council
 
-#### Proposal `n` - 
-- Proposal Link: https://testnet.joystream.org/#/proposals/
-- Proposal Type: 
-	- Amount: 
-- Status: Executed
-	- Time to finalize:  blocks ( hours)
-- Created by: @
-- Participants: @
+#### Proposal 27 - Rolling updates for Community Repo
+- Proposal Link: https://testnet.joystream.org/#/proposals/27
+- Proposal Type: Text
+	- Amount: N/A
+- Status: Carried on to next council
+	- Time to finalize: 32242 blocks (53.73 hours)
+- Created by: @tomato
+- Participants: N/A
 
-
+#### Proposal 28 - Replenishing the mind tor ContentCurator
+- Proposal Link: https://testnet.joystream.org/#/proposals/28
+- Proposal Type: SetContentWorkingGroupMintCapacity
+	- Amount: 1000000
+- Status: Carried on to next council
+	- Time to finalize: 22570 blocks (37.61 hours)
+- Created by: @tomato
+- Participants: N/A
 
 ### 2.4 - Select threads & events
 - Alexandria KPI 02.x - Budget - https://testnet.joystream.org/#/forum/threads/136
@@ -186,8 +198,13 @@ This report was compiled by @tomato with assistance from @freakstatic
 
 ## 3 - Review
 ### 3.1 - Workflow, Performance, Challenged & Thinking
-* @
-	* 
+* @freakstatic_council
+	* This round was a bit calm comparing with the previous one. We still don't have the bot telegram which we miss so much :/ but it seems it's almost ready. @tomato has made some adjustments to the budget which we were needing, thanks btw! The council approved the values proposed by @tomato. Some problems with the storage providers were reported but @tomato seems to have help fix them
+* @tomato
+  * I think the council session went fairly well, its helping a lot that things are getting voted on consistently by the council which is making progress a bit easier. It's still a bit difficult with the small size of the community to get people interested, and it'd be nice to see more involvement from more of the council on issues, but for now things aren't super challenging.
+  * I've managed to work on a budget, which has helped make it more obvious how much the council has promised as payments for roles and will hopefully make it easier for us to manage budgeting in the future: https://testnet.joystream.org/#/forum/threads/136
+  * We also completed the first spot checks of working groups which showed a big issue with storage providers, so I'm guessing these will become a regular occurrence.
+  * One improvement that I think needs to be made, is when tackling issues that we're given with KPIs we have to have deadlines for almost everything, if elected for the next session I'll be working on making sure that almost everything has a deadline attached to it.
 
 ## 4 - Obligations
 Council obligations are payments or items that carry through council sessions. These are noted so that future councils can easily see what items they should be aware of. Items can be removed from here once they have been resolved or become outdated.
@@ -220,14 +237,12 @@ Council obligations are payments or items that carry through council sessions. T
 	- This mint has be refilled periodically
 	- The Storage Lead role is expected to keep track of their mint level and any member of the Joystream platform can create a proposal to refill this mint.
  
-### 4.2 Bounties
-- There are no outstanding bounties at this time.
-
 ## 5 - Report changelog
 - 22.10.2020
 	- updated budget section to reflect nature of new budget system
 	- updated events to be threads & events
-
+	- added proposals which are not successfully voted (lack of quorum) to averages
+	- removed bounties section, since these are now managed differently
 - 14.09.2020
 	- removed member addresses and replaced with member IDs since they take less space
 	- added realized and unrealized spending
