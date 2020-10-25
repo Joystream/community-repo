@@ -40,6 +40,7 @@ Table of Contents
     - [`council-reports`](#council-reports)
     - [`community-contributions`](#community-contributions)
     - [`tokenomics-reports`](#tokenomics-reports)
+    - [`workinggroup-reports`](#workinggroup-reports)
     - [`submission-log`](#submission-log)
 <!-- TOC END -->
 
@@ -95,7 +96,10 @@ If a member of the Jsgenesis team wants to make changes to the repo, the followi
 - The submission is added to the `Submission Log`
 
 ### Revisions & Improvements of Submissions
-It is likely in the future we will have to accomodate revisions and improvements of previous submissions. This process will be refined when this becomes a necessary task.
+* For general updates (updating links, text) these can just be gathered occasionally and submitted as a rolling update like this example: https://testnet.joystream.org/#/proposals/14 This does mean that it will take some time for the PRs to be approved by the council.
+* In the event of some highly important change, a proposal could be made so that the matter is addressed more quickly than waiting for a rolling update
+* If users want to be paid for updates or corrections, then they should open a PR (or multiple PRs) and link to it in a spending proposal, when this is approved it would have the same effect as approving the PR (which still has to be reviewed by Jsgenesis)
+* As an example, if a user wants to add functionality to the telegram bot and be paid for it, they can open a PR and create a spending proposal linking to the PR
 
 ## Current Directories
 ### `council-reports`
