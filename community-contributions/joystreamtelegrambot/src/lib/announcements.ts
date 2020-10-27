@@ -163,14 +163,12 @@ const processActive = async (
     let label: string = result;
     if (result === "Approved") {
       const executed = parameters.gracePeriod.toNumber() > 0 ? false : true;
-      label = executed ? "Finalized and Executed" : "Failed to be Executed";
+      label = executed ? "Finalized" : "Finalized and Executed";
     }
     msg = `Proposal ${id} <b>${label}</b> at block ${finalizedAt}.\r\n${message}`;
     sendMessage(msg);
     return true;
   } else return processPending(id, details, sendMessage);
-  sendMessage(msg);
-  return false;
 };
 
 const processPending = async (
