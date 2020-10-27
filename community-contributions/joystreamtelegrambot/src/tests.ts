@@ -1,10 +1,9 @@
 //import TelegramBot from "node-telegram-bot-api";
-import { token, chatid, wsLocation } from "../config";
+import { wsLocation } from "../config";
 
 // types
-import { Options, Proposals } from "./types";
+import { Proposals } from "./types";
 import { types } from "@joystream/types";
-import { CategoryId } from "@joystream/types/forum";
 import { ApiPromise, WsProvider } from "@polkadot/api";
 import { Header } from "@polkadot/types/interfaces";
 
@@ -75,7 +74,7 @@ const main = async () => {
       log("first thread");
       announce.threads(api, threads, sendMessage);
 
-      log("last threadl");
+      log("last thread");
       threads[1] = await get.currentThreadId(api);
       threads[0] = threads[1] - 1;
       announce.threads(api, threads, sendMessage);

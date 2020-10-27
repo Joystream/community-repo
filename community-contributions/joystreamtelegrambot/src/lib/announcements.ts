@@ -1,9 +1,8 @@
 import { Api, Member, ProposalDetail, Proposals } from "../types";
-import { AccountId, BlockNumber } from "@polkadot/types/interfaces";
+import { BlockNumber } from "@polkadot/types/interfaces";
 import { Channel, ElectionStage } from "@joystream/types/augment";
-import { MemberId, Membership } from "@joystream/types/members";
 //import { Channel } from "@joystream/types/channel";
-import { Category, CategoryId, Thread, Post } from "@joystream/types/forum";
+import { Category, Thread, Post } from "@joystream/types/forum";
 import { domain } from "../../config";
 import {
   categoryById,
@@ -176,9 +175,8 @@ const processPending = async (
   details: ProposalDetail,
   sendMessage: (s: string) => void
 ): Promise<boolean> => {
-  const { createdAt, message, parameters, result, stage } = details;
+  const { createdAt, message, parameters, stage } = details;
   if (stage === "Finalized") return processActive(id, details, sendMessage);
-  const label = stage;
   const votingEndsAt = createdAt + parameters.votingPeriod.toNumber();
   const msg = `Proposal ${id} <b>created</b> at block ${createdAt}.\r\n${message}\r\nYou can vote until block ${votingEndsAt}.`;
   sendMessage(msg);

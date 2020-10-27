@@ -4,7 +4,6 @@ import { token, chatid, wsLocation } from "../config";
 // types
 import { Options, Proposals } from "./types";
 import { types } from "@joystream/types";
-import { CategoryId } from "@joystream/types/forum";
 import { ApiPromise, WsProvider } from "@polkadot/api";
 import { Header } from "@polkadot/types/interfaces";
 
@@ -19,8 +18,14 @@ process.env.NTBA_FIX_319 ||
   log("TL;DR: Set NTBA_FIX_319 to hide this warning.");
 
 const bot = new TelegramBot(token, { polling: true });
-const sendMessage = (msg: string) =>
-  bot.sendMessage(chatid, msg, { parse_mode: "HTML" });
+
+const sendMessage = (msg: string) => {
+  try {
+    //bot.sendMessage(chatid, msg, { parse_mode: "HTML" });
+  } catch (e) {
+    console.log(`Failed to send message: ${e}`);
+  }
+};
 
 const main = async () => {
   const provider = new WsProvider(wsLocation);
