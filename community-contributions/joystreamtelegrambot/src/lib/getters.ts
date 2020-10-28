@@ -1,17 +1,17 @@
-import { Api, Proposals, ProposalArray, ProposalDetail } from "../types";
+import { formatProposalMessage } from "./announcements";
+
+//types
+
+import { Api, ProposalArray, ProposalDetail } from "../types";
 import {
   ChannelId,
-  ElectionStage,
   PostId,
   ProposalDetailsOf,
   ThreadId
 } from "@joystream/types/augment";
 import { Category, CategoryId } from "@joystream/types/forum";
-import { MemberId, Membership } from "@joystream/types/members";
-import { Proposal, ProposalStatus } from "@joystream/types/proposals";
-
-import { formatProposalMessage } from "./announcements";
-import { domain } from "../../config";
+import { Membership } from "@joystream/types/members";
+import { Proposal } from "@joystream/types/proposals";
 
 // channel
 
@@ -99,15 +99,9 @@ export const proposalDetail = async (
   id: number
 ): Promise<ProposalDetail> => {
   const proposal: Proposal = await api.query.proposalsEngine.proposals(id);
-  const { parameters, proposerId, description } = proposal;
-  const author: string = await memberHandle(api, proposerId.toNumber());
-  const createdAt: number = proposal.createdAt.toNumber();
-  const title: string = proposal.title.toString();
-  const proposerHandle: string = await memberHandle(api, proposerId.toJSON());
   const status: { [key: string]: any } = proposal.status;
   const stage: string = status.isActive ? "Active" : "Finalized";
   const { finalizedAt, proposalStatus } = status[`as${stage}`];
-  const type: string = await getProposalType(api, id);
   const result: string = proposalStatus
     ? (proposalStatus.isApproved && "Approved") ||
       (proposalStatus.isCanceled && "Canceled") ||
@@ -117,21 +111,12 @@ export const proposalDetail = async (
       (proposalStatus.isVetoed && "Vetoed")
     : "Pending";
 
-  const message: string = formatProposalMessage([
-    String(id),
-    title,
-    type,
-    stage,
-    result,
-    author
-  ]);
-  const proposalDetail: ProposalDetail = {
-    createdAt,
-    finalizedAt,
-    parameters,
-    message,
-    stage,
-    result
-  };
-  return proposalDetail;
+  const { parameters, proposerId } = proposal;
+  const author: string = await memberHandle(api, proposerId.toNumber());
+  const title: string = proposal.title.toString();
+  const type: string = await getProposalType(api, id);
+  const args: string[] = [String(id), title, type, stage, result, author];
+  const message: string = formatProposalMessage(args);
+  const createdAt: number = proposal.createdAt.toNumber();
+  return { createdAt, finalizedAt, parameters, message, stage, result };
 };
