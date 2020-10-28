@@ -1,8 +1,8 @@
 // website
 export const domain = "https://testnet.joystream.org";
 
-export const wsLocation = "ws://rome-rpc-endpoint.joystream.org:9944/";
 // websocket location
+export const wsLocation = "wss://rome-rpc-endpoint.joystream.org:9944/";
 
 // telegram bot token
 export const token: string = "";
