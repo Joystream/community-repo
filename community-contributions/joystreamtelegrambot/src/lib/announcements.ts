@@ -21,24 +21,6 @@ const query = async (test: string, cb: () => Promise<any>): Promise<any> => {
   }
 };
 
-// forum
-
-export const categories = async (
-  api: Api,
-  category: number[],
-  sendMessage: (msg: string) => void
-): Promise<number> => {
-  const messages: string[] = [];
-  let id: number = category[0] + 1;
-  for (id; id <= category[1]; id++) {
-    const cat: Category = await query("title", () => categoryById(api, id));
-    const msg = `Category ${id}: <b><a href="${domain}/#/forum/categories/${id}">${cat.title}</a></b>`;
-    messages.push(msg);
-  }
-  sendMessage(messages.join("\r\n\r\n"));
-  return category[1];
-};
-
 export const channels = async (
   api: Api,
   channels: number[],
@@ -99,6 +81,24 @@ export const councils = async (
   return lastBlock;
 };
 
+// forum
+
+export const categories = async (
+  api: Api,
+  category: number[],
+  sendMessage: (msg: string) => void
+): Promise<number> => {
+  const messages: string[] = [];
+  let id: number = category[0] + 1;
+  for (id; id <= category[1]; id++) {
+    const cat: Category = await query("title", () => categoryById(api, id));
+    const msg = `Category ${id}: <b><a href="${domain}/#/forum/categories/${id}">${cat.title}</a></b>`;
+    messages.push(msg);
+  }
+  sendMessage(messages.join("\r\n\r\n"));
+  return category[1];
+};
+
 export const posts = async (
   api: Api,
   posts: number[],
@@ -129,6 +129,32 @@ export const posts = async (
   sendMessage(messages.join("\r\n\r\n"));
   return current;
 };
+
+export const threads = async (
+  api: Api,
+  threads: number[],
+  sendMessage: (msg: string) => void
+): Promise<number> => {
+  const [last, current] = threads;
+  const messages: string[] = [];
+  let id: number = last + 1;
+  for (id; id <= current; id++) {
+    const thread: Thread = await query("title", () =>
+      api.query.forum.threadById(id)
+    );
+    const { title, author_id } = thread;
+    const handle: string = await memberHandleByAccount(api, author_id.toJSON());
+    const category: Category = await query("title", () =>
+      categoryById(api, thread.category_id.toNumber())
+    );
+    const msg = `Thread ${id}: <a href="${domain}/#/forum/threads/${id}">"${title}"</a> by <a href="${domain}/#/members/${handle}">${handle}</a> in category "<a href="${domain}/#/forum/categories/${category.id}">${category.title}</a>" `;
+    messages.push(msg);
+  }
+  sendMessage(messages.join("\r\n\r\n"));
+  return id;
+};
+
+// proposals
 
 const processActive = async (
   id: number,
@@ -180,30 +206,6 @@ export const proposals = async (
       pending = pending.filter((e: number) => e !== id);
 
   return { current, last: current, active, pending };
-};
-
-export const threads = async (
-  api: Api,
-  threads: number[],
-  sendMessage: (msg: string) => void
-): Promise<number> => {
-  const [last, current] = threads;
-  const messages: string[] = [];
-  let id: number = last + 1;
-  for (id; id <= current; id++) {
-    const thread: Thread = await query("title", () =>
-      api.query.forum.threadById(id)
-    );
-    const { title, author_id } = thread;
-    const handle: string = await memberHandleByAccount(api, author_id.toJSON());
-    const category: Category = await query("title", () =>
-      categoryById(api, thread.category_id.toNumber())
-    );
-    const msg = `Thread ${id}: <a href="${domain}/#/forum/threads/${id}">"${title}"</a> by <a href="${domain}/#/members/${handle}">${handle}</a> in category "<a href="${domain}/#/forum/categories/${category.id}">${category.title}</a>" `;
-    messages.push(msg);
-  }
-  sendMessage(messages.join("\r\n\r\n"));
-  return id;
 };
 
 export const formatProposalMessage = (data: string[]): string => {
