@@ -20,8 +20,9 @@ process.env.NTBA_FIX_319 ||
 const bot = new TelegramBot(token, { polling: true });
 
 const sendMessage = (msg: string) => {
+  if (msg === "") return
   try {
-    //bot.sendMessage(chatid, msg, { parse_mode: "HTML" });
+    bot.sendMessage(chatid, msg, { parse_mode: "HTML" });
   } catch (e) {
     console.log(`Failed to send message: ${e}`);
   }
@@ -50,13 +51,13 @@ const main = async () => {
   if (opts.channel) channels[0] = await get.currentChannelId(api);
 
   if (opts.forum) {
-    posts[0] = (await get.currentPostId(api)) - 1;
-    cats[0] = (await get.currentCategoryId(api)) - 1;
-    threads[0] = (await get.currentThreadId(api)) - 1;
+    posts[0] = await get.currentPostId(api);
+    cats[0] = await get.currentCategoryId(api);
+    threads[0] = await get.currentThreadId(api);
   }
 
   if (opts.proposals) {
-    proposals.last = (await get.proposalCount(api)) - 1;
+    proposals.last = await get.proposalCount(api);
     proposals.active = await get.activeProposals(api);
     proposals.pending = await get.pendingProposals(api);
   }

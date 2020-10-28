@@ -1,7 +1,6 @@
 import { Api, Member, ProposalDetail, Proposals } from "../types";
 import { BlockNumber } from "@polkadot/types/interfaces";
 import { Channel, ElectionStage } from "@joystream/types/augment";
-//import { Channel } from "@joystream/types/channel";
 import { Category, Thread, Post } from "@joystream/types/forum";
 import { domain } from "../../config";
 import {
@@ -13,40 +12,13 @@ import {
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-const query = async (
-  test: string,
-  callback: () => Promise<any>
-): Promise<any> => {
-  let result: any = await callback();
+const query = async (test: string, cb: () => Promise<any>): Promise<any> => {
+  let result = await cb();
   for (let i: number = 0; i < 10; i++) {
-    if (result[test] === "") {
-      console.debug(`refetching ${callback} (${i})`);
-      result = await callback();
-      await sleep(5000);
-    }
+    if (result[test] !== "") return result;
+    result = await cb();
+    await sleep(5000);
   }
-  return result;
-};
-
-// forum
-
-export const categories = async (
-  api: Api,
-  category: number[],
-  sendMessage: (msg: string) => void
-): Promise<number> => {
-  const messages: string[] = [];
-  let id: number = category[0] + 1;
-  for (id; id <= category[1]; id++) {
-    const category: Category = await query("title", () =>
-      categoryById(api, id)
-    );
-    messages.push(
-      `Category ${id}: <b><a href="${domain}/#/forum/categories/${id}">${category.title}</a></b>`
-    );
-  }
-  sendMessage(messages.join("\r\n\r\n"));
-  return category[1];
 };
 
 export const channels = async (
@@ -74,49 +46,57 @@ export const channels = async (
 
 export const councils = async (
   api: Api,
-  block: number,
+  currentBlock: number,
   sendMessage: (msg: string) => void
 ): Promise<number> => {
-  let current: number = block;
+  let lastBlock: number = currentBlock;
   const round: number = await api.query.councilElection.round();
-  const stage: ElectionStage | null = await await api.query.councilElection.stage();
+  const stage: ElectionStage | null = await api.query.councilElection.stage();
+  let msg = "";
   if (!stage) {
     const councilEnd: BlockNumber = await api.query.council.termEndsAt();
-    current = councilEnd.toNumber();
+    lastBlock = councilEnd.toNumber();
     const termDuration: BlockNumber = await api.query.councilElection.newTermDuration();
-    const block = current - termDuration.toNumber();
-    sendMessage(
-      `<a href="${domain}/#/council/members">Council for round ${round}</a> has been elected at block ${block} until block ${councilEnd}.`
-    );
+    const block = lastBlock - termDuration.toNumber();
+    msg = `<a href="${domain}/#/council/members">Council for round ${round}</a> has been elected at block ${block} until block ${councilEnd}.`;
   } else {
     if (stage.isAnnouncing) {
-      current = stage.asAnnouncing.toNumber();
+      lastBlock = stage.asAnnouncing.toNumber();
       const announcingPeriod: BlockNumber = await api.query.councilElection.announcingPeriod();
-      const block = current - announcingPeriod.toNumber();
-      sendMessage(
-        `Announcing election for round ${round} at ${block}.<a href="${domain}/#/council/applicants">Apply now!</a>`
-      );
-    }
-
-    if (stage.isVoting) {
-      current = stage.asVoting.toNumber();
+      const block = lastBlock - announcingPeriod.toNumber();
+      msg = `Announcing election for round ${round} at ${block}.<a href="${domain}/#/council/applicants">Apply now!</a>`;
+    } else if (stage.isVoting) {
+      lastBlock = stage.asVoting.toNumber();
       const votingPeriod: BlockNumber = await api.query.councilElection.votingPeriod();
-      const block = current - votingPeriod.toNumber();
-      sendMessage(
-        `Voting stage for council election started at block ${block}. <a href="${domain}/#/council/applicants">Vote now!</a>`
-      );
-    }
-
-    if (stage.isRevealing) {
-      current = stage.asRevealing.toNumber();
+      const block = lastBlock - votingPeriod.toNumber();
+      msg = `Voting stage for council election started at block ${block}. <a href="${domain}/#/council/applicants">Vote now!</a>`;
+    } else if (stage.isRevealing) {
+      lastBlock = stage.asRevealing.toNumber();
       const revealingPeriod: BlockNumber = await api.query.councilElection.revealingPeriod();
-      const block = current - revealingPeriod.toNumber();
-      sendMessage(
-        `Revealing stage for council election started at block ${block}. <a href="${domain}/#/council/votes">Don't forget to reveal your vote!</a>`
-      );
+      const block = lastBlock - revealingPeriod.toNumber();
+      msg = `Revealing stage for council election started at block ${block}. <a href="${domain}/#/council/votes">Don't forget to reveal your vote!</a>`;
     }
   }
-  return current;
+  sendMessage(msg);
+  return lastBlock;
+};
+
+// forum
+
+export const categories = async (
+  api: Api,
+  category: number[],
+  sendMessage: (msg: string) => void
+): Promise<number> => {
+  const messages: string[] = [];
+  let id: number = category[0] + 1;
+  for (id; id <= category[1]; id++) {
+    const cat: Category = await query("title", () => categoryById(api, id));
+    const msg = `Category ${id}: <b><a href="${domain}/#/forum/categories/${id}">${cat.title}</a></b>`;
+    messages.push(msg);
+  }
+  sendMessage(messages.join("\r\n\r\n"));
+  return category[1];
 };
 
 export const posts = async (
@@ -143,13 +123,38 @@ export const posts = async (
       categoryById(api, thread.category_id.toNumber())
     );
     const handle = await memberHandleByAccount(api, post.author_id.toJSON());
-    messages.push(
-      `<b><a href="${domain}/#/members/${handle}">${handle}</a> posted <a href="${domain}/#/forum/threads/${threadId}?replyIdx=${replyId}">${threadTitle}</a> in <a href="${domain}/#/forum/categories/${category.id}">${category.title}</a>:</b>\n\r<i>${excerpt}</i> <a href="${domain}/#/forum/threads/${threadId}?replyIdx=${replyId}">more</a>`
-    );
+    const msg = `<b><a href="${domain}/#/members/${handle}">${handle}</a> posted <a href="${domain}/#/forum/threads/${threadId}?replyIdx=${replyId}">${threadTitle}</a> in <a href="${domain}/#/forum/categories/${category.id}">${category.title}</a>:</b>\n\r<i>${excerpt}</i> <a href="${domain}/#/forum/threads/${threadId}?replyIdx=${replyId}">more</a>`;
+    messages.push(msg);
   }
   sendMessage(messages.join("\r\n\r\n"));
   return current;
 };
+
+export const threads = async (
+  api: Api,
+  threads: number[],
+  sendMessage: (msg: string) => void
+): Promise<number> => {
+  const [last, current] = threads;
+  const messages: string[] = [];
+  let id: number = last + 1;
+  for (id; id <= current; id++) {
+    const thread: Thread = await query("title", () =>
+      api.query.forum.threadById(id)
+    );
+    const { title, author_id } = thread;
+    const handle: string = await memberHandleByAccount(api, author_id.toJSON());
+    const category: Category = await query("title", () =>
+      categoryById(api, thread.category_id.toNumber())
+    );
+    const msg = `Thread ${id}: <a href="${domain}/#/forum/threads/${id}">"${title}"</a> by <a href="${domain}/#/members/${handle}">${handle}</a> in category "<a href="${domain}/#/forum/categories/${category.id}">${category.title}</a>" `;
+    messages.push(msg);
+  }
+  sendMessage(messages.join("\r\n\r\n"));
+  return id;
+};
+
+// proposals
 
 const processActive = async (
   id: number,
@@ -162,7 +167,7 @@ const processActive = async (
     let label: string = result;
     if (result === "Approved") {
       const executed = parameters.gracePeriod.toNumber() > 0 ? false : true;
-      label = executed ? "Finalized" : "Finalized and Executed";
+      label = executed ? "Finalized" : "Executed";
     }
     msg = `Proposal ${id} <b>${label}</b> at block ${finalizedAt}.\r\n${message}`;
     sendMessage(msg);
@@ -203,35 +208,7 @@ export const proposals = async (
   return { current, last: current, active, pending };
 };
 
-export const threads = async (
-  api: Api,
-  threads: number[],
-  sendMessage: (msg: string) => void
-): Promise<number> => {
-  const [last, current] = threads;
-  const messages: string[] = [];
-  let id: number = last + 1;
-  for (id; id <= current; id++) {
-    const thread: Thread = await query("title", () =>
-      api.query.forum.threadById(id)
-    );
-    const { title, author_id } = thread;
-    const memberName: string = await memberHandleByAccount(
-      api,
-      author_id.toJSON()
-    );
-    const category: Category = await query("title", () =>
-      categoryById(api, thread.category_id.toNumber())
-    );
-    messages.push(
-      `Thread ${id}: <a href="${domain}/#/forum/threads/${id}">"${title}"</a> by <a href="${domain}/#/members/${memberName}">${memberName}</a> in category "<a href="${domain}/#/forum/categories/${category.id}">${category.title}</a>" `
-    );
-  }
-  sendMessage(messages.join("\r\n\r\n"));
-  return id;
-};
-
 export const formatProposalMessage = (data: string[]): string => {
-  const [id, title, type, stage, result, memberHandle] = data;
-  return `<b>Type</b>: ${type}\r\n<b>Proposer</b>:<a href="${domain}/#/members/${memberHandle}"> ${memberHandle}</a>\r\n<b>Title</b>: <a href="${domain}/#/proposals/${id}">${title}</a>\r\n<b>Stage</b>: ${stage}\r\n<b>Result</b>: ${result}`;
+  const [id, title, type, stage, result, handle] = data;
+  return `<b>Type</b>: ${type}\r\n<b>Proposer</b>:<a href="${domain}/#/members/${handle}"> ${handle}</a>\r\n<b>Title</b>: <a href="${domain}/#/proposals/${id}">${title}</a>\r\n<b>Stage</b>: ${stage}\r\n<b>Result</b>: ${result}`;
 };
