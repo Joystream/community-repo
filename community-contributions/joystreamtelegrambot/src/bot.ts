@@ -50,13 +50,13 @@ const main = async () => {
   if (opts.channel) channels[0] = await get.currentChannelId(api);
 
   if (opts.forum) {
-    posts[0] = (await get.currentPostId(api)) - 1;
-    cats[0] = (await get.currentCategoryId(api)) - 1;
-    threads[0] = (await get.currentThreadId(api)) - 1;
+    posts[0] = await get.currentPostId(api);
+    cats[0] = await get.currentCategoryId(api);
+    threads[0] = await get.currentThreadId(api);
   }
 
   if (opts.proposals) {
-    proposals.last = (await get.proposalCount(api)) - 1;
+    proposals.last = await get.proposalCount(api);
     proposals.active = await get.activeProposals(api);
     proposals.pending = await get.pendingProposals(api);
   }
