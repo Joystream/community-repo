@@ -1,7 +1,40 @@
 {
-   "dependencies": {
-      "@joystream/types": "^0.12.0",
-      "@polkadot/api": "^0.96.1",
-      "node-telegram-bot-api": "^0.50.0"
-   }
+  "repository": "https://github.com/Joystream/community-repo",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/bot.ts",
+    "all": "ts-node src/bot.ts --channel --council --forum --proposals",
+    "quiet": "ts-node src/bot.ts --quiet --channel --council --forum --proposals",
+    "verbose": "ts-node src/bot.ts --verbose --channel --council --forum --proposals",
+    "channel": "ts-node src/bot.ts --channel",
+    "council": "ts-node src/bot.ts --council",
+    "forum": "ts-node src/bot.ts --forum",
+    "proposals": "ts-node src/bot.ts --proposals",
+    "channel-verbose": "ts-node src/bot.ts --verbose --channel",
+    "council-verbose": "ts-node src/bot.ts --verbose --council",
+    "forum-verbose": "ts-node src/bot.ts --verbose --forum",
+    "proposals-verbose": "ts-node src/bot.ts --proposals",
+    "dev": "ts-node-dev --respawn src/bot.ts --verbose --channel --council --forum --proposals",
+    "channel-dev": "ts-node-dev --respawn src/bot.ts --verbose --channel",
+    "council-dev": "ts-node-dev --respawn src/bot.ts --verbose --council",
+    "forum-dev": "ts-node-dev --respawn src/bot.ts --verbose --forum",
+    "proposal-dev": "ts-node-dev --respawn src/bot.ts --verbose --proposals",
+    "tests": "ts-node src/tests.ts"
+  },
+  "dependencies": {
+    "@joystream/types": "^0.13.1",
+    "@polkadot/api": "1.26.1",
+    "@polkadot/keyring": "^3.0.1",
+    "@polkadot/util": "^3.0.1",
+    "@types/node-telegram-bot-api": "^0.50.0",
+    "moment": "^2.29.1",
+    "node-telegram-bot-api": "^0.50.0"
+  },
+  "devDependencies": {
+    "@polkadot/ts": "^0.3.49",
+    "ts-node": "^9.0.0",
+    "ts-node-dev": "^1.0.0-pre.63",
+    "typescript": "^4.0.3"
+  }
 }
