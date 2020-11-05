@@ -1,7 +1,7 @@
 Notes: All data is taken from Council reports: https://github.com/Joystream/community-repo/tree/master/council-reports/alexandria-testnet or Tokenomics reports: https://github.com/Joystream/community-repo/tree/master/tokenomics-reports
 
 ## Council + Tokenomics Overview
-This table shows statistics from each council session, including token generation information. It can be used as an overview of both tokenomics and how things change between council sessions.
+This table shows statistics from the end of each council session, including token generation information. It can be used as an overview of both tokenomics and how things change between council sessions.
 
 | Council #                            | 1           | 2           | 3          |  |             |
 |--------------------------------------|-------------|-------------|------------|--|-------------|
@@ -14,9 +14,7 @@ This table shows statistics from each council session, including token generatio
 | Avg. Block Gen Time                  | 6.17        | 6.08        |            |  |             |
 | Total Validator Stake                | 14,878,468  | 27,729,355  |            |  |             |
 |                                      |             |             |            |  |             |
-|                                      |             |             |            |  |             |
 | Total Council Applicants             | 18          | 9           |            |  | 14          |
-| Total Applicant Stake (JOY)          | 35,123,001  | 7,532,000   |            |  | 21,327,501  |
 | Total Election Stake (JOY)           | 24,261,001  | 28,431,500  | 31,372,000 |  | 28,021,500  |
 | Total Votes                          | 17          | 18          |            |  | 18          |
 |                                      |             |             |            |  |             |
