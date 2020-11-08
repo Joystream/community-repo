@@ -37,10 +37,10 @@ This report was compiled by @tomato with assistance from @freakstatic
 
 ### 1.5 - Council Mint & Budget Status
 * Start minted: 14493000 tokens
-* End minted:  tokens
-* Total minted during council round:  tokens (+% from start)
-	* Minted from Spending proposals:  tokens
-	* Minted for CM payments: tokens
+* End minted: 27083000 tokens 
+* Total minted during council round: 12590000 tokens (+86.86% from start)
+	* Minted from Spending proposals: 8150000 tokens
+	* Minted for CM payments: 4440000 tokens
 
 * Budget proposal link: https://testnet.joystream.org/#/proposals/36
 * Budget forum link: https://testnet.joystream.org/#/forum/threads/143
@@ -57,7 +57,7 @@ This report was compiled by @tomato with assistance from @freakstatic
 	- 1 SetContentWorkingGroupMintCapacity Proposals
 
 - 11 Approved & executed proposals
-	- Token value:  tokens
+	- Token value: 8150000 tokens
 - 2 Canceled proposals
 - 0 Rejected proposals
 - 0 Slashed proposals
@@ -199,8 +199,11 @@ This report was compiled by @tomato with assistance from @freakstatic
 
 ## 3 - Review
 ### 3.1 - Workflow, Performance, Challenged & Thinking
-* @
-	* 
+* @tomato
+	* I think this council session went pretty well. The budgets are becoming more critical to deal with, and because validators are much more stable and with higher rewards there are a lot more changes with it.
+	* We also completed our first community bounty for the Telegram bot. Unfortunately it has a few small bugs still but it is at least running once again.
+	* Overall we're making good progress with the KPIs, not perfect, but it seems we're starting to achieve most of them
+	* Since the new KPI system we haven't had any proposals expire due to lack of votes and most proposals get voted on within a reasonable timeframe, this has been a big help in making more frequent progress.
 
 ## 4 - Obligations
 Council obligations are payments or items that carry through council sessions. These are noted so that future councils can easily see what items they should be aware of. Items can be removed from here once they have been resolved or become outdated.
