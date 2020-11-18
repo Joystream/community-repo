@@ -20,8 +20,9 @@ process.env.NTBA_FIX_319 ||
 const bot = new TelegramBot(token, { polling: true });
 
 const sendMessage = (msg: string) => {
+  if (msg === "") return
   try {
-    //bot.sendMessage(chatid, msg, { parse_mode: "HTML" });
+    bot.sendMessage(chatid, msg, { parse_mode: "HTML" });
   } catch (e) {
     console.log(`Failed to send message: ${e}`);
   }
