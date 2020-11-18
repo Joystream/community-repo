@@ -13,7 +13,7 @@ import {
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const query = async (test: string, cb: () => Promise<any>): Promise<any> => {
-  let result: any = await cb();
+  let result = await cb();
   for (let i: number = 0; i < 10; i++) {
     if (result[test] !== "") return result;
     result = await cb();

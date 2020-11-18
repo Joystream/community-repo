@@ -10,7 +10,7 @@ import {
   ThreadId
 } from "@joystream/types/augment";
 import { Category, CategoryId } from "@joystream/types/forum";
-import { Membership } from "@joystream/types/members";
+import { MemberId,Membership } from "@joystream/types/members";
 import { Proposal } from "@joystream/types/proposals";
 
 // channel
@@ -20,7 +20,7 @@ export const currentChannelId = async (api: Api): Promise<number> => {
   return id.toNumber() - 1;
 };
 
-export const memberHandle = async (api: Api, id: number): Promise<string> => {
+export const memberHandle = async (api: Api, id: MemberId): Promise<string> => {
   const membership: Membership = await api.query.members.membershipById(id);
   return membership.handle.toJSON();
 };
@@ -29,7 +29,7 @@ export const memberHandleByAccount = async (
   api: Api,
   account: string
 ): Promise<string> => {
-  const id: number = await api.query.members.memberIdsByRootAccountId(account);
+  const id: MemberId = await api.query.members.memberIdsByRootAccountId(account);
   const handle: string = await memberHandle(api, id);
   return handle;
 };
@@ -112,7 +112,7 @@ export const proposalDetail = async (
     : "Pending";
 
   const { parameters, proposerId } = proposal;
-  const author: string = await memberHandle(api, proposerId.toNumber());
+  const author: string = await memberHandle(api, proposerId);
   const title: string = proposal.title.toString();
   const type: string = await getProposalType(api, id);
   const args: string[] = [String(id), title, type, stage, result, author];
