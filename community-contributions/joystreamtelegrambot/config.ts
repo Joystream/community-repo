@@ -9,3 +9,9 @@ export const token: string = "";
 
 // telegram chat ID
 export const chatid: string = "";
+
+// time period between summaries in milliseconds
+export const summaryPeriod = 10000 * 60 * 24;
+
+/// account to query staking
+export const accountId = "";

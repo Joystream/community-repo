@@ -1,8 +1,8 @@
 import TelegramBot from "node-telegram-bot-api";
-import { token, chatid, wsLocation } from "../config";
+import { accountId, token, chatid, wsLocation, summaryPeriod } from "../config";
 
 // types
-import { Options, Proposals } from "./types";
+import { Block, Options, Proposals, Summary } from "./types";
 import { types } from "@joystream/types";
 import { ApiPromise, WsProvider } from "@polkadot/api";
 import { Header } from "@polkadot/types/interfaces";
@@ -10,7 +10,8 @@ import { Header } from "@polkadot/types/interfaces";
 // functions
 import * as announce from "./lib/announcements";
 import * as get from "./lib/getters";
-import { parseArgs, printStatus, exit } from "./lib/util";
+import { parseArgs, printStatus, sendSummary, exit } from "./lib/util";
+import moment from "moment";
 
 const opts: Options = parseArgs(process.argv.slice(2));
 const log = (msg: string): void | number => opts.verbose && console.log(msg);
@@ -19,8 +20,13 @@ process.env.NTBA_FIX_319 ||
 
 const bot = new TelegramBot(token, { polling: true });
 
+let startTime = moment().valueOf();
+const getPassedTime = (now: number): string | undefined => {
+  if (now < startTime + summaryPeriod) return;
+  return moment.utc(moment(now).diff(moment(startTime))).format("H:mm:ss");
+};
 const sendMessage = (msg: string) => {
-  if (msg === "") return
+  if (msg === "") return;
   try {
     bot.sendMessage(chatid, msg, { parse_mode: "HTML" });
   } catch (e) {
@@ -41,7 +47,9 @@ const main = async () => {
     api.rpc.system.version()
   ]);
 
-  let lastBlock = 0;
+  let lastBlock: Block = { id: 0, duration: 6000, timestamp: startTime };
+  let summary: Summary = { blocks: [], nominators: [], validators: [] };
+
   const cats: number[] = [0, 0];
   const channels: number[] = [0, 0];
   const posts: number[] = [0, 0];
@@ -64,10 +72,31 @@ const main = async () => {
 
   log(`Subscribed to ${chain} on ${node} v${version}`);
   const unsubscribe = await api.rpc.chain.subscribeNewHeads(
-    async (block: Header): Promise<void> => {
-      const currentBlock = block.number.toNumber();
-      if (opts.council && currentBlock > lastBlock)
-        lastBlock = await announce.councils(api, currentBlock, sendMessage);
+    async (header: Header): Promise<void> => {
+      // summary
+      const id = header.number.toNumber();
+      const timestamp = (await api.query.timestamp.now()).toNumber();
+      const duration = timestamp - lastBlock.timestamp;
+      const block: Block = { id, timestamp, duration };
+      if (lastBlock.id === id) return;
+
+      let { blocks, nominators, validators } = summary;
+      blocks = blocks.concat(block);
+      //const currentNominators = await api.query.staking.nominators(accountId);
+      nominators = nominators.concat([]); // TODO
+      const currentValidators = await api.query.staking.validatorCount();
+      validators = validators.concat(currentValidators.toNumber());
+      const timePassed = getPassedTime(timestamp); // only defined after period
+      summary = { blocks, nominators, validators };
+
+      if (timePassed) {
+        sendSummary(api, summary, timePassed, accountId, sendMessage);
+        startTime = block.timestamp;
+      }
+
+      // announcements
+      if (opts.council && block.id > lastBlock.id)
+        announce.councils(api, block.id, sendMessage);
 
       if (opts.channel) {
         channels[1] = await get.currentChannelId(api);
@@ -97,13 +126,14 @@ const main = async () => {
       }
 
       printStatus(opts, {
-        block: currentBlock,
+        block: id,
         cats,
         chain: String(chain),
         posts,
         proposals,
         threads
       });
+      lastBlock = block;
     }
   );
 };

@@ -38,3 +38,15 @@ export interface Member {
   handle: string;
   url?: string;
 }
+
+export interface Block {
+  id: number;
+  timestamp: number;
+  duration: number;
+}
+
+export interface Summary {
+  blocks: Block[];
+  validators: number[];
+  nominators: number[];
+}
