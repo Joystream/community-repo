@@ -9,3 +9,7 @@ export const token: string = "";
 
 // telegram chat ID
 export const chatid: string = "";
+
+// time between heartbeat announcement in milliseconds
+export const heartbeat = 60000 * 60 * 24;
+

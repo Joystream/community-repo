@@ -1,5 +1,4 @@
-import { Options } from "../types";
-import { Proposals } from "../types";
+import { Api, Options, Proposals } from "../types";
 import moment from "moment";
 
 export const parseArgs = (args: string[]): Options => {
@@ -33,17 +32,24 @@ export const printStatus = (
   if (opts.verbose < 1) return;
 
   const { block, chain, proposals, cats, posts, threads } = data;
-  const date = moment().format("L HH:mm:ss");
+  const date = formatTime();
   let message = `[${date}] Chain:${chain} Block:${block} `;
 
   if (opts.forum)
     message += `Post:${posts[1]} Cat:${cats[1]} Thread:${threads[1]} `;
 
   if (opts.proposals)
-    message += `Proposals:${proposals.current} (Active:${proposals.active.length} Pending:${proposals.pending.length}) `;
+    message += `Proposals:${proposals.current} (Active:${proposals.active.length} Pending:${proposals.executing.length}) `;
 
   console.log(message);
 };
+
+// time
+export const formatTime = (time?: any): string =>
+  moment(time).format("H:mm:ss");
+
+export const passedTime = (start: number, now: number): string =>
+  formatTime(moment.utc(moment(now).diff(moment(start))));
 
 export const exit = (log: (s: string) => void) => {
   log("\nNo connection, exiting.\n");
