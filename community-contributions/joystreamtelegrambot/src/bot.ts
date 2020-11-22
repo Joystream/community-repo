@@ -2,7 +2,7 @@ import TelegramBot from "node-telegram-bot-api";
 import { accountId, token, chatid, wsLocation, summaryPeriod } from "../config";
 
 // types
-import { Block, Options, Proposals, Summary } from "./types";
+import { Block, NominatorsEntries, Options, Proposals, Summary } from "./types";
 import { types } from "@joystream/types";
 import { ApiPromise, WsProvider } from "@polkadot/api";
 import { Header } from "@polkadot/types/interfaces";
@@ -20,11 +20,10 @@ process.env.NTBA_FIX_319 ||
 
 const bot = new TelegramBot(token, { polling: true });
 
-let startTime = moment().valueOf();
-const getPassedTime = (now: number): string | undefined => {
-  if (now < startTime + summaryPeriod) return;
-  return moment.utc(moment(now).diff(moment(startTime))).format("H:mm:ss");
-};
+let startTime: number = moment().valueOf();
+const formatPassedTime = (now: number): string =>
+  moment.utc(moment(now).diff(moment(startTime))).format("H:mm:ss");
+
 const sendMessage = (msg: string) => {
   if (msg === "") return;
   try {
@@ -73,25 +72,28 @@ const main = async () => {
   log(`Subscribed to ${chain} on ${node} v${version}`);
   const unsubscribe = await api.rpc.chain.subscribeNewHeads(
     async (header: Header): Promise<void> => {
-      // summary
+      // current block
       const id = header.number.toNumber();
+      if (lastBlock.id === id) return;
       const timestamp = (await api.query.timestamp.now()).toNumber();
       const duration = timestamp - lastBlock.timestamp;
       const block: Block = { id, timestamp, duration };
-      if (lastBlock.id === id) return;
 
+      // count nominators and validators
+      const nominatorsEntries: NominatorsEntries = await api.query.staking.nominators.entries();
+      const currentValidators = await api.query.staking.validatorCount();
       let { blocks, nominators, validators } = summary;
       blocks = blocks.concat(block);
-      //const currentNominators = await api.query.staking.nominators(accountId);
-      nominators = nominators.concat([]); // TODO
-      const currentValidators = await api.query.staking.validatorCount();
+      nominators = nominators.concat(nominatorsEntries.length);
       validators = validators.concat(currentValidators.toNumber());
-      const timePassed = getPassedTime(timestamp); // only defined after period
       summary = { blocks, nominators, validators };
 
-      if (timePassed) {
-        sendSummary(api, summary, timePassed, accountId, sendMessage);
+      // summary
+      if (timestamp > startTime + summaryPeriod) {
+        const formattedTime = formatPassedTime(timestamp);
+        sendSummary(api, summary, formattedTime, accountId, sendMessage);
         startTime = block.timestamp;
+        summary = { blocks: [], nominators: [], validators: [] };
       }
 
       // announcements

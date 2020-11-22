@@ -2,6 +2,9 @@ import { ApiPromise } from "@polkadot/api";
 import { MemberId } from "@joystream/types/members";
 import { AnyJson } from "@polkadot/types/types/helpers";
 import { ProposalParameters, ProposalStatus } from "@joystream/types/proposals";
+import { Nominations } from "@polkadot/types/interfaces";
+import { Option } from "@polkadot/types/codec";
+import { StorageKey } from "@polkadot/types/primitive";
 
 export interface Api {
   query: any;
@@ -50,3 +53,5 @@ export interface Summary {
   validators: number[];
   nominators: number[];
 }
+
+export type NominatorsEntries = [StorageKey, Option<Nominations>][];
