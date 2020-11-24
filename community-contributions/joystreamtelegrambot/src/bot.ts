@@ -1,5 +1,5 @@
 import TelegramBot from "node-telegram-bot-api";
-import { accountId, token, chatid, wsLocation, summaryPeriod } from "../config";
+import { accountId, token, chatid, wsLocation, heartbeat } from "../config";
 
 // types
 import { Block, NominatorsEntries, Options, Proposals, Summary } from "./types";
@@ -10,7 +10,7 @@ import { Header } from "@polkadot/types/interfaces";
 // functions
 import * as announce from "./lib/announcements";
 import * as get from "./lib/getters";
-import { parseArgs, printStatus, sendSummary, exit } from "./lib/util";
+import { parseArgs, printStatus, passedTime, exit } from "./lib/util";
 import moment from "moment";
 
 const opts: Options = parseArgs(process.argv.slice(2));
@@ -21,8 +21,6 @@ process.env.NTBA_FIX_319 ||
 const bot = new TelegramBot(token, { polling: true });
 
 let startTime: number = moment().valueOf();
-const formatPassedTime = (now: number): string =>
-  moment.utc(moment(now).diff(moment(startTime))).format("H:mm:ss");
 
 const sendMessage = (msg: string) => {
   if (msg === "") return;
@@ -88,10 +86,10 @@ const main = async () => {
       validators = validators.concat(currentValidators.toNumber());
       summary = { blocks, nominators, validators };
 
-      // summary
-      if (timestamp > startTime + summaryPeriod) {
-        const formattedTime = formatPassedTime(timestamp);
-        sendSummary(api, summary, formattedTime, accountId, sendMessage);
+      // heartbeat
+      if (timestamp > startTime + heartbeat) {
+        const formattedTime = passedTime(startTime, timestamp);
+        announce.heartbeat(api, summary, formattedTime, accountId, sendMessage);
         startTime = block.timestamp;
         summary = { blocks: [], nominators: [], validators: [] };
       }

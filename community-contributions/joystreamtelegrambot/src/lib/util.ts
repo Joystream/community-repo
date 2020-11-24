@@ -1,4 +1,4 @@
-import { Api, Options, Proposals, Summary } from "../types";
+import { Api, Options, Proposals } from "../types";
 import moment from "moment";
 
 export const parseArgs = (args: string[]): Options => {
@@ -32,7 +32,7 @@ export const printStatus = (
   if (opts.verbose < 1) return;
 
   const { block, chain, proposals, cats, posts, threads } = data;
-  const date = moment().format("L HH:mm:ss");
+  const date = formatTime();
   let message = `[${date}] Chain:${chain} Block:${block} `;
 
   if (opts.forum)
@@ -44,33 +44,12 @@ export const printStatus = (
   console.log(message);
 };
 
-const getAverage = (array: number[]) =>
-  array.reduce((a: number, b: number) => a + b, 0) / array.length;
+// time
+export const formatTime = (time?: any): string =>
+  moment(time).format("H:mm:ss");
 
-export const sendSummary = async (
-  api: Api,
-  summary: Summary,
-  timePassed: string,
-  accountId: string,
-  sendMessage: (msg: string) => void
-): Promise<void> => {
-  const { blocks, nominators, validators } = summary;
-  const avgDuration =
-    blocks.reduce((a, b) => a + b.duration, 0) / blocks.length;
-  const era: any = await api.query.staking.currentEra();
-  const totalStake: any = await api.query.staking.erasTotalStake(parseInt(era));
-  const stakers = await api.query.staking.erasStakers(parseInt(era), accountId);
-  const stakerCount = stakers.others.length;
-  const avgStake = parseInt(totalStake.toString()) / stakerCount;
-
-  console.log(`
-  Blocks produced during ${timePassed}h in era ${era}: ${blocks.length}
-  Average blocktime: ${Math.floor(avgDuration) / 1000} s
-  Average stake: ${avgStake / 1000000} M JOY (${stakerCount} stakers)
-  Average number of nominators: ${getAverage(nominators)}
-  Average number of validators: ${getAverage(validators)}
-`);
-};
+export const passedTime = (start: number, now: number): string =>
+  formatTime(moment.utc(moment(now).diff(moment(start))));
 
 export const exit = (log: (s: string) => void) => {
   log("\nNo connection, exiting.\n");

@@ -1,4 +1,4 @@
-import { Api, Member, ProposalDetail, Proposals } from "../types";
+import { Api, Member, ProposalDetail, Proposals, Summary } from "../types";
 import { BlockNumber } from "@polkadot/types/interfaces";
 import { Channel, ElectionStage } from "@joystream/types/augment";
 import { Category, Thread, Post } from "@joystream/types/forum";
@@ -206,6 +206,36 @@ export const proposals = async (
       pending = pending.filter((e: number) => e !== id);
 
   return { current, last: current, active, pending };
+};
+
+// heartbeat
+
+const getAverage = (array: number[]) =>
+  array.reduce((a: number, b: number) => a + b, 0) / array.length;
+
+export const heartbeat = async (
+  api: Api,
+  summary: Summary,
+  timePassed: string,
+  accountId: string,
+  sendMessage: (msg: string) => void
+): Promise<void> => {
+  const { blocks, nominators, validators } = summary;
+  const avgDuration =
+    blocks.reduce((a, b) => a + b.duration, 0) / blocks.length;
+  const era: any = await api.query.staking.currentEra();
+  const totalStake: any = await api.query.staking.erasTotalStake(parseInt(era));
+  const stakers = await api.query.staking.erasStakers(parseInt(era), accountId);
+  const stakerCount = stakers.others.length;
+  const avgStake = parseInt(totalStake.toString()) / stakerCount;
+
+  console.log(`
+  Blocks produced during ${timePassed}h in era ${era}: ${blocks.length}
+  Average blocktime: ${Math.floor(avgDuration) / 1000} s
+  Average stake: ${avgStake / 1000000} M JOY (${stakerCount} stakers)
+  Average number of nominators: ${getAverage(nominators)}
+  Average number of validators: ${getAverage(validators)}
+`);
 };
 
 export const formatProposalMessage = (data: string[]): string => {
