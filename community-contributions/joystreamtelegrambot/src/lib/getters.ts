@@ -133,3 +133,8 @@ export const providerStatus = async (domain: string): Promise<boolean> => {
     return false;
   }
 };
+
+export const nextOpening = async (api: Api): Promise<number> => {
+  const opening = await api.query.storageWorkingGroup.nextOpeningId();
+  return opening.toJSON();
+};

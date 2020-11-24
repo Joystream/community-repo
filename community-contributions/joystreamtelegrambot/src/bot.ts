@@ -64,6 +64,7 @@ const main = async () => {
 
   let lastBlock: Block = { id: 0, duration: 6000, timestamp: startTime };
   let summary: Summary = { blocks: [], nominators: [], validators: [] };
+  let nextOpening: number = await get.nextOpening(api);
 
   const cats: number[] = [0, 0];
   const channels: number[] = [0, 0];
@@ -158,6 +159,14 @@ const main = async () => {
         checkProviders(providerStatus, sendMessage);
         lastCheck = block.timestamp;
       }
+      // new storage provider (or lead) opportunity is opened (id, title, link)
+      const opening: number = await get.nextOpening(api);
+      if (opening > nextOpening) {
+        announce.opening(opening, sendMessage);
+        nextOpening = opening;
+      }
+
+      // TODO A new storage provider (or lead) opportunity is closed (id, title, link, providerId+membershipId of hired)
     }
   );
 };
@@ -172,17 +181,15 @@ const checkProviders = async (
       const status = await get.providerStatus(address);
       log(`\t${address}:\t${status ? "online" : "offline"}`);
 
-      //A storage provider goes online (id, address, time)
+      // storage provider went online
       if (!providerStatus[address] && status)
-        announce.provider(id, address, "online", sendMessage);
+        announce.provider(id + 1, address, "online", sendMessage);
 
-      //A storage provider goes offline (id, address, time)
+      // storage provider went offline
       if (providerStatus[address] && !status)
-        announce.provider(id, address, "offline", sendMessage);
+        announce.provider(id + 1, address, "offline", sendMessage);
 
       providerStatus[address] = status;
     }
   );
-  // TODO A new storage provider (or lead) opportunity is opened (id, title, link)
-  // TODO A new storage provider (or lead) opportunity is closed (id, title, link, providerId+membershipId of hired)
 };
