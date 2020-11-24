@@ -27,8 +27,10 @@
     "@polkadot/api": "1.26.1",
     "@polkadot/keyring": "^3.0.1",
     "@polkadot/util": "^3.0.1",
+    "@types/node-fetch": "^2.5.7",
     "@types/node-telegram-bot-api": "^0.50.0",
     "moment": "^2.29.1",
+    "node-fetch": "^1.7.3",
     "node-telegram-bot-api": "^0.50.0"
   },
   "devDependencies": {

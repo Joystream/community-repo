@@ -55,3 +55,7 @@ export interface Summary {
 }
 
 export type NominatorsEntries = [StorageKey, Option<Nominations>][];
+
+export interface ProviderStatus {
+  [propName: string]: boolean;
+}

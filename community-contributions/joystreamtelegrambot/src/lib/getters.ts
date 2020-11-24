@@ -1,4 +1,5 @@
 import { formatProposalMessage } from "./announcements";
+import fetch from "node-fetch";
 
 //types
 
@@ -10,7 +11,7 @@ import {
   ThreadId
 } from "@joystream/types/augment";
 import { Category, CategoryId } from "@joystream/types/forum";
-import { MemberId,Membership } from "@joystream/types/members";
+import { MemberId, Membership } from "@joystream/types/members";
 import { Proposal } from "@joystream/types/proposals";
 
 // channel
@@ -29,7 +30,9 @@ export const memberHandleByAccount = async (
   api: Api,
   account: string
 ): Promise<string> => {
-  const id: MemberId = await api.query.members.memberIdsByRootAccountId(account);
+  const id: MemberId = await api.query.members.memberIdsByRootAccountId(
+    account
+  );
   const handle: string = await memberHandle(api, id);
   return handle;
 };
@@ -119,4 +122,14 @@ export const proposalDetail = async (
   const message: string = formatProposalMessage(args);
   const createdAt: number = proposal.createdAt.toNumber();
   return { createdAt, finalizedAt, parameters, message, stage, result };
+};
+
+// storage providers
+export const providerStatus = async (domain: string): Promise<boolean> => {
+  try {
+    const res = await fetch(`https://${domain}:5001/api/v0/version`);
+    return res.status >= 400 ? false : true;
+  } catch (e) {
+    return false;
+  }
 };

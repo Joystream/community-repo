@@ -3,6 +3,7 @@ import { BlockNumber } from "@polkadot/types/interfaces";
 import { Channel, ElectionStage } from "@joystream/types/augment";
 import { Category, Thread, Post } from "@joystream/types/forum";
 import { domain } from "../../config";
+import { formatTime } from "./util";
 import {
   categoryById,
   memberHandle,
@@ -241,4 +242,16 @@ export const heartbeat = async (
 export const formatProposalMessage = (data: string[]): string => {
   const [id, title, type, stage, result, handle] = data;
   return `<b>Type</b>: ${type}\r\n<b>Proposer</b>:<a href="${domain}/#/members/${handle}"> ${handle}</a>\r\n<b>Title</b>: <a href="${domain}/#/proposals/${id}">${title}</a>\r\n<b>Stage</b>: ${stage}\r\n<b>Result</b>: ${result}`;
+};
+
+// providers
+
+export const provider = (
+  id: number,
+  address: string,
+  status: string,
+  sendMessage: (msg: string) => void
+): void => {
+  const msg = `[${formatTime()}] Storage Provider ${id} (${address}) is ${status}`;
+  sendMessage(msg);
 };

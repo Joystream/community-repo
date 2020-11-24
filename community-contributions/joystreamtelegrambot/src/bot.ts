@@ -1,8 +1,16 @@
 import TelegramBot from "node-telegram-bot-api";
 import { accountId, token, chatid, wsLocation, heartbeat } from "../config";
+import storageProviders from "../storageProviders";
 
 // types
-import { Block, NominatorsEntries, Options, Proposals, Summary } from "./types";
+import {
+  Block,
+  NominatorsEntries,
+  Options,
+  Proposals,
+  Summary,
+  ProviderStatus
+} from "./types";
 import { types } from "@joystream/types";
 import { ApiPromise, WsProvider } from "@polkadot/api";
 import { Header } from "@polkadot/types/interfaces";
@@ -30,6 +38,16 @@ const sendMessage = (msg: string) => {
     console.log(`Failed to send message: ${e}`);
   }
 };
+
+// storage providers
+const checkPeriod = 60000 * 10;
+let lastCheck: number = 0;
+let providerStatus: ProviderStatus = {};
+storageProviders.forEach(
+  async (address: string): Promise<void> => {
+    providerStatus[address] = await get.providerStatus(address);
+  }
+);
 
 const main = async () => {
   const provider = new WsProvider(wsLocation);
@@ -134,7 +152,37 @@ const main = async () => {
         threads
       });
       lastBlock = block;
+
+      // test storage providers
+      if (block.timestamp > lastCheck + checkPeriod) {
+        checkProviders(providerStatus, sendMessage);
+        lastCheck = block.timestamp;
+      }
     }
   );
 };
 main().catch(() => exit(log));
+
+const checkProviders = async (
+  providerStatus: ProviderStatus,
+  sendMessage: (msg: string) => void
+): Promise<void> => {
+  Object.keys(providerStatus).map(
+    async (address: string, id: number): Promise<void> => {
+      const status = await get.providerStatus(address);
+      log(`\t${address}:\t${status ? "online" : "offline"}`);
+
+      //A storage provider goes online (id, address, time)
+      if (!providerStatus[address] && status)
+        announce.provider(id, address, "online", sendMessage);
+
+      //A storage provider goes offline (id, address, time)
+      if (providerStatus[address] && !status)
+        announce.provider(id, address, "offline", sendMessage);
+
+      providerStatus[address] = status;
+    }
+  );
+  // TODO A new storage provider (or lead) opportunity is opened (id, title, link)
+  // TODO A new storage provider (or lead) opportunity is closed (id, title, link, providerId+membershipId of hired)
+};
