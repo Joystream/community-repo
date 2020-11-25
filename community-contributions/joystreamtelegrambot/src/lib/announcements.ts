@@ -157,54 +157,28 @@ export const threads = async (
 
 // proposals
 
-const processActive = async (
-  id: number,
-  details: ProposalDetail,
-  sendMessage: (s: string) => void
-): Promise<boolean> => {
-  const { createdAt, finalizedAt, message, parameters, result } = details;
-  let msg = `Proposal ${id} <b>created</b> at block ${createdAt}.\r\n${message}`;
-  if (details.stage === "Finalized") {
-    let label: string = result;
-    if (result === "Approved") {
-      const executed = parameters.gracePeriod.toNumber() > 0 ? false : true;
-      label = executed ? "Finalized" : "Executed";
-    }
-    msg = `Proposal ${id} <b>${label}</b> at block ${finalizedAt}.\r\n${message}`;
-    sendMessage(msg);
-    return true;
-  } else return processPending(id, details, sendMessage);
-};
-
-const processPending = async (
-  id: number,
-  details: ProposalDetail,
-  sendMessage: (s: string) => void
-): Promise<boolean> => {
-  const { createdAt, message, parameters, stage } = details;
-  if (stage === "Finalized") return processActive(id, details, sendMessage);
-  const votingEndsAt = createdAt + parameters.votingPeriod.toNumber();
-  const msg = `Proposal ${id} <b>created</b> at block ${createdAt}.\r\n${message}\r\nYou can vote until block ${votingEndsAt}.`;
-  sendMessage(msg);
-  return true;
-};
-
 export const proposals = async (
   api: Api,
   prop: Proposals,
   sendMessage: (msg: string) => void
 ): Promise<Proposals> => {
   let { current, last, active, pending } = prop;
+  for (let id: number = last + 1; id <= current; id++) {
+    const proposal: ProposalDetail = await proposalDetail(api, id);
+    const { createdAt, finalizedAt, message, parameters, result } = proposal;
+    const votingEndsAt = createdAt + parameters.votingPeriod.toNumber();
+    let msg = `Proposal ${id}: <b>Created</b> at block ${createdAt}.\r\n${message}\r\nYou can vote until block ${votingEndsAt}.`;
 
-  for (let id: number = last++; id <= current; id++) active.push(id);
-
-  for (const id of active)
-    if (processActive(id, await proposalDetail(api, id), sendMessage))
-      active = active.filter((e: number) => e !== id);
-
-  for (const id of pending)
-    if (processPending(id, await proposalDetail(api, id), sendMessage))
-      pending = pending.filter((e: number) => e !== id);
+    if (proposal.stage === "Finalized") {
+      let label: string = result;
+      if (result === "Approved") {
+        const executed = parameters.gracePeriod.toNumber() > 0 ? false : true;
+        label = executed ? "Executed" : "Finalized";
+      }
+      msg = `Proposal ${id}: <b>${label}</b> at block ${finalizedAt}.\r\n${message}`;
+    }
+    sendMessage(msg);
+  }
 
   return { current, last: current, active, pending };
 };
@@ -241,7 +215,7 @@ export const heartbeat = async (
 
 export const formatProposalMessage = (data: string[]): string => {
   const [id, title, type, stage, result, handle] = data;
-  return `<b>Type</b>: ${type}\r\n<b>Proposer</b>:<a href="${domain}/#/members/${handle}"> ${handle}</a>\r\n<b>Title</b>: <a href="${domain}/#/proposals/${id}">${title}</a>\r\n<b>Stage</b>: ${stage}\r\n<b>Result</b>: ${result}`;
+  return `<b>Type</b>: ${type}\r\n<b>Proposer</b>: <a href="${domain}/#/members/${handle}">${handle}</a>\r\n<b>Title</b>: <a href="${domain}/#/proposals/${id}">${title}</a>\r\n<b>Stage</b>: ${stage}\r\n<b>Result</b>: ${result}`;
 };
 
 // providers
