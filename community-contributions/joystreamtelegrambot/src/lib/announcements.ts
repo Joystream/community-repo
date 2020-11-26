@@ -1,4 +1,11 @@
-import { Api, Member, ProposalDetail, Proposals, Summary } from "../types";
+import {
+  Api,
+  Council,
+  Member,
+  ProposalDetail,
+  Proposals,
+  Summary
+} from "../types";
 import { BlockNumber } from "@polkadot/types/interfaces";
 import { Channel, ElectionStage } from "@joystream/types/augment";
 import { Category, Thread, Post } from "@joystream/types/forum";
@@ -10,6 +17,7 @@ import {
   memberHandleByAccount,
   proposalDetail
 } from "./getters";
+import moment from "moment";
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -45,41 +53,46 @@ export const channels = async (
   return current;
 };
 
-export const councils = async (
+export const council = async (
   api: Api,
+  council: Council,
   currentBlock: number,
   sendMessage: (msg: string) => void
-): Promise<number> => {
-  let lastBlock: number = currentBlock;
+): Promise<Council> => {
   const round: number = await api.query.councilElection.round();
   const stage: ElectionStage | null = await api.query.councilElection.stage();
   let msg = "";
-  if (!stage) {
+  let last = "";
+  if (!stage || stage.toJSON() === null) {
+    last = "elected";
     const councilEnd: BlockNumber = await api.query.council.termEndsAt();
-    lastBlock = councilEnd.toNumber();
     const termDuration: BlockNumber = await api.query.councilElection.newTermDuration();
-    const block = lastBlock - termDuration.toNumber();
-    msg = `<a href="${domain}/#/council/members">Council for round ${round}</a> has been elected at block ${block} until block ${councilEnd}.`;
+    const block = councilEnd.toNumber() - termDuration.toNumber();
+    const remainingBlocks: number = councilEnd.toNumber() - currentBlock;
+    const endDate = moment()
+      .add(remainingBlocks * 6, "s")
+      .format("DD/MM/YYYY HH:mm");
+    msg = `<a href="${domain}/#/council/members">Council ${round}</a> elected at block ${block} until block ${councilEnd}. Next election: ${endDate} (${remainingBlocks} blocks)`;
   } else {
     if (stage.isAnnouncing) {
-      lastBlock = stage.asAnnouncing.toNumber();
+      last = "announcing";
       const announcingPeriod: BlockNumber = await api.query.councilElection.announcingPeriod();
-      const block = lastBlock - announcingPeriod.toNumber();
+      const block = stage.asAnnouncing.toNumber() - announcingPeriod.toNumber();
       msg = `Announcing election for round ${round} at ${block}.<a href="${domain}/#/council/applicants">Apply now!</a>`;
     } else if (stage.isVoting) {
-      lastBlock = stage.asVoting.toNumber();
+      last = "voting";
       const votingPeriod: BlockNumber = await api.query.councilElection.votingPeriod();
-      const block = lastBlock - votingPeriod.toNumber();
+      const block = stage.asVoting.toNumber() - votingPeriod.toNumber();
       msg = `Voting stage for council election started at block ${block}. <a href="${domain}/#/council/applicants">Vote now!</a>`;
     } else if (stage.isRevealing) {
-      lastBlock = stage.asRevealing.toNumber();
+      last = "revealing";
       const revealingPeriod: BlockNumber = await api.query.councilElection.revealingPeriod();
-      const block = lastBlock - revealingPeriod.toNumber();
+      const block = stage.asRevealing.toNumber() - revealingPeriod.toNumber();
       msg = `Revealing stage for council election started at block ${block}. <a href="${domain}/#/council/votes">Don't forget to reveal your vote!</a>`;
-    }
+    } else console.log(`[council] unrecognized stage: ${stage.toJSON()}`);
   }
-  sendMessage(msg);
-  return lastBlock;
+  if (round !== council.round && last !== council.last) sendMessage(msg);
+  return { round, last };
 };
 
 // forum

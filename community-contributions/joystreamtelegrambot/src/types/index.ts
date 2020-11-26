@@ -10,6 +10,11 @@ export interface Api {
   query: any;
 }
 
+export interface Council {
+  round: number;
+  last: string;
+}
+
 export interface Options {
   verbose: number;
   channel: boolean;

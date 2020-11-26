@@ -5,6 +5,7 @@ import storageProviders from "../storageProviders";
 // types
 import {
   Block,
+  Council,
   NominatorsEntries,
   Options,
   Proposals,
@@ -62,6 +63,7 @@ const main = async () => {
     api.rpc.system.version()
   ]);
 
+  let council: Council = { round: 0, last: "" };
   let lastBlock: Block = { id: 0, duration: 6000, timestamp: startTime };
   let summary: Summary = { blocks: [], nominators: [], validators: [] };
   let nextOpening: number = await get.nextOpening(api);
@@ -115,7 +117,7 @@ const main = async () => {
 
       // announcements
       if (opts.council && block.id > lastBlock.id)
-        announce.councils(api, block.id, sendMessage);
+        council = await announce.council(api, council, block.id, sendMessage);
 
       if (opts.channel) {
         channels[1] = await get.currentChannelId(api);
