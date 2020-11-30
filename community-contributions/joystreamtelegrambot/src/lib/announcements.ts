@@ -253,7 +253,16 @@ export const provider = (
   sendMessage(msg);
 };
 
-export const opening = (id: number, sendMessage: (msg: string) => void) => {
-  const msg = `New opening: <b>Storage Provider</b> <a href="${domain}/#/working-groups/opportunities/curators/${id}">more</a>`;
+export const newOpening = (id: number, sendMessage: (msg: string) => void) => {
+  const msg = `New opening: <b><a href="${domain}/#/working-groups/opportunities/curators/${id}">Storage Provider ${id}</a></b>`;
+  sendMessage(msg);
+};
+
+export const closeOpening = (
+  id: number,
+  handle: string,
+  sendMessage: (msg: string) => void
+): void => {
+  const msg = `<a href="${domain}/#/members/${handle}">${handle}</a> was choosen as <b><a href="${domain}/#/working-groups/opportunities/curators/${id}">Storage Provider ${id}</a></b>`;
   sendMessage(msg);
 };

@@ -66,7 +66,8 @@ const main = async () => {
   let council: Council = { round: 0, last: "" };
   let lastBlock: Block = { id: 0, duration: 6000, timestamp: startTime };
   let summary: Summary = { blocks: [], nominators: [], validators: [] };
-  let nextOpening: number = await get.nextOpening(api);
+  let nextOpeningId: number = await get.nextOpeningId(api);
+  let nextWorkerId: number = await get.nextWorkerId(api);
 
   const cats: number[] = [0, 0];
   const channels: number[] = [0, 0];
@@ -161,14 +162,24 @@ const main = async () => {
         checkProviders(providerStatus, sendMessage);
         lastCheck = block.timestamp;
       }
-      // new storage provider (or lead) opportunity is opened (id, title, link)
-      const opening: number = await get.nextOpening(api);
-      if (opening > nextOpening) {
-        announce.opening(opening, sendMessage);
-        nextOpening = opening;
+      // new storage provider (or lead) opportunity is opened
+      const openingId: number = await get.nextOpeningId(api);
+      if (openingId > nextOpeningId) {
+        announce.newOpening(openingId, sendMessage);
+        nextOpeningId = openingId;
       }
 
-      // TODO A new storage provider (or lead) opportunity is closed (id, title, link, providerId+membershipId of hired)
+      // storage provider (or lead) opportunity is closed
+      const workerId = await get.nextWorkerId(api);
+      if (workerId > nextWorkerId) {
+        const worker: any = await api.query.storageWorkingGroup.workerById(
+          workerId - 1
+        );
+        const memberId = worker.member_id.toJSON();
+        const handle: string = await get.memberHandle(api, memberId);
+        nextWorkerId = workerId;
+        announce.closeOpening(workerId, handle, sendMessage);
+      }
     }
   );
 };

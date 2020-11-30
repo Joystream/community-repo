@@ -134,7 +134,12 @@ export const providerStatus = async (domain: string): Promise<boolean> => {
   }
 };
 
-export const nextOpening = async (api: Api): Promise<number> => {
-  const opening = await api.query.storageWorkingGroup.nextOpeningId();
-  return opening.toJSON();
+export const nextOpeningId = async (api: Api): Promise<number> => {
+  const id = await api.query.storageWorkingGroup.nextOpeningId();
+  return id.toJSON();
+};
+
+export const nextWorkerId = async (api: Api): Promise<number> => {
+  const id = await api.query.storageWorkingGroup.nextWorkerId();
+  return id.toJSON();
 };
