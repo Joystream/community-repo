@@ -2,7 +2,7 @@
 import { wsLocation } from "../config";
 
 // types
-import { Proposals } from "./types";
+import { Council, Proposals } from "./types";
 import { types } from "@joystream/types";
 import { ApiPromise, WsProvider } from "@polkadot/api";
 import { Header } from "@polkadot/types/interfaces";
@@ -26,7 +26,8 @@ const main = async () => {
   ]);
   log(`Connected to ${chain} on ${node} v${version}`);
 
-  let lastBlock = 0;
+  let council: Council = { round: 0, last: "" };
+  let lastBlock: number = 0;
   let proposals: Proposals = {
     last: 1,
     current: 2,
@@ -45,7 +46,8 @@ const main = async () => {
       lastBlock = block.number.toNumber();
       const currentBlock = block.number.toNumber();
       log("current council");
-      announce.councils(api, currentBlock, sendMessage);
+      council = await announce.council(api, council, currentBlock, sendMessage);
+      lastBlock = currentBlock;
 
       log("first proposal");
       announce.proposals(api, proposals, sendMessage);

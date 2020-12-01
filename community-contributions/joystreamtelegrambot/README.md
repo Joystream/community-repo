@@ -2,7 +2,7 @@
 
 This bot notifies a Telegram chat about events on the Joystream chain.
 
-Demo: https://t.me/jsforumnotification
+Demo: https://t.me/JoyStreamOfficial
 
 Many thanks to [imOnlineMonitor](https://github.com/fkbenjamin/imOnlineMonitor) for providing example with polkadot chain (Kusama).
 
@@ -12,16 +12,23 @@ Many thanks to [imOnlineMonitor](https://github.com/fkbenjamin/imOnlineMonitor) 
 [npm/Nodejs](https://github.com/Joystream/helpdesk/tree/master/roles/storage-providers#install-yarn-and-node-on-linux)
 
 ```
-git clone https://github.com/bitoven-dev/joystreamtelegrambot
-cd joystreamtelegrambot
-npm install
+git clone https://github.com/joystream/community-repo
+cd community-repo/community-contributions/joystreamtelegrambot
+yarn
 ```
 
 ## Configuration
 
-Open `config.ts` and set `token` and `chatid`. To get a bot token talk to @botfather on Telegram.
+Open `config.ts` and fill in the variables:
 
-Run `npm run build` to apply changes. After building \*.js files are available in `dist/` and you can run for example `node dist/bot.js --verbose --channel --council --forum --proposals`. For other options see below.
+- `token`: To get a bot token talk to @botfather on Telegram.
+- `chatid`: See below to find id of your group.
+
+Then run `npm run start` or `yarn run start`.
+Alternatively you can manually build with `npm run build` and run for example `node dist/src/bot.js --verbose --channel --council --forum --proposals`.
+For other options see below.
+
+To test status of storage providers, add their domains to to `storageProviders.ts`.
 
 ### Get chatid
 
