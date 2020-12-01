@@ -12,16 +12,30 @@ Many thanks to [imOnlineMonitor](https://github.com/fkbenjamin/imOnlineMonitor) 
 [npm/Nodejs](https://github.com/Joystream/helpdesk/tree/master/roles/storage-providers#install-yarn-and-node-on-linux)
 
 ```
-git clone https://github.com/bitoven-dev/joystreamtelegrambot
-cd joystreamtelegrambot
+git clone https://github.com/joystream/community-repo
+cd community-repo/community-contributions/joystreamtelegrambot
+sudo npm i -g ts-node
 npm install
 ```
 
+Alternatively you can use yarn:
+
+```
+yarn && yarn build
+```
+
+Next is to configure the bot.
+
 ## Configuration
 
-Open `config.ts` and set `token` and `chatid`. To get a bot token talk to @botfather on Telegram.
+Open `config.ts` and fill in the variables:
+- `token`: To get a bot token talk to @botfather on Telegram.
+- `chatid`: See below to find out the id of your group.
+- `accountId`: The joystream hash to use for querying the api.
 
-Run `npm run build` to apply changes. After building \*.js files are available in `dist/` and you can run for example `node dist/bot.js --verbose --channel --council --forum --proposals`. For other options see below.
+Then run `npm run start` or `yarn run start`.
+Alternatively you can manually build with `npm run build` and run for example `node dist/src/bot.js --verbose --channel --council --forum --proposals`.
+For other options see below.
 
 ### Get chatid
 
