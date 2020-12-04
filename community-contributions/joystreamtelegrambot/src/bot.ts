@@ -66,7 +66,7 @@ const main = async () => {
   let council: Council = { round: 0, last: "" };
   let lastBlock: Block = { id: 0, duration: 6000, timestamp: startTime };
   let summary: Summary = { blocks: [], nominators: [], validators: [] };
-  let peningId: number = await get.nextOpeningId(api);
+  let openingId: number = await get.nextOpeningId(api);
   let nextWorkerId: number = await get.nextWorkerId(api);
 
   const cats: number[] = [0, 0];
