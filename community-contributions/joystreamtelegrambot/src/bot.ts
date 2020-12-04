@@ -66,7 +66,7 @@ const main = async () => {
   let council: Council = { round: 0, last: "" };
   let lastBlock: Block = { id: 0, duration: 6000, timestamp: startTime };
   let summary: Summary = { blocks: [], nominators: [], validators: [] };
-  let nextOpeningId: number = await get.nextOpeningId(api);
+  let peningId: number = await get.nextOpeningId(api);
   let nextWorkerId: number = await get.nextWorkerId(api);
 
   const cats: number[] = [0, 0];
@@ -163,10 +163,10 @@ const main = async () => {
         lastCheck = block.timestamp;
       }
       // new storage provider (or lead) opportunity is opened
-      const openingId: number = await get.nextOpeningId(api);
-      if (openingId > nextOpeningId) {
+      const nextOpeningId: number = await get.nextOpeningId(api);
+      if (nextOpeningId > openingId) {
         announce.newOpening(openingId, sendMessage);
-        nextOpeningId = openingId;
+        openingId = nextOpeningId;
       }
 
       // storage provider (or lead) opportunity is closed
