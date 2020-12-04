@@ -32,7 +32,7 @@ const main = async () => {
     last: 1,
     current: 2,
     active: [],
-    pending: []
+    executing: []
   };
   let categories = [0, 0];
   let posts = [0, 0];

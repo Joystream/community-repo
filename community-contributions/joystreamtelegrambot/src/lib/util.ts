@@ -39,7 +39,7 @@ export const printStatus = (
     message += `Post:${posts[1]} Cat:${cats[1]} Thread:${threads[1]} `;
 
   if (opts.proposals)
-    message += `Proposals:${proposals.current} (Active:${proposals.active.length} Pending:${proposals.pending.length}) `;
+    message += `Proposals:${proposals.current} (Active:${proposals.active.length} Pending:${proposals.executing.length}) `;
 
   console.log(message);
 };

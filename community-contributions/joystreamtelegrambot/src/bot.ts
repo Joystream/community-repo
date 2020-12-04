@@ -73,7 +73,7 @@ const main = async () => {
   const channels: number[] = [0, 0];
   const posts: number[] = [0, 0];
   const threads: number[] = [0, 0];
-  let proposals: Proposals = { last: 0, current: 0, active: [], pending: [] };
+  let proposals: Proposals = { last: 0, current: 0, active: [], executing: [] };
 
   if (opts.channel) channels[0] = await get.currentChannelId(api);
 
@@ -86,7 +86,7 @@ const main = async () => {
   if (opts.proposals) {
     proposals.last = await get.proposalCount(api);
     proposals.active = await get.activeProposals(api);
-    proposals.pending = await get.pendingProposals(api);
+    proposals.executing = await get.pendingProposals(api);
   }
 
   log(`Subscribed to ${chain} on ${node} v${version}`);

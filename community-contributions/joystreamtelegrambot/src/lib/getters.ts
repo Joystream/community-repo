@@ -113,6 +113,7 @@ export const proposalDetail = async (
       (proposalStatus.isSlashed && "Slashed") ||
       (proposalStatus.isVetoed && "Vetoed")
     : "Pending";
+  const exec = proposalStatus["Approved"];
 
   const { parameters, proposerId } = proposal;
   const author: string = await memberHandle(api, proposerId);
@@ -121,7 +122,7 @@ export const proposalDetail = async (
   const args: string[] = [String(id), title, type, stage, result, author];
   const message: string = formatProposalMessage(args);
   const createdAt: number = proposal.createdAt.toNumber();
-  return { createdAt, finalizedAt, parameters, message, stage, result };
+  return { createdAt, finalizedAt, parameters, message, stage, result, exec };
 };
 
 // storage providers

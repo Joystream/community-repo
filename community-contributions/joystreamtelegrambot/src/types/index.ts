@@ -30,6 +30,7 @@ export interface ProposalDetail {
   parameters: ProposalParameters;
   stage: string;
   result: string;
+  exec: any;
 }
 
 export type ProposalArray = number[];
@@ -38,7 +39,7 @@ export interface Proposals {
   current: number;
   last: number;
   active: ProposalArray;
-  pending: ProposalArray;
+  executing: ProposalArray;
 }
 
 export interface Member {

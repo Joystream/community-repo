@@ -178,26 +178,45 @@ export const proposals = async (
   prop: Proposals,
   sendMessage: (msg: string) => void
 ): Promise<Proposals> => {
-  let { current, last, active, pending } = prop;
+  let { current, last, active, executing } = prop;
 
   for (let id: number = +last + 1; id <= current; id++) {
     const proposal: ProposalDetail = await proposalDetail(api, id);
     const { createdAt, finalizedAt, message, parameters, result } = proposal;
     const votingEndsAt = createdAt + parameters.votingPeriod.toNumber();
-    let msg = `Proposal ${id} <b>created</b> at block ${createdAt}.\r\n${message}\r\nYou can vote until block ${votingEndsAt}.`;
+    const msg = `Proposal ${id} <b>created</b> at block ${createdAt}.\r\n${message}\r\nYou can vote until block ${votingEndsAt}.`;
+    sendMessage(msg);
+    active.push(id);
+  }
 
-    if (proposal.stage === "Finalized") {
+  for (const id of active) {
+    const proposal: ProposalDetail = await proposalDetail(api, id);
+    const { finalizedAt, message, parameters, result, stage } = proposal;
+    if (stage === "Finalized") {
       let label: string = result;
       if (result === "Approved") {
         const executed = parameters.gracePeriod.toNumber() > 0 ? false : true;
         label = executed ? "Executed" : "Finalized";
+        if (!executed) executing.push(id);
       }
-      msg = `Proposal ${id}: <b>${label}</b> at block ${finalizedAt}.\r\n${message}`;
+      const msg = `Proposal ${id} <b>${label}</b> at block ${finalizedAt}.\r\n${message}`;
+      sendMessage(msg);
+      active = active.filter(a => a !== id);
     }
-    sendMessage(msg);
   }
 
-  return { current, last: current, active, pending };
+  for (const id of executing) {
+    const proposal = await proposalDetail(api, id);
+    const { exec, finalizedAt, message, parameters } = proposal;
+    const execStatus = exec ? Object.keys(exec)[0] : "";
+    const label = execStatus === "Executed" ? "has been" : "failed to be";
+    const block = +finalizedAt + parameters.gracePeriod.toNumber();
+    const msg = `Proposal ${id} <b>${label} executed</b> at block ${block}.\r\n${message}`;
+    sendMessage(msg);
+    executing = executing.filter(e => e !== id);
+  }
+
+  return { current, last: current, active, executing };
 };
 
 // heartbeat
