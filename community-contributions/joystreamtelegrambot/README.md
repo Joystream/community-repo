@@ -29,13 +29,16 @@ Next is to configure the bot.
 ## Configuration
 
 Open `config.ts` and fill in the variables:
+
 - `token`: To get a bot token talk to @botfather on Telegram.
 - `chatid`: See below to find out the id of your group.
-- `accountId`: The joystream hash to use for querying the api.
+- `accountId`: 48 character hash used to query the api, can be any validator.
 
 Then run `npm run start` or `yarn run start`.
 Alternatively you can manually build with `npm run build` and run for example `node dist/src/bot.js --verbose --channel --council --forum --proposals`.
 For other options see below.
+
+To test status of storage providers, add their domains to to `storageProviders.ts`.
 
 ### Get chatid
 
