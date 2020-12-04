@@ -63,12 +63,12 @@ export const council = async (
   sendMessage: (msg: string) => void
 ): Promise<Council> => {
   const round: number = await api.query.councilElection.round();
-  const stage: ElectionStage | null = await api.query.councilElection.stage();
+  const stage: any = await api.query.councilElection.stage();
+  let stageString = Object.keys(JSON.parse(JSON.stringify(stage)))[0];
   let msg = "";
-  let last = "";
 
   if (!stage || stage.toJSON() === null) {
-    last = "elected";
+    stageString = "elected";
     const councilEnd: BlockNumber = await api.query.council.termEndsAt();
     const termDuration: BlockNumber = await api.query.councilElection.newTermDuration();
     const block = councilEnd.toNumber() - termDuration.toNumber();
@@ -78,26 +78,20 @@ export const council = async (
       .format("DD/MM/YYYY");
     msg = `<a href="${domain}/#/council/members">Council ${round}</a> elected at block ${block} until block ${councilEnd}. Next election: ${endDate} (${remainingBlocks} blocks)`;
   } else {
-    if (stage.isAnnouncing) {
-      last = "announcing";
+    if (stageString === "Announcing") {
       const announcingPeriod: BlockNumber = await api.query.councilElection.announcingPeriod();
-      const block = stage.asAnnouncing.toNumber() - announcingPeriod.toNumber();
-      msg = `Announcing election for round ${round} at ${block}.<a href="${domain}/#/council/applicants">Apply now!</a>`;
-    } else if (stage.isVoting) {
-      last = "voting";
+      msg = `Announcing election for round ${round} started.<a href="${domain}/#/council/applicants">Apply now!</a>`;
+    } else if (stageString === "Voting") {
       const votingPeriod: BlockNumber = await api.query.councilElection.votingPeriod();
-      const block = stage.asVoting.toNumber() - votingPeriod.toNumber();
-      msg = `Voting stage for council election started at block ${block}. <a href="${domain}/#/council/applicants">Vote now!</a>`;
-    } else if (stage.isRevealing) {
-      last = "revealing";
+      msg = `Voting stage for council election started. <a href="${domain}/#/council/applicants">Vote now!</a>`;
+    } else if (stageString === "Revealing") {
       const revealingPeriod: BlockNumber = await api.query.councilElection.revealingPeriod();
-      const block = stage.asRevealing.toNumber() - revealingPeriod.toNumber();
-      msg = `Revealing stage for council election started at block ${block}. <a href="${domain}/#/council/votes">Don't forget to reveal your vote!</a>`;
-    } else console.log(`[council] unrecognized stage: ${stage.toJSON()}`);
+      msg = `Revealing stage for council election started. <a href="${domain}/#/council/votes">Don't forget to reveal your vote!</a>`;
+    } else console.log(`[council] unrecognized stage: ${stageString}`);
   }
 
-  if (round !== council.round && last !== council.last) sendMessage(msg);
-  return { round, last };
+  if (round !== council.round && stageString !== council.last) sendMessage(msg);
+  return { round, last: stageString };
 };
 
 // forum
