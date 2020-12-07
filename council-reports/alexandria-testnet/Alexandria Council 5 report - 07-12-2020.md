@@ -192,7 +192,7 @@ This report was compiled by @tomato with assistance from @freakstatic
 #### Proposal 61 - Refill Storage Working Group mint
 - Proposal Link: https://testnet.joystream.org/#/proposals/60
 - Proposal Type: SetWorkingGroupMintCapacity
-	- Amount: N/A
+	- Amount: 5000000
 - Status: Carried on to next council
 	- Time to finalize: 8766 blocks (14.61 hours)
 - Created by: @rajcprem
