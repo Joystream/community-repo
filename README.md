@@ -40,6 +40,7 @@ Table of Contents
     - [`council-reports`](#council-reports)
     - [`community-contributions`](#community-contributions)
     - [`tokenomics-reports`](#tokenomics-reports)
+    - [`workinggroup-reports`](#workinggroup-reports)
     - [`submission-log`](#submission-log)
 <!-- TOC END -->
 
