@@ -10,18 +10,27 @@
     <a href="/council-reports">
     Council Reports
     </a>
-    <span> | </span>
-    <a href="/tokenomics-reports">
-    Tokenomics Reports
-    </a>
-    <span> | </span>
+	  <span> | </span>
     <a href="/community-contributions">
     Community Contributions
     </a>
-        <span> | </span>
+	  <span> | </span>
+    <a href="/documentation">
+    Documenntation
+    </a>
+	  <span> | </span>
     <a href="/submission-log">
     Submission Log
     </a>
+    <span> | </span>
+    <a href="/tokenomics-reports">
+    Tokenomics Reports
+  </a>
+     <span> | </span>
+    <a href="/workinggroup-reports">
+    Workinggroup Reports
+  </a>
+   <span> | </span>
   </h4>
 </div>
 
@@ -107,12 +116,14 @@ This folder can be used for creating council reports. The council reports submit
 `Council Round #n - DD/MM/YYYY - Council Report.md`
 ### `community-contributions`
 This folder can be used for community coded bots and projects and anything that doesn't fit elsewhere. Each submission should be in a unique folder within this directory.
+### `documentation`
+This folder can be used for documentation.
+### `submission-log`
+This folder can be used for maintaining a log of submissions. If the testnet is started from fresh, a new file should be made.
+Each entry in the log should include the Joystream username of the submission, a link to the proposal, a link to the PR and the amount of tokens awarded to the user (if applicable).
+`#1 - Rome Testnet - Community Repo Submission Log.md`
 ### `tokenomics-reports`
 This folder can be used for creating tokenomics reports, tokenomics reports are to be submitted during each `Council Round`. The tokenomics reports submitted should be formatted in the following way:
 `Council Round #n - DD/MM/YYYY - Tokenomics Report.md`
 ### `workinggroup-reports`
 This folder can be used for creating reports specific to working groups like the storage or curator working groups.
-### `submission-log`
-This folder can be used for maintaining a log of submissions. If the testnet is started from fresh, a new file should be made.
-Each entry in the log should include the Joystream username of the submission, a link to the proposal, a link to the PR and the amount of tokens awarded to the user (if applicable).
-`#1 - Rome Testnet - Community Repo Submission Log.md`
