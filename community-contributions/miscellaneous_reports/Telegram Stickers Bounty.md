@@ -9,6 +9,10 @@ Examples of Telegram Stickers:
 * https://telegramchannels.me/stickers
 * https://combot.org/telegram/stickers
 
+Official Joystream design guidelines and logo files: 
+* https://www.joystream.org/brand/guides/
+* https://github.com/Joystream/design
+
 How to make a static Sticker
 1. Design the Sticker! You can use programs like GIMP or Photoshop for this
 2. The file should be 512x512 pixels, PNG format with a transparent background
