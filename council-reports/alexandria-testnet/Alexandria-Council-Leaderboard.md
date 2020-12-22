@@ -1,4 +1,9 @@
-Notes: All data is taken from Council reports: https://github.com/Joystream/community-repo/tree/master/council-reports/alexandria-testnet or Tokenomics reports: https://github.com/Joystream/community-repo/tree/master/tokenomics-reports
+All data is taken from:
+* Council reports: https://github.com/Joystream/community-repo/tree/master/council-reports/alexandria-testnet
+* Tokenomics reports: https://github.com/Joystream/community-repo/tree/master/tokenomics-reports
+* https://joystreamstats.live
+* Chain State queries
+* Joystream KPI page: https://blog.joystream.org/alexandria-kpis/
 
 ## Council + Tokenomics Overview
 This table shows statistics from the end of each council session, including token generation information. It can be used as an overview of both tokenomics and how things change between council sessions.
