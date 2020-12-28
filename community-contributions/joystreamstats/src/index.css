@@ -1,0 +1,83 @@
+html,
+body,
+#root,
+.App {
+  height: 100%;
+  background-color: #343a40;
+  font-size: 0.8rem;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a,
+a:link,
+a:visited {
+  color: #001414;
+  text-decoration: none !important;
+}
+a:active,
+a:hover {
+  -color: #fff !important;
+  -background: teal;
+  -padding: 1px;
+}
+
+select {
+  border-color: red;
+}
+
+.select div:hover {
+  background-color: teal !important;
+}
+
+::-moz-selection,
+::selection,
+.select-selected,
+.select-items div:hover {
+  color: white;
+  background-color: teal !important;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+.box {
+  color: white;
+  margin: 5px;
+  padding: 15px;
+  background-color: teal;
+  text-align: center;
+}
+.box a:hover,
+.box a:active {
+  color: #fff !important;
+  -background: teal;
+}
+
+table td {
+  border-top: none !important;
+}
+
+.title {
+  position: fixed;
+  right: 10px;
+  bottom: 0px;
+}
+
+.proposals {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+}
+
+.user {
+  min-width: 75px;
+}
