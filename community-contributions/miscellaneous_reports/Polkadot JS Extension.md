@@ -1,22 +1,42 @@
-# Browser Scorecard
+# PolkadotJS Browser Test
 
-Following table shows test results for the [Polkadot-JS extension](https://github.com/polkadot-js/extension) according to #32.
+The extension is optimized for usability and hides complexity. Compared to the Pioneer UI where three algorithms can be selected for key creation the extension uses sr25519 for creation abd is able to import other types as well (polkadot-js/extension#339).
 
-Operating System | Linux |   |   |   | MacOS | Windows | Android |   |   | iOS
--- | -- | -- | -- | -- | -- | -- | -- | -- | -- | --
-Browser | Firefox | Tor Browser | Chrome | Chromium | Safari | Edge | Google | Brave | Tor Browser | Safari
-Installable | Yes | Yes | Yes | Yes | No, see polkadot-js/extension#377 | Yes | Yes | Yes | No (`Experimental`) | No, see polkadot-js/extension#377
-Usable | Yes | Yes | Yes | Yes |   |   | No, invisible. | No, invisible. |   |  
-  |   |   |   |   |   |   |   |   |   |  
-Tested chains |   |   |   |   |   |   |   |   |   |  
-https://testnet.joystream.org | X | X | X | X |   | X |   |   |   |  
-https://polkadot.js.org | X | X | X | X |   |   |   |   |   |  
-  |   |   |   |   |   |   |   |   |   |  
-  |   |   |   |   |   |   |   |   |   |  
-Algorithms | Hidden | Hidden | Hidden | Hidden |   | Hidden |   |   |   |  
-Password requirements | 6 byte | 6 byte | 6 byte | 6 byte |   | 6 byte |   |   |   |  
-Cross-chain keys | Yes | Yes | Yes | Yes |   | Yes |   |   |   |  
-Add via JSON file | Yes | Yes | Yes | Yes |   | Yes |   |   |   |  
-Import raw seed, mnemonic | Yes | Yes | Yes | Yes |   | Yes |   |   |   |  
-Create new seed | Yes | Yes | Yes | Yes |   | Yes |   |   |   |  
-Backup seeds and or JSON file | Yes | Yes | Yes | Yes |   | Yes |   |   |   |  
+The minimal password length is 6 characters while Pioneer has no restrictions.
+
+Cross-chain keys have been tested with https://testnet.joystream.org and https://polkadot.js.org.
+
+## Android
+
+Browser | Google | Brave | Tor Browser
+-- | -- | -- | --
+Installable | Yes | Yes | No (`Experimental`)
+Usable | No<sup>1</sup> | No<sup>1</sup> |  
+
+1) Neither a popup nor a symbol are shown.
+
+## Linux
+
+Browser | Firefox | Tor Browser | Chrome | Chromium
+-- | -- | -- | -- | --
+Installable | Yes | Yes | Yes | Yes
+Cross-chain keys | Yes | Yes | Yes | Yes
+Add via JSON file | Yes | Yes | Yes | Yes
+Import raw seed, mnemonic | Yes | Yes | Yes | Yes
+Create new seed | Yes | Yes | Yes | Yes
+Backup seeds and or JSON file | Yes | Yes | Yes | Yes
+
+## MacOS / iOS
+
+No extension available for download, but developers can build it themselves (see polkadot-js/extension#377 and [A Change to the Safari Extension](http://blog.lastpass.com/2019/01/change-safari-extension/), January 2019).
+
+## Windows
+
+Browser | Brave | Chrome | Edge | Firefox | Opera | Tor Browser
+-- | -- | -- | -- | -- | -- | --
+Installable | Yes | Yes | Yes | Yes | Yes | Yes
+Cross-chain keys | Yes | Yes | Yes | Yes | Yes | Yes
+Add via JSON file | Yes | Yes | Yes | Yes | Yes | Yes
+Import raw seed, mnemonic | Yes | Yes | Yes | Yes | Yes | Yes
+Backup seeds and/or JSON file | Yes | Yes | Yes | Yes | Yes | Yes
+
