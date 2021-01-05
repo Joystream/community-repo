@@ -30,9 +30,9 @@ Can you export seeds and or jsons | Yes | Yes | Yes | Yes
 
 ## MacOS / iOS
 
-Not supported.
+Safari: No extension available for download, but developers can build it themselves (see polkadot-js/extension#377 and [A Change to the Safari Extension](http://blog.lastpass.com/2019/01/change-safari-extension/), January 2019).
 
-No extension available for download, but developers can build it themselves (see polkadot-js/extension#377 and [A Change to the Safari Extension](http://blog.lastpass.com/2019/01/change-safari-extension/), January 2019).
+There are other browsers that might work with the extension: Brave, Chrome, Edge, Firefox, Opera. If you can, please create a PR to extend this report.
 
 ## Windows
 
