@@ -1,6 +1,6 @@
 # PolkadotJS Browser Test
 
-The extension is optimized for usability and hides complexity. Compared to the Pioneer UI where three algorithms can be selected for key creation the extension uses sr25519 for creation abd is able to import other types as well (polkadot-js/extension#339).
+The extension is optimized for usability and hides complexity. Compared to the Pioneer UI where three algorithms can be selected for key creation the extension uses sr25519 for creation and is able to import other types as well (polkadot-js/extension#339).
 
 The minimal password length is 6 characters while Pioneer has no restrictions.
 
