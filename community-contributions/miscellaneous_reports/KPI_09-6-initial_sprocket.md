@@ -58,4 +58,5 @@ There are several technical asks for making the first Sprocket possible, I do no
 
 ## Bounty ideas
 * Creation of the scripts necessary for all of this 
-* Adding a Telegram bot function which posts the latest playlist addition from the `Sprocket` playlist
+* Adding a Telegram/Twitter bot function which posts the latest playlist addition from the `Sprocket` playlist
+  * This bounty has the added benefit of being able to be reused and repurposed by the community for crossposting content from Joystream for their own purposes outside of Sprocket.
