@@ -62,7 +62,7 @@ For details see tables on https://joystreamstats.live/mint
 
 ## What would the runtime parameters need to be set to to account for this?
 
-Validator payoyt is determined by total issuance and inflation.
+Validator payout is determined by total issuance and inflation.
 
 At a total validator stake of 25% of the total issuance, 75% of minted tJOY per era are paid out to validators: With 300 M tJOY issued and 75 M tJOY staked, 25.6 K tJOY are paid to validators per hour:
 
