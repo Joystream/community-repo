@@ -3,7 +3,7 @@ import moment from "moment";
 
 export const parseArgs = (args: string[]): Options => {
   const inArgs = (term: string): boolean => {
-    return args.find(a => a.search(term) > -1) ? true : false;
+    return args.find((a) => a.search(term) > -1) ? true : false;
   };
 
   const options: Options = {
@@ -11,7 +11,7 @@ export const parseArgs = (args: string[]): Options => {
     channel: inArgs("--channel"),
     council: inArgs("--council"),
     forum: inArgs("--forum"),
-    proposals: inArgs("--proposals")
+    proposals: inArgs("--proposals"),
   };
 
   if (options.verbose > 1) console.debug("args", args, "\noptions", options);
@@ -26,17 +26,15 @@ export const printStatus = (
     chain: string;
     posts: number[];
     proposals: Proposals;
-    threads: number[];
   }
 ): void => {
   if (opts.verbose < 1) return;
 
-  const { block, chain, proposals, cats, posts, threads } = data;
+  const { block, chain, proposals, cats, posts } = data;
   const date = formatTime();
   let message = `[${date}] Chain:${chain} Block:${block} `;
 
-  if (opts.forum)
-    message += `Post:${posts[1]} Cat:${cats[1]} Thread:${threads[1]} `;
+  if (opts.forum) message += `Post:${posts[1]} Cat:${cats[1]} `;
 
   if (opts.proposals)
     message += `Proposals:${proposals.current} (Active:${proposals.active.length} Pending:${proposals.executing.length}) `;

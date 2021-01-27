@@ -37,7 +37,7 @@ const main = async () => {
   await api.isReady;
 
   const [chain, node, version] = await Promise.all([
-    api.rpc.system.chain(),
+    String(await api.rpc.system.chain()),
     api.rpc.system.name(),
     api.rpc.system.version(),
   ]);
@@ -160,27 +160,12 @@ const main = async () => {
 
       if (opts.forum) {
         cats[1] = await get.currentCategoryId(api);
+        cats[0] = await announce.categories(api, cats, sendMessage);
         posts[1] = await get.currentPostId(api);
-        threads[1] = await get.currentThreadId(api);
-
-        if (cats[1] > cats[0])
-          cats[0] = await announce.categories(api, cats, sendMessage);
-
-        if (posts[1] > posts[0])
-          posts[0] = await announce.posts(api, posts, sendMessage);
-
-        if (threads[1] > threads[0])
-          threads[0] = await announce.threads(api, threads, sendMessage);
+        posts[0] = await announce.posts(api, posts, sendMessage);
       }
 
-      printStatus(opts, {
-        block: id,
-        cats,
-        chain: String(chain),
-        posts,
-        proposals,
-        threads,
-      });
+      printStatus(opts, { block: id, cats, chain, posts, proposals });
     }
   );
 };

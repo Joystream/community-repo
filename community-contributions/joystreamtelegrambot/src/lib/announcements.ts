@@ -114,6 +114,7 @@ export const categories = async (
   category: number[],
   sendMessage: (msg: string) => void
 ): Promise<number> => {
+  if (category[0] === category[1]) return category[0];
   const messages: string[] = [];
 
   for (let id: number = +category[0] + 1; id <= category[1]; id++) {
@@ -133,6 +134,7 @@ export const posts = async (
   sendMessage: (msg: string) => void
 ): Promise<number> => {
   const [last, current] = posts;
+  if (current === last) return last;
   const messages: string[] = [];
 
   for (let id: number = +last + 1; id <= current; id++) {
@@ -152,32 +154,6 @@ export const posts = async (
     );
     const handle = await memberHandleByAccount(api, post.author_id.toJSON());
     const msg = `<b><a href="${domain}/#/members/${handle}">${handle}</a> posted <a href="${domain}/#/forum/threads/${threadId}?replyIdx=${replyId}">${threadTitle}</a> in <a href="${domain}/#/forum/categories/${category.id}">${category.title}</a>:</b>\n\r<i>${excerpt}</i> <a href="${domain}/#/forum/threads/${threadId}?replyIdx=${replyId}">more</a>`;
-    messages.push(msg);
-  }
-
-  sendMessage(messages.join("\r\n\r\n"));
-  return current;
-};
-
-// announce latest threads
-export const threads = async (
-  api: Api,
-  threads: number[],
-  sendMessage: (msg: string) => void
-): Promise<number> => {
-  const [last, current] = threads;
-  const messages: string[] = [];
-
-  for (let id: number = +last + 1; id <= current; id++) {
-    const thread: Thread = await query("title", () =>
-      api.query.forum.threadById(id)
-    );
-    const { title, author_id } = thread;
-    const handle: string = await memberHandleByAccount(api, author_id.toJSON());
-    const category: Category = await query("title", () =>
-      categoryById(api, thread.category_id.toNumber())
-    );
-    const msg = `Thread ${id}: <a href="${domain}/#/forum/threads/${id}">"${title}"</a> by <a href="${domain}/#/members/${handle}">${handle}</a> in category "<a href="${domain}/#/forum/categories/${category.id}">${category.title}</a>" `;
     messages.push(msg);
   }
 

@@ -36,7 +36,6 @@ const main = async () => {
   };
   let categories = [0, 0];
   let posts = [0, 0];
-  let threads = [0, 0];
   let channels = [0, 0];
 
   const unsubscribe = await api.rpc.chain.subscribeNewHeads(
@@ -72,14 +71,6 @@ const main = async () => {
       posts[1] = await get.currentPostId(api);
       posts[0] = posts[1] - 1;
       announce.posts(api, posts, sendMessage);
-
-      log("first thread");
-      announce.threads(api, threads, sendMessage);
-
-      log("last thread");
-      threads[1] = await get.currentThreadId(api);
-      threads[0] = threads[1] - 1;
-      announce.threads(api, threads, sendMessage);
 
       log("first channel");
       announce.channels(api, channels, sendMessage);
