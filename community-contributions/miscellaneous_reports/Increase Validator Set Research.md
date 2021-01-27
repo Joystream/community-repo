@@ -62,6 +62,30 @@ For details see tables on https://joystreamstats.live/mint
 
 ## What would the runtime parameters need to be set to to account for this?
 
-IIUIC the total reward (`staking.erasValidatorReward`) which is distributed equally among validators depends on maximum inflation around 25% of total issuance being staked. To keep validator rewards constant while doubling the number of validators, twice as many tokens have to be minted per era. To rise the validator count from 50 to 500 an inflation rate of 1000% would be required.
+Validator payoyt is determined by total issuance and inflation.
 
-For details see [Polkadot Iinflation Model](https://research.web3.foundation/en/latest/polkadot/economics/1-token-economics.html#inflation-model)
+At a total validator stake of 25% of the total issuance, 75% of minted tJOY per era are paid out to validators: With 300 M tJOY issued and 75 M tJOY staked, 25.6 K tJOY are paid to validators per hour:
+
+`300,000 K tJOY * 0.75 / (24*365.24) = 25.6 K tJOY`
+
+50 validators would receive 513 tJOY per hour.
+
+Hence to raise the payout per hour to keep payout for 100 validators the same, the total issuance has to double:
+
+`600,000 K tJOY * 0.75 / (24*365.24) = 51.3 K tJOY`
+
+issuance (M tJOY) | hourly payment (K tJOY /h) | validator count | payout per validator per hour (tJOY /h)
+--|--|--|--
+300 | 25.6 | 50 | 513 |
+600 | 51.3 | 100 | 513 |
+1200 | 102.7 | 200 | 513 |
+1800 | 154 | 300 | 513 |
+3000 | 256.7 | 500 | 513 |
+
+### Conclusion
+
+The total hourly reward (`staking.erasValidatorReward`) is distributed equally per validator. At a stake of 25% of total tJOY issued, 75% of the inflation are paid to validators.
+
+To keep validator rewards constant while doubling the number of validators, twice as many tokens have to be minted per era. To rise the validator count from 50 to 500 and keep the hourly reward per validator constant, the issuance has to increase to 1000%.
+
+For details see [Fixed Parameters](https://github.com/Joystream/helpdesk/tree/master/roles/validators#fixed-parameters) and [Polkadot Iinflation Model](https://research.web3.foundation/en/latest/polkadot/economics/1-token-economics.html#inflation-model).
