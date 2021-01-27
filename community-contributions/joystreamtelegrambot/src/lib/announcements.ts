@@ -186,7 +186,7 @@ export const proposals = async (
       let label: string = result;
       if (result === "Approved") {
         const executed = parameters.gracePeriod.toNumber() > 0 ? false : true;
-        label = executed ? "Executed" : "Finalized";
+        label = executed ? "executed" : "finalized";
         if (!executed) executing.push(id);
       }
       const msg = `Proposal ${id} <b>${label}</b> at block ${finalizedAt}.\r\n${message}`;
@@ -247,7 +247,7 @@ export const heartbeat = (
   if (executing) props += `{executing} ${p(executing)} to be executed.`;
 
   sendMessage(
-    `  ${blocks.length} blocks produced in ${timePassed}h
+    `  ${blocks.length} blocks produced in ${timePassed}
   Blocktime: ${blocktime.toFixed(3)}s
   Stake: ${avgStake.toFixed(1)} / ${avgIssued.toFixed()} M tJOY (${percent}%)
   Validators: ${avgVals.toFixed()} (${reward} tJOY/h)

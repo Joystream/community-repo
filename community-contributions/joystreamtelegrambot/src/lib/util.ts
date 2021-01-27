@@ -43,11 +43,19 @@ export const printStatus = (
 };
 
 // time
-export const formatTime = (time?: any): string =>
-  moment(time).format("H:mm:ss");
+export const formatTime = (time?: any, format = "H:mm:ss"): string =>
+  moment(time).format(format);
 
-export const passedTime = (start: number, now: number): string =>
-  formatTime(moment.utc(moment(now).diff(moment(start))));
+export const passedTime = (start: number, now: number): string => {
+  const passed = moment.utc(moment(now).diff(start)).valueOf();
+  const format =
+    passed > 86400000
+      ? "d:HH:mm:ss[d]"
+      : passed > 3600000
+      ? "H:mm:ss[h]"
+      : "mm:ss[m]";
+  return formatTime(passed, format);
+};
 
 export const exit = (log: (s: string) => void) => {
   log("\nNo connection, exiting.\n");

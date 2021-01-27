@@ -18,14 +18,15 @@ const log = (msg: string): void | number => opts.verbose && console.log(msg);
 process.env.NTBA_FIX_319 ||
   log("TL;DR: Set NTBA_FIX_319 to hide this warning.");
 
-const bot = new TelegramBot(token, { polling: true });
+const bot = token ? new TelegramBot(token, { polling: true }) : null;
 
 let startTime: number = moment().valueOf();
 
 const sendMessage = (msg: string) => {
   if (msg === "") return;
   try {
-    bot.sendMessage(chatid, msg, { parse_mode: "HTML" });
+    if (bot) bot.sendMessage(chatid, msg, { parse_mode: "HTML" });
+    else console.log(msg);
   } catch (e) {
     console.log(`Failed to send message: ${e}`);
   }
