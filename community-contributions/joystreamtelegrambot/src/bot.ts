@@ -1,5 +1,5 @@
 import TelegramBot from "node-telegram-bot-api";
-import { token, chatid, heartbeat, wsLocation } from "../config";
+import { token, chatid, heartbeat, proposalDelay, wsLocation } from "../config";
 
 // types
 import { Block, Council, Options, Proposals } from "./types";
@@ -66,6 +66,7 @@ const main = async () => {
   const posts: number[] = [0, 0];
   const threads: number[] = [0, 0];
   let proposals: Proposals = { last: 0, current: 0, active: [], executing: [] };
+  let lastProposalUpdate = 0;
 
   if (opts.channel) channels[0] = await get.currentChannelId(api);
 
@@ -149,11 +150,12 @@ const main = async () => {
         proposals.current = await get.proposalCount(api);
         if (
           proposals.current > proposals.last ||
-          proposals.active ||
-          proposals.executing
-        )
-          // TODO do not refetch each active/executing proposal on every block
+          (timestamp > lastProposalUpdate + 60000 * proposalDelay &&
+            (proposals.active || proposals.executing))
+        ) {
           proposals = await announce.proposals(api, proposals, id, sendMessage);
+          lastProposalUpdate = timestamp;
+        }
       }
 
       if (opts.forum) {

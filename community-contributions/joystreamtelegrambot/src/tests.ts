@@ -22,7 +22,7 @@ const main = async () => {
   const [chain, node, version] = await Promise.all([
     api.rpc.system.chain(),
     api.rpc.system.name(),
-    api.rpc.system.version()
+    api.rpc.system.version(),
   ]);
   log(`Connected to ${chain} on ${node} v${version}`);
 
@@ -32,7 +32,7 @@ const main = async () => {
     last: 1,
     current: 2,
     active: [],
-    executing: []
+    executing: [],
   };
   let categories = [0, 0];
   let posts = [0, 0];
@@ -50,12 +50,12 @@ const main = async () => {
       lastBlock = currentBlock;
 
       log("first proposal");
-      announce.proposals(api, proposals, sendMessage);
+      announce.proposals(api, proposals, lastBlock, sendMessage);
 
       log("last proposal");
       proposals.current = await get.proposalCount(api);
       proposals.last = proposals.current - 1;
-      announce.proposals(api, proposals, sendMessage);
+      announce.proposals(api, proposals, lastBlock, sendMessage);
 
       log("first category");
       announce.categories(api, categories, sendMessage);
