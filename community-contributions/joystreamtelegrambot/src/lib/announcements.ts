@@ -75,10 +75,9 @@ export const council = async (
     const termDuration: BlockNumber = await api.query.councilElection.newTermDuration();
     const block = councilEnd.toNumber() - termDuration.toNumber();
     if (currentBlock - block < 2000) {
-      const remainingBlocks: number = councilEnd.toNumber() - currentBlock;
-      const endDate = moment()
-        .add(remainingBlocks * 6, "s")
-        .format("DD/MM/YYYY");
+      const remainingBlocks = councilEnd.toNumber() - currentBlock;
+      const moment = moment().add(remainingBlocks * 6, "s");
+      const endDate = formatTime(moment, "DD/MM/YYYY");
 
       const handles: string[] = await Promise.all(
         (await api.query.council.activeCouncil()).map(
@@ -88,19 +87,19 @@ export const council = async (
       );
       const members = handles.join(", ");
 
-      msg = `${members} have been elected for <a href="${domain}/#/council/members">council ${round}</a>. Congratulations!\nNext election starts on ${endDate}.`;
+      msg = `Council election ended: ${members} have been elected for <a href="${domain}/#/council/members">council ${round}</a>. Congratulations!\nNext election starts on ${endDate}.`;
     }
   } else {
-    if (stageString === "Announcing") {
-      const announcingPeriod: BlockNumber = await api.query.councilElection.announcingPeriod();
-      msg = `Announcing election for round ${round} started.<a href="${domain}/#/council/applicants">Apply now!</a>`;
-    } else if (stageString === "Voting") {
-      const votingPeriod: BlockNumber = await api.query.councilElection.votingPeriod();
-      msg = `Voting stage for council election started. <a href="${domain}/#/council/applicants">Vote now!</a>`;
-    } else if (stageString === "Revealing") {
-      const revealingPeriod: BlockNumber = await api.query.councilElection.revealingPeriod();
-      msg = `Revealing stage for council election started. <a href="${domain}/#/council/votes">Don't forget to reveal your vote!</a>`;
-    } else console.log(`[council] unrecognized stage: ${stageString}`);
+    const remainingBlocks = stage.toJSON()[stageString] - currentBlock;
+    const moment = moment().add(remainingBlocks * 6, "second");
+    const endDate = formatTime(moment, "DD-MM-YYYY HH:mm (UTC)");
+
+    if (stageString === "Announcing")
+      msg = `Council election started. You can <b><a href="${domain}/#/council/applicants">announce your application</a></b> until ${endDate}`;
+    else if (stageString === "Voting")
+      msg = `Council election: <b><a href="${domain}/#/council/applicants">Vote</a></b> until ${endDate}`;
+    else if (stageString === "Revealing")
+      msg = `Council election: <b><a href="${domain}/#/council/votes">Reveal your votes</a></b> until ${endDate}`;
   }
 
   if (round !== council.round && stageString !== council.last) sendMessage(msg);
