@@ -62,7 +62,6 @@ const main = async () => {
   let vals = 0;
   let noms = 0;
 
-  const cats: number[] = [0, 0];
   const channels: number[] = [0, 0];
   const posts: number[] = [0, 0];
   const threads: number[] = [0, 0];
@@ -73,7 +72,6 @@ const main = async () => {
 
   if (opts.forum) {
     posts[0] = await get.currentPostId(api);
-    cats[0] = await get.currentCategoryId(api);
     threads[0] = await get.currentThreadId(api);
   }
 
@@ -160,13 +158,11 @@ const main = async () => {
       }
 
       if (opts.forum) {
-        cats[1] = await get.currentCategoryId(api);
-        cats[0] = await announce.categories(api, cats, sendMessage);
         posts[1] = await get.currentPostId(api);
         posts[0] = await announce.posts(api, posts, sendMessage);
       }
 
-      printStatus(opts, { block: id, cats, chain, posts, proposals });
+      printStatus(opts, { block: id, chain, posts, proposals });
       lastBlock = block
     }
   );

@@ -22,7 +22,6 @@ export const printStatus = (
   opts: Options,
   data: {
     block: number;
-    cats: number[];
     chain: string;
     posts: number[];
     proposals: Proposals;
@@ -30,11 +29,11 @@ export const printStatus = (
 ): void => {
   if (opts.verbose < 1) return;
 
-  const { block, chain, proposals, cats, posts } = data;
+  const { block, chain, proposals, posts } = data;
   const date = formatTime();
   let message = `[${date}] Chain:${chain} Block:${block} `;
 
-  if (opts.forum) message += `Post:${posts[1]} Cat:${cats[1]} `;
+  if (opts.forum) message += `Post:${posts[1]} `;
 
   if (opts.proposals)
     message += `Proposals:${proposals.current} (Active:${proposals.active.length} Pending:${proposals.executing.length}) `;
