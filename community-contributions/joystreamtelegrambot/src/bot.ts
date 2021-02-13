@@ -20,7 +20,7 @@ process.env.NTBA_FIX_319 ||
 
 const bot = token ? new TelegramBot(token, { polling: true }) : null;
 
-let startTime: number = moment().valueOf();
+let lastHeartbeat: number = moment().valueOf();
 
 const sendMessage = (msg: string) => {
   if (msg === "") return;
@@ -49,7 +49,7 @@ const main = async () => {
   let lastBlock: Block = {
     id: 0,
     duration: 6000,
-    timestamp: startTime,
+    timestamp: lastHeartbeat,
     stake: 0,
     noms: 0,
     vals: 0,
@@ -98,7 +98,7 @@ const main = async () => {
       const era = Number(await api.query.staking.currentEra());
 
       if (era > lastEra) {
-        vals = Number(await api.query.staking.validatorCount());
+        vals = (await api.query.session.validators()).length;
         stake = Number(await api.query.staking.erasTotalStake(era));
         issued = Number(await api.query.balances.totalIssuance());
         reward = (await getReward(era - 1)) || (await getReward(era - 2));
@@ -131,10 +131,10 @@ const main = async () => {
       blocks = blocks.concat(block);
 
       // heartbeat
-      if (timestamp > startTime + heartbeat) {
-        const time = passedTime(startTime, timestamp);
+      if (timestamp > lastHeartbeat + heartbeat) {
+        const time = passedTime(lastHeartbeat, timestamp);
         blocks = announce.heartbeat(api, blocks, time, proposals, sendMessage);
-        startTime = block.timestamp;
+        lastHeartbeat = block.timestamp;
       }
 
       // announcements
@@ -167,6 +167,7 @@ const main = async () => {
       }
 
       printStatus(opts, { block: id, cats, chain, posts, proposals });
+      lastBlock = block
     }
   );
 };

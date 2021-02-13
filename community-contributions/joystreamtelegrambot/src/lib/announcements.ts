@@ -76,8 +76,8 @@ export const council = async (
     const block = councilEnd.toNumber() - termDuration.toNumber();
     if (currentBlock - block < 2000) {
       const remainingBlocks = councilEnd.toNumber() - currentBlock;
-      const moment = moment().add(remainingBlocks * 6, "s");
-      const endDate = formatTime(moment, "DD/MM/YYYY");
+      const m = moment().add(remainingBlocks * 6, "s");
+      const endDate = formatTime(m, "DD/MM/YYYY");
 
       const handles: string[] = await Promise.all(
         (await api.query.council.activeCouncil()).map(
@@ -91,8 +91,8 @@ export const council = async (
     }
   } else {
     const remainingBlocks = stage.toJSON()[stageString] - currentBlock;
-    const moment = moment().add(remainingBlocks * 6, "second");
-    const endDate = formatTime(moment, "DD-MM-YYYY HH:mm (UTC)");
+    const m = moment().add(remainingBlocks * 6, "second");
+    const endDate = formatTime(m, "DD-MM-YYYY HH:mm (UTC)");
 
     if (stageString === "Announcing")
       msg = `Council election started. You can <b><a href="${domain}/#/council/applicants">announce your application</a></b> until ${endDate}`;
@@ -182,7 +182,7 @@ export const proposals = async (
     const proposal: ProposalDetail = await proposalDetail(api, id);
     const { finalizedAt, message, parameters, result, stage } = proposal;
     if (stage === "Finalized") {
-      let label: string = result;
+      let label: string = result.toLowerCase();
       if (result === "Approved") {
         const executed = parameters.gracePeriod.toNumber() > 0 ? false : true;
         label = executed ? "executed" : "finalized";
@@ -243,7 +243,7 @@ export const heartbeat = (
   let props = active
     ? `\n<a href="${domain}/#/proposals">${active} active ${p(active)}</a> `
     : "";
-  if (executing) props += `{executing} ${p(executing)} to be executed.`;
+  if (executing) props += `${executing} ${p(executing)} to be executed.`;
 
   sendMessage(
     `  ${blocks.length} blocks produced in ${timePassed}
