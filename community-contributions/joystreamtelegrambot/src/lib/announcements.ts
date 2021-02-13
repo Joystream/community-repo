@@ -141,19 +141,26 @@ export const posts = async (
       api.query.forum.postById(id)
     );
     const replyId: number = post.nr_in_thread.toNumber();
-    const message: string = post.current_text;
-    const excerpt: string = message.substring(0, 100);
     const threadId: number = post.thread_id.toNumber();
     const thread: Thread = await query("title", () =>
       api.query.forum.threadById(threadId)
     );
-    const threadTitle: string = thread.title;
     const category: Category = await query("title", () =>
       categoryById(api, thread.category_id.toNumber())
     );
     const handle = await memberHandleByAccount(api, post.author_id.toJSON());
-    const msg = `<b><a href="${domain}/#/members/${handle}">${handle}</a> posted <a href="${domain}/#/forum/threads/${threadId}?replyIdx=${replyId}">${threadTitle}</a> in <a href="${domain}/#/forum/categories/${category.id}">${category.title}</a>:</b>\n\r<i>${excerpt}</i> <a href="${domain}/#/forum/threads/${threadId}?replyIdx=${replyId}">more</a>`;
-    messages.push(msg);
+
+    const s = {
+      author: `<a href="${domain}/#/members/${handle}">${handle}</a>`,
+      thread: `<a href="${domain}/#/forum/threads/${threadId}?replyIdx=${replyId}">${thread.title}</a>`,
+      category: `<a href="${domain}/#/forum/categories/${category.id}">${category.title}</a>`,
+      content: `<i>${post.current_text.substring(0, 150)}</i> `,
+      link: `<a href="${domain}/#/forum/threads/${threadId}?replyIdx=${replyId}">more</a>`,
+    };
+
+    messages.push(
+      `<u>${s.category}</u>\n\r<b>${s.author}</b> posted in <b>${s.thread}</b>:\n\r${s.content}${s.link}`
+    );
   }
 
   sendMessage(messages.join("\r\n\r\n"));
