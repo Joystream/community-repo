@@ -13,16 +13,16 @@
 |11 |Design Community Repo Banner |#89   |15.02.21 |$250  |[n](https://testnet.joystream.org/#/forum/threads/n)      |Announced       |NA   |NA                                                  |
 
 ## Bounties Management
-Part of the job for the Council is to manage these bounties. The tasks associated with that is:
-1. Familiarize themselves with the tasks specified in the issue
-2. Seek further information from Jsgenesis on any ambiguous or missing items
-3. Decide on the format, full workflow and process
-4. Create a forum thread with:
+Part of the job for the Council is to manage these bounties. The tasks associated with that are:
+1. Familiarizing themselves with the tasks specified in the issue
+2. Seeking further information from Jsgenesis on any ambiguous or missing items
+3. Deciding on the format, full workflow and process required
+4. Creating a forum thread with:
   - Link to the issue with full description
   - Specify the format and workflow
-  - If applicable
+  - If applicable:
     - list what it takes to be assigned the bounty
-    - assign an admin
+    - assign a dedicated manager for the bounty
     - set milestones/timelines
 5. Update the [json](/bounties-overview/bounties-status.json) in accordance with the [schema](/bounties-overview/bounties). See explanation [here](#bounties-schema).
 6. Assign a community member`*`, and update json
@@ -32,7 +32,7 @@ Part of the job for the Council is to manage these bounties. The tasks associate
   - Review the work submitted
   - Approve if appropriate
 9. Once the final spending proposal is made:
-  - Ensure it's in line with the workflow set
+  - Ensure it's in line with the workflow set out
   - Verify the Jsgenesis requirements are met (eg. a PR is made)
   - Review/grade the work submitted
   - Check if the requested funds matches the expected payout(s)

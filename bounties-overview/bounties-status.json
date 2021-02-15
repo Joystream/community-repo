@@ -15,7 +15,7 @@
     {
       "id": 8,
       "title": "Ledger on Joystream",
-      "description": "Research how well the Ledger hardware wallet is supported, how to use them on the network, derivation paths and key recovery.",
+      "description": "Research how well the Ledger hardware wallets are supported, how to use them on the network, derivation paths and key recovery.",
       "openedDate": "2021-02-15",
       "links": ["https://github.com/Joystream/community-repo/issues/86"],
       "reward": 300,
@@ -26,7 +26,7 @@
     {
       "id": 9,
       "title": "Repo/Docs Improvements",
-      "description": "Improve the quality of our documentation on Github, by making PRs and ",
+      "description": "Improve the quality of our documentation on GitHub, by making PRs and issues.",
       "openedDate": "2021-02-15",
       "links": ["https://github.com/Joystream/community-repo/issues/87"],
       "reward": 300,
@@ -37,7 +37,7 @@
     {
       "id": 10,
       "title": "Upload Public Domain Content",
-      "description": "Upload videos to our testnet, and earn up to $5 per entry! We believe there are some hidden gems available out there, that is licensed permissive.",
+      "description": "Upload videos to our testnet, and earn up to $5 per entry! We believe there are some hidden gems available out there, that are licensed permissively.",
       "openedDate": "2021-02-15",
       "links": ["https://github.com/Joystream/community-repo/issues/88"],
       "reward": 5,
