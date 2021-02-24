@@ -2,11 +2,33 @@
   "activeBounties":
   [
     {
+      "id": 4,
+      "title": "Improved Telegram Bot",
+      "openedDate": "2020-12-05",
+      "description": "As the bot still has some issues (due to bugs in the initial bot), we want to both fix these, and expand on the functionality.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/158","https://github.com/Joystream/community-repo/issues/51"],
+      "reward": 225,
+      "tags": ["Coding"],
+      "format": "Reserved",
+      "status": "Open"
+    },
+    {
+      "id": 5,
+      "title": "JS Telegram Sticker pack",
+      "openedDate": "2020-12-05",
+      "description": "Telegram allows for custom sticker packs to be made. These can spice up the conversation a little, and allows the Joystream Community to let their creativity and design show!",
+      "links": ["https://testnet.joystream.org/#/forum/threads/157","https://testnet.joystream.org/#/forum/threads/169","https://github.com/Joystream/community-repo/issues/52"],
+      "reward": 400,
+      "tags": ["Creative", "Stickers"],
+      "format": "Reserved",
+      "status": "Open"
+    },
+    {
       "id": 7,
       "title": "Joystream Player Loading",
       "description": "The current implementation of the Joystream Player takes a while to load. The scope of this bounty is to look into what can be done to reduce this.",
       "openedDate": "2021-02-15",
-      "links": ["https://github.com/Joystream/community-repo/issues/85"],
+      "links": ["https://github.com/Joystream/community-repo/issues/85","https://testnet.joystream.org/#/forum/threads/214"],
       "reward": 300,
       "tags": ["Coding","Research"],
       "format": "Closed",
@@ -17,7 +39,7 @@
       "title": "Ledger on Joystream",
       "description": "Research how well the Ledger hardware wallets are supported, how to use them on the network, derivation paths and key recovery.",
       "openedDate": "2021-02-15",
-      "links": ["https://github.com/Joystream/community-repo/issues/86"],
+      "links": ["https://github.com/Joystream/community-repo/issues/86","https://testnet.joystream.org/#/forum/threads/215"],
       "reward": 300,
       "tags": ["Research"],
       "format": "Closed",
@@ -28,7 +50,7 @@
       "title": "Repo/Docs Improvements",
       "description": "Improve the quality of our documentation on GitHub, by making PRs and issues.",
       "openedDate": "2021-02-15",
-      "links": ["https://github.com/Joystream/community-repo/issues/87"],
+      "links": ["https://github.com/Joystream/community-repo/issues/87","https://testnet.joystream.org/#/forum/threads/216"],
       "reward": 300,
       "tags": ["Newcomers","Research"],
       "format": "Free for All",
@@ -39,7 +61,7 @@
       "title": "Upload Public Domain Content",
       "description": "Upload videos to our testnet, and earn up to $5 per entry! We believe there are some hidden gems available out there, that are licensed permissively.",
       "openedDate": "2021-02-15",
-      "links": ["https://github.com/Joystream/community-repo/issues/88"],
+      "links": ["https://github.com/Joystream/community-repo/issues/88","https://testnet.joystream.org/#/forum/threads/217"],
       "reward": 5,
       "tags": ["Newcomers","Content"],
       "format": "Free for All",
@@ -50,7 +72,7 @@
       "title": "Design Community Repo Banner",
       "openedDate": "2021-02-15",
       "description": "Most of the active repos in the Joystream organization have branded banners in their README.md. The Community Repo also needs one!",
-      "links": ["https://github.com/Joystream/community-repo/issues/89"],
+      "links": ["https://github.com/Joystream/community-repo/issues/89","https://testnet.joystream.org/#/forum/threads/218"],
       "reward": 250,
       "notes": "Design a banner for the Community Repo",
       "tags": ["Design"],
@@ -60,6 +82,42 @@
   ],
   "closedBounties":
   [
+    {
+      "id": 6,
+      "title": "Increase Validator Research",
+      "openedDate": "2021-01-17",
+      "description": "Research the costs and parameter changes associated with increasing the Validator count substantially.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/186","https://github.com/Joystream/community-repo/issues/71"],
+      "reward": 200,
+      "tags": ["Research"],
+      "format": "Reserved",
+      "closedDate": "2021-02-13",
+      "status": "Completed - USD 200"
+    },
+    {
+      "id": 3,
+      "title": "Improve Telegram Bot(s)",
+      "openedDate": "2020-11-08",
+      "description": "After the upgrade, we have enabled the polkadot-js extension as part of Pioneer, this bounty is for testing the extension.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/130","https://github.com/Joystream/community-repo/issues/41"],
+      "reward": 225,
+      "tags": ["Coding"],
+      "format": "Reserved",
+      "closedDate": "2020-12-05",
+      "status": "Closed - USD 25"
+    },
+    {
+      "id": 2,
+      "title": "Testing of 'polkadot-js'",
+      "openedDate": "2020-09-23",
+      "description": "After the upgrade, we have enabled the polkadot-js extension as part of Pioneer, this bounty is for testing the extension.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/129","https://github.com/Joystream/community-repo/issues/32"],
+      "reward": 200,
+      "tags": ["Testing"],
+      "format": "Reserved",
+      "closedDate": "2021-01-05",
+      "status": "Completed - USD 200"
+    },
     {
       "id": 1,
       "title": "Update Telegram Bot",
