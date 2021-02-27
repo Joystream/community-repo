@@ -6,3 +6,7 @@ wget https://raw.githubusercontent.com/IeSua-lab/joystream-node/main/joystream-n
 chmod +x ./joystream-node-install.sh
 ./joystream-node-install.sh
 ```
+
+Script will install the node. At the end of the installation, it will ask you what to name your node.   
+Works as root and user. 
+GIF file (how it works): https://imgur.com/a/lliuWZk
