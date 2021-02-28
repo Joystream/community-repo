@@ -24,6 +24,7 @@ read -p "Enter your node name and press [ENTER]:" username
 
 echo [Unit] | sudo tee --append /etc/systemd/system/joystream-node.service
 echo Description=Joystream Node | sudo tee --append /etc/systemd/system/joystream-node.service
+echo After=network.target | sudo tee --append /etc/systemd/system/joystream-node.service
 
 echo [Service] | sudo tee --append /etc/systemd/system/joystream-node.service
 echo Type=simple | sudo tee --append /etc/systemd/system/joystream-node.service
@@ -35,7 +36,9 @@ echo ExecStart=$HOME/joystream-node \\| sudo tee --append /etc/systemd/system/jo
 echo --chain joy-testnet-4.json \\| sudo tee --append /etc/systemd/system/joystream-node.service
 echo --pruning archive \\| sudo tee --append /etc/systemd/system/joystream-node.service
 echo --validator \\| sudo tee --append /etc/systemd/system/joystream-node.service
-echo --name $username| sudo tee --append /etc/systemd/system/joystream-node.service
+echo --name $username \\| sudo tee --append /etc/systemd/system/joystream-node.service
+echo --telemetry-url '"'wss://telemetry.joystream.org/submit/ 0'"' \\| sudo tee --append /etc/systemd/system/joystream-node.service
+echo --telemetry-url '"'wss://telemetry.polkadot.io/submit/ 0'"' | sudo tee --append /etc/systemd/system/joystream-node.service
 echo Restart=on-failure | sudo tee --append /etc/systemd/system/joystream-node.service
 echo RestartSec=3 | sudo tee --append /etc/systemd/system/joystream-node.service
 echo LimitNOFILE=8192 | sudo tee --append /etc/systemd/system/joystream-node.service
