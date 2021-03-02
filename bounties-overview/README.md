@@ -2,15 +2,19 @@
 
 ## Bounty Status
 
-|ID |Title                        |Issue |Opened   |Reward|Forum Thread                                              |Status/Grading  |PR   |Proposal                                            |
-|:-:|:---------------------------:|:----:|:-------:|:----:|:---------------------------------------------------------|:--------------:|:---:|:--------------------------------------------------:|
-|1  |Update Telegram Bot          |#23   |23.09.20 |$300  |[118](https://testnet.joystream.org/#/forum/threads/118)  |$300 - 01.11.20 |#36  |[32](https://testnet.joystream.org/#/proposals/32)  |
-|2  |...                          |...   |DD.MM.YY |$n    |[n](https://testnet.joystream.org/#/forum/threads/n)      |                |...  |[n](https://testnet.joystream.org/#/proposals/n)    |
-|7  |Joystream Player Loading     |#85   |15.02.21 |$400  |[n](https://testnet.joystream.org/#/forum/threads/n)      |Announced       |NA   |NA                                                  |
-|8  |Ledger on Joystream          |#86   |15.02.21 |$300  |[n](https://testnet.joystream.org/#/forum/threads/n)      |Announced       |NA   |NA                                                  |
-|9  |Repo/Docs Improvements       |#87|15.02.21 |$400  |[n](https://testnet.joystream.org/#/forum/threads/n)      |Announced       |NA   |NA                                                  |
-|10 |Upload Public Domain Content |#88   |15.02.21 |$5*  |[n](https://testnet.joystream.org/#/forum/threads/n)      |Announced       |NA   |NA                                                  |
-|11 |Design Community Repo Banner |#89   |15.02.21 |$250  |[n](https://testnet.joystream.org/#/forum/threads/n)      |Announced       |NA   |NA                                                  |
+| ID | Title                        | Issue | Opened   | Reward | Forum Thread                                             | Status/Grading     | PR  | Proposal                                             |
+|----|------------------------------|-------|----------|--------|----------------------------------------------------------|--------------------|-----|------------------------------------------------------|
+| 1  | Update Telegram Bot          | #23   | 23.09.20 | $300   | [118](https://testnet.joystream.org/#/forum/threads/118) | $300 - 01.11.20    | #36 | [32](https://testnet.joystream.org/#/proposals/32)   |
+| 2  | Testing of 'polkadot-js'     | #32   | 23.09.20 | $200   | [129](https://testnet.joystream.org/#/forum/threads/129) | $200 - 05.01.20    | #67 | [87](https://testnet.joystream.org/#/proposals/87)   |
+| 3  | Improve Telegram Bot(s)      | #41   | 08.11.20 | $225   | [130](https://testnet.joystream.org/#/forum/threads/130) | $25 - 05.12.20     | #47 | [49](https://testnet.joystream.org/#/proposals/49)   |
+| 4  | Improve Telegram Bot(s)      | #51   | 05.12.20 | $225   | [158](https://testnet.joystream.org/#/forum/threads/158) | Announced          | NA  | NA                                                   |
+| 5  | JS Telegram Sticker pack     | #52   | 05.12.20 | $400   | [169](https://testnet.joystream.org/#/forum/threads/169) | Partially Complete | NA  | NA                                                   |
+| 6  | Increase Validator Research  | #71   | 17.01.21 | $200   | [186](https://testnet.joystream.org/#/forum/threads/186) | $200 - 13.02.21    | #77 | [116](https://testnet.joystream.org/#/proposals/116) |
+| 7  | Joystream Player Loading     | #85   | 15.02.21 | $400   | [214](https://testnet.joystream.org/#/forum/threads/214) | Announced          | NA  | NA                                                   |
+| 8  | Ledger on Joystream          | #86   | 15.02.21 | $300   | [215](https://testnet.joystream.org/#/forum/threads/215) | Announced          | NA  | NA                                                   |
+| 9  | Repo/Docs Improvements       | #87   | 15.02.21 | $400   | [216](https://testnet.joystream.org/#/forum/threads/216) | Announced          | NA  | NA                                                   |
+| 10 | Upload Public Domain Content | #88   | 15.02.21 | $5*    | [217](https://testnet.joystream.org/#/forum/threads/217) | Announced          | NA  | NA                                                   |
+| 11 | Design Community Repo Banner | #89   | 15.02.21 | $250   | [218](https://testnet.joystream.org/#/forum/threads/218) | Announced          | NA  | NA                                                   |
 
 ## Bounties Management
 Part of the job for the Council is to manage these bounties. The tasks associated with that are:
