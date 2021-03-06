@@ -16,6 +16,8 @@ Data from eras **[3296, 3944]**
 
 5) What happened to the rewards in tJOY and USD terms?
 
+
+
 6) Was there a spike in tokens staked, or were they just shifted?  
 **Looking at the graph of the stake overtime it's possible to see some spikes, up and down, in the amount of tokens staked. 
 Maybe due to the attempt of keeping the 25% total amount of staked tokens in order to maintain the best validator rewards.
@@ -23,9 +25,11 @@ The biggest spikes were:**
    - **[18/02/21-19/02/21] from 75M to 86M tJOY**
    - **[22-02/21] from 79M to 91M**  
    
-**During this period the validators stake went from 77M to 94M tJOY (an increase of 22.01%)**
+    **During this period the validators stake went from 77M to 94M tJOY (an increase of 22.01%)**
 
 7) What happened to the average block time, and blocks per era and session/epoch?
+
+
 
 8) Anything else that was noteworthy?  
 **Nothing more to report**
