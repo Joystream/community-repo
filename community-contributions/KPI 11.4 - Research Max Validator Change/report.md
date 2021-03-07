@@ -52,7 +52,7 @@ The biggest spikes were:**
 
 
 8) Anything else that was noteworthy?  
-**It seems that the new validators increase the max and min block time, but the max block time decrease at the end which may indicate that the servers used for validating were improved. The increase of the block time was felt since it delayed the council election and increased the active council round.  Would also be good to collect the percentage of validators stake to check if the changes in the rewards were influenced by the percentage being close to 25%**
+**It seems that the new validators increase the max and min block time, but the max block time decrease at the end which may indicate that the servers used for validating were improved. The increase of the block time was felt since it delayed the council election and increased the active council round.   Would also be good to collect the percentage of validators stake to check if the changes in the rewards were influenced by the percentage being close to 25%**
 
 
 
