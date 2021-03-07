@@ -38,7 +38,7 @@ The biggest spikes were:**
 
 7) What happened to the average block time, and blocks per era and session/epoch?  
   **The average block time increased from 6s to 7s between [11-07-21- 12-07-21].
-  The max block time changed a bit (from 30s to 18s) until 21-02-21, after that it stay the same (24s) until 02-03-21, ending at 18s.  
+  The max block time changed a bit (between 18s to 30s) until 21-02-21, after that it stay the same (24s) until 02-03-21, ending at 18s.  
   The block time of the Block Time By Date graph is in miliseconds**.
   
 ![Block Time by Date](https://user-images.githubusercontent.com/7486476/110229356-c2365400-7f00-11eb-90c9-c89a176c061c.png)
