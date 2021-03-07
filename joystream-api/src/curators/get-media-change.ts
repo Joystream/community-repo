@@ -7,7 +7,7 @@ import { getBatchAction, getRemovedAction } from "./functions";
 
 async function main() {
     // Initialise the provider to connect to the local node
-    const provider = new WsProvider('wss://staging-2.joystream.app/staging/rpc:9944');
+    const provider = new WsProvider('ws://127.0.0.1:9944');
 
     const api = await ApiPromise.create({ provider, types })
     const firstBlock = 1292265 // first block after the upgrade to the new Content Directory
