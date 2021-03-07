@@ -27,7 +27,7 @@ Be aware than since some blocks of the era 3296 and 3944  were not included in t
 
 
 6) Was there a spike in tokens staked, or were they just shifted?  
-**Looking at the chart of the Validators Stake by Date it's possible to see some spikes, up and down, in the amount of tokens staked. Maybe due to the attempts of keeping the 25% total amount of staked tokens in order to maintain the best validator rewards (this can be seen clearly between [22/02/2021-23/02/2021]).
+**Looking at the chart of the Validators Stake by Date it's possible to see some spikes, up and down, in the amount of tokens staked. Maybe due to the attempts of keeping the 25% total amount of staked tokens in order to maintain the best validator rewards (this can be seen clearly between [22/02/2021-23/02/2021]).  
 The biggest spikes were:**  
    - **[18/02/2021-19/02/2021] from 75M (25%) to 86M (25.8%) tJOY**
    - **[22/02/2021-23/02/2021] from 79M (22.39%) to 91M (24.46%) tJOY**  
