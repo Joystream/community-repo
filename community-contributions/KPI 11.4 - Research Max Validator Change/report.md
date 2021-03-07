@@ -23,6 +23,7 @@ Be aware than since some blocks of the era 3296 and 3944  were not included in t
   This was expected since the number of validators increased.**  
 ![Validator Rewards by Date (ktJOY)](https://user-images.githubusercontent.com/7486476/110247679-44586400-7f65-11eb-8f48-6116d9928529.png)
 ![Validator Rewards by $](https://user-images.githubusercontent.com/7486476/110247666-2b4fb300-7f65-11eb-8d69-1c6157bf6553.png)
+![Reward per Validator $](https://user-images.githubusercontent.com/7486476/110248009-e9c00780-7f66-11eb-8ec5-25c8d8863c3b.png)
 
 
 6) Was there a spike in tokens staked, or were they just shifted?  
@@ -55,7 +56,7 @@ The biggest spikes were:**
 
 
 8) Anything else that was noteworthy?  
-**It seems that the new validators increase the max and min block time, but the max block time decrease at the end which may indicate that the servers used for validating were improved. The increase of the block time was felt since it delayed the council election and increased the active council round.
+**It seems that the new validators increase the max and min block time, but the max block time decrease at the end which may indicate that the servers used for validating were improved. The increase of the block time was felt since it delayed the council election and increased the active council round.**
 
 
 
