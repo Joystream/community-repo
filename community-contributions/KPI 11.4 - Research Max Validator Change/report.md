@@ -42,6 +42,8 @@ The biggest spikes were:**
   The block time of the Block Time By Date graph is in miliseconds**.
   
 ![Block Time by Date](https://user-images.githubusercontent.com/7486476/110229356-c2365400-7f00-11eb-90c9-c89a176c061c.png)
+![Block Time by Date zoom](https://user-images.githubusercontent.com/7486476/110230309-ff521480-7f07-11eb-9996-aebe79bda913.png)
+
 
 **The number of blocks in a era has decrease between [07-02-21-10-02-10] but it went almost back to normal in the end of the measure period.** 
 ![Era block count](https://user-images.githubusercontent.com/7486476/110229368-d2e6ca00-7f00-11eb-9606-b6373773f6ed.png)
