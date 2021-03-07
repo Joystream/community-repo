@@ -41,7 +41,7 @@ The biggest spikes were:**
   The max block time changed a bit (between 18 000 ms to 30 000 ms) until 21-02-21, after that it stay the same (24 000 ms) until 02-03-21, ending at 18 000ms**.
   
 ![Block Time by Date](https://user-images.githubusercontent.com/7486476/110229356-c2365400-7f00-11eb-90c9-c89a176c061c.png)
-**Same graph with "zoom" to better show the changes on average and min block time.**   
+**Same graph with "zoom" to better illustrate the changes on average and min block time.**   
 ![Block Time by Date zoom](https://user-images.githubusercontent.com/7486476/110230309-ff521480-7f07-11eb-9996-aebe79bda913.png)
 
 
