@@ -21,8 +21,8 @@ Be aware than since some blocks of the era 3296 and 3944  were not included in t
 5) What happened to the rewards in tJOY and USD terms?  
   **A big drop of rewards can be seen in the following charts, between [07/02/2021-10/02/2021] and between [28/02/2021-02/03/2021].  
   This was expected since the number of validators increased.**  
-![Validator Rewards by Date (ktJOY)](https://user-images.githubusercontent.com/7486476/110247679-44586400-7f65-11eb-8f48-6116d9928529.png)
-![Validator Rewards by $](https://user-images.githubusercontent.com/7486476/110247666-2b4fb300-7f65-11eb-8d69-1c6157bf6553.png)
+![Validators Rewards by Date (ktJOY)](https://user-images.githubusercontent.com/7486476/110248691-4d97ff80-7f6a-11eb-83ec-213a5c06c070.png)
+![Validators Rewards by Date](https://user-images.githubusercontent.com/7486476/110248845-f34b6e80-7f6a-11eb-87c9-04f091822efb.png)
 ![Reward per Validator $](https://user-images.githubusercontent.com/7486476/110248009-e9c00780-7f66-11eb-8ec5-25c8d8863c3b.png)
 
 
