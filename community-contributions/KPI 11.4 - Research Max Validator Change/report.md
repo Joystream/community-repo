@@ -25,7 +25,7 @@ Be aware than since some blocks of the era 3296 and 3944  were not included in t
 
 
 6) Was there a spike in tokens staked, or were they just shifted?  
-**Looking at the graph of the stake overtime it's possible to see some spikes, up and down, in the amount of tokens staked. 
+**Looking at the graph of the Validators Stake by Date it's possible to see some spikes, up and down, in the amount of tokens staked. 
 Maybe due to the attempts of keeping the 25% total amount of staked tokens in order to maintain the best validator rewards.
 The biggest spikes were:**  
    - **[18/02/21-19/02/21] from 75M to 86M tJOY**
@@ -38,7 +38,9 @@ The biggest spikes were:**
 
 7) What happened to the average block time, and blocks per era and session/epoch?  
   **The average block time increased from 6s to 7s between [11-07-21- 12-07-21].
-  The max block time changed a bit (from 30s to 18) until 21-02-21, after that it stay the same 24s until 02-03-21, ending at 18s.**
+  The max block time changed a bit (from 30s to 18s) until 21-02-21, after that it stay the same (24s) until 02-03-21, ending at 18s.  
+  The block time of the Block Time By Date graph is in miliseconds**.
+  
 ![Block Time by Date](https://user-images.githubusercontent.com/7486476/110229356-c2365400-7f00-11eb-90c9-c89a176c061c.png)
 
 **The number of blocks in a era has decrease between [07-02-21-10-02-10] but it went almost back to normal in the end of the measure period.** 
