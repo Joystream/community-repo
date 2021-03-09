@@ -2,7 +2,7 @@
 
 Login as root, then do:
 ```
-wget https://raw.githubusercontent.com/IeSua-lab/community-repo/scriptnodeSetup/community-contributions/scriptnodeSetup/joystream-node-install.sh
+Download joystream-node-install.sh
 
 chmod +x ./joystream-node-install.sh
 
