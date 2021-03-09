@@ -37,8 +37,8 @@ This table gives a brief overview of the status of each bounty. Since bounties a
 | 6      | Increase Validator Research  | Complete           |                 |                 |                     |                  |            |
 | 7      | Joystream Player Loading     | Announced          | No              |                 |                     |                  |            |
 | 8      | Ledger on Joystream          | Announced          | No              |                 |                     |                  |            |
-| 9      | Repo/Docs Improvements       | Announced          | Partially       | Yes             | Announced           |                  | Continuous |
-| 10     | Upload Public Domain Content | Announced          | Partially       | Yes             | In progress         |                  | Continuous |
+| 9      | Repo/Docs Improvements       | Announced          | Partially       | Yes             | In progress           |                  | Continuous |
+| 10     | Upload Public Domain Content | Announced          | Partially       | Yes             | Announced        |                  | Continuous |
 | 11     | Design Community Repo Banner | Announced          | No - required   | Yes             | In progress         |                  | N/A        |
 
 #### Bounty processes
