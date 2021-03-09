@@ -1,4 +1,4 @@
-The survey was performed from 04 to 09 March 2021. Overall, 281 Joystream community members took part. Below are the results. 
+The survey was performed by @lopegor from 04 to 09 March 2021. Overall, 281 Joystream community members took part. Below are the results. 
 
 ### General Information
 
