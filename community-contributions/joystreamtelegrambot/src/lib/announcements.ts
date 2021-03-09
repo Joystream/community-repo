@@ -102,7 +102,12 @@ export const council = async (
       msg = `Council election: <b><a href="${domain}/#/council/votes">Reveal your votes</a></b> until ${endDate}`;
   }
 
-  if (round !== council.round && stageString !== council.last) sendMessage(msg);
+  if (
+    council.last !== "" &&
+    round !== council.round &&
+    stageString !== council.last
+  )
+    sendMessage(msg);
   return { round, last: stageString };
 };
 
@@ -145,8 +150,10 @@ export const posts = async (
     const thread: Thread = await query("title", () =>
       api.query.forum.threadById(threadId)
     );
+    const categoryId = thread.category_id.toNumber();
+
     const category: Category = await query("title", () =>
-      categoryById(api, thread.category_id.toNumber())
+      categoryById(api, categoryId)
     );
     const handle = await memberHandleByAccount(api, post.author_id.toJSON());
 
@@ -159,7 +166,7 @@ export const posts = async (
     };
 
     messages.push(
-      `<u>${s.category}</u>\n\r<b>${s.author}</b> posted in <b>${s.thread}</b>:\n\r${s.content}${s.link}`
+      `<u>${s.category}</u> <b>${s.author}</b> posted in <b>${s.thread}</b>:\n\r${s.content}${s.link}`
     );
   }
 
@@ -180,7 +187,10 @@ export const proposals = async (
     const proposal: ProposalDetail = await proposalDetail(api, id);
     const { createdAt, finalizedAt, message, parameters, result } = proposal;
     const votingEndsAt = createdAt + parameters.votingPeriod.toNumber();
-    const msg = `Proposal ${id} <b>created</b> at block ${createdAt}.\r\n${message}\r\nYou can vote until block ${votingEndsAt}.`;
+    const endTime = moment()
+      .add(6 * (votingEndsAt - block), "second")
+      .format("DD/MM/YYYY HH:mm");
+    const msg = `Proposal ${id} <b>created</b> at block ${createdAt}.\r\n${message}\r\nYou can vote until ${endTime} UTC (block ${votingEndsAt}).`;
     sendMessage(msg);
     active.push(id);
   }
@@ -203,12 +213,10 @@ export const proposals = async (
 
   for (const id of executing) {
     const proposal = await proposalDetail(api, id);
-    const { exec, finalizedAt, message, parameters } = proposal;
+    const { finalizedAt, message, parameters } = proposal;
     const executesAt = +finalizedAt + parameters.gracePeriod.toNumber();
     if (block < executesAt) continue;
-    const execStatus = exec ? Object.keys(exec)[0] : "";
-    const label = execStatus === "Executed" ? "has been" : "failed to be";
-    const msg = `Proposal ${id} <b>${label} executed</b> at block ${executesAt}.\r\n${message}`;
+    const msg = `Proposal ${id} <b>executed</b> at block ${executesAt}.\r\n${message}`;
     sendMessage(msg);
     executing = executing.filter((e) => e !== id);
   }
