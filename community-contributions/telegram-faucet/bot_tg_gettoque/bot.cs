@@ -1,4 +1,5 @@
-﻿using System;
+  
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,7 @@ namespace ConsoleApp19
 
         public static SqlConnection GetConnectionsString()
         {
-            return new SqlConnection(@"{}"); //your sql connection string!!!
+            return new SqlConnection(@"");//conn string
 
         }
 
@@ -76,14 +77,45 @@ namespace ConsoleApp19
         {
 
 
-          
-            string sql1 = $"IF EXISTS (SELECT * FROM info WHERE uid={msg.From.Id}) BEGIN UPDATE info SET chatid={msg.From.Id} WHERE uid={msg.From.Id} END ELSE BEGIN INSERT INTO info (uid,address,chatid,funded) VALUES ({msg.From.Id},'null',{msg.From.Id},'false') END ";
-            SQLUpdate(sql1);
+           
+            string sql12 = $"select address from info where uid={msg.Chat.Id} ";
+            var iff1 = SQLGetData(sql12);
+            string exampleTrimmed = "";
+            if (iff1!=null)
+            {
 
-            //insert info of auth
+            
+             exampleTrimmed = String.Concat(iff1.ToString().Where(c => !Char.IsWhiteSpace(c)));
+
+            }
 
 
-            return "Welcome to Joystream Faucent. This bot will drop you 101 JOY. Due to hight load, please wait with patience until your que comes ";
+            if (exampleTrimmed != "abuse")
+            {
+
+
+
+
+
+                string sql1 = $"IF EXISTS (SELECT * FROM info WHERE uid={msg.From.Id} and (funded='true' or funded='false') ) BEGIN UPDATE info SET chatid={msg.From.Id} WHERE uid={msg.From.Id} END ELSE BEGIN INSERT INTO info (uid,address,chatid,funded) VALUES ({msg.From.Id},'null',{msg.From.Id},'false') END ";
+                SQLUpdate(sql1);
+
+
+
+
+
+
+                //insert info of auth
+
+
+                return "Welcome to Joystream Faucent. This bot will drop you 101 JOY. Due to hight load, please wait with patience until your que comes ";
+
+
+            }
+            else return "Abuse detected";
+
+
+
         }
 
 
@@ -91,24 +123,42 @@ namespace ConsoleApp19
         {
             
 
-            return "Contact Alx or try to start again. /start ";
+            return "Contact @segoan or try to start again. /start ";
         }
 
 
         public static void GetAddress(Message msg)
         {
              HttpClient client = new HttpClient();
- 
-            string sql1 = $"IF EXISTS (SELECT * FROM info WHERE uid={msg.From.Id} AND funded='false') BEGIN UPDATE info SET uid ={msg.From.Id}, address ='{msg.Text}'  WHERE chatid = { msg.From.Id } END                ELSE BEGIN INSERT INTO info(uid, address, chatid, funded)VALUES({ msg.From.Id},'null',{ msg.From.Id},'false') END ";       
+
+            string sqlcehck = $"select uid from info where address='{msg.Text}'";
+            var iff = SQLGetData(sqlcehck);
+            string api = ""; //yourapi
+
+            string sqlcehck1 = $"select funded from info where uid='{msg.Chat.Id}'";
+            var iff1 = SQLGetData(sqlcehck1);
+
+
+
+
+
+            if (iff==null && iff1.ToString()!= "abuse")
+            {
+
+
+
+
+
+            string sql1 = $"IF EXISTS (SELECT * FROM info WHERE uid={msg.From.Id} AND funded='false' and funded !='abuse' ) BEGIN UPDATE info SET uid ={msg.From.Id}, address ='{msg.Text}'  WHERE chatid = {msg.From.Id} END             ";       
             SQLUpdate(sql1);
-            string api = "";// your tg api key
 
             string sql2 = $"SELECT funded FROM info WHERE uid={msg.From.Id}";
+
          string iffunded = SQLGetData(sql2).ToString();
         
             if (iffunded.Replace(" ","")=="true")
             {
-                string rep = "You alread was funded. If mistake, contact Alx";
+                string rep = "You already was funded. If mistake, contact @segoan";
               var responseString = client.GetStringAsync("https://api.telegram.org/bot" + api + "/sendMessage?chat_id=" + msg.Chat.Id + "&text=" + rep);
             } else
 
@@ -118,15 +168,47 @@ namespace ConsoleApp19
                 var responseString = client.GetStringAsync("https://api.telegram.org/bot" + api + "/sendMessage?chat_id=" + msg.Chat.Id + "&text=" + rep);
 
             }
-         
-           
 
 
 
 
 
-          
+                var match = addresesinque
+          .FirstOrDefault(stringToCheck => stringToCheck.Contains(msg.Chat.Id.ToString()));
+                var match2 = fundedaddreses
+         .FirstOrDefault(stringToCheck => stringToCheck.Contains(msg.Chat.Id.ToString()));
+                if (match == null && match2 == null)
+                {
+                    System.IO.File.AppendAllText(allinfo, msg.Text + ";" + msg.Chat.Id + Environment.NewLine);
+                    using (StreamWriter streamWriter = new StreamWriter(pathaddresestofund, true)) // the true will make you append to the file instead of overwriting its contents
+                    {
+                        streamWriter.Write(msg.Text + Environment.NewLine);
+                    }
+                    string rep = "You are in que. You will get notified when funded.";
+                    var responseString =client.GetStringAsync("https://api.telegram.org/bot" + api + "/sendMessage?chat_id=" + msg.Chat.Id + "&text=" + rep);
+                }
+                else
+                if (match != null || match2 != null)
+                {
+                    string rep = "You alread was funded or in a que. Please wait. If mistake, contact Alx";
+                    var responseString = client.GetStringAsync("https://api.telegram.org/bot" + api + "/sendMessage?chat_id=" + msg.Chat.Id + "&text=" + rep);
+                }
+                */
 
+            }
+            else
+            {
+                string rep = "Abusing is leading to ban";
+
+                string sql1 = $"UPDATE info SET funded='abuse',address='abuse' WHERE uid={msg.From.Id}";
+                SQLUpdate(sql1);
+
+
+                var responseString = client.GetStringAsync("https://api.telegram.org/bot" + api + "/sendMessage?chat_id=" + msg.Chat.Id + "&text=" + rep);
+
+                Console.WriteLine("abuse");
+
+            }
 
 
 
@@ -137,7 +219,7 @@ namespace ConsoleApp19
         {
 
 
-            Bot = new TelegramBotClient(""); //your api key
+            Bot = new TelegramBotClient(""); //api
 
             Bot.OnMessage += BotOnMessageReceived; //subscribe on receiving msg
 
@@ -151,6 +233,7 @@ namespace ConsoleApp19
         {
 
             var message = e.Message;
+            Console.WriteLine($"{message.Chat.Id} send {message.Text}");
             if (message == null || message.Type != MessageType.Text) //check if not nul and text
             {
                 return;
@@ -187,6 +270,7 @@ namespace ConsoleApp19
                     case "/start":
                         {
 
+                            //check if number is exist and if start then change to false
 
 
 
@@ -198,6 +282,7 @@ namespace ConsoleApp19
                     case "💰 Get 101 JOY":
                         {
 
+                            //check if number is exist and if start then change to false
 
 
                             await Bot.SendTextMessageAsync(message.Chat.Id, "Send your wallet address", replyMarkup:HelpKeyboard);
@@ -209,6 +294,7 @@ namespace ConsoleApp19
                     case "🆘 Need help?":
                         {
 
+                            //check if number is exist and if start then change to false
 
 
                             await Bot.SendTextMessageAsync(message.Chat.Id, Helpmsg(), replyMarkup: HelpKeyboard);
@@ -239,7 +325,7 @@ namespace ConsoleApp19
 
             catch (Exception ex)
             {
-                throw;
+                //throw;
                 Console.WriteLine("err");
                 
                //await Bot.SendTextMessageAsync(message.Chat.Id, "Error. Please wait and /start again");
