@@ -50,9 +50,8 @@ The biggest spikes were:**
 **The number of blocks in a era has decrease between [07-02-2021-10-02-2021] but it went almost back to normal in the end of the measure period.** 
 ![Era block count](https://user-images.githubusercontent.com/7486476/110229368-d2e6ca00-7f00-11eb-9606-b6373773f6ed.png)
 
-  **The era duration stay basically the same**
-![Era duration](https://user-images.githubusercontent.com/7486476/110229372-daa66e80-7f00-11eb-8b69-7c322d3edae0.png)
-
+  **The era duration stayed always the same**
+![Era duration](https://user-images.githubusercontent.com/7486476/110780804-03aa6480-825d-11eb-8e91-e71fead713ca.png)
 
 
 8) Anything else that was noteworthy?  
