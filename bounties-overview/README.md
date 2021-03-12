@@ -10,11 +10,13 @@
 | 4  | Improve Telegram Bot(s)      | #51   | 05.12.20 | $225   | [158](https://testnet.joystream.org/#/forum/threads/158) | Announced          | NA  | NA                                                   |
 | 5  | JS Telegram Sticker pack     | #52   | 05.12.20 | $400   | [169](https://testnet.joystream.org/#/forum/threads/169) | Partially Complete | NA  | NA                                                   |
 | 6  | Increase Validator Research  | #71   | 17.01.21 | $200   | [186](https://testnet.joystream.org/#/forum/threads/186) | $200 - 13.02.21    | #77 | [116](https://testnet.joystream.org/#/proposals/116) |
-| 7  | Joystream Player Loading     | #85   | 15.02.21 | $400   | [214](https://testnet.joystream.org/#/forum/threads/214) | Announced          | NA  | NA                                                   |
+| 7  | Joystream Player Loading     | #85   | 15.02.21 | $400   | [214](https://testnet.joystream.org/#/forum/threads/214) | Withdrawn - No interest | NA  | NA                                                   |
 | 8  | Ledger on Joystream          | #86   | 15.02.21 | $300   | [215](https://testnet.joystream.org/#/forum/threads/215) | Announced          | NA  | NA                                                   |
 | 9  | Repo/Docs Improvements       | #87   | 15.02.21 | $400   | [216](https://testnet.joystream.org/#/forum/threads/216) | Announced          | NA  | NA                                                   |
 | 10 | Upload Public Domain Content | #88   | 15.02.21 | $5*    | [217](https://testnet.joystream.org/#/forum/threads/217) | Announced          | NA  | NA                                                   |
 | 11 | Design Community Repo Banner | #89   | 15.02.21 | $250   | [218](https://testnet.joystream.org/#/forum/threads/218) | Announced          | NA  | NA                                                   |
+| 12 | Deploy Reliable Endpoints | #101   | 12.03.21 | $200   | [324](https://testnet.joystream.org/#/forum/threads/324) | Announced          | NA  | NA                                                   |
+| 13 | Research Discord Bots | #123   | 12.03.21 | $200   | [326](https://testnet.joystream.org/#/forum/threads/326) | Announced          | NA  | NA                                                   |
 
 ## Bounties Management
 Part of the job for the Council is to manage these bounties. The tasks associated with that are:
