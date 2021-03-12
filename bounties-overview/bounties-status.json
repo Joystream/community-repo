@@ -24,17 +24,6 @@
       "status": "Open"
     },
     {
-      "id": 7,
-      "title": "Joystream Player Loading",
-      "description": "The current implementation of the Joystream Player takes a while to load. The scope of this bounty is to look into what can be done to reduce this.",
-      "openedDate": "2021-02-15",
-      "links": ["https://testnet.joystream.org/#/forum/threads/214","https://github.com/Joystream/community-repo/issues/85"],
-      "reward": 300,
-      "tags": ["Coding","Research"],
-      "format": "Closed",
-      "status": "Announced"
-    },
-    {
       "id": 8,
       "title": "Ledger on Joystream",
       "description": "Research how well the Ledger hardware wallets are supported, how to use them on the network, derivation paths and key recovery.",
@@ -78,10 +67,47 @@
       "tags": ["Design"],
       "format": "Free for All",
       "status": "Announced"
+    },
+    {
+      "id": 12,
+      "title": "Deploy Reliable Endpoints",
+      "openedDate": "2021-03-12",
+      "description": "Our endpoint has come under a lot of stress with the large inflow of new users. This bounty covers creating new endpoints.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/324","https://github.com/Joystream/community-repo/issues/101"],
+      "reward": 200,
+      "notes": "Deploy a public endpoint with high capacity ",
+      "tags": ["Hosting"],
+      "format": "Closed",
+      "status": "Announced"
+    },
+    {
+      "id": 13,
+      "title": "Research Discord Bots",
+      "openedDate": "2021-03-12",
+      "description": "Research, document and create a simple bot for the new Discord server",
+      "links": ["https://testnet.joystream.org/#/forum/threads/326","https://testnet.joystream.org/#/forum/threads/317"],
+      "reward": 250,
+      "notes": "Research and document bots for the new Discord server",
+      "tags": ["Coding","Research"],
+      "format": "Closed",
+      "status": "Announced"
     }
+
   ],
   "closedBounties":
   [
+    {
+      "id": 7,
+      "title": "Joystream Player Loading",
+      "description": "The current implementation of the Joystream Player takes a while to load. The scope of this bounty is to look into what can be done to reduce this.",
+      "openedDate": "2021-02-15",
+      "links": ["https://testnet.joystream.org/#/forum/threads/214","https://github.com/Joystream/community-repo/issues/85"],
+      "reward": 300,
+      "tags": ["Coding","Research"],
+      "format": "Closed",
+      "closedDate": "2021-03-12",
+      "status": "Withdrawn - No Interest - USD 0"
+    },
     {
       "id": 6,
       "title": "Increase Validator Research",
