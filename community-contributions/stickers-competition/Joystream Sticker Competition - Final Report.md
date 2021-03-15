@@ -22,10 +22,9 @@ The competition has concluded. After amendments of the competition rules, 12 ent
 Proposals are contained in the file sticker_competition_overview.md
 
 ### Financial status:
-* Payout for management of competition: 2096000 JOY (~$200)
+* Payout for management of competition: 2096000 JOY (~$100) 
 * Payout for all competition entries: 5751454 JOY (~$258)
 * Total competition payout: 7847454 JOY (~$313 using exchange rate at end of contest--0.0000404)
-
 * Total payout as described in competition thread: $300. This means that approximately $42 was not spent.
 
 ## Notes:
