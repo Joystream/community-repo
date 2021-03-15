@@ -8,7 +8,7 @@
 | 2  | Testing of 'polkadot-js'     | #32   | 23.09.20 | $200   | [129](https://testnet.joystream.org/#/forum/threads/129) | $200 - 05.01.20    | #67 | [87](https://testnet.joystream.org/#/proposals/87)   |
 | 3  | Improve Telegram Bot(s)      | #41   | 08.11.20 | $225   | [130](https://testnet.joystream.org/#/forum/threads/130) | $25 - 05.12.20     | #47 | [49](https://testnet.joystream.org/#/proposals/49)   |
 | 4  | Improve Telegram Bot(s)      | #51   | 05.12.20 | $225   | [158](https://testnet.joystream.org/#/forum/threads/158) | Announced          | NA  | NA                                                   |
-| 5  | JS Telegram Sticker pack     | #52   | 05.12.20 | $400   | [169](https://testnet.joystream.org/#/forum/threads/169) | Partially Complete | NA  | NA                                                   |
+| 5  | JS Telegram Sticker pack     | #52   | 05.12.20 | $400   | [169](https://testnet.joystream.org/#/forum/threads/169) | Complete           | NA  | NA                                                   |
 | 6  | Increase Validator Research  | #71   | 17.01.21 | $200   | [186](https://testnet.joystream.org/#/forum/threads/186) | $200 - 13.02.21    | #77 | [116](https://testnet.joystream.org/#/proposals/116) |
 | 7  | Joystream Player Loading     | #85   | 15.02.21 | $400   | [214](https://testnet.joystream.org/#/forum/threads/214) | Withdrawn - No interest | NA  | NA                                                   |
 | 8  | Ledger on Joystream          | #86   | 15.02.21 | $300   | [215](https://testnet.joystream.org/#/forum/threads/215) | Announced          | NA  | NA                                                   |

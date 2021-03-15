@@ -13,17 +13,6 @@
       "status": "Open"
     },
     {
-      "id": 5,
-      "title": "JS Telegram Sticker pack",
-      "openedDate": "2020-12-05",
-      "description": "Telegram allows for custom sticker packs to be made. These can spice up the conversation a little, and allows the Joystream Community to let their creativity and design show!",
-      "links": ["https://testnet.joystream.org/#/forum/threads/157","https://testnet.joystream.org/#/forum/threads/169","https://github.com/Joystream/community-repo/issues/52"],
-      "reward": 400,
-      "tags": ["Creative", "Stickers"],
-      "format": "Reserved",
-      "status": "Open"
-    },
-    {
       "id": 8,
       "title": "Ledger on Joystream",
       "description": "Research how well the Ledger hardware wallets are supported, how to use them on the network, derivation paths and key recovery.",
@@ -119,6 +108,18 @@
       "format": "Reserved",
       "closedDate": "2021-02-13",
       "status": "Completed - USD 200"
+    },
+    {
+      "id": 5,
+      "title": "JS Telegram Sticker pack",
+      "openedDate": "2020-12-05",
+      "description": "Telegram allows for custom sticker packs to be made. These can spice up the conversation a little, and allows the Joystream Community to let their creativity and design show!",
+      "links": ["https://testnet.joystream.org/#/forum/threads/157","https://testnet.joystream.org/#/forum/threads/169","https://github.com/Joystream/community-repo/issues/52"],
+      "reward": 400,
+      "tags": ["Creative", "Stickers"],
+      "format": "Competition",
+      "closedDate": "2021-03-04",
+      "status": "Completed - USD 358"
     },
     {
       "id": 3,
