@@ -8,7 +8,7 @@ Go to Discord's [bot portal](https://discordapp.com/developers/applications/) an
 ![Discord's application portal](images/bot1.png)
 
 
- Copy and save the Client ID and secret (where the 2 rrows are pointing at) ,making sure you keep the secret secret.
+ Copy and save the Client ID and secret (where the 2 arrows are pointing at), making sure you keep the secret secret.
 	![Client ID and Secret](images/bot2.jpg)
 
 So far, what you have is a simple application.
