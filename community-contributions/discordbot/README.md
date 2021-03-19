@@ -103,8 +103,3 @@ start();
 ```
 
 
-
-
-
-## Deploying the Bot
-This is also for whomever takes step three of the bounty.bounty.
