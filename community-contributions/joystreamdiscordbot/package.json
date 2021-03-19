@@ -1,0 +1,9 @@
+{
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+      "start": "node bot.ts"
+  },
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}
