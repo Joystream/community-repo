@@ -72,7 +72,6 @@ This is a report which explains the current state of the Joystream network in nu
 ### 5.2 Media & Uploads
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of uploads       | 0 | 0  |  0 |
 | Size of content         |  106807942784 |  134313723199 | 25.75          |
 | Number of channels      |  45 | 45 | 0 |
 
