@@ -67,7 +67,7 @@ Your tsconfig.json should look like this:
 
 ### Setup and start your application
 In order to start your application, you must use the `discord.`**`ts`**'s `Client` (not the client that is provided by `discord.`**`js`**!).  
-It works the same as the `discord.`**`js`**'s `Client` (same methods, properties, ...).
+It works the same as the `discord.js`**'s `Client` (same methods, properties, ...).
 
 You have different parameters in addition to discord.js when you initialize your `Client`:
 - **`classes` (required)**:  
