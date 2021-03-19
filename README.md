@@ -1,8 +1,5 @@
 <div align="center">
-  <h1>Joystream Community Repo<h1>
-</div>
-<div align="center">
-  <h3>A repo for community reports, tools and contributions.<h3>
+  <img src="img/community.png">
 </div>
 
 <div align="center">
