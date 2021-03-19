@@ -1,6 +1,4 @@
-<div align="center">
-  <img src="img/community.png">
-</div>
+<img style="align:center" src="img/community.png" alt="Joystream Community Repository for reports, researches, tools and other community contributions." />
 
 <div align="center">
   <h4>
