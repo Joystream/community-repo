@@ -252,20 +252,22 @@ export const heartbeat = (
   const avgReward = getAverage(totalReward);
   const reward = (avgReward / avgVals).toFixed();
 
-  const active = proposals.active.length;
-  const executing = proposals.executing.length;
+  const pending = proposals.active.length;
+  const finalized = proposals.executing.length;
   const p = (n: number) => (n > 1 ? "proposals" : "proposal");
-  let props = active
-    ? `\n<a href="${domain}/#/proposals">${active} active ${p(active)}</a> `
+  let proposalString = pending
+    ? `<a href="${domain}/#/proposals">${pending} pending ${p(pending)}</a> `
     : "";
-  if (executing) props += `${executing} ${p(executing)} to be executed.`;
+  if (finalized)
+    proposalString += `${finalized} ${p(finalized)} in grace period.`;
 
   sendMessage(
     `  ${blocks.length} blocks produced in ${timePassed}
   Blocktime: ${blocktime.toFixed(3)}s
   Stake: ${avgStake.toFixed(1)} / ${avgIssued.toFixed()} M tJOY (${percent}%)
   Validators: ${avgVals.toFixed()} (${reward} tJOY/h)
-  Nominators: ${getAverage(noms).toFixed()}` + props
+  Nominators: ${getAverage(noms).toFixed()}
+  ${proposalString}`
   );
 
   return [];
