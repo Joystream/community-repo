@@ -1,5 +1,5 @@
 # Tokenomics + Network Report
-This is a report which explains the current state of the Joystream network in numbers. It pulls figures from the chain and tries to provide a basic level of information about the network, tokens and more. 
+This is a report which explains the current state of the Joystream network in numbers. It pulls figures from the chain and tries to provide a basic level of information about the network, tokens and more.
 
 ## 1.0 Basic Information
 * Block range: {startBlock} - {endBlock}
@@ -22,7 +22,7 @@ This is a report which explains the current state of the Joystream network in nu
 
 
 
-### 2.2 Mints 
+### 2.2 Mints
 | Property                    | Start Block           | End Block | % Change |
 |-----------------------------|-----------------------|--------------|----------|
 | Council Mint Total Minted   | {startCouncilMinted}  |  {endCouncilMinted} |{percNewCouncilMinted}          |
@@ -36,10 +36,10 @@ This is a report which explains the current state of the Joystream network in nu
 * Total number of Approved proposals: {newApprovedProposals}
 
 ### 3.1 Elections
-| Property                    | Start Block  |
-|-----------------------------|--------------|
-| Total Applicants            |{electionApplicants}              |
-| Total Applicant Stake       |{electionApplicantsStakes}              |
+| Property                    | Start Block                |
+|-----------------------------|----------------------------|
+| Total Applicants            |{electionApplicants}        |
+| Total Applicant Stake       |{electionApplicantsStakes}  |
 | Total Votes                 |{electionVotes}             |
 
 ## 4 Roles

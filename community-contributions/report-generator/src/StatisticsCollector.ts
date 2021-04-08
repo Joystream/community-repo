@@ -20,7 +20,7 @@ import {
     ValidatorReward, WorkersInfo
 } from "./StatisticsData";
 
-import {u32, Vec} from "@polkadot/types";
+import {StorageKey, u32, Vec} from "@polkadot/types";
 import {ElectionStake, SealedVote, Seats} from "@joystream/types/council";
 import {Mint, MintId} from "@joystream/types/mint";
 import {ContentId, DataObject} from "@joystream/types/media";
@@ -93,156 +93,6 @@ export class StatisticsCollector {
         await this.fillForumInfo(startHash, endHash);
         this.api.disconnect();
         return this.statistics;
-
-
-        //
-        // if (statistics.electionVotes) {
-        //     statistics.avgVotePerApplicant = statistics.electionVotes / statistics.electionApplicants;
-        // } else {
-        //     statistics.avgVotePerApplicant = 0;
-        // }
-        //
-
-        //
-
-        //
-        //
-
-        //
-
-        //
-        //
-        // let startNrStakes = await this.api.query.stake.stakesCreated.at(startHash) as StakeId;
-        // let endNrStakes = await this.api.query.stake.stakesCreated.at(endHash) as StakeId;
-        // statistics.newStakes = endNrStakes.toNumber() - startNrStakes.toNumber();
-        //
-        // for (let i = startNrStakes.toNumber(); i < endNrStakes.toNumber(); ++i) {
-        //     let stakeResult = await this.api.query.stake.stakes(i) as unknown as [Stake, Linkage<StakeId>];
-        //     let stake = stakeResult[0] as Stake;
-        //
-        //     statistics.totalNewStakeValue += stake.value ? stake.value.toNumber() : 0;
-        // }
-        //
-        // // let startBurnedTokens = await this.api.query.balances.freeBalance.at(startHash, BURN_ADDRESS) as Balance;
-        // // let endBurnedTokens = await this.api.query.balances.freeBalance.at(endHash, BURN_ADDRESS) as Balance;
-        // //
-        // // statistics.totalBurned = endBurnedTokens.toNumber() - startBurnedTokens.toNumber();
-        //
-
-        //
-
-        //
-        // let newMedia = endMedias.filter((endMedia) => {
-        //     return !startMedias.some((startMedia) => startMedia.id == endMedia.id);
-        // });
-        //
-        // statistics.newMedia = newMedia.length;
-        // statistics.totalMedia = endMedias.length;
-        // statistics.percNewMedia = this.convertToPercentage(statistics.newMedia, statistics.totalMedia);
-        //
-        // let startDataObjects = await this.api.query.dataDirectory.knownContentIds.at(startHash) as Vec<ContentId>;
-        // let startUsedSpace = await this.computeUsedSpaceInBytes(api, startDataObjects);
-        //
-        // let endDataObjects = await this.api.query.dataDirectory.knownContentIds.at(endHash) as Vec<ContentId>;
-        // let endUsedSpace = await this.computeUsedSpaceInBytes(api, endDataObjects);
-        //
-        // statistics.newUsedSpace = endUsedSpace - startUsedSpace;
-        // statistics.totalUsedSpace = endUsedSpace;
-        // statistics.percNewUsedSpace = this.convertToPercentage(statistics.newUsedSpace, statistics.totalUsedSpace);
-        //
-        // statistics.avgNewSizePerContent = Number((statistics.newUsedSpace / statistics.newMedia).toFixed(2));
-        // statistics.totalAvgSizePerContent = Number((statistics.totalUsedSpace / statistics.totalMedia).toFixed(2));
-        // statistics.percAvgSizePerContent = this.convertToPercentage(statistics.avgNewSizePerContent, statistics.totalAvgSizePerContent);
-        //
-        // //
-        // // for (let startMedia of startMedias) {
-        // //     let deleted = !endMedias.some((endMedia) => {
-        // //         return endMedia.id == startMedia.id;
-        // //     })
-        // //     if (deleted) {
-        // //         ++statistics.deletedMedia;
-        // //     }
-        // // }
-        //
-        //
-
-        //
-        // for (let i = startNrProposals.toNumber(); i < endNrProposals.toNumber(); ++i) {
-        //     let proposalNumber = i - 1;
-        //     let proposalDetails = await this.api.query.proposalsCodex.proposalDetailsByProposalId.at(endHash, proposalNumber) as ProposalDetails;
-        //     switch (proposalDetails.type) {
-        //         case ProposalTypes.Text:
-        //             ++statistics.newTextProposals;
-        //             break;
-        //
-        //         case ProposalTypes.RuntimeUpgrade:
-        //             ++statistics.newRuntimeUpgradeProposal;
-        //             break;
-        //
-        //         case ProposalTypes.SetElectionParameters:
-        //             ++statistics.newSetElectionParametersProposal;
-        //             break;
-        //
-        //         case ProposalTypes.Spending:
-        //             ++statistics.newSpendingProposal;
-        //             break;
-        //
-        //         case ProposalTypes.SetLead:
-        //             ++statistics.newSetLeadProposal;
-        //             break;
-        //
-        //         case ProposalTypes.SetContentWorkingGroupMintCapacity:
-        //             ++statistics.newSetContentWorkingGroupMintCapacityProposal;
-        //             break;
-        //
-        //         case ProposalTypes.EvictStorageProvider:
-        //             ++statistics.newEvictStorageProviderProposal;
-        //             break;
-        //
-        //         case ProposalTypes.SetValidatorCount:
-        //             ++statistics.newSetValidatorCountProposal;
-        //             break;
-        //
-        //         case ProposalTypes.SetStorageRoleParameters:
-        //             ++statistics.newSetStorageRoleParametersProposal;
-        //             break;
-        //     }
-        // }
-        //
-        // let validatorRewards: ValidatorReward[] = [];
-        // let exchangesCollection: Exchange[] = [];
-        // let promises = [];
-        //
-        // console.time('extractValidatorsRewards');
-        // for (let i = startBlock; i < endBlock; ++i) {
-        //     let promise = (async () => {
-        //         const blockHash: Hash = await this.api.rpc.chain.getBlockHash(i);
-        //         const events = await this.api.query.system.events.at(blockHash) as Vec<EventRecord>;
-        //         let rewards = await this.extractValidatorsRewards(api, i, events);
-        //         if (rewards.length) {
-        //             validatorRewards = validatorRewards.concat(rewards);
-        //         }
-        //         let exchanges = this.extractExchanges(i, events);
-        //         if (exchanges.length) {
-        //             exchangesCollection = exchangesCollection.concat(exchanges);
-        //         }
-        //
-        //     })();
-        //     promises.push(promise);
-        // }
-        // await Promise.all(promises);
-        // console.timeEnd('extractValidatorsRewards');
-        //
-        // statistics.newValidatorReward = validatorRewards.map((validatorReward) => validatorReward.sharedReward).reduce((a, b) => a + b);
-        // let avgValidators = validatorRewards.map((validatorReward) => validatorReward.validators).reduce((a, b) => a + b) / validatorRewards.length;
-        // statistics.avgValidators = Number(avgValidators.toFixed(2));
-        //
-        // statistics.newTokensBurn = exchangesCollection.map((exchange) => exchange.amount).reduce((a, b) => a + b);
-        //
-        // statistics.newStorageProviderReward = await this.computeStorageRewards(api, startBlock, endBlock);
-        //
-        // this.api.disconnect();
-        // return statistics;
     }
 
     async fillBasicInfo(startHash: Hash, endHash: Hash) {
@@ -417,7 +267,7 @@ export class StatisticsCollector {
         this.statistics.endCouncilMinted = councilMintStatistics.endMinted;
         this.statistics.newCouncilMinted = councilMintStatistics.diffMinted;
         this.statistics.percNewCouncilMinted = councilMintStatistics.percMinted;
-        6
+
         let curatorMint = (await this.api.query.contentWorkingGroup.mint.at(endHash)) as MintId;
         let curatorMintStatistics = await this.computeMintInfo(curatorMint, startHash, endHash);
         this.statistics.startCuratorMinted = curatorMintStatistics.startMinted;
@@ -503,10 +353,20 @@ export class StatisticsCollector {
             let applicantStakes = await this.api.query.councilElection.applicantStakes.at(previousCouncilRoundLastBlockHash, applicant) as unknown as ElectionStake;
             this.statistics.electionApplicantsStakes += applicantStakes.new.toNumber();
         }
-        // let seats = await this.api.query.council.activeCouncil.at(startBlockHash) as Seats;
-        //TODO: Find a more accurate way of getting the votes
+
+//TODO: Find a more accurate way of getting the votes
         const votes = await this.api.query.councilElection.commitments.at(previousCouncilRoundLastBlockHash) as Vec<Hash>;
         this.statistics.electionVotes = votes.length;
+
+        // let votes = await this.api.query.councilElection.votes.entriesAt(previousCouncilRoundLastBlockHash);
+        // this.statistics.electionVotesStakes = 0;
+        // for (let vote of votes){
+        //     let sealedVote = vote[1] as SealedVote;
+        //     let stake = sealedVote.stake.transferred.toNumber() + sealedVote.stake.new.toNumber();
+        //     this.statistics.electionVotesStakes += stake;
+        // }
+        //
+        // this.statistics.electionVotes = votes.length;
     }
 
     async fillValidatorInfo(startHash: Hash, endHash: Hash) {
@@ -623,15 +483,19 @@ export class StatisticsCollector {
 
         let medias: Media[] = [];
         for (let i = 0; i < nrEntities; ++i) {
-            let entity = await this.api.query.versionedStore.entityById.at(blockHash, i) as Entity;
+            try {
+                let entity = await this.api.query.versionedStore.entityById.at(blockHash, i) as Entity;
+                if (entity.class_id.toNumber() != 7 || entity.entity_values.isEmpty) {
+                    continue;
+                }
 
-            if (entity.class_id.toNumber() != 7 || entity.entity_values.isEmpty) {
-                continue;
+                let title = entity.entity_values[0].value.toString();
+
+                medias.push(new Media(entity.id.toNumber(), title));
+
+            } catch (e) {
+                console.error(e);
             }
-
-            let title = entity.entity_values[0].value.toString();
-
-            medias.push(new Media(entity.id.toNumber(), title));
         }
         return medias;
     }
@@ -656,6 +520,10 @@ export class StatisticsCollector {
 
             console.log('\nFinish events cache...');
             await fs.writeFile(cacheFile, JSON.stringify(Array.from(this.blocksEventsCache.entries()), null, 2));
+
+            // Loading cache from file to avoid having different types of objects (JSON vs Joystream types)
+            let fileData = await fs.readFile(cacheFile);
+            this.blocksEventsCache = new Map(JSON.parse(fileData)); //
         } else {
             console.log('Cache file found, loading it...');
             let fileData = await fs.readFile(cacheFile);
