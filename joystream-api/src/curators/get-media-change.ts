@@ -10,8 +10,8 @@ async function main() {
     const provider = new WsProvider('ws://127.0.0.1:9944');
 
     const api = await ApiPromise.create({ provider, types })
-    const firstBlock = 1292265 // first block after the upgrade to the new Content Directory
-    const lastBlock = 2332000
+    const firstBlock = 0
+    const lastBlock = 10000
     // note that with this blockheight, you will see a lot of jsgenesis initialization and uploads
     
     

@@ -24,7 +24,7 @@ async function main() {
   // Create the API and wait until ready
   const api = await ApiPromise.create({ provider, types })
   // made this example with historical data, so you can check different councils/stages
-  const blocks :number[] = [259200, 259201]
+  const blocks :number[] = [1, 100801]
 
   // discounting this voter
   const joystreamVoter = "5CJzTaCp5fuqG7NdJQ6oUCwdmFHKichew8w4RZ3zFHM8qSe6"

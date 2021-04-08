@@ -9,7 +9,7 @@ async function main() {
 
     /*
     If you want to play around on our staging network, go ahead and connect to this staging network instead.
-    const provider = new WsProvider('wss://alexandria-testing-1.joystream.app/staging/rpc:9944');
+    const provider = new WsProvider('wss://staging-3.joystream.app/rpc');
     
     There's a bunch of tokens on the account: 5HdYzMVpJv3c4omqwKKr7SpBgzrdRRYBwoNVhJB2Y8xhUbfK,
     with seed: "emotion soul hole loan journey what sport inject dwarf cherry ankle lesson"
@@ -22,7 +22,7 @@ async function main() {
     // get all extrinsic and event types in a range of blocks (only works for last 200 blocks unless you are querying an archival node)
     // will take a loooong time if you check too many blocks :)
     const firstBlock = 1
-    const lastBlock = 10000
+    const lastBlock = 1000
     const eventTypes:string[] = []
     const extrinsicTypes: string[] = []
     for (let blockHeight=firstBlock; blockHeight<lastBlock; blockHeight++) {
@@ -39,8 +39,8 @@ async function main() {
         }
       }
       for (let i=0; i<extrinsics.length; i++) {
-        const section = extrinsics[i].method.sectionName
-        const method = extrinsics[i].method.methodName
+        const section = extrinsics[i].method.section
+        const method = extrinsics[i].method.method
         const extrinsicType = section+`:`+method
         if (!extrinsicTypes.includes(extrinsicType)) {
           extrinsicTypes.push(extrinsicType)

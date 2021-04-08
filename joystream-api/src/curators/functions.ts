@@ -27,8 +27,8 @@ export async function getBatchAction(api: ApiPromise, blockHeight:number, blockH
   const getBlock = await api.rpc.chain.getBlock(blockHash) as SignedBlock
   const extrinsics = getBlock.block.extrinsics as Vec<Extrinsic>
   for (let n=0; n<extrinsics.length; n++) {
-    const extSection = extrinsics[n].method.sectionName
-    const extMethod = extrinsics[n].method.methodName
+    const extSection = extrinsics[n].method.section
+    const extMethod = extrinsics[n].method.method
     let extrinscIndex = 0
     if (extSection == "contentDirectory" && extMethod == "transaction") {
       extrinscIndex +=1
@@ -81,8 +81,8 @@ export async function getRemovedAction(api: ApiPromise, blockHeight:number, bloc
   const getBlock = await api.rpc.chain.getBlock(blockHash) as SignedBlock
   const extrinsics = getBlock.block.extrinsics as Vec<Extrinsic>
   for (let n=0; n<extrinsics.length; n++) {
-    const extSection = extrinsics[n].method.sectionName
-    const extMethod = extrinsics[n].method.methodName
+    const extSection = extrinsics[n].method.section
+    const extMethod = extrinsics[n].method.method
     let extrinscIndex = 0
     if (extSection == "contentDirectory" && extMethod == "removeEntity") {
       extrinscIndex +=1

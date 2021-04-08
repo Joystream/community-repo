@@ -1,8 +1,7 @@
 import { MemberId, Membership } from "@joystream/types/members";
 import { ApiPromise } from "@polkadot/api";
 import { Vec } from "@polkadot/types";
-import AccountId from "@polkadot/types/generic/AccountId";
-import { Hash } from "@polkadot/types/interfaces";
+import { AccountId, Hash } from "@polkadot/types/interfaces";
 import { Participant } from './interfaces';
 
 export async function getParticipant(api: ApiPromise, accountId: AccountId): Promise<Participant> {
