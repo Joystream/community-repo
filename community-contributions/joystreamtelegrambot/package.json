@@ -28,7 +28,7 @@
     "ws": "^7.4.1"
   },
   "devDependencies": {
-    "@joystream/types": "^0.14.0",
+    "@joystream/types": "^0.15.0",
     "@types/node-telegram-bot-api": "^0.51.0",
     "ts-node": "^9.0.0",
     "ts-node-dev": "^1.0.0-pre.63",
