@@ -1,6 +1,6 @@
 #!/bin/bash
 #My public key 5EyRepuyZTM2rjHwbGfjBmjutaR5QTxLULcra2aToigtpxb6
-#My node name wasabi
+#My node name 1497-wasabi
 clear
 echo "****************************************************************************"
 echo "*      This script will install and configure your Joystream node.         *"
@@ -13,9 +13,9 @@ read -n 1 -s -r -p "Press any key to continue or CTRL+C to exit ... "
 GREEN='\033[0;32m'      #  ${GREEN}
 sudo apt-get update
 sudo rm /etc/systemd/system/joystream-node.service
-wget https://github.com/Joystream/joystream/releases/download/v7.5.0/joystream-node-3.3.0-fdb75f5ec-x86_64-linux-gnu.tar.gz
-tar -vxf joystream-node-3.3.0-fdb75f5ec-x86_64-linux-gnu.tar.gz
-wget https://github.com/Joystream/joystream/releases/download/v7.5.0/joy-testnet-4.json
+wget https://github.com/Joystream/joystream/releases/download/v9.3.0/joystream-node-5.1.0-9d9e77751-x86_64-linux-gnu.tar.gz
+tar -vxf joystream-node-5.1.0-9d9e77751-x86_64-linux-gnu.tar.gz
+wget https://github.com/Joystream/joystream/releases/download/v9.3.0/joy-testnet-5.json
 
 cd /etc/systemd/system
 sudo touch joystream-node.service
@@ -33,7 +33,7 @@ echo WorkingDirectory=$HOME/ | sudo tee --append /etc/systemd/system/joystream-n
 
 echo ExecStart=$HOME/joystream-node \\| sudo tee --append /etc/systemd/system/joystream-node.service
 
-echo --chain joy-testnet-4.json \\| sudo tee --append /etc/systemd/system/joystream-node.service
+echo --chain joy-testnet-5.json \\| sudo tee --append /etc/systemd/system/joystream-node.service
 echo --pruning archive \\| sudo tee --append /etc/systemd/system/joystream-node.service
 echo --validator \\| sudo tee --append /etc/systemd/system/joystream-node.service
 echo --name $username \\| sudo tee --append /etc/systemd/system/joystream-node.service
