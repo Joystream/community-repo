@@ -61,7 +61,7 @@ This is a report which explains the current state of the Joystream network in nu
 ### 4.3 Curator Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of Curators      | 0 | 0 | 0 |
+| Number of Curators      | 0 | 1 | Infinity |
 
 ## 5.0 User Generated Content
 ### 5.1 Membership Information
