@@ -1,6 +1,4 @@
-import {Vec} from "@polkadot/types";
-import {EventRecord} from "@polkadot/types/interfaces";
-import {EventData} from "@polkadot/types/generic/Event";
+import {GenericEventData} from "@polkadot/types/generic/Event";
 
 export class StatisticsData {
     councilRound: number = 0;
@@ -93,8 +91,8 @@ export class StatisticsData {
     newTokensBurn: number = 0;
     newValidatorRewards: number = 0;
     avgValidators: number = 0;
-    startValidators: number = 0;
-    endValidators: number = 0;
+    startValidators: string = "";
+    endValidators: string = "";
     percValidators: number = 0;
     startValidatorsStake: number = 0;
     endValidatorsStake: number = 0;
@@ -194,13 +192,17 @@ export class MintStatistics {
 }
 
 export class Media {
+    constructor(public id: number, public title: string) {
+    }
+}
 
+export class Channel {
     constructor(public id: number, public title: string) {
     }
 }
 
 export class CacheEvent {
 
-    constructor(public section: string, public method: string, public data: EventData) {
+    constructor(public section: string, public method: string, public data: GenericEventData) {
     }
 }
