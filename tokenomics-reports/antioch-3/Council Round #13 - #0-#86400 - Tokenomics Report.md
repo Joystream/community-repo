@@ -33,7 +33,7 @@ This is a report which explains the current state of the Joystream network in nu
 * Council session #: 0
 * Number of council members: 16
 * Total number of proposals: 14
-* Total number of Approved proposals: 0
+* Total number of Approved proposals: 6
 
 ### 3.1 Elections
 | Property                    | Start Block  |
