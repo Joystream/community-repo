@@ -73,7 +73,7 @@ This is a report which explains the current state of the Joystream network in nu
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of uploads       | {startMedia} | {endMedia}  |  {percNewMedia} |
-| Size of content         |  {startUsedSpace} |  {endUsedSpace} | {percNewUsedSpace}          |
+| Size of content (MB)        |  {startUsedSpace} |  {endUsedSpace} | {percNewUsedSpace}          |
 | Number of channels      |  {startChannels} | {endChannels} | {percNewChannels} |
 
 ### 5.3 Forum Activity
