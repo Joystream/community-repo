@@ -9,7 +9,7 @@ This document lists out the usernames of people who sit on the council or are wo
 | nexusfallout        | nexusfallout     |                   |
 | doppelganger23      | doppelganger23   |                   |
 | lopegor             | lopegor          |                   |
-| seainvestor         | ?                |                   |
+| seainvestor         | Pavel-LV         |                   |
 | leet_joy            | ?                |                   |
 | blackmass           | ?                |                   |
 | supunssw            | ?                |                   |
