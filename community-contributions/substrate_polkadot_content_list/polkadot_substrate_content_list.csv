@@ -1,16 +1,18 @@
-﻿List of Polkadot/Substrate Content,,,,,,,,,,,
-,,,,,,,,,,,
-Channels,,,,,,,,,,,
-,,,,,,,,,,,
-Submission #,URL,,,Name,Description,How many relevant videos/episodes exist,"If the channel/podcast covers a wider range of topics, include URLs to the relevant videos/episodes",Date of last video/episode,License/copyright details,Contact information (for the creators/owners),Twitter/Telegram/Fb or other social media accounts
-1,https://www.youtube.com/c/BrunoSkvorc/videos,,,Bruno Škvorc,"I'm a blockchain developer at Bitfalls.com and Technical Educator at Web3.Foundation. Find me on Twitter as @bitfalls. I also own and operate Coinevents.io, but you can find out more about me at bruno.id.",8,https://www.youtube.com/watch?v=--7t596sw7E https://www.youtube.com/watch?v=0n7Q-2_JD0w https://www.youtube.com/watch?v=5NAn-MnRJtk,13-Apr-21,nil,bruno@bitfalls.com,https://twitter.com/bitfalls
-,,,,,,,,,,,
-Podcasts,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-Submissions,,,,,,,,,,,
-,,,,,,,,,,,
-Submission #,URL,Type,Grade,Username,Account,Spending Proposal,Approved (Y/N),,,,
-1,https://testnet.joystream.org/#/forum/threads/358?replyIdx=2,Channel,50,nkhlghbl,5EYyKDMKzmQUDSba8Zq9jNTNTLGpY3tXvoZ4HVQoQmzkRT2S,,,,,,
+﻿List of Polkadot/Substrate Content,,,,,,,,,
+,,,,,,,,,
+Channels,,,,,,,,,
+,,,,,,,,,
+Submission #,URL,Name,Description,How many relevant videos/episodes exist,"If the channel/podcast covers a wider range of topics, include URLs to the relevant videos/episodes",Date of last video/episode,License/copyright details,Contact information (for the creators/owners),Twitter/Telegram/Fb or other social media accounts
+1,https://www.youtube.com/c/BrunoSkvorc/videos,Bruno Škvorc,"I'm a blockchain developer at Bitfalls.com and Technical Educator at Web3.Foundation. Find me on Twitter as @bitfalls. I also own and operate Coinevents.io, but you can find out more about me at bruno.id.",8,https://www.youtube.com/watch?v=--7t596sw7E https://www.youtube.com/watch?v=0n7Q-2_JD0w https://www.youtube.com/watch?v=5NAn-MnRJtk,13-Apr-21,nil,bruno@bitfalls.com,https://twitter.com/bitfalls
+2,https://www.youtube.com/channel/UCB7PbjuZLEba_znc7mEGNgw,Polkadot,Polkadot brings multiple specialized chains together into one scalable network. Find us on twitter at https://twitter.com/polkadotnetwork or at our website: http://kusama.network,25+,https://www.youtube.com/watch?v=9JvpL9-NebM https://www.youtube.com/watch?v=nAG7NEN_-Gk https://www.youtube.com/watch?v=gaHUFsxtgHU https://www.youtube.com/watch?v=2EfTfCgVqCE https://www.youtube.com/watch?v=kc3BIUBX8AA https://www.youtube.com/watch?v=gS4sq1SpBps https://www.youtube.com/watch?v=gbQLhsHK1Fs https://www.youtube.com/watch?v=3QvmreZZ8hE https://www.youtube.com/watch?v=RYcV2J0D6rs https://www.youtube.com/watch?v=mZrbqN01dtk https://www.youtube.com/watch?v=SIqnFjWcNLw https://www.youtube.com/watch?v=WTdxYb_fb0w https://www.youtube.com/watch?v=1lutDZKbT2Q https://www.youtube.com/watch?v=6i55KOcy7B0 https://www.youtube.com/watch?v=o8sAhDY6IyY https://www.youtube.com/watch?v=riVg_Up_fCg https://www.youtube.com/watch?v=aVW_eG-IH7o https://www.youtube.com/watch?v=kw8eu2VadFA https://www.youtube.com/watch?v=InekMjJpVdo https://www.youtube.com/watch?v=Brchkm4VdV0 https://www.youtube.com/watch?v=KVJIWxZSNHQ https://www.youtube.com/watch?v=oIEbjUDmUPk https://www.youtube.com/watch?v=-6BBIr-DmI4 https://www.youtube.com/watch?v=pDqkzvA4C0E https://www.youtube.com/watch?v=26ucTSSaqog,9-Apr-21,N/A,N/A,https://twitter.com/polkadotnetwork
+,,,,,,,,,
+Podcasts,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+Submissions,,,,,,,,,
+,,,,,,,,,
+Submission #,URL,Type,Grade,Username,Account,Spending Proposal,Exchange Rate,Token Amount,Approved (Y/N)
+1,https://testnet.joystream.org/#/forum/threads/358?replyIdx=2,Channel,50,nkhlghbl,5EYyKDMKzmQUDSba8Zq9jNTNTLGpY3tXvoZ4HVQoQmzkRT2S,https://testnet.joystream.org/#/proposals/34,0.0000387,1291989,
+2,https://testnet.joystream.org/#/forum/threads/358?replyIdx=4,Channel,40,doppelganger23,5EkhKKp12vTMcn9aT7H6R1PHTtjhZt2ScVfqVKSq3uMyujPy,,0.0000386,1036269,
