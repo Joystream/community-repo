@@ -79,6 +79,42 @@
       "notes": "Research and document bots for the new Discord server",
       "tags": ["Coding","Research"],
       "format": "Closed",
+      "status": "Fully Assigned"
+    },
+    {
+      "id": 14,
+      "title": "Polkadot/Substrate Videos",
+      "openedDate": "2021-04-19",
+      "description": "Find Channels, Podcasts and Videos covering Polkadot and Substrate",
+      "links": ["https://testnet.joystream.org/#/forum/threads/358","https://github.com/Joystream/community-repo/issues/142"],
+      "reward": 50,
+      "notes": "Find Polkadot and Substrate content",
+      "tags": ["Content","Research"],
+      "format": "Open",
+      "status": "Announced"
+    },
+    {
+      "id": 15,
+      "title": "Transcribe Community Updates",
+      "openedDate": "2021-04-20",
+      "description": "Create summaries and/or transcripts of the Joystream Community Update videos",
+      "links": ["https://testnet.joystream.org/#/forum/threads/363","https://github.com/Joystream/community-repo/issues/143"],
+      "reward": 450,
+      "notes": "Summarize and transcribe video content",
+      "tags": ["Content","Research"],
+      "format": "Mixed",
+      "status": "Announced"
+    },
+    {
+      "id": 17,
+      "title": "Discord Video Bot",
+      "openedDate": "2021-03-12",
+      "description": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
+      "links": ["https://testnet.joystream.org/#/forum/threads/362","https://github.com/Joystream/community-repo/issues/151"],
+      "reward": 100,
+      "notes": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
+      "tags": ["Coding","Research"],
+      "format": "Closed",
       "status": "Announced"
     }
 
@@ -120,6 +156,18 @@
       "format": "Competition",
       "closedDate": "2021-03-04",
       "status": "Completed - USD 358"
+    },
+    {
+      "id": 4,
+      "title": "Improved Telegram Bot",
+      "openedDate": "2020-12-05",
+      "description": "As the bot still has some issues (due to bugs in the initial bot), we want to both fix these, and expand on the functionality.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/158","https://github.com/Joystream/community-repo/issues/51"],
+      "reward": "TBC",
+      "tags": ["Coding"],
+      "format": "Reserved",
+      "closedDate": "2021-03-04",
+      "status": "Open"
     },
     {
       "id": 3,
