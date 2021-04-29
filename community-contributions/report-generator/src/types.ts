@@ -1,6 +1,6 @@
 import {GenericEventData} from "@polkadot/types/generic/Event";
 
-export class StatisticsData {
+export class Statistics {
     councilRound: number = 0;
     councilMembers: number = 0;
 
@@ -128,13 +128,18 @@ export class StatisticsData {
     newTextProposals: number = 0;
     newRuntimeUpgradeProposal: number = 0;
     newSetElectionParametersProposal: number = 0;
-    newSpendingProposal: number = 0;
+
+    spendingProposalsTotal: number = 0;
+    bountiesTotalPaid: number = 0;
+
     newSetLeadProposal: number = 0;
     newSetContentWorkingGroupMintCapacityProposal: number = 0;
     newEvictStorageProviderProposal: number = 0;
     newSetValidatorCountProposal: number = 0;
     newSetStorageRoleParametersProposal: number = 0;
 
+    storageProviders: string;
+    curators: string;
 
     constructor() {
     }
@@ -176,6 +181,13 @@ export enum ProposalTypes {
     SetStorageRoleParameters = "SetStorageRoleParameters",
 }
 
+export class SpendingProposals {
+
+    constructor(public id: number, public spentAmount: number) {
+    }
+
+}
+
 export class MintStatistics {
     startMinted: number;
     endMinted: number;
@@ -198,6 +210,11 @@ export class Media {
 
 export class Channel {
     constructor(public id: number, public title: string) {
+    }
+}
+
+export class Bounty {
+    constructor(public proposalId: number, public title: string, public status: string, public amountAsked: number, public amountMinted: number) {
     }
 }
 

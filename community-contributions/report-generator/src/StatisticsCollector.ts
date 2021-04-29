@@ -16,9 +16,9 @@ import {
     Exchange,
     Media,
     MintStatistics,
-    StatisticsData,
-    ValidatorReward, WorkersInfo, Channel
-} from "./StatisticsData";
+    Statistics,
+    ValidatorReward, WorkersInfo, Channel, SpendingProposals, Bounty
+} from "./types";
 
 import {Option, u32, Vec} from "@polkadot/types";
 import {ElectionStake, SealedVote, Seats} from "@joystream/types/council";
@@ -30,7 +30,7 @@ import Linkage from "@polkadot/types/codec/Linkage";
 import {PostId, ThreadId} from "@joystream/types/common";
 import {CategoryId} from "@joystream/types/forum";
 
-import {MemberId} from "@joystream/types/members";
+import {MemberId, Membership} from "@joystream/types/members";
 import {RewardRelationship, RewardRelationshipId} from "@joystream/types/recurring-rewards";
 
 import workingGroup from "@joystream/types/src/working-group/index";
@@ -38,11 +38,13 @@ import {Stake} from "@joystream/types/stake";
 import {ChannelId} from "@joystream/types/content-working-group";
 import {WorkerId} from "@joystream/types/working-group";
 import {Entity, EntityId, PropertyType} from "@joystream/types/content-directory";
-import {WorkerOf} from "@joystream/types/augment-codec/all";
-
+import {ProposalDetails, ProposalId, WorkerOf} from "@joystream/types/augment-codec/all";
+import {SpendingParams} from "@joystream/types/proposals";
+import * as constants from "constants";
 
 const fsSync = require('fs');
 const fs = fsSync.promises;
+const parse = require('csv-parse/lib/sync');
 
 const BURN_ADDRESS = '5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu';
 
@@ -59,14 +61,14 @@ export class StatisticsCollector {
 
     private api?: ApiPromise;
     private blocksEventsCache: Map<number, CacheEvent[]>;
-    private statistics: StatisticsData;
+    private statistics: Statistics;
 
     constructor() {
         this.blocksEventsCache = new Map<number, CacheEvent[]>();
-        this.statistics = new StatisticsData();
+        this.statistics = new Statistics();
     }
 
-    async getStatistics(startBlock: number, endBlock: number): Promise<StatisticsData> {
+    async getStatistics(startBlock: number, endBlock: number): Promise<Statistics> {
         this.api = await StatisticsCollector.connectApi();
 
         let startHash = (await this.api.rpc.chain.getBlockHash(startBlock)) as Hash;
@@ -88,23 +90,32 @@ export class StatisticsCollector {
         await this.fillMembershipInfo(startHash, endHash);
         await this.fillMediaUploadInfo(startHash, endHash);
         await this.fillForumInfo(startHash, endHash);
+
         await this.api.disconnect();
         return this.statistics;
     }
 
-    async fillBasicInfo(startHash: Hash, endHash: Hash) {
-        let startDate = (await this.api.query.timestamp.now.at(startHash)) as Moment;
-        let endDate = (await this.api.query.timestamp.now.at(endHash)) as Moment;
-        this.statistics.dateStart = new Date(startDate.toNumber()).toLocaleDateString("en-US");
-        this.statistics.dateEnd = new Date(endDate.toNumber()).toLocaleDateString("en-US");
+    async getApprovedBounties() {
+        let bountiesFilePath = __dirname + '/../bounties.csv';
+        try {
+            await fs.access(bountiesFilePath, constants.R_OK);
+        } catch {
+            throw new Error('Bounties CSV file not found');
+        }
+
+        const fileContent = await fs.readFile(bountiesFilePath);
+        const rawBounties = parse(fileContent);
+        rawBounties.shift();
+
+        let bounties = rawBounties.map((rawBounty: any) => {
+            return new Bounty(rawBounty[0], rawBounty[1], rawBounty[2], rawBounty[3], rawBounty[4]);
+        });
+
+        return bounties.filter((bounty: Bounty) => bounty.status == "Approved");
     }
 
-    async fillTokenGenerationInfo(startBlock: number, endBlock: number, startHash: Hash, endHash: Hash) {
-        this.statistics.startIssuance = (await this.api.query.balances.totalIssuance.at(startHash) as Balance).toNumber();
-        this.statistics.endIssuance = (await this.api.query.balances.totalIssuance.at(endHash) as Balance).toNumber();
-        this.statistics.newIssuance = this.statistics.endIssuance - this.statistics.startIssuance;
-        this.statistics.percNewIssuance = StatisticsCollector.convertToPercentage(this.statistics.startIssuance, this.statistics.endIssuance);
-
+    async getSpendingProposals() : Promise<Array<SpendingProposals>>{
+        let spendingProposals = new Array<SpendingProposals>();
         for (let [key, blockEvents] of this.blocksEventsCache) {
             let validatorRewards = blockEvents.filter((event) => {
                 return event.section == "staking" && event.method == "Reward";
@@ -123,7 +134,54 @@ export class StatisticsCollector {
                     this.statistics.newTokensBurn = Number(amount);
                 }
             }
+
+            let proposalEvents = blockEvents.filter((event) => {
+                return event.section == "proposalsEngine" && event.method == "ProposalStatusUpdated";
+            });
+
+            for (let proposalEvent of proposalEvents) {
+                let statusUpdateData = proposalEvent.data[1] as any;
+                if (!(statusUpdateData.finalized && statusUpdateData.finalized.finalizedAt)) {
+                    continue;
+                }
+                let proposalId = proposalEvent.data[0] as ProposalId;
+                let proposalDetail = await this.api.query.proposalsCodex.proposalDetailsByProposalId(proposalId) as ProposalDetails;
+                if (!proposalDetail.isOfType("Spending")) {
+                    continue;
+                }
+                let spendingParams = Array.from(proposalDetail.asType("Spending") as SpendingParams);
+                spendingProposals.push(new SpendingProposals(Number(proposalId), Number(spendingParams[0])));
+            }
         }
+        return spendingProposals;
+    }
+
+    async fillBasicInfo(startHash: Hash, endHash: Hash) {
+        let startDate = (await this.api.query.timestamp.now.at(startHash)) as Moment;
+        let endDate = (await this.api.query.timestamp.now.at(endHash)) as Moment;
+        this.statistics.dateStart = new Date(startDate.toNumber()).toLocaleDateString("en-US");
+        this.statistics.dateEnd = new Date(endDate.toNumber()).toLocaleDateString("en-US");
+    }
+
+    async fillTokenGenerationInfo(startBlock: number, endBlock: number, startHash: Hash, endHash: Hash) {
+        this.statistics.startIssuance = (await this.api.query.balances.totalIssuance.at(startHash) as Balance).toNumber();
+        this.statistics.endIssuance = (await this.api.query.balances.totalIssuance.at(endHash) as Balance).toNumber();
+        this.statistics.newIssuance = this.statistics.endIssuance - this.statistics.startIssuance;
+        this.statistics.percNewIssuance = StatisticsCollector.convertToPercentage(this.statistics.startIssuance, this.statistics.endIssuance);
+
+        let bounties = await this.getApprovedBounties();
+        let spendingProposals = await this.getSpendingProposals();
+
+        this.statistics.bountiesTotalPaid = 0;
+        for (let bounty of bounties){
+            let bountySpendingProposal = spendingProposals.find((spendingProposal) => spendingProposal.id == bounty.proposalId);
+            if (bountySpendingProposal){
+                this.statistics.bountiesTotalPaid += bountySpendingProposal.spentAmount;
+            }
+        }
+
+        this.statistics.spendingProposalsTotal = spendingProposals.reduce((n, spendingProposal) => n + spendingProposal.spentAmount, 0);
+
         let roundNrBlocks = endBlock - startBlock;
         this.statistics.newCouncilRewards = await this.computeCouncilReward(roundNrBlocks, endHash);
         this.statistics.newCouncilRewards = Number(this.statistics.newCouncilRewards.toFixed(2));
@@ -414,16 +472,33 @@ export class StatisticsCollector {
         this.statistics.endStorageProvidersStake = storageProvidersRewards.endStake;
         this.statistics.percNewStorageProviderStake = StatisticsCollector.convertToPercentage(this.statistics.startStorageProvidersStake, this.statistics.endStorageProvidersStake);
 
-        this.statistics.startStorageProviders = (await this.api.query.storageWorkingGroup.nextWorkerId.at(startHash) as WorkerId).toNumber() - WORKER_ID_OFFSET;
-        this.statistics.endStorageProviders = (await this.api.query.storageWorkingGroup.nextWorkerId.at(endHash) as WorkerId).toNumber() - WORKER_ID_OFFSET;
+        this.statistics.startStorageProviders = await this.api.query.storageWorkingGroup.activeWorkerCount.at(startHash);
+        this.statistics.endStorageProviders = await this.api.query.storageWorkingGroup.activeWorkerCount.at(endHash);
         this.statistics.percNewStorageProviders = StatisticsCollector.convertToPercentage(this.statistics.startStorageProviders, this.statistics.endStorageProviders);
+
+        let lastStorageProviderId = Number(await this.api.query.storageWorkingGroup.nextWorkerId.at(endHash)) - 1;
+        this.statistics.storageProviders = "";
+        for (let i = lastStorageProviderId, storageProviderCount = 0; storageProviderCount < this.statistics.endStorageProviders; --i, ++storageProviderCount){
+            let storageProvider = await this.api.query.storageWorkingGroup.workerById.at(endHash, i) as WorkerOf;
+            let membership = await this.api.query.members.membershipById.at(endHash, storageProvider.member_id) as Membership;
+            this.statistics.storageProviders += "@" + membership.handle + " | (" + membership.root_account  +")  \n";
+        }
 
     }
 
     async fillCuratorInfo(startHash: Hash, endHash: Hash) {
-        this.statistics.startCurators = (await this.api.query.contentDirectoryWorkingGroup.nextWorkerId.at(startHash));
-        this.statistics.endCurators = (await this.api.query.contentDirectoryWorkingGroup.nextWorkerId.at(endHash));
+        this.statistics.startCurators = Number(await this.api.query.contentDirectoryWorkingGroup.activeWorkerCount.at(startHash));
+        this.statistics.endCurators = Number(await this.api.query.contentDirectoryWorkingGroup.activeWorkerCount.at(endHash));
         this.statistics.percNewCurators = StatisticsCollector.convertToPercentage(this.statistics.startCurators, this.statistics.endCurators);
+
+        let lastCuratorId = Number(await this.api.query.contentDirectoryWorkingGroup.nextWorkerId.at(endHash)) - 1;
+        this.statistics.curators = "";
+        for (let i = lastCuratorId, curatorCount = 0; curatorCount < this.statistics.endCurators; --i, ++curatorCount){
+            let curator = await this.api.query.contentDirectoryWorkingGroup.workerById.at(endHash, i) as WorkerOf;
+            let curatorMembership = await this.api.query.members.membershipById.at(endHash, curator.member_id) as Membership;
+            this.statistics.curators += "@" + curatorMembership.handle + " | (" + curatorMembership.root_account  +")  \n";
+        }
+
     }
 
     async fillMembershipInfo(startHash: Hash, endHash: Hash) {
