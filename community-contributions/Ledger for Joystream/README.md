@@ -21,7 +21,7 @@ Ledger Nano doesn't show up on [https://testnet.joystream.org/#/accounts](https:
 
 ### Can a Ledger be used to sign transactions on [Polkadot JS apps](https://polkadot.js.org/apps/#/accounts) w/o an extension?
 
-Here it is also suggested to download the polkadot {.js} extension, if it is not installed (5 and 6 screenshots). But there is another option:
+Here it is also suggested to download the `polkadot {.js}` extension, if it is not installed (5 and 6 screenshots). But there is another option:
 
 1. Go to [Settings](https://polkadot.js.org/apps/#/settings) and select "Attach Ledger via WebUSB" under "manage hardware connections" (7 screenshot). There is no such item on the page: [https://testnet.joystream.org/#/settings](https://testnet.joystream.org/#/settings).
 2. Return to the [Accounts](https://polkadot.js.org/apps/#/accounts) page and click on the "Add via Ledger" button (8 screenshot).
@@ -145,6 +145,6 @@ Ledger does not support the Joystream network. It only supports Polkadot, Kusama
 
 **Keepkey:** [the official page](https://shapeshift.com/keepkey) indicated that it supports 40+ coins, but the full list is currently not available (after authorization, the error "This page doesn't exist"): [https://keepkey.zendesk.com/hc/en-us/articles/360003047479-What-Digital-Assets-Does-KeepKey-Support-](https://keepkey.zendesk.com/hc/en-us/articles/360003047479-What-Digital-Assets-Does-KeepKey-Support-). From [this article](https://www.reddit.com/r/dot/comments/gm4nfu/hardware_wallets_that_supports_polkadot/)), Keepkey does not support Polkadot. I have not found information about this anywhere else.
 
-**Cobo Vault:** you can add Polkadot and Kusama: [https://cobo.com/hardware-wallet/supported-crypto-assets](https://cobo.com/hardware-wallet/supported-crypto-assets) . Также можно добавить этот кошелёк в `polkadot{.js}`
+**Cobo Vault:** you can add Polkadot and Kusama: [https://cobo.com/hardware-wallet/supported-crypto-assets](https://cobo.com/hardware-wallet/supported-crypto-assets) . You can also add this wallet to `polkadot{.js}`.
 
 **SafePal S1** supports Polkadot and Kusama: [https://shop.safepal.io/products/safepal-hardware-wallet-s1-bitcoin-wallet](https://shop.safepal.io/products/safepal-hardware-wallet-s1-bitcoin-wallet) . But derivation paths like the Ledger Nano: [https://stackoverflow.com/questions/66323948/polkadot-js-import-bip44-address-w-derivation](https://stackoverflow.com/questions/66323948/polkadot-js-import-bip44-address-w-derivation)
