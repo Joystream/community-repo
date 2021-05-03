@@ -1,9 +1,15 @@
 {
   "license": "GPL-3.0-or-later",
   "scripts": {
-      "start": "node bot.ts"
+    "dev": "node src/bot.ts",
+    "build": "tsc src/bot.ts",
+    "start": "node ./src/bot.js"
   },
   "dependencies": {
     "discord.js": "^12.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^15.0.1",
+    "typescript": "^4.2.4"
   }
 }
