@@ -58,7 +58,7 @@ In this case, when sending coins, you will first need to click on the "Sign on L
 
 Now only `ed25519`. `Sr25519` planned. Source: [Polkadot Accounts · Polkadot Wiki](https://wiki.polkadot.network/docs/en/learn-accounts#portability)
 
-### 3. Transaction testing
+## 3. Transaction testing
 
 - Test (at least) a single transaction from each `section`, and log:
     - `method`
@@ -75,11 +75,11 @@ Now only `ed25519`. `Sr25519` planned. Source: [Polkadot Accounts · Polkadot Wi
 $ ./joystream-node --pruning archive --validator --dev --log runtime,txpool,transaction-pool
 ```
 
-I created only ordinary transactions for sending coins through the "Send" button: an error appears in the extension (see point 1), but there is nothing about it in the logs.
+I created ordinary transactions for sending coins through the "Send" button: an error appears in the extension (see point 1), but there is nothing about it in the logs.
 
 ![___2021-05-01_15-58-35](https://user-images.githubusercontent.com/1708881/116786272-c325d500-aaae-11eb-928d-caaa79713a38.png)
 
-I no longer understand transactions on the [Extrinsics](https://testnet.joystream.org/#/extrinsics) page. Most likely, there will also be only an error in the extension, because the Ledger Nano does not support Joystream (see point 4).
+On the [Extrinsics](https://testnet.joystream.org/#/extrinsics) page, I tried to create a transaction `system.remark(0x7465737420746573742074657374)`. Result: again the error `Something went wrong`, as in point 1. As I understand it, these transactions do not even get into the blockchain.
 
 ## 4. What are the derivation paths, and recovery mechanism, for each keytype supported
 
@@ -120,6 +120,8 @@ Ledger does not support the Joystream network. It only supports Polkadot, Kusama
 - [Zondax/ledger-polkadot](https://github.com/Zondax/ledger-polkadot)
 - [Zondax/ledger-kusama](https://github.com/Zondax/ledger-kusama)
 - [Zondax/ledger-polymesh](https://github.com/Zondax/ledger-polymesh)
+
+It is also worth adding that in the extension you can select "Allow use on any chain" for paper wallets. For a hardware wallet, this option is not available, you must definitely select a specific network.
 
 ### [Magnum Gold in PolkadotRu](https://t.me/PolkadotRu/27791)
 
