@@ -2,7 +2,7 @@
 import { wsLocation } from "../config";
 
 // types
-import { Proposals } from "./types";
+import { Council, Proposals } from "./types";
 import { types } from "@joystream/types";
 import { ApiPromise, WsProvider } from "@polkadot/api";
 import { Header } from "@polkadot/types/interfaces";
@@ -22,20 +22,20 @@ const main = async () => {
   const [chain, node, version] = await Promise.all([
     api.rpc.system.chain(),
     api.rpc.system.name(),
-    api.rpc.system.version()
+    api.rpc.system.version(),
   ]);
   log(`Connected to ${chain} on ${node} v${version}`);
 
-  let lastBlock = 0;
+  let council: Council = { round: 0, last: "" };
+  let lastBlock: number = 0;
   let proposals: Proposals = {
     last: 1,
     current: 2,
     active: [],
-    pending: []
+    executing: [],
   };
   let categories = [0, 0];
   let posts = [0, 0];
-  let threads = [0, 0];
   let channels = [0, 0];
 
   const unsubscribe = await api.rpc.chain.subscribeNewHeads(
@@ -45,15 +45,16 @@ const main = async () => {
       lastBlock = block.number.toNumber();
       const currentBlock = block.number.toNumber();
       log("current council");
-      announce.councils(api, currentBlock, sendMessage);
+      council = await announce.council(api, council, currentBlock, sendMessage);
+      lastBlock = currentBlock;
 
       log("first proposal");
-      announce.proposals(api, proposals, sendMessage);
+      announce.proposals(api, proposals, lastBlock, sendMessage);
 
       log("last proposal");
       proposals.current = await get.proposalCount(api);
       proposals.last = proposals.current - 1;
-      announce.proposals(api, proposals, sendMessage);
+      announce.proposals(api, proposals, lastBlock, sendMessage);
 
       log("first category");
       announce.categories(api, categories, sendMessage);
@@ -70,14 +71,6 @@ const main = async () => {
       posts[1] = await get.currentPostId(api);
       posts[0] = posts[1] - 1;
       announce.posts(api, posts, sendMessage);
-
-      log("first thread");
-      announce.threads(api, threads, sendMessage);
-
-      log("last thread");
-      threads[1] = await get.currentThreadId(api);
-      threads[0] = threads[1] - 1;
-      announce.threads(api, threads, sendMessage);
 
       log("first channel");
       announce.channels(api, channels, sendMessage);
