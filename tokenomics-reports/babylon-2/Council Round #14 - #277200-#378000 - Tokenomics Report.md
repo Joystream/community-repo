@@ -16,7 +16,7 @@ This is a report which explains the current state of the Joystream network in nu
 |---------------------|--------------|
 | Total Tokens Burned | 0           | 
 | Spending Proposals (Executed)   |  53583140                  |
-| Bounties paid       |  0                           |
+| Bounties paid       |  21542226                           |
 | Validator Role      |  3663208            | 
 | Council Role        | 0             | 
 | Storage Role        | 772800             | 
