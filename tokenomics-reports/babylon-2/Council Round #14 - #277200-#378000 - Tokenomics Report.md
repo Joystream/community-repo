@@ -57,7 +57,8 @@ This is a report which explains the current state of the Joystream network in nu
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of Storage Workers | 2  |  2 | 0 |
-| Total Storage Stake (workers + lead)  | 50000 |  50000 | 0 |
+| Total Storage Stake (workers + lead)  | 50000 |  50000 | 0 |   
+
 Role occupants:  
 @maks_malensek | (5GYWp1NM9J21QZzkouCDKCuBCnu92o921ySEcxdas2s3pUCg)  
 @joystream_storage_member | (5EyTk4G9zt5wApxwK6MbPWQfRY6xy2nxfq8V6EXWfHxP5jou)  
@@ -66,7 +67,8 @@ Role occupants:
 ### 4.3 Curator Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of Curators      | 5 | 4 | -20 |
+| Number of Curators      | 5 | 4 | -20 |   
+
 Role occupants:  
 @oiclid | (5GW7zRKYs2hVa4zAzA2ZspuFgVF7DBvCftmdBdfZAbb98k25)  
 @joystream_storage_member | (5EyTk4G9zt5wApxwK6MbPWQfRY6xy2nxfq8V6EXWfHxP5jou)  
