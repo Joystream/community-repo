@@ -1,4 +1,4 @@
-# Antioch - Council Election Round #3 - Performance Review and Minutes
+# Antioch - Council Election Round #2 - Performance Review and Minutes
 ## 1 - Basic Information
 ### 1.1 - Introduction
 The council is expected to produce reports during each round and provide feedback in the form of workflow, challenges, thinking and performance as well as minutes covering important events during the council session.
