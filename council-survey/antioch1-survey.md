@@ -2,7 +2,7 @@ These are the results for the **Antioch 1 Council Survey**. The survey ran from 
 
 
 
-**What did you think of the [KPIs](https://blog.joystream.org/antioch-kpis/#previous)**?
+**What did you think of the [KPIs](https://blog.joystream.org/antioch-kpis/#previous)** (round 1)?
 
 | Answer | Share |
 |:----------|:----------|
