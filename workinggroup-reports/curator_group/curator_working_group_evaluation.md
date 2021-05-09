@@ -24,20 +24,20 @@ This is the report of the group of curators for reporting period #6. (26.04.2021
 * Total entities:		128
 
 ### Content Curator:	leet_joy	
-* Video\10	Accepted	49
-* Video\10	Censored	4
+* Video\10	Accepted:	49
+* Video\10	Censored:	4
 * Total entities:		53
 
 ### Content Curator:	Meskalin	
 * Video\10	Accepted:	12
-* Total entities		12
+* Total entities:		12
 
 ### Content Curator:	oiclid	
-* Channel\1	Accepted	9
-* Video\10	Accepted	7
-* Video\10	Accepted 	1
-* Video\10	Censored	3
-* Total entities		20
+* Channel\1	Accepted:	9
+* Video\10	Accepted:	7
+* Video\10	Accepted: 	1
+* Video\10	Censored:	3
+* Total entities:		20
 
 
 ## 2 - Issue
