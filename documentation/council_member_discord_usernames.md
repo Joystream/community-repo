@@ -20,3 +20,4 @@ This document lists out the usernames of people who sit on the council or are wo
 | manipal             | ?                |                   |
 | 2themoon            | 2themoon         |                   |
 | Xandrell            | Xandrell         | merit_now         |
+| Wasabi              | IeSua#9971       | @Alladar2         |
