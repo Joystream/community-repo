@@ -19,3 +19,4 @@ This document lists out the usernames of people who sit on the council or are wo
 | sparky              | ?                |                   |
 | manipal             | ?                |                   |
 | 2themoon            | 2themoon         |                   |
+| Xandrell            | Xandrell         | merit_now         |
