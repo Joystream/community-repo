@@ -57,14 +57,16 @@ This is a report which explains the current state of the Joystream network in nu
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of Storage Workers | {startStorageProviders}  |  {endStorageProviders} | {percNewStorageProviders} |
-| Total Storage Stake (workers + lead)  | {startStorageProvidersStake} |  {endStorageProvidersStake} | {percNewStorageProviderStake} |
+| Total Storage Stake (workers + lead)  | {startStorageProvidersStake} |  {endStorageProvidersStake} | {percNewStorageProviderStake} |   
+
 Role occupants:  
 {storageProviders}
 
 ### 4.3 Curator Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of Curators      | {startCurators} | {endCurators} | {percNewCurators} |
+| Number of Curators      | {startCurators} | {endCurators} | {percNewCurators} |   
+
 Role occupants:  
 {curators}
 

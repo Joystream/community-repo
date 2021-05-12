@@ -48,7 +48,7 @@ const parse = require('csv-parse/lib/sync');
 
 const BURN_ADDRESS = '5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu';
 
-const COUNCIL_ROUND_OFFSET = 0;
+const COUNCIL_ROUND_OFFSET = 2;
 const PROVIDER_URL = "ws://localhost:9944";
 
 const CACHE_FOLDER = "cache";
@@ -362,7 +362,7 @@ export class StatisticsCollector {
     }
 
     async fillCouncilInfo(startHash: Hash, endHash: Hash) {
-        this.statistics.councilRound = (await this.api.query.councilElection.round.at(startHash) as u32).toNumber();
+        this.statistics.councilRound = (await this.api.query.councilElection.round.at(startHash) as u32).toNumber() - COUNCIL_ROUND_OFFSET;
         this.statistics.councilMembers = (await this.api.query.councilElection.councilSize.at(startHash) as u32).toNumber();
         let startNrProposals = await this.api.query.proposalsEngine.proposalCount.at(startHash) as u32;
         let endNrProposals = await this.api.query.proposalsEngine.proposalCount.at(endHash) as u32;
