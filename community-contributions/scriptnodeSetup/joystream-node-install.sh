@@ -39,4 +39,4 @@ sudo systemctl daemon-reload
 sudo systemctl start joystream-node
 sudo systemctl enable joystream-node
 
-echo -e "${GREEN}===============\nYour node is fully installed and running.\nNow go to the site (https://telemetry.polkadot.io/#list/Joystream) and find your node by the name you gave it.\n\nWait for complete synchronization and proceed to the next step - Validator Setup\n(read - https://github.com/Joystream/helpdesk/tree/master/roles/validators#validator-setup).\n===============\033[0m"
+echo "${GREEN}===============\nYour node is fully installed and running.\nNow go to the site (https://telemetry.polkadot.io/#list/Joystream) and find your node by the name you gave it.\n\nWait for complete synchronization and proceed to the next step - Validator Setup\n(read - https://github.com/Joystream/helpdesk/tree/master/roles/validators#validator-setup).\n===============\033[0m"
