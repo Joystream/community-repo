@@ -14,15 +14,16 @@ This is a report which explains the current state of the Joystream network in nu
 
 | Property            | Value        |
 |---------------------|--------------|
-| Total Tokens Burned | {newTokensBurn} | 
+| Total Tokens Burned | {newTokensBurn}           | 
+| Spending Proposals (Executed)   |  {spendingProposalsTotal}                  |
+| Bounties paid       |  {bountiesTotalPaid}                           |
 | Validator Role      |  {newValidatorRewards}            | 
 | Council Role        | {newCouncilRewards}             | 
 | Storage Role        | {newStorageProviderReward}             | 
-| Curator Role        | {newCuratorRewards}             | 
+| Curator Role        | {newCuratorRewards}             |
 
 
-
-### 2.2 Mints 
+### 2.3 Mints 
 | Property                    | Start Block           | End Block | % Change |
 |-----------------------------|-----------------------|--------------|----------|
 | Council Mint Total Minted   | {startCouncilMinted}  |  {endCouncilMinted} |{percNewCouncilMinted}          |
@@ -57,11 +58,15 @@ This is a report which explains the current state of the Joystream network in nu
 |-------------------------|--------------|--------------|----------|
 | Number of Storage Workers | {startStorageProviders}  |  {endStorageProviders} | {percNewStorageProviders} |
 | Total Storage Stake (workers + lead)  | {startStorageProvidersStake} |  {endStorageProvidersStake} | {percNewStorageProviderStake} |
+Role occupants:  
+{storageProviders}
 
 ### 4.3 Curator Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of Curators      | {startCurators} | {endCurators} | {percNewCurators} |
+Role occupants:  
+{curators}
 
 ## 5.0 User Generated Content
 ### 5.1 Membership Information
@@ -73,7 +78,7 @@ This is a report which explains the current state of the Joystream network in nu
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of uploads       | {startMedia} | {endMedia}  |  {percNewMedia} |
-| Size of content         |  {startUsedSpace} |  {endUsedSpace} | {percNewUsedSpace}          |
+| Size of content (MB)        |  {startUsedSpace} |  {endUsedSpace} | {percNewUsedSpace}          |
 | Number of channels      |  {startChannels} | {endChannels} | {percNewChannels} |
 
 ### 5.3 Forum Activity

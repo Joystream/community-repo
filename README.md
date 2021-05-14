@@ -16,7 +16,7 @@
     </a>
 	  <span> | </span>
     <a href="/documentation">
-    Documenntation
+    Documentation
     </a>
 	  <span> | </span>
     <a href="/submission-log">
@@ -28,7 +28,7 @@
   </a>
      <span> | </span>
     <a href="/workinggroup-reports">
-    Workinggroup Reports
+    Working group Reports
   </a>
    <span> | </span>
   </h4>
