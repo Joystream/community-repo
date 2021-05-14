@@ -4,10 +4,8 @@
 
 echo "****************************************************************************"
 echo "*      This script will install and configure your Joystream node.         *"
-echo "*      The script was created based on the official instructions and the   *"
-echo "*      working community instructions:                                     *"
+echo "*      The script was created based on the official instructions:          *"
 echo "*      https://github.com/Joystream/helpdesk/tree/master/roles/validators  *"
-echo "*      https://seainvestments1.medium.com/b3608a8be10e                     *"
 echo "****************************************************************************"
 
 cd
@@ -39,4 +37,4 @@ sudo systemctl daemon-reload
 sudo systemctl start joystream-node
 sudo systemctl enable joystream-node
 
-echo "${GREEN}===============\nYour node is fully installed and running.\nNow go to the site (https://telemetry.polkadot.io/#list/Joystream) and find your node by the name you gave it.\n\nWait for complete synchronization and proceed to the next step - Validator Setup\n(read - https://github.com/Joystream/helpdesk/tree/master/roles/validators#validator-setup).\n===============\033[0m"
+echo "${GREEN}===============\nYour node is fully installed and running.\nNow go to the site (https://telemetry.joystream.org/#/Joystream) and find your node by the name you gave it.\n\nWait for complete synchronization and proceed to the next step - Validator Setup\n(read - https://github.com/Joystream/helpdesk/tree/master/roles/validators#validator-setup).\n===============\033[0m"
