@@ -108,10 +108,10 @@ export class StatisticsCollector {
         rawBounties.shift();
 
         let bounties = rawBounties.map((rawBounty: any) => {
-            return new Bounty(rawBounty[0], rawBounty[1], rawBounty[2], rawBounty[3], rawBounty[4]);
+            return new Bounty(rawBounty[0], rawBounty[1], rawBounty[2], rawBounty[3], rawBounty[4], rawBounty[5]);
         });
 
-        return bounties.filter((bounty: Bounty) => bounty.status == "Approved");
+        return bounties.filter((bounty: Bounty) => bounty.status == "Approved" && bounty.testnet == "Antioch");
     }
 
     async getSpendingProposals() : Promise<Array<SpendingProposals>>{

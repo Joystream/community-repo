@@ -214,7 +214,7 @@ export class Channel {
 }
 
 export class Bounty {
-    constructor(public proposalId: number, public title: string, public status: string, public amountAsked: number, public amountMinted: number) {
+    constructor(public testnet: string, public proposalId: number, public title: string, public status: string, public amountAsked: number, public amountMinted: number) {
     }
 }
 
