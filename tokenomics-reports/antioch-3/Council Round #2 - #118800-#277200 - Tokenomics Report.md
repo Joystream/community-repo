@@ -4,7 +4,7 @@ This is a report which explains the current state of the Joystream network in nu
 ## 1.0 Basic Information
 * Block range: 118800 - 277200
 * Date Range: 4/15/2021 - 4/26/2021
-* Council session #: 2
+* Council session #: 1
 
 ## 2.0 Tokenomics
 ### 2.1 Token generation breakdown
