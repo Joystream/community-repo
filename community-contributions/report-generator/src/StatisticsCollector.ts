@@ -27,7 +27,7 @@ import {ContentId, DataObject} from "@joystream/types/media";
 
 
 import Linkage from "@polkadot/types/codec/Linkage";
-import {PostId, ThreadId} from "@joystream/types/common";
+import {ChannelId, PostId, ThreadId} from "@joystream/types/common";
 import {CategoryId} from "@joystream/types/forum";
 
 import {MemberId, Membership} from "@joystream/types/members";
@@ -35,10 +35,10 @@ import {RewardRelationship, RewardRelationshipId} from "@joystream/types/recurri
 
 import workingGroup from "@joystream/types/src/working-group/index";
 import {Stake} from "@joystream/types/stake";
-import {ChannelId} from "@joystream/types/content-working-group";
+
 import {WorkerId} from "@joystream/types/working-group";
 import {Entity, EntityId, PropertyType} from "@joystream/types/content-directory";
-import {ProposalDetails, ProposalId, WorkerOf} from "@joystream/types/augment-codec/all";
+import {ProposalDetails, ProposalId, Video, VideoId, WorkerOf} from "@joystream/types/augment-codec/all";
 import {SpendingParams} from "@joystream/types/proposals";
 import * as constants from "constants";
 
@@ -114,7 +114,7 @@ export class StatisticsCollector {
         return bounties.filter((bounty: Bounty) => bounty.status == "Approved" && bounty.testnet == "Antioch");
     }
 
-    async getSpendingProposals() : Promise<Array<SpendingProposals>>{
+    async getSpendingProposals(): Promise<Array<SpendingProposals>> {
         let spendingProposals = new Array<SpendingProposals>();
         for (let [key, blockEvents] of this.blocksEventsCache) {
             let validatorRewards = blockEvents.filter((event) => {
@@ -173,9 +173,9 @@ export class StatisticsCollector {
         let spendingProposals = await this.getSpendingProposals();
 
         this.statistics.bountiesTotalPaid = 0;
-        for (let bounty of bounties){
+        for (let bounty of bounties) {
             let bountySpendingProposal = spendingProposals.find((spendingProposal) => spendingProposal.id == bounty.proposalId);
-            if (bountySpendingProposal){
+            if (bountySpendingProposal) {
                 this.statistics.bountiesTotalPaid += bountySpendingProposal.spentAmount;
             }
         }
@@ -478,10 +478,10 @@ export class StatisticsCollector {
 
         let lastStorageProviderId = Number(await this.api.query.storageWorkingGroup.nextWorkerId.at(endHash)) - 1;
         this.statistics.storageProviders = "";
-        for (let i = lastStorageProviderId, storageProviderCount = 0; storageProviderCount < this.statistics.endStorageProviders; --i, ++storageProviderCount){
+        for (let i = lastStorageProviderId, storageProviderCount = 0; storageProviderCount < this.statistics.endStorageProviders; --i, ++storageProviderCount) {
             let storageProvider = await this.api.query.storageWorkingGroup.workerById.at(endHash, i) as WorkerOf;
             let membership = await this.api.query.members.membershipById.at(endHash, storageProvider.member_id) as Membership;
-            this.statistics.storageProviders += "@" + membership.handle + " | (" + membership.root_account  +")  \n";
+            this.statistics.storageProviders += "@" + membership.handle + " | (" + membership.root_account + ")  \n";
         }
 
     }
@@ -493,10 +493,10 @@ export class StatisticsCollector {
 
         let lastCuratorId = Number(await this.api.query.contentDirectoryWorkingGroup.nextWorkerId.at(endHash)) - 1;
         this.statistics.curators = "";
-        for (let i = lastCuratorId, curatorCount = 0; curatorCount < this.statistics.endCurators; --i, ++curatorCount){
+        for (let i = lastCuratorId, curatorCount = 0; curatorCount < this.statistics.endCurators; --i, ++curatorCount) {
             let curator = await this.api.query.contentDirectoryWorkingGroup.workerById.at(endHash, i) as WorkerOf;
             let curatorMembership = await this.api.query.members.membershipById.at(endHash, curator.member_id) as Membership;
-            this.statistics.curators += "@" + curatorMembership.handle + " | (" + curatorMembership.root_account  +")  \n";
+            this.statistics.curators += "@" + curatorMembership.handle + " | (" + curatorMembership.root_account + ")  \n";
         }
 
     }
@@ -509,28 +509,41 @@ export class StatisticsCollector {
     }
 
     async fillMediaUploadInfo(startHash: Hash, endHash: Hash) {
-        let startEntites = await this.getEntities(startHash);
-        let endEntities = await this.getEntities(endHash);
 
-        let startVideos = await this.parseVideos(startEntites);
-        let endVideos = await this.parseVideos(endEntities);
+        let startVideos = (await this.api.query.content.nextVideoId.at(startHash) as VideoId).toNumber();
+        let endVideos = (await this.api.query.content.nextVideoId.at(endHash) as VideoId).toNumber();
 
-        this.statistics.startMedia = startVideos.length;
-        this.statistics.endMedia = endVideos.length;
+        this.statistics.startMedia = startVideos;
+        this.statistics.endMedia = endVideos;
         this.statistics.percNewMedia = StatisticsCollector.convertToPercentage(this.statistics.startMedia, this.statistics.endMedia);
 
-        let startChannels = await this.parseChannels(startEntites);
-        let endChannels = await this.parseChannels(endEntities);
+        let startChannels = (await this.api.query.content.nextChannelId.at(startHash) as ChannelId).toNumber();
+        let endChannels = (await this.api.query.content.nextChannelId.at(endHash) as ChannelId).toNumber();
 
-        this.statistics.startChannels = startChannels.length;
-        this.statistics.endChannels = endChannels.length;
+        this.statistics.startChannels = startChannels;
+        this.statistics.endChannels = endChannels;
         this.statistics.percNewChannels = StatisticsCollector.convertToPercentage(this.statistics.startChannels, this.statistics.endChannels);
 
-        let startDataObjects = await this.api.query.dataDirectory.knownContentIds.at(startHash) as Vec<ContentId>;
-        this.statistics.startUsedSpace = Number((await this.computeUsedSpaceInMbs(startDataObjects)).toFixed(2));
+        let dataObjects = await this.api.query.dataDirectory.dataByContentId.entries() as unknown as Map<ContentId, DataObject>;
 
-        let endDataObjects = await this.api.query.dataDirectory.knownContentIds.at(endHash) as Vec<ContentId>;
-        this.statistics.endUsedSpace = Number((await this.computeUsedSpaceInMbs(endDataObjects)).toFixed(2));
+        let startObjects = new Map<ContentId, DataObject>();
+        let endObjects = new Map<ContentId, DataObject>();
+
+        const startBlock = await this.api.rpc.chain.getBlock(startHash);
+        const endBlock = await this.api.rpc.chain.getBlock(endHash);
+
+        for (let [key, dataObject] of dataObjects) {
+            if (dataObject.added_at.block.toNumber() < startBlock.block.header.number.toNumber()){
+                startObjects.set(key, dataObject);
+                this.statistics.startUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
+            }else if (dataObject.added_at.block.toNumber() < endBlock.block.header.number.toNumber()) {
+                endObjects.set(key, dataObject);
+                this.statistics.endUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
+            }
+        }
+        this.statistics.startUsedSpace = Number(this.statistics.startUsedSpace.toFixed(2));
+        this.statistics.endUsedSpace = Number(this.statistics.endUsedSpace.toFixed(2));
+
         this.statistics.percNewUsedSpace = StatisticsCollector.convertToPercentage(this.statistics.startUsedSpace, this.statistics.endUsedSpace);
     }
 
