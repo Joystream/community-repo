@@ -1,0 +1,123 @@
+query GetVideosConnection(
+  $first: Int
+  $after: String
+  $_v0_where: VideoWhereInput
+  $_v0_orderBy: VideoOrderByInput
+) {
+  videosConnection(
+    first: $first
+    after: $after
+    where: $_v0_where
+    orderBy: $_v0_orderBy
+  ) {
+    edges {
+      cursor
+      node {
+        ...VideoFields
+        __typename
+      }
+      __typename
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+      __typename
+    }
+    totalCount
+    __typename
+  }
+}
+fragment VideoFields on Video {
+  id
+  title
+  description
+  category {
+    id
+    name
+    __typename
+  }
+  duration
+  createdAt
+  isPublic
+  isExplicit
+  isFeatured
+  hasMarketing
+  isCensored
+  language {
+    iso
+    __typename
+  }
+  publishedBeforeJoystream
+  mediaMetadata {
+    ...VideoMediaMetadataFields
+    __typename
+  }
+  mediaUrls
+  mediaAvailability
+  mediaDataObject {
+    ...DataObjectFields
+    __typename
+  }
+  thumbnailPhotoUrls
+  thumbnailPhotoAvailability
+  thumbnailPhotoDataObject {
+    ...DataObjectFields
+    __typename
+  }
+  channel {
+    ...BasicChannelFields
+    __typename
+  }
+  license {
+    ...LicenseFields
+    __typename
+  }
+  __typename
+}
+fragment LicenseFields on License {
+  id
+  code
+  attribution
+  customText
+  __typename
+}
+fragment BasicChannelFields on Channel {
+  id
+  title
+  createdAt
+  createdById
+  avatarPhotoUrls
+  avatarPhotoAvailability
+  avatarPhotoDataObject {
+    ...DataObjectFields
+    __typename
+  }
+  __typename
+}
+fragment DataObjectFields on DataObject {
+  id
+  createdAt
+  size
+  liaison {
+    ...BasicWorkerFields
+    __typename
+  }
+  liaisonJudgement
+  ipfsContentId
+  joystreamContentId
+  __typename
+}
+fragment BasicWorkerFields on Worker {
+  id
+  workerId
+  metadata
+  isActive
+  type
+  __typename
+}
+fragment VideoMediaMetadataFields on VideoMediaMetadata {
+  id
+  pixelHeight
+  pixelWidth
+  __typename
+}
