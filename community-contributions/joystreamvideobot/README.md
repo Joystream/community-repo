@@ -1,6 +1,6 @@
 # Joystream Discord Video Bot ####
 
-This Discord announces new video uploads. 
+This Discord bot announces new video uploads. 
 
 ## Installation
 
@@ -22,7 +22,7 @@ How to get the channel id of a channel:
 4- Right click on your desired channel
 5- Now there's an option Copy ID to copy the channel id
 
-Open `config.ts` and set `channelid`.
+Open `config.ts` and set `channelId`.
 Run `yarn && yarn run build` to apply your changes. 
 
 ### Get the Discord Token
