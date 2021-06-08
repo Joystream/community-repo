@@ -24,25 +24,13 @@
       "status": "Open"
     },
     {
-      "id": 11,
-      "title": "Design Community Repo Banner",
-      "openedDate": "2021-02-15",
-      "description": "Most of the active repos in the Joystream organization have branded banners in their README.md. The Community Repo also needs one!",
-      "links": ["https://testnet.joystream.org/#/forum/threads/218","https://github.com/Joystream/community-repo/issues/89"],
-      "reward": 250,
-      "notes": "Design a banner for the Community Repo",
-      "tags": ["Design"],
-      "format": "Free for All",
-      "status": "Announced"
-    },
-    {
       "id": 12,
       "title": "Deploy Reliable Endpoints",
       "openedDate": "2021-03-12",
       "description": "Our endpoint has come under a lot of stress with the large inflow of new users. This bounty covers creating new endpoints.",
       "links": ["https://testnet.joystream.org/#/forum/threads/324","https://github.com/Joystream/community-repo/issues/101"],
       "reward": 200,
-      "notes": "Deploy a public endpoint with high capacity ",
+      "notes": "Deploy a public endpoint with high capacity",
       "tags": ["Hosting"],
       "format": "Closed",
       "status": "50% fulfilled"
@@ -57,7 +45,7 @@
       "notes": "Find Polkadot and Substrate content",
       "tags": ["Content","Research"],
       "format": "Open",
-      "status": "Open - Paid out $515"
+      "status": "Closing on June 11th 2021"
     },
     {
       "id": 15,
@@ -81,12 +69,36 @@
       "notes": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
       "tags": ["Coding","Research"],
       "format": "Closed",
-      "status": "Announced"
+      "status": "Assigned - pending payment"
+    },
+    {
+      "id": 18,
+      "title": "Original Video Bounty",
+      "openedDate": "2021-05-29",
+      "description": "Create and upload original videos on Joystream",
+      "links": ["https://testnet.joystream.org/#/forum/threads/422","https://github.com/Joystream/community-repo/issues/162"],
+      "reward": 200,
+      "notes": "Create and upload original videos on Joystream",
+      "tags": ["Content Creation"],
+      "format": "Open",
+      "status": "Open - Weekly Bounty"
     }
 
   ],
   "closedBounties":
   [
+    {
+      "id": 11,
+      "title": "Design Community Repo Banner",
+      "openedDate": "2021-02-15",
+      "description": "Most of the active repos in the Joystream organization have branded banners in their README.md. The Community Repo also needs one!",
+      "links": ["https://testnet.joystream.org/#/forum/threads/218","https://github.com/Joystream/community-repo/issues/89"],
+      "reward": 300,
+      "notes": "Design a banner for the Community Repo",
+      "tags": ["Design"],
+      "closedDate": "2021-05-13",
+      "status": "Completed - USD 300"
+    },
     {
       "id": 8,
       "title": "Ledger on Joystream",
