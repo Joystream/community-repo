@@ -2,28 +2,6 @@
   "activeBounties":
   [
     {
-      "id": 4,
-      "title": "Improved Telegram Bot",
-      "openedDate": "2020-12-05",
-      "description": "As the bot still has some issues (due to bugs in the initial bot), we want to both fix these, and expand on the functionality.",
-      "links": ["https://testnet.joystream.org/#/forum/threads/158","https://github.com/Joystream/community-repo/issues/51"],
-      "reward": 225,
-      "tags": ["Coding"],
-      "format": "Reserved",
-      "status": "Open"
-    },
-    {
-      "id": 8,
-      "title": "Ledger on Joystream",
-      "description": "Research how well the Ledger hardware wallets are supported, how to use them on the network, derivation paths and key recovery.",
-      "openedDate": "2021-02-15",
-      "links": ["https://testnet.joystream.org/#/forum/threads/215","https://github.com/Joystream/community-repo/issues/86"],
-      "reward": 300,
-      "tags": ["Research"],
-      "format": "Closed",
-      "status": "Announced"
-    },
-    {
       "id": 9,
       "title": "Repo/Docs Improvements",
       "description": "Improve the quality of our documentation on GitHub, by making PRs and issues.",
@@ -43,19 +21,7 @@
       "reward": 5,
       "tags": ["Newcomers","Content"],
       "format": "Free for All",
-      "status": "Announced"
-    },
-    {
-      "id": 11,
-      "title": "Design Community Repo Banner",
-      "openedDate": "2021-02-15",
-      "description": "Most of the active repos in the Joystream organization have branded banners in their README.md. The Community Repo also needs one!",
-      "links": ["https://testnet.joystream.org/#/forum/threads/218","https://github.com/Joystream/community-repo/issues/89"],
-      "reward": 250,
-      "notes": "Design a banner for the Community Repo",
-      "tags": ["Design"],
-      "format": "Free for All",
-      "status": "Announced"
+      "status": "Open"
     },
     {
       "id": 12,
@@ -64,22 +30,10 @@
       "description": "Our endpoint has come under a lot of stress with the large inflow of new users. This bounty covers creating new endpoints.",
       "links": ["https://testnet.joystream.org/#/forum/threads/324","https://github.com/Joystream/community-repo/issues/101"],
       "reward": 200,
-      "notes": "Deploy a public endpoint with high capacity ",
+      "notes": "Deploy a public endpoint with high capacity",
       "tags": ["Hosting"],
       "format": "Closed",
       "status": "50% fulfilled"
-    },
-    {
-      "id": 13,
-      "title": "Research Discord Bots",
-      "openedDate": "2021-03-12",
-      "description": "Research, document and create a simple bot for the new Discord server",
-      "links": ["https://testnet.joystream.org/#/forum/threads/326","https://github.com/Joystream/community-repo/issues/123"],
-      "reward": 200,
-      "notes": "Research and document bots for the new Discord server",
-      "tags": ["Coding","Research"],
-      "format": "Closed",
-      "status": "Fully Assigned"
     },
     {
       "id": 14,
@@ -91,7 +45,7 @@
       "notes": "Find Polkadot and Substrate content",
       "tags": ["Content","Research"],
       "format": "Open",
-      "status": "Announced"
+      "status": "Closing on June 11th 2021"
     },
     {
       "id": 15,
@@ -115,12 +69,60 @@
       "notes": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
       "tags": ["Coding","Research"],
       "format": "Closed",
-      "status": "Announced"
+      "status": "Assigned - pending payment"
+    },
+    {
+      "id": 18,
+      "title": "Original Video Bounty",
+      "openedDate": "2021-05-29",
+      "description": "Create and upload original videos on Joystream",
+      "links": ["https://testnet.joystream.org/#/forum/threads/422","https://github.com/Joystream/community-repo/issues/162"],
+      "reward": 200,
+      "notes": "Create and upload original videos on Joystream",
+      "tags": ["Content Creation"],
+      "format": "Open",
+      "status": "Open - Weekly Bounty"
     }
 
   ],
   "closedBounties":
   [
+    {
+      "id": 11,
+      "title": "Design Community Repo Banner",
+      "openedDate": "2021-02-15",
+      "description": "Most of the active repos in the Joystream organization have branded banners in their README.md. The Community Repo also needs one!",
+      "links": ["https://testnet.joystream.org/#/forum/threads/218","https://github.com/Joystream/community-repo/issues/89"],
+      "reward": 300,
+      "notes": "Design a banner for the Community Repo",
+      "tags": ["Design"],
+      "closedDate": "2021-05-13",
+      "status": "Completed - USD 300"
+    },
+    {
+      "id": 8,
+      "title": "Ledger on Joystream",
+      "description": "Research how well the Ledger hardware wallets are supported, how to use them on the network, derivation paths and key recovery.",
+      "openedDate": "2021-02-15",
+      "links": ["https://testnet.joystream.org/#/forum/threads/215","https://github.com/Joystream/community-repo/issues/86"],
+      "reward": 450,
+      "tags": ["Research"],
+      "closedDate": "2021-05-12",
+      "status": "Completed - USD 450"
+    },
+    {
+      "id": 13,
+      "title": "Research Discord Bots",
+      "openedDate": "2021-03-12",
+      "description": "Research, document and create a simple bot for the new Discord server",
+      "links": ["https://testnet.joystream.org/#/forum/threads/326","https://github.com/Joystream/community-repo/issues/123"],
+      "reward": 200,
+      "notes": "Research and document bots for the new Discord server",
+      "tags": ["Coding","Research"],
+      "format": "Closed",
+      "closedDate": "2021-05-12",
+      "status": "Pending Grading"
+    },
     {
       "id": 7,
       "title": "Joystream Player Loading",
@@ -163,11 +165,11 @@
       "openedDate": "2020-12-05",
       "description": "As the bot still has some issues (due to bugs in the initial bot), we want to both fix these, and expand on the functionality.",
       "links": ["https://testnet.joystream.org/#/forum/threads/158","https://github.com/Joystream/community-repo/issues/51"],
-      "reward": "TBC",
+      "reward": 825,
       "tags": ["Coding"],
       "format": "Reserved",
       "closedDate": "2021-03-04",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "id": 3,

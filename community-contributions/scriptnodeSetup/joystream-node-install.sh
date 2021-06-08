@@ -1,7 +1,6 @@
 #!/bin/bash
-# My public key 5EyRepuyZTM2rjHwbGfjBmjutaR5QTxLULcra2aToigtpxb6
-# My node name wasabi
-
+#My public key 5EyRepuyZTM2rjHwbGfjBmjutaR5QTxLULcra2aToigtpxb6
+#My node name 1497-wasabi
 echo "****************************************************************************"
 echo "*      This script will install and configure your Joystream node.         *"
 echo "*      The script was created based on the official instructions:          *"
