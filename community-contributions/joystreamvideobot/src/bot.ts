@@ -49,10 +49,6 @@ const main = async () => {
                 .setColor('#4038FF') // official joystream blue, see https://www.joystream.org/brand/guides/
                 .setTitle(edge.node.title)
                 .setURL(`https://play.joystream.org/video/${edge.node.id}`)
-                .setAuthor(edge.node.channel.title, 
-                  `${edge.node.channel.avatarPhotoDataObject.liaison.metadata}asset/v0/${edge.node.channel.avatarPhotoDataObject.joystreamContentId}`, 
-                  `https://play.joystream.org/channel/${edge.node.channel.id}`
-                )
                 .setDescription(edge.node.description.substring(1, 200)) // cut off lengthy descriptions 
                 .addFields(
                   { name: 'ID', value: edge.node.id, inline: true },
@@ -63,6 +59,13 @@ const main = async () => {
                 )
                 .setImage(`${edge.node.thumbnailPhotoDataObject.liaison.metadata}asset/v0/${edge.node.thumbnailPhotoDataObject.joystreamContentId}`)
                 .setTimestamp();
+                if(edge.node.channel.avatarPhotoDataObject && edge.node.channel.avatarPhotoDataObject.liaison) {
+                  const avatar = 
+                        `${edge.node.channel.avatarPhotoDataObject.liaison.metadata}asset/v0/${edge.node.channel.avatarPhotoDataObject.joystreamContentId}`;
+                  exampleEmbed.setAuthor(edge.node.channel.title, avatar, `https://play.joystream.org/channel/${edge.node.channel.id}`);
+                } else {
+                  exampleEmbed.setAuthor(edge.node.channel.title);
+                }
               channel.send(exampleEmbed);
               ids.add(edge.node.id);
             }
