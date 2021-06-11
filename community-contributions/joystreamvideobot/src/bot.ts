@@ -3,7 +3,7 @@ import { readFileSync } from 'fs';
 import axios from 'axios';
 import {IVideoResponse, LooseObject}  from './types';
 
-const moment = require('moment')
+const moment = require('moment');
 const momentFormat = require("moment-duration-format");
 const Discord = require("discord.js");
 momentFormat(moment);
@@ -15,18 +15,20 @@ const graphql = readFileSync('./videos_query.graphql', 'utf-8').replaceAll("\n",
 const httpRequestBody = readFileSync('./request.json', 'utf-8').replace('__PARAMS__', queryParams).replace('__QUERY__', graphql);
 const licenses: LooseObject = JSON.parse(readFileSync('./licenses.json', 'utf-8'));
 
-const client = new Discord.Client();
 
 const main = async () => {
 
-  await client.login(process.env.TOKEN); // environment variable TOKEN must be set
+  const client = new Discord.Client();
 
-  await client.on("ready", async () => {
-    console.log(`Logged in.`);
+  client.once("ready", async () => {
+    console.log('Discord.js client ready');
     await client.channels.fetch(channelId);
   });
   
-  let ids = new Set()
+  await client.login(process.env.TOKEN); // environment variable TOKEN must be set
+  console.log('Bot logged in successfully');
+
+  let ids: any[] = [];
 
   do {
     const createdAt = moment().utc().subtract(createdAgo, createdAgoUnit); // current time minus some configurable number of time units
@@ -39,8 +41,11 @@ const main = async () => {
         let response: IVideoResponse = <IVideoResponse>res.data;
         if(response.data.videosConnection) {
           console.log(`${response.data.videosConnection.edges.length} new videos uploaded`)
-          for (let edge of response.data.videosConnection.edges) {            
-            if(ids.has(edge.node.id)) {
+          for (let edge of response.data.videosConnection.edges) {   
+            if (!edge.node.thumbnailPhotoDataObject) {
+              continue; // metadata for this video is not yet ready. Video will be announced in next iterations.
+            }
+            if (lookup(ids, edge.node.id)) {
               console.log(`Video ${edge.node.id} already announced. `);
             } else {
               const channel = client.channels.cache.get(channelId);
@@ -67,9 +72,10 @@ const main = async () => {
                   exampleEmbed.setAuthor(edge.node.channel.title);
                 }
               channel.send(exampleEmbed);
-              ids.add(edge.node.id);
+              ids.push({id: edge.node.id, createdAt: Date.parse(edge.node.createdAt)});
             }
           }  
+          cleanup(ids, createdAt);
         }
       })
       .catch((error: any) => {
@@ -81,6 +87,29 @@ const main = async () => {
 
   } while (true);
 
+}
+
+const cleanup = (ids: any[], cutoffDate: Date) => {
+  console.log("Local storage cleaning in progress");
+  let cleaned = 0;
+  ids.reduceRight(function(acc, item, index, object) {
+    if (item.createdAt < cutoffDate) {
+      object.splice(index, 1);
+      cleaned += 1;
+    }
+  }, []);
+  if (cleaned > 0) {
+    console.log(`Cleaned records: ${cleaned}`);
+  }
+}
+
+const lookup = (ids: any[], id: string) => {
+  for (let video of ids) {
+    if (video.id == id) {
+      return true;
+    }
+  }
+  return false;
 }
 
 const durationFormat = (duration: number) => {

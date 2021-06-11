@@ -23,7 +23,8 @@ export interface INode {
     channel: IChannel,
     category: ICategory,
     language: ILanguage,
-    license: ILicense
+    license: ILicense,
+    createdAt: string
 }
 
 export interface ILicense {
