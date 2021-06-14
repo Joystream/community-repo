@@ -1,0 +1,374 @@
+﻿1
+00:00:01,040 --> 00:00:05,440
+All right, welcome to part three, glad you're still sticking with me here.
+
+2
+00:00:05,440 --> 00:00:09,590
+So, this is about the Olympia network.
+
+3
+00:00:09,599 --> 00:00:16,560
+The Olympia network is sort of like a mega release we've been working on for a long time sort of asynchronously with everything else
+
+4
+00:00:16,560 --> 00:00:22,880
+and particularly on the runtime side, also on the Pioneer side, obviously, and I’m going to get to it.
+
+5
+00:00:22,880 --> 00:00:32,550
+And it's such a big release that it's not even scheduled to be the release immediately after the Sumer release.
+
+6
+00:00:32,558 --> 00:00:42,070
+The reason I’m sort of putting it on the table is because it's probably one of those big milestones which may or may not be the last release,
+
+7
+00:00:42,079 --> 00:00:46,480
+even before main net probably going to have one or two big releases, even after that,
+
+8
+00:00:46,480 --> 00:00:50,480
+but it's a very important piece milestone for where we're trying to go.
+
+9
+00:00:50,480 --> 00:00:57,920
+And it's also something that we were working on for such a long time that I thought it was worth sharing.
+
+10
+00:00:57,920 --> 00:01:01,120
+So, what's going on in this release?
+
+11
+00:01:01,120 --> 00:01:17,040
+One is that we're shipping a new updated simplified benchmarked and audited runtime which sees major improvements really across the board
+
+12
+00:01:17,040 --> 00:01:23,680
+and new functionality and features for, I would say, every subsystem.
+
+13
+00:01:23,680 --> 00:01:29,360
+And then it's introduction of Pioneer 2, version 2.
+
+14
+00:01:29,360 --> 00:01:35,360
+Pioneer, for those who don't know, is the governance app where you vote and stake and buy memberships and run for the elections in the council and forum and blah blah.
+
+15
+00:01:35,360 --> 00:01:41,680
+So that's all the stuff that actually has to do with participating in the system.
+
+16
+00:01:41,680 --> 00:01:49,200
+Pioneer 2 is the sort of user facing application for doing that through a user interface.
+
+17
+00:01:49,200 --> 00:02:00,640
+And I want to say that really probably the big bottleneck for going live with Olympia is actually Pioneer itself.
+
+18
+00:02:00,640 --> 00:02:11,360
+It's a tremendous piece of work in terms of on the infrastructure, the design, the application development itself.
+
+19
+00:02:11,360 --> 00:02:21,680
+There are a lot of pieces that are coming together, and we really could have released
+the runtime improvements that we already have but it just doesn't make sense for us
+
+20
+00:02:21,680 --> 00:02:29,680
+to try to upgrade the version of Pioneer which is currently live, that we're calling Pioneer one, and try to upgrade them to work with the new runtime.
+
+21
+00:02:29,680 --> 00:02:41,280
+It's just going to be a lot of work for very temporary benefits, so our thinking is currently that we really will go live once Pioneer 2 is ready, 
+
+22
+00:02:41,280 --> 00:02:50,160
+and that will simultaneously reveal a system which is quite different in many ways from what we see today.
+
+23
+00:02:50,160 --> 00:02:55,040
+The overall structure is, of course, the same but there will be, you know, important improvements everywhere. 
+
+24
+00:02:55,040 --> 00:03:03,920
+So, I think the best way to get a flavor for what the Olympia runtime currently looks like, and remember it's a moving target whenever we develop
+
+25
+00:03:03,920 --> 00:03:14,640
+something new that we're not ready to put out right away, it will sort of get go live in the Olympia runtime.
+
+26
+00:03:14,640 --> 00:03:19,440
+And we can sort of put it in the context of what we currently expect will be in the mainnet runtime. 
+
+27
+00:03:19,440 --> 00:03:22,870
+You could see that on the runtime side we're really getting there.
+
+28
+00:03:22,879 --> 00:03:39,510
+There are basically two major subsystems, well, it is an open question whether the channel tokens and DAOs is a subsystem, but two big pieces that really we haven't started on at all. 
+
+29
+00:03:39,519 --> 00:03:46,950
+Everything else is in some reasonable state of development, to put it that way. 
+
+30
+00:03:46,959 --> 00:03:57,510
+In addition, again, my image is covering that, but we're working with SR Labs, one of the premier auditing firms that work with Polkadot 
+
+31
+00:03:57,519 --> 00:04:07,430
+and that old ecosystem, and they've already audited a substantial part of our Olympia runtime to help us identify problems, and that's gone really well,
+
+32
+00:04:07,439 --> 00:04:14,080
+and we're probably going to do another audit once we're sort of at the finishing line.
+
+33
+00:04:14,080 --> 00:04:24,800
+But we've already done a very meaningful step towards getting production ready, I think, and at the same time we've also done benchmarking, as I mentioned prior.
+
+34
+00:04:24,800 --> 00:04:26,000
+So, what is benchmarking?
+
+35
+00:04:26,000 --> 00:04:35,360
+This is one of the important or necessary steps involved in deriving the fees that will be used in your blockchain.
+
+36
+00:04:35,360 --> 00:04:42,470
+If you're used to Ethereum, you will know that the fees associated with doing anything is sort of computed on the fly
+
+37
+00:04:42,479 --> 00:04:47,750
+because the whole system is a dynamic, and the set of contracts changes, and so on.
+
+38
+00:04:47,759 --> 00:04:59,680
+In substrate there's sort of a step involved in the development process where you try to compute basically how expensive it
+
+39
+00:04:59,680 --> 00:05:04,720
+is to do all the operations that people can do in the system - that's called benchmarking. 
+
+40
+00:05:04,720 --> 00:05:17,120
+That literally boils down to sort of measuring how much time each action or transaction, if you will, takes on certain reference hardware. I am skipping ahead here. 
+
+41
+00:05:17,120 --> 00:05:26,880
+And we've done that for a big part of the system - we've sort of built that in-house skill, and we will be doing that for all the modules
+
+42
+00:05:26,880 --> 00:05:30,080
+modules that go into Olympia which means we will have meaningful transaction fees as well.
+
+43
+00:05:30,080 --> 00:05:40,080
+I think at the current runtime basically every transaction has the same nominal fee which is sort of a random number that won't be the case in Olympia.
+
+44
+00:05:40,080 --> 00:05:49,280
+There is an extra step from benchmarking to getting fees which is more about figuring out how much you're going to charge
+
+45
+00:05:49,280 --> 00:05:56,630
+per unit of computation and per unit of block space, so to speak, in terms of your native token.
+
+46
+00:05:56,639 --> 00:05:59,750
+But that's, you know, that's a smaller exercise.
+
+47
+00:05:59,759 --> 00:06:04,160
+So, let me try to just briefly talk about some of the things that have changed.
+
+48
+00:06:04,160 --> 00:06:10,310
+It will be way too much to try to cover all this but one of the very very important things we've changed is that,
+
+49
+00:06:10,319 --> 00:06:16,240
+what's referred to as the referendum module here, which has to do with electing the council.
+
+50
+00:06:16,240 --> 00:06:24,630
+You're now able to use stake that you're using for something else. Let's say you're a validator or let's say you're staking as a working group lead 
+
+51
+00:06:24,639 --> 00:06:32,720
+or in a proposal or something, you're able to take that stake and redeploy it to vote or stand for the council.
+
+52
+00:06:32,720 --> 00:06:42,000
+This was, I think, a big step in the right direction in terms of making it much cheaper for people to participate in governance.
+
+53
+00:06:42,000 --> 00:06:47,030
+In the current system that's live you really have to pick whether you want to participate in governance or you want to stake,
+
+54
+00:06:47,039 --> 00:06:55,750
+and then it's really easy to get to basically do the, you know, the selfish thing of just thinking about your own private returns
+
+55
+00:06:55,759 --> 00:07:06,560
+on your own T-Joy account and stake rather than thinking about, you know, managing the system overall.
+
+56
+00:07:06,560 --> 00:07:10,160
+If everyone does that, it doesn't work out as well as we would like.
+
+57
+00:07:10,160 --> 00:07:14,960
+That's a very big change in the tokenomics of the system overall.
+
+58
+00:07:14,960 --> 00:07:24,310
+That stake is basically reusable towards this one specific thing of being participating in elections.
+
+59
+00:07:24,319 --> 00:07:28,000
+We are introducing obviously the new content directory that I've talked about in Sumer. 
+
+60
+00:07:28,000 --> 00:07:32,000
+We're introducing the idea of a constitution which is a very simple idea, actually. 
+
+61
+00:07:32,000 --> 00:07:41,030
+We're not, I think, the first chain to do this but, basically, it's sort of a social commitment to all the conventions and standards and,
+
+62
+00:07:41,039 --> 00:07:53,520
+you know, improvement proposals, if you want to follow sort of bitcoin or Ethereum parlance of things, that are sort of on the social layer of the system.
+
+63
+00:07:53,520 --> 00:08:01,840
+There are all sorts of metadata standards, for example, about how you encode an application for a working group, for example,
+
+64
+00:08:01,840 --> 00:08:09,680
+that would be in the constitution and all sorts of policy things that the chain itself doesn't actually model and capture goes into the constitution.
+
+65
+00:08:09,680 --> 00:08:19,440
+There's a council blog where the council can sort of speak in one voice to the system.
+
+66
+00:08:19,440 --> 00:08:29,280
+We’re adding crowdfunded bounties which is basically a way for community members to fund the creation of all sorts of goods
+
+67
+00:08:29,280 --> 00:08:32,640
+that can be useful for the platform where they don't depend on the council to contribute. 
+
+68
+00:08:32,640 --> 00:08:46,390
+So, if you want to improve some software or really anything, you can get people on the system to fund a bounty basically where someone is tasked
+
+69
+00:08:46,399 --> 00:08:54,160
+with the responsibility of following up with the bounty, and distributing the funds according to what people contribute and so on.
+
+70
+00:08:54,160 --> 00:08:56,959
+What else should I cover?
+
+71
+00:08:56,959 --> 00:09:00,560
+I think maybe that’s sufficient for you to just get a flavor for some of the things that are changing.
+
+72
+00:09:00,560 --> 00:09:00,560
+conveniently in the current state of the chain, and that really limits your ability to do all sorts of searches and queries and look back into history
+I think maybe that’s sufficient for you to just get a flavor for some of the things that are changing.
+
+73
+00:09:00,560 --> 00:09:03,270
+I think maybe that’s sufficient for you to just get a flavor for some of the things that are changing.
+
+74
+00:09:03,279 --> 00:09:08,950
+So, that's the Olympia runtime and some of the things that are being changed.
+
+75
+00:09:08,959 --> 00:09:12,080
+Then we have Pioneer itself.
+
+76
+00:09:12,080 --> 00:09:18,080
+Pioneer is the product where you actually engage in governance and participate in the community,
+
+77
+00:09:18,080 --> 00:09:24,720
+so it's extremely important obviously given that this is a video platform DAO,
+
+78
+00:09:24,720 --> 00:09:33,200
+and we have really for a very long time been using and trying to maintain and evolve a fork of the Polkadot apps application.
+
+79
+00:09:33,200 --> 00:09:48,880
+You know, that has a lot of limitations and problems not least of which is that you really can only access information that's in the current state, 
+
+80
+00:10:00,560 --> 00:10:08,640
+about who has done what at what time and what happened and so on, which is a critical precondition really for people to accumulate reputation
+
+81
+00:10:08,640 --> 00:10:17,200
+and you being able to distinguish, you know, who's a good guy, who's a bad guy or girl for various positions and roles and everything.
+
+82
+00:10:17,200 --> 00:10:25,200
+Pioneer 2 is really focused on this this goal of conveniently lifting out all the historical information that exists in the system
+
+83
+00:10:25,200 --> 00:10:35,760
+where you can understand what the history of a person is and also actually frankly sort of aggregating and summarizing
+
+84
+00:10:35,760 --> 00:10:41,360
+a lot of the complicated state that is in the system into a more digestible form.
+
+85
+00:10:41,360 --> 00:10:50,160
+And, well, a lot of what enables that is, on one hand, of course, a product that's been redesigned from scratch by a team of excellent designers
+
+86
+00:10:50,160 --> 00:10:58,160
+but also this infrastructure piece called Hydra which I'm going to talk about in the next update which allows you
+
+87
+00:10:58,160 --> 00:11:09,040
+to sort of look through all of the transactions and all the events and all the state in one simple query and allows you to do really cool things like,
+
+88
+00:11:09,040 --> 00:11:22,640
+for example, search for anywhere you're mentioned in the forum, for example, or in a proposal or you could look at all the time someone was fired, for example, in one easy click.
+
+89
+00:11:22,640 --> 00:11:30,310
+There are all sorts of ways of lifting out all the information which currently is sort of either not possible to get out or your application has to like go
+
+90
+00:11:30,320 --> 00:11:43,270
+and talk to an archival node for you know five minutes or something before it could fetch and filter and query and search for whatever you're looking for.
+
+91
+00:11:43,279 --> 00:11:52,950
+So, Pioneer 2 is really a big piece of making it practically possible for the DAO to actually work.
+
+92
+00:11:52,959 --> 00:11:58,880
+So, that is it. The changed runtime, Pioneer 2 – that’s what is coming up in Olympia.
+
+93
+00:11:58,880 --> 00:12:06,320
+Thank you very much, see you soon for Hydra. 
+
