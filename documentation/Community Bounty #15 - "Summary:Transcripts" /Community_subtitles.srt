@@ -1,0 +1,273 @@
+﻿1
+00:00:00,960 --> 00:00:04,160
+Okay, this is the last section of the first update.
+
+2
+00:00:04,160 --> 00:00:07,440
+Very impressed that you made it this far.
+
+3
+00:00:07,440 --> 00:00:11,280
+Here we're going to talk about what we're doing on the community side.
+
+4
+00:00:11,280 --> 00:00:13,920
+We have a few different things going on
+
+5
+00:00:14,480 --> 00:00:18,720
+in the way we're building the Joystream community up until main net
+
+6
+00:00:18,720 --> 00:00:25,760
+but I think the most important initiative by far is the founding members program.
+
+7
+00:00:25,760 --> 00:00:28,720
+and i guess maybe for a bit of context - 
+
+8
+00:00:29,119 --> 00:00:32,320
+what is the point of the community program in the Joystream project,
+
+9
+00:00:32,320 --> 00:00:36,000
+what we're trying to do here is we're trying to build 
+
+10
+00:00:36,000 --> 00:00:39,440
+a DAO which is capable of operating the platform
+
+11
+00:00:39,440 --> 00:00:45,200
+and evolving on its own autonomously based on the technology and the policies and the processes
+
+12
+00:00:45,200 --> 00:00:48,960
+and the processes that we've established before mainnet.
+
+13
+00:00:48,960 --> 00:00:52,550
+The goal is really at mainnet 
+
+14
+00:00:52,559 --> 00:00:56,070
+you guys, the community, will fully run this system,
+
+15
+00:00:56,079 --> 00:00:58,239
+, and that requires you to have a lot of people
+
+16
+00:00:58,239 --> 00:01:07,360
+with a lot of different skills, interests, infrastructure, all sorts of things,
+
+17
+00:01:07,360 --> 00:01:09,520
+and that's what we're trying to get to.
+
+18
+00:01:09,520 --> 00:01:15,600
+The founding member program is about identifying the people who can play that role, 
+
+19
+00:01:15,600 --> 00:01:18,960
+motivating them to actually put in the effort to learn
+
+20
+00:01:18,960 --> 00:01:23,680
+and develop their own ideas for what should happen after the mainnet launch.
+
+21
+00:01:23,680 --> 00:01:30,320
+For that matter what we should be doing prior to launch in order to make the tools and the documentation,
+
+22
+00:01:30,320 --> 00:01:40,560
+everything as effective as possible, and, of course, to then distribute to these community members the token
+
+23
+00:01:40,560 --> 00:01:46,000
+which is required to actually exercise the governance that allows that evolution to happen.
+
+24
+00:01:46,000 --> 00:01:50,560
+The founding member program is really the program for trying to find those specific people, 
+
+25
+00:01:50,560 --> 00:02:01,110
+identifying them, celebrating them, rewarding them and following their lead towards mainnet.
+
+26
+00:02:01,119 --> 00:02:13,120
+So far, we've inducted five members, and that has largely been based on the contributions of these individuals in the past before the program began.
+
+27
+00:02:13,120 --> 00:02:21,200
+Most of these are making an exceptional contribution to the development of the system on an ongoing basis.
+
+28
+00:02:21,200 --> 00:02:32,080
+These are names that you will recognize for show once the main net launches but they are closely followed by
+
+29
+00:02:32,080 --> 00:02:35,280
+a good number of people who are trying to make it through.
+
+30
+00:02:35,280 --> 00:02:40,640
+The way the founding member program works or the way you become a founding member is,
+
+31
+00:02:40,640 --> 00:02:50,400
+I should say that is the primary and possibly the only way for the broad community to get access to the JOY token, 
+
+32
+00:02:50,400 --> 00:03:02,310
+so that's really the way you get there, primarily it's by becoming a founding member which means that you need to, first of all, not be US persons,
+
+33
+00:03:02,319 --> 00:03:12,230
+unfortunately, secondly, you need to contribute by submitting these summaries on a periodic basis of what you've done,
+
+34
+00:03:12,239 --> 00:03:19,360
+who you'd refer to the platform which allows you to accumulate these scores.
+
+35
+00:03:19,360 --> 00:03:20,879
+There are two components to the score. 
+
+36
+00:03:20,879 --> 00:03:39,120
+The direct score is basically some sort of a representation of your direct contribution, what you do in terms of technical, community, social, whatever it is you do to actually help grow the community and help us go in the right direction.
+
+37
+00:03:39,120 --> 00:03:53,510
+And there's a referral score which is basically a sort of a way of measuring how effective you've been at drawing in other people who are themselves people with high scores.
+
+38
+00:03:53,519 --> 00:03:59,590
+Then based on that you have a total score, and that total score counts towards becoming a founding member.
+
+39
+00:03:59,599 --> 00:04:14,310
+The policy that we're applying, it's dynamic, it's evolving so you are going to have to look up the most recent summary of what has happened in one of these scoring periods to understand
+
+40
+00:04:14,319 --> 00:04:20,950
+what's going on, what's being emphasized, certainly your score, you'd have to go to the website to see where you rank on the leaderboard.
+
+41
+00:04:20,959 --> 00:04:27,280
+But I expect we will pretty soon see some new founding members.
+
+42
+00:04:27,280 --> 00:04:38,720
+It's an interesting question how many we actually will need by main net, how many people does it take, what distribution of stake should be in order for them to be effective.
+
+43
+00:04:38,720 --> 00:04:54,630
+This is something, I think, we will, first of all, never get the answer to entirely but also we'll probably sort of calibrate our policy to aim towards what our best thinking is at
+any given time.
+
+44
+00:04:54,639 --> 00:04:56,160
+So, that's how you get into the founding member program.
+
+45
+00:04:56,160 --> 00:05:02,720
+There are different ways of earning these scores. 
+
+46
+00:05:02,720 --> 00:05:07,840
+Obviously, as I mentioned, you could refer people, that's one way.
+
+47
+00:05:07,840 --> 00:05:21,120
+You can work on bounties which is another major way we see of people who are perhaps not able to make it into one of the roles that are on the network,
+
+48
+00:05:21,120 --> 00:05:29,520
+there's a limited number or you may need to be quite technical in order to do quite a lot of them.
+
+49
+00:05:29,520 --> 00:05:37,030
+So, the bounty program is a way for the community members to contribute in other ways.
+
+50
+00:05:37,039 --> 00:05:49,680
+Definitely if you have ideas for bounties that you would want to do or that you think other people could do – everything from marketing stuff, translating texts and tutorials making to troll videos
+
+51
+00:05:49,680 --> 00:06:00,310
+there's a lot of stuff that's going to be coming out but if you have ideas for bounties, I'm sure you will get points for coming up with those and helping us broaden our portfolio of different bounties available.
+
+52
+00:06:00,319 --> 00:06:02,080
+So, that's the bounty program.
+
+53
+00:06:02,080 --> 00:06:07,280
+Obviously, there are the roles in the system itself.
+
+54
+00:06:07,280 --> 00:06:12,240
+Being a content creator so publishing content under a channel that you own.
+
+55
+00:06:12,240 --> 00:06:28,000
+Being a curator, which basically means that you either own or operate channels or you are responsible for making sure that the content in the content directory is following all sorts of rules and policies that apply at any given time.
+
+56
+00:06:28,000 --> 00:06:40,080
+I think that's a little bit of work in progress what the details of that actually entail, but being a curator lead means that you manage that group just as I discussed in the prior video with working groups.
+
+57
+00:06:40,080 --> 00:06:54,000
+Being a validator, I think this is one of those roles where a lot of people try to do it because it's sort of a sedative, forget-it type of activity, and it's kind of straightforward how to do it, that definitely will also grant you points.
+
+58
+00:06:54,000 --> 00:07:09,280
+But I think the way you should be thinking about this is probably the more unique and the more substantial your contributions are, the more points you're likely to earn.
+
+59
+00:07:09,280 --> 00:07:15,190
+So, if you see that there are tons of other validators, that's probably not the best place for you to go if you're trying to distinguish yourself.
+
+60
+00:07:15,199 --> 00:07:28,560
+Obviously, being on the council is one of the most important roles, it's one of those roles that requires you to understand more of the platform as a whole so it's a great opportunity to learn
+
+61
+00:07:28,560 --> 00:07:35,120
+to develop relationships with other founding members and other non-founding members that are trying to get there.
+
+62
+00:07:35,120 --> 00:07:41,680
+We have storage providers and the lead for that group.
+
+63
+00:07:41,680 --> 00:07:50,400
+I think that's basically the main roles that are live on the Antioch network, I'm maybe forgetting something but I think that's right.
+
+64
+00:07:50,400 --> 00:08:03,590
+So, those are the ways you can earn points for your, I should say for all these roles you will of course also earn test net tokens which have monetary value
+
+65
+00:08:03,599 --> 00:08:15,190
+so not only are you getting points towards actually becoming a founding member, but you're also getting cash basically for whatever it costs you in terms of infrastructure and time and so on.
+
+66
+00:08:15,199 --> 00:08:18,400
+So, it should be pretty attractive.
+
+67
+00:08:18,400 --> 00:08:21,750
+That's, I think, a good concise summary of what we're doing on the community side.
+
+68
+00:08:21,759 --> 00:08:30,800
+Thank you for watching this video and watch out for the next community update. Bye!
+

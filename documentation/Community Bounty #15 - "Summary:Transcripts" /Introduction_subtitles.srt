@@ -1,0 +1,128 @@
+﻿1
+00:00:01,120 --> 00:00:07,680
+Hi everyone! And welcome to this first installment of the Joystream community update video series.
+
+2
+00:00:07,680 --> 00:00:09,280
+so this is as i said the first
+
+3
+00:00:09,280 --> 00:00:11,360
+So, this is, as I said, the first installment of many to come 
+
+4
+00:00:11,360 --> 00:00:18,800
+in an effort to try to share a little bit more effectively what it is we are working on, what is coming down the pipe, what’s happening in the community.
+
+5
+00:00:18,800 --> 00:00:25,350
+Just to try to bring everyone up to speed on where we are going and the road to mainnet basically. 
+
+6
+00:00:25,359 --> 00:00:33,840
+So, in this first episode I’m going to be covering first of the three next immediate networks – Antioch, Sumer, and Olympia, in that order. 
+
+7
+00:00:33,840 --> 00:00:41,200
+Then I am going to be covering Hydra which is sort of an infrastructure piece which is part of making all these networks
+
+8
+00:00:41,200 --> 00:00:49,120
+possible and really important for delivering the main products we are working on that are consumer-facing – Atlas and Pioneer.
+
+9
+00:00:49,120 --> 00:01:01,030
+Then I am going to try to go through the community side – what are we doing, what is the point of the different initiatives, what is the status, and, of course, least but not last, well, last but not least,
+
+10
+00:01:01,039 --> 00:01:12,470
+the different new specifications that we have prepared for new exciting improvements that are coming after Olympia. 
+
+11
+00:01:12,479 --> 00:01:19,110
+So, I guess I should say a little bit more about what the point is of these update series. 
+
+12
+00:01:19,119 --> 00:01:28,640
+If you have been following us for a while, if you are even inside of JS Genesis trying to build this out, I am sure you must have noticed that the technical and social complexity
+
+13
+00:01:28,640 --> 00:01:34,370
+of what we are trying to deliver has escalated quite significantly in the last six months or so.
+
+14
+00:01:34,479 --> 00:01:42,640
+And with any growing effort organization you are going to have a lot of difficulty trying to synchronize all that information effectively.
+
+15
+00:01:42,640 --> 00:01:50,000
+So, the point of this video series is we’ll just try to open up the floodgates informationally speaking 
+
+16
+00:01:50,000 --> 00:02:03,110
+so that people are more up to date on our sort of finer time scale in terms of what we are doing because up until now we have been making these network releases and announcements
+
+17
+00:02:03,119 --> 00:02:08,000
+that are themselves kind of quite brief on the details of what’s actually being delivered.
+
+18
+00:02:08,000 --> 00:02:14,160
+You are going to have to dig into a lot of documentation and try a lot of stuff in order to learn to understand. 
+
+19
+00:02:14,160 --> 00:02:19,040
+So, it is not the best format for conveying where we are and what we are doing and what the point is. 
+
+20
+00:02:19,040 --> 00:02:28,080
+So, hopefully, these video series will go somewhere towards getting people synchronized on what we are trying to do, 
+
+21
+00:02:28,080 --> 00:02:37,510
+and it is not just the scope of what we are trying to do but the number of people involved inside of JS Genesis specifically has grown significantly. 
+
+22
+00:02:37,519 --> 00:02:44,480
+People are involved into sub teams, they are trying to deliver quite complex functionality but still isolated to some smaller part of the system. 
+
+23
+00:02:44,480 --> 00:02:52,800
+Then it is very easy to get lost and not see the sort of how everything fits together. 
+
+24
+00:02:52,800 --> 00:03:00,870
+So, it’s both for the benefit of the community and us, as an organization, to try to get up to speed and organized around what we are trying to deliver. 
+
+25
+00:03:00,879 --> 00:03:04,870
+So that is the goal and, hopefully, it is informative.
+
+26
+00:03:04,879 --> 00:03:16,150
+Please, give me feedback on what you think I should cover, how the format can be improved, and I will definitely try to take that on board. 
+
+27
+00:03:16,159 --> 00:03:19,200
+So, this is going to be a six-part series. 
+
+28
+00:03:19,200 --> 00:03:24,400
+This first update just to try to break it down, reduce the chance that I blow up one of these. 
+
+29
+00:03:24,400 --> 00:03:30,480
+Well, if I did it all at once, I think I would have blown up the recording so I think just breaking it up is good for everyone. 
+
+30
+00:03:30,480 --> 00:03:36,080
+So, the next episode, I think, will be about Antioch.
+
+31
+00:03:36,080 --> 00:03:38,720
+So, see you in that video. 
+
+32
+00:03:38,720 --> 00:03:43,840
+Thank you for joining me and enjoy!
+

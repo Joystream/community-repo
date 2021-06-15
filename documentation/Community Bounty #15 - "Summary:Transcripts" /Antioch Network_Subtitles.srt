@@ -1,0 +1,188 @@
+﻿1
+00:00:01,199 --> 00:00:05,680
+Ok, so what is the Antioch network? 
+
+2
+00:00:05,680 --> 00:00:20,800
+Now, about a week ago or so…I think it’s two weeks ago now. The time flies. We were trying to make a small not very invasive upgrade to the Babylone network
+
+3
+00:00:20,800 --> 00:00:25,840
+which had been humming along for about, well, I want to say, three months or so. 
+
+4
+00:00:25,840 --> 00:00:29,670
+Mainly to tweak a little bit of tokenomics parameters.
+
+5
+00:00:29,679 --> 00:00:38,160
+We wanted to increase the number of simultaneous proposals there could be. Just a few minor things like that to improve the effectiveness of the testnet. 
+
+6
+00:00:38,160 --> 00:00:55,360
+And it wasn’t expected to be a big deal but what happened was not that long after the upgrade happened, so just for context, for people that may not know,
+
+7
+00:00:55,360 --> 00:01:08,080
+the blockchain system or variety that the Joystream platform is built on allows you to upgrade the rules of the chain itself in flight using a special kind of transaction. 
+
+8
+00:01:08,080 --> 00:01:12,150
+And that’s great for lots of reasons that we’ll probably cover in the future. 
+
+9
+00:01:12,159 --> 00:01:23,200
+And we tried to use this on-chain upgradability feature at this time, at that time, and that was supposed to be fine but what happened was in a matter of a few, 
+
+10
+00:01:23,200 --> 00:01:34,240
+I want to say 20 blocks or so after the upgrade, there was a split in the network which ended up partitioning the validators into two separate polls.
+
+11
+00:01:34,240 --> 00:01:40,400
+One group thought that the new runtime was in play, and one group thought that the old runtime was in play. 
+
+12
+00:01:40,400 --> 00:01:42,479
+That is obviously very undesirable. 
+
+13
+00:01:42,479 --> 00:01:50,150
+The whole point of your consensus system is to have agreement upon what the history and, therefore, the state of your blockchain is. 
+
+14
+00:01:50,159 --> 00:01:53,600
+So that’s obviously a serious problem. 
+
+15
+00:01:53,600 --> 00:01:59,840
+And, you know, we’ve gone through a lot of effort trying to get to the bottom of what happened.
+
+16
+00:01:59,840 --> 00:02:09,520
+Trying to figure out the root cause of live failures and distributed systems is notoriously difficult, in particular if you haven’t actually
+
+17
+00:02:09,520 --> 00:02:15,360
+prepared yourself for trying to debug those sorts of failures to begin with which we hadn’t.
+
+18
+00:02:15,360 --> 00:02:25,200
+And so, we’ve gone through lots of different iterations of or, I should say, possible hypothesis for what the cause could be.
+
+19
+00:02:25,200 --> 00:02:34,800
+The best hypothesis that we have at the current time is that there is a specific bug in the version of substrate. 
+
+20
+00:02:34,800 --> 00:02:42,640
+So, taking a step back here as well in case you don’t know, the joystick blockchain is built on the substrate blockchain framework 
+
+21
+00:02:42,640 --> 00:02:47,680
+which is the framework that the Polkadot blockchain is built on. 
+
+22
+00:02:47,680 --> 00:02:56,480
+And, in general, the framework that’s used to build pair chains which are blockchains that connect to Polkadot which Joystream itself may or may not end up doing. 
+
+23
+00:02:56,480 --> 00:03:02,720
+It’s a great framework because it means you don’t have to focus on peer-to-peer networking or consensus
+
+24
+00:03:02,720 --> 00:03:08,950
+or any of these very low-level things similarly as if you were deploying on Ethereum, let’s say. 
+
+25
+00:03:08,959 --> 00:03:14,950
+And it really allows you to focus on building exactly the business logic that’s specific to your blockchain. 
+
+26
+00:03:14,959 --> 00:03:20,310
+So just mentioning where does this substrate thing come from. 
+
+27
+00:03:20,319 --> 00:03:30,950
+So, we are using the substrate, we are using a specific version of substrate, it isn’t particularly new, and the best hypothesis we could really come up with,
+
+28
+00:03:30,959 --> 00:03:36,310
+for which there is limited evidence I should say, was that there was a specific kind of bug in the version of substrate
+
+29
+00:03:36,319 --> 00:03:43,120
+that we are relying on, and that’s the best candidate for what’s causing the failure. 
+
+30
+00:03:43,120 --> 00:03:52,950
+So, what we’ve been working on for the past two weeks or so has been to obviously figure that out, and then to migrate to a newer version of substrate. 
+
+31
+00:03:52,959 --> 00:03:55,590
+So, that’s what we have done.
+
+32
+00:03:55,599 --> 00:04:00,950
+We used to be on version two release candidate four, now we are on 201. 
+
+33
+00:04:00,959 --> 00:04:10,480
+And we are going to be launching a new chain, namely the Antioch network, that’s probably going to be in two or three days from now
+
+34
+00:04:10,480 --> 00:04:15,510
+so that actually wrong on the slides because I just made them a few or a while back.
+
+35
+00:04:15,519 --> 00:04:28,080
+And that would be based on a new version of substrate which has benefits of its own, I should say, but we are mainly doing it to hopefully resolve this problem.  
+
+36
+00:04:28,080 --> 00:04:34,960
+Of course, we would then get the runtime that we were trying to get initially with these improvements of the parameters for the proposal system
+
+37
+00:04:34,960 --> 00:04:41,750
+so on, there has also been some other changes to the way the council work. 
+
+38
+00:04:41,759 --> 00:04:46,960
+I think we expanded from…Actually I don’t remember now, to be honest. 
+
+39
+00:04:46,960 --> 00:04:50,000
+There are so many things going on but it is a bigger council.
+
+40
+00:04:50,000 --> 00:04:51,120
+The council period is not shorter.
+
+41
+00:04:51,120 --> 00:04:56,160
+So there are a few things that have happened that have independent benefits but the main issue here in Antioch
+
+42
+00:04:56,160 --> 00:05:06,080
+is really to get back to the core, use case that Babylon already had with these small improvements. 
+
+43
+00:05:06,080 --> 00:05:09,120
+And then we are trying to get to Sumer as soon as possible. 
+
+44
+00:05:09,120 --> 00:05:11,120
+So, that’s the story on Antioch. 
+
+45
+00:05:11,120 --> 00:05:21,440
+It’s a big, you know, inconvenient departure from the focus that we had but we had to do it, and now Sumer is hopefully next within a short while. 
+
+46
+00:05:21,440 --> 00:05:24,320
+So that’s it on Antioch. 
+
+47
+00:05:24,320 --> 00:05:26,960
+Join me again for Sumer. 
+
