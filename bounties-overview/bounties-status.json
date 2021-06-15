@@ -24,30 +24,6 @@
       "status": "Open"
     },
     {
-      "id": 12,
-      "title": "Deploy Reliable Endpoints",
-      "openedDate": "2021-03-12",
-      "description": "Our endpoint has come under a lot of stress with the large inflow of new users. This bounty covers creating new endpoints.",
-      "links": ["https://testnet.joystream.org/#/forum/threads/324","https://github.com/Joystream/community-repo/issues/101"],
-      "reward": 200,
-      "notes": "Deploy a public endpoint with high capacity",
-      "tags": ["Hosting"],
-      "format": "Closed",
-      "status": "50% fulfilled"
-    },
-    {
-      "id": 14,
-      "title": "Polkadot/Substrate Videos",
-      "openedDate": "2021-04-19",
-      "description": "Find Channels, Podcasts and Videos covering Polkadot and Substrate",
-      "links": ["https://testnet.joystream.org/#/forum/threads/358","https://github.com/Joystream/community-repo/issues/142"],
-      "reward": 50,
-      "notes": "Find Polkadot and Substrate content",
-      "tags": ["Content","Research"],
-      "format": "Open",
-      "status": "Closing on June 11th 2021"
-    },
-    {
       "id": 15,
       "title": "Transcribe Community Updates",
       "openedDate": "2021-04-20",
@@ -57,19 +33,7 @@
       "notes": "Summarize and transcribe video content",
       "tags": ["Content","Research"],
       "format": "Mixed",
-      "status": "Announced"
-    },
-    {
-      "id": 17,
-      "title": "Discord Video Bot",
-      "openedDate": "2021-03-12",
-      "description": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
-      "links": ["https://testnet.joystream.org/#/forum/threads/362","https://github.com/Joystream/community-repo/issues/151"],
-      "reward": 100,
-      "notes": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
-      "tags": ["Coding","Research"],
-      "format": "Closed",
-      "status": "Assigned - pending payment"
+      "status": "Pending Grading"
     },
     {
       "id": 18,
@@ -82,8 +46,19 @@
       "tags": ["Content Creation"],
       "format": "Open",
       "status": "Open - Weekly Bounty"
+    },
+    {
+      "id": 19,
+      "title": "Validator Logging Tool",
+      "openedDate": "2021-04-20",
+      "description": "Create a tool to report validator activity",
+      "links": ["https://testnet.joystream.org/#/forum/threads/381","https://github.com/Joystream/community-repo/issues/161"],
+      "reward": 400,
+      "notes": "Create a tool to report validator activity",
+      "tags": ["Coding","Research"],
+      "format": "Closed",
+      "status": "Open"
     }
-
   ],
   "closedBounties":
   [
@@ -206,6 +181,45 @@
       "format": "Reserved",
       "closedDate": "2020-11-01",
       "status": "Completed - USD 300"
+    },
+    {
+      "id": 17,
+      "title": "Discord Video Bot",
+      "openedDate": "2021-03-12",
+      "description": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
+      "links": ["https://testnet.joystream.org/#/forum/threads/362","https://github.com/Joystream/community-repo/issues/151"],
+      "reward": 150,
+      "notes": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
+      "tags": ["Coding","Research"],
+      "format": "Closed",
+      "closedDate": "2021-11-01",
+      "status": "Completed - USD 150"
+    },
+    {
+      "id": 12,
+      "title": "Deploy Reliable Endpoints",
+      "openedDate": "2021-03-12",
+      "description": "Our endpoint has come under a lot of stress with the large inflow of new users. This bounty covers creating new endpoints.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/324","https://github.com/Joystream/community-repo/issues/101"],
+      "reward": 200,
+      "notes": "Deploy a public endpoint with high capacity",
+      "tags": ["Hosting"],
+      "format": "Closed",
+      "closedDate": "2021-03-19",
+      "status": "Completed - monthly payments"
+    },
+    {
+      "id": 14,
+      "title": "Polkadot/Substrate Videos",
+      "openedDate": "2021-04-19",
+      "description": "Find Channels, Podcasts and Videos covering Polkadot and Substrate",
+      "links": ["https://testnet.joystream.org/#/forum/threads/358","https://github.com/Joystream/community-repo/issues/142"],
+      "reward": 50,
+      "notes": "Find Polkadot and Substrate content",
+      "tags": ["Content","Research"],
+      "format": "Open",
+      "closedDate": "2021-06-11",
+      "status": "Closed - pending payouts"
     }
   ]
 }

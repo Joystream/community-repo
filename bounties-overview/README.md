@@ -15,13 +15,13 @@
 | 9  | Repo/Docs Improvements       | #87   | 15.02.21 | $400   | [216](https://testnet.joystream.org/#/forum/threads/216) | Announced          | NA  | NA                                                   |
 | 10 | Upload Public Domain Content | #88   | 15.02.21 | $5*    | [217](https://testnet.joystream.org/#/forum/threads/217) | Announced          | NA  | NA                                                   |
 | 11 | Design Community Repo Banner | #89   | 15.02.21 | $250   | [218](https://testnet.joystream.org/#/forum/threads/218) | $300 - 13.05.21    | NA  | NA                                                   |
-| 12 | Deploy Reliable Endpoints | #101   | 12.03.21 | $200   | [324](https://testnet.joystream.org/#/forum/threads/324) | Fully Assigned       | NA  | NA                                                   |
+| 12 | Deploy Reliable Endpoints | #101   | 12.03.21 | $200   | [324](https://testnet.joystream.org/#/forum/threads/324) | Completed       | NA  | NA                                                   |
 | 13 | Research Discord Bots | #123   | 12.03.21 | $200   | [326](https://testnet.joystream.org/#/forum/threads/326) | $450          | #131, #133   | NA                                                   |
-| 14 | Polkadot/Substrate Videos | #143   | 19.04.21 | $50   | [358](https://testnet.joystream.org/#/forum/threads/358) | Discontinuing on 11th June 2021 | #157  | [35](https://testnet.joystream.org/#/proposals/35), [37](https://testnet.joystream.org/#/proposals/37), [37](https://testnet.joystream.org/#/proposals/37), [40](https://testnet.joystream.org/#/proposals/40), [41](https://testnet.joystream.org/#/proposals/41) |                                                   |
+| 14 | Polkadot/Substrate Videos | #143   | 19.04.21 | $50   | [358](https://testnet.joystream.org/#/forum/threads/358) | Discontinued - Pending Payouts | #157  | [35](https://testnet.joystream.org/#/proposals/35), [37](https://testnet.joystream.org/#/proposals/37), [37](https://testnet.joystream.org/#/proposals/37), [40](https://testnet.joystream.org/#/proposals/40), [41](https://testnet.joystream.org/#/proposals/41) |                                                   |
 | 15 | Transcribe Community Updates | #143   | 20.04.21 | $200   | [363](https://testnet.joystream.org/#/forum/threads/363) | Announced          | NA  | NA             |
-| 17 | Discord Video Bot | #151   | 20.04.21 | $100   | [362](https://testnet.joystream.org/#/forum/threads/362) | Delivered - Pending payment   | NA  | NA                         |
+| 17 | Discord Video Bot | #151   | 20.04.21 | $100   | [362](https://testnet.joystream.org/#/forum/threads/362) | Completed   | NA  | NA                         |
 | 18 | Original Video Bounty | #162   | 29.05.21 | up to $200  | [422](https://testnet.joystream.org/#/forum/threads/422) | Open   | NA  | NA                         |
-| 19 | Validator Logging Tool | #161   | 20.04.21 | $100   | [381](https://testnet.joystream.org/#/forum/threads/381) | Announced          | NA  | NA                         |
+| 19 | Validator Logging Tool | #161   | 20.04.21 | $400   | [381](https://testnet.joystream.org/#/forum/threads/381) | Announced          | NA  | NA                         |
 
 
 ## Bounties Management
