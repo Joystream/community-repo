@@ -536,7 +536,9 @@ export class StatisticsCollector {
             if (dataObject.added_at.block.toNumber() < startBlock.block.header.number.toNumber()){
                 startObjects.set(key, dataObject);
                 this.statistics.startUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
-            }else if (dataObject.added_at.block.toNumber() < endBlock.block.header.number.toNumber()) {
+            }
+
+            if (dataObject.added_at.block.toNumber() < endBlock.block.header.number.toNumber()) {
                 endObjects.set(key, dataObject);
                 this.statistics.endUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
             }
