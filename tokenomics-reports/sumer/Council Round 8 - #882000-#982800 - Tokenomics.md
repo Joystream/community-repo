@@ -60,8 +60,8 @@ This is a report which explains the current state of the Joystream network in nu
 | Total Storage Stake (workers + lead)  | 100000 |  100000 | 0 |   
 
 Role occupants:  
-@palacinkar | (5Dy7z6RZGeGxusLPP1du5fmw8f7HxZd9V6FPcmgTFsFAp3da)  
-@joystream_storage_member | (5EyTk4G9zt5wApxwK6MbPWQfRY6xy2nxfq8V6EXWfHxP5jou)  
+@maks_malensek | (5GYWp1NM9J21QZzkouCDKCuBCnu92o921ySEcxdas2s3pUCg)
+@palacinkar | (5Dy7z6RZGeGxusLPP1du5fmw8f7HxZd9V6FPcmgTFsFAp3da)   
 @kalpakci | (5FxJ7z9tnscgL9xeqeo8sB3izwJKszFPdJSpRPWFr1y35Gcw)  
 @0x2bc | (5DX9Vvk4uP8YNFSsvWGbjBcTG21PJbeLpgTRgCVpGQg2bDSx)  
 @julysake | (5CFnUMpSNxXSkb3p2yaqw2rCdyqZbAUtx9SQVkPBYL5P5Jku)  
@@ -74,15 +74,15 @@ Role occupants:
 | Number of Curators      | 10 | 10 | 0 |   
 
 Role occupants:  
+@igrex | (5H3hJqNb8Je2sfcGkxFQqsxn1FTy96bHrRW6wGCDwiLeCW1i)
 @kiraa | (5G9Bpf8dgSgojMZyjCHMcGdvYpxX1gdgeUtnKahcY45Hysbm)  
 @isonar | (5HT8Mty5U5hFKVwv24uFswX2e41vurU3F5rkLMoETR8XmjFy)  
 @maxlevush | (5Gy9eib5P1vB4Tvr9u74J7rhxvHqv5qhTdP3xwFfkArHQWPe)  
 @pascual | (5HKxxHLPF8ZHWiXndug9y4hRRnDiPUiWnRbutNCjcQ8ur14q)  
 @lyazufey1812 | (5C5oxKQjb2TuqDPoC9GAVDJhH8FBG3Qe2Z139wMVFLo6FfZT)  
-@joystream_storage_member | (5EyTk4G9zt5wApxwK6MbPWQfRY6xy2nxfq8V6EXWfHxP5jou)  
-@joystream_storage_member | (5EyTk4G9zt5wApxwK6MbPWQfRY6xy2nxfq8V6EXWfHxP5jou)  
-@joystream_storage_member | (5EyTk4G9zt5wApxwK6MbPWQfRY6xy2nxfq8V6EXWfHxP5jou)  
-@joystream_storage_member | (5EyTk4G9zt5wApxwK6MbPWQfRY6xy2nxfq8V6EXWfHxP5jou)  
+@prontera | (5F1vpNLWyXPhC6ydftv33XUmXaG1F6HrStYivfzvcnxX68Sn)  
+@meskalin | (5GRBP7dYbiWxWLyo9u8V3KQ9sTbTEvtRkxJk28yR4rvuZTqF)  
+@leet_joy | (5EqVuvYEyzCa7xuEZYw9FM5Vkd7FaTcq5CKKN2LuSNqqv8FP)   
 @l1dev | (5DFb8Xr8FfQyiFMjURjQHqHfunfEb4jWLhF5q4HR6EHiJTe8)  
 
 
