@@ -24,18 +24,6 @@
       "status": "Open"
     },
     {
-      "id": 15,
-      "title": "Transcribe Community Updates",
-      "openedDate": "2021-04-20",
-      "description": "Create summaries and/or transcripts of the Joystream Community Update videos",
-      "links": ["https://testnet.joystream.org/#/forum/threads/363","https://github.com/Joystream/community-repo/issues/143"],
-      "reward": 450,
-      "notes": "Summarize and transcribe video content",
-      "tags": ["Content","Research"],
-      "format": "Mixed",
-      "status": "Pending Grading"
-    },
-    {
       "id": 18,
       "title": "Original Video Bounty",
       "openedDate": "2021-05-29",
@@ -220,6 +208,19 @@
       "format": "Open",
       "closedDate": "2021-06-11",
       "status": "Closed - pending payouts"
+    },
+    {
+      "id": 15,
+      "title": "Transcribe Community Updates",
+      "openedDate": "2021-04-20",
+      "description": "Create summaries and/or transcripts of the Joystream Community Update videos",
+      "links": ["https://testnet.joystream.org/#/forum/threads/363","https://github.com/Joystream/community-repo/issues/143"],
+      "reward": 450,
+      "notes": "Summarize and transcribe video content",
+      "tags": ["Content","Research"],
+      "format": "Mixed",
+      "closedDate": "2021-06-15",
+      "status": "Completed - USD 375"
     }
   ]
 }
