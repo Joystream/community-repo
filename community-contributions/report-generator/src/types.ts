@@ -83,6 +83,11 @@ export class Statistics {
     newStorageMinted: number = 0;
     percStorageMinted: number = 0;
 
+    startOperationsMinted: number = 0;
+    endOperationsMinted: number = 0;
+    newOperationsMinted: number = 0;
+    percOperationsMinted: number = 0;
+
     startIssuance: number = 0;
     endIssuance: number = 0;
     newIssuance: number = 0;
@@ -105,6 +110,14 @@ export class Statistics {
     startStorageProvidersStake: number = 0;
     endStorageProvidersStake: number = 0;
     percNewStorageProviderStake: number = 0;
+
+    startOperationsWorkers: number = 0;
+    endOperationsWorkers: number = 0;
+    percNewOperationsWorkers: number = 0;
+    newOperationsReward: number = 0;
+    startOperationsStake: number = 0;
+    endOperationsStake: number = 0;
+    percNewOperationstake: number = 0;
 
     newCouncilRewards: number = 0;
 
@@ -140,6 +153,7 @@ export class Statistics {
 
     storageProviders: string;
     curators: string;
+    operations:string;
 
     constructor() {
     }

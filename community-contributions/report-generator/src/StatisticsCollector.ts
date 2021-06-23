@@ -52,7 +52,6 @@ const COUNCIL_ROUND_OFFSET = 2;
 const PROVIDER_URL = "ws://localhost:9944";
 
 const CACHE_FOLDER = "cache";
-const WORKER_ID_OFFSET = 0;
 
 const VIDEO_CLASS_iD = 10;
 const CHANNEL_CLASS_iD = 1;
@@ -87,6 +86,7 @@ export class StatisticsCollector {
         await this.fillValidatorInfo(startHash, endHash);
         await this.fillStorageProviderInfo(startBlock, endBlock, startHash, endHash);
         await this.fillCuratorInfo(startHash, endHash);
+        await this.fillOperationsInfo(startBlock, endBlock, startHash, endHash);
         await this.fillMembershipInfo(startHash, endHash);
         await this.fillMediaUploadInfo(startHash, endHash);
         await this.fillForumInfo(startHash, endHash);
@@ -215,11 +215,11 @@ export class StatisticsCollector {
         return avgCouncilRewardPerBlock * roundNrBlocks;
     }
 
-    async computeStorageProviderReward(roundNrBlocks: number, startHash: Hash, endHash: Hash): Promise<WorkersInfo> {
-        let nextWorkerId = (await this.api.query.storageWorkingGroup.nextWorkerId.at(startHash) as WorkerId).toNumber();
+    async computeWorkingGroupReward(roundNrBlocks: number, startHash: Hash, endHash: Hash, workingGroup: string): Promise<WorkersInfo> {
+        let nextWorkerId = (await this.api.query[workingGroup + 'WorkingGroup'].nextWorkerId.at(startHash) as WorkerId).toNumber();
         let info = new WorkersInfo();
         for (let i = 0; i < nextWorkerId; ++i) {
-            let worker = await this.api.query.storageWorkingGroup.workerById(i) as WorkerOf;
+            let worker = await this.api.query[workingGroup + 'WorkingGroup'].workerById(i) as WorkerOf;
             if (worker.role_stake_profile.isSome) {
                 let roleStakeProfile = worker.role_stake_profile.unwrap();
                 let stake = await this.api.query.stake.stakes(roleStakeProfile.stake_id) as Stake;
@@ -227,11 +227,11 @@ export class StatisticsCollector {
             }
         }
 
-        nextWorkerId = (await this.api.query.storageWorkingGroup.nextWorkerId.at(endHash) as WorkerId).toNumber();
+        nextWorkerId = (await this.api.query[workingGroup + 'WorkingGroup'].nextWorkerId.at(endHash) as WorkerId).toNumber();
         let rewardRelationshipIds = Array<RewardRelationshipId>();
 
         for (let i = 0; i < nextWorkerId; ++i) {
-            let worker = await this.api.query.storageWorkingGroup.workerById(i) as WorkerOf;
+            let worker = await this.api.query[workingGroup + 'WorkingGroup'].workerById(i) as WorkerOf;
             if (worker.reward_relationship.isSome) {
                 rewardRelationshipIds.push(worker.reward_relationship.unwrap());
             }
@@ -242,7 +242,7 @@ export class StatisticsCollector {
             }
         }
         info.rewards = await this.computeReward(roundNrBlocks, rewardRelationshipIds, endHash);
-        info.endNrOfWorkers = nextWorkerId - WORKER_ID_OFFSET;
+        info.endNrOfWorkers = nextWorkerId;
         return info;
     }
 
@@ -320,7 +320,7 @@ export class StatisticsCollector {
         this.statistics.endCouncilMinted = councilMintStatistics.endMinted;
         this.statistics.newCouncilMinted = councilMintStatistics.diffMinted;
         this.statistics.percNewCouncilMinted = councilMintStatistics.percMinted;
-        6
+
         let curatorMint = (await this.api.query.contentDirectoryWorkingGroup.mint.at(endHash)) as MintId;
         let curatorMintStatistics = await this.computeMintInfo(curatorMint, startHash, endHash);
         this.statistics.startCuratorMinted = curatorMintStatistics.startMinted;
@@ -334,6 +334,13 @@ export class StatisticsCollector {
         this.statistics.endStorageMinted = storageProviderMintStatistics.endMinted;
         this.statistics.newStorageMinted = storageProviderMintStatistics.diffMinted;
         this.statistics.percStorageMinted = storageProviderMintStatistics.percMinted;
+
+        let operationsProviderMint = (await this.api.query.operationsWorkingGroup.mint.at(endHash)) as MintId;
+        let operationsProviderMintStatistics = await this.computeMintInfo(operationsProviderMint, startHash, endHash);
+        this.statistics.startOperationsMinted = operationsProviderMintStatistics.startMinted;
+        this.statistics.endOperationsMinted = operationsProviderMintStatistics.endMinted;
+        this.statistics.newOperationsMinted = operationsProviderMintStatistics.diffMinted;
+        this.statistics.percOperationsMinted = operationsProviderMintStatistics.percMinted;
     }
 
 
@@ -464,7 +471,7 @@ export class StatisticsCollector {
     async fillStorageProviderInfo(startBlock: number, endBlock: number, startHash: Hash, endHash: Hash) {
         let roundNrBlocks = endBlock - startBlock;
 
-        let storageProvidersRewards = await this.computeStorageProviderReward(roundNrBlocks, startHash, endHash);
+        let storageProvidersRewards = await this.computeWorkingGroupReward(roundNrBlocks, startHash, endHash, 'storage');
         this.statistics.newStorageProviderReward = storageProvidersRewards.rewards;
         this.statistics.newStorageProviderReward = Number(this.statistics.newStorageProviderReward.toFixed(2));
 
@@ -476,12 +483,14 @@ export class StatisticsCollector {
         this.statistics.endStorageProviders = await this.api.query.storageWorkingGroup.activeWorkerCount.at(endHash);
         this.statistics.percNewStorageProviders = StatisticsCollector.convertToPercentage(this.statistics.startStorageProviders, this.statistics.endStorageProviders);
 
-        let lastStorageProviderId = Number(await this.api.query.storageWorkingGroup.nextWorkerId.at(endHash)) - 1;
+        let nextWorkerId = Number(await this.api.query.storageWorkingGroup.nextWorkerId.at(endHash));
         this.statistics.storageProviders = "";
-        for (let i = lastStorageProviderId, storageProviderCount = 0; storageProviderCount < this.statistics.endStorageProviders; --i, ++storageProviderCount) {
+        for (let i = 0; i < nextWorkerId; ++i) {
             let storageProvider = await this.api.query.storageWorkingGroup.workerById.at(endHash, i) as WorkerOf;
-            let membership = await this.api.query.members.membershipById.at(endHash, storageProvider.member_id) as Membership;
-            this.statistics.storageProviders += "@" + membership.handle + " | (" + membership.root_account + ")  \n";
+            if (storageProvider.is_active){
+                let membership = await this.api.query.members.membershipById.at(endHash, storageProvider.member_id) as Membership;
+                this.statistics.storageProviders += "@" + membership.handle + " | (" + membership.root_account + ")  \n";
+            }
         }
 
     }
@@ -491,14 +500,43 @@ export class StatisticsCollector {
         this.statistics.endCurators = Number(await this.api.query.contentDirectoryWorkingGroup.activeWorkerCount.at(endHash));
         this.statistics.percNewCurators = StatisticsCollector.convertToPercentage(this.statistics.startCurators, this.statistics.endCurators);
 
-        let lastCuratorId = Number(await this.api.query.contentDirectoryWorkingGroup.nextWorkerId.at(endHash)) - 1;
+        let nextCuratorId = Number(await this.api.query.contentDirectoryWorkingGroup.nextWorkerId.at(endHash));
         this.statistics.curators = "";
-        for (let i = lastCuratorId, curatorCount = 0; curatorCount < this.statistics.endCurators; --i, ++curatorCount) {
-            let curator = await this.api.query.contentDirectoryWorkingGroup.workerById.at(endHash, i) as WorkerOf;
-            let curatorMembership = await this.api.query.members.membershipById.at(endHash, curator.member_id) as Membership;
-            this.statistics.curators += "@" + curatorMembership.handle + " | (" + curatorMembership.root_account + ")  \n";
-        }
 
+        for (let i = 0; i < nextCuratorId; i++) {
+            let curator = await this.api.query.contentDirectoryWorkingGroup.workerById.at(endHash, i) as WorkerOf;
+            if (curator.is_active){
+                let curatorMembership = await this.api.query.members.membershipById.at(endHash, curator.member_id) as Membership;
+                this.statistics.curators += "@" + curatorMembership.handle + " | (" + curatorMembership.root_account  +")  \n";
+            }
+        }
+    }
+
+    async fillOperationsInfo(startBlock: number, endBlock: number, startHash: Hash, endHash: Hash){
+        let roundNrBlocks = endBlock - startBlock;
+
+        let operationsRewards = await this.computeWorkingGroupReward(roundNrBlocks, startHash, endHash, 'operations');
+        this.statistics.newOperationsReward = operationsRewards.rewards;
+        this.statistics.newOperationsReward = Number(this.statistics.newOperationsReward.toFixed(2));
+
+        this.statistics.startOperationsStake = operationsRewards.startStake;
+        this.statistics.endOperationsStake = operationsRewards.endStake;
+        this.statistics.percNewOperationstake = StatisticsCollector.convertToPercentage(this.statistics.startOperationsStake, this.statistics.endOperationsStake);
+
+        this.statistics.startOperationsWorkers = Number(await this.api.query.operationsWorkingGroup.activeWorkerCount.at(startHash));
+        this.statistics.endOperationsWorkers = Number(await this.api.query.operationsWorkingGroup.activeWorkerCount.at(endHash));
+        this.statistics.percNewOperationsWorkers = StatisticsCollector.convertToPercentage(this.statistics.startOperationsWorkers, this.statistics.endOperationsWorkers);
+
+        let nextOperationsWorkerId = Number(await this.api.query.operationsWorkingGroup.nextWorkerId.at(endHash));
+        this.statistics.operations = "";
+
+        for (let i = 0; i < nextOperationsWorkerId; i++) {
+            let operation = await this.api.query.operationsWorkingGroup.workerById.at(endHash, i) as WorkerOf;
+            if (operation.is_active){
+                let operationMembership = await this.api.query.members.membershipById.at(endHash, operation.member_id) as Membership;
+                this.statistics.operations += "@" + operationMembership.handle + " | (" + operationMembership.root_account  +")  \n";
+            }
+        }
     }
 
     async fillMembershipInfo(startHash: Hash, endHash: Hash) {

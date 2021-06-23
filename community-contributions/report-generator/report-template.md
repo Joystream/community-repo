@@ -21,6 +21,7 @@ This is a report which explains the current state of the Joystream network in nu
 | Council Role        | {newCouncilRewards}             | 
 | Storage Role        | {newStorageProviderReward}             | 
 | Curator Role        | {newCuratorRewards}             |
+| Operations Role     | {newOperationsReward}          |
 
 
 ### 2.3 Mints 
@@ -29,6 +30,7 @@ This is a report which explains the current state of the Joystream network in nu
 | Council Mint Total Minted   | {startCouncilMinted}  |  {endCouncilMinted} |{percNewCouncilMinted}          |
 | Curator Mint Total Minted   |  {startCuratorMinted} | {endCuratorMinted}| {percCuratorMinted}          |
 | Storage Mint Total Minted   |  {startStorageMinted} |  {endStorageMinted}            |  {percStorageMinted}        |
+| Operations Mint Total Minted   |  {startOperationsMinted} |  {endOperationsMinted}            |  {percOperationsMinted}        |
 
 ## 3.0 Council
 * Council session #: {councilRound}
@@ -69,6 +71,15 @@ Role occupants:
 
 Role occupants:  
 {curators}
+
+### 4.4 Operations Role
+| Property                | Start Block | End Block | % Change |
+|-------------------------|--------------|--------------|----------|
+| Number of Operations Workers      | {startOperationsWorkers} | {endOperationsWorkers} | {percNewOperationsWorkers} |
+| Total Operations Stake (workers + lead)  | {startOperationsStake} |  {endOperationsStake} | {percNewOperationstake} |
+
+Role occupants:  
+{operations}
 
 ## 5.0 User Generated Content
 ### 5.1 Membership Information
