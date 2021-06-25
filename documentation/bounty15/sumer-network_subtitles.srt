@@ -8,11 +8,11 @@ So, this segment is about the Sumer network which is a network we’ve been work
 
 3
 00:00:16,400 --> 00:00:25,030
-It is going to be building on Antioch which either is going to be released or has just been released depending on when this video comes out. 
+It is going to be building on Antioch which either is going to be released or has just been released depending on when this video comes out.
 
 4
 00:00:25,039 --> 00:00:32,320
-So, the goal in the Sumer network is to do three separate things. 
+So, the goal in the Sumer network is to do three separate things.
 
 5
 00:00:32,320 --> 00:00:38,640
@@ -24,43 +24,43 @@ I am going to explain this in further detail but I am just going over the overvi
 
 7
 00:00:42,719 --> 00:00:47,030
-Then we are going to introduce Atlas Studio which is new part of the Atlas product. 
+Then we are going to introduce Atlas Studio which is new part of the Atlas product.
 
 8
 00:00:47,039 --> 00:00:51,280
-And then we are going to introduce a new working group which we are calling the operations working group. 
+And then we are going to introduce a new working group which we are calling the operations working group.
 
 9
 00:00:51,280 --> 00:00:53,039
-So, let’s go through this. 
+So, let’s go through this.
 
 10
 00:00:53,039 --> 00:00:55,680
-So, the new content directory. 
+So, the new content directory.
 
 11
 00:00:55,680 --> 00:00:59,039
-The new content directory is an enhancement over the existing one and through pretty important ways. 
+The new content directory is an enhancement over the existing one and through pretty important ways.
 
 12
 00:01:03,440 --> 00:01:09,430
-I am going to go though what the content directory actually is as in the next slide but just let’s dwell on this for a moment. 
+I am going to go though what the content directory actually is as in the next slide but just let’s dwell on this for a moment.
 
 13
 00:01:09,439 --> 00:01:10,840
-The first one is that it is radically simplified. 
+The first one is that it is radically simplified.
 
 14
 00:01:10,840 --> 00:01:26,400
-The existing content directory that we had was actually very very complex because we were trying to achieve the goal of having the community to be able to update 
+The existing content directory that we had was actually very very complex because we were trying to achieve the goal of having the community to be able to update
 
 15
 00:01:26,400 --> 00:01:34,960
-what is in the content directory, so stuff like videos and channels, and playlists without having to do runtime upgrades. 
+what is in the content directory, so stuff like videos and channels, and playlists without having to do runtime upgrades.
 
 16
 00:01:34,960 --> 00:01:45,680
-So, runtime upgrades, as I probably have mentioned prior to this in this community update, is a way in substrate chains you can change the rules of the system. 
+So, runtime upgrades, as I probably have mentioned prior to this in this community update, is a way in substrate chains you can change the rules of the system.
 
 17
 00:01:45,680 --> 00:01:52,880
@@ -68,7 +68,7 @@ So, for example, you can imagine at one point in time a video has a title, and t
 
 18
 00:01:52,880 --> 00:02:07,520
-and also what language the content of the video is recorded in or what language the people in the video speak or something like that. 
+and also what language the content of the video is recorded in or what language the people in the video speak or something like that.
 
 19
 00:02:07,520 --> 00:02:15,200
@@ -84,7 +84,7 @@ to iterate quickly on this part of the platform which really needs to be very fl
 
 22
 00:02:26,319 --> 00:02:36,310
-If you wanted to introduce other things, not just videos, let's say you wanted to introduce like eBooks or, you know, 
+If you wanted to introduce other things, not just videos, let's say you wanted to introduce like eBooks or, you know,
 
 23
 00:02:36,319 --> 00:02:43,760
@@ -101,11 +101,11 @@ you have to update all sorts of dependencies and libraries and infrastructure to
 
 26
 00:03:08,239 --> 00:03:16,560
-I mean, if you do it significantly, if the change is significantly big, you should probably also do a test, 
+I mean, if you do it significantly, if the change is significantly big, you should probably also do a test,
 
 27
 00:03:16,560 --> 00:03:25,040
-integration test where you run through a simulated upgrade with some representative state in your system, 
+integration test where you run through a simulated upgrade with some representative state in your system,
 
 28
 00:03:25,040 --> 00:03:30,000
@@ -113,7 +113,7 @@ you see how it works after the runtime upgrade, does your account still work, do
 
 29
 00:03:30,000 --> 00:03:31,840
-So, it's a lot of work. 
+So, it's a lot of work.
 
 30
 00:03:31,840 --> 00:03:37,120
@@ -125,7 +125,7 @@ So, it’s risky, it's hard, and it's, you know, requires a lot of care.
 
 32
 00:03:45,200 --> 00:03:54,080
-So this is a very long-winded way of explaining why we ended up having the old content directory that we had. 
+So this is a very long-winded way of explaining why we ended up having the old content directory that we had.
 
 33
 00:03:54,080 --> 00:04:05,280
@@ -133,19 +133,19 @@ And the point of that content directory was that it was sort of very abstract, a
 
 34
 00:04:05,280 --> 00:04:15,280
-and concepts on chain so that you didn't have to do runtime upgrades to define new things or change the way things were represented. 
+and concepts on chain so that you didn't have to do runtime upgrades to define new things or change the way things were represented.
 
 35
 00:04:15,280 --> 00:04:20,000
-That's great. The problem was that it was extremely complicated. 
+That's great. The problem was that it was extremely complicated.
 
 36
 00:04:20,000 --> 00:04:28,320
-It became really hard to both have work properly on chain, it became really hard for people to understand how it worked. 
+It became really hard to both have work properly on chain, it became really hard for people to understand how it worked.
 
 37
 00:04:28,320 --> 00:04:36,400
-And really what it turned out to be was that you couldn't even get something that was all that flexible, so you couldn't actually get all the flexibility that you wanted. 
+And really what it turned out to be was that you couldn't even get something that was all that flexible, so you couldn't actually get all the flexibility that you wanted.
 
 38
 00:04:36,400 --> 00:04:39,360
@@ -153,7 +153,7 @@ So, what we did in this release is we just said screw it.
 
 39
 00:04:39,360 --> 00:04:47,040
-What we're going to do is we're going to put the heart of what it means to be in the content directory on chain, 
+What we're going to do is we're going to put the heart of what it means to be in the content directory on chain,
 
 40
 00:04:47,040 --> 00:04:57,520
@@ -161,11 +161,11 @@ and then we're going to make the metadata associated with all the different thin
 
 41
 00:04:57,520 --> 00:05:01,440
-We're going to make sure that that's actually very easy to change. 
+We're going to make sure that that's actually very easy to change.
 
 42
 00:05:01,440 --> 00:05:12,240
-So, you don't need to change the low-level business logic of the chain itself in order to make the sort of smaller tweaks that I described, 
+So, you don't need to change the low-level business logic of the chain itself in order to make the sort of smaller tweaks that I described,
 
 43
 00:05:12,240 --> 00:05:13,600
@@ -173,11 +173,11 @@ such as the fact that a video may have
 
 44
 00:05:13,600 --> 00:05:17,440
-a language So, you sort of lift that out of the chain entirely. 
+a language So, you sort of lift that out of the chain entirely.
 
 45
 00:05:17,440 --> 00:05:23,750
-We also just decided that this is the way our content directory is supposed to work. 
+We also just decided that this is the way our content directory is supposed to work.
 
 46
 00:05:23,759 --> 00:05:25,199
@@ -185,19 +185,19 @@ So, that's a pretty big decision.
 
 47
 00:05:25,199 --> 00:05:28,639
-And that's what's landing in Sumer. 
+And that's what's landing in Sumer.
 
 48
 00:05:28,639 --> 00:05:35,280
-So, let me go through now, just very quickly. 
+So, let me go through now, just very quickly.
 
 49
 00:05:35,280 --> 00:05:43,030
-So, the video of myself which is not that useful is covering up a part of the diagram which is useful. 
+So, the video of myself which is not that useful is covering up a part of the diagram which is useful.
 
 50
 00:05:43,039 --> 00:05:49,680
-What's supposed to be there is a square which shows the unchanged storage system. 
+What's supposed to be there is a square which shows the unchanged storage system.
 
 51
 00:05:49,680 --> 00:05:55,120
@@ -205,15 +205,15 @@ I’m going to figure out later whether I change that or not but let's just go w
 
 52
 00:05:55,120 --> 00:06:01,600
-So, the on-chain content directory has in this representation, as you can see, memberships. 
+So, the on-chain content directory has in this representation, as you can see, memberships.
 
 53
 00:06:01,600 --> 00:06:07,190
-Channels have within them stuff like videos, and playlists, and series. 
+Channels have within them stuff like videos, and playlists, and series.
 
 54
 00:06:07,199 --> 00:06:16,720
-All those actually exist in the chain but they haven't been fully implemented, and they will not be implemented in the consumer product like in Atlas itself. 
+All those actually exist in the chain but they haven't been fully implemented, and they will not be implemented in the consumer product like in Atlas itself.
 
 55
 00:06:16,720 --> 00:06:29,120
@@ -221,7 +221,7 @@ These are people who are sort of employed in the content working group to manage
 
 56
 00:06:29,120 --> 00:06:40,240
-and they can also own channels themselves on behalf of the platform to feature official platform content and that kind of stuff. 
+and they can also own channels themselves on behalf of the platform to feature official platform content and that kind of stuff.
 
 57
 00:06:40,240 --> 00:06:48,630
@@ -229,23 +229,23 @@ Now the interesting part here is that on chain you just have this sort of index 
 
 58
 00:06:48,639 --> 00:07:00,400
-You also have an index of what data exists, so like the images, the cover photos, the actual video media files. 
+You also have an index of what data exists, so like the images, the cover photos, the actual video media files.
 
 59
 00:07:00,400 --> 00:07:08,470
-There's like a list of them you can think of or like a map basically which holds a representation of who owns everything, 
+There's like a list of them you can think of or like a map basically which holds a representation of who owns everything,
 
 60
 00:07:08,479 --> 00:07:16,800
-how much space has member number X used out of all the space available to them to publish to their channel and so on. 
+how much space has member number X used out of all the space available to them to publish to their channel and so on.
 
 61
 00:07:16,800 --> 00:07:23,590
-And, of course, when the storage infrastructure is supposed to be replicating what part of the data. 
+And, of course, when the storage infrastructure is supposed to be replicating what part of the data.
 
 62
 00:07:23,599 --> 00:07:33,910
-Right now, of course, that's fully replicated in the current storage system but that would be changed in a future version which I’m going to get to in one of the later videos. 
+Right now, of course, that's fully replicated in the current storage system but that would be changed in a future version which I’m going to get to in one of the later videos.
 
 63
 00:07:33,919 --> 00:07:38,240
@@ -253,7 +253,7 @@ But basically, that index also lives on chain in the data directory.
 
 64
 00:07:38,240 --> 00:07:47,440
-And then of course the actual storage is on separate off-chain infrastructure and storage nodes that are also responsible for shipping the data to users. 
+And then of course the actual storage is on separate off-chain infrastructure and storage nodes that are also responsible for shipping the data to users.
 
 65
 00:07:47,440 --> 00:08:00,800
@@ -266,39 +266,39 @@ So, stuff like your membership avatars, we are aiming to have stored in the same
 
 67
 00:08:07,680 --> 00:08:19,680
-So, before, you know, for your avatar you really have to reference some URL somewhere but for what we're going to be introducing, the first step of that in this 
+So, before, you know, for your avatar you really have to reference some URL somewhere but for what we're going to be introducing, the first step of that in this
 
 68
 00:08:19,680 --> 00:08:28,630
-Sumer release is that you could also store assets like that in the storage system itself just like the videos for the content directory. 
+Sumer release is that you could also store assets like that in the storage system itself just like the videos for the content directory.
 
 69
 00:08:28,639 --> 00:08:37,200
-Likewise, that could be used in other parts of the system, for example, as attachment in proposals or in forum posts and so on. 
+Likewise, that could be used in other parts of the system, for example, as attachment in proposals or in forum posts and so on.
 
 70
 00:08:37,200 --> 00:08:41,510
-So, it’s going to be a general infrastructure piece for the rest of the runtime. 
+So, it’s going to be a general infrastructure piece for the rest of the runtime.
 
 71
 00:08:41,519 --> 00:08:46,080
-So, that's the first part of what we're doing in Sumer on the content directory. 
+So, that's the first part of what we're doing in Sumer on the content directory.
 
 72
 00:08:46,080 --> 00:08:49,440
-The next step is that we're launching Atlas Studio. 
+The next step is that we're launching Atlas Studio.
 
 73
 00:08:49,440 --> 00:08:56,390
-So, Atlas is the sort of the viewer product where you can see videos and channels and so on. 
+So, Atlas is the sort of the viewer product where you can see videos and channels and so on.
 
 74
 00:08:56,399 --> 00:09:02,950
-And Atlas Studio is sort of the flip side of that experience where you can actually see all your channels, make channels, 
+And Atlas Studio is sort of the flip side of that experience where you can actually see all your channels, make channels,
 
 75
 00:09:02,959 --> 00:09:13,510
-upload stuff to your channel, manage it, delete stuff - basically like the channel publisher owner experience. 
+upload stuff to your channel, manage it, delete stuff - basically like the channel publisher owner experience.
 
 76
 00:09:13,519 --> 00:09:21,200
@@ -306,11 +306,11 @@ That really is a very big step in the direction of making it easier for people t
 
 77
 00:09:21,200 --> 00:09:28,390
-which before or at the current time has to be done through a command line interface which is a very rough experience. 
+which before or at the current time has to be done through a command line interface which is a very rough experience.
 
 78
 00:09:28,399 --> 00:09:33,120
-I think I can show a few outtakes of what that experience looks like. 
+I think I can show a few outtakes of what that experience looks like.
 
 79
 00:09:33,120 --> 00:09:39,830
@@ -323,11 +323,11 @@ metadata associated with them.
 
 81
 00:09:47,680 --> 00:09:50,950
-You have drafts for stuff that you haven't committed to chain locally stored. 
+You have drafts for stuff that you haven't committed to chain locally stored.
 
 82
 00:09:50,959 --> 00:09:58,480
-This all runs in the browser, just as Atlas itself does. 
+This all runs in the browser, just as Atlas itself does.
 
 83
 00:09:58,480 --> 00:10:09,830
@@ -339,11 +339,11 @@ which ends with you signing a transaction which, now actually that's interesting
 
 85
 00:10:22,240 --> 00:10:29,360
-I should say, local storage wallet that is in the normal Pioneer product that we're currently using. 
+I should say, local storage wallet that is in the normal Pioneer product that we're currently using.
 
 86
 00:10:29,360 --> 00:10:36,800
-So, that's also step in the right direction of having people use an external key manager. 
+So, that's also step in the right direction of having people use an external key manager.
 
 87
 00:10:36,800 --> 00:10:47,200
@@ -352,11 +352,11 @@ storage infrastructure, so that means we're going to be helping you set
 
 88
 00:10:47,200 --> 00:10:53,270
-and provide the right assets, manage how they're going to be displayed as part of those upload flows. 
+and provide the right assets, manage how they're going to be displayed as part of those upload flows.
 
 89
 00:10:53,279 --> 00:11:02,560
-So, that's Atlas Studio which is the second major goal to launch for this release. 
+So, that's Atlas Studio which is the second major goal to launch for this release.
 
 90
 00:11:02,560 --> 00:11:14,320
@@ -364,7 +364,7 @@ I also forgot, of course, we're going to be, if you have a look at the experienc
 
 91
 00:11:14,320 --> 00:11:25,040
-and that's because we want to make it easier for people to manage multiple things at the same time. 
+and that's because we want to make it easier for people to manage multiple things at the same time.
 
 92
 00:11:25,040 --> 00:11:29,510
@@ -372,23 +372,23 @@ With that, of course, comes the need to manage a lot of different uploads at the
 
 93
 00:11:29,519 --> 00:11:34,320
-that are uploading at any given time. Uploads can fail, you could lose your connection and so on. 
+that are uploading at any given time. Uploads can fail, you could lose your connection and so on.
 
 94
 00:11:34,320 --> 00:11:41,440
-So, we'll have a graceful way for you to retry anything that hasn't worked in the past. 
+So, we'll have a graceful way for you to retry anything that hasn't worked in the past.
 
 95
 00:11:41,440 --> 00:11:46,320
-I don't think we could have had anything reasonable even in the CLI to make this possible. 
+I don't think we could have had anything reasonable even in the CLI to make this possible.
 
 96
 00:11:46,320 --> 00:11:58,720
-This is a very big step in the right direction, and it's a huge effort from a lot of people, designers and developers and infrastructure pieces that are needed to get this to work. 
+This is a very big step in the right direction, and it's a huge effort from a lot of people, designers and developers and infrastructure pieces that are needed to get this to work.
 
 97
 00:11:58,720 --> 00:12:02,320
-That's fantastic. 
+That's fantastic.
 
 98
 00:12:02,320 --> 00:12:07,360
@@ -396,11 +396,11 @@ Then the last piece of the puzzle is the Operations working group.
 
 99
 00:12:07,360 --> 00:12:14,720
-So, what is this? Well, I am going to get to what a working group is in a little bit more detail later but if you're a little bit familiar with Joystream, 
+So, what is this? Well, I am going to get to what a working group is in a little bit more detail later but if you're a little bit familiar with Joystream,
 
 100
 00:12:14,720 --> 00:12:20,720
-you’ve probably noticed that there's the council and then there are these groups that are responsible for specific things, 
+you’ve probably noticed that there's the council and then there are these groups that are responsible for specific things,
 
 101
 00:12:20,720 --> 00:12:26,240
@@ -412,55 +412,55 @@ for any kind of activity that doesn't have at least yet an on-chain footprint or
 
 103
 00:12:34,000 --> 00:12:43,040
-So, let's say if you're  a forum moderator, that implies that you can do certain things in the forum that other people can’t do. 
+So, let's say if you're  a forum moderator, that implies that you can do certain things in the forum that other people can’t do.
 
 104
 00:12:43,040 --> 00:12:47,760
-There's an on-chain forum in Joystream, as most people probably noticed. 
+There's an on-chain forum in Joystream, as most people probably noticed.
 
 105
 00:12:47,760 --> 00:12:49,279
-Likewise for the storage system and so on. 
+Likewise for the storage system and so on.
 
 106
 00:12:49,279 --> 00:12:59,510
-The operations group is meant for all of those activities we're currently doing and which will be part of the system in the future which don't really have any direct privilege on chain. 
+The operations group is meant for all of those activities we're currently doing and which will be part of the system in the future which don't really have any direct privilege on chain.
 
 107
 00:12:59,519 --> 00:13:08,950
-We just want to provide the basics of what a working group allows you to model - stuff like what the roles are so everyone can see, 
+We just want to provide the basics of what a working group allows you to model - stuff like what the roles are so everyone can see,
 
 108
 00:13:08,959 --> 00:13:16,070
-it's transparent how people got into the roles, how they applied, what were the merits for people being admitted. 
+it's transparent how people got into the roles, how they applied, what were the merits for people being admitted.
 
 109
 00:13:16,079 --> 00:13:28,480
-People have predictive, they have predictable reward schedules for what they will be paid, they have predictable stake at risk, 
+People have predictive, they have predictable reward schedules for what they will be paid, they have predictable stake at risk,
 
 110
 00:13:28,480 --> 00:13:38,630
-so they can be given a little bit more responsibility in terms of what they can do, what they can be tasked with on behalf of the group and of the system overall. 
+so they can be given a little bit more responsibility in terms of what they can do, what they can be tasked with on behalf of the group and of the system overall.
 
 111
 00:13:38,639 --> 00:13:44,630
-So, the examples we're going for at the moment are things like developers, we have at least one of the founding members,
+So, the examples we're going for at the moment are things like developers, we have at least one of the Founding Members,
 
 112
 00:13:44,639 --> 00:13:50,560
-I believe, is looking to be one of the first developers in the operations working group. 
+I believe, is looking to be one of the first developers in the operations working group.
 
 113
 00:13:50,560 --> 00:14:00,320
-In general, managers, marketers, anyone who would like you could think of almost like a role or a job but doesn't require you to do a lot on chain as VM. 
+In general, managers, marketers, anyone who would like you could think of almost like a role or a job but doesn't require you to do a lot on chain as VM.
 
 114
 00:14:00,320 --> 00:14:02,000
-So, that's the operations working group. 
+So, that's the operations working group.
 
 115
 00:14:02,000 --> 00:14:09,360
-I’m hoping that this will be sort of a sandbox for discovering lots of roles that we haven't explicitly modeled into the system. 
+I’m hoping that this will be sort of a sandbox for discovering lots of roles that we haven't explicitly modeled into the system.
 
 116
 00:14:09,360 --> 00:14:17,190
@@ -468,8 +468,7 @@ Maybe we will as a result of what we find out but I think it's high time for som
 
 117
 00:14:17,199 --> 00:14:29,440
-What is actually… again my little preview thing is covering part of the image. I'm not
-sure, if I can actually move it now. Can I do that?
+What is actually… again my little preview thing is covering part of the image. I'm not sure, if I can actually move it now. Can I do that?
 
 118
 00:14:29,440 --> 00:14:43,190
@@ -485,7 +484,7 @@ I think in the future we'll do some like deep dives where we try to go systemati
 
 121
 00:15:04,800 --> 00:15:08,630
-I just want to sort of tease you with that here. 
+I just want to sort of tease you with that here.
 
 122
 00:15:08,639 --> 00:15:18,560
@@ -517,11 +516,11 @@ A council is a sort of one actor-one vote where you have council members vote on
 
 129
 00:16:06,839 --> 00:16:12,950
-I think the current setting we have for that is every two weeks there is a new council elected. 
+I think the current setting we have for that is every two weeks there is a new council elected.
 
 130
 00:16:12,950 --> 00:16:20,070
-I’m not actually at all sure we are confident about what that number should be on main net but that's what we have at the current time.
+I’m not actually at all sure we are confident about what that number should be on mainnet but that's what we have at the current time.
 
 131
 00:16:20,079 --> 00:16:27,680
@@ -541,11 +540,11 @@ The main responsibility of the council is to vote on proposals, and the proposal
 
 135
 00:16:55,199 --> 00:17:00,630
-There's one working group per subsystem you could think of it. 
+There's one working group per subsystem you could think of it.
 
 136
 00:17:00,639 --> 00:17:17,030
-There's a membership subsystem which is primarily at least in the Olympia runtime, which I actually haven't mentioned,  but that's the third community update, I think, so it’s coming. 
+There's a membership subsystem which is primarily at least in the Olympia runtime, which I actually haven't mentioned,  but that's the third community update, I think, so it’s coming.
 
 137
 00:17:17,039 --> 00:17:20,790
@@ -561,7 +560,7 @@ You have the forum for operating and curating the communication on the forum.
 
 140
 00:17:31,520 --> 00:17:34,720
-You have the operations working group that we are talking about here. 
+You have the operations working group that we are talking about here.
 
 141
 00:17:34,720 --> 00:17:43,440
@@ -577,7 +576,7 @@ And that leader is basically responsible for spending money out of budget that i
 
 144
 00:18:02,240 --> 00:18:12,320
-So, you can imagine, for example, if you're a storage working group leader then you need to figure out, well, how much money do we need for the next let's say month, 
+So, you can imagine, for example, if you're a storage working group leader then you need to figure out, well, how much money do we need for the next let's say month,
 
 145
 00:18:12,320 --> 00:18:18,240
@@ -585,7 +584,7 @@ and then you have to go to the council to have them give you that much for your 
 
 146
 00:18:18,240 --> 00:18:32,400
-The leader is able to pay the rewards for himself and everyone else, all the other workers, as they're called, in the working group, for providing the service to the system. 
+The leader is able to pay the rewards for himself and everyone else, all the other workers, as they're called, in the working group, for providing the service to the system.
 
 147
 00:18:32,400 --> 00:18:41,280
@@ -613,5 +612,5 @@ That hopefully was a useful introduction to working groups and the operations wo
 
 153
 00:19:11,440 --> 00:19:23,910
-I think that's the last of it, so thank you for joining me for this Sumer update, see you in a bit. 
+I think that's the last of it, so thank you for joining me for this Sumer update, see you in a bit.
 

@@ -4,7 +4,7 @@ Hi, and welcome to part five of the Community Update.
 
 2
 00:00:07,200 --> 00:00:13,440
-Here I'll be going through some new specifications for features that are either, actually some of them are finished, 
+Here I'll be going through some new specifications for features that are either, actually some of them are finished,
 
 3
 00:00:13,440 --> 00:00:21,430
@@ -48,7 +48,7 @@ That's sort of the way the system works today.
 
 13
 00:01:10,080 --> 00:01:19,680
-I think we've largely gotten away with it because there hasn't been a ton of load in the system because the publishing and consumer 
+I think we've largely gotten away with it because there hasn't been a ton of load in the system because the publishing and consumer
 
 14
 00:01:19,680 --> 00:01:23,750
@@ -60,7 +60,7 @@ We're a DAO and governance-focused project so we've invested a large share of ou
 
 16
 00:01:33,920 --> 00:01:41,840
-In the last six months we've, maybe a little bit more than that, we've sort of shifted our attention or, I should say, 
+In the last six months we've, maybe a little bit more than that, we've sort of shifted our attention or, I should say,
 
 17
 00:01:41,840 --> 00:01:55,600
@@ -88,7 +88,7 @@ First of all, we're going to be separating the role of holding on to data and re
 
 23
 00:02:20,319 --> 00:02:25,120
-and distributing data to end users who are, for example, sitting in Atlas. 
+and distributing data to end users who are, for example, sitting in Atlas.
 
 24
 00:02:25,120 --> 00:02:30,310
@@ -140,7 +140,7 @@ Maybe we will incorporate that in the future.
 
 36
 00:04:00,000 --> 00:04:10,950
-I think, SIA, for example has that Messiah but I'm not sure how important it is for the main net level of load that we're imagining.
+I think, SIA, for example has that Messiah but I'm not sure how important it is for the mainnet level of load that we're imagining.
 
 37
 00:04:10,959 --> 00:04:12,640
@@ -156,7 +156,7 @@ The council working groups could store assets as well which is very important be
 
 40
 00:04:32,960 --> 00:04:39,750
-you know, binaries and source code and documents of different kinds that you want different 
+you know, binaries and source code and documents of different kinds that you want different
 
 41
 00:04:39,759 --> 00:04:44,470
@@ -184,7 +184,7 @@ Lastly, we are allowing the distribution policy, basically how it is you allocat
 
 47
 00:05:24,880 --> 00:05:30,240
-because what you can imagine is that for a given channel, for example, for a given piece of content 
+because what you can imagine is that for a given channel, for example, for a given piece of content
 
 48
 00:05:30,240 --> 00:05:36,630
@@ -204,7 +204,7 @@ That's another very important distinction.
 
 52
 00:06:03,120 --> 00:06:10,470
-This level of sophistication is more than enough for main net purposes.
+This level of sophistication is more than enough for mainnet purposes.
 
 53
 00:06:10,479 --> 00:06:13,750
@@ -233,15 +233,15 @@ For the system to work overall there has to be a way to get the viewers to contr
 
 59
 00:07:02,639 --> 00:07:14,470
-The obvious way to do that is just requiring all the viewers to have Joy token and create memberships and have to have a signer and an ex in their browser and find 
+The obvious way to do that is just requiring all the viewers to have Joy token and create memberships and have to have a signer and an ex in their browser and find
 
 60
 00:07:14,479 --> 00:07:23,280
-their way to some front-end application hosted somewhere, and they have to acquire Joy in some way in order to view the content. 
+their way to some front-end application hosted somewhere, and they have to acquire Joy in some way in order to view the content.
 
 61
 00:07:23,280 --> 00:07:36,630
-I think it goes without saying that would be a huge barrier to entry, and it would really restrict your ability to onboard people who don't even know anything about crypto, 
+I think it goes without saying that would be a huge barrier to entry, and it would really restrict your ability to onboard people who don't even know anything about crypto,
 
 62
 00:07:36,639 --> 00:07:41,910
@@ -281,11 +281,11 @@ to avoid abuse and other things that will happen if you don't do that properly.
 
 71
 00:09:27,440 --> 00:09:33,680
-What gateways do is they basically have a business model around delivering a front-end user experience owning the relationship with the end user, 
+What gateways do is they basically have a business model around delivering a front-end user experience owning the relationship with the end user,
 
 72
 00:09:33,680 --> 00:09:40,800
-and what they do is they take on the burden of acquiring Joy and burning it in order to benefit, 
+and what they do is they take on the burden of acquiring Joy and burning it in order to benefit,
 
 73
 00:09:40,800 --> 00:09:49,040
@@ -305,11 +305,11 @@ You should think of them as a new role in order to make it much easier to acquir
 
 77
 00:10:24,160 --> 00:10:26,000
-Those are gateways. 
+Those are gateways.
 
 78
 00:10:26,000 --> 00:10:38,160
-They're really important, and they're probably going to be developed, well, it's not clear, probably the work will be in somewhat in parallel with the v2 storage system work, 
+They're really important, and they're probably going to be developed, well, it's not clear, probably the work will be in somewhat in parallel with the v2 storage system work,
 
 79
 00:10:38,160 --> 00:10:44,000
@@ -333,11 +333,11 @@ Basically, it's a way for creators and small communities to issue tokens that gi
 
 84
 00:11:07,680 --> 00:11:16,070
-I suppose we could also type to videos but this specific specification has to do with channels and the revenues that channels generate, and it gives you governance rights 
+I suppose we could also type to videos but this specific specification has to do with channels and the revenues that channels generate, and it gives you governance rights
 
 85
 00:11:16,079 --> 00:11:23,600
-and how that channel is managed to the extent that the channel token issuer is interested in doing that, 
+and how that channel is managed to the extent that the channel token issuer is interested in doing that,
 
 86
 00:11:23,600 --> 00:11:29,120
@@ -345,7 +345,7 @@ and it really tries to formalize something that's been attempted a good number o
 
 87
 00:11:29,120 --> 00:11:36,320
-For people who have been in the space for a while there was something called Tatiana coin which basically tried to do something like this, 
+For people who have been in the space for a while there was something called Tatiana coin which basically tried to do something like this,
 
 88
 00:11:36,320 --> 00:11:48,480
@@ -370,7 +370,7 @@ So, that’s channel tokens or we're calling them channel bowels, social tokens.
 
 93
 00:12:23,600 --> 00:12:36,800
-I’m not sure how we're going to explain this but the idea itself is something that's sort of been around for a while, and of course if you're a creator, 
+I’m not sure how we're going to explain this but the idea itself is something that's sort of been around for a while, and of course if you're a creator,
 
 94
 00:12:36,800 --> 00:12:52,880
@@ -394,7 +394,7 @@ that has a platform-wide benefit but, or maybe even a benefit within some subsec
 
 99
 00:13:25,040 --> 00:13:32,160
-which it's not worth it or it's not clear that it's going to be feasible to get the council with all of its priorities to actually accept and to fund, 
+which it's not worth it or it's not clear that it's going to be feasible to get the council with all of its priorities to actually accept and to fund,
 
 100
 00:13:32,160 --> 00:13:37,510
@@ -402,7 +402,7 @@ or maybe even that there is some budget constraints for the council, so they cou
 
 101
 00:13:37,519 --> 00:13:45,680
-The idea is to implement something called an insurance contract which is, basically, very similar to, 
+The idea is to implement something called an insurance contract which is, basically, very similar to,
 
 102
 00:13:45,680 --> 00:13:52,560
@@ -438,7 +438,7 @@ So, basically, a bounty system combined with a crowdfunding system.
 
 110
 00:14:53,279 --> 00:15:02,240
-There's actually a little bit more sophistication in this because we're also trying to model something called the dominant assurance contract 
+There's actually a little bit more sophistication in this because we're also trying to model something called the dominant assurance contract
 
 111
 00:15:02,240 --> 00:15:12,070
@@ -462,7 +462,7 @@ so only you would get the raised funds, and you put up, let's say, two thousand 
 
 116
 00:15:57,600 --> 00:16:12,000
-which will be released to the funders if an insufficient number of people end up contributing to reach whatever goal you need, let’s say you need you need 120 000 in order to do this. 
+which will be released to the funders if an insufficient number of people end up contributing to reach whatever goal you need, let’s say you need you need 120 000 in order to do this.
 
 117
 00:16:12,000 --> 00:16:25,040
