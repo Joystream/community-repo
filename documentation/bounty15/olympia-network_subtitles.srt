@@ -24,7 +24,7 @@ The reason I’m sort of putting it on the table is because it's probably one of
 
 7
 00:00:42,079 --> 00:00:46,480
-even before mainnet probably going to have one or two big releases, even after that,
+even before main net probably going to have one or two big releases, even after that,
 
 8
 00:00:46,480 --> 00:00:50,480
@@ -81,7 +81,7 @@ to try to upgrade the version of Pioneer which is currently live, that we're cal
 
 21
 00:02:29,680 --> 00:02:41,280
-It's just going to be a lot of work for very temporary benefits, so our thinking is currently that we really will go live once Pioneer 2 is ready,
+It's just going to be a lot of work for very temporary benefits, so our thinking is currently that we really will go live once Pioneer 2 is ready, 
 
 22
 00:02:41,280 --> 00:02:50,160
@@ -89,7 +89,7 @@ and that will simultaneously reveal a system which is quite different in many wa
 
 23
 00:02:50,160 --> 00:02:55,040
-The overall structure is, of course, the same but there will be, you know, important improvements everywhere.
+The overall structure is, of course, the same but there will be, you know, important improvements everywhere. 
 
 24
 00:02:55,040 --> 00:03:03,920
@@ -101,7 +101,7 @@ something new that we're not ready to put out right away, it will sort of get go
 
 26
 00:03:14,640 --> 00:03:19,440
-And we can sort of put it in the context of what we currently expect will be in the mainnet runtime.
+And we can sort of put it in the context of what we currently expect will be in the mainnet runtime. 
 
 27
 00:03:19,440 --> 00:03:22,870
@@ -109,15 +109,15 @@ You could see that on the runtime side we're really getting there.
 
 28
 00:03:22,879 --> 00:03:39,510
-There are basically two major subsystems, well, it is an open question whether the channel tokens and DAOs is a subsystem, but two big pieces that really we haven't started on at all.
+There are basically two major subsystems, well, it is an open question whether the channel tokens and DAOs is a subsystem, but two big pieces that really we haven't started on at all. 
 
 29
 00:03:39,519 --> 00:03:46,950
-Everything else is in some reasonable state of development, to put it that way.
+Everything else is in some reasonable state of development, to put it that way. 
 
 30
 00:03:46,959 --> 00:03:57,510
-In addition, again, my image is covering that, but we're working with SR Labs, one of the premier auditing firms that work with Polkadot
+In addition, again, my image is covering that, but we're working with SR Labs, one of the premier auditing firms that work with Polkadot 
 
 31
 00:03:57,519 --> 00:04:07,430
@@ -153,11 +153,11 @@ In substrate there's sort of a step involved in the development process where yo
 
 39
 00:04:59,680 --> 00:05:04,720
-is to do all the operations that people can do in the system - that's called benchmarking.
+is to do all the operations that people can do in the system - that's called benchmarking. 
 
 40
 00:05:04,720 --> 00:05:17,120
-That literally boils down to sort of measuring how much time each action or transaction, if you will, takes on certain reference hardware. I am skipping ahead here.
+That literally boils down to sort of measuring how much time each action or transaction, if you will, takes on certain reference hardware. I am skipping ahead here. 
 
 41
 00:05:17,120 --> 00:05:26,880
@@ -197,7 +197,7 @@ what's referred to as the referendum module here, which has to do with electing 
 
 50
 00:06:16,240 --> 00:06:24,630
-You're now able to use stake that you're using for something else. Let's say you're a validator or let's say you're staking as a working group lead
+You're now able to use stake that you're using for something else. Let's say you're a validator or let's say you're staking as a working group lead 
 
 51
 00:06:24,639 --> 00:06:32,720
@@ -233,11 +233,11 @@ That stake is basically reusable towards this one specific thing of being partic
 
 59
 00:07:24,319 --> 00:07:28,000
-We are introducing obviously the new content directory that I've talked about in Sumer.
+We are introducing obviously the new content directory that I've talked about in Sumer. 
 
 60
 00:07:28,000 --> 00:07:32,000
-We're introducing the idea of a constitution which is a very simple idea, actually.
+We're introducing the idea of a constitution which is a very simple idea, actually. 
 
 61
 00:07:32,000 --> 00:07:41,030
@@ -265,7 +265,7 @@ We’re adding crowdfunded bounties which is basically a way for community membe
 
 67
 00:08:29,280 --> 00:08:32,640
-that can be useful for the platform where they don't depend on the council to contribute.
+that can be useful for the platform where they don't depend on the council to contribute. 
 
 68
 00:08:32,640 --> 00:08:46,390
@@ -314,7 +314,7 @@ and we have really for a very long time been using and trying to maintain and ev
 
 79
 00:09:33,200 --> 00:09:48,880
-You know, that has a lot of limitations and problems not least of which is that you really can only access information that's in the current state,
+You know, that has a lot of limitations and problems not least of which is that you really can only access information that's in the current state, 
 
 80
 00:10:00,560 --> 00:10:08,640
@@ -370,5 +370,5 @@ So, that is it. The changed runtime, Pioneer 2 – that’s what is coming up in
 
 93
 00:11:58,880 --> 00:12:06,320
-Thank you very much, see you soon for Hydra.
+Thank you very much, see you soon for Hydra. 
 
