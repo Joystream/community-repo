@@ -18,7 +18,6 @@
 - The Lead should fire and/or slash non-performing workers.
 - Lead (and/or other SPs) must be available and helpful in Discord and the forum.
 - Identify storage providers that have low download speed or other issues, and warn the providers.
-- 
 
 If Lead missed the report - he can be warn/fire/slash https://testnet.joystream.org/#/proposals/197
 
