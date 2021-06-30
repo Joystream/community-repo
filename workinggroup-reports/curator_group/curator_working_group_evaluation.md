@@ -1,33 +1,48 @@
-# Curator Working Group Evaluation
-This document serves to act as an evaluation of the performance and resources of working groups.
+# Curator Working Group Report
+This is the report of the group of curators for reporting period #6. (26.04.2021 - 09.05.2021)
 
-## 1 Basic Information
-This report covers the month of August.
-* Start block:
-* End block:
+## 1 - Report Lead Curator Group
+* Number block for report: 458,062
+* Total tokens for working group at report block: 6,071,064
 
-## 2 Resource Allocation
-* Total minted at start block:
-* Total minted at end block: 
-* Total tokens for working group:
+* Total workers: 4
+* Total active workers: 4
 
-* Total workers:
-* Total active workers:
+* Total Accepted channels: 9
+* Total Censored channels: 1
+* Total channels without act: 1
+* Total Accepted videos: 186
+* Total Censored videos: 11
+* Total videos without act: 5
 
-* Lead payments (total):
-* Lead payments (missed):
+### Content Curator Lead:	IgreX	
+* Channel\1	Censored:	1
+* Channel\1	Warn:	1
+* Video\10	Accepted:	117
+* Video\10	Censored:	4
+* Video\10	Warn:	5
+* Total entities:		128
 
-* Curator role payments (total):
-* Curator role payments (missed):
+### Content Curator:	leet_joy	
+* Video\10	Accepted:	49
+* Video\10	Censored:	4
+* Total entities:		53
 
-* Total content uploaded during time period:
-* Total verified channels:
-* Total videos marked as explicit:
-* Total videos removed/unlisted:
+### Content Curator:	Meskalin	
+* Video\10	Accepted:	12
+* Total entities:		12
 
-## 3 Performance Review
-### 3.1 User Reports
-User reports are a collection of forum and Telegram posts included to help understand user feedback on this role. This is not a conclusive list.
-#### 3.1A - Role reports
-#### 3.1B - User complaints
-* Overall there were no or minimal forum posts suggesting issues with problematic content
+### Content Curator:	oiclid	
+* Channel\1	Accepted:	9
+* Video\10	Accepted:	7
+* Video\10	Accepted: 	1
+* Video\10	Censored:	3
+* Total entities:		20
+
+
+## 2 - Issue
+During the review, errors were found when hiding broken videos. The bug report is located here: https://github.com/Joystream/joystream/issues/2388#issue-881300852
+## 3 - Process 
+After hiring, I could not find a curator 'svasilenko'. I created a thread on the forum with a proposal to dismiss: https://testnet.joystream.org/#/forum/threads/377?replyIdx=1. After 3 days - fired him.
+
+
