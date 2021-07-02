@@ -5,8 +5,8 @@ This Discord bot announces new video uploads.
 ## Installation
 
 ```
-git clone https://github.com/singulart/joystream-discord-bot
-cd joystream-discord-bot
+git clone https://github.com/Joystream/community-repo
+cd community-repo/community-contributions/joystreamvideobot 
 yarn && yarn run build
 ```
 
