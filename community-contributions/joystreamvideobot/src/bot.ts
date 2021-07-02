@@ -62,7 +62,6 @@ const main = async () => {
                   { name: 'Language', value: edge.node.language.iso, inline: true },
                   { name: 'License', value: licenses[licenseKey], inline: true },
                 )
-                .setImage(`${edge.node.thumbnailPhotoDataObject.liaison.metadata}asset/v0/${edge.node.thumbnailPhotoDataObject.joystreamContentId}`)
                 .setTimestamp();
                 if(edge.node.channel.avatarPhotoDataObject && edge.node.channel.avatarPhotoDataObject.liaison) {
                   const avatar = 
@@ -70,6 +69,9 @@ const main = async () => {
                   exampleEmbed.setAuthor(edge.node.channel.title, avatar, `https://play.joystream.org/channel/${edge.node.channel.id}`);
                 } else {
                   exampleEmbed.setAuthor(edge.node.channel.title);
+                }
+                if(edge.node.thumbnailPhotoDataObject && edge.node.thumbnailPhotoDataObject.liaison) {
+                  exampleEmbed.setImage(`${edge.node.thumbnailPhotoDataObject.liaison.metadata}asset/v0/${edge.node.thumbnailPhotoDataObject.joystreamContentId}`)
                 }
               channel.send(exampleEmbed);
               ids.push({id: edge.node.id, createdAt: Date.parse(edge.node.createdAt)});
