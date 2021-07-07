@@ -84,6 +84,9 @@ fragment LicenseFields on License {
 fragment BasicChannelFields on Channel {
   id
   title
+  ownerMember {
+    rootAccount
+  }
   createdAt
   createdById
   avatarPhotoUrls
