@@ -24,7 +24,12 @@ export interface INode {
     category: ICategory,
     language: ILanguage,
     license: ILicense,
+    mediaDataObject: IMediaDataObject,
     createdAt: string
+}
+
+export interface IMediaDataObject {
+    size: number
 }
 
 export interface ILicense {
@@ -43,8 +48,13 @@ export interface ILiaison {
 export interface IChannel {
     title: string,
     id: string,
+    ownerMember: IOwnerMember,
     avatarPhotoDataObject: IThumb,
     createdById: string;
+}
+
+export interface IOwnerMember {
+    rootAccount: string;
 }
 
 export interface ICategory {
