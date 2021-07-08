@@ -66,14 +66,14 @@ const main = async () => {
                 )
                 .setTimestamp();
                 const uploaderTitle = `${edge.node.channel.title} (${edge.node.channel.ownerMember.rootAccount})`
-                if(edge.node.channel.avatarPhotoDataObject && edge.node.channel.avatarPhotoDataObject.liaison) {
+                if(edge.node.channel.avatarPhotoDataObject?.liaison) {
                   const avatar = 
                         `${edge.node.channel.avatarPhotoDataObject.liaison.metadata}asset/v0/${edge.node.channel.avatarPhotoDataObject.joystreamContentId}`;
                   exampleEmbed.setAuthor(uploaderTitle, avatar, `https://play.joystream.org/channel/${edge.node.channel.id}`);
                 } else {
                   exampleEmbed.setAuthor(uploaderTitle, null, `https://play.joystream.org/channel/${edge.node.channel.id}`);
                 }
-                if(edge.node.thumbnailPhotoDataObject && edge.node.thumbnailPhotoDataObject.liaison) {
+                if(edge.node.thumbnailPhotoDataObject?.liaison) {
                   exampleEmbed.setImage(`${edge.node.thumbnailPhotoDataObject.liaison.metadata}asset/v0/${edge.node.thumbnailPhotoDataObject.joystreamContentId}`)
                 }
               channel.send(exampleEmbed);
@@ -110,7 +110,7 @@ const cleanup = (ids: any[], cutoffDate: Date) => {
 
 const lookup = (ids: any[], id: string) => {
   for (let video of ids) {
-    if (video.id == id) {
+    if (video.id === id) {
       return true;
     }
   }

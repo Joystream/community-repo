@@ -9,9 +9,9 @@
 * @return Formatted string.
 */
 export const humanFileSize = (bytes: number, si=false, dp=1): string => {
- const thresh = si ? 1000 : 1024;
+ const threshold = si ? 1000 : 1024;
 
- if (Math.abs(bytes) < thresh) {
+ if (Math.abs(bytes) < threshold) {
    return bytes + ' B';
  }
 
@@ -22,10 +22,11 @@ export const humanFileSize = (bytes: number, si=false, dp=1): string => {
  const r = 10**dp;
 
  do {
-   bytes /= thresh;
+   bytes /= threshold;
    ++u;
- } while (Math.round(Math.abs(bytes) * r) / r >= thresh && u < units.length - 1);
+ } while (Math.round(Math.abs(bytes) * r) / r >= threshold && u < units.length - 1);
 
 
  return bytes.toFixed(dp) + ' ' + units[u];
+ 
 }
