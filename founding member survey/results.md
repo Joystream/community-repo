@@ -1,10 +1,9 @@
-These are the results for the **Founding Member Survey**. The survey ran from July 9, 2021 to July 11, 2021. The survey had 22 responses.
+These are the results for the **Founding Member Survey** https://blog.joystream.org/sumer-kpis/#12.7. The survey ran from July 9, 2021 to July 11, 2021. The survey had 22 responses.
 
-(https://blog.joystream.org/sumer-kpis/#12.7)
 
-1. Are you a member of any groups below?
+**1. Are you a member of any groups below?**
 | Answer | Share |
-|:----------|:----------|
+|:-|:----------|
 | I submitted a scoring summary for a Scoring Period + I have been on the Council on the latest network + I have been part of a Working Group on the latest network   | 25%    |
 | I submitted a scoring summary for a Scoring Period + I have been on the Council on the latest network   | 75%    |
 | I submitted a scoring summary for a Scoring Period + I have been part of a Working Group on the latest network   | 0   |
@@ -13,23 +12,19 @@ These are the results for the **Founding Member Survey**. The survey ran from Ju
 
 
 
+**2. How many times did you submit a summary when you were active?**
+
+| Answer | Share |
+|:-----------------------------------------------------------|:----------|
+| Every Scoring Period   | 25%    |
+| I submitted a scoring summary for a Scoring Period + I have been on the Council on the latest network   | 75%    |
+| I submitted a scoring summary for a Scoring Period + I have been part of a Working Group on the latest network   | 0   |
+| I submitted a scoring summary for a Scoring Period   | 0  |
+| I have been on the Council on the latest network   | 0  |
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-2. How many times did you submit a summary when you were active?
 
 2.1. Why did you sometimes miss submitting or never submit?
 
