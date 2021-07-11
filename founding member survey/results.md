@@ -3,8 +3,8 @@ These are the results for the **Founding Member Survey** https://blog.joystream.
 **1. Are you a member of any groups below?**
 | Answer | Share |
 |:-|:-|
-| I submitted a scoring summary for a Scoring Period + I have been on the Council on the latest network + I have been part of a Working Group on the latest network   | 25%    |
-| I submitted a scoring summary for a Scoring Period + I have been on the Council on the latest network   | 75%    |
+| I submitted a scoring summary for a Scoring Period + I have been on the Council on the latest network + I have been part of a Working Group on the latest network   | %    |
+| I submitted a scoring summary for a Scoring Period + I have been on the Council on the latest network   | %    |
 | I submitted a scoring summary for a Scoring Period + I have been part of a Working Group on the latest network   | 0   |
 | I submitted a scoring summary for a Scoring Period   | 0  |
 | I have been on the Council on the latest network   | 0  |
