@@ -114,8 +114,8 @@ export class StatisticsCollector {
         return bounties.filter((bounty: Bounty) => bounty.status == "Approved" && bounty.testnet == "Antioch");
     }
 
-    async getSpendingProposals(): Promise<Array<SpendingProposals>> {
-        let spendingProposals = new Array<SpendingProposals>();
+
+    async fillValidatorsRewards() {
         for (let [key, blockEvents] of this.blocksEventsCache) {
             let validatorRewards = blockEvents.filter((event) => {
                 return event.section == "staking" && event.method == "Reward";
@@ -123,7 +123,12 @@ export class StatisticsCollector {
             for (let validatorReward of validatorRewards) {
                 this.statistics.newValidatorRewards += Number(validatorReward.data[1]);
             }
+        }
+    }
 
+    async getSpendingProposals(): Promise<Array<SpendingProposals>> {
+        let spendingProposals = new Array<SpendingProposals>();
+        for (let [key, blockEvents] of this.blocksEventsCache) {
             let transfers = blockEvents.filter((event) => {
                 return event.section == "balances" && event.method == "Transfer";
             });
@@ -443,6 +448,7 @@ export class StatisticsCollector {
         this.statistics.endValidatorsStake = (await this.api.query.staking.erasTotalStake.at(endHash, endEra.unwrap())).toNumber();
 
         this.statistics.percNewValidatorsStake = StatisticsCollector.convertToPercentage(this.statistics.startValidatorsStake, this.statistics.endValidatorsStake);
+        await this.fillValidatorsRewards();
     }
 
     async findActiveValidators(hash: Hash, searchPreviousBlocks: boolean): Promise<AccountId[]> {
