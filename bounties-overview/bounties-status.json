@@ -70,20 +70,7 @@
       "tags": ["Content","Research"],
       "format": "Mixed",
       "status": "Announced"
-    },
-    {
-      "id": 17,
-      "title": "Discord Video Bot",
-      "openedDate": "2021-03-12",
-      "description": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
-      "links": ["https://testnet.joystream.org/#/forum/threads/362","https://github.com/Joystream/community-repo/issues/151"],
-      "reward": 100,
-      "notes": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
-      "tags": ["Coding","Research"],
-      "format": "Closed",
-      "status": "Announced"
     }
-
   ],
   "closedBounties":
   [
@@ -194,6 +181,19 @@
       "format": "Reserved",
       "closedDate": "2020-11-01",
       "status": "Completed - USD 300"
-    }
+    },
+    {
+      "id": 17,
+      "title": "Discord Video Bot",
+      "openedDate": "2021-03-12",
+      "description": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
+      "links": ["https://testnet.joystream.org/#/forum/threads/362","https://github.com/Joystream/community-repo/issues/151"],
+      "reward": 150,
+      "notes": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
+      "tags": ["Coding","Research"],
+      "format": "Closed",
+      "closedDate": "2021-07-08",
+      "status": "Completed - USD 150"
+    }    
   ]
 }
