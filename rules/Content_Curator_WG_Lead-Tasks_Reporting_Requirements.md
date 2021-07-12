@@ -58,6 +58,6 @@ Details you can read [here](https://github.com/Joystream/community-repo/blob/mas
 
 The Lead (and/or other CWs) can prove their effectiveness and receive an additional reward by performing OKR.
 
-The full list of current OKR you can read [here](https://github.com/Joystream/community-repo/blob/master/rules/DRAFT_Content_Curator_WG_OKRs.md)
+The full list of current OKR you can read [here](https://github.com/maxlevush/community-repo/blob/Content_Curator_Tasks/rules/Content_Curator_WG_OKRs.md)
 
 
