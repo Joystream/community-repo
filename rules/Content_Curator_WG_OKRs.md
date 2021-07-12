@@ -1,15 +1,27 @@
-This is a DRAFT. In next term council member should decide to add/remove bonuses. And discuss/add reasonable balance of rewards.
-Then this file will be updated. 
+*[Pre-proposal discussion](https://testnet.joystream.org/#/forum/threads/447)*
 
-*Pre-proposal discussion https://testnet.joystream.org/#/forum/threads/447*
+*[Based on KPIs](https://blog.joystream.org/sumer-kpis/#12.14)*
 
-*Based on KPIs https://blog.joystream.org/sumer-kpis/#11.8*
+# OKR system for Content Curator Working Group
 
-# OKR system for Content Curator Working Group (DRAFT)
+*Objective Key Results*
+
+|№ |OKR            | Reward        |
+|--|-------------------|--------------|
+| 1.1| ``>70%`` of videos are managed | $15           | 
+| 1.2|  Report on time   |  $10                  |
+| 1.3|  Average timing     |  $5                           |
+| 1.4|  Discord channel ``#content-curator``      |  $5            | 
+| 1.5|  Promote bounty        | $10            | 
+| 1.6|  Manage bounty        | $20             | 
+| 2.1|  Performance is ``>80%``     |  $10                           |
+| 2.2|  Manage Discord channels      |  up to $10            | 
+| 2.3|  Find duplicates        | $3 per dublicat             | 
+| 2.4|  Promote bounty (CW)        | $10 to winner             | 
 
 ## 1. Content Curator Lead OKRs
 
-1.1 At least 70% of videos uploaded during a week are managed
+1.1 At least ``70%`` of videos uploaded during a week are managed
 
 1.2 Lead's Report is delivered on time
 
@@ -27,7 +39,7 @@ Then this file will be updated.
 
 1.5 Promote participation in the bounty (controlled by Content Curator WG) to community members
 
- - at least two mentions in Discord channel (and/or Telegram) per reporting period
+ - at least two mentions in Discord channels (and/or Telegram) per reporting period
 
 1.6 Manage bounty controlled by Content Curator WG
 
@@ -37,7 +49,7 @@ Then this file will be updated.
 
 ## 2. Content Curators OKRs
 
-2.1 Performance is > 90%
+2.1 Performance is ``>80%``
 
  - graded by Curator Lead. Part of [Lead's task](https://github.com/Joystream/community-repo/blob/master/rules/Content_Curator_WG_Lead-Tasks_Reporting_Requirements.md#this-report-should-include)
 
@@ -45,9 +57,14 @@ Then this file will be updated.
 
  - answer user questions
 
- - comment on dropped videos
+ - comment on dropped videos in all Discord channels
 
 2.3 Find duplicates in uploaded videos, including those verified by other curators
+
+2.4 Promote participation in the bounty (controlled by Content Curator WG) to community members
+
+ - mentions in Discord channels (and/or Telegram) per reporting period
+ - most original mention will be rewarded
 
 ## 3. Reward rules
 
