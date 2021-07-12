@@ -1,0 +1,482 @@
+﻿1
+00:00:00,640 --> 00:00:07,200
+Hi, and welcome to part five of the Community Update.
+
+2
+00:00:07,200 --> 00:00:13,440
+Here I'll be going through some new specifications for features that are either, actually some of them are finished, 
+
+3
+00:00:13,440 --> 00:00:21,430
+others are in progress, others we haven't started on, just to give people a flavor for some of the things that are coming down the pipe.
+
+4
+00:00:21,439 --> 00:00:26,400
+So, let's start with the new storage distribution system.
+
+5
+00:00:26,400 --> 00:00:27,920
+This we have already started to implement.
+
+6
+00:00:27,920 --> 00:00:34,230
+A quick sort of refresher for those who may not know.
+
+7
+00:00:34,239 --> 00:00:37,680
+The current storage system is sort of the simplest possible thing you could imagine.
+
+8
+00:00:37,680 --> 00:00:47,520
+It has an on-chain index of what all the data that exists in the system is – like the hashes, and the sizes of things, and who owns them and so on.
+
+9
+00:00:47,520 --> 00:00:57,120
+There is a designated role as a storage provider that means that you're obligated to basically store all the data that is in the system.
+
+10
+00:00:57,120 --> 00:01:01,520
+So, that's the first clue that really wouldn't work at scale.
+
+11
+00:01:01,520 --> 00:01:07,200
+You also have to distribute all the data that you are storing as a storage provider.
+
+12
+00:01:07,200 --> 00:01:10,080
+That's sort of the way the system works today.
+
+13
+00:01:10,080 --> 00:01:19,680
+I think we've largely gotten away with it because there hasn't been a ton of load in the system because the publishing and consumer 
+
+14
+00:01:19,680 --> 00:01:23,750
+side of things hasn't been the way we have prioritized our development roadmap.
+
+15
+00:01:23,759 --> 00:01:33,920
+We're a DAO and governance-focused project so we've invested a large share of our resources in developing that first.
+
+16
+00:01:33,920 --> 00:01:41,840
+In the last six months we've, maybe a little bit more than that, we've sort of shifted our attention or, I should say, 
+
+17
+00:01:41,840 --> 00:01:55,600
+broadened our investment horizon to also cover our investment scope, to cover more on the content side which is also going to result in the storage system
+
+18
+00:01:55,600 --> 00:01:59,360
+needing to handle a little bit more scale and a little bit more realistic policy space.
+
+19
+00:01:59,360 --> 00:02:03,360
+It couldn't have come any sooner.
+
+20
+00:02:03,360 --> 00:02:05,119
+What's coming up in the v2 version?
+
+21
+00:02:05,119 --> 00:02:11,280
+There are a few highlights that are worth mentioning.
+
+22
+00:02:11,280 --> 00:02:20,310
+First of all, we're going to be separating the role of holding on to data and replicating internally in the infrastructure
+
+23
+00:02:20,319 --> 00:02:25,120
+and distributing data to end users who are, for example, sitting in Atlas. 
+
+24
+00:02:25,120 --> 00:02:30,310
+Those are really two very different activities from an infrastructure point of view, from an economic point of view.
+
+25
+00:02:30,319 --> 00:02:38,640
+One is about having very reliable infrastructure that doesn't explode or, you know, catch on fire or whatnot.
+
+26
+00:02:38,640 --> 00:02:40,640
+It's not so bandwidth sensitive.
+
+27
+00:02:40,640 --> 00:02:53,680
+Then you have this distribution activity which is about very quickly getting a much smaller subset of data to potentially a large number of people simultaneously.
+
+28
+00:02:53,680 --> 00:03:04,310
+That's, for example, a role where it's important maybe where you're located and who you expect will be in touch with you, and the latency involved and so on.
+
+29
+00:03:04,319 --> 00:03:07,590
+So, those have been separated to do distinct roles.
+
+30
+00:03:07,599 --> 00:03:19,440
+Another big improvement is obviously that not everyone has to either store, if they're a storage provider, everything or distribute, if they're distributor, everything.
+
+31
+00:03:19,440 --> 00:03:31,360
+It's sort of sharded so that some of the storage providers store, basically, it's partitioned into different families of storage providers.
+
+32
+00:03:31,360 --> 00:03:45,510
+We don't have any erasure coding or other scheme that tries to get away with avoiding storing and full replicas
+
+33
+00:03:45,519 --> 00:03:50,560
+to the degree of safety and redundancy that you want, that hasn't really been important to us.
+
+34
+00:03:50,560 --> 00:03:55,680
+The first step has really just been to move away from everyone storing everything.
+
+35
+00:03:55,680 --> 00:04:00,000
+Maybe we will incorporate that in the future.
+
+36
+00:04:00,000 --> 00:04:10,950
+I think, SIA, for example has that Messiah but I'm not sure how important it is for the main net level of load that we're imagining.
+
+37
+00:04:10,959 --> 00:04:12,640
+So, that's a very big difference.
+
+38
+00:04:12,640 --> 00:04:22,320
+Another big difference is that not only members or, I should say, channels can store stuff in the storage system and have it distributed.
+
+39
+00:04:22,320 --> 00:04:32,960
+The council working groups could store assets as well which is very important because there's going to be an increasing set of assets of all kinds,
+
+40
+00:04:32,960 --> 00:04:39,750
+you know, binaries and source code and documents of different kinds that you want different 
+
+41
+00:04:39,759 --> 00:04:44,470
+parts of the system to be able to persist as different people are flowing through those roles.
+
+42
+00:04:44,479 --> 00:04:53,360
+That's why we've introduced the capability of those different subsystems to have their own designated storage spaces, so to speak.
+
+43
+00:04:53,360 --> 00:05:00,000
+Also, we're taking much more seriously the need to be able to reclaim space or basically delete content.
+
+44
+00:05:00,000 --> 00:05:05,120
+That's something that really hasn't worked in any sort of scale even with Sumer.
+
+45
+00:05:05,120 --> 00:05:09,520
+So, that's something we're also introducing.
+
+46
+00:05:09,520 --> 00:05:24,880
+Lastly, we are allowing the distribution policy, basically how it is you allocate your bandwidth resources across space and time to be much more flexible
+
+47
+00:05:24,880 --> 00:05:30,240
+because what you can imagine is that for a given channel, for example, for a given piece of content 
+
+48
+00:05:30,240 --> 00:05:36,630
+there's going to be a predictable geographic bias in who will want to access it quickly.
+
+49
+00:05:36,639 --> 00:05:45,280
+If you're some Spanish cooking show, overwhelmingly there are some parts of the world which are going to want to access that content,
+
+50
+00:05:45,280 --> 00:05:58,400
+and you would want to be able to optimize for the location of the distribution infrastructure that services those, as opposed to something else like a Finish knitting show.
+
+51
+00:05:58,400 --> 00:06:03,120
+That's another very important distinction.
+
+52
+00:06:03,120 --> 00:06:10,470
+This level of sophistication is more than enough for main net purposes.
+
+53
+00:06:10,479 --> 00:06:13,750
+So, that's the v2 storage distribution system, and the work has already started.
+
+54
+00:06:13,759 --> 00:06:17,600
+Then we have the concept of gateways.
+
+55
+00:06:17,600 --> 00:06:30,720
+The issue the gateways attempt to address is the fact that it's really important for the tokenomics of the system to work specifically in the sense
+
+56
+00:06:30,720 --> 00:06:40,630
+that if you're a user,
+a consumer coming in to view content, you're consuming obviously expensive infrastructure resources
+
+57
+00:06:40,639 --> 00:06:50,470
+like bandwidth and storage and so on, but you're also, of course, enjoying the fact that someone has made a fixed investment of creating the content that you're also viewing.
+
+58
+00:06:50,479 --> 00:07:02,630
+For the system to work overall there has to be a way to get the viewers to contribute some value back to the platform and everyone else.
+
+59
+00:07:02,639 --> 00:07:14,470
+The obvious way to do that is just requiring all the viewers to have Joy token and create memberships and have to have a signer and an ex in their browser and find 
+
+60
+00:07:14,479 --> 00:07:23,280
+their way to some front-end application hosted somewhere, and they have to acquire Joy in some way in order to view the content. 
+
+61
+00:07:23,280 --> 00:07:36,630
+I think it goes without saying that would be a huge barrier to entry, and it would really restrict your ability to onboard people who don't even know anything about crypto, 
+
+62
+00:07:36,639 --> 00:07:41,910
+don't know how to or don't want to deal with how to acquire it, how to manage it, how to store it, how to spend it.
+
+63
+00:07:41,919 --> 00:07:58,960
+It's still not a great experience if every time you have to watch something, a big signer thing popped up and asked you to sign off on spending some Joy, that would not be a great experience.
+
+64
+00:07:58,960 --> 00:08:17,520
+Even if you made something a little bit more lumpy, like if you paid for x number of views or for some period of time, it's still a very steep onboarding experience.
+
+65
+00:08:17,520 --> 00:08:32,080
+I think, one of the main things we have to unlock is a way for just a general audience to, in an economically sustainable way, enjoy and consume the content, and that's what gateways are supposed to do,
+
+66
+00:08:32,080 --> 00:08:42,060
+Gateways are basically front-end operators who are free to monetize and own the relationship with the end user in whatever way they see fit.
+
+67
+00:08:42,080 --> 00:08:58,390
+If they monetize through advertising, that's fine, if they monetize through some sort of in-app purchase in some app store, maybe on a smart TV, I don't know, they're free to do that however they see fit.
+
+68
+00:08:58,399 --> 00:09:10,720
+And, specifically, this ability to support advertising which, I think, is pretty important in order to be able to reach scale within a timely manner,
+
+69
+00:09:10,720 --> 00:09:20,320
+I think you definitely would need to allow that at least in the mix, and that certainly requires you to be able to own the relationship and own the front-end primarily
+
+70
+00:09:20,320 --> 00:09:27,440
+to avoid abuse and other things that will happen if you don't do that properly.
+
+71
+00:09:27,440 --> 00:09:33,680
+What gateways do is they basically have a business model around delivering a front-end user experience owning the relationship with the end user, 
+
+72
+00:09:33,680 --> 00:09:40,800
+and what they do is they take on the burden of acquiring Joy and burning it in order to benefit, 
+
+73
+00:09:40,800 --> 00:09:49,040
+well, in order to actually give their registered users access to the infrastructure and to the content.
+
+74
+00:09:49,040 --> 00:09:54,160
+They sort of internalize all the small transaction costs of everyone trying to do that on their own.
+
+75
+00:09:54,160 --> 00:10:07,200
+The gateways do that on their behalf, and they have long-standing relationships with infrastructure providers, with the leads and the gateway working group and so on.
+
+76
+00:10:07,200 --> 00:10:24,160
+You should think of them as a new role in order to make it much easier to acquire and retain users that are not eager to instantly jump on the on the Joy bandwagon to acquire in order to use the application.
+
+77
+00:10:24,160 --> 00:10:26,000
+Those are gateways. 
+
+78
+00:10:26,000 --> 00:10:38,160
+They're really important, and they're probably going to be developed, well, it's not clear, probably the work will be in somewhat in parallel with the v2 storage system work, 
+
+79
+00:10:38,160 --> 00:10:44,000
+but it's probably not going to come out at least two or three networks into the future.
+
+80
+00:10:44,000 --> 00:10:47,830
+So, those are gateways. Then we get to channel tokens and DAOs.
+
+81
+00:10:47,839 --> 00:10:49,760
+This is something I'm really excited about.
+
+82
+00:10:49,760 --> 00:10:56,720
+This is sort of, I think now it's being called social tokens.
+
+83
+00:10:56,720 --> 00:11:07,680
+Basically, it's a way for creators and small communities to issue tokens that give you a claim on the value that's generated by a channel.
+
+84
+00:11:07,680 --> 00:11:16,070
+I suppose we could also type to videos but this specific specification has to do with channels and the revenues that channels generate, and it gives you governance rights 
+
+85
+00:11:16,079 --> 00:11:23,600
+and how that channel is managed to the extent that the channel token issuer is interested in doing that, 
+
+86
+00:11:23,600 --> 00:11:29,120
+and it really tries to formalize something that's been attempted a good number of times.
+
+87
+00:11:29,120 --> 00:11:36,320
+For people who have been in the space for a while there was something called Tatiana coin which basically tried to do something like this, 
+
+88
+00:11:36,320 --> 00:11:48,480
+well I would say simpler version of
+this, where you would buy it, and that would give you the right to certain, I believe it was a certain number of songs or something.
+
+89
+00:11:48,480 --> 00:11:52,950
+This was a musician, I think, smart media tokens, perhaps a little bit closer to this.
+
+90
+00:11:52,959 --> 00:12:04,560
+There was a Steemit initiative which was supposed to give you the ability to create a community or monetize your community by issuing a token tied to it, I'm not entirely sure how the tokenomics was supposed to work.
+
+91
+00:12:04,560 --> 00:12:17,120
+I think it was perhaps a little bit more speculative where it wasn't clear where the value would come from but here the value is really supposed to come from the value generated by the channel itself.
+
+92
+00:12:17,120 --> 00:12:23,600
+So, that’s channel tokens or we're calling them channel bowels, social tokens.
+
+93
+00:12:23,600 --> 00:12:36,800
+I’m not sure how we're going to explain this but the idea itself is something that's sort of been around for a while, and of course if you're a creator, 
+
+94
+00:12:36,800 --> 00:12:52,880
+you can issue one of these tokens for your channel that you could raise Joy in order to be able to fund various expenditures, and you could obviously trade the channel tokens also.
+
+95
+00:12:52,880 --> 00:12:55,040
+So, those are the channel tokens.
+
+96
+00:12:55,040 --> 00:13:00,630
+And then, lastly, we have crowdfunded bounties. This has actually been implemented already.
+
+97
+00:13:00,639 --> 00:13:17,270
+So, this is an idea for solving the problem that sometimes community members would want to organize within themselves in order to produce some sort of public good
+
+98
+00:13:17,279 --> 00:13:25,040
+that has a platform-wide benefit but, or maybe even a benefit within some subsection of the community,
+
+99
+00:13:25,040 --> 00:13:32,160
+which it's not worth it or it's not clear that it's going to be feasible to get the council with all of its priorities to actually accept and to fund, 
+
+100
+00:13:32,160 --> 00:13:37,510
+or maybe even that there is some budget constraints for the council, so they couldn't even do it if they wanted to do it.
+
+101
+00:13:37,519 --> 00:13:45,680
+The idea is to implement something called an insurance contract which is, basically, very similar to, 
+
+102
+00:13:45,680 --> 00:13:52,560
+I guess it was called tipping point at one point, and then was, I don't remember now,
+
+103
+00:13:52,560 --> 00:14:03,760
+it was this huge startup which was trying to basically incentivize collective action by saying “I'm going to do something only if a sufficient number of other people
+
+104
+00:14:03,760 --> 00:14:06,390
+or sufficient amount of money has been dedicated to do it”.
+
+105
+00:14:06,399 --> 00:14:14,950
+To some extent you could think of the free state project in the United States as a similar type of initiative for political collective action,
+
+106
+00:14:14,959 --> 00:14:26,070
+but basically it's the same idea where you can make a bounty and you could say - this is going to fund x if y amount of funds are provided
+
+107
+00:14:26,079 --> 00:14:42,240
+And then people, if the funds are secured, people can come and work on a bounty, and there's going to be a dedicated person for each bounty who's assigned
+
+108
+00:14:42,240 --> 00:14:47,510
+to as adjudicating whether someone's contribution is good or bad or worthy and how the funds should be distributed.
+
+109
+00:14:47,519 --> 00:14:53,270
+So, basically, a bounty system combined with a crowdfunding system.
+
+110
+00:14:53,279 --> 00:15:02,240
+There's actually a little bit more sophistication in this because we're also trying to model something called the dominant assurance contract 
+
+111
+00:15:02,240 --> 00:15:12,070
+which tries to make it incentive compatible to contribute to one of these by allowing the bounty to be owned
+
+112
+00:15:12,079 --> 00:15:26,560
+by an entrepreneur who puts up a little bit of money, where if all the people who contribute to the bounty, if they contribute to it and it fails, so it doesn't reach the goal of,
+
+113
+00:15:26,560 --> 00:15:37,680
+whatever the goal is for whatever purpose, they all get to split the little prize or it's called the cherry in the bounty that's provided by the entrepreneur.
+
+114
+00:15:37,680 --> 00:15:50,000
+If you are to make a concrete, let's say you want to make a smart TV app for Joystream, you could make one of these bounties where only you could work on it,
+
+115
+00:15:50,000 --> 00:15:57,600
+so only you would get the raised funds, and you put up, let's say, two thousand dollars
+
+116
+00:15:57,600 --> 00:16:12,000
+which will be released to the funders if an insufficient number of people end up contributing to reach whatever goal you need, let’s say you need you need 120 000 in order to do this. 
+
+117
+00:16:12,000 --> 00:16:25,040
+That actually makes it now in the interest of people otherwise who would sit idle and not be able to contribute because they get to speculate on the outcome that it doesn't actually work.
+
+118
+00:16:25,040 --> 00:16:34,240
+So, that is already implemented, it's going to be some time until it's actually exposed in Pioneer so you can use it but on the runtime side this all has already been implemented.
+
+119
+00:16:34,240 --> 00:16:44,160
+There are other things but I think these major four new specifications are the most interesting ones to cover at the moment.
+
+120
+00:16:44,160 --> 00:16:49,759
+That's it, see you in the next video.
+
