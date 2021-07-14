@@ -17,8 +17,7 @@ This is a report which explains the current state of the Joystream network in nu
 | Total Tokens Burned | {newTokensBurn}           | 
 | Spending Proposals (Executed)   |  {spendingProposalsTotal}                  |
 | Bounties paid       |  {bountiesTotalPaid}                           |
-| Validator Role      |  {newValidatorRewards}            | 
-| Council Role        | {newCouncilRewards}             | 
+| Validator Role      |  {newValidatorRewards}            |  
 | Storage Role        | {newStorageProviderReward}             | 
 | Curator Role        | {newCuratorRewards}             |
 | Operations Role     | {newOperationsReward}          |
