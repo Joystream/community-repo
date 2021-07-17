@@ -1,52 +1,57 @@
-These are the results for the **Founding Member Survey** https://blog.joystream.org/sumer-kpis/#12.7. The survey ran from July 9, 2021 to July 17, 2021. The survey had 70 responses.
+These are the results for the **Founding Member Survey** https://blog.joystream.org/sumer-kpis/#12.7. The survey ran from July 9, 2021 to July 17, 2021. The survey had 71 responses.
 
 **1. Are you a member of any groups below?**
 | Answer | Share |%|
 |:-|:-|:-|
-|I submitted a scoring summary for a Scoring Period	|50|71,4|
-|I submitted a scoring summary for a Scoring Period, I have been on the Council on the latest network (eg. Antioch/ joy_testnet_5)	|5|7,1|
-|I submitted a scoring summary for a Scoring Period, I have been on the Council on the latest network (eg. Antioch/ joy_testnet_5), I have been part of a Working Group on the latest network (eg. Antioch/ joy_testnet_5)	|5|7,1|
-|I have been part of a Working Group on the latest network (eg. Antioch/ joy_testnet_5)	|4|5,7|
-|I submitted a scoring summary for a Scoring Period, I have been part of a Working Group on the latest network (eg. Antioch/ joy_testnet_5)	|2|2,9|
-|I have been on the Council on the latest network (eg. Antioch/ joy_testnet_5)	|3|4,3|
+|I submitted a scoring summary for a Scoring Period	|51|71,8|
+|I submitted a scoring summary for a Scoring Period, I have been on the Council on the latest network (eg. Antioch/ joy_testnet_5)	|5|7|
+|I submitted a scoring summary for a Scoring Period, I have been on the Council on the latest network (eg. Antioch/ joy_testnet_5), I have been part of a Working Group on the latest network (eg. Antioch/ joy_testnet_5)	|5|7|
+|I have been part of a Working Group on the latest network (eg. Antioch/ joy_testnet_5)	|4|5,6|
+|I submitted a scoring summary for a Scoring Period, I have been part of a Working Group on the latest network (eg. Antioch/ joy_testnet_5)	|2|2,8|
+|I have been on the Council on the latest network (eg. Antioch/ joy_testnet_5)	|3|4,2|
 |I have been on the Council on the latest network (eg. Antioch/ joy_testnet_5), I have been part of a Working Group on the latest network (eg. Antioch/ joy_testnet_5)	|1|1,4|
-|Total:|70|100|
+|Total:|71|100|
 
-
+![image](https://user-images.githubusercontent.com/57311029/126043761-d120eff2-a46d-42b3-9af6-9a48ef28f850.png)
 
 **2. How many times did you submit a summary when you were active?**
 | Answer | Share |%|
 |:-|:-|:-|
-|Every Scoring Period	|30|42,9|
-|I did not submit one or a few summaries	|27|38,6|
-|Never	|13|18,6|
-|Total:|70|100|
+|Every Scoring Period	|30|42,3|
+|I did not submit one or a few summaries	|28|39,4|
+|Never	|13|18,3|
+|Total:|71|100|
+
+![image](https://user-images.githubusercontent.com/57311029/126043777-d410e526-b995-4085-b3ed-b26c6e53decb.png)
 
 **2.1. Why did you sometimes miss submitting or never submit?**
 | Answer | Share |%|
 |:-|:-|:-|
-|Forgot	|13|32,5|
-|Not woth it, as exepted to few points	|11|27,5|
-|Recently joined	|8|20|
-|I don't participate in the Founding Member Programs	|3|7,5|
-|Did nothing, was a little busy:) |1|2,5|
-|No time to gather all data (validator eras)	|1|2,5|
-|Network update	|1|2,5|
-|Didn't have proper instructions on how and where to fill up until now	|1|2,5|
-|Was not required to	|1|2,5|
-|Total:|40|100|
+|Forgot	|13|31,7|
+|Not woth it, as exepted to few points	|11|26,8|
+|Recently joined	|8|19,5|
+|I don't participate in the Founding Member Programs	|3|7,3|
+|Did nothing, was a little busy:) |1|2,4|
+|No time to gather all data (validator eras)	|1|2,4|
+|Network update	|1|2,4|
+|Didn't have proper instructions on how and where to fill up until now	|1|2,4|
+|Was not required to	|1|2,4|
+|When I was noticed, that after my submitting, I do not take points, I stoped submitting. My girlfriend the same.|1|2,4|
+|Total:|41|100|
+
+![image](https://user-images.githubusercontent.com/57311029/126043801-4cd7d7e4-bb67-44b4-87d5-d7c194ba768f.png)
 
 **2.2. What do you typically include in your summaries?**
 | Answer | Share |%|
 |:-|:-|:-|
-|I never submit	|16	|22,9|
-|Validating	|9	|12,9|
-|Working Group	|3	|4,3|
-|Bounties, Validating	|2	|2,9|
-|Bounties, Video Uploads	|2	|2,9|
-|Bounties, Video Uploads, Validating	|2	|2,9|
-|Council, Working Group, Validating	|2	|2,9|
-|Video Uploads	|2	|2,9|
+|I never submit	|16	|22,5|
+|Validating	|10	|14,1|
+|Working Group	|3	|4,2|
+|Bounties, Validating	|2	|2,8|
+|Bounties, Video Uploads	|2	|2,8|
+|Bounties, Video Uploads, Validating	|2	|2,8|
+|Council, Working Group, Validating	|2	|2,8|
+|Video Uploads	|2	|2,8|
 |Actions performed	|1	|1,4|
 |Bounties, Memes, Community Assistance	|1	|1,4|
 |Bounties, Validating, Social media; helping community; inviting new people to project	|1	|1,4|
@@ -79,16 +84,17 @@ These are the results for the **Founding Member Survey** https://blog.joystream.
 |Working Group, Validating, Help in the group, other content	|1	|1,4|
 |Working Group, Video Uploads, Validating	|1	|1,4|
 |N/A	|1|1,4|
-|Total:|70|100|
+|Total:|71|100|
 
+![image](https://user-images.githubusercontent.com/57311029/126043834-53734916-a663-40c8-8bc7-62f55fc637d2.png)
 
 **3. How many terms have you been a member of the Council?**
 | Answer | Share |%|
 |:-|:-|:-|
-|Never	|54	|77,1|
-|Three	|2	|2,9|
-|Once	|2	|2,9|
-|Twice	|3	|4,3|
+|Never	|54	|77,5|
+|Three	|2	|2,8|
+|Once	|2	|2,8|
+|Twice	|3	|4,2|
 |Five	|1	|1,4|
 |-	|1	|1,4|
 |>5	|1	|1,4|
@@ -98,7 +104,9 @@ These are the results for the **Founding Member Survey** https://blog.joystream.
 |I do not remember :) I think somewhere between 5 and 10 times	|1	|1,4|
 |More than 10	|1	|1,4|
 |More than 4 times	|1	|1,4|
-|Total:|70|100|
+|Total:|71|100|
+
+![image](https://user-images.githubusercontent.com/57311029/126043845-3668e4e4-ce57-4c81-b657-7208c6e970dd.png)
 
 **3.1. How many times have you reported it?**
 | Answer | Share |%|
@@ -112,43 +120,49 @@ These are the results for the **Founding Member Survey** https://blog.joystream.
 |Twice	|1	|6,7|
 |Total:|15|100|
 
+![image](https://user-images.githubusercontent.com/57311029/126043857-f19aedae-ffb0-406f-9739-7a6afd65870b.png)
+
 **4. Have you been part of a Working Group?**
 | Answer | Share |%|
 |:-|:-|:-|
-|No	|56	|80|
-|Operations	|7	|10|
-|Curator	|6	|8,6|
+|No	|57	|80,3|
+|Operations	|7	|9,9|
+|Curator	|6	|8,5|
 |Storage	|1	|1,4|
-|Total:|70|100|
+|Total:|71|100|
+
+![image](https://user-images.githubusercontent.com/57311029/126043866-9ae9cbb2-1d7f-4ae1-8cd0-cd4c2785566e.png)
 
 **4.1. How many Scoring Periods have you been a member of said Working Group?**
 | Answer | Share |%|
 |:-|:-|:-|
-|Once	|5	|33,3|
-|Never	|2	|13,3|
-|Twice	|4	|26,7|
-|at least |10	|1	|6,7|
-|I've become Curator at 11 period	|1	|6,7|
-|more |4	|1	|6,7|
-|Since march 2021	|1	|6,7|
-|Total:|15|100|
+|Once	|5	|31,3|
+|Never	|3	|18,8|
+|Twice	|4	|25|
+|at least |10	|1	|6,3|
+|I've become Curator at 11 period	|1	|6,3|
+|more |4	|1	|6,3|
+|Since march 2021	|1	|6,3|
+|Total:|16|100|
+
+![image](https://user-images.githubusercontent.com/57311029/126043882-8875f312-9250-4f46-8e8c-c2eb88fda9cd.png)
 
 **5. Why not? (if you have not reported taking part in Council/WG/Bounties)**
 | Answer | Share |%|
 |:-|:-|:-|
-|Forgot	18	25,7
-|I thought that this work is paid for in tokens and points are not awarded	|13	|18,6|
-|I have reported	|10	|14,3|
-|I don't get points for the validator, maybe it will be the same with the consul?	|4	|5,7|
-|I am new member	|4	|5,7|
-|Difficult to get into or has no chance	|2	|2,9|
-|I have very little free time now, I'm not sure I can help anything.	|2	|2,9|
-|I noticed	|2	|2,9|
+|Forgot	|18	|25,4|
+|I thought that this work is paid for in tokens and points are not awarded	|13	|18,3|
+|I have reported	|10	|14,1|
+|I don't get points for the validator, maybe it will be the same with the consul?	|4	|5,6|
+|I am new member	|4	|5,6|
+|Difficult to get into or has no chance	|2	|2,8|
+|I have very little free time now, I'm not sure I can help anything.	|2	|2,8|
+|I noticed	|2	|2,8|
+|I don't know what it is =)	|2	|2,8|
 |I do not receive points for reports	|1	|1,4|
 |I didn't know that periods end so quickly	|1	|1,4|
 |Because i never became coucil	|1	|1,4|
 |I applied for Storage Provider,but wasn't accepted.Waiting for the next call :)	|1	|1,4|
-|I don't know what it is =)	|2	|2,9|
 |I have reported in Creative Community Challenge (poem)!	|1	|1,4|
 |I informed in proposual 	|1	|1,4|
 |I just started and I'll send reports every time further.	|1	|1,4|
@@ -158,42 +172,53 @@ These are the results for the **Founding Member Survey** https://blog.joystream.
 |Now i am in progress to get this. 	|1	|1,4|
 |Participated in bounties	|1	|1,4|
 |Probably will do in the future	|1	|1,4|
-|Total:|70|100|
+|When I noticed, that I did not take points for validating and running a node, I thought, that there no sense about bounties submitting. But I participated in some of them.	|1	|1,4|
+|Total:|71|100|
+
+![image](https://user-images.githubusercontent.com/57311029/126043896-58b69c8c-64ad-46ff-9bfc-323dcd83c77d.png)
 
 **6. Did you know that taking part in Council/WG/Bounties awards lots of points?**
 | Answer | Share |%|
 |:-|:-|:-|
-|No	|29	|41,4|
-|Yes	|41	|58,6|
-|Total:|70|100|
+|No	|30	|42,3|
+|Yes	|41	|57,7|
+|Total:|71|100|
+
+![image](https://user-images.githubusercontent.com/57311029/126043903-0e334e55-2c91-43d6-ac07-3bb409d2ad15.png)
 
 **7. Did you know that Council/Bounty $ earnings is roughly proportional to FM points awarded?**
 | Answer | Share |%|
 |:-|:-|:-|
-|No	|47	|67,1|
-|Yes	|23	|32,9|
-|Total:|70|100|
+|No	|48	|67,6|
+|Yes	|23	|32,4|
+|Total:|71|100|
+
+![image](https://user-images.githubusercontent.com/57311029/126043919-ad8c8372-0f71-48b7-8bdb-a20e970f58b0.png)
 
 **7.1. Knowing this, would you (re-)submit your summaries for "older" Scoring Periods?**
 | Answer | Share |%|
 |:-|:-|:-|
-|Maybe	|34	|48,6|
-|Yes	|27	|38,6|
-|No	|9	|12,9|
-|Total:|70|100|
+|Maybe	|34	|47,9|
+|Yes	|28	|39,4|
+|No	|9	|12,7|
+|Total:|71|100|
+
+![image](https://user-images.githubusercontent.com/57311029/126043931-fcdc707f-4063-440c-b232-bc40b6f64330.png)
 
 **8. What can be done to make it "easier" for you to submit in the future?** - Split by the groups
 | Answer | Share |%|
 |:-|:-|:-|
-|Make it more convenient and simplify	|27	|38,6|
-|Everything is good	|20	|28,6|
-|Remind to submit a report	|7	|10|
-|Detail the principles of scoring	|7	|10|
-|More points need to be awarded	|3	|4,3|
-|I don't know	|2	|2,9|
-|I have no time	|2	|2,9|
-|Other	|2	|2,9|
-|Total:|70|100|
+|Make it more convenient and simplify	|27	|38|
+|Everything is good	|20	|28,2|
+|Remind to submit a report	|7	|9,9|
+|Detail the principles of scoring	|7	|9,9|
+|More points need to be awarded	|3	|4,2|
+|I don't know	|2	|2,8|
+|I have no time	|2	|2,8|
+|Other	|3	|4,2|
+|Total:|71|100|
+
+![image](https://user-images.githubusercontent.com/57311029/126044985-7645da61-bef3-4bd6-bf2b-918fe9396806.png)
 
 **8. What can be done to make it "easier" for you to submit in the future?** - All the answers
 | Answer |
@@ -268,6 +293,7 @@ If there was an understandable form that could be filled out.
 |In fact, everything is quite simple, you just need to carefully read the assignments yourself.|
 |With the updated UX I could easily notice the banner that I'd have to report activities|
 |Raise awareness|
+|You just did it! You show, that it's important. So I hope, that the problem solved. I will try submitting in time. Thank you. With respect.|
 
 **9. The signs**
 | Sign |
@@ -342,3 +368,4 @@ If there was an understandable form that could be filled out.
 |0xc48eac79776fdebf1ba2a0f6be1c33319d5de8a2fa0f2128c73293e2287ac528c3ec7f21220ea867f442e1da473820d2e1a3de176d12a8428696ea01322fdf83|
 |cannot go to that URL so submitting without key (ID 1323) kakashisenpai discord|
 |Link expired. Trying me luck :) 5DkqJ2DXqj7B66o3ohnBKsnNzsyLixCMtKq9dZmarUETcyLL|
+| I am member 1842, signing with key 5EqqPRuWLwUbK9ZzcTEiHHWd8ZzGjiWiHbM1fNMNb4RhRCJN 0x5c7846d62bb9372a77efa7e3b7879c8be5ad75db6eacb66d05a7acaa9e5264614752986be82163dee4f11a2d3e3967c7689cde9267b51f6d2a3cb560fe703e82|
