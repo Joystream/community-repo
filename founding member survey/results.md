@@ -101,87 +101,87 @@ These are the results for the **Founding Member Survey** https://blog.joystream.
 **3.1. How many times have you reported it?**
 | Answer | Share |%|
 |:-|:-|:-|
-| Never  | %    |
-| Once   | %    |
-| Twice   | %    |
-| 1   | %    |
-| All the times   | %    |
-| 3   | %    |
-| all the times   | %    |
-| 5   | %    |
+|Once	|5	|33,3|
+|All the times	|4	|26,7|
+|Three	|1	|6,7|
+|Five	|1	|6,7|
+|Few times	|1	|6,7|
+|Never	|2	|13,3|
+|Twice	|1	|6,7|
+|Total:|15|100|
 
 **4. Have you been part of a Working Group?**
 | Answer | Share |%|
 |:-|:-|:-|
-| No  | %    |
-| Operations   | %    |
-| Curator   | %    |
-| Storage   | %    |
+|No	|56	|80|
+|Operations	|7	|10|
+|Curator	|6	|8,6|
+|Storage	|1	|1,4|
+|Total:|70|100|
 
 **4.1. How many Scoring Periods have you been a member of said Working Group?**
 | Answer | Share |%|
 |:-|:-|:-|
-| Twice  | %    |
-| Once   | %    |
-| Never   | %    |
-| I've become Curator at 11 period   | %    |
-| 4   | %    |
+|Once	|5	|33,3|
+|Never	|2	|13,3|
+|Twice	|4	|26,7|
+|at least |10	|1	|6,7|
+|I've become Curator at 11 period	|1	|6,7|
+|more |4	|1	|6,7|
+|Since march 2021	|1	|6,7|
+|Total:|15|100|
 
 **5. Why not? (if you have not reported taking part in Council/WG/Bounties)**
 | Answer | Share |%|
 |:-|:-|:-|
-| Forgot  | %    |
-| I thought that this work is paid for in tokens and points are not awarded   | %    |
-| I have reported   | %    |
-| I noticed   | %    |
-| I've become Curator at 11 period   | %    |
-| N/a   | %    |
-| I applied for Storage Provider,but wasn't accepted.Waiting for the next call :)   | %    |
-| I have very little free time now, I'm not sure I can help anything   | %    |
-| probably will do in the future  | %    |
-| participated in bounties  | %    |
+|Forgot	18	25,7
+|I thought that this work is paid for in tokens and points are not awarded	|13	|18,6|
+|I have reported	|10	|14,3|
+|I don't get points for the validator, maybe it will be the same with the consul?	|4	|5,7|
+|I am new member	|4	|5,7|
+|Difficult to get into or has no chance	|2	|2,9|
+|I have very little free time now, I'm not sure I can help anything.	|2	|2,9|
+|I noticed	|2	|2,9|
+|I do not receive points for reports	|1	|1,4|
+|I didn't know that periods end so quickly	|1	|1,4|
+|Because i never became coucil	|1	|1,4|
+|I applied for Storage Provider,but wasn't accepted.Waiting for the next call :)	|1	|1,4|
+|I don't know what it is =)	|2	|2,9|
+|I have reported in Creative Community Challenge (poem)!	|1	|1,4|
+|I informed in proposual 	|1	|1,4|
+|I just started and I'll send reports every time further.	|1	|1,4|
+|I'm just mostly focused on the professional video production:)	|1	|1,4|
+|I've become Curator at 11 period	|1	|1,4|
+|N/a	|1	|1,4|
+|Now i am in progress to get this. 	|1	|1,4|
+|Participated in bounties	|1	|1,4|
+|Probably will do in the future	|1	|1,4|
+|Total:|70|100|
 
 **6. Did you know that taking part in Council/WG/Bounties awards lots of points?**
 | Answer | Share |%|
 |:-|:-|:-|
-| Yes  | %    |
-| No   | %    |
+|No	|29	|41,4|
+|Yes	|41	|58,6|
+|Total:|70|100|
 
 **7. Did you know that Council/Bounty $ earnings is roughly proportional to FM points awarded?**
 | Answer | Share |%|
 |:-|:-|:-|
-| No  | %    |
-| Yes   | %    |
+|No	|47	|67,1|
+|Yes	|23	|32,9|
+|Total:|70|100|
 
 **7.1. Knowing this, would you (re-)submit your summaries for "older" Scoring Periods?**
 | Answer | Share |%|
 |:-|:-|:-|
-| Maybe  | %    |
-| Yes   | %    |
-| No   | %    |
+|Maybe	|34	|48,6|
+|Yes	|27	|38,6|
+|No	|9	|12,9|
+|Total:|70|100|
 
-**8. What can be done to make it "easier" for you to submit in the future?**
+**8. What can be done to make it "easier" for you to submit in the future?** - Split by groups
 | Answer | Share |%|
 |:-|:-|:-|
-| make easy tool to get actual validators statistics, change Keybase to Discord or Telegram, maybe prepare some auto-generated templates for submitting reports in the current scoring period (date can be filled automatically for the current period)  | %    |
-| Make submission process as easy as possible. Preferably via web UI. Without needing to think about a format of submission text. As less paperwork as possible.   | %    |
-| I think i missed all the idea of this so maybe a guide on what this role is about and how it can be awarded can make sense. Sure, it is already done.   | %    |
-| It will help a lot if I know for what activity how many points are awarded. Then I would deliberately change course towards more reward.   | %    |
-| maybe some platform where we can submit every thing we did to joystream   | %    |
-| Make a convenient form on the website for submitting reports   | %    |
-| the system of reports is very understandable for me   | %    |
-| No screenshot for node), i don't like to make it)   | %    |
-| Make a webpage with online reporting and logging.   | %    |
-| The "validator" report could be simplified a lot   | %    |
-| Nothing, everything is great and convinient   | %    |
-| To know when is the end of current period.   | %    |
-| to be honest, I'm already used to it   | %    |
-| this form of filing is acceptable   | %    |
-| Nothing, I'm used to it.   | %    |
-| At the moment,it's ok.   | %    |
-| Report submission form   | %    |
-| I just need more time   | %    |
-| I'm thinking about it   | %    |
-| simplify the process   | %    |
-| twitter posts   | %    |
-| ю   | %    |
+
+|Total:|70|100|
