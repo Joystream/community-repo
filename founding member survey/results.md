@@ -1,5 +1,18 @@
 These are the results for the **Founding Member Survey** https://blog.joystream.org/sumer-kpis/#12.7. The survey ran from July 9, 2021 to July 17, 2021. The survey had 71 responses.
 
+From the results obtained, the following conclusions can be drawn:
+1) More than 40% of respondents sometimes or never submitted reports either because they forgot or did not hope to get a significant number of points.
+2) 19% of consuls have never submitted a report on this activity.
+3) About 45% of the respondents did not include such activities as Council / WG / Bounties in their reports because they forgot, and also believed that they had already paid for it in tokens.
+4) 42% of the respondents did not know that big points are awarded for participation in the Council / WG / Bounties.
+5) Almost 70% were unaware of the fact that the amount of dollars earned for participation in the Council / WG / Bounties is equal to the points of the FM program.
+6) About 90% of the respondents consider it possible to re-submit their activities.
+7) About 40% of the respondents believe that the procedure for submitting a report should be simplified or improved. 10% Ask for a more transparent assessment and scoring procedure.
+Some users stated that the points awarded are very insignificant, and sometimes there is no reward at all for the activity submitted, which is demotivating.
+
+Separately, it should be said about the creation of a signature. This turned out to be a non-trivial task and was completely ruined. There were several reasons, but it is obvious that it is necessary to conduct additional clarification about the principle of this action.
+
+
 **1. Are you a member of any groups below?**
 | Answer | Share |%|
 |:-|:-|:-|
