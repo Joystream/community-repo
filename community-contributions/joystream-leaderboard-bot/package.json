@@ -1,0 +1,19 @@
+{
+  "name": "joystream-leaderboard-bot",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "agrafen",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0",
+    "mongodb": "^4.0.0",
+    "mongoose": "^5.13.2",
+    "node-telegram-bot-api": "^0.53.0"
+  }
+}
