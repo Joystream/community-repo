@@ -1,0 +1,30 @@
+{
+  "name": "joystream-storage-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "db.json"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0",
+    "g": "^2.0.1",
+    "lowdb": "^2.1.0",
+    "moment": "^2.29.1",
+    "node-localstorage": "^2.2.1",
+    "node-schedule": "^2.0.0",
+    "nodemon": "^2.0.9",
+    "path": "^0.12.7"
+  },
+  "type": "module"
+}
