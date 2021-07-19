@@ -29,14 +29,8 @@ async function main() {
   // Initialise the provider to connect to the local node
   const provider = new WsProvider('ws://127.0.0.1:9944');
   
-  /*
-  If you want to play around on our staging network, go ahead and connect to this staging network instead.
-  const provider = new WsProvider('wss://alexandria-testing-1.joystream.app/staging/rpc:9944');
-  
-  There's a bunch of tokens on the account: 5HdYzMVpJv3c4omqwKKr7SpBgzrdRRYBwoNVhJB2Y8xhUbfK,
-  with seed: "emotion soul hole loan journey what sport inject dwarf cherry ankle lesson"
-  please transfer (what you need only) to your own account, and don't test runtime upgrades :D
-  */
+  //If you want to play around on our staging network, go ahead and connect to this staging network instead.
+  //const provider = new WsProvider('wss://testnet-rpc-2-singapore.joystream.org');
   
   // Create the API and wait until ready
   const api = await ApiPromise.create({ provider, types })
@@ -49,13 +43,12 @@ async function main() {
   const proposalIds = proposalKeys.map(({ args: [proposalId]}) => proposalId) as Vec<ProposalId>
   proposalIds.sort((a,b) => a.toNumber()-b.toNumber())
   console.log("number of proposals", proposalIds.length);
-  console.log("all IDs:", proposalIds.join(', '));
 
   // get all stakeIds associated with proposalIds
   const stakeIdOfProposalId = await api.query.proposalsEngine.stakesProposals.keys() as StorageKey[]
   const stakeIdsOfProposalIds = stakeIdOfProposalId.map(({ args: [stakeId]}) => stakeId) as Vec<StakeId>
   stakeIdsOfProposalIds.sort((a,b) => a.toNumber()-b.toNumber())
-  console.log("all stakeIdsOfProposalIds:", stakeIdsOfProposalIds.join(", "));
+  console.log("number of stakeIdsOfProposalIds:", stakeIdsOfProposalIds.length);
 
   for (let id of proposalIds) {
     const proposal = await api.query.proposalsEngine.proposals(id) as Proposal
