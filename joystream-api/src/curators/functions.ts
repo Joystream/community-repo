@@ -1,4 +1,4 @@
-import { Actor, CreateEntityOperation, EntityId, Entity, OperationType, UpdatePropertyValuesOperation } from "@joystream/types/content-directory";
+import { Actor, CreateEntityOperation, OperationType, UpdatePropertyValuesOperation } from "@joystream/types/content-directory";
 import { ApiPromise } from "@polkadot/api";
 import { u64, Vec } from "@polkadot/types";
 import { EventRecord, Extrinsic, Hash, SignedBlock } from "@polkadot/types/interfaces";
@@ -14,11 +14,10 @@ interface NewBatch {
   actor: AnyJson
 }
 
-interface Removed {
+interface ActionData {
   blockHeight: number,
   action: string,
   entityId: number,
-  classOfEntity: number,
   signer: string,
   actor: AnyJson
 }
@@ -27,8 +26,8 @@ export async function getBatchAction(api: ApiPromise, blockHeight:number, blockH
   const getBlock = await api.rpc.chain.getBlock(blockHash) as SignedBlock
   const extrinsics = getBlock.block.extrinsics as Vec<Extrinsic>
   for (let n=0; n<extrinsics.length; n++) {
-    const extSection = extrinsics[n].method.sectionName
-    const extMethod = extrinsics[n].method.methodName
+    const extSection = extrinsics[n].method.section
+    const extMethod = extrinsics[n].method.method
     let extrinscIndex = 0
     if (extSection == "contentDirectory" && extMethod == "transaction") {
       extrinscIndex +=1
@@ -77,35 +76,29 @@ export async function getBatchAction(api: ApiPromise, blockHeight:number, blockH
   return null
 }
 
-export async function getRemovedAction(api: ApiPromise, blockHeight:number, blockHash:Hash, removIndex: number, event: EventRecord): Promise<Removed|null> {
+export async function getChangeAction(api: ApiPromise, method: string, blockHeight:number, blockHash:Hash, eventIndex: number, event: EventRecord): Promise<ActionData|null> {
   const getBlock = await api.rpc.chain.getBlock(blockHash) as SignedBlock
   const extrinsics = getBlock.block.extrinsics as Vec<Extrinsic>
   for (let n=0; n<extrinsics.length; n++) {
-    const extSection = extrinsics[n].method.sectionName
-    const extMethod = extrinsics[n].method.methodName
+    const extSection = extrinsics[n].method.section
+    const extMethod = extrinsics[n].method.method
     let extrinscIndex = 0
-    if (extSection == "contentDirectory" && extMethod == "removeEntity") {
+    console.log(`Extrinsics section=${extSection}, Event method=${extMethod}`)
+    if (extSection == "content" && extMethod == method) {
       extrinscIndex +=1
-      if (removIndex == extrinscIndex) {
+      if (eventIndex == extrinscIndex) {
         const extrinsic = extrinsics[n]
         const actor = extrinsic.args[0] as Actor
-        let entityId:number = -1
-        let classOfEntity:number = -1
         const ent = event.event.data[1]
-        if (ent instanceof EntityId) {
-          entityId = ent.toNumber()
-          const previousBlockHash = await api.rpc.chain.getBlockHash(blockHeight-1) as Hash
-          classOfEntity = (await api.query.contentDirectory.entityById.at(previousBlockHash,entityId) as Entity).class_id.toNumber()
-        }
-        const removedEntity:Removed = {
+        let entityId:number = +(ent.toString())
+        const video:ActionData = {
           blockHeight,
-          action: "Entity removed",
+          action: method,
           entityId,
-          classOfEntity,
           signer: extrinsic.signer.toString(),
           actor: actor.toHuman()
         }
-        return removedEntity
+        return video
       }
     }
   }

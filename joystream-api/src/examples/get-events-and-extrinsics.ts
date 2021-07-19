@@ -39,8 +39,8 @@ async function main() {
         }
       }
       for (let i=0; i<extrinsics.length; i++) {
-        const section = extrinsics[i].method.sectionName
-        const method = extrinsics[i].method.methodName
+        const section = extrinsics[i].method.section
+        const method = extrinsics[i].method.method
         const extrinsicType = section+`:`+method
         if (!extrinsicTypes.includes(extrinsicType)) {
           extrinsicTypes.push(extrinsicType)
