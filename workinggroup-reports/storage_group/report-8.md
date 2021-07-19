@@ -83,7 +83,7 @@ This is the 8th report for the Storage Provider Working Group. This week we cros
 - Storage capacity: 3TB
 - Type of storage: SSD
 - Discord Name: Lelik_maxi#6419
-- Free Space: 431GB
+- Free Space: 2.5TB
 
 ### dapplooker
 
