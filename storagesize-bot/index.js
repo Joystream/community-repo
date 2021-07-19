@@ -101,7 +101,7 @@ client.on("message", async (msg) => {
   const user = msg.author;
   if (msg.content === "/storagesize") {
     msg
-      .reply("Calculating... <a:check_no:717523612906684428>")
+      .reply("Calculating... ")
       .then(async (oldMessage) => {
         generateMsg(oldMessage, user);
       })
