@@ -104,8 +104,9 @@ export class StatisticsCollector {
         }
 
         const fileContent = await fs.readFile(bountiesFilePath);
-        const rawBounties = parse(fileContent);
+        let rawBounties = parse(fileContent);
         rawBounties.shift();
+        rawBounties = rawBounties.filter((line: string[]) => line[8] == 'Bounties');
 
         let bounties = rawBounties.map((rawBounty: any) => {
             return new Bounty(rawBounty[0], rawBounty[1], rawBounty[2], rawBounty[3], rawBounty[4], rawBounty[5]);
