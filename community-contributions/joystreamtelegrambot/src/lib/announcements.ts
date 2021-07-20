@@ -5,6 +5,7 @@ import {
   Member,
   ProposalDetail,
   Proposals,
+  Send,
 } from "../types";
 import { BlockNumber } from "@polkadot/types/interfaces";
 import { Channel, ElectionStage } from "@joystream/types/augment";
@@ -35,7 +36,8 @@ const query = async (test: string, cb: () => Promise<any>): Promise<any> => {
 export const channels = async (
   api: Api,
   channels: number[],
-  sendMessage: (msg: string) => void
+  sendMessage: Send,
+  channel: any
 ): Promise<number> => {
   const [last, current] = channels;
   const messages: string[] = [];
@@ -51,7 +53,7 @@ export const channels = async (
       `<b>Channel <a href="${domain}/#//media/channels/${id}">${id}</a> by <a href="${member.url}">${member.handle} (${member.id})</a></b>`
     );
   }
-  sendMessage(messages.join("\r\n\r\n"));
+  sendMessage(messages.join("\r\n\r\n"), channel);
   return current;
 };
 
@@ -61,7 +63,8 @@ export const council = async (
   api: Api,
   council: Council,
   currentBlock: number,
-  sendMessage: (msg: string) => void
+  sendMessage: Send,
+  channel: any
 ): Promise<Council> => {
   const round: number = await api.query.councilElection.round();
   const stage: any = await api.query.councilElection.stage();
@@ -107,7 +110,7 @@ export const council = async (
     round !== council.round &&
     stageString !== council.last
   )
-    sendMessage(msg);
+    sendMessage(msg, channel);
   return { round, last: stageString };
 };
 
@@ -116,7 +119,8 @@ export const council = async (
 export const categories = async (
   api: Api,
   category: number[],
-  sendMessage: (msg: string) => void
+  sendMessage: Send,
+  channel: any
 ): Promise<number> => {
   if (category[0] === category[1]) return category[0];
   const messages: string[] = [];
@@ -127,7 +131,7 @@ export const categories = async (
     messages.push(msg);
   }
 
-  sendMessage(messages.join("\r\n\r\n"));
+  sendMessage(messages.join("\r\n\r\n"), channel);
   return category[1];
 };
 
@@ -135,7 +139,8 @@ export const categories = async (
 export const posts = async (
   api: Api,
   posts: number[],
-  sendMessage: (msg: string) => void
+  sendMessage: Send,
+  channel: any
 ): Promise<number> => {
   const [last, current] = posts;
   if (current === last) return last;
@@ -151,6 +156,9 @@ export const posts = async (
       api.query.forum.threadById(threadId)
     );
     const categoryId = thread.category_id.toNumber();
+    if (categoryId === 19 || categoryId === 38) continue; // hide: 19 Media, 38 Russian
+    if ([180, 265, 275].includes(threadId)) continue;
+    // 180 tokens, 265 faucet, 275 pets
 
     const category: Category = await query("title", () =>
       categoryById(api, categoryId)
@@ -170,7 +178,7 @@ export const posts = async (
     );
   }
 
-  sendMessage(messages.join("\r\n\r\n"));
+  sendMessage(messages.join("\r\n\r\n"), channel);
   return current;
 };
 
@@ -179,7 +187,8 @@ export const proposals = async (
   api: Api,
   prop: Proposals,
   block: number,
-  sendMessage: (msg: string) => void
+  sendMessage: Send,
+  channel: any
 ): Promise<Proposals> => {
   let { current, last, active, executing } = prop;
 
@@ -191,7 +200,7 @@ export const proposals = async (
       .add(6 * (votingEndsAt - block), "second")
       .format("DD/MM/YYYY HH:mm");
     const msg = `Proposal ${id} <b>created</b> at block ${createdAt}.\r\n${message}\r\nYou can vote until ${endTime} UTC (block ${votingEndsAt}).`;
-    sendMessage(msg);
+    sendMessage(msg, channel);
     active.push(id);
   }
 
@@ -206,7 +215,7 @@ export const proposals = async (
         if (!executed) executing.push(id);
       }
       const msg = `Proposal ${id} <b>${label}</b> at block ${finalizedAt}.\r\n${message}`;
-      sendMessage(msg);
+      sendMessage(msg, channel);
       active = active.filter((a) => a !== id);
     }
   }
@@ -217,7 +226,7 @@ export const proposals = async (
     const executesAt = +finalizedAt + parameters.gracePeriod.toNumber();
     if (block < executesAt) continue;
     const msg = `Proposal ${id} <b>executed</b> at block ${executesAt}.\r\n${message}`;
-    sendMessage(msg);
+    sendMessage(msg, channel);
     executing = executing.filter((e) => e !== id);
   }
 
@@ -234,7 +243,8 @@ export const heartbeat = (
   blocks: Block[],
   timePassed: string,
   proposals: Proposals,
-  sendMessage: (msg: string) => void
+  sendMessage: Send,
+  channel: any
 ): [] => {
   const durations = blocks.map((b) => b.duration);
   const blocktime = getAverage(durations) / 1000;
@@ -261,15 +271,14 @@ export const heartbeat = (
   if (finalized)
     proposalString += `${finalized} ${p(finalized)} in grace period.`;
 
-  sendMessage(
-    `  ${blocks.length} blocks produced in ${timePassed}
+  const msg = `  ${blocks.length} blocks produced in ${timePassed}
   Blocktime: ${blocktime.toFixed(3)}s
   Stake: ${avgStake.toFixed(1)} / ${avgIssued.toFixed()} M tJOY (${percent}%)
   Validators: ${avgVals.toFixed()} (${reward} tJOY/h)
   Nominators: ${getAverage(noms).toFixed()}
-  ${proposalString}`
-  );
+  ${proposalString}`;
 
+  sendMessage(msg, channel);
   return [];
 };
 

@@ -58,3 +58,5 @@ export interface Block {
   issued: number;
   reward: number;
 }
+
+export type Send = (msg: string, channel: any) => void;

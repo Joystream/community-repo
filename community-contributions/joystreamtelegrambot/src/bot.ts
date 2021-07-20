@@ -1,5 +1,13 @@
+import { Client } from "discord.js";
 import TelegramBot from "node-telegram-bot-api";
-import { token, chatid, heartbeat, proposalDelay, wsLocation } from "../config";
+import {
+  discordToken,
+  tgToken,
+  chatid,
+  heartbeat,
+  proposalDelay,
+  wsLocation,
+} from "../config";
 
 // types
 import { Block, Council, Options, Proposals } from "./types";
@@ -18,17 +26,53 @@ const log = (msg: string): void | number => opts.verbose && console.log(msg);
 process.env.NTBA_FIX_319 ||
   log("TL;DR: Set NTBA_FIX_319 to hide this warning.");
 
-const bot = token ? new TelegramBot(token, { polling: true }) : null;
+// connect to telegram
+const bot = tgToken ? new TelegramBot(tgToken, { polling: true }) : null;
+
+// connect to discord
+let discordChannels: { [key: string]: any } = {};
+const client = new Client();
+client.login(discordToken);
+client.on("ready", async () => {
+  if (!client.user) return;
+  console.log(`Logged in to discord as ${client.user.tag}!`);
+  discordChannels.council = await findDiscordChannel("council");
+  discordChannels.proposals = await findDiscordChannel("proposals-bot");
+  discordChannels.forum = await findDiscordChannel("forum-bot");
+});
+
+const findDiscordChannel = (name: string) =>
+  client.channels.cache.find((channel: any) => channel.name === name);
+
+client.on("message", async (msg) => {
+  const user = msg.author;
+  if (msg.content === "/status") {
+    msg.reply(`reporting to discord`);
+  }
+});
 
 let lastHeartbeat: number = moment().valueOf();
 
-const sendMessage = (msg: string) => {
+// send to telegram and discord
+const sendMessage = (msg: string, channel: any) => {
   if (msg === "") return;
+  sendDiscord(msg, channel);
+  sendTelegram(msg);
+};
+const sendTelegram = (msg: string) => {
   try {
     if (bot) bot.sendMessage(chatid, msg, { parse_mode: "HTML" });
     else console.log(msg);
   } catch (e) {
-    console.log(`Failed to send message: ${e}`);
+    console.log(`Failed to send to telegram: ${e}`);
+  }
+};
+const sendDiscord = (msg: string, channel: any) => {
+  if (!channel) return;
+  try {
+    channel.send(msg);
+  } catch (e) {
+    console.log(e);
   }
 };
 
@@ -132,18 +176,36 @@ const main = async () => {
       // heartbeat
       if (timestamp > lastHeartbeat + heartbeat) {
         const time = passedTime(lastHeartbeat, timestamp);
-        blocks = announce.heartbeat(api, blocks, time, proposals, sendMessage);
+        blocks = announce.heartbeat(
+          api,
+          blocks,
+          time,
+          proposals,
+          sendMessage,
+          discordChannels.proposals
+        );
         lastHeartbeat = block.timestamp;
       }
 
       // announcements
       if (opts.council && block.id > lastBlock.id)
-        council = await announce.council(api, council, block.id, sendMessage);
+        council = await announce.council(
+          api,
+          council,
+          block.id,
+          sendMessage,
+          discordChannels.council
+        );
 
       if (opts.channel) {
         channels[1] = await get.currentChannelId(api);
         if (channels[1] > channels[0])
-          channels[0] = await announce.channels(api, channels, sendMessage);
+          channels[0] = await announce.channels(
+            api,
+            channels,
+            sendMessage,
+            discordChannels.channels
+          );
       }
 
       if (opts.proposals) {
@@ -153,14 +215,25 @@ const main = async () => {
           (timestamp > lastProposalUpdate + 60000 * proposalDelay &&
             (proposals.active || proposals.executing))
         ) {
-          proposals = await announce.proposals(api, proposals, id, sendMessage);
+          proposals = await announce.proposals(
+            api,
+            proposals,
+            id,
+            sendMessage,
+            discordChannels.proposals
+          );
           lastProposalUpdate = timestamp;
         }
       }
 
       if (opts.forum) {
         posts[1] = await get.currentPostId(api);
-        posts[0] = await announce.posts(api, posts, sendMessage);
+        posts[0] = await announce.posts(
+          api,
+          posts,
+          sendMessage,
+          discordChannels.forum
+        );
       }
 
       printStatus(opts, { block: id, chain, posts, proposals });
