@@ -15,8 +15,8 @@ async function main() {
 
     // get all extrinsic and event types in a range of blocks (only works for last 200 blocks unless you are querying an archival node)
     // will take a loooong time if you check too many blocks :)
-    const firstBlock = 1
-    const lastBlock = 10000
+    const firstBlock = 800000
+    const lastBlock = 801000
     const eventTypes:string[] = []
     const extrinsicTypes: string[] = []
     for (let blockHeight=firstBlock; blockHeight<lastBlock; blockHeight++) {

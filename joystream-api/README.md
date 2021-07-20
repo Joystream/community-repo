@@ -3,46 +3,75 @@
 Repo with examples on how to use the @joystream/types package along with @polkadot/api to communicate with a joystream full node.
 
 
-## Examples
+## Building the code
 
 ```
 yarn && yarn build
-yarn run status
 ```
 
-## Example code
+In case you have a compilation error saying:
 
-```javascript
-import { registerJoystreamTypes } from '@joystream/types';
-import { ApiPromise, WsProvider } from '@polkadot/api';
-
-async function main () {
-  // Initialise the provider to connect to the local node
-  const provider = new WsProvider('ws://127.0.0.1:9944');
-
-  // Register types before creating the API
-  registerJoystreamTypes();
-
-  // Create the API and wait until ready
-  const api = await ApiPromise.create({ provider });
-
-  // Retrieve the chain & node information information via rpc calls
-  const [chain, nodeName, nodeVersion] = await Promise.all([
-    api.rpc.system.chain(),
-    api.rpc.system.name(),
-    api.rpc.system.version()
-  ]);
-
-  console.log(`Chain ${chain} using ${nodeName} v${nodeVersion}`);
-}
-
-main();
 ```
+node_modules/@joystream/types/content-working-group/index.d.ts:3:22 - error TS2614: Module '"../common"' has no exported member 'Credential'. Did you mean to use 'import Credential from "../common"' instead?
+
+3 import { OptionText, Credential, SlashingTerms } from '../common';
+                       ~~~~~~~~~~
+Found 1 error.
+```
+
+Open the file ```node_modules/@joystream/types/content-working-group/index.d.ts``` in a text editor and remove the failing import, so that the line looks as follows: ``` import { OptionText, SlashingTerms } from '../common'; ```
+
+Save the changes and re-run ```yarn && yarn build``` again, the build should work fine. 
+
 
 ### Scripts
 
-You can run scripts that are found in the [./scripts/](./scripts) folder:
+#### general.js
 
-```sh
-yarn script example
+Ideal for newcomers. Contains the very basic APIs usage examples: get the last blockchain finalized block, get total coin issuance. 
+Also shows how to iterate the events inside a given block.
+
 ```
+node lib/examples/general.js
+```
+
+#### get-media-change.js
+
+Shows how to work with Substrate events and Extrinsics to get the information about Joystream media uploads. 
+
+```
+node lib/curators/get-media-change.js
+```
+
+#### council.js
+
+Shows how to use ```councilElection```, ```minting```, ```council``` APIs. 
+
+```
+node lib/examples/council.js
+```
+
+#### get-events-and-extrinsics.js
+
+Shows the variety of Substrate event Extrinsic types within a given range of blocks. 
+
+```
+node lib/examples/get-events-and-extrinsics.js
+```
+
+#### working-groups.js
+
+Shows how to use a set of APIs related to Joystream working groups: ```storageWorkingGroup```, ```recurringRewards```, ```contentDirectoryWorkingGroup```. 
+
+```
+node lib/examples/working-groups.js
+```
+
+#### proposals.js
+
+Shows how to use a APIs related to Joystream DAO proposals ```proposalsEngine```, ```staking```, ```members```. 
+
+```
+node lib/examples/proposals.js
+```
+
