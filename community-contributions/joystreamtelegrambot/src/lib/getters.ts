@@ -15,10 +15,7 @@ import { Proposal } from "@joystream/types/proposals";
 
 // channel
 
-export const currentChannelId = async (api: Api): Promise<number> => {
-  const id: ChannelId = await api.query.contentWorkingGroup.nextChannelId();
-  return id.toNumber() - 1;
-};
+export const currentChannelId = async (api: Api): Promise<number> => -1
 
 export const memberHandle = async (api: Api, id: MemberId): Promise<string> => {
   const membership: Membership = await api.query.members.membershipById(id);

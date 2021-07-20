@@ -42,6 +42,7 @@ const main = async () => {
     api.rpc.system.name(),
     api.rpc.system.version(),
   ]);
+  log(`Subscribed to ${chain} on ${node} v${version}`);
 
   let council: Council = { round: 0, last: "" };
   let blocks: Block[] = [];
@@ -83,11 +84,11 @@ const main = async () => {
   const getReward = async (era: number) =>
     Number(await api.query.staking.erasValidatorReward(era));
 
-  log(`Subscribed to ${chain} on ${node} v${version}`);
   api.rpc.chain.subscribeNewHeads(
     async (header: Header): Promise<void> => {
       // current block
       const id = header.number.toNumber();
+
       if (lastBlock.id === id) return;
       const timestamp = (await api.query.timestamp.now()).toNumber();
       const duration = timestamp - lastBlock.timestamp;
@@ -163,8 +164,11 @@ const main = async () => {
       }
 
       printStatus(opts, { block: id, chain, posts, proposals });
-      lastBlock = block
+      lastBlock = block;
     }
   );
 };
-main().catch(() => exit(log));
+main().catch((error) => {
+  console.log(error);
+  exit(log);
+});
