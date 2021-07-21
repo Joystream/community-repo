@@ -18,9 +18,11 @@ const client = new Client();
 await db.read();
 
 // If file.json doesn't exist, db.data will be null
-// Set default data
-// db.data |= { config: [] };
-// db.write();
+if (db.data === null) {
+  // Set default data
+  db.data = { config: {} };
+  db.write();
+}
 
 //INIT
 
@@ -30,67 +32,51 @@ client.on("ready", () => {
 });
 
 const _init = async () => {
-  const channel = client.channels.cache.find(
-    (channel) => channel.name === "storage-provider"
+  const storageProviderChannel = client.channels.cache.find(
+    (channel) => channel.name === db?.data?.storageProviderChannelName
   );
-  const job = schedule.scheduleJob("0 */2 * * *", async function (fireDate) {
+  schedule.scheduleJob(`0 */${db?.data?.timeLimit} * * *`, async function () {
     const response = await generateSize();
-    channel.send(`Current storage size: ${response}`);
+    storageProviderChannel.send(`Current storage size: ${response}`);
   });
 };
 
 //UTILS
 
 const generateSize = async () => {
-  let res;
-  const isOld = isCacheOld();
-  if (isOld) {
-    res = await getSizeFromJoystream();
+  if (isCacheOld()) {
+    return await getSizeFromAPI();
   }
-  let size = isOld ? res : db.data.config[0].size;
-  return Promise.resolve(size);
+  return Promise.resolve(db?.data?.config?.size);
 };
 
 const generateMsg = async (msg = "", user = "") => {
   let size = await generateSize();
-  msg && msg.edit(`<@${user.id}>, Current storage size: ${size}`);
+  msg.edit(`<@${user.id}>, Current storage size: ${size}`);
 };
 
-const bytesToSize = (bytes) => {
-  const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
-  if (bytes === 0) return "n/a";
-  const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10);
-  if (i === 0) return `${bytes} ${sizes[i]}`;
-  return `${(bytes / 1024 ** i).toFixed(1)} ${sizes[i]}`;
-};
-
-const getSizeFromJoystream = async () => {
+const getSizeFromAPI = async () => {
   return axios
-    .get(
-      "https://analytics.dapplooker.com/api/public/dashboard/c70b56bd-09a0-4472-a557-796afdc64d3b/card/155?parameters=%5B%5D"
-    )
+    .get(db.data?.dataURL)
     .then((response) => {
-      // handle success
-      // const res = bytesToSize(response.data.media.size);
-      const res = Math.round(response.data.data.rows[0][0] / 1000) + "GB";
-      db.data.config[0] = { timeStamp: moment.utc().format(), size: `${res}` };
+      const res = Math.round(response?.data?.data?.rows[0][0]) + "GB";
+      db.data.config = { timeStamp: moment.utc().format(), size: `${res}` };
       db.write();
       return res;
     })
     .catch((error) => {
-      // handle error
-      console.log(error);
+      console.log("API failed", error);
     });
 };
 
 const isCacheOld = () => {
-  let lastTime = db.data.config[0].timeStamp;
-  console.log(JSON.stringify(lastTime));
+  //returns true if the timestamp is older than 2 hours
+  let lastTime = db.data?.config?.timeStamp;
   if (lastTime) {
     const today = moment();
     const diff = today.diff(lastTime, "minutes");
     console.log(diff);
-    return diff > 120 ? true : false;
+    return diff > 120;
   }
   return true;
 };

@@ -1,12 +1,14 @@
 # Storage size notification bot for discord
 
-## Running the bot locally
+Sends actual volume for Joystream Storage Providers to a channel every X hours or via PM with `/storagesize`.
+
+## Development
 
 - Take a copy of .env.example and add token of the bot and rename to .env
 - `npm install`
 - `nodemon`
 
-## Deploying it
+## Deployment
 
 - Take a copy of .env.example and add token of the bot and rename to .env
 - `npm install`
@@ -14,4 +16,4 @@
   - `npm install pm2@latest -g`
     or
     `yarn global add pm2`
-  - pm2 start ./index.js
+  - `pm2 start --name storagesize node index.js`
