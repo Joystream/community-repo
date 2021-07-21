@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "status": "node lib/status",
-    "script": "node lib/script",
+    "status": "node lib/general/status",
+    "script": "node lib/general/script",
     "postinstall": "yarn build"
   },
   "dependencies": {

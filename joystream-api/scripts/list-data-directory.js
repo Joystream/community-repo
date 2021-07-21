@@ -8,16 +8,15 @@
 // requires nicaea release+
 
 const script = async ({ api, joy }) => {
-  const ids = await api.query.dataDirectory.knownContentIds()
+  console.log('Getting information from data directory. This may take a while')
+  const dataDirObjects = await api.query.dataDirectory.dataByContentId.entries()
 
-  await Promise.all(ids.map(async (id) => {
-    let obj = await api.query.dataDirectory.dataObjectByContentId(id)
+  await Promise.all(dataDirObjects.map(async (obj) => {
     if (obj.isNone) { return }
-    obj = obj.unwrap()
-    console.log(`contentId: ${new joy.media.ContentId(id).encode()}, ipfs: ${obj.ipfs_content_id}`)
+    console.log(`contentId: ${obj[0]}, ipfs: ${obj[1].ipfs_content_id}`)
   }))
 
-  console.error(`Data Directory contains ${ids.length} objects`)
+  console.error(`Data Directory contains ${dataDirObjects.length} objects`)
 }
 
 if (typeof module === 'undefined') {

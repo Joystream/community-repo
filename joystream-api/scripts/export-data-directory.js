@@ -7,32 +7,21 @@
 // https://testnet.joystream.org/#/js
 
 const script = async ({ api, hashing, keyring, types, util }) => {
-  const runtimeSpecVersion = api.runtimeVersion.specVersion
 
-  const ownerAccountToMemberId = async (accountId) => {
-    const memberIds = await api.query.members.memberIdsByRootAccountId(accountId)
-    return memberIds[0] || null
-  }
+  console.log('Getting information from data directory. This may take a while')
+  const dataDirObjects = await api.query.dataDirectory.dataByContentId.entries()
 
-  const ids = await api.query.dataDirectory.knownContentIds()
-
-  // When a BTreeMap is constructed for injection the node will fail to decode
-  // it if its not sorted.
-  ids.sort()
-
-  let transformed = await Promise.all(ids.map(async (id) => {
-    let obj = await api.query.dataDirectory.dataObjectByContentId(id)
+  let transformed = await Promise.all(dataDirObjects.map(async (obj) => {
     if (obj.isNone) { return null }
-    obj = obj.unwrap()
 
-    return [id, {
-      owner: runtimeSpecVersion <= 15 ? await ownerAccountToMemberId(obj.owner) : obj.owner,
-      added_at: obj.added_at,
-      type_id: obj.type_id,
-      size: obj.size_in_bytes,
-      liaison: runtimeSpecVersion <= 15 ? new types.u64(0) : obj.liaison,
-      liaison_judgement: obj.liaison_judgement,
-      ipfs_content_id: obj.ipfs_content_id }]
+    return [obj[0], {
+      owner: obj[1].owner,
+      added_at: obj[1].added_at,
+      type_id: obj[1].type_id,
+      size: obj[1].size,
+      liaison_judgement: obj[1].liaison,
+      liaison_judgement: obj[1].liaison_judgement,
+      ipfs_content_id: obj[1].ipfs_content_id }]
   }))
 
   console.log(JSON.stringify(transformed))
