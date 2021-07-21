@@ -35,10 +35,13 @@ const _init = async () => {
   const storageProviderChannel = client.channels.cache.find(
     (channel) => channel.name === db?.data?.storageProviderChannelName
   );
-  schedule.scheduleJob(`0 */${db?.data?.timeLimit} * * *`, async function () {
-    const response = await generateSize();
-    storageProviderChannel.send(`Current storage size: ${response}`);
-  });
+  schedule.scheduleJob(
+    `0 */${db?.data?.reRunCronTimingInHour} * * *`,
+    async function () {
+      const response = await generateSize();
+      storageProviderChannel.send(`Current storage size: ${response}`);
+    }
+  );
 };
 
 //UTILS
@@ -75,7 +78,7 @@ const isCacheOld = () => {
   if (lastTime) {
     const today = moment();
     const diff = today.diff(lastTime, "minutes");
-    console.log(diff);
+    console.log("Cache is old", diff, "minutes");
     return diff > 120;
   }
   return true;
@@ -92,7 +95,7 @@ client.on("message", async (msg) => {
         generateMsg(oldMessage, user);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Not able to send message", error);
       });
   }
 });

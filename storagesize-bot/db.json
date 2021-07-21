@@ -5,5 +5,5 @@
   },
   "dataURL": "https://analytics.dapplooker.com/api/public/dashboard/c70b56bd-09a0-4472-a557-796afdc64d3b/card/155",
   "storageProviderChannelName": "storage-provider",
-  "timeLimit": 5
+  "reRunCronTimingInHour": 5
 }
