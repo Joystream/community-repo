@@ -17,7 +17,7 @@ const client = new Client();
 // Read data from JSON file, this will set db.data content
 await db.read();
 
-// If file.json doesn't exist, db.data will be null
+// Initialize local DB
 if (db.data === null) {
   // Set default data
   db.data = { config: {} };
