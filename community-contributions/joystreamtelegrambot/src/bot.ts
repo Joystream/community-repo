@@ -8,6 +8,7 @@ import {
   proposalDelay,
   wsLocation,
 } from "../config";
+import { stripHtml } from "string-strip-html";
 
 // types
 import { Block, Council, Options, Proposals } from "./types";
@@ -69,8 +70,10 @@ const sendTelegram = (msg: string) => {
 };
 const sendDiscord = (msg: string, channel: any) => {
   if (!channel) return;
+  const stripped: string = stripHtml(msg).result;
+  if (!stripped.length) return;
   try {
-    channel.send(msg);
+    channel.send(stripped);
   } catch (e) {
     console.log(e);
   }
