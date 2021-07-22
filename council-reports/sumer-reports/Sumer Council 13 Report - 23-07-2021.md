@@ -7,7 +7,7 @@ Usernames referenced are Joystream usernames.
 All times are calculated based on 6 second blocktimes and not actual blocktimes.
 The Council Round number is taken from the chain, the KPI rounds have an offset number.
 
-This report was compiled by @tomato with assistance from @freakstatic
+This report was compiled by @freakstatic with the template made by @tomato 
 
 ### 1.2 - Council Round Overview
 * Council Election Round: #16
