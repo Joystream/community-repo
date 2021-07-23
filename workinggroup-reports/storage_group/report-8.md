@@ -24,7 +24,7 @@ This is the 8th report for the Storage Provider Working Group. This week we cros
 - Worker ID: 3
 - Tokens earned: 6.5629 MJOY
 - Missed: 153.9220 kJOY
-- Location: Nuremberg
+- Location: St.Petersburg (Russian Federation)
 - Storage capacity: 1.8TB
 - Type of storage: HDD
 - Discord Name: freakstatic#0197 / l1dev#4675
@@ -79,9 +79,9 @@ This is the 8th report for the Storage Provider Working Group. This week we cros
 - Worker ID: 15
 - Tokens earned: 2.2250 MJOY
 - Missed: 0
-- Location: Amsterdam
+- Location: Helsinki
 - Storage capacity: 3TB
-- Type of storage: SSD
+- Type of storage: HDD
 - Discord Name: Lelik_maxi#6419
 - Free Space: 2.5TB
 
