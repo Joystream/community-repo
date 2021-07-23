@@ -40,6 +40,7 @@ client.on("ready", async () => {
   discordChannels.council = await findDiscordChannel("council");
   discordChannels.proposals = await findDiscordChannel("proposals-bot");
   discordChannels.forum = await findDiscordChannel("forum-bot");
+  discordChannels.tokenomics = await findDiscordChannel("tokenomics");
 });
 
 const findDiscordChannel = (name: string) =>
@@ -190,13 +191,13 @@ const main = async () => {
       // heartbeat
       if (timestamp > lastHeartbeat + heartbeat) {
         const time = passedTime(lastHeartbeat, timestamp);
-        blocks = announce.heartbeat(
+        blocks = await announce.heartbeat(
           api,
           blocks,
           time,
           proposals,
           sendMessage,
-          discordChannels.proposals
+          discordChannels.tokenomics
         );
         lastHeartbeat = block.timestamp;
       }

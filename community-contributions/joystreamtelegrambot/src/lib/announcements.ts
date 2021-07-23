@@ -17,6 +17,7 @@ import {
   memberHandle,
   memberHandleByAccount,
   proposalDetail,
+  fetchTokenValue,
 } from "./getters";
 import moment from "moment";
 
@@ -238,14 +239,15 @@ export const proposals = async (
 const getAverage = (array: number[]): number =>
   array.reduce((a: number, b: number) => a + b, 0) / array.length;
 
-export const heartbeat = (
+export const heartbeat = async (
   api: Api,
   blocks: Block[],
   timePassed: string,
   proposals: Proposals,
   sendMessage: Send,
   channel: any
-): [] => {
+): Promise<[]> => {
+  const price = await fetchTokenValue();
   const durations = blocks.map((b) => b.duration);
   const blocktime = getAverage(durations) / 1000;
 
@@ -273,6 +275,7 @@ export const heartbeat = (
 
   const msg = `  ${blocks.length} blocks produced in ${timePassed}
   Blocktime: ${blocktime.toFixed(3)}s
+  Price: ${price}
   Stake: ${avgStake.toFixed(1)} / ${avgIssued.toFixed()} M tJOY (${percent}%)
   Validators: ${avgVals.toFixed()} (${reward} tJOY/h)
   Nominators: ${getAverage(noms).toFixed()}

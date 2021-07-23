@@ -1,4 +1,5 @@
 import { formatProposalMessage } from "./announcements";
+import axios from "axios";
 
 //types
 
@@ -107,4 +108,9 @@ export const proposalDetail = async (
   const message: string = formatProposalMessage(args);
   const createdAt: number = proposal.createdAt.toNumber();
   return { createdAt, finalizedAt, parameters, message, stage, result, exec };
+};
+
+export const fetchTokenValue = async () => {
+  const { data } = await axios.get("https://status.joystream.org/status");
+  return data ? `${Math.floor(+data.price * 100000000) / 100} $` : `?`;
 };
