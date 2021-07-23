@@ -70,7 +70,18 @@ const sendTelegram = (msg: string) => {
 };
 const sendDiscord = (msg: string, channel: any) => {
   if (!channel) return;
-  const stripped: string = stripHtml(msg).result;
+
+  const options = {
+    dumpLinkHrefsNearby: {
+      enabled: false,
+      putOnNewLine: false,
+      wrapHeads: "",
+      wrapTails: "",
+    },
+  };
+
+  const stripped: string = stripHtml(msg, options).result;
+
   if (!stripped.length) return;
   try {
     channel.send(stripped);
