@@ -114,3 +114,13 @@ export const fetchTokenValue = async () => {
   const { data } = await axios.get("https://status.joystream.org/status");
   return data ? `${Math.floor(+data.price * 100000000) / 100} $` : `?`;
 };
+
+export const fetchStorageSize = async () => {
+  const dashboard = "https://analytics.dapplooker.com/api/public/dashboard";
+  const asset = "c70b56bd-09a0-4472-a557-796afdc64d3b/card/155";
+
+  const { data } = await axios.get(`${dashboard}/${asset}`);
+
+  const size = Math.round(data.data.rows[0][0]) + "GB";
+  return size;
+};
