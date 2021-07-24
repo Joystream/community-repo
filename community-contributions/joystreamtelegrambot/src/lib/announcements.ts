@@ -277,7 +277,7 @@ export const heartbeat = async (
 
   const msg = `  ${blocks.length} blocks produced in ${timePassed}
   Blocktime: ${blocktime.toFixed(3)}s
-  Price: ${price}
+  Price: ${price} / 1 M tJOY
   Stake: ${avgStake.toFixed(1)} / ${avgIssued.toFixed()} M tJOY (${percent}%)
   Validators: ${avgVals.toFixed()} (${reward} tJOY/h)
   Nominators: ${getAverage(noms).toFixed()}
