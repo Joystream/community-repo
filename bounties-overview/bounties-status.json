@@ -21,7 +21,7 @@
       "reward": 5,
       "tags": ["Newcomers","Content"],
       "format": "Free for All",
-      "status": "Open"
+      "status": "Closed"
     },
     {
       "id": 18,
@@ -244,6 +244,18 @@
       "notes": "Translate the Joystream website",
       "tags": ["Research","Coding"],
       "format": "Closed",
+      "status": "Open"
+    },
+    {
+      "id": 16,
+      "title": "Translation of Community Update Videos",
+      "openedDate": "2021-04-10",
+      "description": "Translate Joystream Community Updates videos to languages other than English.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/510","https://github.com/Joystream/community-repo/issues/144"],
+      "reward": 400,
+      "notes": "Translate Joystream Community Updates videos",
+      "tags": ["Content","Documentation"],
+      "format": "NA",
       "status": "Open"
     }
   ]
