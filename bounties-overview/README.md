@@ -13,7 +13,7 @@
 | 7  | Joystream Player Loading     | #85   | 15.02.21 | $400   | [214](https://testnet.joystream.org/#/forum/threads/214) | Withdrawn - No interest | NA  | NA                                              |
 | 8  | Ledger on Joystream          | #86   | 15.02.21 | $300   | [215](https://testnet.joystream.org/#/forum/threads/215) | $450 - 13.05.21    | #171| [56])(https://testnet.joystream.org/#/proposals/56)  |
 | 9  | Repo/Docs Improvements       | #87   | 15.02.21 | $400   | [216](https://testnet.joystream.org/#/forum/threads/216) | Weekly Bounty          | NA  | NA                                                   |
-| 10 | Upload Public Domain Content | #88   | 15.02.21 | $5*    | [217](https://testnet.joystream.org/#/forum/threads/217) | Weekly Bounty          | NA  | NA                                                   |
+| 10 | Upload Public Domain Content | #88   | 15.02.21 | $5*    | [217](https://testnet.joystream.org/#/forum/threads/217) | Closed        | NA  | NA                                                   |
 | 11 | Design Community Repo Banner | #89   | 15.02.21 | $250   | [218](https://testnet.joystream.org/#/forum/threads/218) | $300 - 13.05.21    | NA  | NA                                                   |
 | 12 | Deploy Reliable Endpoints | #101   | 12.03.21 | $200   | [324](https://testnet.joystream.org/#/forum/threads/324) | Completed       | NA  | NA                                                   |
 | 13 | Research Discord Bots | #123   | 12.03.21 | $200   | [326](https://testnet.joystream.org/#/forum/threads/326) | $450          | #131, #133   | NA                                                   |
