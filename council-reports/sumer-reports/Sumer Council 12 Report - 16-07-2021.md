@@ -38,7 +38,7 @@ The Council Round number is taken from the chain, the KPI rounds have an offset 
 | @igrex | 1048 | 30 | 3000000 | 4000000 | 
 | @isonar | 2182 | 14 | 2500000 | 4000000 | 
 | | | Subtotal: | 68805888 | 65128300 |
-| | | Total: | 6880588865128300 |  |
+| | | Total: | 133934188 |  |
 
 
 ### 1.4 - Council Roles
