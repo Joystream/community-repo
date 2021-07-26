@@ -84,7 +84,8 @@ const main = async () => {
         }
       })
       .catch((error: any) => {
-        console.error(error);
+        const {response} = error
+        console.error(response.data.errors);
       });
 
       // waiting... 
