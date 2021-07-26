@@ -9,7 +9,7 @@ The Council Round number is taken from the chain, the KPI rounds have an offset 
 
 ### 1.2 - Council Round Overview
 * Council Election Round: #15
-* Council Term: ?
+* Council Term: 12
 * Start Block: #1285200
 * End Block: #1386000
 * Forum thread for round feedback: N/A
@@ -50,7 +50,7 @@ The Council Round number is taken from the chain, the KPI rounds have an offset 
 ### 1.5 - Council Mint & Budget Status
 * Start minted: 276257598
 * End minted: 310899798
-* Total minted during council round: {totalMinted} tokens (+12.54% from start)
+* Total minted during council round: 34642200 tokens (+12.54% from start)
 
 * Budget proposal link: https://testnet.joystream.org/#/proposals/254
 * Budget forum link: https://testnet.joystream.org/#/forum/threads/488
