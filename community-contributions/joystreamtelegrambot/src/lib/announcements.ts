@@ -40,7 +40,7 @@ export const channels = async (
   channels: number[],
   sendMessage: Send,
   channel: any
-): Promise<number> => {
+): Promise<void> => {
   const [last, current] = channels;
   const messages: string[] = [];
 
@@ -56,7 +56,6 @@ export const channels = async (
     );
   }
   sendMessage(messages.join("\r\n\r\n"), channel);
-  return current;
 };
 
 // announce council change
@@ -247,7 +246,7 @@ export const heartbeat = async (
   proposals: Proposals,
   sendMessage: Send,
   channel: any
-): Promise<[]> => {
+): Promise<void> => {
   const price = await fetchTokenValue();
   const storageSize = await fetchStorageSize();
   const durations = blocks.map((b) => b.duration);
@@ -286,7 +285,6 @@ export const heartbeat = async (
   `;
 
   sendMessage(msg, channel);
-  return [];
 };
 
 export const formatProposalMessage = (data: string[]): string => {

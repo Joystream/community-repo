@@ -121,6 +121,7 @@ const main = async () => {
   let stake = 0;
   let vals = 0;
   let noms = 0;
+  let announced: { [key: string]: boolean } = {};
 
   const channels: number[] = [0, 0];
   const posts: number[] = [0, 0];
@@ -191,7 +192,7 @@ const main = async () => {
       // heartbeat
       if (timestamp > lastHeartbeat + heartbeat) {
         const time = passedTime(lastHeartbeat, timestamp);
-        blocks = await announce.heartbeat(
+        announce.heartbeat(
           api,
           blocks,
           time,
@@ -200,6 +201,7 @@ const main = async () => {
           discordChannels.tokenomics
         );
         lastHeartbeat = block.timestamp;
+        blocks = [];
       }
 
       // announcements
@@ -215,21 +217,23 @@ const main = async () => {
       if (opts.channel) {
         channels[1] = await get.currentChannelId(api);
         if (channels[1] > channels[0])
-          channels[0] = await announce.channels(
+          announce.channels(
             api,
             channels,
             sendMessage,
             discordChannels.channels
           );
+        channels[0] = channels[1];
       }
 
       if (opts.proposals) {
         proposals.current = await get.proposalCount(api);
+
         if (
-          proposals.current > proposals.last ||
-          (timestamp > lastProposalUpdate + 60000 * proposalDelay &&
-            (proposals.active || proposals.executing))
+          proposals.current > proposals.last &&
+          !announced[proposals.current]
         ) {
+          announced[`proposal${proposals.current}`] = true;
           proposals = await announce.proposals(
             api,
             proposals,
@@ -243,12 +247,8 @@ const main = async () => {
 
       if (opts.forum) {
         posts[1] = await get.currentPostId(api);
-        posts[0] = await announce.posts(
-          api,
-          posts,
-          sendMessage,
-          discordChannels.forum
-        );
+        announce.posts(api, posts, sendMessage, discordChannels.forum);
+        posts[0] = posts[1];
       }
 
       printStatus(opts, { block: id, chain, posts, proposals });
