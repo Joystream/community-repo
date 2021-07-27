@@ -9,7 +9,7 @@ The Council Round number is taken from the chain, the KPI rounds have an offset 
 
 ### 1.2 - Council Round Overview
 * Council Election Round: #17
-* Council Term: ?
+* Council Term: 14
 * Start Block: #1486800
 * End Block: #1587600
 * Forum thread for round feedback: N/A
