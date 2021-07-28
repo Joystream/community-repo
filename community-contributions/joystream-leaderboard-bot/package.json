@@ -1,6 +1,6 @@
 {
   "name": "joystream-leaderboard-bot",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,10 +10,19 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
+    "bluebird": "^3.7.2",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
-    "mongodb": "^4.0.0",
-    "mongoose": "^5.13.2",
-    "node-telegram-bot-api": "^0.53.0"
+    "mongoose": "5.9.25",
+    "node-telegram-bot-api": "^0.53.0",
+    "ts-node": "^10.1.0",
+    "tsconfig-paths": "^3.10.1",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/mongoose": "5.7.32",
+    "@types/node": "^15.14.2",
+    "@types/node-telegram-bot-api": "^0.51.4"
   }
 }
