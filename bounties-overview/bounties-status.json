@@ -62,9 +62,9 @@
     },
     {
       "id": 16,
-      "title": "Translation of Community Update Videos",
+      "title": "Translating Update Videos",
       "openedDate": "2021-04-10",
-      "description": "Translate Joystream Community Updates videos to languages other than English.",
+      "description": "Translate Community Updates videos to non-English languages.",
       "links": ["https://testnet.joystream.org/#/forum/threads/510","https://github.com/Joystream/community-repo/issues/144"],
       "reward": 400,
       "notes": "Translate Joystream Community Updates videos",
