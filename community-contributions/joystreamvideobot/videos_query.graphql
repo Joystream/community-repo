@@ -2,7 +2,7 @@ query GetVideosConnection(
   $first: Int
   $after: String
   $_v0_where: VideoWhereInput
-  $_v0_orderBy: VideoOrderByInput
+  $_v0_orderBy: [VideoOrderByInput!]
 ) {
   videosConnection(
     first: $first
