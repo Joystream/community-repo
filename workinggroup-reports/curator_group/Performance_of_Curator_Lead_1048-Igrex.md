@@ -26,6 +26,7 @@
 | [Report Lead Curator Group for Scoring Period 11](https://testnet.joystream.org/#/forum/threads/335?page=1&replyIdx=18) | 05.07.2021 - 18.07.2021 | On-chain forum |
 | [Weekly Curator Working Group Report 11](https://testnet.joystream.org/#/forum/threads/335?page=1&replyIdx=19) | 19.07.2021 - 25.07.2021 | On-chain forum |
 | [Weekly Curator Working Group Report 12](https://testnet.joystream.org/#/forum/threads/335?page=1&replyIdx=20) | 26.07.2021 - 01.08.2021 | On-chain forum |
+| [Report Lead Curator Group for Scoring Period 12](https://testnet.joystream.org/#/forum/threads/335?page=1&replyIdx=18) | 05.07.2021 - 18.07.2021 | On-chain forum |
 
 ## Content Curator Lead Report (Statistics)
 
@@ -49,7 +50,8 @@ Content Curator Lead `1048-Igrex`
 4. Reports for scoring period 7 and 9 not provided on Github
 5. Report for scoring period 10 provided like [commit](https://github.com/Joystream/community-repo/commit/f396ff7e03e3f30febf5b438f26a98f7127d0f23)
 6. Report for scoring period 11 provided like [PR with wrong path](https://github.com/Joystream/community-repo/pull/266)
-7. All reports for scoring periods provided via unreadable format on Github
+7. Report for scoring period 12 provided like [PR](https://github.com/Joystream/community-repo/pull/269)
+8. All reports for scoring periods provided via unreadable format on Github
 
 ### Compare with [Content Curator WG Lead - Tasks + Reporting Requirements](https://github.com/Joystream/community-repo/blob/master/rules/Content_Curator_WG_Lead-Tasks_Reporting_Requirements.md)
 
