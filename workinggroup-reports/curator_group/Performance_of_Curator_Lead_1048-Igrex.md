@@ -43,7 +43,7 @@ Content Curator Lead `1048-Igrex`
 ### Note
 
 1. All reports have been approved by council via `text proposal`
-2. According to [Reporting Requirements](https://github.com/Joystream/community-repo/blob/master/rules/Content_Curator_WG_Lead-Tasks_Reporting_Requirements.md#how-to-submit-a-report) `Igrex` must submit reports to the `community-repo` repository via `Pull Request`. He never did it. 
+2. According to [Reporting Requirements](https://github.com/Joystream/community-repo/blob/master/rules/Content_Curator_WG_Lead-Tasks_Reporting_Requirements.md#how-to-submit-a-report) `Igrex` must submit weekly reports to the `community-repo` repository via `Pull Request`. He never did it. 
 3. When `Igrex` became a consil member, he began to do `Content Curator Lead Report (Statistics)`
 4. Reports for scoring period 7 and 9 not provided on Github
 5. Report for scoring period 10 provided like [commit](https://github.com/Joystream/community-repo/commit/f396ff7e03e3f30febf5b438f26a98f7127d0f23)
@@ -80,7 +80,7 @@ Curator Workers
 4. Censored 8 videos
 5. Video licenses were not checked, which led to the closure of Bounty 10
 
-Content Curator WG usually just watch the uploaded videos. If the video does not play without thubnails or does not play, the curators leave a message on the forum and in the table. Bounty 10 checked by Ruslan#4019 (not curator worker). Bounty 18 - was a big delay.
+Content Curator WG usually just watch the uploaded videos. If the video without thubnails or does not play, the curators leave a message on the forum and in the table. Bounty 10 checked by Ruslan#4019 (not curator worker). Bounty 18 - was a big delay.
 
 ### Performance for the Lead
 
