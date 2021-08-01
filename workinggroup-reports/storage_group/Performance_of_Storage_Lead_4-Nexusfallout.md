@@ -39,7 +39,8 @@ Storage Lead `4-Nexusfallout`
 1. Available on Discord - Done 
 2. Hire/fire/warn storage workers - Done
 3. Manage Storage Workers - Done
-4. Set Vouchers Limits - Done. Submissions on Discord and [here](https://testnet.joystream.org/#/forum/threads/423)
+4. Replenished Storage Working Group Mint
+5. Set Vouchers Limits - Done. Submissions on Discord and [here](https://testnet.joystream.org/#/forum/threads/423)
 
 - Storage Workers
 
