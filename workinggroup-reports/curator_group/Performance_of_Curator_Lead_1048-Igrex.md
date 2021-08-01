@@ -25,6 +25,7 @@
 | [Weekly Curator Working Group Report 10](https://testnet.joystream.org/#/forum/threads/335?page=1&replyIdx=17) | 12.07.2021 - 18.07.2021 | On-chain forum |
 | [Report Lead Curator Group for Scoring Period 11](https://testnet.joystream.org/#/forum/threads/335?page=1&replyIdx=18) | 05.07.2021 - 18.07.2021 | On-chain forum |
 | [Weekly Curator Working Group Report 11](https://testnet.joystream.org/#/forum/threads/335?page=1&replyIdx=19) | 19.07.2021 - 25.07.2021 | On-chain forum |
+| [Weekly Curator Working Group Report 12](https://testnet.joystream.org/#/forum/threads/335?page=1&replyIdx=20) | 26.07.2021 - 01.08.2021 | On-chain forum |
 
 ## Content Curator Lead Report (Statistics)
 
