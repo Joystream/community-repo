@@ -66,15 +66,17 @@ const main = async () => {
                 )
                 .setTimestamp();
                 const uploaderTitle = `${edge.node.channel.title} (${edge.node.channel.ownerMember.rootAccount})`
-                if(edge.node.channel.avatarPhotoDataObject?.liaison) {
+                const avatarObj = edge.node.channel.avatarPhotoDataObject?.liaison
+                if(avatarObj && (avatarObj.metadata.startsWith('http://') || avatarObj.metadata.startsWith('https://'))) {
                   const avatar = 
-                        `${edge.node.channel.avatarPhotoDataObject.liaison.metadata}asset/v0/${edge.node.channel.avatarPhotoDataObject.joystreamContentId}`;
+                        `${avatarObj.metadata}asset/v0/${edge.node.channel.avatarPhotoDataObject.joystreamContentId}`;
                   exampleEmbed.setAuthor(uploaderTitle, avatar, `https://play.joystream.org/channel/${edge.node.channel.id}`);
                 } else {
                   exampleEmbed.setAuthor(uploaderTitle, null, `https://play.joystream.org/channel/${edge.node.channel.id}`);
                 }
-                if(edge.node.thumbnailPhotoDataObject?.liaison) {
-                  exampleEmbed.setImage(`${edge.node.thumbnailPhotoDataObject.liaison.metadata}asset/v0/${edge.node.thumbnailPhotoDataObject.joystreamContentId}`)
+                const liaison = edge.node.thumbnailPhotoDataObject?.liaison
+                if(liaison && (liaison.metadata.startsWith('http://') || liaison.metadata.startsWith('https://')) ) {
+                  exampleEmbed.setImage(`${liaison.metadata}asset/v0/${edge.node.thumbnailPhotoDataObject.joystreamContentId}`)
                 }
               channel.send(exampleEmbed);
               ids.push({id: edge.node.id, createdAt: Date.parse(edge.node.createdAt)});
@@ -84,7 +86,8 @@ const main = async () => {
         }
       })
       .catch((error: any) => {
-        console.error(error);
+        const {response} = error
+        console.error(response.data.errors);
       });
 
       // waiting... 
