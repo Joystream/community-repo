@@ -4,7 +4,7 @@
 
 ### Report:
 
-This is the 10th report for the Storage Provider Working Group. Storage size has stopped increasing as one of the KPI has been removed for open source content. Latest helios requires a more heavy and better servers, 1 of the servers are down for upgrade. Its tracked over [here](https://testnet.joystream.org/#/forum/threads/423). Rewards is updated to: 38000 kJOY / 3600 block(s), Current rate is $28.93 / 1MTJoy
+This is the 10th report for the Storage Provider Working Group. Storage size has stopped increasing as one of the KPI has been removed for open source content. Latest storage node requires a more heavy and better servers because of that 1 of the servers are down for upgrade. The efficiency of the storage has increased a lot after the storage node upgrade. The requests for channel storage size increase is tracked over [here](https://testnet.joystream.org/#/forum/threads/423). Rewards is updated to: 38000 kJOY / 3600 block(s), Current rate is $28.93 / 1MTJoy
 
 ## Current ipfs repo size : 660.31GB
 
