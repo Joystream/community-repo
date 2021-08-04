@@ -11,8 +11,8 @@ This is the 9th report for the Storage Provider Working Group. Storage size has 
 ### nexusfallout
 
 - Worker ID: 9
-- Tokens earned: 9.5100 MJOY
-- Missed: 73.0040 kJOY
+- Tokens earned: 11.9373 MJOY
+- Missed: 230.7340 kJOY
 - Location:Nuremberg
 - Storage capacity: 1.4TB
 - Type of storage: HDD
