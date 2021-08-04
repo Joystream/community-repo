@@ -4,7 +4,7 @@
 
 ### Report:
 
-This is the 9th report for the Storage Provider Working Group. Storage size has stopped increasing as one of the KPI has been removed for open source content. Latest helios requires a more heavy and better servers two of the servers are down for upgrade. We get almost 5 to 10 requests a week for storage size increase. Its tracked over [here](https://testnet.joystream.org/#/forum/threads/423). Rewards is kept the same: 35000 kJOY / 3600 block(s), Current rate is $31.73/1MTJoy
+This is the 9th report for the Storage Provider Working Group. Storage size has stopped increasing as one of the KPI has been removed for open source content. Latest helios requires a more heavy and better servers, 1 of the servers are down for upgrade. We get almost 5 to 10 requests a week for storage size increase. Its tracked over [here](https://testnet.joystream.org/#/forum/threads/423). Rewards is kept the same: 35000 kJOY / 3600 block(s), Current rate is $31.73/1MTJoy
 
 ### nexusfallout
 
