@@ -1,10 +1,10 @@
-# Storage Working Group Status Reporting - 9
+# Storage Working Group Status Reporting - 10
 
 ## Storage Lead : _NexusFallout_
 
 ### Report:
 
-This is the 9th report for the Storage Provider Working Group. Storage size has stopped increasing as one of the KPI has been removed for open source content. Latest helios requires a more heavy and better servers, 1 of the servers are down for upgrade. Its tracked over [here](https://testnet.joystream.org/#/forum/threads/423). Rewards is updated to: 38000 kJOY / 3600 block(s), Current rate is $28.93 / 1MTJoy
+This is the 10th report for the Storage Provider Working Group. Storage size has stopped increasing as one of the KPI has been removed for open source content. Latest helios requires a more heavy and better servers, 1 of the servers are down for upgrade. Its tracked over [here](https://testnet.joystream.org/#/forum/threads/423). Rewards is updated to: 38000 kJOY / 3600 block(s), Current rate is $28.93 / 1MTJoy
 
 ## Current ipfs repo size : 660.31GB
 
