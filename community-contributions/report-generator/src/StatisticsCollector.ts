@@ -13,11 +13,10 @@ import {
 
 import {
     CacheEvent,
-    Exchange,
     Media,
     MintStatistics,
     Statistics,
-    ValidatorReward, WorkersInfo, Channel, SpendingProposals, Bounty
+    WorkersInfo, Channel, SpendingProposals, Bounty
 } from "./types";
 
 import {Option, u32, Vec} from "@polkadot/types";
@@ -26,14 +25,12 @@ import {Mint, MintId} from "@joystream/types/mint";
 import {ContentId, DataObject} from "@joystream/types/media";
 
 
-import Linkage from "@polkadot/types/codec/Linkage";
 import {ChannelId, PostId, ThreadId} from "@joystream/types/common";
 import {CategoryId} from "@joystream/types/forum";
 
 import {MemberId, Membership} from "@joystream/types/members";
 import {RewardRelationship, RewardRelationshipId} from "@joystream/types/recurring-rewards";
 
-import workingGroup from "@joystream/types/src/working-group/index";
 import {Stake} from "@joystream/types/stake";
 
 import {WorkerId} from "@joystream/types/working-group";
@@ -96,7 +93,7 @@ export class StatisticsCollector {
     }
 
     async getApprovedBounties() {
-        let bountiesFilePath = __dirname + '/../bounties.csv';
+        let bountiesFilePath = __dirname + '/../spending_proposal_categories.csv';
         try {
             await fs.access(bountiesFilePath, constants.R_OK);
         } catch {
@@ -686,6 +683,7 @@ export class StatisticsCollector {
         // let exists = false;
         if (!exists) {
             console.log('Building events cache...');
+             let blocksEvents = new Map<number, CacheEvent[]>();
             for (let i = startBlock; i < endBlock; ++i) {
                 process.stdout.write('\rCaching block: ' + i + ' until ' + endBlock);
                 const blockHash: Hash = await this.api.rpc.chain.getBlockHash(i);
@@ -694,11 +692,13 @@ export class StatisticsCollector {
                 for (let event of eventRecord) {
                     cacheEvents.push(new CacheEvent(event.event.section, event.event.method, event.event.data));
                 }
-                this.blocksEventsCache.set(i, cacheEvents);
+                blocksEvents.set(i, cacheEvents);
             }
 
             console.log('\nFinish events cache...');
-            await fs.writeFile(cacheFile, JSON.stringify(Array.from(this.blocksEventsCache.entries()), null, 2));
+            let jsonOutput = JSON.stringify(Array.from(blocksEvents.entries()), null, 2);
+            await fs.writeFile(cacheFile, jsonOutput);
+            this.blocksEventsCache = new Map(JSON.parse(jsonOutput));
         } else {
             console.log('Cache file found, loading it...');
             let fileData = await fs.readFile(cacheFile);
@@ -709,7 +709,7 @@ export class StatisticsCollector {
 
     static async connectApi(): Promise<ApiPromise> {
         // const provider = new WsProvider('wss://testnet.joystream.org:9944');
-        const provider = new WsProvider(PROVIDER_URL);
+        const provider = new WsProvider( PROVIDER_URL);
 
         // Create the API and wait until ready
         return await ApiPromise.create({provider, types});
