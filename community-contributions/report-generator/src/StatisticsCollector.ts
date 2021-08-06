@@ -223,6 +223,11 @@ export class StatisticsCollector {
         let info = new WorkersInfo();
         for (let i = 0; i < nextWorkerId; ++i) {
             let worker = await this.api.query[workingGroup + 'WorkingGroup'].workerById(i) as WorkerOf;
+
+            if (!worker.is_active) {
+                continue;
+            }
+
             if (worker.role_stake_profile.isSome) {
                 let roleStakeProfile = worker.role_stake_profile.unwrap();
                 let stake = await this.api.query.stake.stakes(roleStakeProfile.stake_id) as Stake;
@@ -235,6 +240,11 @@ export class StatisticsCollector {
 
         for (let i = 0; i < nextWorkerId; ++i) {
             let worker = await this.api.query[workingGroup + 'WorkingGroup'].workerById(i) as WorkerOf;
+
+            if (!worker.is_active) {
+                continue;
+            }
+
             if (worker.reward_relationship.isSome) {
                 rewardRelationshipIds.push(worker.reward_relationship.unwrap());
             }
@@ -255,6 +265,10 @@ export class StatisticsCollector {
         let rewardRelationshipIds = Array<RewardRelationshipId>();
         for (let i = 0; i < nextCuratorId; ++i) {
             let worker = await this.api.query.contentDirectoryWorkingGroup.workerById(i) as WorkerOf;
+            if (!worker.is_active) {
+                continue;
+            }
+
             if (worker.reward_relationship.isSome) {
                 rewardRelationshipIds.push(worker.reward_relationship.unwrap());
             }
@@ -491,10 +505,13 @@ export class StatisticsCollector {
         this.statistics.storageProviders = "";
         for (let i = 0; i < nextWorkerId; ++i) {
             let storageProvider = await this.api.query.storageWorkingGroup.workerById.at(endHash, i) as WorkerOf;
-            if (storageProvider.is_active){
-                let membership = await this.api.query.members.membershipById.at(endHash, storageProvider.member_id) as Membership;
-                this.statistics.storageProviders += "@" + membership.handle + " | (" + membership.root_account + ")  \n";
+            if (!storageProvider.is_active) {
+                continue;
             }
+
+            let membership = await this.api.query.members.membershipById.at(endHash, storageProvider.member_id) as Membership;
+            this.statistics.storageProviders += "@" + membership.handle + " | (" + membership.root_account + ")  \n";
+
         }
 
     }
@@ -508,15 +525,18 @@ export class StatisticsCollector {
         this.statistics.curators = "";
 
         for (let i = 0; i < nextCuratorId; i++) {
-            let curator = await this.api.query.contentDirectoryWorkingGroup.workerById.at(endHash, i) as WorkerOf;
-            if (curator.is_active){
-                let curatorMembership = await this.api.query.members.membershipById.at(endHash, curator.member_id) as Membership;
-                this.statistics.curators += "@" + curatorMembership.handle + " | (" + curatorMembership.root_account  +")  \n";
+            let worker = await this.api.query.contentDirectoryWorkingGroup.workerById.at(endHash, i) as WorkerOf;
+            if (!worker.is_active) {
+                continue;
             }
+
+            let curatorMembership = await this.api.query.members.membershipById.at(endHash, worker.member_id) as Membership;
+            this.statistics.curators += "@" + curatorMembership.handle + " | (" + curatorMembership.root_account + ")  \n";
+
         }
     }
 
-    async fillOperationsInfo(startBlock: number, endBlock: number, startHash: Hash, endHash: Hash){
+    async fillOperationsInfo(startBlock: number, endBlock: number, startHash: Hash, endHash: Hash) {
         let roundNrBlocks = endBlock - startBlock;
 
         let operationsRewards = await this.computeWorkingGroupReward(roundNrBlocks, startHash, endHash, 'operations');
@@ -535,11 +555,14 @@ export class StatisticsCollector {
         this.statistics.operations = "";
 
         for (let i = 0; i < nextOperationsWorkerId; i++) {
-            let operation = await this.api.query.operationsWorkingGroup.workerById.at(endHash, i) as WorkerOf;
-            if (operation.is_active){
-                let operationMembership = await this.api.query.members.membershipById.at(endHash, operation.member_id) as Membership;
-                this.statistics.operations += "@" + operationMembership.handle + " | (" + operationMembership.root_account  +")  \n";
+            let worker = await this.api.query.operationsWorkingGroup.workerById.at(endHash, i) as WorkerOf;
+            if (!worker.is_active) {
+                continue;
             }
+
+            let operationMembership = await this.api.query.members.membershipById.at(endHash, worker.member_id) as Membership;
+            this.statistics.operations += "@" + operationMembership.handle + " | (" + operationMembership.root_account + ")  \n";
+
         }
     }
 
@@ -575,7 +598,7 @@ export class StatisticsCollector {
         const endBlock = await this.api.rpc.chain.getBlock(endHash);
 
         for (let [key, dataObject] of dataObjects) {
-            if (dataObject.added_at.block.toNumber() < startBlock.block.header.number.toNumber()){
+            if (dataObject.added_at.block.toNumber() < startBlock.block.header.number.toNumber()) {
                 startObjects.set(key, dataObject);
                 this.statistics.startUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
             }
@@ -683,7 +706,7 @@ export class StatisticsCollector {
         // let exists = false;
         if (!exists) {
             console.log('Building events cache...');
-             let blocksEvents = new Map<number, CacheEvent[]>();
+            let blocksEvents = new Map<number, CacheEvent[]>();
             for (let i = startBlock; i < endBlock; ++i) {
                 process.stdout.write('\rCaching block: ' + i + ' until ' + endBlock);
                 const blockHash: Hash = await this.api.rpc.chain.getBlockHash(i);
@@ -709,7 +732,7 @@ export class StatisticsCollector {
 
     static async connectApi(): Promise<ApiPromise> {
         // const provider = new WsProvider('wss://testnet.joystream.org:9944');
-        const provider = new WsProvider( PROVIDER_URL);
+        const provider = new WsProvider(PROVIDER_URL);
 
         // Create the API and wait until ready
         return await ApiPromise.create({provider, types});
