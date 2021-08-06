@@ -9,12 +9,12 @@ Alexandria,4,,,,,,,,,
 Antioch,4,,,,,,,,,
 Alexandria,5,,,,,,,,,
 Antioch,5,,,,,,,,,
-Alexandria,6,,,,,,,,,
 Antioch,6,Resub: Com Repo Banner Competition Prop,Approved,1500000,1500000,,,Competitions,,
-Alexandria,7,,,,,,,,,
+Alexandria,6,,,,,,,,,
 Antioch,7,Antioch - KPI 0.2 - Council Secretary,Approved,1500000,1500000,,,Informal Roles,,
-Alexandria,8,,,,,,,,,
+Alexandria,7,,,,,,,,,
 Antioch,8,Resub: Hire for role: Bounty 10 Admin,Approved,540000,540000,,,Bounty Managers,,
+Alexandria,8,,,,,,,,,
 Antioch,9,Success Event 1 for Bounty 13,Approved,2440000,2440000,,,Bounties,13,Y
 Alexandria,9,,,,,,,,,
 Antioch,10,Bounty #12: Endpoints April/2021,Expired,5000000,0,,,Bounties,12,Y
@@ -25,8 +25,8 @@ Alexandria,12,,,,,,,,,
 Antioch,12,,,,,,,,,
 Alexandria,13,,,,,,,,,
 Antioch,13,,,,,,,,,
-Alexandria,14,,,,,,,,,
 Antioch,14,Forum Rewards Funding,Expired,3000000,0,,,Rewards,,
+Alexandria,14,,,,,,,,,
 Alexandria,15,Council Report Generator (Tokenomics),Approved,2000000,2000000,,,Tools,,
 Antioch,15,,,,,,,,,
 Antioch,16,Bounty #12: Endpoints April/2021,Approved,5000000,5000000,,,Bounties,12,Y
@@ -35,16 +35,16 @@ Alexandria,17,Council 01 - Tokenomics Report,Approved,400000,400000,,,Reports,,
 Antioch,17,,,,,,,,,
 Alexandria,18,,,,,,,,,
 Antioch,18,,,,,,,,,
+Antioch,19,KPI 00.1 - Tokenomics Report,Approved,390000,390000,,,KPI,,
 Alexandria,19,Gaming videos,Approved,100000,100000,,,Videos,,
-Antioch,19,KPI 00.1 - Tokenomics Report,Approved,390000,390000,,,KPIs,,
 Alexandria,20,KPI 02.3 - Appoint new council secretary,Approved,2000000,2000000,,,Informal Roles,,
 Antioch,20,,,,,,,,,
+Antioch,21,Antioch KPI 1.7,Cancelled,1800000,0,,,KPI,,
 Alexandria,21,,,,,,,,,
-Antioch,21,Antioch KPI 1.7,Cancelled,1800000,0,,,KPIs,,
 Alexandria,22,,,,,,,,,
 Antioch,22,,,,,,,,,
-Alexandria,23,,,,,,,,,
 Antioch,23,Resub: Forum Rewards funding,Approved,3000000,3000000,,,Rewards,,
+Alexandria,23,,,,,,,,,
 Alexandria,24,,,,,,,,,
 Antioch,24,,,,,,,,,
 Alexandria,25,,,,,,,,,
@@ -107,12 +107,12 @@ Alexandria,53,Community Bounty #3 (II),Approved,2018000,2018000,,,Bounties,3,Y
 Antioch,53,,,,,,,,,
 Alexandria,54,,,,,,,,,
 Antioch,54,,,,,,,,,
-Alexandria,55,,,,,,,,,
 Antioch,55,Test Proposal,Cancelled,10498600,0,,,Test,,
+Alexandria,55,,,,,,,,,
 Antioch,56,Bounty #8. Ledger for Joystream,Approved,11811000,11811000,,,Bounties,8,Y
 Alexandria,56,,,,,,,,,
-Alexandria,57,,,,,,,,,
 Antioch,57,Council Survey Rewards,Cancelled,1000000,0,,,Rewards,,
+Alexandria,57,,,,,,,,,
 Antioch,58,Prize pot for bounty 10,Approved,3900000,3900000,,,Bounties,10,Y
 Alexandria,58,,,,,,,,,
 Alexandria,59,,,,,,,,,
@@ -189,8 +189,8 @@ Alexandria,94,Alexandria Council 7 Report,Approved,500000,500000,,,Reports,,
 Antioch,94,,,,,,,,,
 Alexandria,95,New Joystream Telegram Sticker,Approved,500000,500000,,,Bounties,5,Y
 Antioch,95,,,,,,,,,
-Alexandria,96,,,,,,,,,
 Antioch,96,Creative Community Challenge #2,Approved,2150000,2150000,,,Community Rewards,,
+Alexandria,96,,,,,,,,,
 Antioch,97,Bounty 14: Submission 18-28,Approved,6646300,6646300,,,Bounties,14,Y
 Alexandria,97,Appoint New Council Secretary,Execution Failed,2000000,0,,,Informal Roles,,
 Antioch,98,Prize pot for bounty 10 IV,Approved,8498500,8498500,,,Bounties,10,Y
@@ -410,8 +410,8 @@ Alexandria,204,Bounty 9 - Payout A,Approved,972568,972568,,,Bounties,9,Y
 Antioch,204,,,,,,,,,
 Alexandria,205,,,,,,,,,
 Antioch,205,,,,,,,,,
-Alexandria,206,,,,,,,,,
 Antioch,206,"Replenish my ""give account""",Approved,3000000,3000000,,,Community Rewards,,
+Alexandria,206,,,,,,,,,
 Alexandria,207,KPI 12.2 - Tokenomics Report,Approved,385000,385000,,,Reports,,
 Antioch,207,,,,,,,,,
 Alexandria,208,Bounty #13: Example Discord Bot,Canceled,5000000,0,,,Bounties,13,Y
@@ -434,8 +434,8 @@ Alexandria,216,Stickers in the Telegram Joystream,Approved,25000,25000,,,Communi
 Antioch,216,,,,,,,,,
 Alexandria,217,,,,,,,,,
 Antioch,217,,,,,,,,,
-Alexandria,218,media.joystreamstats.live,Approved,5000000,5000000,,,Tools,,
 Antioch,218,Reward for Bounty #10,Approved,15906015,15906015,,,Bounties,10,Y
+Alexandria,218,media.joystreamstats.live,Approved,5000000,5000000,,,Tools,,
 Alexandria,219,,,,,,,,,
 Antioch,219,,,,,,,,,
 Antioch,220,,,,,,,,,
@@ -480,12 +480,12 @@ Antioch,258,,,,,,,,,
 Antioch,259,,,,,,,,,
 Antioch,260,,,,,,,,,
 Antioch,261,,,,,,,,,
-Antioch,262,Payment for bounty 14: stwoof,Approved,28360870,28360870,,,Bounties,14,N
-Antioch,263,Payment for bounty 14: maxlevush,Approved,9308183,9308183,,,Bounties,14,N
-Antioch,264,Payments for Bounty 14: spat_sochi,Approved,5235853,5235853,,,Bounties,14,N
+Antioch,262,Payment for bounty 14: stwoof,Approved,28360870,28360870,,,Bounties,14,Y
+Antioch,263,Payment for bounty 14: maxlevush,Approved,9308183,9308183,,,Bounties,14,Y
+Antioch,264,Payments for Bounty 14: spat_sochi,Approved,5235853,5235853,,,Bounties,14,Y
 Antioch,265,,,,,,,,,
 Antioch,266,,,,,,,,,
-Antioch,267,Payments for Bounty 14: mmsaww,Approved,581762,581762,,,Bounties,14,N
+Antioch,267,Payments for Bounty 14: mmsaww,Approved,581762,581762,,,Bounties,14,Y
 Antioch,268,Payment for discord video bot improving,Approved,736594,736594,,,Tools,,
 Antioch,269,,,,,,,,,
 Antioch,270,,,,,,,,,
