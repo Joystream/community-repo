@@ -13,17 +13,6 @@
       "status": "Announced"
     },
     {
-      "id": 10,
-      "title": "Upload Public Domain Content",
-      "description": "Upload videos to our testnet, and earn up to $5 per entry! We believe there are some hidden gems available out there, that are licensed permissively.",
-      "openedDate": "2021-02-15",
-      "links": ["https://testnet.joystream.org/#/forum/threads/217","https://github.com/Joystream/community-repo/issues/88"],
-      "reward": 5,
-      "tags": ["Newcomers","Content"],
-      "format": "Free for All",
-      "status": "Open"
-    },
-    {
       "id": 18,
       "title": "Original Video Bounty",
       "openedDate": "2021-05-29",
@@ -45,6 +34,42 @@
       "notes": "Create a tool to report validator activity",
       "tags": ["Coding","Research"],
       "format": "Closed",
+      "status": "Open"
+    },
+    {
+      "id": 20,
+      "title": "Github Bounty Guide",
+      "openedDate": "2021-07-04",
+      "description": "Create a short video guide explaining how to use GitHub for submitting your bounty work.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/492","https://github.com/Joystream/community-repo/issues/220"],
+      "reward": 350,
+      "notes": "Create GitHub video guides",
+      "tags": ["Content Creation","Coding"],
+      "format": "Free for all",
+      "status": "Open"
+    },
+    {
+      "id": 21,
+      "title": "Website Translation",
+      "openedDate": "2021-06-28",
+      "description": "Translate the joystream.org website to languages other than English.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/493","https://github.com/Joystream/community-repo/issues/212"],
+      "reward": 500,
+      "notes": "Translate the Joystream website",
+      "tags": ["Research","Coding"],
+      "format": "Closed",
+      "status": "Open"
+    },
+    {
+      "id": 16,
+      "title": "Translating Update Videos",
+      "openedDate": "2021-04-10",
+      "description": "Translate Community Updates videos to non-English languages.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/510","https://github.com/Joystream/community-repo/issues/144"],
+      "reward": 400,
+      "notes": "Translate Joystream Community Updates videos",
+      "tags": ["Content","Documentation"],
+      "format": "NA",
       "status": "Open"
     }
   ],
@@ -221,6 +246,17 @@
       "format": "Mixed",
       "closedDate": "2021-06-15",
       "status": "Completed - USD 375"
+    },
+    {
+      "id": 10,
+      "title": "Upload Public Domain Content",
+      "description": "Upload videos to our testnet, and earn up to $5 per entry! We believe there are some hidden gems available out there, that are licensed permissively.",
+      "openedDate": "2021-02-15",
+      "links": ["https://testnet.joystream.org/#/forum/threads/217","https://github.com/Joystream/community-repo/issues/88"],
+      "reward": 5,
+      "tags": ["Newcomers","Content"],
+      "format": "Free for All",
+      "status": "Closed"
     }
   ]
 }

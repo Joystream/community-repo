@@ -13,6 +13,16 @@ The process once 1 month has been reached:
 4. The current lead can also apply for the opening.
 5. Whatever the result of the new opening is, a new `opening` proposal will be made 1 month after, repeating the process.
 
+Explanation of the types of proposals:
+
+- `Terminate` - This will fire the current lead if approved. In the current version of Joystream the lead must be fired for a new lead to be hired, but in a future version of Joystream this will not be required and a lead can be hired and it will override whoever the current lead is
+
+- `Add Opening` - This will create an opening that people can apply for. It mentions what the salary is and includes interview questions. It also has a variety of options for minimum stake, maximum number of applicants and some other things.
+
+- `Begin Review` - This will close the opening, and allow the council/community to begin reviewing applicants. No one else will be able to apply after the review has started. You also cannot hire someone until Begin Review has started.
+
+- `Fill Opening` - This proposal type allows the creator to choose an applicant, from an opening that is currently in the Review status and give an explanation of why they should be hired (as mentioned before, the current lead must be fired for this proposal type to work, if it is not empty then the proposal will fail to execute). There can be multiple of this type of proposal and whichever proposal is the first to be approved is the person that will be hired. If another proposal is approved afterwards it will fail to execute.
+
 In the event the current lead is fired, they can stay on as: 
 - a guide (to help the newly hired lead on how to manage the position for a week). This will be paid at the previous rate + 50% for one week (via `spending proposal`)
 - also as a worker if they apply for an opening. The new lead is encouraged to hire the old lead as a worker if there are enough places, since the old lead will have desirable skills to help with the group.
