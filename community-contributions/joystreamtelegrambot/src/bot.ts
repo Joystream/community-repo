@@ -56,10 +56,10 @@ client.on("message", async (msg) => {
 let lastHeartbeat: number = moment().valueOf();
 
 // send to telegram and discord
-const sendMessage = (msg: string, channel: any) => {
-  if (msg === "") return;
-  sendDiscord(msg, channel);
-  sendTelegram(msg);
+const sendMessage = (msg: { tg: string; discord: string }, channel: any) => {
+  if (msg.tg === "") return;
+  sendDiscord(msg.discord, channel);
+  sendTelegram(msg.tg);
 };
 const sendTelegram = (msg: string) => {
   try {
@@ -70,22 +70,9 @@ const sendTelegram = (msg: string) => {
   }
 };
 const sendDiscord = (msg: string, channel: any) => {
-  if (!channel) return;
-
-  const options = {
-    dumpLinkHrefsNearby: {
-      enabled: false,
-      putOnNewLine: false,
-      wrapHeads: "",
-      wrapTails: "",
-    },
-  };
-
-  const stripped: string = stripHtml(msg, options).result;
-
-  if (!stripped.length) return;
+  if (!channel || !msg.length) return;
   try {
-    channel.send(stripped);
+    channel.send(msg);
   } catch (e) {
     console.log(e);
   }

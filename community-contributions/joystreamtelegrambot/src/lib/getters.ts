@@ -105,7 +105,7 @@ export const proposalDetail = async (
   const title: string = proposal.title.toString();
   const type: string = await getProposalType(api, id);
   const args: string[] = [String(id), title, type, stage, result, author];
-  const message: string = formatProposalMessage(args);
+  const message: { tg: string; discord: string } = formatProposalMessage(args);
   const createdAt: number = proposal.createdAt.toNumber();
   return { createdAt, finalizedAt, parameters, message, stage, result, exec };
 };
