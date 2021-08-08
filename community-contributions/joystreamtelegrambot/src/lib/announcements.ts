@@ -223,8 +223,8 @@ export const proposals = async (
       .add(6 * (votingEndsAt - block), "second")
       .format("DD/MM/YYYY HH:mm");
     const link = `${domain}/#/proposals/${id}`;
-    const tg = `Proposal ${id} <b>created</b> at block ${createdAt}.\r\n${message.tg}\r\nYou can <a href="${link}">vote</a> until ${endTime} UTC (block ${votingEndsAt}).`;
-    const discord = `Proposal ${id} **created** at block ${createdAt}. ${message.discord}\nVote until ${endTime} UTC (block ${votingEndsAt}). ${link}`;
+    const tg = `<a href="${link}">Proposal ${id}</a> <b>created</b> at block ${createdAt}.\r\n${message.tg}\r\nYou can <a href="${link}">vote</a> until block ${votingEndsAt} (${endTime} UTC).`;
+    const discord = `Proposal ${id} **created** at block ${createdAt}. ${message.discord}\nVote until block ${votingEndsAt} (${endTime} UTC): ${link}`;
     sendMessage({ tg, discord }, channel);
     active.push(id);
   }
@@ -324,6 +324,6 @@ export const formatProposalMessage = (
 ): { tg: string; discord: string } => {
   const [id, title, type, stage, result, handle] = data;
   const tg = `<b>Type</b>: ${type}\r\n<b>Proposer</b>: <a href="${domain}/#/members/${handle}">${handle}</a>\r\n<b>Title</b>: <a href="${domain}/#/proposals/${id}">${title}</a>\r\n<b>Stage</b>: ${stage}\r\n<b>Result</b>: ${result}`;
-  const discord = `**Type**: ${type}\n**Proposer**: ${handle}\n**Title**: ${title}\n**Stage**: ${stage}\n**Result*: ${result}\n${domain}/#/proposals/${id}`;
+  const discord = `**Type**: ${type}\n**Proposer**: ${handle}\n**Title**: ${title}\n**Stage**: ${stage}\n**Result**: ${result}`;
   return { tg, discord };
 };
