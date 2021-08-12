@@ -14,9 +14,10 @@ import { Category, CategoryId } from "@joystream/types/forum";
 import { MemberId, Membership } from "@joystream/types/members";
 import { Proposal } from "@joystream/types/proposals";
 
-// channel
+// api
 
-export const currentChannelId = async (api: Api): Promise<number> => -1;
+export const timestamp = async (api: Api) =>
+  (await api.query.timestamp.now()).toNumber();
 
 export const memberHandle = async (api: Api, id: MemberId): Promise<string> => {
   const membership: Membership = await api.query.members.membershipById(id);
@@ -110,10 +111,18 @@ export const proposalDetail = async (
   return { createdAt, finalizedAt, parameters, message, stage, result, exec };
 };
 
-export const fetchTokenValue = async () => {
-  const { data } = await axios.get("https://status.joystream.org/status");
-  return data ? `${Math.floor(+data.price * 100000000) / 100} $` : `?`;
-};
+// status endpoint
+
+export const fetchTokenValue = async (): Promise<string> =>
+  axios
+    .get("https://status.joystream.org/status")
+    .then(({ data }) => `${Math.floor(+data.price * 100000000) / 100} $`)
+    .catch((e) => {
+      console.log(`Failed to fetch status.`);
+      return `?`;
+    });
+
+// hdyra
 
 export const fetchStorageSize = async () => {
   const dashboard = "https://analytics.dapplooker.com/api/public/dashboard";
@@ -121,6 +130,6 @@ export const fetchStorageSize = async () => {
 
   const { data } = await axios.get(`${dashboard}/${asset}`);
 
-  const size = Math.round(data.data.rows[0][0]) + "GB";
+  const size = Math.round(data.data.rows[0][0]) + " GB";
   return size;
 };

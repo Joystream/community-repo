@@ -19,7 +19,7 @@ import { AccountId, Header } from "@polkadot/types/interfaces";
 // functions
 import * as announce from "./lib/announcements";
 import * as get from "./lib/getters";
-import { parseArgs, printStatus, passedTime, exit } from "./lib/util";
+import { parseArgs, printStatus, passedTime } from "./lib/util";
 import moment from "moment";
 
 const opts: Options = parseArgs(process.argv.slice(2));
@@ -52,8 +52,6 @@ client.on("message", async (msg) => {
     msg.reply(`reporting to discord`);
   }
 });
-
-let lastHeartbeat: number = moment().valueOf();
 
 // send to telegram and discord
 const sendMessage = (msg: { tg: string; discord: string }, channel: any) => {
@@ -93,10 +91,13 @@ const main = async () => {
   let council: Council = { round: 0, last: "" };
   let blocks: Block[] = [];
   let lastEra = 0;
+  let timestamp = await get.timestamp(api);
+  let duration = 0;
+  let lastHeartbeat = timestamp;
   let lastBlock: Block = {
     id: 0,
-    duration: 6000,
-    timestamp: lastHeartbeat,
+    duration: 0,
+    timestamp: 0,
     stake: 0,
     noms: 0,
     vals: 0,
@@ -115,8 +116,6 @@ const main = async () => {
   const threads: number[] = [0, 0];
   let proposals: Proposals = { last: 0, current: 0, active: [], executing: [] };
   let lastProposalUpdate = 0;
-
-  if (opts.channel) channels[0] = await get.currentChannelId(api);
 
   if (opts.forum) {
     posts[0] = await get.currentPostId(api);
@@ -137,8 +136,8 @@ const main = async () => {
       const id = header.number.toNumber();
 
       if (lastBlock.id === id) return;
-      const timestamp = (await api.query.timestamp.now()).toNumber();
-      const duration = timestamp - lastBlock.timestamp;
+      timestamp = await get.timestamp(api);
+      duration = lastBlock.timestamp ? timestamp - lastBlock.timestamp : 0;
 
       // update validators and nominators every era
       const era = Number(await api.query.staking.currentEra());
@@ -174,7 +173,7 @@ const main = async () => {
         reward,
         issued,
       };
-      blocks = blocks.concat(block);
+      if (duration) blocks = blocks.concat(block);
 
       // heartbeat
       if (timestamp > lastHeartbeat + heartbeat) {
@@ -200,18 +199,6 @@ const main = async () => {
           sendMessage,
           discordChannels.council
         );
-
-      if (opts.channel) {
-        channels[1] = await get.currentChannelId(api);
-        if (channels[1] > channels[0])
-          announce.channels(
-            api,
-            channels,
-            sendMessage,
-            discordChannels.channels
-          );
-        channels[0] = channels[1];
-      }
 
       if (opts.proposals) {
         proposals.current = await get.proposalCount(api);
@@ -245,5 +232,5 @@ const main = async () => {
 };
 main().catch((error) => {
   console.log(error);
-  exit(log);
+  process.exit();
 });

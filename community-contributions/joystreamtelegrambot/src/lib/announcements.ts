@@ -224,7 +224,7 @@ export const proposals = async (
       .format("DD/MM/YYYY HH:mm");
     const link = `${domain}/#/proposals/${id}`;
     const tg = `<a href="${link}">Proposal ${id}</a> <b>created</b> at block ${createdAt}.\r\n${message.tg}\r\nYou can <a href="${link}">vote</a> until block ${votingEndsAt} (${endTime} UTC).`;
-    const discord = `Proposal ${id} **created** at block ${createdAt}. ${message.discord}\nVote until block ${votingEndsAt} (${endTime} UTC): ${link}`;
+    const discord = `Proposal ${id} **created** at block ${createdAt}.\n${message.discord}\nVote until block ${votingEndsAt} (${endTime} UTC): ${link}\n`;
     sendMessage({ tg, discord }, channel);
     active.push(id);
   }
@@ -241,7 +241,7 @@ export const proposals = async (
       }
       const link = `${domain}/#/proposals/${id}`;
       const tg = `<a href="${link}">Proposal ${id}</a> <b>${label}</b> at block ${finalizedAt}.\r\n${message.tg}`;
-      const discord = `Proposal ${id} **${label}** at block ${finalizedAt}.\n${message.discord}\n${link}`;
+      const discord = `Proposal ${id} **${label}** at block ${finalizedAt}.\n${message.discord}\n${link}\n`;
       sendMessage({ tg, discord }, channel);
       active = active.filter((a) => a !== id);
     }
@@ -254,7 +254,7 @@ export const proposals = async (
     if (block < executesAt) continue;
     const link = `${domain}/#/proposals/${id}`;
     const tg = `<a href="${link}">Proposal ${id}</a> <b>executed</b> at block ${executesAt}.\r\n${message.tg}`;
-    const discord = `Proposal ${id} **executed** at block ${executesAt}.\n${message.discord}\n${link}`;
+    const discord = `Proposal ${id} **executed** at block ${executesAt}.\n${message.discord}\n${link}\n`;
     sendMessage({ tg, discord }, channel);
     executing = executing.filter((e) => e !== id);
   }
@@ -278,6 +278,7 @@ export const heartbeat = async (
   const price = await fetchTokenValue();
   const storageSize = await fetchStorageSize();
   const durations = blocks.map((b) => b.duration);
+  console.log(durations);
   const blocktime = getAverage(durations) / 1000;
 
   const stake = blocks.map((b) => b.stake);
@@ -299,7 +300,7 @@ export const heartbeat = async (
   let proposalString: string[] = pending
     ? [
         `<a href="${domain}/#/proposals">${pending} pending ${p(pending)}</a> `,
-        `${pending} pending ${p(pending)} ${domain}/#/proposals`,
+        `${pending} active ${p(pending)} ${domain}/#/proposals`,
       ]
     : ["", ""];
   if (finalized)

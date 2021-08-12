@@ -55,8 +55,3 @@ export const passedTime = (start: number, now: number): string => {
       : "mm:ss[m]";
   return formatTime(passed, format);
 };
-
-export const exit = (log: (s: string) => void) => {
-  log("\nNo connection, exiting.\n");
-  process.exit();
-};
