@@ -9,3 +9,4 @@
 	* Alternatively, the task could be requested to be a bounty. Being a bounty allows for the possibility of `Jsgenesis` to reimburse the costs involved.
 3. Once the cost of the `task` has been approved by `The Council`, then `Operations` can proceed with working on it.
 	* If the `task` ends up taking longer or costing more than expected, another `text proposal` should be created before further work is done. This `text proposal` should mention the current costs (which should still be paid) and what the expectation of overage will be. This would allow `The Council` to decide if the extended costs are worth it.
+4. Upon `The Council` approving of the cost of a task, the `Operations Lead` can pay the appropriate workers via `worker payments` or a `spending proposal` (this should be stated in the `text proposal`). The lead can pay `up to 50%` of the approved cost to the worker before completion.
