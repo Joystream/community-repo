@@ -28,6 +28,10 @@ Only Content Working Group can `warn` or `censor` videos
 
 - If the video quality is "unreasonably" low
 
+1.5 Dublicates
+
+- If the same video has been uploaded several times
+
 ### How to `warn` a video
 
 > `warning` Means to make a note that something has to be corrected within a certain time period
