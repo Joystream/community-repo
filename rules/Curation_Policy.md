@@ -105,7 +105,7 @@ Only Content Working Group can `warn` or `censor` videos
 
 ### How to `censor` a video
 
-> `censor` Means updating the status (isCensored) for a video from `true` to `false`. It cannot be changed by anyone. Except for another curator in the active group.
+> `censor` Means updating the status (isCensored) for a video from `false` to `true`. It cannot be changed by anyone. Except for another curator in the active group.
 
 ```
 
