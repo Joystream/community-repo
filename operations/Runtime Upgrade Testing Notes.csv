@@ -1,0 +1,203 @@
+Block,Action,Notes
+"1,854,539",Registered membership 1998 using account 5DLevi4g5aeTtZQ2oxnyP7vUMXN8tXK8dWaYHDBeJ1NeHzvk,
+"1,854,543",Registered membership 1999 using account 5CLeviijADayNZQyosuCCRaQArpBV9a3mEoZxz8tMq3wx7PD,
+"1,854,547",5CLeviijADayNZQyosuCCRaQArpBV9a3mEoZxz8tMq3wx7PD Applied for Council,
+"1,854,549",5DLevi4g5aeTtZQ2oxnyP7vUMXN8tXK8dWaYHDBeJ1NeHzvk Applied for Council,
+"1,854,559",voting stage started,
+"1,854,563",5DLevi4g5aeTtZQ2oxnyP7vUMXN8tXK8dWaYHDBeJ1NeHzvk voted,
+"1,854,566",5CLeviijADayNZQyosuCCRaQArpBV9a3mEoZxz8tMq3wx7PD voted,
+"1,854,579",Revealing Stage Started,
+"1,854,581",5CLeviijADayNZQyosuCCRaQArpBV9a3mEoZxz8tMq3wx7PD revealed vote,
+"1,854,583",5DLevi4g5aeTtZQ2oxnyP7vUMXN8tXK8dWaYHDBeJ1NeHzvk revealed vote,
+"1,854,599",New Council Elected,
+"1,854,614","5CJzTaCp5fuqG7NdJQ6oUCwdmFHKichew8w4RZ3zFHM8qSe6 sent 500000 JOY to 
+5CLeviijADayNZQyosuCCRaQArpBV9a3mEoZxz8tMq3wx7PD",
+"1,854,617",5DLevi4g5aeTtZQ2oxnyP7vUMXN8tXK8dWaYHDBeJ1NeHzvk Created Proposal 39,
+"1,854,630",5CLeviijADayNZQyosuCCRaQArpBV9a3mEoZxz8tMq3wx7PD Voted,
+"1,854,639",5DLevi4g5aeTtZQ2oxnyP7vUMXN8tXK8dWaYHDBeJ1NeHzvk Voted ,
+,attempted to create Runtime Upgrade proposal from UI,"No proposal was created, due to a bug: https://github.com/Joystream/joystream/issues/2569"
+"1,855,029",attempted to create Runtime Upgrade proposal from Extrinsics,explorer/query/0x2c9399f1e329e302e43d9c59ad5a258f0e202030ad8fe5ee5879a6de5b78a0df
+"1,855,221",Runtime Upgrade Proposal created (#40),#/explorer/query/0xdc373a5edf13d6282db429c162e282c7c25f1dea7209469ff01f0a67023d0884
+"1,855,247",5CLeviijADayNZQyosuCCRaQArpBV9a3mEoZxz8tMq3wx7PD Voted for Proposal #40,
+"1,855,267",5DLevi4g5aeTtZQ2oxnyP7vUMXN8tXK8dWaYHDBeJ1NeHzvk Voted for Proposal #40,
+"1,855,267",Proposal #40 approved and went to grace period ,
+"1,855,863",Created Operations WG Lead Opening #41,
+"1,855,879",Proposal #41 approved,
+"1,855,895",5DLevi4g5aeTtZQ2oxnyP7vUMXN8tXK8dWaYHDBeJ1NeHzvk applied for Ops WG Lead Role,
+"1,856,013",Begin Review Ops WG Leader Application Proposal created (#42),UI issue with the wrong link to the Opening - the link leads to an opening from Storage WG
+"1,856,107",Proposal #42 Approved  and went to grace period ,
+"1,856,186","5CLeviijADayNZQyosuCCRaQArpBV9a3mEoZxz8tMq3wx7PD Applied for Curator Lead, application #3",
+"1,856,193","5CLeviijADayNZQyosuCCRaQArpBV9a3mEoZxz8tMq3wx7PD Applied for Storage Lead, application #4",
+1856232,Begin Review Storage WG Leader Application Proposal created (#44),
+1856576,Created Gateway WG Lead Opening #48 via Extrinsics UI,"This opening did not show under /working-groups/opportunities, but it does exist on chain."
+"1,856,697",Was able to refill the mint for Gateway WG (via Extrinsics UI),
+1881313,Created Proposal (#50) to Fill the Operations WG Lead Role (100.0000 kJOY / 3600 block(s) (Next payment: #1924666),
+1881488,Proposal (#50) to Fill the Operations WG Lead Role was approved.,Lead key is 5CKb5MEKzenwnvDfKWh3d18EQDfvxmgSPVbHbvMLzDnDared
+"1,883,589",Opening 1 Created (id=3) max_active_applicants=3,
+"1,883,620",Opening 2 Created (id=4) max_active_applicants=2,
+"1,883,799",Member 2001 Applied on Opening 4,
+"1,883,810",Member 2002 Applied on Opening 4,
+"1,883,836",Member 2003 Applied on Opening 4,
+"1,883,872",Member 2001 Applied on Opening 3,
+"1,883,882",Member 2002 Applied on Opening 3,
+"1,883,891",Member 2003 Applied on Opening 3,
+"1,883,982",Began applcation review for Opening id = 4,"worker1=79900, worker2=89900, worker3=49900
+
+WG appl. ID     Appl. ID     Member      Stage         Appl. stake     Role stake     Total stake
+1               10           worker1     Active        40000           40000          80000
+2               11           worker2     Unstaking     0               0              0
+3               12           worker3     Active        35000           35000          70000"
+1884067,Runtime Upgrade Executed,
+"1,884,268",Hired Worker 1 via fillOpening CLI,"worker1=159900, worker2=89900, worker3=119900
+
+Worker 1 Doesn't seem to be hired.
+
+λ joystream-cli working-groups:overview
+Current Group: operations
+
+___________________ Group lead ___________________
+
+Member id:                    1998
+Member handle:                runtime_test_2
+Role account:                 5CKb5MEKzenwnvDfKWh3d18EQDfvxmgSPVbHbvMLzDnDared
+
+____________________ Members _____________________
+
+Worker id     Member id     Member handle      Stake     Earned     Role account
+0             1998          runtime_test_2     0         0          5CKb5M...nDared     ⭐ 🔑
+
+_____________________ Legend _____________________
+
+⭐ - Leader
+🔑 - Role key available in CLI
+
+
+WG appl. ID     Appl. ID     Member      Stage         Appl. stake     Role stake     Total stake
+1               10           worker1     Unstaking     0               0              0
+2               11           worker2     Unstaking     0               0              0
+3               12           worker3     Unstaking     0               0              0
+λ joystream-cli working-groups:fillOpening 4
+Current Group: operations
+ Select succesful applicants
+ Do you want to provide the optional RewardPolicy parameter? No
+
+Sending operationsWorkingGroup.fillOpening extrinsic...
+Extrinsic successful!
+Opening 4 successfully filled!
+Accepted working group application IDs: NONE ???????"
+,,
+,Tried to apply for Opening 3 with new Worker4 (20+20),Error: operationsWorkingGroup.AddWorkerOpeningNewApplicationWasCrowdedOut
+"1,887,299",Applied for Opening 3 with new Worker4 (30+30),"worker1=199900, worker2=89900, worker3=119900
+
+________________ Applications (4) ________________
+
+WG appl. ID     Appl. ID     Member      Stage         Appl. stake     Role stake     Total stake
+4               13           worker1     Unstaking     0               0              0
+5               14           worker2     Active        25000           25000          50000
+6               15           worker3     Active        40000           40000          80000
+7               16           member4     Active        30000           30000          60000
+"
+"1,887,596",Withdrawn application of worker3 (application ID 6),"worker1=199900, worker2=89900, worker3=159900
+________________ Applications (4) ________________
+
+WG appl. ID     Appl. ID     Member      Stage         Appl. stake     Role stake     Total stake
+4               13           worker1     Unstaking     0               0              0
+5               14           worker2     Active        25000           25000          50000
+6               15           worker3     Unstaking     0               40000          40000
+7               16           member4     Active        30000           30000          60000"
+"1,887,648","λ joystream-cli working-groups:startReviewPeriod 3
+Current Group: operations
+
+Sending operationsWorkingGroup.beginApplicantReview extrinsic...
+Extrinsic successful!
+Opening 3 status changed to: In Review",
+"1,887,747","Hired Worker 2
+________________ Applications (4) ________________
+
+WG appl. ID     Appl. ID     Member      Stage         Appl. stake     Role stake     Total stake
+4               13           worker1     Unstaking     0               0              0
+5               14           worker2     Unstaking     0               25000          25000
+6               15           worker3     Unstaking     0               40000          40000
+7               16           member4     Unstaking     0               0              0","worker1=199900, worker2=114900, worker3=159900
+
+____________________ Members _____________________
+
+Worker id     Member id     Member handle      Stake            Earned     Role account
+1             2002          worker2            25.0000 kJOY     0          5ELnEJ...SXHnSr
+0             1998          runtime_test_2     0                0          5CKb5M...nDared     ⭐ 🔑"
+"1,887,798",Create Opening #5,
+"1,887,815",Worker 4 Applied to Opening 5,
+"1,887,827",Worker 3 Applied to Opening 5,"worker1=199900, worker2=114900, worker3=149900
+________________ Applications (2) ________________
+
+WG appl. ID     Appl. ID     Member      Stage      Appl. stake     Role stake     Total stake
+8               17           member4     Active     5000            5000           10000
+9               18           worker3     Active     5000            5000           10000"
+"1,887,870",Withdrawn application of worker4 (application ID 8),"________________ Applications (2) ________________
+
+WG appl. ID     Appl. ID     Member      Stage         Appl. stake     Role stake     Total stake
+8               17           member4     Unstaking     0               0              0
+9               18           worker3     Active        5000            5000           10000"
+"1,887,898",Worker 2 Applied to Opening 5,
+"1,887,917",Worker 1 Applied to Opening 5,"worker1=179900, worker2=104900, worker3=159900
+
+________________ Applications (4) ________________
+
+WG appl. ID     Appl. ID     Member      Stage         Appl. stake     Role stake     Total stake
+8               17           member4     Unstaking     0               0              0
+9               18           worker3     Unstaking     0               0              0
+10              19           worker2     Active        5000            5000           10000
+11              20           worker1     Active        10000           10000          20000"
+"1,887,941","λ joystream-cli working-groups:startReviewPeriod 5
+Current Group: operations
+
+Sending operationsWorkingGroup.beginApplicantReview extrinsic...
+Extrinsic successful!
+Opening 5 status changed to: In Review",
+"1,887,946","Hired Worker 2 AGAIN.
+________________ Applications (4) ________________
+
+WG appl. ID     Appl. ID     Member      Stage         Appl. stake     Role stake     Total stake
+8               17           member4     Unstaking     0               0              0
+9               18           worker3     Unstaking     0               0              0
+10              19           worker2     Unstaking     0               5000           5000
+11              20           worker1     Unstaking     0               0              0","____________________ Members _____________________
+
+Worker id     Member id     Member handle      Stake            Earned     Role account
+2             2002          worker2            5.0000 kJOY      0          5DeZRV...HbKmn1
+1             2002          worker2            25.0000 kJOY     0          5ELnEJ...SXHnSr
+0             1998          runtime_test_2     0                0          5CKb5M...nDared     ⭐ 🔑"
+"1,887,983","λ joystream-cli working-groups:evictWorker 1
+Current Group: operations
+ Provide value for rationale testing
+ Should the worker stake (25.0000 kJOY) be slashed? No
+
+Sending operationsWorkingGroup.terminateRole extrinsic...
+Extrinsic successful!
+Worker 1 has been evicted!","worker1=199900, worker2=109900, worker3=159900"
+1927079,Mint Refill Proposal #53 have been created for Content Curators WG. Mint = 20 000 000,
+1927093,Mint Refill Proposal #53 have been approved. ,"minting.mints: Mint
+
+{
+  capacity: 19,995,000,
+  next_adjustment: null,
+  created_at: 0,
+  total_minted: 5,005,000
+}"
+,,"minting.mints: Mint
+
+{
+  capacity: 0,
+  next_adjustment: null,
+  created_at: 0,
+  total_minted: 0
+}"
+1927135,Mint Refill Proposal #54 have been created for operations WG. Mint = 49 999 999 ,
+1927154,Mint Refill Proposal #54 have been approved. ,"minting.mints: Mint
+
+{
+  capacity: 49,999,998,
+  next_adjustment: null,
+  created_at: 0,
+  total_minted: 0
+}"
