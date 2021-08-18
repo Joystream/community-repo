@@ -6,25 +6,25 @@
     "overviewSection": {
       "type": "object",
       "properties": {
-        "title": {"type": {"type": "string"}},
-        "kpisNumber": {"type": {"type": "string"}},
-        "councilElectedInRound": {"type": {"type": "number"}},
-        "councilMembers": {"type": {"type": "number"}},
+        "title": {"type": "string"},
+        "kpisNumber": {"type": "string"},
+        "councilElectedInRound": {"type": "number"},
+        "councilMembers": {"type": "number"},
         "termLength": {
           "type": "object",
           "properties": {
-            "termLength": {"type": {"type": "string"}},
-            "startBlock": {"type": {"type": "number"}},
-            "endBlock": {"type": {"type": "number"}},
-            "startDate": {"type": {"type": "string"}, "format": "date"},
-            "endDate": {"type": {"type": "string"}, "format": "date"}
+            "termLength": {"type": "string"},
+            "startBlock": {"type": "number"},
+            "endBlock": {"type": "number"},
+            "startDate": {"type": "string", "format": "date"},
+            "endDate": {"type": "string", "format": "date"}
           },
-          "termSummariesForumThread": {"type": {"type": "string"}},
+          "termSummariesForumThread": {"type": "string"},
           "deadlineToSubmitSummary": {
             "type": "object",
             "properties": {
-              "block": {"type": {"type": "number"}},
-              "deadlineDate": {"type": {"type": "string"}, "format": "date"}
+              "block": {"type": "number"},
+              "deadlineDaye": {"type": "string", "format": "date"}
             }
           }
         }
@@ -35,51 +35,51 @@
       "items": {
         "type": "object",
         "properties": {
-          "sectionTitle": {"type": {"type": "string"}},
-          "sectionDescription": {"type": {"type": "string"}},
+          "sectionTitle": {"type": "string"},
+          "sectionDescription": {"type": "string"},
           "kpis": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "kpiTitle": {"type": {"type": "string"}},
+                "kpiTitle": {"type": "string"},
                 "reward": {
                   "type": "object",
                   "properties": {
-                    "rewardLine": {"type": {"type": "string"}},
-                    "rewardDescription": {"type": {"type": "string"}}
+                    "rewardLine": {"type": "string"},
+                    "rewardDescription": {"type": "string"}
                   }
                 },
-                "rewardStructure": {"type": {"type": "string"}},
-                "gradingProcess": {"type": {"type": "string"}},
+                "rewardStructure": {"type": "string"},
+                "gradingProcess": {"type": "string"},
                 "active": {
                   "type": "object",
                   "properties": {
-                    "active": {"type": {"type": "string"}},
-                    "block": {"type": {"type": "number"}},
-                    "activeDate": {"type": {"type": "string"}, "format": "date"}
+                    "active": {"type": "string"},
+                    "block": {"type": "number"},
+                    "activeDate": {"type": "string", "format": "date"}
                   }
                 },
-                "purpose": {"type": {"type": "string"}},
+                "purpose": {"type": "string"},
                 "scopeOfWork": {
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
-                      "task": {"type": {"type": "string"}}
+                      "task": {"type": "string"}
                     }
                   }
                 },
-                "rewardDistribution": {"type": {"type": "string"}},
-                "note": {"type": {"type": "string"}},
-                "grading": {"type": {"type": "string"}},
-                "reporting": {"type": {"type": "string"}},
+                "rewardDistribution": {"type": "string"},
+                "note": {"type": "string"},
+                "grading": {"type": "string"},
+                "reporting": {"type": "string"},
                 "weighting": {
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
-                      "weight": {"type": {"type": "string"}}
+                      "weight": {"type": "string"}
                     }
                   }
                 }
