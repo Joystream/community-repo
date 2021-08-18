@@ -2,9 +2,19 @@
   "$schema": "https://json-schema.org/draft/2019-09/schema",
   "title": "Joystream KPI schema",
   "type": "object",
+  "required": ["overviewSection", "sections"],
   "properties": {
     "overviewSection": {
       "type": "object",
+      "required": [
+        "title", 
+        "kpisNumber", 
+        "councilElectedInRound", 
+        "councilMembers", 
+        "termLength", 
+        "termSummariesForumThread",
+        "deadlineToSubmitSummary"
+      ],
       "properties": {
         "title": {"type": "string"},
         "kpisNumber": {"type": "string"},
@@ -12,6 +22,13 @@
         "councilMembers": {"type": "number"},
         "termLength": {
           "type": "object",
+          "required": [
+            "termLength", 
+            "startBlock", 
+            "endBlock", 
+            "startDate", 
+            "endDate"
+          ],
           "properties": {
             "termLength": {"type": "string"},
             "startBlock": {"type": "number"},
@@ -19,14 +36,15 @@
             "startDate": {"type": "string", "format": "date"},
             "endDate": {"type": "string", "format": "date"}
           },
-          "termSummariesForumThread": {"type": "string"},
-          "deadlineToSubmitSummary": {
-            "type": "object",
-            "properties": {
-              "block": {"type": "number"},
-              "deadlineDaye": {"type": "string", "format": "date"}
-            }
+        "termSummariesForumThread": {"type": "string"},
+        "deadlineToSubmitSummary": {
+          "type": "object",
+          "required": ["block", "deadlineDate"],   
+          "properties": {
+            "block": {"type": "number"},
+            "deadlineDate": {"type": "string", "format": "date"}
           }
+        }
         }
       }
     },
@@ -34,6 +52,7 @@
       "type": "array",
       "items": {
         "type": "object",
+        "required": ["sectionTitle", "sectionDescription", "kpis"],
         "properties": {
           "sectionTitle": {"type": "string"},
           "sectionDescription": {"type": "string"},
@@ -41,10 +60,23 @@
             "type": "array",
             "items": {
               "type": "object",
+              "required": [
+                "kpiTitle", 
+                "reward", 
+                "rewardStructure", 
+                "gradingProcess", 
+                "active", 
+                "purpose", 
+                "scopeOfWork", 
+                "rewardDistribution", 
+                "note", 
+                "grading"
+              ],
               "properties": {
                 "kpiTitle": {"type": "string"},
                 "reward": {
                   "type": "object",
+                  "required": ["rewardLine", "rewardDescription"],
                   "properties": {
                     "rewardLine": {"type": "string"},
                     "rewardDescription": {"type": "string"}
@@ -54,6 +86,7 @@
                 "gradingProcess": {"type": "string"},
                 "active": {
                   "type": "object",
+                  "required": ["active", "activeDate", "block"],
                   "properties": {
                     "active": {"type": "string"},
                     "block": {"type": "number"},
@@ -65,6 +98,7 @@
                   "type": "array",
                   "items": {
                     "type": "object",
+                    "required": ["task"],
                     "properties": {
                       "task": {"type": "string"}
                     }
@@ -78,6 +112,7 @@
                   "type": "array",
                   "items": {
                     "type": "object",
+                    "required": ["weight"],
                     "properties": {
                       "weight": {"type": "string"}
                     }
