@@ -6,25 +6,25 @@
     "overviewSection": {
       "type": "object",
       "properties": {
-        "title": "string",
-        "kpisNumber": "string",
-        "councilElectedInRound": "number",
-        "councilMembers": "number",
+        "title": {"type": {"type": "string"}},
+        "kpisNumber": {"type": {"type": "string"}},
+        "councilElectedInRound": {"type": {"type": "number"}},
+        "councilMembers": {"type": {"type": "number"}},
         "termLength": {
           "type": "object",
           "properties": {
-            "termLength": "string",
-            "startBlock": "number",
-            "endBlock": "number",
-            "startDate": "date",
-            "endDate": "date"
+            "termLength": {"type": {"type": "string"}},
+            "startBlock": {"type": {"type": "number"}},
+            "endBlock": {"type": {"type": "number"}},
+            "startDate": {"type": {"type": "string"}, "format": "date"},
+            "endDate": {"type": {"type": "string"}, "format": "date"}
           },
-          "termSummariesForumThread": "string",
+          "termSummariesForumThread": {"type": {"type": "string"}},
           "deadlineToSubmitSummary": {
             "type": "object",
             "properties": {
-              "block": "number",
-              "date": "date"
+              "block": {"type": {"type": "number"}},
+              "deadlineDate": {"type": {"type": "string"}, "format": "date"}
             }
           }
         }
@@ -35,51 +35,51 @@
       "items": {
         "type": "object",
         "properties": {
-          "sectionTitle": "string",
-          "sectionDescription": "string",
+          "sectionTitle": {"type": {"type": "string"}},
+          "sectionDescription": {"type": {"type": "string"}},
           "kpis": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "kpiTitle": "string",
+                "kpiTitle": {"type": {"type": "string"}},
                 "reward": {
                   "type": "object",
                   "properties": {
-                    "rewardLine": "string",
-                    "rewardDescription": "string"
+                    "rewardLine": {"type": {"type": "string"}},
+                    "rewardDescription": {"type": {"type": "string"}}
                   }
                 },
-                "rewardStructure": "string",
-                "gradingProcess": "string",
+                "rewardStructure": {"type": {"type": "string"}},
+                "gradingProcess": {"type": {"type": "string"}},
                 "active": {
                   "type": "object",
                   "properties": {
-                    "active": "string",
-                    "block": "number",
-                    "date": "date"
+                    "active": {"type": {"type": "string"}},
+                    "block": {"type": {"type": "number"}},
+                    "activeDate": {"type": {"type": "string"}, "format": "date"}
                   }
                 },
-                "purpose": "string",
+                "purpose": {"type": {"type": "string"}},
                 "scopeOfWork": {
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
-                      "task": "string"
+                      "task": {"type": {"type": "string"}}
                     }
                   }
                 },
-                "rewardDistribution": "string",
-                "note": "string",
-                "grading": "string",
-                "reporting": "string",
+                "rewardDistribution": {"type": {"type": "string"}},
+                "note": {"type": {"type": "string"}},
+                "grading": {"type": {"type": "string"}},
+                "reporting": {"type": {"type": "string"}},
                 "weighting": {
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
-                      "weight": "string"
+                      "weight": {"type": {"type": "string"}}
                     }
                   }
                 }
