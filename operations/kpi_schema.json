@@ -50,6 +50,7 @@
     },
     "sections": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
         "required": ["sectionTitle", "sectionDescription", "kpis"],
@@ -58,13 +59,12 @@
           "sectionDescription": {"type": "string"},
           "kpis": {
             "type": "array",
+            "minItems": 1,  
             "items": {
               "type": "object",
               "required": [
                 "kpiTitle", 
                 "reward", 
-                "rewardStructure", 
-                "gradingProcess", 
                 "active", 
                 "purpose", 
                 "scopeOfWork", 
@@ -82,7 +82,9 @@
                     "rewardDescription": {"type": "string"}
                   }
                 },
-                "rewardStructure": {"type": "string"},
+                "rewardStructure": {
+                  "const": "Individual"
+                },
                 "gradingProcess": {"type": "string"},
                 "active": {
                   "type": "object",
