@@ -16,10 +16,10 @@
         "deadlineToSubmitSummary"
       ],
       "properties": {
-        "title": {"type": "string"},
-        "kpisNumber": {"type": "string"},
-        "councilElectedInRound": {"type": "number"},
-        "councilMembers": {"type": "number"},
+        "title": {"type": "string", "maxLength": 16},
+        "kpisNumber": {"type": "string", "maxLength": 10},
+        "councilElectedInRound": {"type": "number", "min": 0, "max": 1024},
+        "councilMembers": {"type": "number", "min": 1, "max": 1024},
         "termLength": {
           "type": "object",
           "required": [
@@ -30,18 +30,18 @@
             "endDate"
           ],
           "properties": {
-            "termLength": {"type": "string"},
-            "startBlock": {"type": "number"},
-            "endBlock": {"type": "number"},
+            "termLength": {"type": "string", "maxLength": 32},
+            "startBlock": {"type": "string", "maxLength": 16},
+            "endBlock": {"type": "string", "maxLength": 16},
             "startDate": {"type": "string", "format": "date"},
             "endDate": {"type": "string", "format": "date"}
           },
-        "termSummariesForumThread": {"type": "string"},
+        "termSummariesForumThread": {"type": "string", "maxLength": 1024},
         "deadlineToSubmitSummary": {
           "type": "object",
           "required": ["block", "deadlineDate"],   
           "properties": {
-            "block": {"type": "number"},
+            "block": {"type": "string", "maxLength": 16},
             "deadlineDate": {"type": "string", "format": "date"}
           }
         }
@@ -55,7 +55,7 @@
         "type": "object",
         "required": ["sectionTitle", "sectionDescription", "kpis"],
         "properties": {
-          "sectionTitle": {"type": "string"},
+          "sectionTitle": {"type": "string", "maxLength": 1024},
           "sectionDescription": {"type": "string"},
           "kpis": {
             "type": "array",
@@ -85,13 +85,21 @@
                 "rewardStructure": {
                   "const": "Individual"
                 },
-                "gradingProcess": {"type": "string"},
+                "gradingProcess": {
+                  "type": "string", 
+                  "enum": [
+                      "Manual", 
+                      "Automatic"
+                    ]
+                },
                 "active": {
                   "type": "object",
-                  "required": ["active", "activeDate", "block"],
+                  "required": ["active"],
                   "properties": {
-                    "active": {"type": "string"},
+                    "active": {"type": "string", "maxLength": 16},
                     "block": {"type": "number"},
+                    "startBlock": {"type": "string", "maxLength": 16},
+                    "endBlock": {"type": "string", "maxLength": 16},
                     "activeDate": {"type": "string", "format": "date"}
                   }
                 },
