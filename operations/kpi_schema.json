@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "Joystream KPI schema",
+  "type": "object",
+  "properties": {
+    "overviewSection": {
+      "type": "object",
+      "properties": {
+        "title": "string",
+        "kpisNumber": "string",
+        "councilElectedInRound": "number",
+        "councilMembers": "number",
+        "termLength": {
+          "type": "object",
+          "properties": {
+            "termLength": "string",
+            "startBlock": "number",
+            "endBlock": "number",
+            "startDate": "date",
+            "endDate": "date"
+          },
+          "termSummariesForumThread": "string",
+          "deadlineToSubmitSummary": {
+            "type": "object",
+            "properties": {
+              "block": "number",
+              "date": "date"
+            }
+          }
+        }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sectionTitle": "string",
+          "sectionDescription": "string",
+          "kpis": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "kpiTitle": "string",
+                "reward": {
+                  "type": "object",
+                  "properties": {
+                    "rewardLine": "string",
+                    "rewardDescription": "string"
+                  }
+                },
+                "rewardStructure": "string",
+                "gradingProcess": "string",
+                "active": {
+                  "type": "object",
+                  "properties": {
+                    "active": "string",
+                    "block": "number",
+                    "date": "date"
+                  }
+                },
+                "purpose": "string",
+                "scopeOfWork": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "task": "string"
+                    }
+                  }
+                },
+                "rewardDistribution": "string",
+                "note": "string",
+                "grading": "string",
+                "reporting": "string",
+                "weighting": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "weight": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
