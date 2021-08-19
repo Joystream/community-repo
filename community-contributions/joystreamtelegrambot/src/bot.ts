@@ -8,7 +8,6 @@ import {
   proposalDelay,
   wsLocation,
 } from "../config";
-import { stripHtml } from "string-strip-html";
 
 // types
 import { Block, Council, Options, Proposals } from "./types";

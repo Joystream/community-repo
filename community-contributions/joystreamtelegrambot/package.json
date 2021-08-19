@@ -28,7 +28,6 @@
     "discord.js": "^12.5.3",
     "moment": "^2.29.1",
     "node-telegram-bot-api": "^0.51.0",
-    "string-strip-html": "^8.3.0",
     "ws": "^7.4.1"
   },
   "devDependencies": {
