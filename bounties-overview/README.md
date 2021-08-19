@@ -22,10 +22,10 @@
 |16|Translation of Community Update Videos| #144|10.04.21|$400|[510](https://testnet.joystream.org/#/forum/threads/510)|Open|NA|NA|
 | 17 | Discord Video Bot | #151   | 20.04.21 | $100   | [362](https://testnet.joystream.org/#/forum/threads/362) | Completed   | NA  | NA                         |
 | 18 | Original Video Bounty | #162   | 29.05.21 | up to $200  | [422](https://testnet.joystream.org/#/forum/threads/422) | Open   | NA  | NA                         |
-| 19 | Validator Logging Tool | #161   | 20.04.21 | $400   | [381](https://testnet.joystream.org/#/forum/threads/381) | Announced          | NA  | NA                         |
-|20|Github Bounty Guide| #220| 04.07.21| $350|[492](https://testnet.joystream.org/#/forum/threads/492)|Announced| NA |NA|
-|21| Website Translation|#212|28.06.21|$500|[493](https://testnet.joystream.org/#/forum/threads/493)|Announced|NA|NA|
-
+| 19 | Validator Logging Tool | #161   | 20.04.21 | $400   | [381](https://testnet.joystream.org/#/forum/threads/381) | Completed          | #242  | [382](https://testnet.joystream.org/#/proposals/382 )      |
+| 20 | Github Bounty Guide | #220 | 04.07.21 | $350| [492](https://testnet.joystream.org/#/forum/threads/492)| Announced | NA | NA |
+| 21 | Website Translation | #212 | 28.06.21 | $500 | [493](https://testnet.joystream.org/#/forum/threads/493)| Announced | NA | NA |
+| 23 | Runtime Update Explanation | #289 | 14.08.21 | $65 | [541](https://testnet.joystream.org/#/forum/threads/541) | Announced | NA | NA |
 
 
 ## Bounties Management

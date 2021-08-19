@@ -25,18 +25,6 @@
       "status": "Open - Weekly Bounty"
     },
     {
-      "id": 19,
-      "title": "Validator Logging Tool",
-      "openedDate": "2021-04-20",
-      "description": "Create a tool to report validator activity",
-      "links": ["https://testnet.joystream.org/#/forum/threads/381","https://github.com/Joystream/community-repo/issues/161"],
-      "reward": 400,
-      "notes": "Create a tool to report validator activity",
-      "tags": ["Coding","Research"],
-      "format": "Closed",
-      "status": "Open"
-    },
-    {
       "id": 20,
       "title": "Github Bounty Guide",
       "openedDate": "2021-07-04",
@@ -70,6 +58,18 @@
       "notes": "Translate Joystream Community Updates videos",
       "tags": ["Content","Documentation"],
       "format": "NA",
+      "status": "Open"
+    },
+    {
+      "id": 23,
+      "title": "Runtime Update Explanation",
+      "openedDate": "2021-08-14",
+      "description": "Translate Community Updates videos to non-English languages.",
+      "links": ["https://pioneer.joystreamstats.live/#/forum/threads/541","https://github.com/Joystream/community-repo/issues/289"],
+      "reward": 65,
+      "notes": "Runtime Update Explanation",
+      "tags": ["Documentation", "Research"],
+      "format": "Open",
       "status": "Open"
     }
   ],
@@ -256,7 +256,21 @@
       "reward": 5,
       "tags": ["Newcomers","Content"],
       "format": "Free for All",
+      "closedDate": "2021-08-01",
       "status": "Closed"
+    },
+    {
+      "id": 19,
+      "title": "Validator Logging Tool",
+      "openedDate": "2021-04-20",
+      "description": "Create a tool to report validator activity",
+      "links": ["https://testnet.joystream.org/#/forum/threads/381","https://github.com/Joystream/community-repo/issues/161"],
+      "reward": 400,
+      "notes": "Create a tool to report validator activity",
+      "tags": ["Coding","Research"],
+      "format": "Closed",
+      "closedDate": "2021-08-17",
+      "status": "Completed - USD 400"
     }
   ]
 }
