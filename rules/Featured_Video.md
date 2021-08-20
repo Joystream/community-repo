@@ -15,7 +15,7 @@
 - Checking the license.
 - The video must not be: Immoral, violent, sexual content, harmful or dangerous content, incitement to racial hatred, violent or dangerous content.
 
-- Videos are checked by 5 curators and give a subjective assessment, if one curator disagrees, the video will not be approved.
+- Videos must be approved by the council.
 - The video is updated once a month.
 
 `Annihilation
