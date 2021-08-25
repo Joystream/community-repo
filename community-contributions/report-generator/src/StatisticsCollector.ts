@@ -35,7 +35,8 @@ import {Stake} from "@joystream/types/stake";
 
 import {WorkerId} from "@joystream/types/working-group";
 import {Entity, EntityId, PropertyType} from "@joystream/types/content-directory";
-import {ProposalDetails, ProposalId, Video, VideoId, WorkerOf} from "@joystream/types/augment-codec/all";
+import {ProposalId, Video, VideoId, WorkerOf, } from "@joystream/types/augment-codec/all";
+import {ProposalDetails, ProposalOf} from "@joystream/types/augment/types";
 import {SpendingParams} from "@joystream/types/proposals";
 import * as constants from "constants";
 
@@ -52,6 +53,8 @@ const CACHE_FOLDER = "cache";
 
 const VIDEO_CLASS_iD = 10;
 const CHANNEL_CLASS_iD = 1;
+
+const SPENDING_CATEGORIES_FILE_NAME = 'spending_proposal_categories';
 
 export class StatisticsCollector {
 
@@ -93,7 +96,7 @@ export class StatisticsCollector {
     }
 
     async getApprovedBounties() {
-        let bountiesFilePath = __dirname + '/../spending_proposal_categories.csv';
+        let bountiesFilePath = __dirname + '/../' + SPENDING_CATEGORIES_FILE_NAME +'.csv';
         try {
             await fs.access(bountiesFilePath, constants.R_OK);
         } catch {
@@ -124,8 +127,8 @@ export class StatisticsCollector {
         }
     }
 
-    async getSpendingProposals(): Promise<Array<SpendingProposals>> {
-        let spendingProposals = new Array<SpendingProposals>();
+    async computeTokensBurn(){
+        let tokensBurned = 0;
         for (let [key, blockEvents] of this.blocksEventsCache) {
             let transfers = blockEvents.filter((event) => {
                 return event.section == "balances" && event.method == "Transfer";
@@ -134,10 +137,16 @@ export class StatisticsCollector {
                 let receiver = transfer.data[1] as AccountId;
                 let amount = transfer.data[2] as Balance;
                 if (receiver.toString() == BURN_ADDRESS) {
-                    this.statistics.newTokensBurn = Number(amount);
+                    tokensBurned = Number(amount);
                 }
             }
+        }
+        return tokensBurned;
+    }
 
+    async getFinalizedSpendingProposals(): Promise<Array<SpendingProposals>> {
+        let spendingProposals = new Array<SpendingProposals>();
+        for (let [key, blockEvents] of this.blocksEventsCache) {
             let proposalEvents = blockEvents.filter((event) => {
                 return event.section == "proposalsEngine" && event.method == "ProposalStatusUpdated";
             });
@@ -147,13 +156,19 @@ export class StatisticsCollector {
                 if (!(statusUpdateData.finalized && statusUpdateData.finalized.finalizedAt)) {
                     continue;
                 }
+
                 let proposalId = proposalEvent.data[0] as ProposalId;
+                let proposalInfo = await this.api.query.proposalsEngine.proposals(proposalId) as ProposalOf;
+                const finalizedData = proposalInfo.status.asFinalized;
+
                 let proposalDetail = await this.api.query.proposalsCodex.proposalDetailsByProposalId(proposalId) as ProposalDetails;
-                if (!proposalDetail.isOfType("Spending")) {
+                if (!finalizedData.proposalStatus.isApproved || !proposalDetail.isSpending) {
                     continue;
                 }
-                let spendingParams = Array.from(proposalDetail.asType("Spending") as SpendingParams);
-                spendingProposals.push(new SpendingProposals(Number(proposalId), Number(spendingParams[0])));
+                let spendingParams = proposalDetail.asSpending;
+                if (!spendingProposals.some(spendingProposal => (spendingProposal.id == Number(proposalId)))){
+                    spendingProposals.push(new SpendingProposals(Number(proposalId), proposalInfo.title.toString(), Number(spendingParams[0])));
+                }
             }
         }
         return spendingProposals;
@@ -171,15 +186,27 @@ export class StatisticsCollector {
         this.statistics.endIssuance = (await this.api.query.balances.totalIssuance.at(endHash) as Balance).toNumber();
         this.statistics.newIssuance = this.statistics.endIssuance - this.statistics.startIssuance;
         this.statistics.percNewIssuance = StatisticsCollector.convertToPercentage(this.statistics.startIssuance, this.statistics.endIssuance);
+        this.statistics.newTokensBurn = await this.computeTokensBurn();
 
         let bounties = await this.getApprovedBounties();
-        let spendingProposals = await this.getSpendingProposals();
+        let spendingProposals = await this.getFinalizedSpendingProposals();
 
         this.statistics.bountiesTotalPaid = 0;
-        for (let bounty of bounties) {
-            let bountySpendingProposal = spendingProposals.find((spendingProposal) => spendingProposal.id == bounty.proposalId);
-            if (bountySpendingProposal) {
-                this.statistics.bountiesTotalPaid += bountySpendingProposal.spentAmount;
+        if (bounties) {
+            for (let bounty of bounties) {
+                let bountySpendingProposal = spendingProposals.find((spendingProposal) => spendingProposal.id == bounty.proposalId);
+                if (bountySpendingProposal) {
+                    this.statistics.bountiesTotalPaid += bountySpendingProposal.spentAmount;
+                }
+            }
+        }
+
+        if (!this.statistics.bountiesTotalPaid) {
+            console.warn('No bounties found in ' + SPENDING_CATEGORIES_FILE_NAME +', trying to find spending proposals of bounties, please check the values!...');
+            for (const spendingProposal of spendingProposals) {
+                if (spendingProposal.title.toLowerCase().includes("bounty")) {
+                    this.statistics.bountiesTotalPaid += spendingProposal.spentAmount;
+                }
             }
         }
 

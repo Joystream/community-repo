@@ -197,7 +197,7 @@ export enum ProposalTypes {
 
 export class SpendingProposals {
 
-    constructor(public id: number, public spentAmount: number) {
+    constructor(public id: number, public title: string, public spentAmount: number) {
     }
 
 }
