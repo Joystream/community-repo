@@ -1,9 +1,8 @@
 require('dotenv').config();
-import { Client, Intents, Message } from 'discord.js';
+import { Client, Message } from 'discord.js';
 
-import connect, { MemberModel } from './db';
+import connect from './db';
 import botService from './botService';
-// const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const client = new Client();
 
 connect();

@@ -5,10 +5,14 @@ import connect from './db';
 import botService from './botService';
 
 console.log('================ start ================');
+console.log('PRODUCTION', process.env.PRODUCTION);
 
 connect();
 
-const token = process.env.TELEGRAM_BOT_TEST_TOKEN;
+const token =
+  (process.env.PRODUCTION === 'true'
+    ? process.env.TELEGRAM_BOT_TOKEN
+    : process.env.TELEGRAM_BOT_TEST_TOKEN) || '';
 
 const bot = new TelegramBot(token, { polling: true });
 
@@ -23,6 +27,10 @@ bot.setMyCommands([
     command: '/lookup',
     description: 'return the score of the user',
   },
+  {
+    command: '/faucet',
+    description: 'get 101 token',
+  },
 ]);
 
 botService({
@@ -30,7 +38,8 @@ botService({
     bot.sendMessage(message.chat.id, text, { parse_mode: 'Markdown' }),
   commandPrefix: '/',
   client: bot,
-  getId: (message: TelegramBot.Message) => message.from.id,
+  getId: (message: TelegramBot.Message) => message.from?.id,
+  getChatId: (message: TelegramBot.Message) => message.chat.id,
   getText: (message: TelegramBot.Message) => message.text,
   getDate: (message: TelegramBot.Message) => message.date,
   dbId: 'tgId',

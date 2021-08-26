@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 export interface IMember extends mongoose.Document {
   handle?: String,
   tgId?: Number,
+  enableNotify?: number,
   disId?: Number,
   date?: number,
   lastCommand: String
@@ -11,12 +12,32 @@ export interface IMember extends mongoose.Document {
 const memberSchema = new mongoose.Schema({
   handle: String,
   tgId: Number,
+  enableNotify: Number,
   disId: Number,
-  date: Date,
+  date: Number,
   lastCommand: String
 });
 
+export interface IFaucet extends mongoose.Document {
+  handle?: String,
+  tgId?: Number,
+  disId?: Number,
+  date?: number,
+  dateLastOperation?: number;
+  addresses?: Array<string>[],
+};
+
+const faucetSchema = new mongoose.Schema({
+  handle: String,
+  tgId: Number,
+  disId: Number,
+  date: Number,
+  dateLastOperation: Number,
+  addresses: [String],
+});
+
 export const MemberModel = mongoose.model<IMember>('members', memberSchema);
+export const FaucetModel = mongoose.model<IFaucet>('faucet', faucetSchema);
 
 const dbString = 'mongodb://127.0.0.1:27017/JoystreamLeaderboardBotTest';
 
