@@ -19,4 +19,4 @@
 | 6      | https://testnet.joystream.org/#/proposals/160 | Create a block explorer            | 14-Jun-21  | One off    | Unresolved   |
 | 7      | https://testnet.joystream.org/#/proposals/164 | Maintenance of joystreamstats.live | 15-Jun-21  | Continuous | Resolved (?) |
 | 8      | https://testnet.joystream.org/#/proposals/173 | Automated HELIOS + HELIOS History  | 17-Jun-21  | Continuous | Resolved (?) |
-| 9      | TBC                                           | Council Daily Bot                  | 26-Aug-21  | One off    | Unresolved   |
+| 9      | https://testnet.joystream.org/#/proposals/482 | Council Daily Bot                  | 26-Aug-21  | One off    | Unresolved   |
