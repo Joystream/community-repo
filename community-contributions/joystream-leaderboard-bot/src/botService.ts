@@ -3,7 +3,7 @@ import axios from 'axios';
 import puppeteer from 'puppeteer';
 import TelegramBot from 'node-telegram-bot-api';
 
-import { SendMessage, CommandPrefix, BotServiceProps } from './types';
+import { BotServiceProps } from './types';
 import AccountTransferTokens from './commands/transferTokens';
 
 const prod = process.env.PRODUCTION === 'true';
@@ -120,7 +120,7 @@ async function setHandleCommand(
     if (updMember) {
       await MemberModel.remove({
         [props.dbId]: props.getId(message),
-        handle: undefined, // TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        handle: undefined,
       });
 
       await updMember.updateOne({
@@ -163,10 +163,8 @@ async function faucetOldVersion(memberAddress = '', sendMessage: Function) {
   await restoreJSONButton.click();
 
   // Fill fields (file + password)
-  // const clickToSelectText = prod ? 'click to select or drag and drop the file here' : 'нажмите для выбора, либо сбростье файл сюда';
   await page.click('.ui--InputFile');
   const inputFile = await page.$('.ui--InputFile input[type="file"]');
-  // const inputPassword = await page.$('.ui--Input input[type="password"]');
   await page.type(
     '.ui--Input input[type="password"]',
     process.env.ACCOUNT_PASSWORD || ''
@@ -174,7 +172,7 @@ async function faucetOldVersion(memberAddress = '', sendMessage: Function) {
   await inputFile?.uploadFile(`accounts/${process.env.ACCOUNT_JSON_NAME}` || '');
 
   // Click restore button
-  const restoreButtonText = prod ? 'Restore' : 'Восстановить'; // 'Отменить'; //'Восстановить';
+  const restoreButtonText = prod ? 'Restore' : 'Восстановить';
   const restoreButtons = await page.$x(
     `//button[contains(., '${restoreButtonText}')]`
   );
@@ -320,8 +318,6 @@ async function faucetCommand(
     }
     
     if (walletAddress) {
-      // console.log('walletAddress', walletAddress);
-      
       await faucetTransfer(member, message, props, walletAddress, faucetMemberData);
       return await props.send(message, `${props.getName(message)}, operation completed.`);
     } else {
@@ -341,12 +337,11 @@ async function faucetCommand(
   } else if (
     member &&
     member.lastCommand === 'faucet' &&
-    // && !faucetMemberData?.address
     !faucetMemberData?.addresses.includes(currentMessage) &&
     new Date().getTime() - dateLastOperation > faucetPeriod
   ) {
     await faucetTransfer(member, message, props, currentMessage, faucetMemberData);
-    return await props.send(message, 'Operation completed.');
+    return await props.send(message, `${props.getName(message)}, operation completed.`);
   } else if (
     member &&
     member.lastCommand === 'faucet' &&
@@ -357,7 +352,7 @@ async function faucetCommand(
     await setLastCommand(member, message, props, '');
     return props.send(
       message,
-      /* 'Can only be done once a day.' */ 'Transfer has already been made to this address'
+      'Transfer has already been made to this address'
     );
   }
 }
@@ -375,8 +370,6 @@ async function faucetTransfer(
 
   const checkAddress = await FaucetModel.find({ addresses: { $all: [currentMessage] } });
 
-  // console.log('checkAddress', checkAddress);
-
   await setLastCommand(member, message, props, '');
 
   if (checkAddress.length > 0) {
@@ -386,7 +379,7 @@ async function faucetTransfer(
   try {
     await faucet(currentMessage, (text: string) => props.send(message, text));
 
-    await props.send(message, 'You got funded!');
+    await props.send(message, 'You got funded! If you want to get more tJoy tokens start here https://testnet.joystream.org/#/forum/threads/192');
 
     await FaucetModel.updateOne(
       { [props.dbId]: props.getId(message) },
@@ -396,23 +389,6 @@ async function faucetTransfer(
     console.error(ex);
     await props.send(message, ex.message);
   }
-
-  /* const transferTokens = new AccountTransferTokens();
-  const balance = await transferTokens.getBalance();
-  if (balance.toBigInt() < 1000) {
-    // send notification only once a day
-    const dateLastNotify = (new Date().getTime()) - 1000 * 60 * 60 * 24;
-    const notifyMembers = await MemberModel.find({ enableNotify: { $lt: dateLastNotify } });
-
-    notifyMembers.forEach(async (m) => {
-      await props.send({ chat: { id: m.tgId } }, `Bot balance alert! Current balance - ${balance}`);
-
-      await MemberModel.updateOne(
-        { tgId: m.tgId },
-        { $set: { lastCommand: '', enableNotify: (new Date().getTime()) } }
-      );
-    });
-  } */
 }
 
 async function faucet(
