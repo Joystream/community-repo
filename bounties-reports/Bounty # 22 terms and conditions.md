@@ -2,7 +2,7 @@
 
 ## Internal rules of Bounty 22 (related to the curator / BM)
 
-* For this, the Bounty will be allocated 2 people from the group of curators, 1 curator and 1 curator (Bounty manager) reward for the work of the curator 25%, reward for the work of the Bounty manager $ 50 for the reporting period a week, provided that their work is done with high quality and will be accepted. They will be informed and must be qualified to ensure that the video does not violate any license, copyright or conditions. The curator appoints the lead. 
+* For this, the Bounty will be allocated 2 people from the group of curators, 1 curator and 1 curator (Bounty manager) reward for the work of the curator $ 25, reward for the work of the Bounty manager $ 50 for the reporting period a week, provided that their work is done with high quality and will be accepted. They will be informed and must be qualified to ensure that the video does not violate any license, copyright or conditions. The curator appoints the lead. 
 An Excel spreadsheet will be created and uploaded to Google Disk on which the assigned curator and bounty manager will work.
 For better supervision at work, this link to the table will be available 24/7 for the lead curator and for JS.
 
@@ -19,20 +19,19 @@ This list should include (video id, username, forum link, rating / payout).
 Anything that does not include a source clearly showing that the video is properly licensed should be immediately excluded from any fees.
 Anything of low quality should be ruled out. This includes very short videos of up to 1 minute, or any videos that the curator thinks have a questionable source.`
 
+## Workflow and deadlines
+
 * If bids are rejected they do not need to be contacted individually, users submitting videos for this award are responsible for checking the status.
 
 * For each week, a new thread is created for Bounty 22 on the forum.
 When the week is over, the bounty manager / curator group can post a notice that the week is over and direct people to a new thread.
 
-* Review period
-After the end of the round (1 week) Curators will spend up to 72 hours to make sure the videos meet the conditions. BM will then have another 72 hours to evaluate them. The individual awards must then be paid within 24 hours, for a total of 1 week.
+* At regular intervals, on a weekly basis, the curator appointed as the lead curator, from Monday morning to Sunday evening, reviews all new entries and checks each video according to the rules and enters them into the table.
 
-* After a full check, when the table is ready, the VM publishes the results on github in the community-repo section.
+* BM starts checking the curator's work on Sunday (deadline Monday)
+* BM evaluates all videos based on predefined criteria, generates cost proposals from the Board, and pays out to winners (deadline for payments Tuesday)
 
-* BM then generates cost proposals from the Board, upon approval, and pays out to the winners.
 
-* The maximum number of posts from one user per week is 10 videos
-Maximum payout for one user per week $ 30
 
 `Bounty Budget 22 ($ 300 per week) If the budget is not depleted, the balance does not carry over to the next week.`
 
@@ -74,9 +73,23 @@ Maximum payout for one user per week $ 30
 - Videos are placed in channels themed appropriately (eg. a cryptocurrency video shouldn't be in a baking channel)
 
 
-```Please post to the correct forum thread created for the Bounty with all requested information in the exact format required by BM.
-The maximum number of posts from one user per week is 10 videos
-Maximum payout for one user per week $ 50
-Each submission must be a unique message on the forum, must contain - source, format, category, description, license.
-Any mass applications may be disqualified.
-Any incomplete materials WILL BE FULLY IGNORED.
+    - Please post to the correct forum thread created for the Bounty with all requested information in the exact format required by BM.
+    - The maximum number of posts from one user per week is 10 videos
+    - Maximum payout for one user per week $ 30
+    - Each submission must be a unique message on the forum, must contain - source, format, category, description, license.
+    - Any mass applications may be disqualified.
+    - Any incomplete materials WILL BE FULLY IGNORED 
+
+## Publishing rules, in bounty 22 on the forum thread!
+
+### Videos without specifying all the points described below WILL NOT BE CONFIRMED!
+
+`1. Link to your video in Atlas`
+
+`2. Video title (short description of the video)`
+
+`3. Video duration (at least 1 minute)`
+
+`4 Video category`
+
+`5. License (source clearly showing that the video is properly licensed)`
