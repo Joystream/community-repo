@@ -6,6 +6,7 @@ export interface BotServiceProps {
   commandPrefix: CommandPrefix;
   client: any; // TelegramBot | DiscordBot,
   getId: Function;
+  getName: Function;
   getChatId?: Function;
   getText: Function;
   getDate: Function;

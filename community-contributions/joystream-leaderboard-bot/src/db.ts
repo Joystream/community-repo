@@ -24,7 +24,7 @@ export interface IFaucet extends mongoose.Document {
   disId?: Number,
   date?: number,
   dateLastOperation?: number;
-  addresses?: Array<string>[],
+  addresses?: Array<string>,
 };
 
 const faucetSchema = new mongoose.Schema({

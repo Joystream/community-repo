@@ -12,6 +12,7 @@ botService({
   commandPrefix: '!',
   client,
   getId: (message: Message) => message.author.id,
+  getName: (message: Message) => message.author.username,
   getText: (message: Message) => message.content,
   getDate: (message: Message) => message.createdTimestamp,
   dbId: 'disId',

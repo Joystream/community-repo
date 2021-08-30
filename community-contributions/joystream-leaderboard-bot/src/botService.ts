@@ -1,4 +1,4 @@
-import { MemberModel, IMember, FaucetModel } from './db';
+import { MemberModel, IMember, FaucetModel, IFaucet } from './db';
 import axios from 'axios';
 import puppeteer from 'puppeteer';
 import TelegramBot from 'node-telegram-bot-api';
@@ -72,15 +72,15 @@ async function lookupCommand(
             .map((m: any, index: number) => `Period ${index} = *${m || 0}*`)
             .join('\n');
 
-        props.send(message, memberDataStr);
+        await props.send(message, memberDataStr);
       } else {
-        props.send(
+        await props.send(
           message,
           `Don't find member ${handle}. Please note that the handle is case sensitive.`
         );
       }
     } else {
-      props.send(message, 'Please, set your handle.');
+      await props.send(message, 'Please, set your handle.');
     }
   }
 }
@@ -108,7 +108,7 @@ async function setHandleCommand(
       );
     }
 
-    props.send(
+    await props.send(
       message,
       'Write your handle. Please note that the handle is case sensitive.'
     );
@@ -137,7 +137,7 @@ async function setHandleCommand(
       );
     }
 
-    props.send(message, 'Good! Now you can get statistics =)');
+    await props.send(message, 'Good! Now you can get statistics =)');
   }
 }
 
@@ -280,6 +280,7 @@ async function faucetCommand(
 ) {
   const id = props.getId(message);
   const regexp = new RegExp(`^${props.commandPrefix}faucet(.*)`);
+  const regexpMatch = new RegExp(`^${props.commandPrefix}faucet (.*)`);
   const faucetMemberData = await FaucetModel.findOne({ [props.dbId]: id });
   const dateLastOperation = faucetMemberData?.dateLastOperation || 0;
 
@@ -294,6 +295,10 @@ async function faucetCommand(
 
   if (regexp.test(currentMessage)) {
     // /faucet
+    const match = props.getText(message).match(regexpMatch);
+    console.log('message', message);
+
+    const walletAddress = match ? match[1] : null;
 
     await setLastCommand(member, message, props, 'faucet');
 
@@ -309,13 +314,22 @@ async function faucetCommand(
       new Date().getTime() - dateLastOperation < faucetPeriod
     ) {
       await setLastCommand(member, message, props, '');
-      return await props.send(message, 'You can use the bot no more then once every 10 minutes');
-    }
 
-    return await props.send(
-      message,
-      'Send your wallet address. To cancel the operation, send Q.'
-    );
+      const errorText = 'You can use the bot no more then once every 10 minutes';
+      throw new Error(errorText);
+    }
+    
+    if (walletAddress) {
+      // console.log('walletAddress', walletAddress);
+      
+      await faucetTransfer(member, message, props, walletAddress, faucetMemberData);
+      return await props.send(message, `${props.getName(message)}, operation completed.`);
+    } else {
+      return await props.send(
+        message,
+        'Send your wallet address. To cancel the operation, send Q.'
+      );
+    }
   } else if (
     member &&
     member.lastCommand === 'faucet' &&
@@ -331,52 +345,8 @@ async function faucetCommand(
     !faucetMemberData?.addresses.includes(currentMessage) &&
     new Date().getTime() - dateLastOperation > faucetPeriod
   ) {
-    // Transfer
-    props.send(message, 'Wait a few minutes...');
-
-    const checkAddress = await FaucetModel.find({ addresses: { $all: [currentMessage] } });
-
-    console.log('checkAddress', checkAddress);
-
-    if (checkAddress.length > 0) {
-      props.send(message, 'Transfer has already been made to this address');
-      throw new Error('Error: Transfer has already been made to this address');
-    }
-
-    await setLastCommand(member, message, props, '');
-
-    try {
-      await faucet(currentMessage, (text: string) => props.send(message, text));
-
-      await props.send(message, 'You got funded!');
-
-      await FaucetModel.updateOne(
-        { [props.dbId]: props.getId(message) },
-        { $set: { dateLastOperation: new Date().getTime(), addresses: [...faucetMemberData?.addresses, currentMessage] } }
-      );
-    } catch (ex) {
-      console.error(ex);
-      props.send(message, ex.message);
-    }
-
-    const transferTokens = new AccountTransferTokens();
-    const balance = await transferTokens.getBalance();
-    if (balance.toBigInt() < 1000) {
-      // send notification only once a day
-      const dateLastNotify = (new Date().getTime()) - 1000 * 60 * 60 * 24;
-      const notifyMembers = await MemberModel.find({ enableNotify: { $lt: dateLastNotify } });
-
-      notifyMembers.forEach(async (m) => {
-        await props.send({ chat: { id: m.tgId } }, `Bot balance alert! Current balance - ${balance}`);
-
-        await MemberModel.updateOne(
-          { tgId: m.tgId },
-          { $set: { lastCommand: '', enableNotify: (new Date().getTime()) } }
-        );
-      });
-    }
-
-    return props.send(message, 'Operation completed.');
+    await faucetTransfer(member, message, props, currentMessage, faucetMemberData);
+    return await props.send(message, 'Operation completed.');
   } else if (
     member &&
     member.lastCommand === 'faucet' &&
@@ -390,6 +360,59 @@ async function faucetCommand(
       /* 'Can only be done once a day.' */ 'Transfer has already been made to this address'
     );
   }
+}
+
+async function faucetTransfer(
+  member: IMember | null,
+  message: any,
+  props: BotServiceProps,
+  currentMessage: string,
+  faucetMemberData: IFaucet
+  ) {
+  // Transfer
+
+  await props.send(message, 'Wait a few minutes...');
+
+  const checkAddress = await FaucetModel.find({ addresses: { $all: [currentMessage] } });
+
+  // console.log('checkAddress', checkAddress);
+
+  await setLastCommand(member, message, props, '');
+
+  if (checkAddress.length > 0) {
+    throw new Error('Error: Transfer has already been made to this address');
+  }
+
+  try {
+    await faucet(currentMessage, (text: string) => props.send(message, text));
+
+    await props.send(message, 'You got funded!');
+
+    await FaucetModel.updateOne(
+      { [props.dbId]: props.getId(message) },
+      { $set: { dateLastOperation: new Date().getTime(), addresses: [...(faucetMemberData?.addresses || []), currentMessage] } }
+    );
+  } catch (ex) {
+    console.error(ex);
+    await props.send(message, ex.message);
+  }
+
+  /* const transferTokens = new AccountTransferTokens();
+  const balance = await transferTokens.getBalance();
+  if (balance.toBigInt() < 1000) {
+    // send notification only once a day
+    const dateLastNotify = (new Date().getTime()) - 1000 * 60 * 60 * 24;
+    const notifyMembers = await MemberModel.find({ enableNotify: { $lt: dateLastNotify } });
+
+    notifyMembers.forEach(async (m) => {
+      await props.send({ chat: { id: m.tgId } }, `Bot balance alert! Current balance - ${balance}`);
+
+      await MemberModel.updateOne(
+        { tgId: m.tgId },
+        { $set: { lastCommand: '', enableNotify: (new Date().getTime()) } }
+      );
+    });
+  } */
 }
 
 async function faucet(
@@ -408,7 +431,7 @@ async function checkFaucetBalanceCommand(message: any, props: BotServiceProps) {
     const balance = await transferTokens.getBalance();
     console.log('balance', balance);
 
-    props.send(message, `Balance = ${balance}`);
+    await props.send(message, `Balance = ${balance}`);
   }
 }
 
@@ -446,9 +469,9 @@ async function changeFaucetBalanceNotifyTg(
 
       console.log('message', message);
       
-      props.send(message, `Notifies ${enableNotify ? 'enabled' : 'disabled'}`);
+      await props.send(message, `Notifies ${enableNotify ? 'enabled' : 'disabled'}`);
     } else {
-      props.send(message, 'Set your handle througs /sethandle');
+      await props.send(message, 'Set your handle througs /sethandle');
     }
   }
 }
@@ -463,22 +486,24 @@ export default async function BotService(props: BotServiceProps) {
       console.log('member =>', member);
     } catch (e) {
       console.log(e);
-      props.send(message, 'Error =( please try later');
+      await props.send(message, 'Error =( please try later');
     }
 
     try {
       startCommand(message, props);
       lookupCommand(member, message, props);
+      await faucetCommand(member, message, props);
 
       if (props.commandPrefix === '/') {
         setHandleCommand(member, message, props);
-        faucetCommand(member, message, props);
         checkFaucetBalanceCommand(message, props);
         enableFaucetBalanceNotifyTgCommand(member, message, props);
         disableFaucetBalanceNotifyTgCommand(member, message, props);
       }
-    } catch (e) {
-      await props.send(message, e);
+    } catch (ex) {
+      console.log('ex', ex);
+      
+      await props.send(message, ex.message);
     }
   });
 }
