@@ -13,10 +13,12 @@
         "pm2ru": "tsc && pm2 start dist/bot-ru.js -n bot-ru"
     },
     "dependencies": {
+        "@joystream/types": "^0.16.1",
         "@types/express": "^4.17.13",
         "@types/node": "^16.4.2",
         "axios": "^0.21.1",
         "cors": "^2.8.5",
+        "discord.js": "^13.1.0",
         "dotenv": "^10.0.0",
         "express": "^4.17.1",
         "fs": "^0.0.1-security",
