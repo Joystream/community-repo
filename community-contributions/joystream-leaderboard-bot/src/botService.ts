@@ -5,40 +5,13 @@ import TelegramBot from 'node-telegram-bot-api';
 
 import { BotServiceProps } from './types';
 import AccountTransferTokens from './commands/transferTokens';
+import startCommand from './commands/start';
+import inductedCommand from './commands/inducted';
+import faucetCommand from './commands/faucet';
+
+import getFmInfo from './getFmInfo';
 
 const prod = process.env.PRODUCTION === 'true';
-
-let cachedFmInfo: any = null;
-let lastUpdateFmDate = 0;
-
-async function getFmInfo() {
-  if (!cachedFmInfo || new Date().getTime() - lastUpdateFmDate > 1000 * 600) {
-    console.log('get new fmData');
-    cachedFmInfo = await axios.get(
-      'https://raw.githubusercontent.com/Joystream/founding-members/main/data/fm-info.json'
-    );
-    lastUpdateFmDate = new Date().getTime();
-  }
-
-  return cachedFmInfo;
-}
-
-function startCommand(message: any, props: BotServiceProps) {
-  props.log(props.getText(message));
-
-  const regexp = new RegExp(`^${props.commandPrefix}start`);
-  if (regexp.test(props.getText(message))) {
-    props.log('welcome', props.getId(message));
-    props.send(
-      message,
-      'Welcome! Using this bot, you can get information about founding members.' +
-        (props.commandPrefix === '/'
-          ? `\n\nTo view your statistics, you need enter your name via the ${props.commandPrefix}sethandle command to save it OR use the command "${props.commandPrefix}lookup handle". `
-          : `\n\nTo view your statistics, use the command "${props.commandPrefix}lookup handle". `) +
-        '*Please note that the handle is case sensitive!*.'
-    );
-  }
-}
 
 async function lookupCommand(
   member: IMember | null,
@@ -50,7 +23,7 @@ async function lookupCommand(
 
   if (regexp.test(props.getText(message))) {
     const match = props.getText(message).match(regexpMatch);
-    console.log('message', message);
+    // console.log('message', message);
 
     const handle = match ? match[1] : member?.handle;
 
@@ -141,271 +114,13 @@ async function setHandleCommand(
   }
 }
 
-async function faucetOldVersion(memberAddress = '', sendMessage: Function) {
-  const browser = await puppeteer.launch({
-    args: ['--lang="en-US"'],
-  });
-  const page = await browser.newPage();
-  await page.setExtraHTTPHeaders({
-    'Accept-Language': 'en',
-  });
-
-  await page.goto('https://testnet.joystream.org/#/accounts');
-  await page.waitForTimeout(5000);
-
-  sendMessage('Preparing for transfer...');
-
-  // Open restore json window
-  const restoreJSONText = prod ? 'Restore JSON' : 'Восстановить из JSON файла';
-  const [restoreJSONButton] = await page.$x(
-    `//button[contains(., '${restoreJSONText}')]`
-  );
-  await restoreJSONButton.click();
-
-  // Fill fields (file + password)
-  await page.click('.ui--InputFile');
-  const inputFile = await page.$('.ui--InputFile input[type="file"]');
-  await page.type(
-    '.ui--Input input[type="password"]',
-    process.env.ACCOUNT_PASSWORD || ''
-  );
-  await inputFile?.uploadFile(`accounts/${process.env.ACCOUNT_JSON_NAME}` || '');
-
-  // Click restore button
-  const restoreButtonText = prod ? 'Restore' : 'Восстановить';
-  const restoreButtons = await page.$x(
-    `//button[contains(., '${restoreButtonText}')]`
-  );
-
-  await restoreButtons[1].click();
-
-  sendMessage('Preparing for transfer - step 2...');
-  // Click send button
-  const sendButtonText = prod ? 'send' : 'отправить';
-  const [sendButton] = await page.$x(
-    `//button[contains(., '${sendButtonText}')]`
-  );
-  await sendButton.click();
-
-  // Fill address
-  const sendToAddressSelectText = prod
-    ? 'send to address'
-    : 'отправить на адрес';
-  const sendAmountText = prod ? 'amount' : 'сумма';
-
-  const [addresSelector] = await page.$x(
-    `//div[contains(@class, "ui--Modal-Column") and contains(., "${sendToAddressSelectText}")]/div[contains(@class, "ui--Modal-Column")]//input`
-  );
-
-  const [labelAmount] = await page.$x(
-    `//div[contains(@class, "ui--Modal-Column") and contains(., "${sendAmountText}")]/div[contains(@class, "ui--Modal-Column")]//input`
-  );
-
-  console.log('memberAddress', memberAddress);
-
-  await page.screenshot({ path: `screenshots/send.png` });
-  await labelAmount.click({ clickCount: 3 });
-  await labelAmount.type('1' /* '101' */);
-  await page.screenshot({ path: `screenshots/send1.png` });
-  await addresSelector.type(memberAddress);
-  await page.screenshot({ path: `screenshots/send2.png` });
-
-  sendMessage('Preparing for transfer - step 3...');
-
-  // Click to transfer & Sign and Submit
-  const transferText = prod ? 'Make Transfer' : 'Выполнить Трансфер';
-  const [transferButton] = await page.$x(
-    `//button[contains(., '${transferText}')]`
-  );
-  await transferButton.click();
-
-  const unlockAccountText = prod
-    ? 'unlock account with password'
-    : 'разблокировать аккаунт с помощью пароля';
-
-  const signAndSubmitText = prod ? 'Sign and Submit' : 'Подписать и отправить';
-
-  const [unlockPasswordInput] = await page.$x(
-    `//div[contains(@class, "ui--Modal-Column") and contains(., "${unlockAccountText}")]/div[contains(@class, "ui--Modal-Column")]//input`
-  );
-
-  const [signAndSubmitButton] = await page.$x(
-    `//button[contains(., '${signAndSubmitText}')]`
-  );
-
-  sendMessage('Start transfer tokens');
-
-  await unlockPasswordInput.type(process.env.ACCOUNT_PASSWORD || '');
-  await signAndSubmitButton.click();
-  await page.waitForTimeout(2000);
-
-  console.log('-------------------- create screenshot --------------------');
-
-  await page.screenshot({ path: `screenshots/example.png` });
-  await page.screenshot({ path: `screenshots/wallet-${memberAddress}.png` });
-
-  console.log('-------------------- finish --------------------');
-
-  await browser.close();
-}
-
-async function setLastCommand(
-  member: IMember | null,
-  message: any,
-  props: BotServiceProps,
-  lastCommand: string
-) {
-  if (member === null) {
-    const newMember = {
-      [props.dbId]: props.getId(message),
-      date: props.getDate(message),
-      lastCommand,
-    };
-
-    await MemberModel.create(newMember);
-  } else {
-    await MemberModel.updateOne(
-      { [props.dbId]: props.getId(message) },
-      { $set: { lastCommand } }
-    );
-  }
-}
-
-async function faucetCommand(
-  member: IMember | null,
-  message: any,
-  props: BotServiceProps
-) {
-  const id = props.getId(message);
-  const regexp = new RegExp(`^${props.commandPrefix}faucet(.*)`);
-  const regexpMatch = new RegExp(`^${props.commandPrefix}faucet (.*)`);
-  const faucetMemberData = await FaucetModel.findOne({ [props.dbId]: id });
-  const dateLastOperation = faucetMemberData?.dateLastOperation || 0;
-
-  const currentMessage = props.getText(message);
-
-  const faucetPeriod =
-    60000 *
-    10 *
-    (faucetMemberData?.addresses.length >= 3
-      ? (faucetMemberData?.addresses.length - 2) * 60
-      : 1);
-
-  if (regexp.test(currentMessage)) {
-    // /faucet
-    const match = props.getText(message).match(regexpMatch);
-    console.log('message', message);
-
-    const walletAddress = match ? match[1] : null;
-
-    await setLastCommand(member, message, props, 'faucet');
-
-    if (faucetMemberData === null) {
-      const newFaucet = {
-        [props.dbId]: props.getId(message),
-        date: props.getDate(message),
-        dateUpdate: props.getDate(message),
-      };
-
-      await FaucetModel.create(newFaucet);
-    } else if (
-      new Date().getTime() - dateLastOperation < faucetPeriod
-    ) {
-      await setLastCommand(member, message, props, '');
-
-      const errorText = 'You can use the bot no more then once every 10 minutes';
-      throw new Error(errorText);
-    }
-    
-    if (walletAddress) {
-      await faucetTransfer(member, message, props, walletAddress, faucetMemberData);
-      return await props.send(message, `${props.getName(message)}, operation completed.`);
-    } else {
-      return await props.send(
-        message,
-        'Send your wallet address. To cancel the operation, send Q.'
-      );
-    }
-  } else if (
-    member &&
-    member.lastCommand === 'faucet' &&
-    currentMessage.toLowerCase() === 'q'
-  ) {
-    // Cancel
-    await setLastCommand(member, message, props, '');
-    await props.send(message, 'Canceled transfer');
-  } else if (
-    member &&
-    member.lastCommand === 'faucet' &&
-    !faucetMemberData?.addresses.includes(currentMessage) &&
-    new Date().getTime() - dateLastOperation > faucetPeriod
-  ) {
-    await faucetTransfer(member, message, props, currentMessage, faucetMemberData);
-    return await props.send(message, `${props.getName(message)}, operation completed.`);
-  } else if (
-    member &&
-    member.lastCommand === 'faucet' &&
-    (faucetMemberData?.addresses.includes(currentMessage) ||
-      new Date().getTime() - dateLastOperation < faucetPeriod)
-  ) {
-    // Reject
-    await setLastCommand(member, message, props, '');
-    return props.send(
-      message,
-      'Transfer has already been made to this address'
-    );
-  }
-}
-
-async function faucetTransfer(
-  member: IMember | null,
-  message: any,
-  props: BotServiceProps,
-  currentMessage: string,
-  faucetMemberData: IFaucet
-  ) {
-  // Transfer
-
-  await props.send(message, 'Wait a few minutes...');
-
-  const checkAddress = await FaucetModel.find({ addresses: { $all: [currentMessage] } });
-
-  await setLastCommand(member, message, props, '');
-
-  if (checkAddress.length > 0) {
-    throw new Error('Error: Transfer has already been made to this address');
-  }
-
-  try {
-    await faucet(currentMessage, (text: string) => props.send(message, text));
-
-    await props.send(message, 'You got funded! If you want to get more tJoy tokens start here https://testnet.joystream.org/#/forum/threads/192');
-
-    await FaucetModel.updateOne(
-      { [props.dbId]: props.getId(message) },
-      { $set: { dateLastOperation: new Date().getTime(), addresses: [...(faucetMemberData?.addresses || []), currentMessage] } }
-    );
-  } catch (ex) {
-    console.error(ex);
-    await props.send(message, ex.message);
-  }
-}
-
-async function faucet(
-  walletAddress = '5HfxszoqKG9MPxp1WfywYAynUaTnSfmguCidpSGWJvqwaPpu',
-  sendMessage: Function
-) {
-  const transferTokens = new AccountTransferTokens();
-  await transferTokens.start(walletAddress, prod ? 101 : 1);
-}
-
 async function checkFaucetBalanceCommand(message: any, props: BotServiceProps) {
   const regexp = new RegExp(`^${props.commandPrefix}balancefaucet`);
 
   if (regexp.test(props.getText(message))) {
     const transferTokens = new AccountTransferTokens();
     const balance = await transferTokens.getBalance();
-    console.log('balance', balance);
+    // console.log('balance', balance);
 
     await props.send(message, `Balance = ${balance}`);
   }
@@ -443,7 +158,7 @@ async function changeFaucetBalanceNotifyTg(
         { $set: { lastCommand: '', enableNotify: enableNotify ? (new Date().getTime() - 1000 * 60 * 60 * 24) : undefined } }
       );
 
-      console.log('message', message);
+      // console.log('message', message);
       
       await props.send(message, `Notifies ${enableNotify ? 'enabled' : 'disabled'}`);
     } else {
@@ -452,10 +167,18 @@ async function changeFaucetBalanceNotifyTg(
   }
 }
 
-export default async function BotService(props: BotServiceProps) {
+export default async function BotService(_bot, props: BotServiceProps) {
   props.client.on('message', async (message: any) => {
     const id = props.getId(message);
     let member = null;
+
+    try {
+      if (props.commandPrefix === '/' && !props?.isPrivate(message)) {
+        props.deleteMessage(_bot, message);
+      }
+    } catch (ex) {
+      console.log('ex', ex);
+    }
 
     try {
       member = await MemberModel.findOne({ [props.dbId]: id });
@@ -464,6 +187,8 @@ export default async function BotService(props: BotServiceProps) {
       console.log(e);
       await props.send(message, 'Error =( please try later');
     }
+
+    console.log('message', message);
 
     try {
       startCommand(message, props);

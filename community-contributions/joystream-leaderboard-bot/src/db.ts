@@ -6,7 +6,8 @@ export interface IMember extends mongoose.Document {
   enableNotify?: number,
   disId?: Number,
   date?: number,
-  lastCommand: String
+  lastCommand: String,
+  lastCommandChatId?: Number,
 };
 
 const memberSchema = new mongoose.Schema({
@@ -15,7 +16,8 @@ const memberSchema = new mongoose.Schema({
   enableNotify: Number,
   disId: Number,
   date: Number,
-  lastCommand: String
+  lastCommand: String,
+  lastCommandChatId: Number,
 });
 
 export interface IFaucet extends mongoose.Document {

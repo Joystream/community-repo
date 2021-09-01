@@ -7,7 +7,7 @@ const client = new Client();
 
 connect();
 
-botService({
+botService(client, {
   send: (message: Message, text: string) => message.channel.send(text),
   commandPrefix: '!',
   client,

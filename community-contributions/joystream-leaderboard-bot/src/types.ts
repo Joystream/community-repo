@@ -8,6 +8,8 @@ export interface BotServiceProps {
   getId: Function;
   getName: Function;
   getChatId?: Function;
+  isPrivate?: Function;
+  deleteMessage?: Function;
   getText: Function;
   getDate: Function;
   dbId: 'tgId' | 'disId' | string;
