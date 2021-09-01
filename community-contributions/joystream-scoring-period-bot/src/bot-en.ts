@@ -54,7 +54,7 @@ bot.on("message", async (msg: TelegramBot.Message) => {
 
     const userParsed = `[${username}](tg://user?id=${msg.from.id})`;
     const leaderboardLink = `[Check scores](https://t.me/JoystreamLeaderboardBot)`;
-    const options: SendMessageOptions = { parse_mode: "Markdown" };
+    const options: SendMessageOptions = { parse_mode: "Markdown", disable_web_page_preview: true };
 
     if (msg.text?.startsWith("/scoring")) {
       const startDate = moment.parseZone(
@@ -78,7 +78,7 @@ bot.on("message", async (msg: TelegramBot.Message) => {
       const currentPeriodId = scoringData.currentScoringPeriod.scoringPeriodId;
       const prevPeriodId = scoringData.currentScoringPeriod.scoringPeriodId - 1;
       const currentScoring = `The current scoring period ***#${currentPeriodId}*** ends in ${daysLeft}\n`;
-      const currentDeadline = `Please make sure to submit your report for the period ***#${currentPeriodId}*** before the deadline ***${deadline}***\n`;
+      const currentDeadline = `Please make sure to [submit your report](https://www.joystream.org/founding-members/form) for period ***#${currentPeriodId}*** before the deadline ***${deadline}***\n`;
       const isLastScoringClosed = endDate
         .add(5, "d")
         .subtract(2, "w")
@@ -86,7 +86,7 @@ bot.on("message", async (msg: TelegramBot.Message) => {
       const previousPeriodDeadline = isLastScoringClosed
         ? `Reports for the previous period ***#${prevPeriodId}*** are closed\n`
         : `Reports for the previous period ***#${prevPeriodId}*** can be submitted before ***${prevDeadline}***\n`;
-      const latestGradedPeriod = `Latest graded period - ***#${lastGradedPeriod}***\n${leaderboardLink}`;
+      const latestGradedPeriod = `Latest graded period - ***#${lastGradedPeriod}*** - ${leaderboardLink}`;
       const messageContent = `${hello}${currentScoring}${currentDeadline}${previousPeriodDeadline}${latestGradedPeriod}`;
       bot.sendMessage(chatId, messageContent, options).then((message) => {
         try {
