@@ -2,7 +2,8 @@ import TelegramBot, { SendMessageOptions } from "node-telegram-bot-api";
 import * as dotenv from "dotenv";
 import axios from "axios";
 import moment from "moment";
-import { Client, Intents, Options } from "discord.js";
+import { Client } from "discord.js";
+// import { Client, Intents, Options } from "discord.js";
 
 interface ScoringPeriodData {
   currentScoringPeriod: {
@@ -27,13 +28,7 @@ dotenv.config();
 const tgApiKey = process.env.TG_API_KEY_EN || "";
 const bot = new TelegramBot(tgApiKey, { polling: true });
 const discordToken = process.env.DISCORD_TOKEN || "";
-const clientOptions = Options.createDefault();
-clientOptions.intents = [
-  Intents.FLAGS.GUILDS,
-  Intents.FLAGS.GUILD_MESSAGES,
-  Intents.FLAGS.DIRECT_MESSAGES,
-];
-const client = new Client(clientOptions);
+const client = new Client();
 
 let nextSyncDate = moment();
 let scoringData = {} as ScoringPeriodData;
@@ -57,6 +52,17 @@ const loadScoringPeriodData = async () => {
 
 client.on("message", async (message) => {
   await reloadScoringData();
+  if (message.content === "!help") {
+    const helpMessage = "I can help to know the state of Joystream scoring periods!\nIn channels I delete my messages after 30 seconds, but in dm they will be kept.\nSupported commands:\n!scoring - Get the scoring period information\n!help - get help";
+    message.channel.send({content: helpMessage}).then( (msg: { delete: () => void; }) => {
+      if (message.channel.type !== "dm") {
+        message.delete()
+        setTimeout(() => {
+          msg.delete()  
+        }, messageDeletionTimeout)
+      }
+    });
+  }
   if (message.content === "!scoring") {
     const leaderboardLink = `\nCheck scores here: https://t.me/JoystreamLeaderboardBot\nSubmit your report here: https://www.joystream.org/founding-members/form`;
     const submitReportLink = "submit your report";
@@ -65,12 +71,14 @@ client.on("message", async (message) => {
       submitReportLink,
       leaderboardLink
     );
-    message.channel.send({content: messageContent}).then( msg => {
+    message.channel.send({content: messageContent}).then( (msg: { suppressEmbeds: (arg0: boolean) => void; delete: () => void; }) => {
       msg.suppressEmbeds(true)
-      message.delete()
-      setTimeout(() => {
-        msg.delete()  
-      }, messageDeletionTimeout)
+      if (message.channel.type !== "dm") {
+        message.delete()
+        setTimeout(() => {
+          msg.delete()  
+        }, messageDeletionTimeout)
+      }
     });
   }
 });
