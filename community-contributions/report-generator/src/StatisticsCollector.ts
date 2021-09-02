@@ -54,7 +54,7 @@ const CACHE_FOLDER = "cache";
 const VIDEO_CLASS_iD = 10;
 const CHANNEL_CLASS_iD = 1;
 
-const SPENDING_CATEGORIES_FILE_NAME = 'spending_proposal_categories';
+const SPENDING_PROPOSALS_CATEGORIES_FILE = __dirname + '/../../../documentation/spending_proposal_categories.csv';
 
 export class StatisticsCollector {
 
@@ -96,14 +96,14 @@ export class StatisticsCollector {
     }
 
     async getApprovedBounties() {
-        let bountiesFilePath = __dirname + '/../' + SPENDING_CATEGORIES_FILE_NAME +'.csv';
         try {
-            await fs.access(bountiesFilePath, constants.R_OK);
+            await fs.access(SPENDING_PROPOSALS_CATEGORIES_FILE, constants.R_OK);
         } catch {
-            throw new Error('Bounties CSV file not found');
+            console.warn('File with the spending proposal categories not found');
+            return [];
         }
 
-        const fileContent = await fs.readFile(bountiesFilePath);
+        const fileContent = await fs.readFile(SPENDING_PROPOSALS_CATEGORIES_FILE);
         let rawBounties = parse(fileContent);
         rawBounties.shift();
         rawBounties = rawBounties.filter((line: string[]) => line[8] == 'Bounties');
@@ -202,7 +202,7 @@ export class StatisticsCollector {
         }
 
         if (!this.statistics.bountiesTotalPaid) {
-            console.warn('No bounties found in ' + SPENDING_CATEGORIES_FILE_NAME +', trying to find spending proposals of bounties, please check the values!...');
+            console.warn('No bounties found in ' + SPENDING_PROPOSALS_CATEGORIES_FILE +', trying to find spending proposals of bounties, please check the values!...');
             for (const spendingProposal of spendingProposals) {
                 if (spendingProposal.title.toLowerCase().includes("bounty")) {
                     this.statistics.bountiesTotalPaid += spendingProposal.spentAmount;
