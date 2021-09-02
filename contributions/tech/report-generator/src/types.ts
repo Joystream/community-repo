@@ -1,6 +1,9 @@
 import { GenericEventData } from "@polkadot/types/generic/Event";
+import { Stake } from "@joystream/types/stake";
+import { RewardRelationship } from "@joystream/types/recurring-rewards";
 
 export class Statistics {
+  [key: string]: number | string;
   councilRound: number = 0;
   councilMembers: number = 0;
 
@@ -34,7 +37,6 @@ export class Statistics {
   percNewThreads: number = 0;
 
   startPosts: number = 0;
-  // endPosts: number = 0;
   newPosts: number = 0;
   endPosts: number = 0;
   percNewPosts: number = 0;
@@ -244,4 +246,10 @@ export class CacheEvent {
     public method: string,
     public data: GenericEventData
   ) {}
+}
+
+export interface WorkerReward {
+  id: number;
+  stake: Stake;
+  reward: RewardRelationship;
 }
