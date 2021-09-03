@@ -33,7 +33,7 @@ const client = new Client();
 let nextSyncDate = moment();
 let scoringData = {} as ScoringPeriodData;
 let lastGradedPeriod = null as number | null;
-const messageDeletionTimeout = 30000; // 30 seconds
+const messageDeletionTimeout = 60000;
 
 client.login(discordToken);
 client.on("ready", async () => {
@@ -53,7 +53,7 @@ const loadScoringPeriodData = async () => {
 client.on("message", async (message) => {
   await reloadScoringData();
   if (message.content === "!help") {
-    const helpMessage = "I can help to know the state of Joystream scoring periods!\nIn channels I delete my messages after 30 seconds, but in dm they will be kept.\nSupported commands:\n!scoring - Get the scoring period information\n!help - get help";
+    const helpMessage = `Hello ${message.author.username}, I can help you with the status of Joystream Scoring Periods.\nIn channels I delete my messages after 30 seconds, but in DM they will be kept.\nSupported commands:\n!scoring - Get the scoring period information\n!help - Get this help`;
     message.channel.send({content: helpMessage}).then( (msg: { delete: () => void; }) => {
       if (message.channel.type !== "dm") {
         message.delete()

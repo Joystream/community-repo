@@ -37,7 +37,7 @@ interface ScoringPeriodData {
 let nextSyncDate = moment();
 let scoringData = {} as ScoringPeriodData;
 let lastGradedPeriod = null as number | null;
-const messageDeletionTimeout = 30000; // 30 seconds
+const messageDeletionTimeout = 60000; // 1 minute
 
 bot.on("message", async (msg: TelegramBot.Message) => {
   if (nextSyncDate.isBefore(moment())) {
