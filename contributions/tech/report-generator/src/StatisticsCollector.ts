@@ -53,7 +53,7 @@ import { ProposalDetails, ProposalOf } from "@joystream/types/augment/types";
 import { SpendingParams } from "@joystream/types/proposals";
 import * as constants from "constants";
 
-import { getPercent, getTotalMinted, momentToString } from "./lib";
+import { eventStats, getPercent, getTotalMinted, momentToString } from "./lib";
 import {
   getBlock,
   getBlockHash,
@@ -169,6 +169,7 @@ export class StatisticsCollector {
     });
 
     await this.buildBlocksEventCache(startBlock, endBlock);
+    eventStats(this.blocksEventsCache);
     await this.fillTokenGenerationInfo(
       startBlock,
       endBlock,
