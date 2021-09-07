@@ -1,5 +1,7 @@
+import { AccountId } from "@polkadot/types/interfaces";
 import { GenericEventData } from "@polkadot/types/generic/Event";
 import { Stake } from "@joystream/types/stake";
+import { MemberId } from "@joystream/types/members";
 import { RewardRelationship } from "@joystream/types/recurring-rewards";
 
 export class Statistics {
@@ -250,6 +252,10 @@ export class CacheEvent {
 
 export interface WorkerReward {
   id: number;
+  memberId: MemberId;
+  account: AccountId;
+  handle: string;
   stake: Stake;
   reward: RewardRelationship;
+  status: string;
 }

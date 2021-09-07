@@ -101,6 +101,7 @@ import {
 import {
   filterMethods,
   getWorkerRewards,
+  getWorkerRow,
   getBurnedTokens,
   getMintInfo,
   getActiveValidators,
@@ -395,9 +396,24 @@ export class StatisticsCollector {
       group,
       endHash
     );
-    workersEnd.forEach(({ stake }) => {
-      if (stake) info.endStake += stake.value.toNumber();
+    let workers = ``;
+    workersEnd.forEach(async (worker) => {
+      if (worker.stake) info.endStake += worker.stake.value.toNumber();
+      if (!worker.reward) return;
+      const workerStart = workersStart.find((w) => w.id === worker.id);
+      const earnedStart = workerStart.reward?.total_reward_received.toNumber();
+      workers += getWorkerRow(worker, earnedStart);
     });
+    const header = `| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |\n|--|--|--|--|--|--|\n`;
+    const groupTag =
+      workingGroup === `storage`
+        ? `storageProviders`
+        : workingGroup === `contentDirectory`
+        ? `curators`
+        : workingGroup === `operations`
+        ? `operations`
+        : ``;
+    this.saveStats({ [groupTag]: header + workers });
 
     info.rewards = await this.computeReward(
       roundNrBlocks,
@@ -613,16 +629,6 @@ export class StatisticsCollector {
     const startStorageProviders = await getWorkers(this.api, group, startHash);
     const endStorageProviders = await getWorkers(this.api, group, endHash);
 
-    let storageProviders = "";
-    const nextWorkerId = await getNextWorker(this.api, group, endHash);
-    for (let i = 0; i < nextWorkerId; ++i) {
-      const provider: WorkerOf = await getWorker(this.api, group, endHash, i);
-      if (!provider.is_active) continue;
-      const id = provider.member_id;
-      const { handle, root_account } = await getMember(this.api, endHash, id);
-      storageProviders += `@${handle} | (${root_account})  \n`;
-    }
-
     this.saveStats({
       newStorageProviderReward,
       startStorageProvidersStake,
@@ -637,7 +643,6 @@ export class StatisticsCollector {
         startStorageProviders,
         endStorageProviders
       ),
-      storageProviders,
     });
   }
 
@@ -646,15 +651,6 @@ export class StatisticsCollector {
     const startCurators = await getWorkers(this.api, group, startHash);
     const endCurators = await getWorkers(this.api, group, endHash);
 
-    let nextCuratorId = await getNextWorker(this.api, group, endHash);
-    let curators = "";
-    for (let i = 0; i < nextCuratorId; ++i) {
-      const curator: WorkerOf = await getWorker(this.api, group, endHash, i);
-      if (!curator.is_active) continue;
-      const id = curator.member_id;
-      const { handle, root_account } = await getMember(this.api, endHash, id);
-      curators += `@${handle} | (${root_account})  \n`;
-    }
     this.saveStats({
       startCurators,
       endCurators,
@@ -662,7 +658,6 @@ export class StatisticsCollector {
         this.statistics.startCurators,
         this.statistics.endCurators
       ),
-      curators,
     });
   }
 
@@ -687,17 +682,7 @@ export class StatisticsCollector {
     const startWorkers = await getWorkers(this.api, group, startHash);
     const endWorkers = await getWorkers(this.api, group, endHash);
 
-    let operations = "";
-    let nextOperationsWorkerId = await getNextWorker(this.api, group, endHash);
-    for (let i = 0; i < nextOperationsWorkerId; ++i) {
-      let worker: WorkerOf = await getWorker(this.api, group, endHash, i);
-      if (!worker.is_active) continue;
-      const id = worker.member_id;
-      const { handle, root_account } = await getMember(this.api, endHash, id);
-      operations += `@${handle} | (${root_account})  \n`;
-    }
     this.saveStats({
-      operations,
       newOperationsReward: Number(newOperationsReward),
       startOperationsWorkers: startWorkers,
       endOperationsWorkers: endWorkers,
