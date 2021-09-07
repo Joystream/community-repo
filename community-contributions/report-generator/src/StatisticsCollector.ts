@@ -144,7 +144,7 @@ export class StatisticsCollector {
         return tokensBurned;
     }
 
-    async getFinalizedSpendingProposals(): Promise<Array<SpendingProposals>> {
+    async getFinalizedSpendingProposals(endHash: Hash): Promise<Array<SpendingProposals>> {
         let spendingProposals = new Array<SpendingProposals>();
         for (let [key, blockEvents] of this.blocksEventsCache) {
             let proposalEvents = blockEvents.filter((event) => {
@@ -158,10 +158,10 @@ export class StatisticsCollector {
                 }
 
                 let proposalId = proposalEvent.data[0] as ProposalId;
-                let proposalInfo = await this.api.query.proposalsEngine.proposals(proposalId) as ProposalOf;
+                let proposalInfo = await this.api.query.proposalsEngine.proposals.at(endHash, proposalId) as ProposalOf;
                 const finalizedData = proposalInfo.status.asFinalized;
 
-                let proposalDetail = await this.api.query.proposalsCodex.proposalDetailsByProposalId(proposalId) as ProposalDetails;
+                let proposalDetail = await this.api.query.proposalsCodex.proposalDetailsByProposalId.at(endHash, proposalId) as ProposalDetails;
                 if (!finalizedData.proposalStatus.isApproved || !proposalDetail.isSpending) {
                     continue;
                 }
@@ -189,7 +189,7 @@ export class StatisticsCollector {
         this.statistics.newTokensBurn = await this.computeTokensBurn();
 
         let bounties = await this.getApprovedBounties();
-        let spendingProposals = await this.getFinalizedSpendingProposals();
+        let spendingProposals = await this.getFinalizedSpendingProposals(endHash);
 
         this.statistics.bountiesTotalPaid = 0;
         if (bounties) {
@@ -249,7 +249,7 @@ export class StatisticsCollector {
         let nextWorkerId = (await this.api.query[workingGroup + 'WorkingGroup'].nextWorkerId.at(startHash) as WorkerId).toNumber();
         let info = new WorkersInfo();
         for (let i = 0; i < nextWorkerId; ++i) {
-            let worker = await this.api.query[workingGroup + 'WorkingGroup'].workerById(i) as WorkerOf;
+            let worker = await this.api.query[workingGroup + 'WorkingGroup'].workerById.at(endHash, i) as WorkerOf;
 
             if (!worker.is_active) {
                 continue;
@@ -257,7 +257,7 @@ export class StatisticsCollector {
 
             if (worker.role_stake_profile.isSome) {
                 let roleStakeProfile = worker.role_stake_profile.unwrap();
-                let stake = await this.api.query.stake.stakes(roleStakeProfile.stake_id) as Stake;
+                let stake = await this.api.query.stake.stakes.at(endHash, roleStakeProfile.stake_id) as Stake;
                 info.startStake += stake.value.toNumber();
             }
         }
@@ -266,7 +266,7 @@ export class StatisticsCollector {
         let rewardRelationshipIds = Array<RewardRelationshipId>();
 
         for (let i = 0; i < nextWorkerId; ++i) {
-            let worker = await this.api.query[workingGroup + 'WorkingGroup'].workerById(i) as WorkerOf;
+            let worker = await this.api.query[workingGroup + 'WorkingGroup'].workerById.at(endHash, i) as WorkerOf;
 
             if (!worker.is_active) {
                 continue;
@@ -277,7 +277,7 @@ export class StatisticsCollector {
             }
             if (worker.role_stake_profile.isSome) {
                 let roleStakeProfile = worker.role_stake_profile.unwrap();
-                let stake = await this.api.query.stake.stakes(roleStakeProfile.stake_id) as Stake;
+                let stake = await this.api.query.stake.stakes.at(endHash, roleStakeProfile.stake_id) as Stake;
                 info.endStake += stake.value.toNumber();
             }
         }
@@ -291,7 +291,7 @@ export class StatisticsCollector {
 
         let rewardRelationshipIds = Array<RewardRelationshipId>();
         for (let i = 0; i < nextCuratorId; ++i) {
-            let worker = await this.api.query.contentDirectoryWorkingGroup.workerById(i) as WorkerOf;
+            let worker = await this.api.query.contentDirectoryWorkingGroup.workerById.at(endHash, i) as WorkerOf;
             if (!worker.is_active) {
                 continue;
             }
@@ -669,61 +669,6 @@ export class StatisticsCollector {
             return newValue > 0 ? Infinity : 0;
         }
         return Number((newValue * 100 / previousValue - 100).toFixed(2));
-    }
-
-    async computeUsedSpaceInMbs(contentIds: Vec<ContentId>) {
-        let space = 0;
-        for (let contentId of contentIds) {
-            let dataObject = (await this.api.query.dataDirectory.dataObjectByContentId(contentId)) as Option<DataObject>;
-            space += dataObject.unwrap().size_in_bytes.toNumber();
-        }
-        return space / 1024 / 1024;
-    }
-
-    async parseVideos(entities: Map<number, Entity>) {
-        let videos: Media[] = [];
-        for (let [key, entity] of entities) {
-            if (entity.class_id.toNumber() != VIDEO_CLASS_iD || entity.values.isEmpty) {
-                continue;
-            }
-            let values = Array.from(entity.getField('values').entries());
-            if (values.length < 2 || values[2].length < 1) {
-                continue;
-            }
-
-            let title = values[2][1].getValue().toString();
-
-            videos.push(new Media(key, title));
-        }
-
-        return videos;
-    }
-
-    async parseChannels(entities: Map<number, Entity>) {
-        let channels: Channel[] = [];
-
-        for (let [key, entity] of entities) {
-            if (entity.class_id.toNumber() != CHANNEL_CLASS_iD || entity.values.isEmpty) {
-                continue;
-            }
-            let values = Array.from(entity.getField('values').entries());
-
-            let title = values[0][1].getValue().toString();
-            channels.push(new Channel(key, title));
-        }
-        return channels;
-    }
-
-    async getEntities(blockHash: Hash) {
-        let nrEntities = ((await this.api.query.contentDirectory.nextEntityId.at(blockHash)) as EntityId).toNumber();
-
-        let entities = new Map<number, Entity>();
-        for (let i = 0; i < nrEntities; ++i) {
-            let entity = await this.api.query.contentDirectory.entityById.at(blockHash, i) as Entity;
-
-            entities.set(i, entity);
-        }
-        return entities;
     }
 
     async buildBlocksEventCache(startBlock: number, endBlock: number) {
