@@ -283,7 +283,8 @@ export class StatisticsCollector {
 
     // bounties
     const bounties = await this.getApprovedBounties();
-    let spendingProposals: SpendingProposals[] = await this.getFinalizedSpendingProposals();
+    let spendingProposals: SpendingProposals[] =
+      await this.getFinalizedSpendingProposals();
     let bountiesTotalPaid = 0;
     if (bounties) {
       for (let bounty of bounties) {
@@ -338,22 +339,19 @@ export class StatisticsCollector {
     endHash: Hash
   ): Promise<number> {
     const payoutInterval = Number(
-      ((await getCouncilPayoutInterval(
-        this.api,
-        endHash
-      )) as Option<BlockNumber>).unwrapOr(0)
+      (
+        (await getCouncilPayoutInterval(
+          this.api,
+          endHash
+        )) as Option<BlockNumber>
+      ).unwrapOr(0)
     );
-    const amountPerPayout = ((await getCouncilPayout(
-      this.api,
-      endHash
-    )) as BalanceOf).toNumber();
+    const amountPerPayout = (
+      (await getCouncilPayout(this.api, endHash)) as BalanceOf
+    ).toNumber();
 
-    const [
-      announcingPeriod,
-      votingPeriod,
-      revealingPeriod,
-      termDuration,
-    ] = await Promise.all(getCouncilPeriods(this.api, endHash));
+    const [announcingPeriod, votingPeriod, revealingPeriod, termDuration] =
+      await Promise.all(getCouncilPeriods(this.api, endHash));
 
     const nrCouncilMembers = ((await getCouncil(this.api, endHash)) as Seats)
       .length;
