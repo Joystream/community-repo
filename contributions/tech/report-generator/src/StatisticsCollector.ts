@@ -1,60 +1,48 @@
-import { ApiPromise, WsProvider } from "@polkadot/api";
-import { types } from "@joystream/types";
+import { ApiPromise } from "@polkadot/api";
+
+// types
 import {
   AccountId,
   Balance,
   BalanceOf,
   BlockNumber,
-  EraIndex,
   EventRecord,
   Hash,
-  Moment,
 } from "@polkadot/types/interfaces";
 
 import {
-  CacheEvent,
   Media,
   MintStatistics,
   Statistics,
   WorkersInfo,
-  Channel,
   SpendingProposals,
-  Bounty,
-  WorkerReward,
 } from "./types";
+import { CacheEvent, Bounty, WorkerReward } from "./lib/types";
 
 import { Option, u32, Vec } from "@polkadot/types";
 import { ElectionStake, SealedVote, Seats } from "@joystream/types/council";
 import { Mint, MintId } from "@joystream/types/mint";
 import { ContentId, DataObject } from "@joystream/types/media";
-
-import { ChannelId, PostId, ThreadId } from "@joystream/types/common";
 import { CategoryId } from "@joystream/types/forum";
-
 import { MemberId, Membership } from "@joystream/types/members";
+import {
+  Proposal,
+  ProposalId,
+  SpendingParams,
+} from "@joystream/types/proposals";
 import {
   RewardRelationship,
   RewardRelationshipId,
 } from "@joystream/types/recurring-rewards";
 import { Stake } from "@joystream/types/stake";
-import { WorkerId } from "@joystream/types/working-group";
-import {
-  Entity,
-  EntityId,
-  PropertyType,
-} from "@joystream/types/content-directory";
-import {
-  ProposalId,
-  Video,
-  VideoId,
-  WorkerOf,
-} from "@joystream/types/augment-codec/all";
+import { Worker, WorkerId } from "@joystream/types/working-group";
 import { ProposalDetails, ProposalOf } from "@joystream/types/augment/types";
-import { SpendingParams } from "@joystream/types/proposals";
 import * as constants from "constants";
 
+// lib
 import { eventStats, getPercent, getTotalMinted, momentToString } from "./lib";
 import {
+  connectApi,
   getBlock,
   getBlockHash,
   getTimestamp,
@@ -70,9 +58,8 @@ import {
   getCouncilCommitments,
   getCouncilPayoutInterval,
   getCouncilPayout,
-  getCouncilPeriods,
+  getCouncilElectionDurations,
   getNextWorker,
-  getWorker,
   getWorkers,
   getWorkerReward,
   getStake,
@@ -103,7 +90,6 @@ import {
   getWorkerRewards,
   getWorkerRow,
   getBurnedTokens,
-  getMintInfo,
   getActiveValidators,
   getValidatorsRewards,
 } from "./lib/rewards";
@@ -154,15 +140,15 @@ export class StatisticsCollector {
     startBlock: number,
     endBlock: number
   ): Promise<Statistics> {
-    this.api = await StatisticsCollector.connectApi();
+    this.api = await connectApi(PROVIDER_URL);
 
     let startHash: Hash = await getBlockHash(this.api, startBlock);
     let endHash: Hash = await getBlockHash(this.api, endBlock);
-    let startDate: Moment = await getTimestamp(this.api, startHash);
-    let endDate: Moment = await getTimestamp(this.api, endHash);
+    let dateStart = momentToString(await getTimestamp(this.api, startHash));
+    let dateEnd = momentToString(await getTimestamp(this.api, endHash));
     this.saveStats({
-      dateStart: momentToString(startDate),
-      dateEnd: momentToString(endDate),
+      dateStart,
+      dateEnd,
       startBlock,
       endBlock,
       newBlocks: endBlock - startBlock,
@@ -284,8 +270,7 @@ export class StatisticsCollector {
 
     // bounties
     const bounties = await this.getApprovedBounties();
-    let spendingProposals: SpendingProposals[] =
-      await this.getFinalizedSpendingProposals();
+    let spendingProposals: SpendingProposals[] = await this.getFinalizedSpendingProposals();
     let bountiesTotalPaid = 0;
     if (bounties) {
       for (let bounty of bounties) {
@@ -335,6 +320,22 @@ export class StatisticsCollector {
     });
   }
 
+  async getMintInfo(
+    api: ApiPromise,
+    mintId: MintId,
+    startHash: Hash,
+    endHash: Hash
+  ): Promise<MintStatistics> {
+    const startMint: Mint = await getMint(api, startHash, mintId);
+    const endMint: Mint = await getMint(api, endHash, mintId);
+    let stats = new MintStatistics();
+    stats.startMinted = getTotalMinted(startMint);
+    stats.endMinted = getTotalMinted(endMint);
+    stats.diffMinted = stats.endMinted - stats.startMinted;
+    stats.percMinted = getPercent(stats.startMinted, stats.endMinted);
+    return stats;
+  }
+
   async computeCouncilReward(
     roundNrBlocks: number,
     endHash: Hash
@@ -351,8 +352,12 @@ export class StatisticsCollector {
       (await getCouncilPayout(this.api, endHash)) as BalanceOf
     ).toNumber();
 
-    const [announcingPeriod, votingPeriod, revealingPeriod, termDuration] =
-      await Promise.all(getCouncilPeriods(this.api, endHash));
+    const [
+      announcingPeriod,
+      votingPeriod,
+      revealingPeriod,
+      termDuration,
+    ]: number[] = await getCouncilElectionDurations(this.api, endHash);
 
     const nrCouncilMembers = ((await getCouncil(this.api, endHash)) as Seats)
       .length;
@@ -444,7 +449,7 @@ export class StatisticsCollector {
   ) {
     const group = label + "WorkingGroup";
     const mint = await getGroupMint(this.api, group, endHash);
-    const info = await getMintInfo(this.api, mint, startHash, endHash);
+    const info = await this.getMintInfo(this.api, mint, startHash, endHash);
     let stats: { [key: string]: number } = {};
     stats[`start${tag}Minted`] = info.startMinted;
     stats[`end${tag}Minted`] = info.endMinted;
@@ -481,7 +486,7 @@ export class StatisticsCollector {
     this.saveStats({ newMints, totalMinted, totalMintCapacityIncrease });
 
     // council
-    const councilInfo = await getMintInfo(
+    const councilInfo = await this.getMintInfo(
       this.api,
       await getCouncilMint(this.api, endHash),
       startHash,
@@ -572,34 +577,28 @@ export class StatisticsCollector {
   }
 
   async fillValidatorInfo(startHash: Hash, endHash: Hash): Promise<void> {
-    let startTimestamp: Moment = await getTimestamp(this.api, startHash);
-    let endTimestamp: Moment = await getTimestamp(this.api, endHash);
-    let avgBlockProduction =
-      (endTimestamp.toNumber() - startTimestamp.toNumber()) /
-      1000 /
-      this.statistics.newBlocks;
+    const startTimestamp: number = await getTimestamp(this.api, startHash);
+    const endTimestamp: number = await getTimestamp(this.api, endHash);
+    const blocks = this.statistics.newBlocks;
+    const avgBlockProduction = (endTimestamp - startTimestamp) / 1000 / blocks;
     const maxStartValidators = await getValidatorCount(this.api, startHash);
     const startValidators = await getActiveValidators(this.api, startHash);
     const maxEndValidators = await getValidatorCount(this.api, endHash);
     const endValidators = await getActiveValidators(this.api, endHash, true);
-    const startEra: Option<EraIndex> = await getEra(this.api, startHash);
-    const endEra: Option<EraIndex> = await getEra(this.api, endHash);
+    const startEra: number = await getEra(this.api, startHash);
+    const endEra: number = await getEra(this.api, endHash);
+
+    const startStake = await getEraStake(this.api, startHash, startEra);
+    const endStake = await getEraStake(this.api, endHash, endEra);
 
     this.saveStats({
       avgBlockProduction: Number(avgBlockProduction.toFixed(2)),
       startValidators: startValidators.length + " / " + maxStartValidators,
       endValidators: endValidators.length + " / " + maxEndValidators,
       percValidators: getPercent(startValidators.length, endValidators.length),
-      startValidatorsStake: await getEraStake(
-        this.api,
-        startHash,
-        startEra.unwrap()
-      ),
-      endValidatorsStake: await getEraStake(this.api, endHash, endEra.unwrap()),
-      percNewValidatorsStake: getPercent(
-        this.statistics.startValidatorsStake,
-        this.statistics.endValidatorsStake
-      ),
+      startValidatorsStake: startStake,
+      endValidatorsStake: endStake,
+      percNewValidatorsStake: getPercent(startStake, endStake),
       newValidatorRewards: await getValidatorsRewards(
         this.filterCache(filterMethods.newValidatorsRewards)
       ),
@@ -654,10 +653,7 @@ export class StatisticsCollector {
     this.saveStats({
       startCurators,
       endCurators,
-      percNewCurators: getPercent(
-        this.statistics.startCurators,
-        this.statistics.endCurators
-      ),
+      percNewCurators: getPercent(startCurators, endCurators),
     });
   }
 
@@ -808,10 +804,5 @@ export class StatisticsCollector {
       this.blocksEventsCache = new Map(JSON.parse(fileData));
       console.log("Cache file loaded...");
     }
-  }
-
-  static async connectApi(): Promise<ApiPromise> {
-    const provider = new WsProvider(PROVIDER_URL);
-    return await ApiPromise.create({ provider, types });
   }
 }

@@ -8,6 +8,12 @@ It takes some minutes to complete the report, multiple runs, with the same block
 
 `yarn && yarn build`
 
+To update the submodule in `src/lib`:
+```
+git submodule init
+git submodule update
+```
+
 ## Usage
 
 `node lib/generator.js <start block> <end block>`

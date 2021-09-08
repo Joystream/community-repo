@@ -1,9 +1,3 @@
-import { AccountId } from "@polkadot/types/interfaces";
-import { GenericEventData } from "@polkadot/types/generic/Event";
-import { Stake } from "@joystream/types/stake";
-import { MemberId } from "@joystream/types/members";
-import { RewardRelationship } from "@joystream/types/recurring-rewards";
-
 export class Statistics {
   [key: string]: number | string;
   councilRound: number = 0;
@@ -229,33 +223,4 @@ export class Media {
 
 export class Channel {
   constructor(public id: number, public title: string) {}
-}
-
-export class Bounty {
-  constructor(
-    public testnet: string,
-    public proposalId: number,
-    public title: string,
-    public status: string,
-    public amountAsked: number,
-    public amountMinted: number
-  ) {}
-}
-
-export class CacheEvent {
-  constructor(
-    public section: string,
-    public method: string,
-    public data: GenericEventData
-  ) {}
-}
-
-export interface WorkerReward {
-  id: number;
-  memberId: MemberId;
-  account: AccountId;
-  handle: string;
-  stake: Stake;
-  reward: RewardRelationship;
-  status: string;
 }
