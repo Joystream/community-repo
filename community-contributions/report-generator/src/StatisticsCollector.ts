@@ -165,6 +165,12 @@ export class StatisticsCollector {
                 if (!finalizedData.proposalStatus.isApproved || !proposalDetail.isSpending) {
                     continue;
                 }
+
+                let approvedData = finalizedData.proposalStatus.asApproved;
+                if (!approvedData.isExecuted) {
+                    continue;
+                }
+
                 let spendingParams = proposalDetail.asSpending;
                 if (!spendingProposals.some(spendingProposal => (spendingProposal.id == Number(proposalId)))){
                     spendingProposals.push(new SpendingProposals(Number(proposalId), proposalInfo.title.toString(), Number(spendingParams[0])));
