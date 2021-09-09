@@ -129,7 +129,7 @@ export class StatisticsCollector {
 
     async computeTokensBurn(){
         let tokensBurned = 0;
-        for (let [key, blockEvents] of this.blocksEventsCache) {
+        for (let [, blockEvents] of this.blocksEventsCache) {
             let transfers = blockEvents.filter((event) => {
                 return event.section == "balances" && event.method == "Transfer";
             });
@@ -137,7 +137,7 @@ export class StatisticsCollector {
                 let receiver = transfer.data[1] as AccountId;
                 let amount = transfer.data[2] as Balance;
                 if (receiver.toString() == BURN_ADDRESS) {
-                    tokensBurned = Number(amount);
+                    tokensBurned += Number(amount);
                 }
             }
         }
