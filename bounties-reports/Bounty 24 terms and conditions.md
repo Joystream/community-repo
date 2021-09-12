@@ -1,6 +1,6 @@
-# Bounty # 22 terms and conditions
+# Bounty # 24 terms and conditions
 
-## Internal rules of Bounty 22 (related to the curator / BM)
+## Internal rules of Bounty 24 (related to the curator / BM)
 
 * For this, the Bounty will be allocated 2 people from the group of curators, 1 curator and 1 curator (Bounty manager) reward for the work of the curator $ 25, reward for the work of the Bounty manager $ 50 for the reporting period a week, provided that their work is done with high quality and will be accepted. They will be informed and must be qualified to ensure that the video does not violate any license, copyright or conditions. The curator appoints the lead. 
 An Excel spreadsheet will be created and uploaded to Google Disk on which the assigned curator and bounty manager will work.
@@ -23,7 +23,7 @@ Anything of low quality should be ruled out. This includes very short videos of 
 
 * If bids are rejected they do not need to be contacted individually, users submitting videos for this award are responsible for checking the status.
 
-* For each week, a new thread is created for Bounty 22 on the forum.
+* For each week, a new thread is created for Bounty 24 on the forum.
 When the week is over, the bounty manager / curator group can post a notice that the week is over and direct people to a new thread.
 
 * At regular intervals, on a weekly basis, the curator appointed as the lead curator, from Monday morning to Sunday evening, reviews all new entries and checks each video according to the rules and enters them into the table.
@@ -33,10 +33,10 @@ When the week is over, the bounty manager / curator group can post a notice that
 
 
 
-`Bounty Budget 22 ($ 300 per week) If the budget is not depleted, the balance does not carry over to the next week.`
+`Bounty Budget 24 ($ 300 per week) If the budget is not depleted, the balance does not carry over to the next week.`
 
 
-## Success Events (Rules for Bounty 22)
+## Success Events (Rules for Bounty 24)
 
 
 1. Find interesting videos that you want to upload to the platform.
