@@ -35,40 +35,28 @@ mkdir council/kpi/sumer/16.9
 git mv community-contributions/kpi_169_-_follow_up_the_storage_working_group.md council/kpi/sumer/16.9
 mkdir council/kpi/sumer/11.4
 git mv community-contributions/KPI\ 11.4\ -\ Research\ Max\ Validator\ Change/report.md council/kpi/sumer/11.4
-git rm community-contributions/KPI\ 11.4\ -\ Research\ Max\ Validator\ Change
 mkdir council/kpi/sumer/06.6
 git mv community-contributions/miscellaneous_reports/Content\ Sourcing\ Report.md council/kpi/sumer/06.6/
 git mv community-contributions/miscellaneous_reports/Increase\ Validator\ Set\ Research.md community-contributions/research/increase_validators_set.md
 git mv community-contributions/miscellaneous_reports/Polkadot\ JS\ Extension.md community-contributions/research/polkadot_js_extension.md
 mkdir council/kpi/sumer/09.6
 git mv community-contributions/miscellaneous_reports/KPI_09-6-initial_sprocket.md council/kpi/sumer/09.6/
-git rm community-contributions/miscellaneous_reports
 git mv community-contributions/founding-member-survey community-contributions/research/
 git mv operations/* working-groups/operations_group/
-git rm operations/
 git mv tokenomics-reports council
 git mv submission-log council
 git mv council-survey council
 mkdir council/kpi/sumer/17.8
 git mv rules/Sumer_KPI_17.8_Clean_Up_Community_Repo_16.08.2021.md council/kpi/sumer/17.8
 git mv rules/* governance/
-git rm rules/
 git mv governance/bounty15 bounties/bounties-reports/
 git mv governance/bounty10_crash_payouts.csv bounties/bounties-reports/
 git mv workinggroup-reports/curator_group/* working-groups/curator_group/
 git mv workinggroup-reports/storage_group/* working-groups/storage_group
 mkdir bounties/bounties-reports/weekly-bounty-report
 git mv workinggroup-reports/bounty_reports/* bounties/bounties-reports/weekly-bounty-report
-git rm workinggroup-reports/bounty_reports
 git mv council/council-reports council/reports
 git mv council/tokenomics-reports council/tokenomics
 git mv bounties/bounties-overview bounties/overview
 git mv bounties/bounties-reports bounties/reports
 git mv community-contributions contributions
-git rm workinggroup-reports/curator_group/
-
-
-
-
-
-
