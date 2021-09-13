@@ -1,7 +1,7 @@
 # Re-evaluating Bounty 18
 
 ### In connection with the suspension of the Bounty and its renewal, according to the new rules, it was necessary to re-check the new document:
-https://github.com/Joystream/community-repo/pull/319/commits/0fd40e7e94309692498cdb9091091f564a9230ce#diff-59b5bc29d3b0e5d2bab3949de2276d339293551606ba4ae62f956a39ee4eb11d
+https://github.com/Joystream/community-repo/blob/master/bounties-reports/Adding%20new%20conditions%20to%20Bounty%2018.md
 
 
 Therefore, on 08/28/2021, the video was re-evaluated.
