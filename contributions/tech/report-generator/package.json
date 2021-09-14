@@ -1,7 +1,7 @@
 {
   "name": "report-generator",
   "version": "0.1.0",
-  "main": "lib/index.js",
+  "main": "build/index.js",
   "license": "MIT",
   "scripts": {
     "build": "tsc --build tsconfig.json",

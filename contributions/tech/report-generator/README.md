@@ -16,8 +16,8 @@ git submodule update
 
 ## Usage
 
-`node lib/generator.js <start block> <end block>`
+`node build/generator.js <start block> <end block>`
 
 ## Example
 
-`node lib/generator.js 57601 234038`
+`node build/generator.js 57601 234038`
