@@ -32,3 +32,5 @@ You can find links to existing rules here: https://github.com/Joystream/communit
 - A table for this Bounty will also be created, the responsible BM, secretary and lead curator will have online access.
 
 - When changing BM, the table will be cleared, the new BM will not know the video score of the previous BM.
+
+- BM, The person who values "quality" and therefore the distribution of rewards does not have to be the (current) Curator.
