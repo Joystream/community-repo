@@ -1,19 +1,26 @@
-# Storage Working Group Status Reporting - 14
+# Storage Working Group Status Reporting - 15
 
 ## Storage Lead : _0x2bc_
 
 ### Report:
 
-This is the 14th report for the Storage Provider Working Group. Storage nodes have been quite stable for last week. The providers which had low speeds are now upgraded and available. Lead SP role is filled with 0x2bc. Now report includes server's cost. 
+This is the 15th report for the Storage Provider Working Group. Storage nodes have been quite stable for last week. 
+
+1/ New proposal on Storage Working Group salaries has been accepted https://testnet.joystream.org/#/proposals/576
+2/ SW Group agreed to have lower salaries but have no changes in the total SP number
+3/ Work on the follwing OKRs is in progress:
+3.1/ 22.SP-1 - Storage OKRs 
+3.2/ 22.SP-2 - Storage Provider Sanctions 
+   First drafts are developed and being discussed.
 
 
-## Current ipfs repo size : 734.06GB
+## Current ipfs repo size : 741 GB
 
 ### 0x2bc
 
 - Worker ID: 22
-- Tokens earned: 70.0000 kJOY
-- Missed: 280.0000 kJOY
+- Tokens earned: 1.6406 MJOY
+- Missed: 468.2650 kJOY
 - Location: France
 - Storage capacity: 1.92TB
 - Type of storage: SSD
@@ -25,9 +32,9 @@ This is the 14th report for the Storage Provider Working Group. Storage nodes ha
     ---------------------------------------
     Final Result for provider 22
     url: https://xjames.xyz/storage
-    fetched: 13020/13020
+    fetched: 13176/13176
     failed: 0
-    check took: 110.942s
+    check took: 112.5s
     ------------------------------------------
   ```
 
@@ -36,8 +43,8 @@ This is the 14th report for the Storage Provider Working Group. Storage nodes ha
 ### joystreamstats
 
 - Worker ID: 3
-- Tokens earned: 13.8443 MJOY
-- Missed: 962.3220 kJOY
+- Tokens earned: 14.5803 MJOY
+- Missed: 1.2567 MJOY
 - Location: St.Petersburg (Russian Federation)
 - Storage capacity: 1920 GB
 - Type of storage: SSD
@@ -49,17 +56,17 @@ This is the 14th report for the Storage Provider Working Group. Storage nodes ha
     ---------------------------------------
     Final Result for provider 3
     url: https://ipfs.joystreamstats.live/storage/
-    fetched: 13020/13020
+    fetched: 13176/13176
     failed: 0
-    check took: 91.342s
+    check took: 73.258s
     ------------------------------------------
   ```
   
 ### julysake
 
 - Worker ID: 4
-- Tokens earned: 13.7363 MJOY
-- Missed: 1.0703 kJOY
+- Tokens earned: 14.4355 MJOY
+- Missed: 1.4015 MJOY
 - Location: EU
 - Storage capacity: 1.4 GB
 - Type of storage: HDD
@@ -71,9 +78,9 @@ This is the 14th report for the Storage Provider Working Group. Storage nodes ha
     ---------------------------------------
     Final Result for provider 4
     url: https://mahathvamtv.com/storage/
-    fetched: 13020/13020
+    fetched: 13176/13176
     failed: 0
-    check took: 113.407s
+    check took: 107.739s
     ------------------------------------------
   ```
 
@@ -84,8 +91,8 @@ This is the 14th report for the Storage Provider Working Group. Storage nodes ha
 ### kalpakci
 
 - Worker ID: 6
-- Tokens earned: 13.9191 MJOY
-- Missed: 887.6000 kJOY
+- Tokens earned: 14.6551 MJOY
+- Missed: 1.1820 MJOY
 - Location: Nuremberg (Germany)
 - Storage capacity: 1.6TB
 - Type of storage: SSD
@@ -98,9 +105,9 @@ This is the 14th report for the Storage Provider Working Group. Storage nodes ha
     ---------------------------------------
     Final Result for provider 6
     url: https://joystreampowered.com/storage/
-    fetched: 13020/13020
+    fetched: 13176/13176
     failed: 0
-    check took: 221.603s
+    check took: 388.929s
     ------------------------------------------
 
     ```
@@ -108,8 +115,8 @@ This is the 14th report for the Storage Provider Working Group. Storage nodes ha
 ### maxlevush
 
 - Worker ID: 15
-- Tokens earned: 9.3266 MJOY
-- Missed: 988.2000 kJOY
+- Tokens earned: 9.9890 MJOY
+- Missed: 1.3562 MJOY
 - Location: Helsinki
 - Storage capacity: 4TB
 - Type of storage: HDD
@@ -121,17 +128,17 @@ This is the 14th report for the Storage Provider Working Group. Storage nodes ha
     ---------------------------------------
     Final Result for provider 15
     url: https://whitesocks.ru/storage/
-    fetched: 13020/13020
+    fetched: 13176/13176
     failed: 0
-    check took: 101.964s
+    check took: 84.46s
     ------------------------------------------
   ```
 
 ### joyval
 
 - Worker ID: 16
-- Tokens earned: 9.5432 MJOY
-- Missed: 771.6000 kJOY
+- Tokens earned: 10.2792 MJOY
+- Missed: 1.0660 MJOY
 - Location: New York City
 - Storage capacity: 4TB
 - Type of storage: SSD
@@ -144,9 +151,9 @@ This is the 14th report for the Storage Provider Working Group. Storage nodes ha
     ---------------------------------------
     Final Result for provider 16
     url: https://joyrq.com/storage/
-    fetched: 13020/13020
+    fetched: 13176/13176
     failed: 0
-    check took: 145.656s
+    check took: 117.452s
     ------------------------------------------
 
   ```
@@ -154,8 +161,8 @@ This is the 14th report for the Storage Provider Working Group. Storage nodes ha
 ### dapplooker
 
 - Worker ID: 17
-- Tokens earned: 9.2162 MJOY
-- Missed: 1.0986 kJOY
+- Tokens earned: 9.8786 MJOY
+- Missed: 1.4666 MJOY
 - Location: Düsseldorf
 - Storage capacity: 4TB
 - Type of storage: HDD
@@ -167,7 +174,7 @@ This is the 14th report for the Storage Provider Working Group. Storage nodes ha
     ---------------------------------------
     Final Result for provider 17
     url: https://joystream.dapplooker.com/storage/
-    fetched: 13020/13020
+    fetched: 13176/13176
     failed: 0
     check took: 94.734s
     ------------------------------------------
@@ -176,8 +183,8 @@ This is the 14th report for the Storage Provider Working Group. Storage nodes ha
 ### godshunter
 
 - Worker ID: 18
-- Tokens earned: 6.8216 MJOY
-- Missed: 918.2000 kJOY
+- Tokens earned: 7.5208 MJOY
+- Missed: 1.2494 MJOY
 - Location: Düsseldorf
 - Storage capacity: 8TB
 - Type of storage: SSD
@@ -189,17 +196,17 @@ This is the 14th report for the Storage Provider Working Group. Storage nodes ha
     ---------------------------------------
     Final Result for provider 18
     url: https://joystream.godshunter.su/storage/
-    fetched: 13020/13020
+    fetched: 13176/13176
     failed: 0
-    check took: 107.137s
+    check took: 92.066s
     ------------------------------------------
   ```
 
 ### seainvestor
 
 - Worker ID: 21
-- Tokens earned: 3.4960 MJOY
-- Missed: 552.0000 kJOY
+- Tokens earned: 4.2320 MJOY
+- Missed: 846.4000 kJOY
 - Location: Los Angeles, USA
 - Storage capacity: 2TB
 - Type of storage: HDD
@@ -212,9 +219,9 @@ This is the 14th report for the Storage Provider Working Group. Storage nodes ha
     ---------------------------------------
     Final Result for provider 21
     url: https://gloiaf.eu/storage/
-    fetched: 13020/13020
+    fetched: 13176/13176
     failed: 0
-    check took: 618.949s
+    check took: 611.528s
     ------------------------------------------
   ```
 
@@ -228,18 +235,18 @@ Resolving Provider API Endpoints
 19: Empty public Url
 Testing Provider API Endpoints
 15: https://whitesocks.ru/storage/ - OK - API version 1.1.0
+17: https://joystream.dapplooker.com/storage/ - OK - API version 1.1.0
+18: https://joystream.godshunter.su/storage/ - OK - API version 1.1.0
 6: https://joystreampowered.com/storage/ - OK - API version 1.1.0
 4: https://mahathvamtv.com/storage/ - OK - API version 1.1.0
-3: https://ipfs.joystreamstats.live/storage/ - OK - API version 1.1.0
-17: https://joystream.dapplooker.com/storage/ - OK - API version 1.1.0
 22: https://xjames.xyz/storage/ - OK - API version 1.1.0
-16: https://joyrq.com/storage/ - OK - API version 1.1.0
-18: https://joystream.godshunter.su/storage/ - OK - API version 1.1.0
 10: https://rome-rpc-4.joystream.org/ - OK - API version 1.1.0
+16: https://joyrq.com/storage/ - OK - API version 1.1.0
 21: https://gloiaf.eu/storage/ - OK - API version 1.1.0
+3: https://ipfs.joystreamstats.live/storage/ - OK - API version 1.1.0
 
 Data Directory objects:
-13672 created
-13020 accepted
-12115 unique accepted hashes
+13832 created
+13176 accepted
+12220 unique accepted hashes
 ```
