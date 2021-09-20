@@ -6,13 +6,7 @@
 
 This is the 15th report for the Storage Provider Working Group. Storage nodes have been quite stable for last week. 
 
-1/ New proposal on Storage Working Group salaries has been accepted https://testnet.joystream.org/#/proposals/576
-2/ SW Group agreed to have lower salaries but have no changes in the total SP number
-3/ Work on the follwing OKRs is in progress:
-3.1/ 22.SP-1 - Storage OKRs 
-3.2/ 22.SP-2 - Storage Provider Sanctions 
-   First drafts are developed and being discussed.
-
+New proposal on Storage Working Group salaries has been accepted https://testnet.joystream.org/#/proposals/576. SW Group agreed to have lower salaries but have no changes in the total SP number. Work on the follwing OKRs is in progress: 22.SP-1 - Storage OKRs, 22.SP-2 - Storage Provider Sanctions. First drafts are developed and being discussed.
 
 ## Current ipfs repo size : 741 GB
 
