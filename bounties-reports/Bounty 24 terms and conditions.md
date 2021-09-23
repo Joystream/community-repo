@@ -21,7 +21,7 @@ Anything of low quality should be ruled out. This includes very short videos of 
 
 ## Workflow and deadlines
 
-* If bids are rejected they do not need to be contacted individually, users submitting videos for this award are responsible for checking the status.
+* Users submitting videos for this award are responsible for checking the status.
 
 * For each week, a new thread is created for Bounty 24 on the forum.
 When the week is over, the bounty manager / curator group can post a notice that the week is over and direct people to a new thread.
