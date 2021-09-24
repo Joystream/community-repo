@@ -119,12 +119,12 @@ async function testWorker(api, workerId, dataObjects) {
     const average = times.reduce((accumulator, time) => accumulator + time, 0) / times.length
     console.log(
       JSON.stringify({
-        averageMs: average.toFixed(2),
-        medianMs: computeMedian(times).toFixed(2),
-        maxMs: Math.max.apply(Math, times).toFixed(2),
-        minMs: Math.min.apply(Math, times).toFixed(2),
+        averageMs: Number(average.toFixed(2)),
+        medianMs: Number(computeMedian(times).toFixed(2)),
+        maxMs: Number(Math.max.apply(Math, times).toFixed(2)),
+        minMs: Number(Math.min.apply(Math, times).toFixed(2)),
         totalTimeMs: totalTime,
-        averageSpeedMBpS: (totalSizeInMegas / (totalTime / 100)).toFixed(3),
+        averageSpeedMBpS: Number((totalSizeInMegas / (totalTime / 100)).toFixed(3)),
         nrFilesDownloaded: times.length,
         workerId: workerId,
       })
