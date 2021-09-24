@@ -13,11 +13,10 @@ import {
 
 import {
     CacheEvent,
-    Exchange,
     Media,
     MintStatistics,
     Statistics,
-    ValidatorReward, WorkersInfo, Channel, SpendingProposals, Bounty
+    WorkersInfo, Channel, SpendingProposals, Bounty
 } from "./types";
 
 import {Option, u32, Vec} from "@polkadot/types";
@@ -26,19 +25,18 @@ import {Mint, MintId} from "@joystream/types/mint";
 import {ContentId, DataObject} from "@joystream/types/media";
 
 
-import Linkage from "@polkadot/types/codec/Linkage";
-import {PostId, ThreadId} from "@joystream/types/common";
+import {ChannelId, PostId, ThreadId} from "@joystream/types/common";
 import {CategoryId} from "@joystream/types/forum";
 
 import {MemberId, Membership} from "@joystream/types/members";
 import {RewardRelationship, RewardRelationshipId} from "@joystream/types/recurring-rewards";
 
-import workingGroup from "@joystream/types/src/working-group/index";
 import {Stake} from "@joystream/types/stake";
-import {ChannelId} from "@joystream/types/content-working-group";
+
 import {WorkerId} from "@joystream/types/working-group";
 import {Entity, EntityId, PropertyType} from "@joystream/types/content-directory";
-import {ProposalDetails, ProposalId, WorkerOf} from "@joystream/types/augment-codec/all";
+import {ProposalId, Video, VideoId, WorkerOf, } from "@joystream/types/augment-codec/all";
+import {ProposalDetails, ProposalOf} from "@joystream/types/augment/types";
 import {SpendingParams} from "@joystream/types/proposals";
 import * as constants from "constants";
 
@@ -48,14 +46,15 @@ const parse = require('csv-parse/lib/sync');
 
 const BURN_ADDRESS = '5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu';
 
-const COUNCIL_ROUND_OFFSET = 0;
+const COUNCIL_ROUND_OFFSET = 2;
 const PROVIDER_URL = "ws://localhost:9944";
 
 const CACHE_FOLDER = "cache";
-const WORKER_ID_OFFSET = 0;
 
 const VIDEO_CLASS_iD = 10;
 const CHANNEL_CLASS_iD = 1;
+
+const SPENDING_PROPOSALS_CATEGORIES_FILE = __dirname + '/../../../documentation/spending_proposal_categories.csv';
 
 export class StatisticsCollector {
 
@@ -87,6 +86,7 @@ export class StatisticsCollector {
         await this.fillValidatorInfo(startHash, endHash);
         await this.fillStorageProviderInfo(startBlock, endBlock, startHash, endHash);
         await this.fillCuratorInfo(startHash, endHash);
+        await this.fillOperationsInfo(startBlock, endBlock, startHash, endHash);
         await this.fillMembershipInfo(startHash, endHash);
         await this.fillMediaUploadInfo(startHash, endHash);
         await this.fillForumInfo(startHash, endHash);
@@ -96,26 +96,27 @@ export class StatisticsCollector {
     }
 
     async getApprovedBounties() {
-        let bountiesFilePath = __dirname + '/../bounties.csv';
         try {
-            await fs.access(bountiesFilePath, constants.R_OK);
+            await fs.access(SPENDING_PROPOSALS_CATEGORIES_FILE, constants.R_OK);
         } catch {
-            throw new Error('Bounties CSV file not found');
+            console.warn('File with the spending proposal categories not found');
+            return [];
         }
 
-        const fileContent = await fs.readFile(bountiesFilePath);
-        const rawBounties = parse(fileContent);
+        const fileContent = await fs.readFile(SPENDING_PROPOSALS_CATEGORIES_FILE);
+        let rawBounties = parse(fileContent);
         rawBounties.shift();
+        rawBounties = rawBounties.filter((line: string[]) => line[8] == 'Bounties');
 
         let bounties = rawBounties.map((rawBounty: any) => {
-            return new Bounty(rawBounty[0], rawBounty[1], rawBounty[2], rawBounty[3], rawBounty[4]);
+            return new Bounty(rawBounty[0], rawBounty[1], rawBounty[2], rawBounty[3], rawBounty[4], rawBounty[5]);
         });
 
-        return bounties.filter((bounty: Bounty) => bounty.status == "Approved");
+        return bounties.filter((bounty: Bounty) => bounty.status == "Approved" && bounty.testnet == "Antioch");
     }
 
-    async getSpendingProposals() : Promise<Array<SpendingProposals>>{
-        let spendingProposals = new Array<SpendingProposals>();
+
+    async fillValidatorsRewards() {
         for (let [key, blockEvents] of this.blocksEventsCache) {
             let validatorRewards = blockEvents.filter((event) => {
                 return event.section == "staking" && event.method == "Reward";
@@ -123,7 +124,12 @@ export class StatisticsCollector {
             for (let validatorReward of validatorRewards) {
                 this.statistics.newValidatorRewards += Number(validatorReward.data[1]);
             }
+        }
+    }
 
+    async computeTokensBurn(){
+        let tokensBurned = 0;
+        for (let [, blockEvents] of this.blocksEventsCache) {
             let transfers = blockEvents.filter((event) => {
                 return event.section == "balances" && event.method == "Transfer";
             });
@@ -131,10 +137,16 @@ export class StatisticsCollector {
                 let receiver = transfer.data[1] as AccountId;
                 let amount = transfer.data[2] as Balance;
                 if (receiver.toString() == BURN_ADDRESS) {
-                    this.statistics.newTokensBurn = Number(amount);
+                    tokensBurned += Number(amount);
                 }
             }
+        }
+        return tokensBurned;
+    }
 
+    async getFinalizedSpendingProposals(endHash: Hash): Promise<Array<SpendingProposals>> {
+        let spendingProposals = new Array<SpendingProposals>();
+        for (let [key, blockEvents] of this.blocksEventsCache) {
             let proposalEvents = blockEvents.filter((event) => {
                 return event.section == "proposalsEngine" && event.method == "ProposalStatusUpdated";
             });
@@ -144,13 +156,25 @@ export class StatisticsCollector {
                 if (!(statusUpdateData.finalized && statusUpdateData.finalized.finalizedAt)) {
                     continue;
                 }
+
                 let proposalId = proposalEvent.data[0] as ProposalId;
-                let proposalDetail = await this.api.query.proposalsCodex.proposalDetailsByProposalId(proposalId) as ProposalDetails;
-                if (!proposalDetail.isOfType("Spending")) {
+                let proposalInfo = await this.api.query.proposalsEngine.proposals.at(endHash, proposalId) as ProposalOf;
+                const finalizedData = proposalInfo.status.asFinalized;
+
+                let proposalDetail = await this.api.query.proposalsCodex.proposalDetailsByProposalId.at(endHash, proposalId) as ProposalDetails;
+                if (!finalizedData.proposalStatus.isApproved || !proposalDetail.isSpending) {
                     continue;
                 }
-                let spendingParams = Array.from(proposalDetail.asType("Spending") as SpendingParams);
-                spendingProposals.push(new SpendingProposals(Number(proposalId), Number(spendingParams[0])));
+
+                let approvedData = finalizedData.proposalStatus.asApproved;
+                if (!approvedData.isExecuted) {
+                    continue;
+                }
+
+                let spendingParams = proposalDetail.asSpending;
+                if (!spendingProposals.some(spendingProposal => (spendingProposal.id == Number(proposalId)))){
+                    spendingProposals.push(new SpendingProposals(Number(proposalId), proposalInfo.title.toString(), Number(spendingParams[0])));
+                }
             }
         }
         return spendingProposals;
@@ -168,15 +192,27 @@ export class StatisticsCollector {
         this.statistics.endIssuance = (await this.api.query.balances.totalIssuance.at(endHash) as Balance).toNumber();
         this.statistics.newIssuance = this.statistics.endIssuance - this.statistics.startIssuance;
         this.statistics.percNewIssuance = StatisticsCollector.convertToPercentage(this.statistics.startIssuance, this.statistics.endIssuance);
+        this.statistics.newTokensBurn = await this.computeTokensBurn();
 
         let bounties = await this.getApprovedBounties();
-        let spendingProposals = await this.getSpendingProposals();
+        let spendingProposals = await this.getFinalizedSpendingProposals(endHash);
 
         this.statistics.bountiesTotalPaid = 0;
-        for (let bounty of bounties){
-            let bountySpendingProposal = spendingProposals.find((spendingProposal) => spendingProposal.id == bounty.proposalId);
-            if (bountySpendingProposal){
-                this.statistics.bountiesTotalPaid += bountySpendingProposal.spentAmount;
+        if (bounties) {
+            for (let bounty of bounties) {
+                let bountySpendingProposal = spendingProposals.find((spendingProposal) => spendingProposal.id == bounty.proposalId);
+                if (bountySpendingProposal) {
+                    this.statistics.bountiesTotalPaid += bountySpendingProposal.spentAmount;
+                }
+            }
+        }
+
+        if (!this.statistics.bountiesTotalPaid) {
+            console.warn('No bounties found in ' + SPENDING_PROPOSALS_CATEGORIES_FILE +', trying to find spending proposals of bounties, please check the values!...');
+            for (const spendingProposal of spendingProposals) {
+                if (spendingProposal.title.toLowerCase().includes("bounty")) {
+                    this.statistics.bountiesTotalPaid += spendingProposal.spentAmount;
+                }
             }
         }
 
@@ -215,34 +251,44 @@ export class StatisticsCollector {
         return avgCouncilRewardPerBlock * roundNrBlocks;
     }
 
-    async computeStorageProviderReward(roundNrBlocks: number, startHash: Hash, endHash: Hash): Promise<WorkersInfo> {
-        let nextWorkerId = (await this.api.query.storageWorkingGroup.nextWorkerId.at(startHash) as WorkerId).toNumber();
+    async computeWorkingGroupReward(roundNrBlocks: number, startHash: Hash, endHash: Hash, workingGroup: string): Promise<WorkersInfo> {
+        let nextWorkerId = (await this.api.query[workingGroup + 'WorkingGroup'].nextWorkerId.at(startHash) as WorkerId).toNumber();
         let info = new WorkersInfo();
         for (let i = 0; i < nextWorkerId; ++i) {
-            let worker = await this.api.query.storageWorkingGroup.workerById(i) as WorkerOf;
+            let worker = await this.api.query[workingGroup + 'WorkingGroup'].workerById.at(endHash, i) as WorkerOf;
+
+            if (!worker.is_active) {
+                continue;
+            }
+
             if (worker.role_stake_profile.isSome) {
                 let roleStakeProfile = worker.role_stake_profile.unwrap();
-                let stake = await this.api.query.stake.stakes(roleStakeProfile.stake_id) as Stake;
+                let stake = await this.api.query.stake.stakes.at(endHash, roleStakeProfile.stake_id) as Stake;
                 info.startStake += stake.value.toNumber();
             }
         }
 
-        nextWorkerId = (await this.api.query.storageWorkingGroup.nextWorkerId.at(endHash) as WorkerId).toNumber();
+        nextWorkerId = (await this.api.query[workingGroup + 'WorkingGroup'].nextWorkerId.at(endHash) as WorkerId).toNumber();
         let rewardRelationshipIds = Array<RewardRelationshipId>();
 
         for (let i = 0; i < nextWorkerId; ++i) {
-            let worker = await this.api.query.storageWorkingGroup.workerById(i) as WorkerOf;
+            let worker = await this.api.query[workingGroup + 'WorkingGroup'].workerById.at(endHash, i) as WorkerOf;
+
+            if (!worker.is_active) {
+                continue;
+            }
+
             if (worker.reward_relationship.isSome) {
                 rewardRelationshipIds.push(worker.reward_relationship.unwrap());
             }
             if (worker.role_stake_profile.isSome) {
                 let roleStakeProfile = worker.role_stake_profile.unwrap();
-                let stake = await this.api.query.stake.stakes(roleStakeProfile.stake_id) as Stake;
+                let stake = await this.api.query.stake.stakes.at(endHash, roleStakeProfile.stake_id) as Stake;
                 info.endStake += stake.value.toNumber();
             }
         }
         info.rewards = await this.computeReward(roundNrBlocks, rewardRelationshipIds, endHash);
-        info.endNrOfWorkers = nextWorkerId - WORKER_ID_OFFSET;
+        info.endNrOfWorkers = nextWorkerId;
         return info;
     }
 
@@ -251,7 +297,11 @@ export class StatisticsCollector {
 
         let rewardRelationshipIds = Array<RewardRelationshipId>();
         for (let i = 0; i < nextCuratorId; ++i) {
-            let worker = await this.api.query.contentDirectoryWorkingGroup.workerById(i) as WorkerOf;
+            let worker = await this.api.query.contentDirectoryWorkingGroup.workerById.at(endHash, i) as WorkerOf;
+            if (!worker.is_active) {
+                continue;
+            }
+
             if (worker.reward_relationship.isSome) {
                 rewardRelationshipIds.push(worker.reward_relationship.unwrap());
             }
@@ -320,7 +370,7 @@ export class StatisticsCollector {
         this.statistics.endCouncilMinted = councilMintStatistics.endMinted;
         this.statistics.newCouncilMinted = councilMintStatistics.diffMinted;
         this.statistics.percNewCouncilMinted = councilMintStatistics.percMinted;
-        6
+
         let curatorMint = (await this.api.query.contentDirectoryWorkingGroup.mint.at(endHash)) as MintId;
         let curatorMintStatistics = await this.computeMintInfo(curatorMint, startHash, endHash);
         this.statistics.startCuratorMinted = curatorMintStatistics.startMinted;
@@ -334,6 +384,13 @@ export class StatisticsCollector {
         this.statistics.endStorageMinted = storageProviderMintStatistics.endMinted;
         this.statistics.newStorageMinted = storageProviderMintStatistics.diffMinted;
         this.statistics.percStorageMinted = storageProviderMintStatistics.percMinted;
+
+        let operationsProviderMint = (await this.api.query.operationsWorkingGroup.mint.at(endHash)) as MintId;
+        let operationsProviderMintStatistics = await this.computeMintInfo(operationsProviderMint, startHash, endHash);
+        this.statistics.startOperationsMinted = operationsProviderMintStatistics.startMinted;
+        this.statistics.endOperationsMinted = operationsProviderMintStatistics.endMinted;
+        this.statistics.newOperationsMinted = operationsProviderMintStatistics.diffMinted;
+        this.statistics.percOperationsMinted = operationsProviderMintStatistics.percMinted;
     }
 
 
@@ -362,7 +419,7 @@ export class StatisticsCollector {
     }
 
     async fillCouncilInfo(startHash: Hash, endHash: Hash) {
-        this.statistics.councilRound = (await this.api.query.councilElection.round.at(startHash) as u32).toNumber();
+        this.statistics.councilRound = (await this.api.query.councilElection.round.at(startHash) as u32).toNumber() - COUNCIL_ROUND_OFFSET;
         this.statistics.councilMembers = (await this.api.query.councilElection.councilSize.at(startHash) as u32).toNumber();
         let startNrProposals = await this.api.query.proposalsEngine.proposalCount.at(startHash) as u32;
         let endNrProposals = await this.api.query.proposalsEngine.proposalCount.at(endHash) as u32;
@@ -436,6 +493,7 @@ export class StatisticsCollector {
         this.statistics.endValidatorsStake = (await this.api.query.staking.erasTotalStake.at(endHash, endEra.unwrap())).toNumber();
 
         this.statistics.percNewValidatorsStake = StatisticsCollector.convertToPercentage(this.statistics.startValidatorsStake, this.statistics.endValidatorsStake);
+        await this.fillValidatorsRewards();
     }
 
     async findActiveValidators(hash: Hash, searchPreviousBlocks: boolean): Promise<AccountId[]> {
@@ -464,7 +522,7 @@ export class StatisticsCollector {
     async fillStorageProviderInfo(startBlock: number, endBlock: number, startHash: Hash, endHash: Hash) {
         let roundNrBlocks = endBlock - startBlock;
 
-        let storageProvidersRewards = await this.computeStorageProviderReward(roundNrBlocks, startHash, endHash);
+        let storageProvidersRewards = await this.computeWorkingGroupReward(roundNrBlocks, startHash, endHash, 'storage');
         this.statistics.newStorageProviderReward = storageProvidersRewards.rewards;
         this.statistics.newStorageProviderReward = Number(this.statistics.newStorageProviderReward.toFixed(2));
 
@@ -476,12 +534,17 @@ export class StatisticsCollector {
         this.statistics.endStorageProviders = await this.api.query.storageWorkingGroup.activeWorkerCount.at(endHash);
         this.statistics.percNewStorageProviders = StatisticsCollector.convertToPercentage(this.statistics.startStorageProviders, this.statistics.endStorageProviders);
 
-        let lastStorageProviderId = Number(await this.api.query.storageWorkingGroup.nextWorkerId.at(endHash)) - 1;
+        let nextWorkerId = Number(await this.api.query.storageWorkingGroup.nextWorkerId.at(endHash));
         this.statistics.storageProviders = "";
-        for (let i = lastStorageProviderId, storageProviderCount = 0; storageProviderCount < this.statistics.endStorageProviders; --i, ++storageProviderCount){
+        for (let i = 0; i < nextWorkerId; ++i) {
             let storageProvider = await this.api.query.storageWorkingGroup.workerById.at(endHash, i) as WorkerOf;
+            if (!storageProvider.is_active) {
+                continue;
+            }
+
             let membership = await this.api.query.members.membershipById.at(endHash, storageProvider.member_id) as Membership;
-            this.statistics.storageProviders += "@" + membership.handle + " | (" + membership.root_account  +")  \n";
+            this.statistics.storageProviders += "@" + membership.handle + " | (" + membership.root_account + ")  \n";
+
         }
 
     }
@@ -491,14 +554,49 @@ export class StatisticsCollector {
         this.statistics.endCurators = Number(await this.api.query.contentDirectoryWorkingGroup.activeWorkerCount.at(endHash));
         this.statistics.percNewCurators = StatisticsCollector.convertToPercentage(this.statistics.startCurators, this.statistics.endCurators);
 
-        let lastCuratorId = Number(await this.api.query.contentDirectoryWorkingGroup.nextWorkerId.at(endHash)) - 1;
+        let nextCuratorId = Number(await this.api.query.contentDirectoryWorkingGroup.nextWorkerId.at(endHash));
         this.statistics.curators = "";
-        for (let i = lastCuratorId, curatorCount = 0; curatorCount < this.statistics.endCurators; --i, ++curatorCount){
-            let curator = await this.api.query.contentDirectoryWorkingGroup.workerById.at(endHash, i) as WorkerOf;
-            let curatorMembership = await this.api.query.members.membershipById.at(endHash, curator.member_id) as Membership;
-            this.statistics.curators += "@" + curatorMembership.handle + " | (" + curatorMembership.root_account  +")  \n";
-        }
 
+        for (let i = 0; i < nextCuratorId; i++) {
+            let worker = await this.api.query.contentDirectoryWorkingGroup.workerById.at(endHash, i) as WorkerOf;
+            if (!worker.is_active) {
+                continue;
+            }
+
+            let curatorMembership = await this.api.query.members.membershipById.at(endHash, worker.member_id) as Membership;
+            this.statistics.curators += "@" + curatorMembership.handle + " | (" + curatorMembership.root_account + ")  \n";
+
+        }
+    }
+
+    async fillOperationsInfo(startBlock: number, endBlock: number, startHash: Hash, endHash: Hash) {
+        let roundNrBlocks = endBlock - startBlock;
+
+        let operationsRewards = await this.computeWorkingGroupReward(roundNrBlocks, startHash, endHash, 'operations');
+        this.statistics.newOperationsReward = operationsRewards.rewards;
+        this.statistics.newOperationsReward = Number(this.statistics.newOperationsReward.toFixed(2));
+
+        this.statistics.startOperationsStake = operationsRewards.startStake;
+        this.statistics.endOperationsStake = operationsRewards.endStake;
+        this.statistics.percNewOperationstake = StatisticsCollector.convertToPercentage(this.statistics.startOperationsStake, this.statistics.endOperationsStake);
+
+        this.statistics.startOperationsWorkers = Number(await this.api.query.operationsWorkingGroup.activeWorkerCount.at(startHash));
+        this.statistics.endOperationsWorkers = Number(await this.api.query.operationsWorkingGroup.activeWorkerCount.at(endHash));
+        this.statistics.percNewOperationsWorkers = StatisticsCollector.convertToPercentage(this.statistics.startOperationsWorkers, this.statistics.endOperationsWorkers);
+
+        let nextOperationsWorkerId = Number(await this.api.query.operationsWorkingGroup.nextWorkerId.at(endHash));
+        this.statistics.operations = "";
+
+        for (let i = 0; i < nextOperationsWorkerId; i++) {
+            let worker = await this.api.query.operationsWorkingGroup.workerById.at(endHash, i) as WorkerOf;
+            if (!worker.is_active) {
+                continue;
+            }
+
+            let operationMembership = await this.api.query.members.membershipById.at(endHash, worker.member_id) as Membership;
+            this.statistics.operations += "@" + operationMembership.handle + " | (" + operationMembership.root_account + ")  \n";
+
+        }
     }
 
     async fillMembershipInfo(startHash: Hash, endHash: Hash) {
@@ -509,28 +607,43 @@ export class StatisticsCollector {
     }
 
     async fillMediaUploadInfo(startHash: Hash, endHash: Hash) {
-        let startEntites = await this.getEntities(startHash);
-        let endEntities = await this.getEntities(endHash);
 
-        let startVideos = await this.parseVideos(startEntites);
-        let endVideos = await this.parseVideos(endEntities);
+        let startVideos = (await this.api.query.content.nextVideoId.at(startHash) as VideoId).toNumber();
+        let endVideos = (await this.api.query.content.nextVideoId.at(endHash) as VideoId).toNumber();
 
-        this.statistics.startMedia = startVideos.length;
-        this.statistics.endMedia = endVideos.length;
+        this.statistics.startMedia = startVideos;
+        this.statistics.endMedia = endVideos;
         this.statistics.percNewMedia = StatisticsCollector.convertToPercentage(this.statistics.startMedia, this.statistics.endMedia);
 
-        let startChannels = await this.parseChannels(startEntites);
-        let endChannels = await this.parseChannels(endEntities);
+        let startChannels = (await this.api.query.content.nextChannelId.at(startHash) as ChannelId).toNumber();
+        let endChannels = (await this.api.query.content.nextChannelId.at(endHash) as ChannelId).toNumber();
 
-        this.statistics.startChannels = startChannels.length;
-        this.statistics.endChannels = endChannels.length;
+        this.statistics.startChannels = startChannels;
+        this.statistics.endChannels = endChannels;
         this.statistics.percNewChannels = StatisticsCollector.convertToPercentage(this.statistics.startChannels, this.statistics.endChannels);
 
-        let startDataObjects = await this.api.query.dataDirectory.knownContentIds.at(startHash) as Vec<ContentId>;
-        this.statistics.startUsedSpace = Number((await this.computeUsedSpaceInMbs(startDataObjects)).toFixed(2));
+        let dataObjects = await this.api.query.dataDirectory.dataByContentId.entries() as unknown as Map<ContentId, DataObject>;
 
-        let endDataObjects = await this.api.query.dataDirectory.knownContentIds.at(endHash) as Vec<ContentId>;
-        this.statistics.endUsedSpace = Number((await this.computeUsedSpaceInMbs(endDataObjects)).toFixed(2));
+        let startObjects = new Map<ContentId, DataObject>();
+        let endObjects = new Map<ContentId, DataObject>();
+
+        const startBlock = await this.api.rpc.chain.getBlock(startHash);
+        const endBlock = await this.api.rpc.chain.getBlock(endHash);
+
+        for (let [key, dataObject] of dataObjects) {
+            if (dataObject.added_at.block.toNumber() < startBlock.block.header.number.toNumber()) {
+                startObjects.set(key, dataObject);
+                this.statistics.startUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
+            }
+
+            if (dataObject.added_at.block.toNumber() < endBlock.block.header.number.toNumber()) {
+                endObjects.set(key, dataObject);
+                this.statistics.endUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
+            }
+        }
+        this.statistics.startUsedSpace = Number(this.statistics.startUsedSpace.toFixed(2));
+        this.statistics.endUsedSpace = Number(this.statistics.endUsedSpace.toFixed(2));
+
         this.statistics.percNewUsedSpace = StatisticsCollector.convertToPercentage(this.statistics.startUsedSpace, this.statistics.endUsedSpace);
     }
 
@@ -564,61 +677,6 @@ export class StatisticsCollector {
         return Number((newValue * 100 / previousValue - 100).toFixed(2));
     }
 
-    async computeUsedSpaceInMbs(contentIds: Vec<ContentId>) {
-        let space = 0;
-        for (let contentId of contentIds) {
-            let dataObject = (await this.api.query.dataDirectory.dataObjectByContentId(contentId)) as Option<DataObject>;
-            space += dataObject.unwrap().size_in_bytes.toNumber();
-        }
-        return space / 1024 / 1024;
-    }
-
-    async parseVideos(entities: Map<number, Entity>) {
-        let videos: Media[] = [];
-        for (let [key, entity] of entities) {
-            if (entity.class_id.toNumber() != VIDEO_CLASS_iD || entity.values.isEmpty) {
-                continue;
-            }
-            let values = Array.from(entity.getField('values').entries());
-            if (values.length < 2 || values[2].length < 1) {
-                continue;
-            }
-
-            let title = values[2][1].getValue().toString();
-
-            videos.push(new Media(key, title));
-        }
-
-        return videos;
-    }
-
-    async parseChannels(entities: Map<number, Entity>) {
-        let channels: Channel[] = [];
-
-        for (let [key, entity] of entities) {
-            if (entity.class_id.toNumber() != CHANNEL_CLASS_iD || entity.values.isEmpty) {
-                continue;
-            }
-            let values = Array.from(entity.getField('values').entries());
-
-            let title = values[0][1].getValue().toString();
-            channels.push(new Channel(key, title));
-        }
-        return channels;
-    }
-
-    async getEntities(blockHash: Hash) {
-        let nrEntities = ((await this.api.query.contentDirectory.nextEntityId.at(blockHash)) as EntityId).toNumber();
-
-        let entities = new Map<number, Entity>();
-        for (let i = 0; i < nrEntities; ++i) {
-            let entity = await this.api.query.contentDirectory.entityById.at(blockHash, i) as Entity;
-
-            entities.set(i, entity);
-        }
-        return entities;
-    }
-
     async buildBlocksEventCache(startBlock: number, endBlock: number) {
         let cacheFile = CACHE_FOLDER + '/' + startBlock + '-' + endBlock + '.json';
         let exists = await fs.access(cacheFile, fsSync.constants.R_OK).then(() => true)
@@ -626,6 +684,7 @@ export class StatisticsCollector {
         // let exists = false;
         if (!exists) {
             console.log('Building events cache...');
+            let blocksEvents = new Map<number, CacheEvent[]>();
             for (let i = startBlock; i < endBlock; ++i) {
                 process.stdout.write('\rCaching block: ' + i + ' until ' + endBlock);
                 const blockHash: Hash = await this.api.rpc.chain.getBlockHash(i);
@@ -634,11 +693,13 @@ export class StatisticsCollector {
                 for (let event of eventRecord) {
                     cacheEvents.push(new CacheEvent(event.event.section, event.event.method, event.event.data));
                 }
-                this.blocksEventsCache.set(i, cacheEvents);
+                blocksEvents.set(i, cacheEvents);
             }
 
             console.log('\nFinish events cache...');
-            await fs.writeFile(cacheFile, JSON.stringify(Array.from(this.blocksEventsCache.entries()), null, 2));
+            let jsonOutput = JSON.stringify(Array.from(blocksEvents.entries()), null, 2);
+            await fs.writeFile(cacheFile, jsonOutput);
+            this.blocksEventsCache = new Map(JSON.parse(jsonOutput));
         } else {
             console.log('Cache file found, loading it...');
             let fileData = await fs.readFile(cacheFile);

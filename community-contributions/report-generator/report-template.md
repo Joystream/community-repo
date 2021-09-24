@@ -17,10 +17,10 @@ This is a report which explains the current state of the Joystream network in nu
 | Total Tokens Burned | {newTokensBurn}           | 
 | Spending Proposals (Executed)   |  {spendingProposalsTotal}                  |
 | Bounties paid       |  {bountiesTotalPaid}                           |
-| Validator Role      |  {newValidatorRewards}            | 
-| Council Role        | {newCouncilRewards}             | 
+| Validator Role      |  {newValidatorRewards}            |  
 | Storage Role        | {newStorageProviderReward}             | 
 | Curator Role        | {newCuratorRewards}             |
+| Operations Role     | {newOperationsReward}          |
 
 
 ### 2.3 Mints 
@@ -29,6 +29,7 @@ This is a report which explains the current state of the Joystream network in nu
 | Council Mint Total Minted   | {startCouncilMinted}  |  {endCouncilMinted} |{percNewCouncilMinted}          |
 | Curator Mint Total Minted   |  {startCuratorMinted} | {endCuratorMinted}| {percCuratorMinted}          |
 | Storage Mint Total Minted   |  {startStorageMinted} |  {endStorageMinted}            |  {percStorageMinted}        |
+| Operations Mint Total Minted   |  {startOperationsMinted} |  {endOperationsMinted}            |  {percOperationsMinted}        |
 
 ## 3.0 Council
 * Council session #: {councilRound}
@@ -57,16 +58,27 @@ This is a report which explains the current state of the Joystream network in nu
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of Storage Workers | {startStorageProviders}  |  {endStorageProviders} | {percNewStorageProviders} |
-| Total Storage Stake (workers + lead)  | {startStorageProvidersStake} |  {endStorageProvidersStake} | {percNewStorageProviderStake} |
+| Total Storage Stake (workers + lead)  | {startStorageProvidersStake} |  {endStorageProvidersStake} | {percNewStorageProviderStake} |   
+
 Role occupants:  
 {storageProviders}
 
 ### 4.3 Curator Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of Curators      | {startCurators} | {endCurators} | {percNewCurators} |
+| Number of Curators      | {startCurators} | {endCurators} | {percNewCurators} |   
+
 Role occupants:  
 {curators}
+
+### 4.4 Operations Role
+| Property                | Start Block | End Block | % Change |
+|-------------------------|--------------|--------------|----------|
+| Number of Operations Workers      | {startOperationsWorkers} | {endOperationsWorkers} | {percNewOperationsWorkers} |
+| Total Operations Stake (workers + lead)  | {startOperationsStake} |  {endOperationsStake} | {percNewOperationstake} |
+
+Role occupants:  
+{operations}
 
 ## 5.0 User Generated Content
 ### 5.1 Membership Information
