@@ -8,7 +8,7 @@ import * as joy from '@joystream/types'
 import * as hashing from '@polkadot/util-crypto'
 import { Keyring } from '@polkadot/keyring'
 
-const scripts = require('../scripts')
+const scripts = require('../../scripts')
 
 async function main () {
   
@@ -23,6 +23,7 @@ async function main () {
   }
 
   const provider = new WsProvider('ws://127.0.0.1:9944')
+  // const provider = new WsProvider('wss://testnet-rpc-2-singapore.joystream.org')
 
   const api = await ApiPromise.create({ provider, types: joyTypes })
 

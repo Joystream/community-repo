@@ -7,22 +7,16 @@ async function main() {
     // Initialise the provider to connect to the local node
     const provider = new WsProvider('ws://127.0.0.1:9944');
 
-    /*
-    If you want to play around on our staging network, go ahead and connect to this staging network instead.
-    const provider = new WsProvider('wss://alexandria-testing-1.joystream.app/staging/rpc:9944');
-    
-    There's a bunch of tokens on the account: 5HdYzMVpJv3c4omqwKKr7SpBgzrdRRYBwoNVhJB2Y8xhUbfK,
-    with seed: "emotion soul hole loan journey what sport inject dwarf cherry ankle lesson"
-    please transfer (what you need only) to your own account, and don't test runtime upgrades :D
-    */
+    //If you want to play around on our staging network, go ahead and connect to this staging network instead.
+    //const provider = new WsProvider('wss://testnet-rpc-2-singapore.joystream.org');
 
     // Create the API and wait until ready
     const api = await ApiPromise.create({ provider, types })
 
     // get all extrinsic and event types in a range of blocks (only works for last 200 blocks unless you are querying an archival node)
     // will take a loooong time if you check too many blocks :)
-    const firstBlock = 1
-    const lastBlock = 10000
+    const firstBlock = 800000
+    const lastBlock = 801000
     const eventTypes:string[] = []
     const extrinsicTypes: string[] = []
     for (let blockHeight=firstBlock; blockHeight<lastBlock; blockHeight++) {
@@ -39,8 +33,8 @@ async function main() {
         }
       }
       for (let i=0; i<extrinsics.length; i++) {
-        const section = extrinsics[i].method.sectionName
-        const method = extrinsics[i].method.methodName
+        const section = extrinsics[i].method.section
+        const method = extrinsics[i].method.method
         const extrinsicType = section+`:`+method
         if (!extrinsicTypes.includes(extrinsicType)) {
           extrinsicTypes.push(extrinsicType)

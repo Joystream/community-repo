@@ -1,7 +1,7 @@
 import { MemberId, Membership } from "@joystream/types/members";
 import { ApiPromise } from "@polkadot/api";
 import { Vec } from "@polkadot/types";
-import AccountId from "@polkadot/types/generic/AccountId";
+import { AccountId } from "@polkadot/types/interfaces";
 import { Hash } from "@polkadot/types/interfaces";
 import { Participant } from './interfaces';
 

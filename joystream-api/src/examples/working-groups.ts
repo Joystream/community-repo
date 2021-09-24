@@ -2,9 +2,9 @@ import { WsProvider, ApiPromise } from "@polkadot/api";
 import { types } from "@joystream/types";
 import { Worker, WorkerId } from "@joystream/types/working-group";
 import { Null, Vec } from "@polkadot/types";
-import { Curator, CuratorApplication, CuratorApplicationId, CuratorId, CuratorInduction } from "@joystream/types/content-working-group";
 import { RewardRelationship } from "@joystream/types/recurring-rewards";
 import { Stake, StakingStatus, Staked } from "@joystream/types/stake";
+import { ApplicationOf, WorkerOf } from "@joystream/types/augment-codec/all";
 
 interface WorkingGroupStake {
   stakeId: number,
@@ -43,14 +43,8 @@ async function main() {
   // Initialise the provider to connect to the local node
   const provider = new WsProvider('ws://127.0.0.1:9944');
   
-  /*
-  If you want to play around on our staging network, go ahead and connect to this staging network instead.
-  const provider = new WsProvider('wss://alexandria-testing-1.joystream.app/staging/rpc:9944');
-  
-  There's a bunch of tokens on the account: 5HdYzMVpJv3c4omqwKKr7SpBgzrdRRYBwoNVhJB2Y8xhUbfK,
-  with seed: "emotion soul hole loan journey what sport inject dwarf cherry ankle lesson"
-  please transfer (what you need only) to your own account, and don't test runtime upgrades :D
-  */
+  //If you want to play around on our staging network, go ahead and connect to this staging network instead.
+  //const provider = new WsProvider('wss://testnet-rpc-2-singapore.joystream.org');
   
   // Create the API and wait until ready
   const api = await ApiPromise.create({ provider, types })
@@ -104,22 +98,27 @@ async function main() {
     }
     storageProviders.push(storageProvider)
   }
+
   // get all active content curators
-  const contentCuratorKeys = await api.query.contentWorkingGroup.curatorById.keys()
-  const contentCuratorIds = contentCuratorKeys.map(({ args: [workerId]}) => workerId) as Vec<CuratorId>
-  contentCuratorIds.sort((a,b) => a.toNumber()-b.toNumber())
-  console.log('all contentCuratorIds:', contentCuratorIds.join(', '));
-  for (let key of contentCuratorIds) {
-    const curator = await api.query.contentWorkingGroup.curatorById(key) as Curator
+  for (let i = 0; i < +(await api.query.contentDirectoryWorkingGroup.activeWorkerCount()).toString(); i++) {
+    const curator = await api.query.contentDirectoryWorkingGroup.workerById(i) as WorkerOf
     // filter out inactive
     if (curator.is_active) {
-      const curatorApplicationId = (curator.induction as CuratorInduction).curator_application_id as CuratorApplicationId
-      const applicationId = await api.query.contentWorkingGroup.curatorApplicationById(curatorApplicationId) as CuratorApplication
+      const nextApplicationId = +(await api.query.contentDirectoryWorkingGroup.nextApplicationId()).toString()
+      let applicationId = {} as ApplicationOf
+      for (let j = 0; j < nextApplicationId - 1; j++) {
+        const appId = await api.query.contentDirectoryWorkingGroup.applicationById(j) as ApplicationOf
+        if(appId.member_id?.toNumber() == curator.member_id?.toNumber()) {
+          applicationId = appId
+          break
+        }
+      }
+      
       const contentCurator: ContentCurator = {
-        curatorId: key.toNumber(),
-        memberId: applicationId.member_id.toNumber(),
-        roleAccount: curator.role_account.toString(),
-        applicationId: applicationId.application_id.toNumber(),
+        curatorId: i,
+        memberId: applicationId?.member_id.toNumber(),
+        roleAccount: curator.role_account_id.toString(),
+        applicationId: applicationId?.application_id.toNumber(),
       }
       if (curator.reward_relationship.isSome) {
         const rewardRelationshipId = curator.reward_relationship.unwrap()
