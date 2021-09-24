@@ -1,0 +1,178 @@
+#!/bin/bash
+
+mkdir bounties
+mkdir council
+mkdir working-groups
+mkdir working-groups/curator_group
+mkdir working-groups/operations_group
+mkdir working-groups/storage_group
+mkdir working-groups/storage_group/reports
+mkdir working-groups/storage_group/reports/sumer
+mkdir community-contributions/creative
+mkdir community-contributions/tech
+mkdir community-contributions/research
+mkdir council/kpi
+git mv documentation governance
+git mv bounties-overview bounties
+git mv bounties-reports bounties
+git mv council-reports council
+git mv community-contributions/discordbot community-contributions/research/
+git mv community-contributions/report-generator community-contributions/tech/
+git mv community-contributions/joystreamtelegrambot community-contributions/tech/
+git mv community-contributions/joystreamvideobot community-contributions/tech/
+git mv community-contributions/substrate_polkadot_content_list community-contributions/research/
+git mv community-contributions/validator-report-backend/ community-contributions/tech
+git mv community-contributions/validator-report-ui/ community-contributions/tech
+git mv community-contributions/banner-competition community-contributions/creative/
+git mv community-contributions/community-repo_banners community-contributions/creative/
+git mv community-contributions/stickers-competition community-contributions/creative/
+git mv community-contributions/scriptnodeSetup community-contributions/node-setup-script
+git mv community-contributions/node-setup-script community-contributions/tech/
+git mv community-contributions/Ledger\ for\ Joystream community-contributions/ledger-for-joystream
+git mv community-contributions/ledger-for-joystream community-contributions/research/
+mkdir council/kpi/sumer
+mkdir council/kpi/sumer/16.9
+git mv community-contributions/kpi_169_-_follow_up_the_storage_working_group.md council/kpi/sumer/16.9
+mkdir council/kpi/sumer/11.4
+git mv community-contributions/KPI\ 11.4\ -\ Research\ Max\ Validator\ Change/report.md council/kpi/sumer/11.4
+mkdir council/kpi/sumer/06.6
+git mv community-contributions/miscellaneous_reports/Content\ Sourcing\ Report.md council/kpi/sumer/06.6/
+git mv community-contributions/miscellaneous_reports/Increase\ Validator\ Set\ Research.md community-contributions/research/increase_validators_set.md
+git mv community-contributions/miscellaneous_reports/Polkadot\ JS\ Extension.md community-contributions/research/polkadot_js_extension.md
+mkdir council/kpi/sumer/09.6
+git mv community-contributions/miscellaneous_reports/KPI_09-6-initial_sprocket.md council/kpi/sumer/09.6/
+git mv community-contributions/founding-member-survey community-contributions/research/
+git mv operations/* working-groups/operations_group/
+git mv tokenomics-reports council
+git mv submission-log council
+git mv council-survey council
+mkdir council/kpi/sumer/17.8
+git mv rules/Sumer_KPI_17.8_Clean_Up_Community_Repo_16.08.2021.md council/kpi/sumer/17.8
+git mv rules/* governance/
+git mv governance/bounty15 bounties/bounties-reports/
+git mv governance/bounty10_crash_payouts.csv bounties/bounties-reports/
+git mv workinggroup-reports/curator_group/* working-groups/curator_group/
+git mv workinggroup-reports/storage_group/* working-groups/storage_group
+mkdir bounties/bounties-reports/weekly-bounty-report
+git mv workinggroup-reports/bounty_reports/* bounties/bounties-reports/weekly-bounty-report
+git mv council/council-reports council/reports
+git mv council/tokenomics-reports council/tokenomics
+git mv bounties/bounties-overview bounties/overview
+git mv bounties/bounties-reports bounties/reports
+git mv community-contributions contributions
+git mv working-groups/curator_group working-groups/curator-group
+git mv working-groups/storage_group working-groups/storage-group
+git mv working-groups/operations_group working-groups/operations-group
+git mv working-groups/curator-group/Video\ Statistic\ Overview\ for\ Council\ Term\ 17.md working-groups/curator-group/Video_Statistic_Overview_for_Council_Term_17.md
+git mv working-groups/curator-group/Video\ Statistic\ Overview\ for\ Council\ Term\ 18.md working-groups/curator-group/Video_Statistic_Overview_for_Council_Term_18.md
+git mv working-groups/curator-group/Weekly\ Curator\ Working\ Group\ Report\ 13.md working-groups/curator-group/Weekly_Curator_Working_Group_Report_13.md
+git mv working-groups/curator-group/Weekly\ Curator\ Working\ Group\ Report\ 18.md working-groups/curator-group/Weekly_Curator_Working_Group_Report_18.md
+git mv working-groups/curator-group/Weekly\ Curator\ Working\ Group\ Report\ 20.md working-groups/curator-group/Weekly_Curator_Working_Group_Report_20.md
+git mv working-groups/operations-group/Runtime\ Upgrade\ Testing\ Notes.csv working-groups/operations-group/Runtime_Upgrade_Testing_Notes.csv
+git mv working-groups/storage-group/council_spotchecks working-groups/storage-group/council-spotchecks
+git mv bounties/reports/Adding\ new\ conditions\ to\ Bounty\ 18.md bounties/reports/Adding_new_conditions_to_Bounty_18.md
+git mv bounties/reports/bount10/ bounties/reports/bounty10/
+git mv bounties/reports/Update\ Featured\ Video\ Rules.md bounties/reports/Update_Featured_Video_Rules.md
+git mv bounties/reports/Bounty\ \#\ 22\ terms\ and\ conditions.md bounties/reports/Bounty22_terms_and_conditions.md
+git mv bounties/reports/bounty10/Bounty10Payments bounties/reports/bounty10/payments
+git mv bounties/reports/bounty10/payments/Bounty\ Payment\ 4.csv bounties/reports/bounty10/payments/payment_4.csv
+git mv bounties/reports/bounty10/payments/Sheet\ 1-Bounty10.csv bounties/reports/bounty10/payments/Sheet1_Bounty10.csv
+git mv bounties/reports/bounty10/payments/Sheet\ 2-Table\ 1.csv bounties/reports/bounty10/payments/Sheet2_Table1.csv
+git mv contributions/creative/community-repo_banners contributions/creative/community-repo-banners
+git mv contributions/creative/stickers-competition/Joystream\ Sticker\ Competition\ -\ Final\ Report.md contributions/creative/stickers-competition/Joystream_Sticker_Competition_Final_Report.md
+git mv contributions/creative/stickers-competition/Joystream\ Sticker\ Competition\ -\ Instructions\ +\ Competition\ Plan.md contributions/creative/stickers-competition/Joystream_Sticker_Competition_Instructions_Competition_Plan.md
+git mv contributions/creative/stickers-competition/Joystream\ Sticker\ Competition\ -\ Overview.md contributions/creative/stickers-competition/Joystream_Sticker_Competition_Overview.md
+git mv contributions/creative/stickers-competition/Joystream\ Sticker\ Competition\ -\ Report.md contributions/creative/stickers-competition/Joystream_Sticker_Competition_Report.md
+git mv council/tokenomics/sumer-4/Council\ Round\ \#12\ -\ \#1285200-\#1386000\ -\ Tokenomics\ Report.md council/tokenomics/sumer-4/Council_Round12_1285200_1386000_Tokenomics_Report.md
+git mv council/tokenomics/sumer-4/Council\ Round\ \#13\ -\ \#1386000-\#1486800\ -\ Tokenomics\ Report.md council/tokenomics/sumer-4/Council_Round13_1386000_1486800_Tokenomics_Report.md
+git mv council/tokenomics/sumer-4/Council\ Round\ \#14\ -\ \#1486800-\#1587600\ -\ Tokenomics\ Report.md council/tokenomics/sumer-4/Council_Round14_1486800_1587600_Tokenomics_Report.md
+git mv council/tokenomics/sumer-4/Council\ Round\ \#15\ -\ \#1587600-\#1688400\ -\ Tokenomics\ Report.md council/tokenomics/sumer-4/Council_Round15_1587600_1688400_Tokenomics_Report.md
+git mv council/tokenomics/sumer-4/Council\ Round\ \#16\ -\ \#1688400-\#1789200\ -\ Tokenomics\ Report.md council/tokenomics/sumer-4/Council_Round16_1688400_1789200_Tokenomics_Report.md
+git mv council/tokenomics/sumer-4/Council\ Round\ \#17\ -\ \#1789200-\#1890000\ -\ Tokenomics\ Report.md council/tokenomics/sumer-4/Council_Round17_1789200_1890000_Tokenomics_Report.md
+git mv council/tokenomics/sumer-4/Council\ Round\ \#18\ -\ \#1890000-\#1990800\ -\ Tokenomics\ Report.md council/tokenomics/sumer-4/Council_Round18_1890000_1990800_Tokenomics_Report.md
+git mv council/tokenomics/sumer-4/Council\ Round\ \#19\ -\ \#1990800-\#2091600\ -\ Tokenomics\ Report.md council/tokenomics/sumer-4/Council_Round19_1990800_2091600_Tokenomics_Report.md
+git mv council/tokenomics/sumer-4/Council\ Round\ \#8\ -\ \#882000-\#982800\ -\ Tokenomics\ Report.md council/tokenomics/sumer-4/Council_Round8_882000_982800_Tokenomics_Report.md
+git mv council/tokenomics/sumer-4/Council\ Round\ \#9\ -\ \#982800-\#1083600\ -\ Tokenomics\ Report.md council/tokenomics/sumer-4/Council_Round9_982800_1083600_Tokenomics_Report.md
+git mv council/tokenomics/alexandria-1/Alexandria\ Council\ Round\ \#1\ -\ \#57601-\#201601\ -\ Tokenomics\ Report.md council/tokenomics/alexandria-1/Alexandria_Council_Round1_57601_201601_Tokenomics_Report.md
+git mv council/tokenomics/alexandria-1/Alexandria\ Council\ Round\ \#2\ -\ \#259201-\#460801\ -\ Tokenomics\ Report.md council/tokenomics/alexandria-1/Alexandria_Council_Round2_259201_460801_Tokenomics_Report.md
+git mv council/tokenomics/alexandria-1/Alexandria\ Council\ Round\ \#3\ -\ \#460801-\#662401\ -\ Tokenomics\ Report.md council/tokenomics/alexandria-1/Alexandria_Council_Round3_460801_662401_Tokenomics_Report.md
+git mv council/tokenomics/alexandria-1/Alexandria\ Council\ Round\ \#4\ -\ \#662401-\#864001\ -\ Tokenomics\ Report.md council/tokenomics/alexandria-1/Alexandria_Council_Round4_662401_864001_Tokenomics_Report.md
+git mv council/tokenomics/alexandria-1/Alexandria\ Council\ Round\ \#5\ -\ \#864001-\#1065601\ -\ Tokenomics\ Report.md council/tokenomics/alexandria-1/Alexandria_Council_Round5_864001_1065601_Tokenomics_Report.md
+git mv council/tokenomics/alexandria-1/Alexandria\ Council\ Round\ \#6\ -\ \#1065601-\#1267201\ -\ Tokenomics\ Report.md council/tokenomics/alexandria-1/Alexandria_Council_Round6_1065601_1267201_Tokenomics_Report.md
+git mv council/tokenomics/antioch-3/Council\ Round\ \#0\ -\ \#0-\#86400\ -\ Tokenomics\ Report.md council/tokenomics/antioch-3/Council_Round0_0_86400_Tokenomics_Report.md
+git mv council/tokenomics/antioch-3/Council\ Round\ \#1\ -\ \#118800-\#277200\ -\ Tokenomics\ Report.md council/tokenomics/antioch-3/Council_Round1_118800_277200_Tokenomics_Report.md
+git mv council/tokenomics/antioch-3/Council\ Round\ \#2\ -\ \#277200-\#378000\ -\ Tokenomics.md council/tokenomics/antioch-3/Council_Round2_277200_378000_Tokenomics.md
+git mv council/tokenomics/antioch-3/Council\ Round\ \#3\ -\ \#378000-\#478800\ -\ Tokenomics.md council/tokenomics/antioch-3/Council_Round3_378000_478800_Tokenomics.md
+git mv council/tokenomics/antioch-3/Council\ Round\ \#4\ -\ \#478800-\#579600\ -\ Tokenomics.md council/tokenomics/antioch-3/Council_Round4_478800_579600_Tokenomics.md
+git mv council/tokenomics/antioch-3/Council\ Round\ \#5\ -\ \#579600-\#694800\ -\ Tokenomics.md council/tokenomics/antioch-3/Council_Round5_579600_694800_Tokenomics.md
+git mv council/tokenomics/antioch-3/Council\ Round\ \#6\ -\ \#680400-\#781200\ -\ Tokenomics.md council/tokenomics/antioch-3/Council_Round6_680400_781200_Tokenomics.md
+git mv council/tokenomics/antioch-3/Council\ Round\ \#7\ -\ \#781200-\#882000\ -\ Tokenomics.md council/tokenomics/antioch-3/Council_Round_7_781200_882000_Tokenomics.md
+git mv council/tokenomics/babylon-2/Council\ Round\ \#10\ -\ \#1872001-\#2073601\ -\ Tokenomics\ Report.md council/tokenomics/babylon-2/Council_Round10_1872001_2073601_Tokenomics_Report.md
+git mv council/tokenomics/babylon-2/Council\ Round\ \#11\ -\ \#2073601-\#2275201\ -\ Tokenomics\ Report.md council/tokenomics/babylon-2/Council_Round11_2073601_2275201_Tokenomics_Report.md
+git mv council/tokenomics/babylon-2/Council\ Round\ \#12\ -\ \#2275201-\#2476801\ -\ Tokenomics\ Report.md council/tokenomics/babylon-2/Council_Round12_2275201_2476801_Tokenomics_Report.md
+git mv council/tokenomics/babylon-2/Council\ Round\ \#8\ -\ \#1468801-\#1670401\ -\ Tokenomics\ Report.md council/tokenomics/babylon-2/Council_Round8_1468801_1670401_Tokenomics_Report.md
+git mv council/tokenomics/babylon-2/Council\ Round\ \#9\ -\ \#1670401-\#1872001\ -\ Tokenomics\ Report.md council/tokenomics/babylon-2/Council_Round9_1670401_1872001_Tokenomics_Report.md
+git mv council/reports/antioch-reports/Antioch\ Council\ 0\ Report\ -\ 20-04-2021.md council/reports/antioch-reports/Antioch_Council0_Report_20-04-2021.md
+git mv council/reports/antioch-reports/Antioch\ Council\ 1\ Report\ -\ 28-04-2021.md council/reports/antioch-reports/Antioch_Council1_Report_28-04-2021.md
+git mv council/reports/antioch-reports/Antioch\ Council\ 2\ Report\ -\ 05-05-2021.md council/reports/antioch-reports/Antioch_Council2_Report_05-05-2021.md
+git mv council/reports/antioch-reports/Antioch\ Council\ 3\ Report\ -\ 14-05-2021.md council/reports/antioch-reports/Antioch_Council3_Report_14-05-2021.md
+git mv council/reports/antioch-reports/Antioch\ Council\ 4\ Report\ -\ 20-05-2021.md council/reports/antioch-reports/Antioch_Council4_Report_20-05-2021.md
+git mv council/reports/antioch-reports/Antioch\ Council\ 5\ Report\ -\ 27-05-2021.md council/reports/antioch-reports/Antioch_Council5_Report_27-05-2021.md
+git mv council/reports/antioch-reports/Antioch\ Council\ 6\ Report\ -\ 03-06-2021.md council/reports/antioch-reports/Antioch_Council6_Report_03-06-2021.md
+git mv council/reports/archived-reports/Council\ Round\ \#21+22\ -\ 08-09-2020\ -\ Council\ Report.md council/reports/archived-reports/Council_Round21+22_08-09-2020_Council_Report.md
+git mv council/reports/archived-reports/alexandria-testnet/Alexandria\ Council\ 1\ report\ -\ 10-10-2020.md council/reports/archived-reports/alexandria-testnet/Alexandria_Council1_report_10-10-2020.md
+git mv council/reports/archived-reports/alexandria-testnet/Alexandria\ Council\ 2\ report\ -\ 24-10-2020.md council/reports/archived-reports/alexandria-testnet/Alexandria_Council2_report_24-10-2020.md
+git mv council/reports/archived-reports/alexandria-testnet/Alexandria\ Council\ 3\ report\ -\ 05-11-2020.md council/reports/archived-reports/alexandria-testnet/Alexandria_Council3_report_05-11-2020.md
+git mv council/reports/archived-reports/alexandria-testnet/Alexandria\ Council\ 4\ Report\ -\ 22-11-2020.md council/reports/archived-reports/alexandria-testnet/Alexandria_Council4_Report_22-11-2020.md
+git mv council/reports/archived-reports/alexandria-testnet/Alexandria\ Council\ 5\ report\ -\ 07-12-2020.md council/reports/archived-reports/alexandria-testnet/Alexandria_Council5_report_07-12-2020.md
+git mv council/reports/archived-reports/alexandria-testnet/Alexandria\ Council\ 6\ Report\ -\ 20-12-2020.md council/reports/archived-reports/alexandria-testnet/Alexandria_Council6_Report_20-12-2020.md
+git mv council/reports/archived-reports/alexandria-testnet/Alexandria\ Council\ 7\ Report\ -\ 03-01-2021.md council/reports/archived-reports/alexandria-testnet/Alexandria_Council7_Report_03-01-2021.md
+git mv council/reports/archived-reports/babylon/Babylon\ Council\ 10\ Report\ -\ 17-02-2021.md council/reports/archived-reports/babylon/Babylon_Council10_Report_17-02-2021.md
+git mv council/reports/archived-reports/babylon/Babylon\ Council\ 11\ Report\ -\ 04-03-2021.md council/reports/archived-reports/babylon/Babylon_Council11_Report_04-03-2021.md
+git mv council/reports/archived-reports/babylon/Babylon\ Council\ 12\ Report\ -\ 18-03-2021.md council/reports/archived-reports/babylon/Babylon_Council12_Report_18-03-2021.md
+git mv council/reports/archived-reports/babylon/Babylon\ Council\ 8\ Report\ -\ 17-01-2021.md council/reports/archived-reports/babylon/Babylon_Council8_Report_17-01-2021.md
+git mv council/reports/archived-reports/babylon/Babylon\ Council\ 9\ Report\ -\ 01-02-2021.md council/reports/archived-reports/babylon/Babylon_Council9_Report_01-02-2021.md
+git mv council/reports/archived-reports/constantinople-testnet/Council\ Round\ \#17\ -\ 07-08-2020\ -\ Council\ Report.md council/reports/archived-reports/constantinople-testnet/Council_Round17_07-08-2020_Council_Report.md
+git mv council/reports/archived-reports/constantinople-testnet/Council\ Round\ \#18\ -\ 14-08-2020\ -\ Council\ Report.md council/reports/archived-reports/constantinople-testnet/Council_Round18_14-08-2020_Council_Report.md
+git mv council/reports/archived-reports/constantinople-testnet/Council\ Round\ \#19\ -\ 02-09-2020\ -\ Council\ Report.md council/reports/archived-reports/constantinople-testnet/Council_Round_19_02-09-2020_Council_Report.md
+git mv council/reports/archived-reports/constantinople-testnet/Council\ Round\ \#22\ -\ 14-09-2020\ -\ Council\ Report.md council/reports/archived-reports/constantinople-testnet/Council_Round22_14-09-2020_Council_Report.md
+git mv council/reports/archived-reports/constantinople-testnet/Council\ Round\ \#8\ -\ 12-06-2020\ -\ Council\ Report.md council/reports/archived-reports/constantinople-testnet/Council_Round8_12-06-2020_Council_Report.md
+git mv council/reports/archived-reports/constantinople-testnet/Council\ Round\ \#9\ -\ 19-06-2020\ -\ Council\ Report.md council/reports/archived-reports/constantinople-testnet/Council_Round9_19-06-2020_Council_Report.md
+git mv council/reports/sumer-reports/Sumer\ Council\ 10\ Report\ -\ 01-07-2021.md council/reports/sumer-reports/Sumer_Council10_Report_01-07-2021.md
+git mv council/reports/sumer-reports/Sumer\ Council\ 11\ Report\ -\ 06-07-2021.md council/reports/sumer-reports/Sumer_Council11_Report_06-07-2021.md
+git mv council/reports/sumer-reports/Sumer\ Council\ 12\ Report\ -\ 16-07-2021.md council/reports/sumer-reports/Sumer_Council12_Report_16-07-2021.md
+git mv council/reports/sumer-reports/Sumer\ Council\ 13\ Report\ -\ 23-07-2021.md council/reports/sumer-reports/Sumer_Council13_Report_23-07-2021.md
+git mv council/reports/sumer-reports/Sumer\ Council\ 14\ Report\ -\ 27-07-2021.md council/reports/sumer-reports/Sumer_Council14_Report_27-07-2021.md
+git mv council/reports/sumer-reports/Sumer\ Council\ 15\ Report\ -\ 03-08-2021.md council/reports/sumer-reports/Sumer_Council15_Report_03-08-2021.md
+git mv council/reports/sumer-reports/Sumer\ Council\ 16\ Report\ -\ 10-08-2021.md council/reports/sumer-reports/Sumer_Council16_Report_10-08-2021.md
+git mv council/reports/sumer-reports/Sumer\ Council\ 17\ Report\ -\ 18-08-2021.md council/reports/sumer-reports/Sumer_Council17_Report_18-08-2021.md
+git mv council/reports/sumer-reports/Sumer\ Council\ 18\ Report\ -\ 25-08-2021.md council/reports/sumer-reports/Sumer_Council18_Report_25-08-2021.md
+git mv council/reports/sumer-reports/Sumer\ Council\ 19\ Report\ -\ 31-08-2021.md council/reports/sumer-reports/Sumer_Council19_Report_31-08-2021.md
+git mv council/reports/sumer-reports/Sumer\ Council\ 7\ Report\ -\ 09-06-2021.md council/reports/sumer-reports/Sumer_Council7_Report_09-06-2021.md
+git mv council/reports/sumer-reports/Sumer\ Council\ 8\ Report\ -\ 16-06-2021.md council/reports/sumer-reports/Sumer_Council8_Report_16-06-2021.md
+git mv council/reports/sumer-reports/Sumer\ Council\ 9\ Report\ -\ 23-06-2021.md council/reports/sumer-reports/Sumer_Council9_Report_23-06-2021.md
+git mv council/kpi/sumer/06.6/Content\ Sourcing\ Report.md council/kpi/sumer/06.6/Content_Sourcing_Report.md
+git mv governance/Conditions\ update\ Featured\ videos\ for\ main\ site.md governance/Conditions_update_Featured_videos_for_main_site.md
+git mv joystream-api/ contributions/community-contributions/tech/
+git mv storagesize-bot contributions/community-contributions/tech/
+git mv img bounties/overview
+git mv workinggroup-reports/KPI_12_WG_reports governance
+git mv governance/KPI_12_WG_reports/ governance/kpi12-wg-reports
+git mv platform_reports/ governance
+git mv governance/platform_reports/ governance/platform-reports
+git mv council/reports/sumer-reports/Sumer\ Council\ 20\ Report\ -\ 08-09-2021.md council/reports/sumer-reports/Sumer_Council20_Report_08-09-2021.md
+git mv council/reports/sumer-reports/Sumer\ Council\ 21\ Report\ -\ 14-09-2021.md council/reports/sumer-reports/Sumer_Council21_Report_14-09-2021.md
+git mv council/reports/sumer-reports/Sumer\ Council\ 22\ Report\ -\ 21-09-2021.md council/reports/sumer-reports/Sumer_Council21_Report_21-09-2021.md
+git mv council/tokenomics/sumer-4/Council\ Round\ \#10\ -\ \#1083600-\#1184400\ -\ Tokenomics\ Report.md council/tokenomics/sumer-4/Council_Round10_1083600_1184400_Tokenomics_Report.md
+git mv council/tokenomics/sumer-4/Council\ Round\ \#11\ -\ \#1184400-\#1285200\ -\ Tokenomics\ Report.md council/tokenomics/sumer-4/Council_Round11_1184400_1285200_Tokenomics_Report.md
+git mv council/tokenomics/sumer-4/Council\ Round\ \#20\ -\ \#2091600-\#2192400\ -\ Tokenomics\ Report.md council/tokenomics/sumer-4/Council_Round20_2091600-2192400_Tokenomics_Report.md
+git mv council/tokenomics/sumer-4/Council\ Round\ \#21\ -\ \#2192400-\#2293200\ -\ Tokenomics\ Report.md council/tokenomics/sumer-4/Council_Round21_2192400-2293200_Tokenomics_Report.md
+git mv council/tokenomics/sumer-4/Council\ Round\ \#22\ -\ \#2293200-\#2394000\ -\ Tokenomics\ Report.md council/tokenomics/sumer-4/Council_Round22_2293200_2394000_Tokenomics_Report.md
+git mv working-groups/curator-group/Substrate\ research\ DNS\ service.md working-groups/curator-group/Substrate_research_DNS_service.md
+git mv working-groups/curator-group/Weekly\ Curator\ Working\ Group\ Report\ 21.md working-groups/curator-group/Weekly_Curator_Working_Group_Report_21.md
+git mv working-groups/curator-group/Weekly\ Curator\ Working\ Group\ Report\ 22.md working-groups/curator-group/Weekly_Curator_Working_Group_Report_22.md
+git mv working-groups/curator-group/curator_Lead_Report_SP\#12.csv working-groups/curator-group/curator_Lead_Report_SP_12.csv
+git mv working-groups/curator-group/curator_Lead_Report_SP\#6.csv working-groups/curator-group/curator_Lead_Report_SP_6.csv
+git mv working-groups/curator-group/curator_Lead_Report_SP\#6.md working-groups/curator-group/curator_Lead_Report_SP_6.md
+git mv working-groups/curator-group/curator_Lead_Report_SP\#8.csv working-groups/curator-group/curator_Lead_Report_SP_8.csv
+
