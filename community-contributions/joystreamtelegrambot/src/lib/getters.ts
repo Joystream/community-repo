@@ -1,4 +1,5 @@
 import { formatProposalMessage } from "./announcements";
+import axios from "axios";
 
 //types
 
@@ -13,12 +14,10 @@ import { Category, CategoryId } from "@joystream/types/forum";
 import { MemberId, Membership } from "@joystream/types/members";
 import { Proposal } from "@joystream/types/proposals";
 
-// channel
+// api
 
-export const currentChannelId = async (api: Api): Promise<number> => {
-  const id: ChannelId = await api.query.contentWorkingGroup.nextChannelId();
-  return id.toNumber() - 1;
-};
+export const timestamp = async (api: Api) =>
+  (await api.query.timestamp.now()).toNumber();
 
 export const memberHandle = async (api: Api, id: MemberId): Promise<string> => {
   const membership: Membership = await api.query.members.membershipById(id);
@@ -107,7 +106,30 @@ export const proposalDetail = async (
   const title: string = proposal.title.toString();
   const type: string = await getProposalType(api, id);
   const args: string[] = [String(id), title, type, stage, result, author];
-  const message: string = formatProposalMessage(args);
+  const message: { tg: string; discord: string } = formatProposalMessage(args);
   const createdAt: number = proposal.createdAt.toNumber();
   return { createdAt, finalizedAt, parameters, message, stage, result, exec };
+};
+
+// status endpoint
+
+export const fetchTokenValue = async (): Promise<string> =>
+  axios
+    .get("https://status.joystream.org/status")
+    .then(({ data }) => `${Math.floor(+data.price * 100000000) / 100} $`)
+    .catch((e) => {
+      console.log(`Failed to fetch status.`);
+      return `?`;
+    });
+
+// hdyra
+
+export const fetchStorageSize = async () => {
+  const dashboard = "https://analytics.dapplooker.com/api/public/dashboard";
+  const asset = "c70b56bd-09a0-4472-a557-796afdc64d3b/card/155";
+
+  const { data } = await axios.get(`${dashboard}/${asset}`);
+
+  const size = Math.round(data.data.rows[0][0]) + " GB";
+  return size;
 };

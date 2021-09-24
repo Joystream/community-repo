@@ -1,5 +1,13 @@
+import { Client } from "discord.js";
 import TelegramBot from "node-telegram-bot-api";
-import { token, chatid, heartbeat, proposalDelay, wsLocation } from "../config";
+import {
+  discordToken,
+  tgToken,
+  chatid,
+  heartbeat,
+  proposalDelay,
+  wsLocation,
+} from "../config";
 
 // types
 import { Block, Council, Options, Proposals } from "./types";
@@ -10,7 +18,7 @@ import { AccountId, Header } from "@polkadot/types/interfaces";
 // functions
 import * as announce from "./lib/announcements";
 import * as get from "./lib/getters";
-import { parseArgs, printStatus, passedTime, exit } from "./lib/util";
+import { parseArgs, printStatus, passedTime } from "./lib/util";
 import moment from "moment";
 
 const opts: Options = parseArgs(process.argv.slice(2));
@@ -18,17 +26,52 @@ const log = (msg: string): void | number => opts.verbose && console.log(msg);
 process.env.NTBA_FIX_319 ||
   log("TL;DR: Set NTBA_FIX_319 to hide this warning.");
 
-const bot = token ? new TelegramBot(token, { polling: true }) : null;
+// connect to telegram
+const bot = tgToken ? new TelegramBot(tgToken, { polling: true }) : null;
 
-let lastHeartbeat: number = moment().valueOf();
+// connect to discord
+let discordChannels: { [key: string]: any } = {};
+const client = new Client();
+client.login(discordToken);
+client.on("ready", async () => {
+  if (!client.user) return;
+  console.log(`Logged in to discord as ${client.user.tag}!`);
+  discordChannels.council = await findDiscordChannel("council");
+  discordChannels.proposals = await findDiscordChannel("proposals-bot");
+  discordChannels.forum = await findDiscordChannel("forum-bot");
+  discordChannels.tokenomics = await findDiscordChannel("tokenomics");
+});
 
-const sendMessage = (msg: string) => {
-  if (msg === "") return;
+const findDiscordChannel = (name: string) =>
+  client.channels.cache.find((channel: any) => channel.name === name);
+
+client.on("message", async (msg) => {
+  const user = msg.author;
+  if (msg.content === "/status") {
+    msg.reply(`reporting to discord`);
+  }
+});
+
+// send to telegram and discord
+const sendMessage = (msg: { tg: string; discord: string }, channel: any) => {
+  if (msg.tg === "") return;
+  sendDiscord(msg.discord, channel);
+  sendTelegram(msg.tg);
+};
+const sendTelegram = (msg: string) => {
   try {
     if (bot) bot.sendMessage(chatid, msg, { parse_mode: "HTML" });
     else console.log(msg);
   } catch (e) {
-    console.log(`Failed to send message: ${e}`);
+    console.log(`Failed to send to telegram: ${e}`);
+  }
+};
+const sendDiscord = (msg: string, channel: any) => {
+  if (!channel || !msg.length) return;
+  try {
+    channel.send(msg);
+  } catch (e) {
+    console.log(e);
   }
 };
 
@@ -42,14 +85,18 @@ const main = async () => {
     api.rpc.system.name(),
     api.rpc.system.version(),
   ]);
+  log(`Subscribed to ${chain} on ${node} v${version}`);
 
   let council: Council = { round: 0, last: "" };
   let blocks: Block[] = [];
   let lastEra = 0;
+  let timestamp = await get.timestamp(api);
+  let duration = 0;
+  let lastHeartbeat = timestamp;
   let lastBlock: Block = {
     id: 0,
-    duration: 6000,
-    timestamp: lastHeartbeat,
+    duration: 0,
+    timestamp: 0,
     stake: 0,
     noms: 0,
     vals: 0,
@@ -61,14 +108,13 @@ const main = async () => {
   let stake = 0;
   let vals = 0;
   let noms = 0;
+  let announced: { [key: string]: boolean } = {};
 
   const channels: number[] = [0, 0];
   const posts: number[] = [0, 0];
   const threads: number[] = [0, 0];
   let proposals: Proposals = { last: 0, current: 0, active: [], executing: [] };
   let lastProposalUpdate = 0;
-
-  if (opts.channel) channels[0] = await get.currentChannelId(api);
 
   if (opts.forum) {
     posts[0] = await get.currentPostId(api);
@@ -83,14 +129,14 @@ const main = async () => {
   const getReward = async (era: number) =>
     Number(await api.query.staking.erasValidatorReward(era));
 
-  log(`Subscribed to ${chain} on ${node} v${version}`);
   api.rpc.chain.subscribeNewHeads(
     async (header: Header): Promise<void> => {
       // current block
       const id = header.number.toNumber();
+
       if (lastBlock.id === id) return;
-      const timestamp = (await api.query.timestamp.now()).toNumber();
-      const duration = timestamp - lastBlock.timestamp;
+      timestamp = await get.timestamp(api);
+      duration = lastBlock.timestamp ? timestamp - lastBlock.timestamp : 0;
 
       // update validators and nominators every era
       const era = Number(await api.query.staking.currentEra());
@@ -126,45 +172,64 @@ const main = async () => {
         reward,
         issued,
       };
-      blocks = blocks.concat(block);
+      if (duration) blocks = blocks.concat(block);
 
       // heartbeat
       if (timestamp > lastHeartbeat + heartbeat) {
         const time = passedTime(lastHeartbeat, timestamp);
-        blocks = announce.heartbeat(api, blocks, time, proposals, sendMessage);
+        announce.heartbeat(
+          api,
+          blocks,
+          time,
+          proposals,
+          sendMessage,
+          discordChannels.tokenomics
+        );
         lastHeartbeat = block.timestamp;
+        blocks = [];
       }
 
       // announcements
       if (opts.council && block.id > lastBlock.id)
-        council = await announce.council(api, council, block.id, sendMessage);
-
-      if (opts.channel) {
-        channels[1] = await get.currentChannelId(api);
-        if (channels[1] > channels[0])
-          channels[0] = await announce.channels(api, channels, sendMessage);
-      }
+        council = await announce.council(
+          api,
+          council,
+          block.id,
+          sendMessage,
+          discordChannels.council
+        );
 
       if (opts.proposals) {
         proposals.current = await get.proposalCount(api);
+
         if (
-          proposals.current > proposals.last ||
-          (timestamp > lastProposalUpdate + 60000 * proposalDelay &&
-            (proposals.active || proposals.executing))
+          proposals.current > proposals.last &&
+          !announced[proposals.current]
         ) {
-          proposals = await announce.proposals(api, proposals, id, sendMessage);
+          announced[`proposal${proposals.current}`] = true;
+          proposals = await announce.proposals(
+            api,
+            proposals,
+            id,
+            sendMessage,
+            discordChannels.proposals
+          );
           lastProposalUpdate = timestamp;
         }
       }
 
       if (opts.forum) {
         posts[1] = await get.currentPostId(api);
-        posts[0] = await announce.posts(api, posts, sendMessage);
+        announce.posts(api, posts, sendMessage, discordChannels.forum);
+        posts[0] = posts[1];
       }
 
       printStatus(opts, { block: id, chain, posts, proposals });
-      lastBlock = block
+      lastBlock = block;
     }
   );
 };
-main().catch(() => exit(log));
+main().catch((error) => {
+  console.log(error);
+  process.exit();
+});

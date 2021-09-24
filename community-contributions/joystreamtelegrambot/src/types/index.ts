@@ -26,7 +26,7 @@ export interface Options {
 export interface ProposalDetail {
   createdAt: number;
   finalizedAt: number;
-  message: string;
+  message: { tg: string; discord: string };
   parameters: ProposalParameters;
   stage: string;
   result: string;
@@ -58,3 +58,5 @@ export interface Block {
   issued: number;
   reward: number;
 }
+
+export type Send = (msg: { tg: string; discord: string }, channel: any) => void;
