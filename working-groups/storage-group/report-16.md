@@ -76,7 +76,7 @@ Here is a link to his script https://github.com/freakstatic/community-repo/tree/
 - Tokens earned: 14.7766 MJOY
 - Missed: 1.5119 MJOY
 - Location: EU
-- Storage capacity: 1.4 GB
+- Storage capacity: 1.6 TB
 - Type of storage: HDD
 - Discord Name: julysake#9954
 - Config: `CPU: 10 vCPU Cores, RAM: 60 GB RAM, 1.6 TB SSD, 1 Gbit/s Port, 32 TB Traffic (100 Mbit/s)`
