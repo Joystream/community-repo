@@ -190,14 +190,6 @@ export enum ProposalTypes {
   SetStorageRoleParameters = "SetStorageRoleParameters",
 }
 
-export class SpendingProposals {
-  constructor(
-    public id: number,
-    public title: string,
-    public spentAmount: number
-  ) {}
-}
-
 export class MintStatistics {
   startMinted: number;
   endMinted: number;

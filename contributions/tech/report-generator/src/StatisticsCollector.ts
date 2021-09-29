@@ -9,15 +9,13 @@ import {
   EventRecord,
   Hash,
 } from "@polkadot/types/interfaces";
-
+import { Media, MintStatistics, Statistics, WorkersInfo } from "./types";
 import {
-  Media,
-  MintStatistics,
-  Statistics,
-  WorkersInfo,
-  SpendingProposals,
-} from "./types";
-import { CacheEvent, Bounty, WorkerReward } from "./lib/types";
+  CacheEvent,
+  Bounty,
+  WorkerReward,
+  SpendingProposal,
+} from "./lib/types";
 
 import { Option, u32, Vec } from "@polkadot/types";
 import { ElectionStake, SealedVote, Seats } from "@joystream/types/council";
@@ -90,6 +88,7 @@ import {
   getWorkerRewards,
   getWorkerRow,
   getBurnedTokens,
+  getFinalizedSpendingProposals,
   getActiveValidators,
   getValidatorsRewards,
 } from "./lib/rewards";
@@ -108,7 +107,8 @@ const CACHE_FOLDER = "cache";
 const VIDEO_CLASS_iD = 10;
 const CHANNEL_CLASS_iD = 1;
 
-const SPENDING_CATEGORIES_FILE_NAME = "spending_proposal_categories";
+const SPENDING_PROPOSALS_CATEGORIES_FILE =
+  __dirname + "/../../../../governance/spending_proposal_categories.csv";
 
 export class StatisticsCollector {
   private api?: ApiPromise;
@@ -184,14 +184,13 @@ export class StatisticsCollector {
   }
 
   async getApprovedBounties(): Promise<Bounty[]> {
-    let bountiesFilePath = `${__dirname}/../${SPENDING_CATEGORIES_FILE_NAME}.csv`;
     try {
-      await fs.access(bountiesFilePath, constants.R_OK);
+      await fs.access(SPENDING_PROPOSALS_CATEGORIES_FILE, constants.R_OK);
     } catch {
-      throw new Error("Bounties CSV file not found");
+      console.warn("File with the spending proposal categories not found");
     }
 
-    const fileContent = await fs.readFile(bountiesFilePath);
+    const fileContent = await fs.readFile(SPENDING_PROPOSALS_CATEGORIES_FILE);
     let rawBounties = parse(fileContent);
     rawBounties.shift();
     rawBounties = rawBounties.filter((line: string[]) => line[8] == "Bounties");
@@ -211,42 +210,6 @@ export class StatisticsCollector {
       (bounty: Bounty) =>
         bounty.status == "Approved" && bounty.testnet == "Antioch"
     );
-  }
-
-  async getFinalizedSpendingProposals(): Promise<Array<SpendingProposals>> {
-    let spendingProposals = new Array<SpendingProposals>();
-    for (let [key, blockEvents] of this.blocksEventsCache) {
-      let proposalEvents = blockEvents.filter(
-        ({ section, method }) =>
-          section === "proposalsEngine" && method === "ProposalStatusUpdated"
-      );
-      for (let proposalEvent of proposalEvents) {
-        let statusUpdateData = proposalEvent.data[1] as any;
-        const finalizedAt = statusUpdateData.finalized.finalizedAt;
-        if (!(statusUpdateData.finalized && finalizedAt)) continue;
-
-        const id: ProposalId = proposalEvent.data[0] as any;
-        const proposalInfo: ProposalOf = await getProposalInfo(this.api, id);
-        const finalizedData = proposalInfo.status.asFinalized;
-        const proposalDetail: ProposalDetails = await getProposalDetails(
-          this.api,
-          id
-        );
-        if (
-          !finalizedData.proposalStatus.isApproved ||
-          !proposalDetail.isSpending
-        )
-          continue;
-        let spendingParams = proposalDetail.asSpending;
-        if (!spendingProposals.some((proposal) => proposal.id == +id)) {
-          const title = proposalInfo.title.toString();
-          const amount = +spendingParams[0];
-          const proposal = new SpendingProposals(+id, title, amount);
-          spendingProposals.push(proposal);
-        }
-      }
-    }
-    return spendingProposals;
   }
 
   async fillTokenGenerationInfo(
@@ -270,7 +233,9 @@ export class StatisticsCollector {
 
     // bounties
     const bounties = await this.getApprovedBounties();
-    let spendingProposals: SpendingProposals[] = await this.getFinalizedSpendingProposals();
+    const blocks = this.filterCache(filterMethods.finalizedSpendingProposals);
+    const spendingProposals: SpendingProposal[] =
+      await getFinalizedSpendingProposals(this.api, blocks);
     let bountiesTotalPaid = 0;
     if (bounties) {
       for (let bounty of bounties) {
@@ -278,20 +243,18 @@ export class StatisticsCollector {
           (spendingProposal) => spendingProposal.id == bounty.proposalId
         );
         if (bountySpendingProposal)
-          bountiesTotalPaid += bountySpendingProposal.spentAmount;
+          bountiesTotalPaid += bountySpendingProposal.amount;
       }
       this.saveStats({ bountiesTotalPaid });
     }
 
     if (!bountiesTotalPaid) {
       console.warn(
-        "No bounties found in " +
-          SPENDING_CATEGORIES_FILE_NAME +
-          ", trying to find spending proposals of bounties, please check the values!..."
+        `No bounties found in ${SPENDING_PROPOSALS_CATEGORIES_FILE}, trying to find spending proposals of bounties, please check the values!...`
       );
       for (const spendingProposal of spendingProposals) {
         if (spendingProposal.title.toLowerCase().includes("bounty")) {
-          bountiesTotalPaid += spendingProposal.spentAmount;
+          bountiesTotalPaid += spendingProposal.amount;
         }
       }
       this.saveStats({ bountiesTotalPaid });
@@ -299,7 +262,7 @@ export class StatisticsCollector {
 
     let roundNrBlocks = endBlock - startBlock;
     const spendingProposalsTotal = spendingProposals.reduce(
-      (n, p) => n + p.spentAmount,
+      (n, p) => n + p.amount,
       0
     );
     const newCouncilRewards = await this.computeCouncilReward(
