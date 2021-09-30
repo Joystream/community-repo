@@ -2,80 +2,82 @@
 This is a report which explains the current state of the Joystream network in numbers. It pulls figures from the chain and tries to provide a basic level of information about the network, tokens and more. 
 
 ## 1.0 Basic Information
-* Block range: 2,293,200 - 2,394,000
-* Date Range: 9/14/2021 - 9/21/2021
-* Council session #: 22
+* Block range: 2,394,000 - 2,494,800
+* Date Range: 9/21/2021 - 9/28/2021
+* Council session #: 23
 
 ## 2.0 Tokenomics
 ### 2.1 Token generation breakdown
 | Property            | Start Block | End Block | % Change |
 |---------------------|--------------|--------------|----------|
-| Total Tokens Minted |  1,381,714,232 | 1,477,932,889 | 6.96 |
-| USD Pool |  33,975.555 | 37,426.131 | 10.16 |
+| Total Tokens Minted |  1,477,932,889 | 1,511,313,443 | 2.26 |
+| USD Pool |  37,426.131 | 38,455.057 | 2.75 |
 
 | Property            | Value        |
 |---------------------|--------------|
-| Total Tokens Burned | 141,212,000           | 
-| Spending Proposals (Executed)   |  16,449,268                  |
-| Bounties paid       |  12,449,799                           |
-| Validator Role      |  11,388,562            |  
-| Storage Role        | 9,836,288             | 
+| Total Tokens Burned | 87,784,000           | 
+| Spending Proposals (Executed)   |  17,220,110                  |
+| Bounties paid       |  10,849,429                           |
+| Validator Role      |  11,071,874            |  
+| Storage Role        | 4,556,160             | 
 | Curator Role        | 5,975,340             |
-| Operations Role     | 13,918,296          |
+| Operations Role     | 14,478,268          |
 
 
 ### 2.2 Fiat Pool
 | Property            | Start Block, USD | End Block, USD | % Change |
 |---------------------|--------------|--------------|----------|
-| USD Pool |  33,975.555 | 37,426.131 | 10.16 |
+| USD Pool |  37,426.131 | 38,455.057 | 2.75 |
 
 | Refill, USD | Reason | Block # |
 |---------------------|--------------|--------------|
-|1075|recurring-sumer-21|2297030|
-|2972|kpi-sumer-19/20|2297038|
-|1621|kpi-sumer-21|2376665|
-|1075|recurring-sumer-22|2394000|
+|118|bounty-9|2421837|
+|244|bounty-16|2421841|
+|1225|bounty-18|2421845|
+|400|bounty-19|2421848|
+|800|bounty-20|2421851|
+|500|bounty-21|2421854|
 
 
 
 ### 2.3 Mints 
 | Property                    | Start Block           | End Block | % Change |
 |-----------------------------|-----------------------|--------------|----------|
-| Council Mint Total Minted   | 658,249,653  |  678,586,921 |3.09          |
-| Curator Mint Total Minted   |  133,467,698 | 139,982,633| 4.88          |
-| Storage Mint Total Minted   |  136,218,137 |  142,152,850            |  4.36        |
-| Operations Mint Total Minted   |  116,306,650 |  127,762,246            |  9.85        |
+| Council Mint Total Minted   | 678,586,921  |  699,695,031 |3.11          |
+| Curator Mint Total Minted   |  139,982,633 | 145,957,973| 4.27          |
+| Storage Mint Total Minted   |  142,152,850 |  146,897,586            |  3.34        |
+| Operations Mint Total Minted   |  127,762,246 |  138,817,685            |  8.65        |
 
 
 ### 2.4 tJOY Inflation 
 
-* Start Block Exchange Rate, USD/1M tJOY: 24.589
-* End Block Exchange Rate, USD/1M tJOY: 25.323
-* Inflation, %: -2.98
+* Start Block Exchange Rate, USD/1M tJOY: 25.323
+* End Block Exchange Rate, USD/1M tJOY: 25.445
+* Inflation, %: -0.48
 
 Negative value indicates deflation
 
 ## 3.0 Council
-* Council session #: 22
+* Council session #: 23
 * Number of council members: 16
-* Total number of proposals: 22
-* Total number of Approved proposals: 22
+* Total number of proposals: 28
+* Total number of Approved proposals: 24
 
 ### 3.1 Elections
 | Property                    | Start Block  |
 |-----------------------------|--------------|
-| Total Applicants            |29              |
-| Total Applicant Stake       |124,315,235              |
-| Total Votes                 |76             |
+| Total Applicants            |33              |
+| Total Applicant Stake       |97,775,239              |
+| Total Votes                 |64             |
 
 ## 4 Roles
 ### 4.1 Validator Information
-* Block generation time (average): 6.04
+* Block generation time (average): 6.05
 
 | Property                    | Start Block | End Block | % Change |
 |-----------------------------|--------------|--------------|----------|
 | Number of Validators       |  105 / 105 | 105 / 105 | 0 |
-| Validator Total Stake       | 321,270,563 | 274,196,285 | -14.65 |
+| Validator Total Stake       | 274,196,285 | 263,274,744 | -3.98 |
 
 
 ### 4.2 Storage Role
@@ -116,8 +118,8 @@ Role occupants:
 ### 4.4 Operations Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of Operations Workers      | 6 | 24 | 300 |
-| Total Operations Stake (workers + lead)  | 150,000 |  2,150,000 | 1,333.33 |
+| Number of Operations Workers      | 24 | 24 | 0 |
+| Total Operations Stake (workers + lead)  | 2,150,000 |  2,150,000 | 0 |
 
 Role occupants:  
 @l1dev | (5DFb8Xr8FfQyiFMjURjQHqHfunfEb4jWLhF5q4HR6EHiJTe8)  
@@ -150,18 +152,18 @@ Role occupants:
 ### 5.1 Membership Information
 | Property          | Start Block | End Block | % Change |
 |-------------------|--------------|--------------|----------|
-| Number of members | 2,806|  2,828 | 0.78 |
+| Number of members | 2,828|  2,880 | 1.84 |
 
 ### 5.2 Media & Uploads
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of uploads       | 6,207 | 6,280  |  1.18 |
-| Size of content (MB)        |  800,453.42 |  811,893.8 | 1.43          |
-| Number of channels      |  432 | 443 | 2.55 |
+| Number of uploads       | 6,280 | 6,380  |  1.59 |
+| Size of content (MB)        |  811,893.8 |  822,912.2 | 1.36          |
+| Number of channels      |  443 | 455 | 2.71 |
 
 ### 5.3 Forum Activity
 | Property          | Start Block | End Block | % Change |
 |-------------------|--------------|--------------|----------|
 | Number of categories | 57 | 57 | 0         |
-| Number of threads    | 603| 615 | 1.99         |
-| Number of posts      | 5,115 | 5,251            |  2.66        |
+| Number of threads    | 615| 630 | 2.44         |
+| Number of posts      | 5,251 | 5,470            |  4.17        |
