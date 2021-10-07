@@ -2,7 +2,7 @@
 
 ## Internal rules of Bounty 24 (related to the curator / BM)
 
-For this, the Bounty will be allocated 1 curator and 1 bounty manager (who is not the current curator) reward for the work of the curator $ 25, reward for the work of the Bounty manager (who is not the current curator)  $ 50 for the reporting period a week, provided that their work is done with high quality and will be accepted.
+For this, the Bounty will be allocated 1 curator and 1 bounty manager (who is not the current curator) reward for the work of the curator $ 25, reward for the work of the Bounty manager (who is not the current curator)  $ 25 for the reporting period a week, provided that their work is done with high quality and will be accepted.
 
 The Curator or Designated Curators must ensure and ensure that no videos that violate any license or terms are submitted for BM evaluation. So their volume is solely limited by this, and they don't need to care if the video is too short / long, or if it has poor resolution, or that the participants did not go beyond any limits, etc.
 
