@@ -3799,6 +3799,334 @@
                 "memberId": 2329,
                 "memberHandle": "laura"
             }
+        },
+        {
+            "block": 2517987,
+            "date": "2021-09-30T06:46:36.000Z",
+            "curators": [
+                {
+                    "workerId": 7,
+                    "memberId": 515,
+                    "memberHandle": "l1dev"
+                },
+                {
+                    "workerId": 16,
+                    "memberId": 2228,
+                    "memberHandle": "kiraa"
+                },
+                {
+                    "workerId": 18,
+                    "memberId": 736,
+                    "memberHandle": "mmsaww"
+                },
+                {
+                    "workerId": 19,
+                    "memberId": 1345,
+                    "memberHandle": "kadyrovs"
+                },
+                {
+                    "workerId": 20,
+                    "memberId": 2435,
+                    "memberHandle": "zazik"
+                },
+                {
+                    "workerId": 22,
+                    "memberId": 1048,
+                    "memberHandle": "igrex"
+                }
+            ],
+            "curatorLead": {
+                "workerId": 21,
+                "memberId": 2329,
+                "memberHandle": "laura"
+            }
+        },
+        {
+            "block": 2532387,
+            "date": "2021-10-01T07:02:24.000Z",
+            "curators": [
+                {
+                    "workerId": 7,
+                    "memberId": 515,
+                    "memberHandle": "l1dev"
+                },
+                {
+                    "workerId": 16,
+                    "memberId": 2228,
+                    "memberHandle": "kiraa"
+                },
+                {
+                    "workerId": 18,
+                    "memberId": 736,
+                    "memberHandle": "mmsaww"
+                },
+                {
+                    "workerId": 19,
+                    "memberId": 1345,
+                    "memberHandle": "kadyrovs"
+                },
+                {
+                    "workerId": 20,
+                    "memberId": 2435,
+                    "memberHandle": "zazik"
+                },
+                {
+                    "workerId": 22,
+                    "memberId": 1048,
+                    "memberHandle": "igrex"
+                }
+            ],
+            "curatorLead": {
+                "workerId": 21,
+                "memberId": 2329,
+                "memberHandle": "laura"
+            }
+        },
+        {
+            "block": 2546787,
+            "date": "2021-10-02T07:19:18.000Z",
+            "curators": [
+                {
+                    "workerId": 7,
+                    "memberId": 515,
+                    "memberHandle": "l1dev"
+                },
+                {
+                    "workerId": 16,
+                    "memberId": 2228,
+                    "memberHandle": "kiraa"
+                },
+                {
+                    "workerId": 18,
+                    "memberId": 736,
+                    "memberHandle": "mmsaww"
+                },
+                {
+                    "workerId": 19,
+                    "memberId": 1345,
+                    "memberHandle": "kadyrovs"
+                },
+                {
+                    "workerId": 20,
+                    "memberId": 2435,
+                    "memberHandle": "zazik"
+                },
+                {
+                    "workerId": 22,
+                    "memberId": 1048,
+                    "memberHandle": "igrex"
+                }
+            ],
+            "curatorLead": {
+                "workerId": 21,
+                "memberId": 2329,
+                "memberHandle": "laura"
+            }
+        },
+        {
+            "block": 2561187,
+            "date": "2021-10-03T07:32:18.000Z",
+            "curators": [
+                {
+                    "workerId": 7,
+                    "memberId": 515,
+                    "memberHandle": "l1dev"
+                },
+                {
+                    "workerId": 16,
+                    "memberId": 2228,
+                    "memberHandle": "kiraa"
+                },
+                {
+                    "workerId": 18,
+                    "memberId": 736,
+                    "memberHandle": "mmsaww"
+                },
+                {
+                    "workerId": 19,
+                    "memberId": 1345,
+                    "memberHandle": "kadyrovs"
+                },
+                {
+                    "workerId": 20,
+                    "memberId": 2435,
+                    "memberHandle": "zazik"
+                },
+                {
+                    "workerId": 22,
+                    "memberId": 1048,
+                    "memberHandle": "igrex"
+                }
+            ],
+            "curatorLead": {
+                "workerId": 21,
+                "memberId": 2329,
+                "memberHandle": "laura"
+            }
+        },
+        {
+            "block": 2575587,
+            "date": "2021-10-04T07:44:00.000Z",
+            "curators": [
+                {
+                    "workerId": 7,
+                    "memberId": 515,
+                    "memberHandle": "l1dev"
+                },
+                {
+                    "workerId": 16,
+                    "memberId": 2228,
+                    "memberHandle": "kiraa"
+                },
+                {
+                    "workerId": 18,
+                    "memberId": 736,
+                    "memberHandle": "mmsaww"
+                },
+                {
+                    "workerId": 19,
+                    "memberId": 1345,
+                    "memberHandle": "kadyrovs"
+                },
+                {
+                    "workerId": 20,
+                    "memberId": 2435,
+                    "memberHandle": "zazik"
+                },
+                {
+                    "workerId": 22,
+                    "memberId": 1048,
+                    "memberHandle": "igrex"
+                }
+            ],
+            "curatorLead": {
+                "workerId": 21,
+                "memberId": 2329,
+                "memberHandle": "laura"
+            }
+        },
+        {
+            "block": 2589987,
+            "date": "2021-10-05T07:57:30.000Z",
+            "curators": [
+                {
+                    "workerId": 7,
+                    "memberId": 515,
+                    "memberHandle": "l1dev"
+                },
+                {
+                    "workerId": 16,
+                    "memberId": 2228,
+                    "memberHandle": "kiraa"
+                },
+                {
+                    "workerId": 18,
+                    "memberId": 736,
+                    "memberHandle": "mmsaww"
+                },
+                {
+                    "workerId": 19,
+                    "memberId": 1345,
+                    "memberHandle": "kadyrovs"
+                },
+                {
+                    "workerId": 20,
+                    "memberId": 2435,
+                    "memberHandle": "zazik"
+                },
+                {
+                    "workerId": 22,
+                    "memberId": 1048,
+                    "memberHandle": "igrex"
+                }
+            ],
+            "curatorLead": {
+                "workerId": 21,
+                "memberId": 2329,
+                "memberHandle": "laura"
+            }
+        },
+        {
+            "block": 2604387,
+            "date": "2021-10-06T08:09:48.000Z",
+            "curators": [
+                {
+                    "workerId": 7,
+                    "memberId": 515,
+                    "memberHandle": "l1dev"
+                },
+                {
+                    "workerId": 16,
+                    "memberId": 2228,
+                    "memberHandle": "kiraa"
+                },
+                {
+                    "workerId": 18,
+                    "memberId": 736,
+                    "memberHandle": "mmsaww"
+                },
+                {
+                    "workerId": 19,
+                    "memberId": 1345,
+                    "memberHandle": "kadyrovs"
+                },
+                {
+                    "workerId": 20,
+                    "memberId": 2435,
+                    "memberHandle": "zazik"
+                },
+                {
+                    "workerId": 22,
+                    "memberId": 1048,
+                    "memberHandle": "igrex"
+                }
+            ],
+            "curatorLead": {
+                "workerId": 21,
+                "memberId": 2329,
+                "memberHandle": "laura"
+            }
+        },
+        {
+            "block": 2618787,
+            "date": "2021-10-07T08:21:54.000Z",
+            "curators": [
+                {
+                    "workerId": 7,
+                    "memberId": 515,
+                    "memberHandle": "l1dev"
+                },
+                {
+                    "workerId": 16,
+                    "memberId": 2228,
+                    "memberHandle": "kiraa"
+                },
+                {
+                    "workerId": 18,
+                    "memberId": 736,
+                    "memberHandle": "mmsaww"
+                },
+                {
+                    "workerId": 19,
+                    "memberId": 1345,
+                    "memberHandle": "kadyrovs"
+                },
+                {
+                    "workerId": 20,
+                    "memberId": 2435,
+                    "memberHandle": "zazik"
+                },
+                {
+                    "workerId": 22,
+                    "memberId": 1048,
+                    "memberHandle": "igrex"
+                }
+            ],
+            "curatorLead": {
+                "workerId": 21,
+                "memberId": 2329,
+                "memberHandle": "laura"
+            }
         }
     ]
 }
