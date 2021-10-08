@@ -11,6 +11,7 @@ This is a report which explains the current state of the Joystream network in nu
 | Property            | Start Block | End Block | % Change |
 |---------------------|--------------|--------------|----------|
 | Total Tokens Minted |  {startIssuance} | {endIssuance} | {percNewIssuance} |
+| USD Pool |  {startDollarPool} | {endDollarPool} | {dollarPoolPctChange} |
 
 | Property            | Value        |
 |---------------------|--------------|
@@ -22,6 +23,12 @@ This is a report which explains the current state of the Joystream network in nu
 | Curator Role        | {newCuratorRewards} |
 | Operations Role     | {newOperationsReward} |
 
+### 2.2 Fiat Pool
+| Property            | Start Block, USD | End Block, USD | % Change |
+|---------------------|--------------|--------------|----------|
+| USD Pool |  {startDollarPool} | {endDollarPool} | {dollarPoolPctChange} |
+
+{dollarPoolRefills}
 
 ### 2.3 Mints 
 | Property                    | Start Block           | End Block | % Change |
@@ -30,6 +37,15 @@ This is a report which explains the current state of the Joystream network in nu
 | Curator Mint Total Minted   | {startCuratorMinted} | {endCuratorMinted} | {percCuratorMinted} |
 | Storage Mint Total Minted   | {startStorageMinted} | {endStorageMinted} | {percStorageMinted} |
 | Operations Mint Total Minted | {startOperationsMinted} | {endOperationsMinted} | {percOperationsMinted} |
+
+
+### 2.4 tJOY Inflation
+
+* Start Block Exchange Rate, USD/1M tJOY: {startTermExchangeRate}
+* End Block Exchange Rate, USD/1M tJOY: {endTermExchangeRate}
+* Inflation, %: {inflationPct}
+
+Negative value indicates deflation
 
 ## 3.0 Council
 * Council session #: {councilRound}

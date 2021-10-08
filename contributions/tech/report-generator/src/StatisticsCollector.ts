@@ -15,6 +15,7 @@ import {
   Bounty,
   WorkerReward,
   SpendingProposal,
+  StatusData,
 } from "./lib/types";
 
 import { Option, u32, Vec } from "@polkadot/types";
@@ -36,6 +37,7 @@ import { Stake } from "@joystream/types/stake";
 import { Worker, WorkerId } from "@joystream/types/working-group";
 import { ProposalDetails, ProposalOf } from "@joystream/types/augment/types";
 import * as constants from "constants";
+import axios from "axios";
 
 // lib
 import { eventStats, getPercent, getTotalMinted, momentToString } from "./lib";
@@ -100,7 +102,8 @@ const parse = require("csv-parse/lib/sync");
 const BURN_ADDRESS = "5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu";
 
 const COUNCIL_ROUND_OFFSET = 2;
-const PROVIDER_URL = "ws://localhost:9944";
+const PROVIDER_URL = "ws://127.0.0.1:9944";
+const STATUS_URL = "https://status.joystream.org/status/";
 
 const CACHE_FOLDER = "cache";
 
@@ -178,6 +181,7 @@ export class StatisticsCollector {
     await this.fillMembershipInfo(startHash, endHash);
     await this.fillMediaUploadInfo(startHash, endHash);
     await this.fillForumInfo(startHash, endHash);
+    await this.getFiatEvents(startBlock, endBlock);
 
     this.api.disconnect();
     return this.statistics;
@@ -212,6 +216,16 @@ export class StatisticsCollector {
     );
   }
 
+  fillSudoSetBalance() {
+    let balancesSetByRoot = 0;
+    this.filterCache(filterMethods.sudoSetBalance).map(([block, events]) =>
+      events.forEach(({ data }) => {
+        balancesSetByRoot += Number(data[1]);
+      })
+    );
+    this.saveStats({ balancesSetByRoot });
+  }
+
   async fillTokenGenerationInfo(
     startBlock: number,
     endBlock: number,
@@ -230,6 +244,7 @@ export class StatisticsCollector {
         this.filterCache(filterMethods.getBurnedTokens)
       ),
     });
+    this.fillSudoSetBalance();
 
     // bounties
     const bounties = await this.getApprovedBounties();
@@ -723,6 +738,117 @@ export class StatisticsCollector {
       endCategories,
       newCategories: endCategories - startCategories,
       perNewCategories: getPercent(startCategories, endCategories),
+    });
+  }
+
+  async getFiatEvents(startBlockHeight: number, endBlockHeight: number) {
+    let sumerGenesis = new Date("2021-04-07T18:20:54.000Z");
+
+    console.log("Fetching fiat events....");
+    await axios.get(STATUS_URL).then((response: { data: StatusData }) => {
+      let filteredExchanges = response.data.exchanges.filter(
+        (exchange) =>
+          exchange.blockHeight > startBlockHeight &&
+          exchange.blockHeight <= endBlockHeight &&
+          new Date(exchange.date) > sumerGenesis
+      );
+
+      console.log("# Exchanges");
+      for (let filteredExchange of filteredExchanges) {
+        console.log(
+          `Block: ${filteredExchange.blockHeight}, USD: ${filteredExchange.amountUSD}`
+        );
+      }
+
+      console.log("# Burn");
+      let filteredBurns = response.data.burns.filter(
+        (burn: any) =>
+          burn.blockHeight > startBlockHeight &&
+          burn.blockHeight <= endBlockHeight &&
+          new Date(burn.date) > sumerGenesis
+      );
+      for (let filteredBurn of filteredBurns) {
+        console.log(
+          `Block: ${filteredBurn.blockHeight}, tJOY: ${filteredBurn.amount}`
+        );
+      }
+
+      console.log("# Dollar Pool Changes");
+      let dollarPoolRefills = ``;
+      let allDollarPoolChanges = response.data.dollarPoolChanges.filter(
+        (dollarPoolChange: any) =>
+          dollarPoolChange.blockHeight > startBlockHeight &&
+          dollarPoolChange.blockHeight <= endBlockHeight &&
+          new Date(dollarPoolChange.blockTime) > sumerGenesis
+      );
+
+      let filteredDollarPoolChanges = response.data.dollarPoolChanges.filter(
+        (dollarPoolChange: any) =>
+          dollarPoolChange.blockHeight > startBlockHeight &&
+          dollarPoolChange.blockHeight <= endBlockHeight &&
+          dollarPoolChange.change > 0 &&
+          new Date(dollarPoolChange.blockTime) > sumerGenesis
+      );
+
+      if (filteredDollarPoolChanges.length > 0) {
+        dollarPoolRefills += "| Refill, USD | Reason | Block # |\n";
+        dollarPoolRefills +=
+          "|---------------------|--------------|--------------|\n";
+      }
+
+      for (let filteredDollarPoolChange of filteredDollarPoolChanges) {
+        console.log(
+          `Block: ${filteredDollarPoolChange.blockHeight}, USD: ${filteredDollarPoolChange.change}, Reason: ${filteredDollarPoolChange.reason}`
+        );
+        dollarPoolRefills += `|${filteredDollarPoolChange.change}|${filteredDollarPoolChange.reason}|${filteredDollarPoolChange.blockHeight}|\n`;
+      }
+
+      let startTermExchangeRate = 0;
+      let endTermExchangeRate = 0;
+      if (filteredExchanges.length) {
+        console.log("# USD / 1M tJOY Rate");
+        console.log(
+          `@ Term start (block #${filteredExchanges[0].blockHeight}): ${
+            filteredExchanges[0].price * 1000000
+          }`
+        );
+        const lastExchangeEvent =
+          filteredExchanges[filteredExchanges.length - 1];
+        console.log(
+          `@ Term End (block #${lastExchangeEvent.blockHeight}): ${
+            lastExchangeEvent.price * 1000000
+          }`
+        );
+        startTermExchangeRate = filteredExchanges[0].price * 1000000;
+        endTermExchangeRate = lastExchangeEvent.price * 1000000;
+      } else {
+        // TODO outsource into separate function and call with either exchanges or dollarpoolchanges
+        startTermExchangeRate =
+          filteredDollarPoolChanges[0].valueAfter * 1000000;
+        const lastEvent =
+          filteredDollarPoolChanges[filteredDollarPoolChanges.length - 1];
+        endTermExchangeRate = lastEvent.rateAfter * 1000000;
+      }
+      let inflationPct = getPercent(endTermExchangeRate, startTermExchangeRate);
+
+      const startDollarPool =
+        allDollarPoolChanges[0].change > 0
+          ? allDollarPoolChanges[0].valueAfter - allDollarPoolChanges[0].change
+          : allDollarPoolChanges[0].valueAfter;
+      const endDollarEvent =
+        allDollarPoolChanges[allDollarPoolChanges.length - 1];
+      const endDollarPool = endDollarEvent.valueAfter;
+      const dollarPoolPctChange = getPercent(startDollarPool, endDollarPool);
+      this.saveStats({
+        startTermExchangeRate,
+        endTermExchangeRate,
+        inflationPct,
+        startDollarPool,
+        endDollarEvent,
+        endDollarPool,
+        dollarPoolPctChange,
+        dollarPoolRefills,
+      });
     });
   }
 
