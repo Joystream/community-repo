@@ -405,9 +405,10 @@ export class StatisticsCollector {
     workersEnd.forEach(async (worker) => {
       if (worker.stake) info.endStake += worker.stake.value.toNumber();
       if (!worker.reward) return;
-      const workerStart = workersStart.find((w) => w.id === worker.id);
-      const earnedStart = workerStart.reward?.total_reward_received.toNumber();
-      workers += getWorkerRow(worker, earnedStart);
+      let earnedBefore = 0;
+      const hired = workersStart.find((w) => w.id === worker.id);
+      if (hired) earnedBefore = hired.reward.total_reward_received.toNumber();
+      workers += getWorkerRow(worker, earnedBefore);
     });
     const header = `| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |\n|--|--|--|--|--|--|\n`;
     const groupTag =
@@ -528,7 +529,7 @@ export class StatisticsCollector {
     }
 
     this.saveStats({
-      councilRound: round - COUNCIL_ROUND_OFFSET, // TODO repeated elections?
+      councilRound: round - COUNCIL_ROUND_OFFSET,
       councilMembers: await getCouncilSize(this.api, startHash),
       newProposals: endNrProposals - startNrProposals,
       newApprovedProposals: approvedProposals.size,
@@ -777,18 +778,20 @@ export class StatisticsCollector {
       for (let i = startBlock; i < endBlock; ++i) {
         process.stdout.write("\rCaching block: " + i + " until " + endBlock);
         const blockHash: Hash = await getBlockHash(this.api, i);
-        let eventRecord: Vec<EventRecord> = await getEvents(
-          this.api,
-          blockHash
-        );
+        let eventRecord: EventRecord[] = [];
+        try {
+          eventRecord = await getEvents(this.api, blockHash);
+        } catch (e) {
+          console.warn(`Failed to get events.`, e);
+        }
         let cacheEvents = new Array<CacheEvent>();
-        for (let event of eventRecord) {
+        for (let { event } of eventRecord) {
+          if (!event) {
+            console.warn(`empty event record`);
+            continue;
+          }
           cacheEvents.push(
-            new CacheEvent(
-              event.event.section,
-              event.event.method,
-              event.event.data
-            )
+            new CacheEvent(event.section, event.method, event.data)
           );
         }
         blocksEvents.set(i, cacheEvents);
