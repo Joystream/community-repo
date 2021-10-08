@@ -1,3 +1,4 @@
+import { suppressedThreads } from "../../config";
 import {
   Api,
   Block,
@@ -261,8 +262,7 @@ export const posts = async (
     );
     const categoryId = thread.category_id.toNumber();
     if (categoryId === 19 || categoryId === 38) continue; // hide: 19 Media, 38 Russian
-    if ([180, 265, 275].includes(threadId)) continue;
-    // 180 tokens, 265 faucet, 275 pets
+    if (suppressedThreads.includes(threadId)) continue;
 
     const category: Category = await query("title", () =>
       categoryById(api, categoryId)
