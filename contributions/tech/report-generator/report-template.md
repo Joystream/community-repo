@@ -14,22 +14,22 @@ This is a report which explains the current state of the Joystream network in nu
 
 | Property            | Value        |
 |---------------------|--------------|
-| Total Tokens Burned | {newTokensBurn}           | 
-| Spending Proposals (Executed)   |  {spendingProposalsTotal}                  |
-| Bounties paid       |  {bountiesTotalPaid}                           |
-| Validator Role      |  {newValidatorRewards}            |  
-| Storage Role        | {newStorageProviderReward}             | 
-| Curator Role        | {newCuratorRewards}             |
-| Operations Role     | {newOperationsReward}          |
+| Total Tokens Burned | {newTokensBurn} |
+| Spending Proposals (Executed) | {spendingProposalsTotal} |
+| Bounties paid       | {bountiesTotalPaid} |
+| Validator Role      | {newValidatorRewards} |
+| Storage Role        | {newStorageProviderReward} |
+| Curator Role        | {newCuratorRewards} |
+| Operations Role     | {newOperationsReward} |
 
 
 ### 2.3 Mints 
 | Property                    | Start Block           | End Block | % Change |
 |-----------------------------|-----------------------|--------------|----------|
-| Council Mint Total Minted   | {startCouncilMinted}  |  {endCouncilMinted} |{percNewCouncilMinted}          |
-| Curator Mint Total Minted   |  {startCuratorMinted} | {endCuratorMinted}| {percCuratorMinted}          |
-| Storage Mint Total Minted   |  {startStorageMinted} |  {endStorageMinted}            |  {percStorageMinted}        |
-| Operations Mint Total Minted   |  {startOperationsMinted} |  {endOperationsMinted}            |  {percOperationsMinted}        |
+| Council Mint Total Minted   | {startCouncilMinted}  | {endCouncilMinted} |{percNewCouncilMinted} |
+| Curator Mint Total Minted   | {startCuratorMinted} | {endCuratorMinted} | {percCuratorMinted} |
+| Storage Mint Total Minted   | {startStorageMinted} | {endStorageMinted} | {percStorageMinted} |
+| Operations Mint Total Minted | {startOperationsMinted} | {endOperationsMinted} | {percOperationsMinted} |
 
 ## 3.0 Council
 * Council session #: {councilRound}
@@ -40,9 +40,9 @@ This is a report which explains the current state of the Joystream network in nu
 ### 3.1 Elections
 | Property                    | Start Block  |
 |-----------------------------|--------------|
-| Total Applicants            |{electionApplicants}              |
-| Total Applicant Stake       |{electionApplicantsStakes}              |
-| Total Votes                 |{electionVotes}             |
+| Total Applicants            | {electionApplicants} |
+| Total Applicant Stake       | {electionApplicantsStakes} |
+| Total Votes                 | {electionVotes} |
 
 ## 4 Roles
 ### 4.1 Validator Information
@@ -57,18 +57,16 @@ This is a report which explains the current state of the Joystream network in nu
 ### 4.2 Storage Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of Storage Workers | {startStorageProviders}  |  {endStorageProviders} | {percNewStorageProviders} |
-| Total Storage Stake (workers + lead)  | {startStorageProvidersStake} |  {endStorageProvidersStake} | {percNewStorageProviderStake} |   
+| Number of Storage Workers | {startStorageProviders} | {endStorageProviders} | {percNewStorageProviders} |
+| Total Storage Stake (workers + lead) | {startStorageProvidersStake} | {endStorageProvidersStake} | {percNewStorageProviderStake} |
 
-Role occupants:  
 {storageProviders}
 
 ### 4.3 Curator Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of Curators      | {startCurators} | {endCurators} | {percNewCurators} |   
+| Number of Curators      | {startCurators} | {endCurators} | {percNewCurators} |
 
-Role occupants:  
 {curators}
 
 ### 4.4 Operations Role
@@ -77,7 +75,6 @@ Role occupants:
 | Number of Operations Workers      | {startOperationsWorkers} | {endOperationsWorkers} | {percNewOperationsWorkers} |
 | Total Operations Stake (workers + lead)  | {startOperationsStake} |  {endOperationsStake} | {percNewOperationstake} |
 
-Role occupants:  
 {operations}
 
 ## 5.0 User Generated Content
@@ -90,12 +87,12 @@ Role occupants:
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of uploads       | {startMedia} | {endMedia}  |  {percNewMedia} |
-| Size of content (MB)        |  {startUsedSpace} |  {endUsedSpace} | {percNewUsedSpace}          |
+| Size of content (MB)        |  {startUsedSpace} |  {endUsedSpace} | {percNewUsedSpace} |
 | Number of channels      |  {startChannels} | {endChannels} | {percNewChannels} |
 
 ### 5.3 Forum Activity
 | Property          | Start Block | End Block | % Change |
 |-------------------|--------------|--------------|----------|
-| Number of categories | {startCategories} | {endCategories} | {perNewCategories}         |
-| Number of threads    | {startThreads}| {endThreads} | {percNewThreads}         |
-| Number of posts      | {startPosts} | {endPosts}            |  {percNewPosts}        |
+| Number of categories | {startCategories} | {endCategories} | {perNewCategories} |
+| Number of threads    | {startThreads} | {endThreads} | {percNewThreads} |
+| Number of posts      | {startPosts} | {endPosts} | {percNewPosts} |
