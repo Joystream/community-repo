@@ -1,4 +1,4 @@
-# Council Report Generator
+# Tokenomics Report Generator
 
 This scripts collects some information from Joystream chain. \
 It was created to allow the council to generate a report in the finish of the council round. \
@@ -21,3 +21,9 @@ git submodule update
 ## Example
 
 `node build/generator.js 57601 234038`
+
+# Contributors
+
+* [freakstatic](https://github.com/freakstatic)
+* [l1dev](https://git.joystreamstats.live/l1devx)
+* [isonar](https://github.com/singulart)
