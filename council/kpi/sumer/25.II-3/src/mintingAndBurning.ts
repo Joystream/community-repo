@@ -29,6 +29,7 @@ import { ProposalDetails, ProposalOf } from "@joystream/types/augment/types";
 import { RewardRelationship } from "@joystream/types/recurring-rewards";
 import { ApiPromise } from "@polkadot/api";
 import fs, { PathLike } from "fs";
+import { posix } from "path/posix";
 
 const saveFile = (jsonString: string, path: PathLike) => {
   try {
@@ -280,7 +281,7 @@ const processProposals = async (
         block,
         "proposalsEngine.cancelProposal"
       );
-      for (const item of cancelledProposals) {
+      for (const {} of cancelledProposals) {
         burning.totalProposalCancellationFee += 10000;
         burning.cancelledProposals.push(proposalId);
       }
@@ -289,11 +290,12 @@ const processProposals = async (
         hash,
         proposalId
       );
-      if (spendingProposalAmount) {
+      if (spendingProposalAmount && minting.spendingProposals.filter(p => p.proposalId === proposalId && p.amount === spendingProposalAmount).length === 0) {
         minting.spendingProposals.push({
           proposalId,
           amount: spendingProposalAmount,
         });
+        minting.totalSpendingProposalsMint += spendingProposalAmount;
       }
     }
   }
@@ -348,7 +350,7 @@ export async function readMintingAndBurning() {
         stakingRewards: [] as StakingReward[],
         spendingProposals: [] as SpendingProposalMint[],
         totalSpendingProposalsMint: 0,
-        totalRecurringRewardsMint: 0
+        totalRecurringRewardsMint: 0,
       } as MintingBlockData,
       burning: {
         tokensBurned: 0,
@@ -375,7 +377,9 @@ export async function readMintingAndBurning() {
       const setBalanceEvents = filterBySection("balances.BalanceSet", events);
       processSudoEvents(setBalanceEvents, report);
       await processBurnTransfers(api, blockNumber, events, report);
-      report.minting.totalRecurringRewardsMint = recurringRewards.rewards[blockNumber]
+      report.minting.totalRecurringRewardsMint = recurringRewards.rewards[
+        blockNumber
+      ]
         ? recurringRewards.rewards[blockNumber].reduce((a, b) => a + b, 0)
         : 0;
       const totalMinted =
