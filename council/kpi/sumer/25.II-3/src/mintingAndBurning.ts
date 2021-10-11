@@ -22,7 +22,6 @@ import {
   MintingAndBurningReport,
   SpendingProposalMint,
   RecurringRewards,
-  Block,
   BalanceTranfer,
 } from "./types";
 import { Vec } from "@polkadot/types";
@@ -51,8 +50,11 @@ const saveFile = (jsonString: string, path: PathLike) => {
 const appentToFile = (line: string, path: PathLike) =>
   fs.appendFileSync(path, line);
 
-const saveMinting = (minting: MintingAndBurningReport) =>
-  saveFile(JSON.stringify(minting, undefined, 4), mintingJsonPath);
+const saveMinting = (report: MintingAndBurningReport) =>
+  saveFile(JSON.stringify(report, undefined, 4), mintingJsonPath);
+
+const addToMinting = (data: MintingAndBurningData) =>
+  appentToFile(`${JSON.stringify(data, undefined, 4)},\n`, mintingJsonPath);
 
 const saveToLog = (line: string) => {
   console.log(line);
@@ -71,14 +73,6 @@ const filterByEvent = (eventName: string, events: Vec<EventRecord>) => {
   });
 };
 
-const filterByBurnAddressReceiver = (events: EventRecord[]) => {
-  return events.filter((event) => {
-    const { data } = event.event;
-    const receiver = data[1] as AccountId;
-    return receiver.toString() === BURN_ADDRESS;
-  });
-};
-
 const filterBySection = (sectionName: string, events: Vec<EventRecord>) => {
   return events.filter((event) => {
     const { section } = event.event;
@@ -86,13 +80,9 @@ const filterBySection = (sectionName: string, events: Vec<EventRecord>) => {
   });
 };
 
-const filterByMethod = (filterMethod: string, events: Vec<EventRecord>) => {
-  return events.filter((event) => {
-    const { method } = event.event;
-    return method === filterMethod;
-  });
-};
-
+/**
+ * Every balances.BalanceSet event is minting new tokens.
+ */
 const processSudoEvents = (
   mintEvents: EventRecord[],
   report: MintingAndBurningData
@@ -108,6 +98,9 @@ const processSudoEvents = (
   }
 };
 
+/**
+ * When spending proposal is executed, the amount is minted from a council mint.
+ */
 const getSpendingProposalAmount = async (
   api: ApiPromise,
   hash: BlockHash,
@@ -129,12 +122,14 @@ const getSpendingProposalAmount = async (
     proposalDetail.isSpending
   ) {
     const spendingParams = proposalDetail.asSpending;
-    // console.log(`Spending proposal: ${Number(spendingParams[0])}`);
     return Number(spendingParams[0]);
   }
   return undefined;
 };
 
+/**
+ * When transfer occurs to a specific BURN_ADDRESS, transfer amount is burned.
+ */
 const processBurnTransfers = async (
   api: ApiPromise,
   blockNumber: number,
@@ -167,6 +162,9 @@ const processBurnTransfers = async (
   }
 };
 
+/**
+ * Every membership creation burns tokens, checking `members.MemberRegistered` events to detect such burnings.
+ */
 const processMembershipCreation = (
   membershipEvents: EventRecord[],
   report: MintingAndBurningData
@@ -185,6 +183,9 @@ const processMembershipCreation = (
   }
 };
 
+/**
+ * Working Groups recurring reward payments do not emit event, so this is used to detect if there was a specific reward payment.
+ */
 const reloadRecurringRewards = async (
   api: ApiPromise,
   recurringRewards: RecurringRewards,
@@ -212,8 +213,6 @@ const reloadRecurringRewards = async (
 
 /**
  * Mint refill is not minting actually, recurring rewards themselves increase totalIssuance
- * @param mintEvents
- * @param report
  */
 const processWorkingGroupMint = (
   mintEvents: EventRecord[],
@@ -311,14 +310,14 @@ const mintingLogPath = path.resolve(
   "report",
   "mintingAndBurning.log"
 );
+const endpoint = "ws://localhost:9944"; // "wss://rome-rpc-endpoint.joystream.org:9944"
 const BURN_ADDRESS = "5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu";
 const args = process.argv.slice(2);
 const startBlock = Number(args[0]) || 720370;
 const endBlock = Number(args[1]) || 2091600;
 
 export async function readMintingAndBurning() {
-  // const api = await connectApi("wss://rome-rpc-endpoint.joystream.org:9944");
-  const api = await connectApi("ws://localhost:9944");
+  const api = await connectApi(endpoint);
   await api.isReady;
   const recurringRewards = {
     rewards: {},
@@ -327,13 +326,10 @@ export async function readMintingAndBurning() {
     blocks: [],
   } as unknown as MintingAndBurningReport;
   console.log(`Process events in a range [${startBlock} - ${endBlock}]`);
-  // const head = await api.derive.chain.bestNumberFinalized();
   let prevIssuance: number = 0;
-  // for (let blockNumber = startBlock; blockNumber < Number(head); blockNumber += 1) {
-  // for (let blockNumber = Number(head); blockNumber > startBlock; blockNumber -= 1) {
   for (let blockNumber = startBlock; blockNumber < endBlock; blockNumber += 1) {
     if (blockNumber % 10 === 0) {
-      console.log(`Block [${blockNumber}]`);
+      console.log(`Block [${blockNumber}] Timestamp: [${new Date().toISOString()}]`);
     }
     const hash = await getBlockHash(api, blockNumber);
     const issuance = await getIssuance(api, hash);
@@ -362,7 +358,7 @@ export async function readMintingAndBurning() {
 
     const totalIssuance = report.issuance;
     const actualIssuanceDelta = totalIssuance - prevIssuance;
-    if (totalIssuance !== prevIssuance) {
+    if (prevIssuance !== 0 && totalIssuance !== prevIssuance) {
       const proposalEvents = filterByEvent(
         "proposalsEngine.ProposalStatusUpdated",
         events
@@ -410,6 +406,7 @@ export async function readMintingAndBurning() {
         shouldWarn ? "WARN" : "INFO"
       }] Block: [${blockNumber}].`;
       saveToLog(`${blockInfo} ${issuanceInfo} ${mintBurnInfo}`);
+      addToMinting(report)
       prevIssuance = totalIssuance;
     }
     await reloadRecurringRewards(api, recurringRewards, hash);

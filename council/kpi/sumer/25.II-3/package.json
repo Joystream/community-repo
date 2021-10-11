@@ -8,7 +8,7 @@
     "scripts": {
         "build": "tsc",
         "prestart": "tsc",
-        "start": "nodemon src/mintingAndBurning.ts"
+        "start": "nodemon --ignore 'report/*.json' src/mintingAndBurning.ts"
     },
     "dependencies": {
         "@joystream/types": "^0.16.1",
