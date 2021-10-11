@@ -213,30 +213,6 @@ const reloadRecurringRewards = async (
 };
 
 /**
- * Mint refill is not minting actually, recurring rewards themselves increase totalIssuance
- */
-const processWorkingGroupMint = (
-  mintEvents: EventRecord[],
-  report: MintingAndBurningData
-) => {
-  const { minting } = report;
-  if (mintEvents.length > 0) {
-    mintEvents.forEach((event) => {
-      const { section, method, data } = event.event;
-      const dataJson = data.toJSON() as object[];
-      const mintId = dataJson[0] as unknown as number;
-      const mintAmount = dataJson[1] as unknown as number;
-      minting.totalWorkingGroupsMint += mintAmount;
-      minting.workingGroupsMints.push({
-        event: `${section}.${method}`,
-        mintId,
-        amount: mintAmount,
-      });
-    });
-  }
-};
-
-/**
  * Event `staking.Reward` means validator/nominator got rewarderd.
  */
 const processStakingRewards = (
