@@ -547,3 +547,10 @@ export interface MintingAndBurningReport {
 export interface RecurringRewards {
   rewards: { [key: number]: number[] };
 }
+
+export interface BalanceTranfer {
+  method: {
+    args: string[]
+  },
+  tip: string
+}

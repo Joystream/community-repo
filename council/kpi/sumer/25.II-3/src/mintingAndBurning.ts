@@ -22,6 +22,8 @@ import {
   MintingAndBurningReport,
   SpendingProposalMint,
   RecurringRewards,
+  Block,
+  BalanceTranfer,
 } from "./types";
 import { Vec } from "@polkadot/types";
 import { ProposalDetails, ProposalOf } from "@joystream/types/augment/types";
@@ -29,15 +31,12 @@ import { RewardRelationship } from "@joystream/types/recurring-rewards";
 import { ApiPromise } from "@polkadot/api";
 import fs, { PathLike } from "fs";
 
-const saveFile = (
-  jsonString: string,
-  path: PathLike
-) => {
-    try {
-      fs.rmSync(path);
-    } catch (err) {
-      console.log("Error deleting file", err);
-    }
+const saveFile = (jsonString: string, path: PathLike) => {
+  try {
+    fs.rmSync(path);
+  } catch (err) {
+    console.log("Error deleting file", err);
+  }
   try {
     fs.writeFile(path, jsonString, (err) => {
       if (err) {
@@ -49,7 +48,8 @@ const saveFile = (
   } catch (err) {}
 };
 
-const appentToFile = (line: string, path: PathLike) => fs.appendFileSync(path, line)
+const appentToFile = (line: string, path: PathLike) =>
+  fs.appendFileSync(path, line);
 
 const saveMinting = (minting: MintingAndBurningReport) =>
   saveFile(JSON.stringify(minting, undefined, 4), mintingJsonPath);
@@ -135,19 +135,32 @@ const getSpendingProposalAmount = async (
   return undefined;
 };
 
-const processBurnTransfers = (
+const processBurnTransfers = async (
+  api: ApiPromise,
+  blockNumber: number,
   burnEvents: EventRecord[],
   report: MintingAndBurningData
 ) => {
   const { burning } = report;
   if (burnEvents.length > 0) {
-    let tokensBurned = 0;
-    const burnTransfers = filterByBurnAddressReceiver(burnEvents);
-    if (burnTransfers.length > 0) {
-      for (const event of burnTransfers) {
-        const { data } = event.event;
-        const amount = data[2] as Balance;
-        tokensBurned += Number(amount);
+    const hash = await getBlockHash(api, blockNumber);
+    const block = await getBlock(api, hash);
+    const burnTransfers = filterBlockExtrinsicsByMethod(
+      block,
+      "balances.transfer"
+    );
+    for (const item of burnTransfers) {
+      const tranfer = item.toHuman() as unknown as BalanceTranfer;
+      if (tranfer.method.args[0] === BURN_ADDRESS) {
+        const tip = tranfer.tip;
+        let tokensBurned = 0;
+        if (tip.indexOf("MJOY") > 0) {
+          tokensBurned += Number(tip.replace("MJOY", "")) * 1000000;
+        } else if (tip.indexOf("kJOY") > 0) {
+          tokensBurned += Number(tip.replace("kJOY", "")) * 1000;
+        } else {
+          tokensBurned += Number(tip.replace("JOY", ""));
+        }
         burning.tokensBurned += tokensBurned;
       }
     }
@@ -347,46 +360,46 @@ export async function readMintingAndBurning() {
       } as BurningBlockData,
     } as MintingAndBurningData;
 
-    const proposalEvents = filterByEvent(
-      "proposalsEngine.ProposalStatusUpdated",
-      events
-    );
-    await processProposals(api, proposalEvents, report, hash);
-    processStakingRewards(filterByEvent("staking.Reward", events), report);
-    processBurnTransfers(filterByEvent("balances.Transfer", events), report);
-    processMembershipCreation(
-      filterByEvent("members.MemberRegistered", events),
-      report
-    );
-    const setBalanceEvents = filterBySection("balances.BalanceSet", events);
-    processSudoEvents(setBalanceEvents, report);
-    const recurringMinting = recurringRewards.rewards[blockNumber]
-      ? recurringRewards.rewards[blockNumber].reduce((a, b) => a + b, 0)
-      : 0;
-    const totalMinted =
-      report.minting.totalSudoMint +
-      report.minting.totalSpendingProposalsMint +
-      report.minting.stakingRewardsTotal +
-      recurringMinting;
-    const totalBurned =
-      report.burning.tokensBurned +
-      report.burning.totalProposalCancellationFee +
-      report.burning.totalMembershipCreation;
-    const calculatedDelta = totalMinted - totalBurned;
-    if (
-      report.burning.tokensBurned > 0 ||
-      report.burning.totalProposalCancellationFee > 0 ||
-      report.burning.totalMembershipCreation > 0 ||
-      report.minting.totalSudoMint > 0 ||
-      report.minting.totalWorkingGroupsMint > 0 ||
-      report.minting.totalSpendingProposalsMint > 0 ||
-      report.minting.stakingRewardsTotal > 0
-    ) {
-      mintingAndBurningReport.blocks.push(report);
-    }
     const totalIssuance = report.issuance;
     const actualIssuanceDelta = totalIssuance - prevIssuance;
-    if (prevIssuance !== totalIssuance) {
+    if (totalIssuance !== prevIssuance) {
+      const proposalEvents = filterByEvent(
+        "proposalsEngine.ProposalStatusUpdated",
+        events
+      );
+      await processProposals(api, proposalEvents, report, hash);
+      processStakingRewards(filterByEvent("staking.Reward", events), report);
+      processMembershipCreation(
+        filterByEvent("members.MemberRegistered", events),
+        report
+      );
+      const setBalanceEvents = filterBySection("balances.BalanceSet", events);
+      processSudoEvents(setBalanceEvents, report);
+      await processBurnTransfers(api, blockNumber, events, report);
+      const recurringMinting = recurringRewards.rewards[blockNumber]
+        ? recurringRewards.rewards[blockNumber].reduce((a, b) => a + b, 0)
+        : 0;
+      const totalMinted =
+        report.minting.totalSudoMint +
+        report.minting.totalSpendingProposalsMint +
+        report.minting.stakingRewardsTotal +
+        recurringMinting;
+      const totalBurned =
+        report.burning.tokensBurned +
+        report.burning.totalProposalCancellationFee +
+        report.burning.totalMembershipCreation;
+      const calculatedDelta = totalMinted - totalBurned;
+      if (
+        report.burning.tokensBurned > 0 ||
+        report.burning.totalProposalCancellationFee > 0 ||
+        report.burning.totalMembershipCreation > 0 ||
+        report.minting.totalSudoMint > 0 ||
+        report.minting.totalWorkingGroupsMint > 0 ||
+        report.minting.totalSpendingProposalsMint > 0 ||
+        report.minting.stakingRewardsTotal > 0
+      ) {
+        mintingAndBurningReport.blocks.push(report);
+      }
       const shouldWarn =
         totalIssuance !== actualIssuanceDelta &&
         prevIssuance !== actualIssuanceDelta &&
