@@ -1,0 +1,25 @@
+{
+    "blocks": [
+        {
+            "block": 2674882,
+            "issuance": 1631961631,
+            "minting": {
+                "sudoEvents": [],
+                "totalSudoMint": 0,
+                "totalWorkingGroupsMint": 0,
+                "workingGroupsMints": [],
+                "stakingRewardsTotal": 0,
+                "stakingRewards": [],
+                "spendingProposals": [],
+                "totalSpendingProposalsMint": 0
+            },
+            "burning": {
+                "tokensBurned": 211873,
+                "totalMembershipCreation": 0,
+                "totalProposalCancellationFee": 0,
+                "cancelledProposals": [],
+                "membershipCreation": []
+            }
+        }
+    ]
+}
