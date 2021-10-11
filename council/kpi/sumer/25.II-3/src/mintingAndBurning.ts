@@ -329,7 +329,9 @@ export async function readMintingAndBurning() {
   let prevIssuance: number = 0;
   for (let blockNumber = startBlock; blockNumber < endBlock; blockNumber += 1) {
     if (blockNumber % 10 === 0) {
-      console.log(`Block [${blockNumber}] Timestamp: [${new Date().toISOString()}]`);
+      console.log(
+        `Block [${blockNumber}] Timestamp: [${new Date().toISOString()}]`
+      );
     }
     const hash = await getBlockHash(api, blockNumber);
     const issuance = await getIssuance(api, hash);
@@ -346,6 +348,7 @@ export async function readMintingAndBurning() {
         stakingRewards: [] as StakingReward[],
         spendingProposals: [] as SpendingProposalMint[],
         totalSpendingProposalsMint: 0,
+        totalRecurringRewardsMint: 0
       } as MintingBlockData,
       burning: {
         tokensBurned: 0,
@@ -372,14 +375,14 @@ export async function readMintingAndBurning() {
       const setBalanceEvents = filterBySection("balances.BalanceSet", events);
       processSudoEvents(setBalanceEvents, report);
       await processBurnTransfers(api, blockNumber, events, report);
-      const recurringMinting = recurringRewards.rewards[blockNumber]
+      report.minting.totalRecurringRewardsMint = recurringRewards.rewards[blockNumber]
         ? recurringRewards.rewards[blockNumber].reduce((a, b) => a + b, 0)
         : 0;
       const totalMinted =
         report.minting.totalSudoMint +
         report.minting.totalSpendingProposalsMint +
         report.minting.stakingRewardsTotal +
-        recurringMinting;
+        report.minting.totalRecurringRewardsMint;
       const totalBurned =
         report.burning.tokensBurned +
         report.burning.totalProposalCancellationFee +
@@ -406,10 +409,10 @@ export async function readMintingAndBurning() {
         shouldWarn ? "WARN" : "INFO"
       }] Block: [${blockNumber}].`;
       saveToLog(`${blockInfo} ${issuanceInfo} ${mintBurnInfo}`);
-      addToMinting(report)
-      prevIssuance = totalIssuance;
+      addToMinting(report);
     }
     await reloadRecurringRewards(api, recurringRewards, hash);
+    prevIssuance = totalIssuance;
   }
 
   saveMinting(mintingAndBurningReport);

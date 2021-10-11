@@ -517,6 +517,7 @@ export interface MintingBlockData {
   stakingRewardsTotal: number,
   stakingRewards: StakingReward[],
   totalSpendingProposalsMint: number,
+  totalRecurringRewardsMint: number,
   spendingProposals: SpendingProposalMint[]
 }
 

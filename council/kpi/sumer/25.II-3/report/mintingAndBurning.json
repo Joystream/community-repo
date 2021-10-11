@@ -1,0 +1,390 @@
+{
+    "block": 720400,
+    "issuance": 707158122,
+    "minting": {
+        "sudoEvents": [],
+        "totalSudoMint": 0,
+        "totalWorkingGroupsMint": 0,
+        "workingGroupsMints": [],
+        "stakingRewardsTotal": 0,
+        "stakingRewards": [],
+        "spendingProposals": [],
+        "totalSpendingProposalsMint": 0
+    },
+    "burning": {
+        "tokensBurned": 0,
+        "totalMembershipCreation": 0,
+        "totalProposalCancellationFee": 0,
+        "cancelledProposals": [],
+        "membershipCreation": []
+    }
+},
+{
+    "block": 720438,
+    "issuance": 707162421,
+    "minting": {
+        "sudoEvents": [],
+        "totalSudoMint": 0,
+        "totalWorkingGroupsMint": 0,
+        "workingGroupsMints": [],
+        "stakingRewardsTotal": 4299,
+        "stakingRewards": [
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 117
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 287
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 23
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 58
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 141
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 343
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 141
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 344
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 141
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 345
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 260
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 637
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 142
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 346
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 141
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 346
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 141
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 346
+            }
+        ],
+        "spendingProposals": [],
+        "totalSpendingProposalsMint": 0
+    },
+    "burning": {
+        "tokensBurned": 0,
+        "totalMembershipCreation": 0,
+        "totalProposalCancellationFee": 0,
+        "cancelledProposals": [],
+        "membershipCreation": []
+    }
+},
+{
+    "block": 720400,
+    "issuance": 707158122,
+    "minting": {
+        "sudoEvents": [],
+        "totalSudoMint": 0,
+        "totalWorkingGroupsMint": 0,
+        "workingGroupsMints": [],
+        "stakingRewardsTotal": 0,
+        "stakingRewards": [],
+        "spendingProposals": [],
+        "totalSpendingProposalsMint": 0
+    },
+    "burning": {
+        "tokensBurned": 0,
+        "totalMembershipCreation": 0,
+        "totalProposalCancellationFee": 0,
+        "cancelledProposals": [],
+        "membershipCreation": []
+    }
+},
+{
+    "block": 720400,
+    "issuance": 707158122,
+    "minting": {
+        "sudoEvents": [],
+        "totalSudoMint": 0,
+        "totalWorkingGroupsMint": 0,
+        "workingGroupsMints": [],
+        "stakingRewardsTotal": 0,
+        "stakingRewards": [],
+        "spendingProposals": [],
+        "totalSpendingProposalsMint": 0
+    },
+    "burning": {
+        "tokensBurned": 0,
+        "totalMembershipCreation": 0,
+        "totalProposalCancellationFee": 0,
+        "cancelledProposals": [],
+        "membershipCreation": []
+    }
+},
+{
+    "block": 720438,
+    "issuance": 707162421,
+    "minting": {
+        "sudoEvents": [],
+        "totalSudoMint": 0,
+        "totalWorkingGroupsMint": 0,
+        "workingGroupsMints": [],
+        "stakingRewardsTotal": 4299,
+        "stakingRewards": [
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 117
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 287
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 23
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 58
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 141
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 343
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 141
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 344
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 141
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 345
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 260
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 637
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 142
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 346
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 141
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 346
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 141
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 346
+            }
+        ],
+        "spendingProposals": [],
+        "totalSpendingProposalsMint": 0
+    },
+    "burning": {
+        "tokensBurned": 0,
+        "totalMembershipCreation": 0,
+        "totalProposalCancellationFee": 0,
+        "cancelledProposals": [],
+        "membershipCreation": []
+    }
+},
+{
+    "block": 720400,
+    "issuance": 707158122,
+    "minting": {
+        "sudoEvents": [],
+        "totalSudoMint": 0,
+        "totalWorkingGroupsMint": 0,
+        "workingGroupsMints": [],
+        "stakingRewardsTotal": 0,
+        "stakingRewards": [],
+        "spendingProposals": [],
+        "totalSpendingProposalsMint": 0,
+        "totalRecurringRewardsMint": 0
+    },
+    "burning": {
+        "tokensBurned": 0,
+        "totalMembershipCreation": 0,
+        "totalProposalCancellationFee": 0,
+        "cancelledProposals": [],
+        "membershipCreation": []
+    }
+},
+{
+    "block": 720400,
+    "issuance": 707158122,
+    "minting": {
+        "sudoEvents": [],
+        "totalSudoMint": 0,
+        "totalWorkingGroupsMint": 0,
+        "workingGroupsMints": [],
+        "stakingRewardsTotal": 0,
+        "stakingRewards": [],
+        "spendingProposals": [],
+        "totalSpendingProposalsMint": 0,
+        "totalRecurringRewardsMint": 50000
+    },
+    "burning": {
+        "tokensBurned": 0,
+        "totalMembershipCreation": 0,
+        "totalProposalCancellationFee": 0,
+        "cancelledProposals": [],
+        "membershipCreation": []
+    }
+},
+{
+    "block": 720438,
+    "issuance": 707162421,
+    "minting": {
+        "sudoEvents": [],
+        "totalSudoMint": 0,
+        "totalWorkingGroupsMint": 0,
+        "workingGroupsMints": [],
+        "stakingRewardsTotal": 4299,
+        "stakingRewards": [
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 117
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 287
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 23
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 58
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 141
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 343
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 141
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 344
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 141
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 345
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 260
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 637
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 142
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 346
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 141
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 346
+            },
+            {
+                "address": "5FZ32VoYzLCjFUvVVKGzLCt8mcpbbKWYd4HcZWV2y5S7p3tp",
+                "reward": 141
+            },
+            {
+                "address": "5FYu2adiXmhpLzJr1hZsJeFLMxjJKcfd82WTm2WyyjCGV11u",
+                "reward": 346
+            }
+        ],
+        "spendingProposals": [],
+        "totalSpendingProposalsMint": 0,
+        "totalRecurringRewardsMint": 0
+    },
+    "burning": {
+        "tokensBurned": 0,
+        "totalMembershipCreation": 0,
+        "totalProposalCancellationFee": 0,
+        "cancelledProposals": [],
+        "membershipCreation": []
+    }
+},
