@@ -3629,3 +3629,6 @@
 [INFO] Block: [1071810]. Issuance: [864694558]. Previous issuance: [864598503]. Delta: [96055]. Calculated Delta: [96055]. Total Minted: [96055]. Total Burned: [0]
 [INFO] Block: [1072400]. Issuance: [864742438]. Previous issuance: [864694558]. Delta: [47880]. Calculated Delta: [47880]. Total Minted: [47880]. Total Burned: [0]
 [INFO] Block: [1073016]. Issuance: [864747991]. Previous issuance: [864742438]. Delta: [5553]. Calculated Delta: [5553]. Total Minted: [5553]. Total Burned: [0]
+[INFO] Block: [1073159]. Issuance: [864737991]. Previous issuance: [864747991]. Delta: [-10000]. Calculated Delta: [-10000]. Total Minted: [0]. Total Burned: [10000]
+[INFO] Block: [1073200]. Issuance: [864785871]. Previous issuance: [864737991]. Delta: [47880]. Calculated Delta: [47880]. Total Minted: [47880]. Total Burned: [0]
+[INFO] Block: [1073315]. Issuance: [864793133]. Previous issuance: [864785871]. Delta: [7262]. Calculated Delta: [7262]. Total Minted: [7262]. Total Burned: [0]
