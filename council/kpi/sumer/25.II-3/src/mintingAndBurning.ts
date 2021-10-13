@@ -10,7 +10,6 @@ import {
   EventRecord,
   BlockHash,
   SignedBlock,
-  Balance,
 } from "@polkadot/types/interfaces";
 import path from "path";
 import {
@@ -65,6 +64,12 @@ const saveToLog = (line: string) => {
 const filterBlockExtrinsicsByMethod = (block: SignedBlock, name: string) =>
   block.block.extrinsics.filter(
     ({ method: { method, section } }) => `${section}.${method}` === name
+  );
+
+const filterBlockExtrinsicsByMethods = (block: SignedBlock, names: string[]) =>
+  block.block.extrinsics.filter(
+    ({ method: { method, section } }) =>
+      names.indexOf(`${section}.${method}`) >= 0
   );
 
 const filterByEvent = (eventName: string, events: Vec<EventRecord>) => {
@@ -141,25 +146,15 @@ const processBurnTransfers = async (
   if (burnEvents.length > 0) {
     const hash = await getBlockHash(api, blockNumber);
     const block = await getBlock(api, hash);
-    const burnTransfers = filterBlockExtrinsicsByMethod(
-      block,
-      "balances.transfer"
-    );
-    for (const item of burnTransfers) {
-      const tranfer = item.toHuman() as unknown as BalanceTranfer;
-      if (tranfer.method.args[0] === BURN_ADDRESS) {
-        const tip = tranfer.tip;
-        let tokensBurned = 0;
-        if (tip.indexOf("MJOY") > 0) {
-          tokensBurned += Number(tip.replace("MJOY", "")) * 1000000;
-        } else if (tip.indexOf("kJOY") > 0) {
-          tokensBurned += Number(tip.replace("kJOY", "")) * 1000;
-        } else {
-          tokensBurned += Number(tip.replace("JOY", ""));
-        }
-        burning.tokensBurned += tokensBurned;
+    const parentHash = block.block.header.parentHash;
+    const parentEvents = await getEvents(api, parentHash);
+    const transferEvents = filterByEvent("balances.Transfer", parentEvents);
+    transferEvents.forEach((event: EventRecord) => {
+      const { data } = event.event;
+      if (`${data[1]}` === BURN_ADDRESS) {
+        burning.tokensBurned += Number(data[2]);
       }
-    }
+    });
   }
 };
 
@@ -236,6 +231,32 @@ const processStakingRewards = (
 };
 
 /**
+ * When some tip is added, it gets burned.
+ */
+const processTips = async (
+  api: ApiPromise,
+  events: EventRecord[],
+  report: MintingAndBurningData,
+  hash: BlockHash
+) => {
+  const { minting, burning } = report;
+  if (events.length > 0) {
+    const block = await getBlock(api, hash);
+    const burnExtrinsics = filterBlockExtrinsicsByMethods(block, [
+      "utility.batch",
+      "staking.bond",
+      "session.setKeys",
+      "staking.nominate",
+      "members.buyMembership",
+    ]);
+    for (const item of burnExtrinsics) {
+      const tip = item.toHuman() as unknown as BalanceTranfer;
+      burning.tokensBurned += extractTipAmount(tip.tip);
+    }
+  }
+};
+
+/**
  * Process event `proposalsEngine.ProposalStatusUpdated`
  * If proposal is cancelled, update the burning with cancellation fee.
  * If proposal is spendind and executed, update the minting with the spending amount.
@@ -266,7 +287,13 @@ const processProposals = async (
         hash,
         proposalId
       );
-      if (spendingProposalAmount && minting.spendingProposals.filter(p => p.proposalId === proposalId && p.amount === spendingProposalAmount).length === 0) {
+      if (
+        spendingProposalAmount &&
+        minting.spendingProposals.filter(
+          (p) =>
+            p.proposalId === proposalId && p.amount === spendingProposalAmount
+        ).length === 0
+      ) {
         minting.spendingProposals.push({
           proposalId,
           amount: spendingProposalAmount,
@@ -293,6 +320,15 @@ const BURN_ADDRESS = "5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu";
 const args = process.argv.slice(2);
 const startBlock = Number(args[0]) || 720370;
 const endBlock = Number(args[1]) || 2091600;
+
+const extractTipAmount = (tip: string) => {
+  if (tip.indexOf("MJOY") > 0) {
+    return Number(tip.replace("MJOY", "")) * 1000000;
+  } else if (tip.indexOf("kJOY") > 0) {
+    return Number(tip.replace("kJOY", "")) * 1000;
+  }
+  return Number(tip.replace("JOY", ""));
+};
 
 export async function readMintingAndBurning() {
   const api = await connectApi(endpoint);
@@ -344,13 +380,14 @@ export async function readMintingAndBurning() {
         "proposalsEngine.ProposalStatusUpdated",
         events
       );
+      await processTips(api, events, report, hash);
       await processProposals(api, proposalEvents, report, hash);
       processStakingRewards(filterByEvent("staking.Reward", events), report);
       processMembershipCreation(
         filterByEvent("members.MemberRegistered", events),
         report
       );
-      const setBalanceEvents = filterBySection("balances.BalanceSet", events);
+      const setBalanceEvents = filterByEvent("balances.BalanceSet", events);
       processSudoEvents(setBalanceEvents, report);
       await processBurnTransfers(api, blockNumber, events, report);
       report.minting.totalRecurringRewardsMint = recurringRewards.rewards[
