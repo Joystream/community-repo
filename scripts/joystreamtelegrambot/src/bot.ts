@@ -216,12 +216,12 @@ const main = async () => {
       blocks = [];
     }
 
+    // announcements
     if (timestamp > lastCouncilHeartbeat + councilStatusHeartbeat) {
       announce.councilStatus(api, block, sendMessage, discordChannels.council);
       lastCouncilHeartbeat = block.timestamp;
     }
 
-    // announcements
     if (opts.council && block.id > lastBlock.id) {
       council = await announce.council(
         api,

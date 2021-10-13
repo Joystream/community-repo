@@ -76,9 +76,8 @@ export const activeProposals = async (
 };
 
 const getProposalType = async (api: Api, id: number): Promise<string> => {
-  const details: ProposalDetailsOf = await api.query.proposalsCodex.proposalDetailsByProposalId(
-    id
-  );
+  const details: ProposalDetailsOf =
+    await api.query.proposalsCodex.proposalDetailsByProposalId(id);
   const [type]: string[] = Object.getOwnPropertyNames(details.toJSON());
   return type;
 };
