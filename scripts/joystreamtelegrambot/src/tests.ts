@@ -2,7 +2,7 @@
 import { wsLocation } from "../config";
 
 // types
-import { Council, Proposals } from "./types";
+import { Council, Send } from "./types";
 import { types } from "@joystream/types";
 import { ApiPromise, WsProvider } from "@polkadot/api";
 import { Header } from "@polkadot/types/interfaces";
@@ -11,8 +11,9 @@ import { Header } from "@polkadot/types/interfaces";
 import * as announce from "./lib/announcements";
 import * as get from "./lib/getters";
 
-const log = (msg: string): void => console.log(msg);
-const sendMessage = log;
+const log = (msg: string) => console.log(msg);
+const sendMessage: Send = (msg, channel) => console.log(msg.discord);
+const nochan = {};
 
 const main = async () => {
   const provider = new WsProvider(wsLocation);
@@ -28,12 +29,6 @@ const main = async () => {
 
   let council: Council = { round: 0, last: "" };
   let lastBlock: number = 0;
-  let proposals: Proposals = {
-    last: 1,
-    current: 2,
-    active: [],
-    executing: [],
-  };
   let categories = [0, 0];
   let posts = [0, 0];
   let channels = [0, 0];
@@ -45,40 +40,30 @@ const main = async () => {
       lastBlock = block.number.toNumber();
       const currentBlock = block.number.toNumber();
       log("current council");
-      council = await announce.council(api, council, currentBlock, sendMessage);
+      council = await announce.council(
+        api,
+        council,
+        currentBlock,
+        sendMessage,
+        nochan
+      );
       lastBlock = currentBlock;
 
-      log("first proposal");
-      announce.proposals(api, proposals, lastBlock, sendMessage);
-
-      log("last proposal");
-      proposals.current = await get.proposalCount(api);
-      proposals.last = proposals.current - 1;
-      announce.proposals(api, proposals, lastBlock, sendMessage);
-
       log("first category");
-      announce.categories(api, categories, sendMessage);
+      announce.categories(api, categories, sendMessage, nochan);
 
       log("last category");
       categories[1] = await get.currentCategoryId(api);
       categories[0] = categories[1] - 1;
-      announce.categories(api, categories, sendMessage);
+      announce.categories(api, categories, sendMessage, nochan);
 
       log("first post");
-      announce.posts(api, posts, sendMessage);
+      announce.posts(api, posts, sendMessage, nochan);
 
       log("last post");
       posts[1] = await get.currentPostId(api);
       posts[0] = posts[1] - 1;
-      announce.posts(api, posts, sendMessage);
-
-      log("first channel");
-      announce.channels(api, channels, sendMessage);
-
-      log("last channel");
-      channels[1] = await get.currentChannelId(api);
-      channels[0] = channels[1] - 1;
-      announce.channels(api, channels, sendMessage);
+      announce.posts(api, posts, sendMessage, nochan);
     }
   );
 };

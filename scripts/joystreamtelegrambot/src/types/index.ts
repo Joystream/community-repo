@@ -1,6 +1,5 @@
 import { ApiPromise } from "@polkadot/api";
 import { MemberId } from "@joystream/types/members";
-import { AnyJson } from "@polkadot/types/types/helpers";
 import { ProposalParameters, ProposalStatus } from "@joystream/types/proposals";
 import { Nominations } from "@polkadot/types/interfaces";
 import { Option } from "@polkadot/types/codec";
@@ -25,13 +24,13 @@ export interface Options {
 }
 
 export interface ProposalDetail {
+  id: number;
   createdAt: number;
   finalizedAt: number;
   message: { tg: string; discord: string };
   parameters: ProposalParameters;
   stage: string;
   result: string;
-  exec: any;
 }
 
 export type ProposalArray = number[];

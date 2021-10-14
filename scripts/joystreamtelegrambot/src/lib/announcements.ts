@@ -11,6 +11,7 @@ import {
 import { BlockNumber } from "@polkadot/types/interfaces";
 import { Channel, ElectionStage } from "@joystream/types/augment";
 import { Category, Thread, Post } from "@joystream/types/forum";
+import { DiscussionPost } from "@joystream/types/proposals";
 import { domain } from "../../config";
 import { formatTime } from "./util";
 import {
@@ -293,61 +294,61 @@ export const posts = async (
   return current;
 };
 
-// announce latest proposals
-export const proposals = async (
-  api: Api,
-  prop: Proposals,
-  block: number,
+export const proposalCreated = (
+  proposal: ProposalDetail,
   sendMessage: Send,
   channel: any
-): Promise<Proposals> => {
-  let { current, last, active, executing } = prop;
+): void => {
+  const { id, createdAt, finalizedAt, message, parameters, result } = proposal;
+  if (!createdAt) return console.warn(`proposalCreated: wrong data`, proposal);
+  const votingEndsAt = createdAt + parameters.votingPeriod.toNumber();
+  const endTime = moment()
+    .add(6 * (votingEndsAt - id), "second")
+    .format("DD/MM/YYYY HH:mm");
+  const link = `${domain}/#/proposals/${id}`;
+  const tg = `<a href="${link}">Proposal ${id}</a> <b>created</b> at block ${createdAt}.\r\n${message.tg}\r\nYou can <a href="${link}">vote</a> until block ${votingEndsAt} (${endTime} UTC).`;
+  const discord = `Proposal ${id} **created** at block ${createdAt}.\n${message.discord}\nVote until block ${votingEndsAt} (${endTime} UTC): ${link}\n`;
+  sendMessage({ tg, discord, tgParseMode: "HTML" }, channel);
+};
 
-  for (let id: number = +last + 1; id <= current; id++) {
-    const proposal: ProposalDetail = await proposalDetail(api, id);
-    const { createdAt, finalizedAt, message, parameters, result } = proposal;
-    const votingEndsAt = createdAt + parameters.votingPeriod.toNumber();
-    const endTime = moment()
-      .add(6 * (votingEndsAt - block), "second")
-      .format("DD/MM/YYYY HH:mm");
-    const link = `${domain}/#/proposals/${id}`;
-    const tg = `<a href="${link}">Proposal ${id}</a> <b>created</b> at block ${createdAt}.\r\n${message.tg}\r\nYou can <a href="${link}">vote</a> until block ${votingEndsAt} (${endTime} UTC).`;
-    const discord = `Proposal ${id} **created** at block ${createdAt}.\n${message.discord}\nVote until block ${votingEndsAt} (${endTime} UTC): ${link}\n`;
-    sendMessage({ tg, discord, tgParseMode: "HTML" }, channel);
-    active.push(id);
-  }
-
-  for (const id of active) {
-    const proposal: ProposalDetail = await proposalDetail(api, id);
-    const { finalizedAt, message, parameters, result, stage } = proposal;
-    if (stage === "Finalized") {
-      let label: string = result.toLowerCase();
-      if (result === "Approved") {
-        const executed = parameters.gracePeriod.toNumber() > 0 ? false : true;
-        label = executed ? "executed" : "finalized";
-        if (!executed) executing.push(id);
-      }
-      const link = `${domain}/#/proposals/${id}`;
-      const tg = `<a href="${link}">Proposal ${id}</a> <b>${label}</b> at block ${finalizedAt}.\r\n${message.tg}`;
-      const discord = `Proposal ${id} **${label}** at block ${finalizedAt}.\n${message.discord}\n${link}\n`;
-      sendMessage({ tg, discord, tgParseMode: "HTML" }, channel);
-      active = active.filter((a) => a !== id);
+export const proposalUpdated = (
+  proposal: ProposalDetail,
+  blockId: number,
+  sendMessage: Send,
+  channel: any
+): void => {
+  const { id, finalizedAt, message, parameters, result, stage } = proposal;
+  const link = `${domain}/#/proposals/${id}`;
+  if (stage === "Finalized") {
+    let label: string = result.toLowerCase();
+    let grace = ``;
+    if (result === "Approved") {
+      const executesAt = parameters.gracePeriod.toNumber();
+      label = executesAt ? "approved" : "executed";
+      if (executesAt && blockId < executesAt)
+        grace = `and executes at block ${executesAt}`;
     }
-  }
-
-  for (const id of executing) {
-    const proposal = await proposalDetail(api, id);
-    const { finalizedAt, message, parameters } = proposal;
-    const executesAt = +finalizedAt + parameters.gracePeriod.toNumber();
-    if (block < executesAt) continue;
-    const link = `${domain}/#/proposals/${id}`;
-    const tg = `<a href="${link}">Proposal ${id}</a> <b>executed</b> at block ${executesAt}.\r\n${message.tg}`;
-    const discord = `Proposal ${id} **executed** at block ${executesAt}.\n${message.discord}\n${link}\n`;
+    // send announcement
+    const tg = `<a href="${link}">Proposal ${id}</a> <b>${label}</b> at block ${finalizedAt}${grace}.\r\n${message.tg}`;
+    const discord = `Proposal ${id} **${label}** at block ${finalizedAt}${grace}.\n${message.discord}\n${link}\n`;
     sendMessage({ tg, discord, tgParseMode: "HTML" }, channel);
-    executing = executing.filter((e) => e !== id);
   }
+};
 
-  return { current, last: current, active, executing };
+export const proposalPost = async (
+  post: DiscussionPost,
+  author: string,
+  proposalId: number,
+  sendMessage: Send,
+  channel: any
+) => {
+  const { text, created_at, author_id, thread_id } = post;
+  const txt = text.slice(0, 100);
+  const link = `${domain}/#/proposals/${proposalId}`;
+  const tg = `<b>${author}</b> commented on <b><a href="${link}">Proposal ${proposalId}</a></b>: ${txt}`;
+  const discord = `**${author}** commented on **Proposal ${proposalId}**: ${txt} $link`;
+  console.log(tg);
+  sendMessage({ tg, discord, tgParseMode: "HTML" }, channel);
 };
 
 // heartbeat

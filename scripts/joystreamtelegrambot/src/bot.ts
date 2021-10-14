@@ -4,6 +4,7 @@ import TelegramBot, {
   SendMessageOptions,
 } from "node-telegram-bot-api";
 import {
+  domain,
   discordToken,
   tgToken,
   chatid,
@@ -14,12 +15,13 @@ import {
 } from "../config";
 
 // types
-import { Block, Council, Options, Proposals } from "./types";
+import { Block, Council, Options, Proposals, ProposalDetail } from "./types";
 import { types } from "@joystream/types";
 import { ApiPromise, WsProvider } from "@polkadot/api";
-import { AccountId, Header } from "@polkadot/types/interfaces";
+import { AccountId, Header, EventRecord } from "@polkadot/types/interfaces";
 
 // functions
+import { getEvents, getBlockHash, getProposalPost } from "./joystream-lib/api";
 import * as announce from "./lib/announcements";
 import * as get from "./lib/getters";
 import { parseArgs, printStatus, passedTime } from "./lib/util";
@@ -44,7 +46,25 @@ client.on("ready", async () => {
   discordChannels.proposals = await findDiscordChannel("proposals-bot");
   discordChannels.forum = await findDiscordChannel("forum-bot");
   discordChannels.tokenomics = await findDiscordChannel("tokenomics");
+
+  deleteDuplicateMessages(discordChannels.proposals);
 });
+
+const deleteDuplicateMessages = (channel: any) => {
+  let messages: { [key: string]: any } = {};
+  channel.messages.fetch({ limit: 100 }).then((msgs: any) =>
+    msgs.map((msg: any) => {
+      const txt = msg.content.slice(0, 100);
+      if (messages[txt]) {
+        if (msg.deleted) console.log(`duplicate msg already deleted`);
+        else {
+          console.log(`deleting duplicate message`, msg.content);
+          msg.delete().then(() => console.log(`deleted message ${msg.id}`));
+        }
+      } else messages[txt] = msg;
+    })
+  );
+};
 
 const findDiscordChannel = (name: string) =>
   client.channels.cache.find((channel: any) => channel.name === name);
@@ -160,6 +180,8 @@ const main = async () => {
   api.rpc.chain.subscribeNewHeads(async (header: Header): Promise<void> => {
     // current block
     const id = header.number.toNumber();
+    const hash = await getBlockHash(api, id);
+    const events: EventRecord[] = await getEvents(api, hash);
 
     if (lastBlock.id === id) return;
     timestamp = await get.timestamp(api);
@@ -233,18 +255,53 @@ const main = async () => {
     }
 
     if (opts.proposals) {
-      proposals.current = await get.proposalCount(api);
-
-      if (proposals.current > proposals.last && !announced[proposals.current]) {
-        announced[`proposal${proposals.current}`] = true;
-        proposals = await announce.proposals(
-          api,
-          proposals,
-          id,
-          sendMessage,
-          discordChannels.proposals
+      // new proposal
+      const created = events.filter(
+        ({ event }: EventRecord) => event.method === "ProposalCreated"
+      );
+      if (created.length) {
+        console.log(
+          `proposal created`,
+          created.map((e) => e.toHuman())
         );
-        lastProposalUpdate = timestamp;
+        created.map(({ event }) =>
+          get
+            .proposalDetail(api, Number(event.data[1]))
+            .then((proposal: ProposalDetail) =>
+              announce.proposalCreated(
+                proposal,
+                sendMessage,
+                discordChannels.proposals
+              )
+            )
+        );
+      }
+
+      // status update
+      const updated = events.filter(
+        ({ event }: EventRecord) => event.method === "ProposalStatusUpdated"
+      );
+      let seen: number[] = [];
+      if (updated.length) {
+        console.log(
+          `proposal update`,
+          updated.map((e) => e.toHuman())
+        );
+        updated.map(({ event }) => {
+          const proposalId = Number(event.data[0]);
+          if (seen.includes(proposalId)) return;
+          seen.push(proposalId);
+          get
+            .proposalDetail(api, proposalId)
+            .then((proposal: ProposalDetail) =>
+              announce.proposalUpdated(
+                proposal,
+                id,
+                sendMessage,
+                discordChannels.proposals
+              )
+            );
+        });
       }
     }
 
