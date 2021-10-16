@@ -4,7 +4,7 @@
 We want to make our project of high quality and the best we need.
 The problem at the moment is that ...
 New community members come to consuls and do not understand the essence of the work.
-They do not know what to do and how to fill out the CRPD.
+They do not know what to do and how to fill out the KPI.
 They start asking everyone a lot of questions.
 And in our community there is no such person who would help a new member of the community who ended up in consuls.
 Based on this, I propose solutions to this issue, to be more specific about the introduction of such a position as "Consultant".
