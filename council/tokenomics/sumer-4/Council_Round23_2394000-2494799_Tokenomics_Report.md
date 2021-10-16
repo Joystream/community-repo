@@ -2,7 +2,7 @@
 This is a report which explains the current state of the Joystream network in numbers. It pulls figures from the chain and tries to provide a basic level of information about the network, tokens and more. 
 
 ## 1.0 Basic Information
-* Block range: 2,394,000 - 2,494,800
+* Block range: 2394000 - 2494799
 * Date Range: 9/21/2021 - 9/28/2021
 * Council session #: 23
 
@@ -10,24 +10,23 @@ This is a report which explains the current state of the Joystream network in nu
 ### 2.1 Token generation breakdown
 | Property            | Start Block | End Block | % Change |
 |---------------------|--------------|--------------|----------|
-| Total Tokens Minted |  1,477,932,889 | 1,511,313,443 | 2.26 |
-| USD Pool |  37,426.131 | 38,455.057 | 2.75 |
+| Total Tokens Minted |  1477932889 | 1511313443 | 2.26 |
+| USD Pool |  37396.40209879441 | 38455.05697593773 | 2.83 |
 
 | Property            | Value        |
 |---------------------|--------------|
-| Total Tokens Burned | 87,784,000           | 
-| Spending Proposals (Executed)   |  17,220,110                  |
-| Bounties paid       |  10,849,429                           |
-| Validator Role      |  11,071,874            |  
-| Storage Role        | 4,556,160             | 
-| Curator Role        | 5,975,340             |
-| Operations Role     | 14,478,268          |
-
+| Total Tokens Burned | 87784000 |
+| Spending Proposals (Executed) | 17220110 |
+| Bounties paid       | 10849429 |
+| Validator Role      | 11071874 |
+| Storage Role        | 4556114.8 |
+| Curator Role        | 5975280.72 |
+| Operations Role     | 14478124.37 |
 
 ### 2.2 Fiat Pool
 | Property            | Start Block, USD | End Block, USD | % Change |
 |---------------------|--------------|--------------|----------|
-| USD Pool |  37,426.131 | 38,455.057 | 2.75 |
+| USD Pool | 37396.40209879441 | 38455.05697593773 | 2.83 |
 
 | Refill, USD | Reason | Block # |
 |---------------------|--------------|--------------|
@@ -39,21 +38,20 @@ This is a report which explains the current state of the Joystream network in nu
 |500|bounty-21|2421854|
 
 
-
 ### 2.3 Mints 
 | Property                    | Start Block           | End Block | % Change |
 |-----------------------------|-----------------------|--------------|----------|
-| Council Mint Total Minted   | 678,586,921  |  699,695,031 |3.11          |
-| Curator Mint Total Minted   |  139,982,633 | 145,957,973| 4.27          |
-| Storage Mint Total Minted   |  142,152,850 |  146,897,586            |  3.34        |
-| Operations Mint Total Minted   |  127,762,246 |  138,817,685            |  8.65        |
+| Council Mint Total Minted   | 678586921  | 699695031 |3.11 |
+| Curator Mint Total Minted   | 139982633 | 145957973 | 4.27 |
+| Storage Mint Total Minted   | 142152850 | 146897586 | 3.34 |
+| Operations Mint Total Minted | 127762246 | 138817685 | 8.65 |
 
 
-### 2.4 tJOY Inflation 
+### 2.4 tJOY Inflation
 
-* Start Block Exchange Rate, USD/1M tJOY: 25.323
-* End Block Exchange Rate, USD/1M tJOY: 25.445
-* Inflation, %: -0.48
+* Start Block Exchange Rate, USD/1M tJOY: 25.322778512493763
+* End Block Exchange Rate, USD/1M tJOY: 25.590205779551912
+* Inflation, %: -1.05
 
 Negative value indicates deflation
 
@@ -66,104 +64,106 @@ Negative value indicates deflation
 ### 3.1 Elections
 | Property                    | Start Block  |
 |-----------------------------|--------------|
-| Total Applicants            |33              |
-| Total Applicant Stake       |97,775,239              |
-| Total Votes                 |64             |
+| Total Applicants            | 33 |
+| Total Applicant Stake       | 97775239 |
+| Total Votes                 | 64 |
 
 ## 4 Roles
 ### 4.1 Validator Information
 * Block generation time (average): 6.05
 
-| Property                    | Start Block | End Block | % Change |
-|-----------------------------|--------------|--------------|----------|
-| Number of Validators       |  105 / 105 | 105 / 105 | 0 |
-| Validator Total Stake       | 274,196,285 | 263,274,744 | -3.98 |
+| Property                   | Start Block | End Block | % Change |
+|----------------------------|--------------|--------------|----------|
+| Number of Validators       | 105 / 105 | 105 / 105 | 0 |
+| Validator Total Stake      | 274196285 | 263274744 | -3.98 |
 
 
 ### 4.2 Storage Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of Storage Workers | 11  |  11 | 0 |
-| Total Storage Stake (workers + lead)  | 1,100,000 |  1,100,000 | 0 |   
+| Number of Storage Workers | 11 | 11 | 0 |
+| Total Storage Stake (workers + lead) | 1100000 | 1100000 | 0 |
 
-Role occupants:  
-@joystreamstats | (5C8BEb4AwVmDnxkZmbh4PVxJR5TMQ7QxU6nZtYkqTAvXhUP3)  
-@julysake | (5CFnUMpSNxXSkb3p2yaqw2rCdyqZbAUtx9SQVkPBYL5P5Jku)  
-@kalpakci | (5FxJ7z9tnscgL9xeqeo8sB3izwJKszFPdJSpRPWFr1y35Gcw)  
-@joystream_storage_member | (5EyTk4G9zt5wApxwK6MbPWQfRY6xy2nxfq8V6EXWfHxP5jou)  
-@maxlevush | (5Gy9eib5P1vB4Tvr9u74J7rhxvHqv5qhTdP3xwFfkArHQWPe)  
-@joyval | (5CyYw8yjJ1VYnqBJcNTwBegZKfmrWFVMukqEE96UyrWzwfiu)  
-@dapplooker | (5GvFLWbDLvs6CmBo2LZ15A4Vj15Fy8TzBd1sMWoLmdNe55nM)  
-@godshunter | (5CSuu4WFADz7afhcjbEDbErQ6774uSk4cmrWzXz5kxRftKpN)  
-@bwhm0 | (5DaDUnNVzZPwK9KLwyPFgeSbc9Xeh6G39A2oq36tiV9aEzcx)  
-@seainvestor | (5CA73jgvw1WK1sxmNky1Nvd3rFQg9jR6sYh46eHKncZcciAR)  
-@0x2bc | (5DX9Vvk4uP8YNFSsvWGbjBcTG21PJbeLpgTRgCVpGQg2bDSx)  
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 3 | [@joystreamstats](https://pioneer.joystreamstats.live/#/members/joystreamstats) | active | 4 | 0.4 | 15.0 |
+| 4 | [@julysake](https://pioneer.joystreamstats.live/#/members/julysake) | active | 4 | 0.4 | 14.8 |
+| 6 | [@kalpakci](https://pioneer.joystreamstats.live/#/members/kalpakci) | active | 4 | 0.4 | 15.0 |
+| 15 | [@maxlevush](https://pioneer.joystreamstats.live/#/members/maxlevush) | active | 4 | 0.4 | 10.4 |
+| 16 | [@joyval](https://pioneer.joystreamstats.live/#/members/joyval) | active | 4 | 0.4 | 10.7 |
+| 17 | [@dapplooker](https://pioneer.joystreamstats.live/#/members/dapplooker) | active | 4 | 0.4 | 10.3 |
+| 18 | [@godshunter](https://pioneer.joystreamstats.live/#/members/godshunter) | active | 4 | 0.4 | 7.9 |
+| 19 | [@bwhm0](https://pioneer.joystreamstats.live/#/members/bwhm0) | active | 0 | 0.0 | 0.0 |
+| 21 | [@seainvestor](https://pioneer.joystreamstats.live/#/members/seainvestor) | active | 4 | 0.4 | 4.6 |
+| 22 | [@0x2bc](https://pioneer.joystreamstats.live/#/members/0x2bc) | active | 16 | 1.6 | 3.2 |
 
 
 ### 4.3 Curator Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of Curators      | 7 | 7 | 0 |   
+| Number of Curators      | 7 | 7 | 0 |
 
-Role occupants:  
-@l1dev | (5DFb8Xr8FfQyiFMjURjQHqHfunfEb4jWLhF5q4HR6EHiJTe8)  
-@kiraa | (5G9Bpf8dgSgojMZyjCHMcGdvYpxX1gdgeUtnKahcY45Hysbm)  
-@mmsaww | (5FsdXvMjiMf77TAoKrYk8v9aFPiUqrN5yCmA4NBbW18ZekSu)  
-@kadyrovs | (5F4ENyjriDAyXrJ4cMrGNjKxJbSAMhXTnHMSDLqkoVA1DY7W)  
-@zazik | (5HGiQRvh1pTq2ff33BdJKMDPggL3VhLbxkvdwYGxFyS3yNeP)  
-@laura | (5GeRwBEidgwsSsdrYpUZ1W9Vx2zz7z2yJWqaVjM8QK2yec33)  
-@igrex | (5H3hJqNb8Je2sfcGkxFQqsxn1FTy96bHrRW6wGCDwiLeCW1i)  
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 7 | [@l1dev](https://pioneer.joystreamstats.live/#/members/l1dev) | active | 0 | 0.0 | 10.4 |
+| 16 | [@kiraa](https://pioneer.joystreamstats.live/#/members/kiraa) | active | 8 | 0.8 | 12.0 |
+| 18 | [@mmsaww](https://pioneer.joystreamstats.live/#/members/mmsaww) | active | 8 | 0.8 | 9.8 |
+| 19 | [@kadyrovs](https://pioneer.joystreamstats.live/#/members/kadyrovs) | active | 8 | 0.8 | 7.2 |
+| 20 | [@zazik](https://pioneer.joystreamstats.live/#/members/zazik) | active | 8 | 0.8 | 7.2 |
+| 21 | [@laura](https://pioneer.joystreamstats.live/#/members/laura) | active | 20 | 2.0 | 13.9 |
+| 22 | [@igrex](https://pioneer.joystreamstats.live/#/members/igrex) | active | 8 | 0.8 | 5.3 |
 
 
 ### 4.4 Operations Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of Operations Workers      | 24 | 24 | 0 |
-| Total Operations Stake (workers + lead)  | 2,150,000 |  2,150,000 | 0 |
+| Total Operations Stake (workers + lead) | 2150000 | 2150000 | 0 |
 
-Role occupants:  
-@l1dev | (5DFb8Xr8FfQyiFMjURjQHqHfunfEb4jWLhF5q4HR6EHiJTe8)  
-@isonar | (5HT8Mty5U5hFKVwv24uFswX2e41vurU3F5rkLMoETR8XmjFy)  
-@lkskrn | (5CiRcZCWKDDo4nu1TNXnRVYWichHHmyU6x1nCUeDwjCNQRCw)  
-@freakstatic | (5FVxUFN6fQFXrrV4FvhEDQUwefzwu9g1SrZCryiKrFhUiVc1)  
-@dapplooker | (5GvFLWbDLvs6CmBo2LZ15A4Vj15Fy8TzBd1sMWoLmdNe55nM)  
-@joystreamstats | (5C8BEb4AwVmDnxkZmbh4PVxJR5TMQ7QxU6nZtYkqTAvXhUP3)  
-@isonar | (5HT8Mty5U5hFKVwv24uFswX2e41vurU3F5rkLMoETR8XmjFy)  
-@arseniy2706 | (5CaDmoBUtV2ebxiFY3YVaK1k2k8bo9wcxGVTjKPhBSxXLuoH)  
-@mmsaww | (5FsdXvMjiMf77TAoKrYk8v9aFPiUqrN5yCmA4NBbW18ZekSu)  
-@shtihmas | (5DkabZHciPzf67DzZCu7AATJqdAq6BgtVySjqdzbBcKdxCcQ)  
-@chiffah | (5F7cQRc7mVxpfTdGKS36EGeKvg4LFTNoLhkg34ELFzr7NTty)  
-@zazik | (5HGiQRvh1pTq2ff33BdJKMDPggL3VhLbxkvdwYGxFyS3yNeP)  
-@chasil | (5FbgzQLDLdMFbLAFGsSL1GmXv44JqebX2LkvnLqhDhFrC995)  
-@mmsaww | (5FsdXvMjiMf77TAoKrYk8v9aFPiUqrN5yCmA4NBbW18ZekSu)  
-@goldmember | (5HeAfRZUbPnF4v3KBAVQmTEVJVjC7SKmQUW7XYtWY6qAoP3S)  
-@metralunab | (5Hp7WBrzfW1hFHk66esvq4EHxuuEz8gDjRrnxWNgX6TteKW2)  
-@ilich | (5CGNixxrGRU7gib49RYMS5fSaBZ4dtVNLxQkSMVXF96X4oCG)  
-@kate_fm | (5C5oxKQjb2TuqDPoC9GAVDJhH8FBG3Qe2Z139wMVFLo6FfZT)  
-@ururu | (5GuMJVvcq4Vfwt1gXFQGq9pafeRn29eya2s9e9EZJCd2PMRn)  
-@andybut | (5EkQqSa9yzSf4MbYiVocuNuSaspeMf3Nmt4TAoUHD4ANJqz4)  
-@kriptos | (5HRBJvNKS4EmSw5GcUNgH2TVck1EX9tEEWJMRhjqXR3VQeqJ)  
-@chiffah | (5F7cQRc7mVxpfTdGKS36EGeKvg4LFTNoLhkg34ELFzr7NTty)  
-@surpaul | (5DyUXtHaZ34D3LimMSQfVzikx7nPeQwgYEBMsHY2nVpjEdtV)  
-@allyes | (5HNWYo9nJCUtvMS6t1VSnAQvypkR7hBR9yVGmLz1KxHRwJ5f)  
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 0 | [@l1dev](https://pioneer.joystreamstats.live/#/members/l1dev) | active | 28 | 2.3 | 30.2 |
+| 15 | [@isonar](https://pioneer.joystreamstats.live/#/members/isonar) | active | 3 | 0.2 | 10.3 |
+| 16 | [@lkskrn](https://pioneer.joystreamstats.live/#/members/lkskrn) | active | 28 | 2.2 | 29.6 |
+| 17 | [@freakstatic](https://pioneer.joystreamstats.live/#/members/freakstatic) | active | 7 | 0.6 | 11.7 |
+| 18 | [@dapplooker](https://pioneer.joystreamstats.live/#/members/dapplooker) | active | 0 | 0.0 | 10.8 |
+| 20 | [@joystreamstats](https://pioneer.joystreamstats.live/#/members/joystreamstats) | active | 15 | 1.2 | 6.8 |
+| 21 | [@isonar](https://pioneer.joystreamstats.live/#/members/isonar) | active | 0 | 0.0 | 0.0 |
+| 22 | [@arseniy2706](https://pioneer.joystreamstats.live/#/members/arseniy2706) | active | 0 | 0.0 | 0.0 |
+| 23 | [@mmsaww](https://pioneer.joystreamstats.live/#/members/mmsaww) | active | 6 | 0.4 | 0.4 |
+| 24 | [@shtihmas](https://pioneer.joystreamstats.live/#/members/shtihmas) | active | 0 | 0.0 | 0.0 |
+| 25 | [@chiffah](https://pioneer.joystreamstats.live/#/members/chiffah) | active | 0 | 0.0 | 0.0 |
+| 26 | [@zazik](https://pioneer.joystreamstats.live/#/members/zazik) | active | 0 | 0.0 | 0.0 |
+| 27 | [@chasil](https://pioneer.joystreamstats.live/#/members/chasil) | active | 0 | 0.0 | 0.0 |
+| 28 | [@mmsaww](https://pioneer.joystreamstats.live/#/members/mmsaww) | active | 0 | 0.0 | 0.0 |
+| 29 | [@goldmember](https://pioneer.joystreamstats.live/#/members/goldmember) | active | 0 | 0.0 | 0.0 |
+| 30 | [@metralunab](https://pioneer.joystreamstats.live/#/members/metralunab) | active | 0 | 0.0 | 0.0 |
+| 31 | [@ilich](https://pioneer.joystreamstats.live/#/members/ilich) | active | 0 | 0.0 | 0.0 |
+| 32 | [@kate_fm](https://pioneer.joystreamstats.live/#/members/kate_fm) | active | 3 | 0.2 | 0.4 |
+| 33 | [@ururu](https://pioneer.joystreamstats.live/#/members/ururu) | active | 0 | 0.0 | 0.0 |
+| 34 | [@andybut](https://pioneer.joystreamstats.live/#/members/andybut) | active | 56 | 4.0 | 7.4 |
+| 35 | [@kriptos](https://pioneer.joystreamstats.live/#/members/kriptos) | active | 0 | 0.0 | 0.0 |
+| 36 | [@chiffah](https://pioneer.joystreamstats.live/#/members/chiffah) | active | 0 | 0.0 | 0.0 |
+| 37 | [@surpaul](https://pioneer.joystreamstats.live/#/members/surpaul) | active | 0 | 0.0 | 0.0 |
+| 38 | [@allyes](https://pioneer.joystreamstats.live/#/members/allyes) | active | 0 | 0.0 | 0.0 |
 
 
 ## 5.0 User Generated Content
 ### 5.1 Membership Information
 | Property          | Start Block | End Block | % Change |
 |-------------------|--------------|--------------|----------|
-| Number of members | 2,828|  2,880 | 1.84 |
+| Number of members | 2828|  2880 | 1.84 |
 
 ### 5.2 Media & Uploads
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of uploads       | 6,280 | 6,380  |  1.59 |
-| Size of content (MB)        |  811,893.8 |  822,912.2 | 1.36          |
+| Number of uploads       | 6280 | 6380  |  1.59 |
+| Size of content (MB)    |  811893.8 |  822912.2 | 1.36 |
 | Number of channels      |  443 | 455 | 2.71 |
 
 ### 5.3 Forum Activity
 | Property          | Start Block | End Block | % Change |
 |-------------------|--------------|--------------|----------|
-| Number of categories | 57 | 57 | 0         |
-| Number of threads    | 615| 630 | 2.44         |
-| Number of posts      | 5,251 | 5,470            |  4.17        |
+| Number of categories | 57 | 57 | 0 |
+| Number of threads    | 615 | 630 | 2.44 |
+| Number of posts      | 5251 | 5470 | 4.17 |

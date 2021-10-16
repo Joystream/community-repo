@@ -2,8 +2,8 @@
 This is a report which explains the current state of the Joystream network in numbers. It pulls figures from the chain and tries to provide a basic level of information about the network, tokens and more. 
 
 ## 1.0 Basic Information
-* Block range: 781200 - 882000
-* Date Range: 5/31/2021 - 6/7/2021
+* Block range: 781200 - 881999
+* Date Range: 6/1/2021 - 6/8/2021
 * Council session #: 7
 
 ## 2.0 Tokenomics
@@ -11,24 +11,51 @@ This is a report which explains the current state of the Joystream network in nu
 | Property            | Start Block | End Block | % Change |
 |---------------------|--------------|--------------|----------|
 | Total Tokens Minted |  756440054 | 790400718 | 4.49 |
+| USD Pool |  25668.443556933882 | 29506.72405554387 | 14.95 |
 
 | Property            | Value        |
 |---------------------|--------------|
-| Total Tokens Burned | 4975000           | 
-| Spending Proposals (Executed)   |  17267038                  |
-| Bounties paid       |  8633519                           |
-| Validator Role      |  9957579            | 
-| Council Role        | 0             | 
-| Storage Role        | 4031300             | 
-| Curator Role        | 7615160             |
+| Total Tokens Burned | 48797111 |
+| Spending Proposals (Executed) | 8633519 |
+| Bounties paid       | 8633519 |
+| Validator Role      | 9957579 |
+| Storage Role        | 4031260.01 |
+| Curator Role        | 7615084.45 |
+| Operations Role     | 923990.83 |
+
+### 2.2 Fiat Pool
+| Property            | Start Block, USD | End Block, USD | % Change |
+|---------------------|--------------|--------------|----------|
+| USD Pool | 25668.443556933882 | 29506.72405554387 | 14.95 |
+
+| Refill, USD | Reason | Block # |
+|---------------------|--------------|--------------|
+|234|bounty 5|845721|
+|87|bounty 9|845724|
+|1220|bounty 10|845727|
+|398|bounty 11|845730|
+|525|bounty 12|845735|
+|87|bounty 13|845738|
+|1125|bounty 14|845741|
+|1793|kpi 6|860450|
 
 
 ### 2.3 Mints 
 | Property                    | Start Block           | End Block | % Change |
 |-----------------------------|-----------------------|--------------|----------|
-| Council Mint Total Minted   | 151425941  |  163947460 |8.27          |
-| Curator Mint Total Minted   |  20522135 | 24614982| 19.94          |
-| Storage Mint Total Minted   |  14673281 |  18666302            |  27.21        |
+| Council Mint Total Minted   | 151425941  | 163947460 |8.27 |
+| Curator Mint Total Minted   | 20522135 | 24614982 | 19.94 |
+| Storage Mint Total Minted   | 14673281 | 18666302 | 27.21 |
+| Operations Mint Total Minted | 0 | 33000 | 100 |
+
+
+### 2.4 tJOY Inflation
+
+* Start Block Exchange Rate, USD/1M tJOY: 33.33926461471266
+* End Block Exchange Rate, USD/1M tJOY: 37.53396128038583
+* Inflation, %: -11.18
+
+Negative value indicates deflation
 
 ## 3.0 Council
 * Council session #: 7
@@ -39,51 +66,59 @@ This is a report which explains the current state of the Joystream network in nu
 ### 3.1 Elections
 | Property                    | Start Block  |
 |-----------------------------|--------------|
-| Total Applicants            |30              |
-| Total Applicant Stake       |9878493              |
-| Total Votes                 |72             |
+| Total Applicants            | 30 |
+| Total Applicant Stake       | 9878493 |
+| Total Votes                 | 72 |
 
 ## 4 Roles
 ### 4.1 Validator Information
 * Block generation time (average): 6.01
 
-| Property                    | Start Block | End Block | % Change |
-|-----------------------------|--------------|--------------|----------|
-| Number of Validators       |  103 / 103 | 105 / 105 | 1.94 |
-| Validator Total Stake       | 179053693 | 198505250 | 10.86 |
+| Property                   | Start Block | End Block | % Change |
+|----------------------------|--------------|--------------|----------|
+| Number of Validators       | 103 / 103 | 105 / 105 | 1.94 |
+| Validator Total Stake      | 179053693 | 198505250 | 10.86 |
 
 
 ### 4.2 Storage Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of Storage Workers | 6  |  6 | 0 |
-| Total Storage Stake (workers + lead)  | 100000 |  100000 | 0 |   
+| Number of Storage Workers | 6 | 6 | 0 |
+| Total Storage Stake (workers + lead) | 0 | 0 | 0 |
 
-Role occupants:  
-@palacinkar | (5Dy7z6RZGeGxusLPP1du5fmw8f7HxZd9V6FPcmgTFsFAp3da)  
-@joystream_storage_member | (5EyTk4G9zt5wApxwK6MbPWQfRY6xy2nxfq8V6EXWfHxP5jou)  
-@kalpakci | (5FxJ7z9tnscgL9xeqeo8sB3izwJKszFPdJSpRPWFr1y35Gcw)  
-@0x2bc | (5DX9Vvk4uP8YNFSsvWGbjBcTG21PJbeLpgTRgCVpGQg2bDSx)  
-@julysake | (5CFnUMpSNxXSkb3p2yaqw2rCdyqZbAUtx9SQVkPBYL5P5Jku)  
-@joystreamstats | (5C8BEb4AwVmDnxkZmbh4PVxJR5TMQ7QxU6nZtYkqTAvXhUP3)  
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 2 | [@maks_malensek](https://pioneer.joystreamstats.live/#/members/maks_malensek) | active | 11 | 1.1 | 5.0 |
+| 3 | [@joystreamstats](https://pioneer.joystreamstats.live/#/members/joystreamstats) | active | 6 | 0.6 | 2.5 |
+| 4 | [@julysake](https://pioneer.joystreamstats.live/#/members/julysake) | active | 6 | 0.6 | 2.5 |
+| 5 | [@0x2bc](https://pioneer.joystreamstats.live/#/members/0x2bc) | active | 6 | 0.6 | 2.5 |
+| 6 | [@kalpakci](https://pioneer.joystreamstats.live/#/members/kalpakci) | active | 6 | 0.6 | 2.5 |
+| 8 | [@palacinkar](https://pioneer.joystreamstats.live/#/members/palacinkar) | active | 6 | 0.6 | 3.0 |
 
 
 ### 4.3 Curator Role
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of Curators      | 5 | 10 | 100 |   
+| Number of Curators      | 5 | 10 | 100 |
 
-Role occupants:  
-@kiraa | (5G9Bpf8dgSgojMZyjCHMcGdvYpxX1gdgeUtnKahcY45Hysbm)  
-@isonar | (5HT8Mty5U5hFKVwv24uFswX2e41vurU3F5rkLMoETR8XmjFy)  
-@maxlevush | (5Gy9eib5P1vB4Tvr9u74J7rhxvHqv5qhTdP3xwFfkArHQWPe)  
-@pascual | (5HKxxHLPF8ZHWiXndug9y4hRRnDiPUiWnRbutNCjcQ8ur14q)  
-@lyazufey1812 | (5C5oxKQjb2TuqDPoC9GAVDJhH8FBG3Qe2Z139wMVFLo6FfZT)  
-@joystream_storage_member | (5EyTk4G9zt5wApxwK6MbPWQfRY6xy2nxfq8V6EXWfHxP5jou)  
-@joystream_storage_member | (5EyTk4G9zt5wApxwK6MbPWQfRY6xy2nxfq8V6EXWfHxP5jou)  
-@joystream_storage_member | (5EyTk4G9zt5wApxwK6MbPWQfRY6xy2nxfq8V6EXWfHxP5jou)  
-@joystream_storage_member | (5EyTk4G9zt5wApxwK6MbPWQfRY6xy2nxfq8V6EXWfHxP5jou)  
-@l1dev | (5DFb8Xr8FfQyiFMjURjQHqHfunfEb4jWLhF5q4HR6EHiJTe8)  
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 1 | [@igrex](https://pioneer.joystreamstats.live/#/members/igrex) | active | 16 | 1.6 | 8.7 |
+| 2 | [@leet_joy](https://pioneer.joystreamstats.live/#/members/leet_joy) | active | 7 | 0.6 | 4.0 |
+| 3 | [@meskalin](https://pioneer.joystreamstats.live/#/members/meskalin) | active | 7 | 0.6 | 4.0 |
+| 6 | [@prontera](https://pioneer.joystreamstats.live/#/members/prontera) | active | 7 | 0.6 | 2.6 |
+| 7 | [@l1dev](https://pioneer.joystreamstats.live/#/members/l1dev) | active | 7 | 0.6 | 2.6 |
+
+
+### 4.4 Operations Role
+| Property                | Start Block | End Block | % Change |
+|-------------------------|--------------|--------------|----------|
+| Number of Operations Workers      | 0 | 1 | 100 |
+| Total Operations Stake (workers + lead) | 0 | 150000 | 100 |
+
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 0 | [@l1dev](https://pioneer.joystreamstats.live/#/members/l1dev) | active | 9 | 0.0 | 0.0 |
 
 
 ## 5.0 User Generated Content
@@ -96,12 +131,12 @@ Role occupants:
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of uploads       | 256 | 447  |  74.61 |
-| Size of content (MB)        |  26044.91 |  30477.14 | 17.02          |
+| Size of content (MB)    |  26044.91 |  56522.06 | 117.02 |
 | Number of channels      |  93 | 129 | 38.71 |
 
 ### 5.3 Forum Activity
 | Property          | Start Block | End Block | % Change |
 |-------------------|--------------|--------------|----------|
-| Number of categories | 53 | 53 | 0         |
-| Number of threads    | 429| 440 | 2.56         |
-| Number of posts      | 3065 | 3247            |  5.94        |
+| Number of categories | 53 | 53 | 0 |
+| Number of threads    | 429 | 440 | 2.56 |
+| Number of posts      | 3065 | 3247 | 5.94 |
