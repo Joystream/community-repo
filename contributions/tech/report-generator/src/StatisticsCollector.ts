@@ -45,6 +45,7 @@ import {
   connectApi,
   getBlock,
   getBlockHash,
+  getHead,
   getTimestamp,
   getIssuance,
   getEra,
@@ -144,9 +145,15 @@ export class StatisticsCollector {
     endBlock: number
   ): Promise<Statistics> {
     this.api = await connectApi(PROVIDER_URL);
+    const diff = endBlock - Number(await getHead(this.api));
+    if (diff > 0) {
+      console.log(`End Block is greater than Head, wait ${diff} blocks.`);
+      return this.statistics;
+    }
 
     let startHash: Hash = await getBlockHash(this.api, startBlock);
     let endHash: Hash = await getBlockHash(this.api, endBlock);
+
     let dateStart = momentToString(await getTimestamp(this.api, startHash));
     let dateEnd = momentToString(await getTimestamp(this.api, endHash));
     this.saveStats({
@@ -158,62 +165,65 @@ export class StatisticsCollector {
       percNewBlocks: getPercent(startBlock, endBlock),
     });
 
-    await this.buildBlocksEventCache(startBlock, endBlock);
-    eventStats(this.blocksEventsCache);
-    await this.fillTokenGenerationInfo(
-      startBlock,
-      endBlock,
-      startHash,
-      endHash
-    );
-    await this.fillMintsInfo(startHash, endHash);
-    await this.fillCouncilInfo(startHash, endHash);
-    await this.fillCouncilElectionInfo(startBlock);
-    await this.fillValidatorInfo(startHash, endHash);
-    await this.fillStorageProviderInfo(
-      startBlock,
-      endBlock,
-      startHash,
-      endHash
-    );
-    await this.fillCuratorInfo(startHash, endHash);
-    await this.fillOperationsInfo(startBlock, endBlock, startHash, endHash);
-    await this.fillMembershipInfo(startHash, endHash);
-    await this.fillMediaUploadInfo(startHash, endHash);
-    await this.fillForumInfo(startHash, endHash);
-    await this.getFiatEvents(startBlock, endBlock);
-
+    // run long running tasks in parallel first
+    await Promise.all([
+      this.buildBlocksEventCache(startBlock, endBlock).then(() =>
+        this.fillStats(startBlock, endBlock, startHash, endHash)
+      ),
+      this.getFiatEvents(startBlock, endBlock),
+      this.fillMediaUploadInfo(startHash, endHash),
+    ]);
     this.api.disconnect();
     return this.statistics;
+  }
+
+  fillStats(
+    startBlock: number,
+    endBlock: number,
+    startHash: Hash,
+    endHash: Hash
+  ): Promise<void[]> {
+    eventStats(this.blocksEventsCache); // print event stats
+    return Promise.all([
+      this.fillTokenGenerationInfo(startBlock, endBlock, startHash, endHash),
+      this.fillMintsInfo(startHash, endHash),
+      this.fillCouncilInfo(startHash, endHash),
+      this.fillCouncilElectionInfo(startBlock),
+      this.fillValidatorInfo(startHash, endHash),
+      this.fillStorageProviderInfo(startBlock, endBlock, startHash, endHash),
+      this.fillCuratorInfo(startHash, endHash),
+      this.fillOperationsInfo(startBlock, endBlock, startHash, endHash),
+      this.fillMembershipInfo(startHash, endHash),
+      this.fillForumInfo(startHash, endHash),
+    ]);
   }
 
   async getApprovedBounties(): Promise<Bounty[]> {
     try {
       await fs.access(SPENDING_PROPOSALS_CATEGORIES_FILE, constants.R_OK);
     } catch {
-      console.warn("File with the spending proposal categories not found");
+      console.warn("File with spending proposal categories not found.");
     }
-
     const fileContent = await fs.readFile(SPENDING_PROPOSALS_CATEGORIES_FILE);
-    let rawBounties = parse(fileContent);
-    rawBounties.shift();
-    rawBounties = rawBounties.filter((line: string[]) => line[8] == "Bounties");
-
-    let bounties = rawBounties.map((rawBounty: any) => {
-      return new Bounty(
-        rawBounty[0],
-        rawBounty[1],
-        rawBounty[2],
-        rawBounty[3],
-        rawBounty[4],
-        rawBounty[5]
-      );
-    });
-
-    return bounties.filter(
-      (bounty: Bounty) =>
-        bounty.status == "Approved" && bounty.testnet == "Antioch"
-    );
+    const proposals = parse(fileContent).slice(1);
+    console.log(`Loaded ${proposals.length} proposals.`);
+    return proposals
+      .filter(
+        (line: string[]) =>
+          line[0] === "Antioch" &&
+          line[3] === "Approved" &&
+          line[8] === "Bounties"
+      )
+      .map((bounty: string[]) => {
+        return new Bounty(
+          bounty[0],
+          Number(bounty[1]),
+          bounty[2],
+          bounty[3],
+          Number(bounty[4]),
+          Number(bounty[5])
+        );
+      });
   }
 
   fillSudoSetBalance() {
@@ -251,29 +261,27 @@ export class StatisticsCollector {
     const blocks = this.filterCache(filterMethods.finalizedSpendingProposals);
     const spendingProposals: SpendingProposal[] =
       await getFinalizedSpendingProposals(this.api, blocks);
+
     let bountiesTotalPaid = 0;
-    if (bounties) {
-      for (let bounty of bounties) {
-        const bountySpendingProposal = spendingProposals.find(
-          (spendingProposal) => spendingProposal.id == bounty.proposalId
-        );
-        if (bountySpendingProposal)
-          bountiesTotalPaid += bountySpendingProposal.amount;
-      }
-      this.saveStats({ bountiesTotalPaid });
+    for (let bounty of bounties) {
+      const bountySpendingProposal = spendingProposals.find(
+        (spendingProposal) => spendingProposal.id == bounty.proposalId
+      );
+      if (bountySpendingProposal)
+        bountiesTotalPaid += bountySpendingProposal.amount;
     }
 
     if (!bountiesTotalPaid) {
       console.warn(
-        `No bounties found in ${SPENDING_PROPOSALS_CATEGORIES_FILE}, trying to find spending proposals of bounties, please check the values!...`
+        `No bounties in selected period. Need to update ${SPENDING_PROPOSALS_CATEGORIES_FILE}?\nLooking for spending proposals titled "bounty":`
       );
-      for (const spendingProposal of spendingProposals) {
-        if (spendingProposal.title.toLowerCase().includes("bounty")) {
-          bountiesTotalPaid += spendingProposal.amount;
-        }
+      for (const { title, amount } of spendingProposals) {
+        if (!title.toLowerCase().includes("bounty")) continue;
+        bountiesTotalPaid += amount;
+        console.log(` - ${title}: ${amount}`);
       }
-      this.saveStats({ bountiesTotalPaid });
     }
+    this.saveStats({ bountiesTotalPaid });
 
     let roundNrBlocks = endBlock - startBlock;
     const spendingProposalsTotal = spendingProposals.reduce(
@@ -388,7 +396,6 @@ export class StatisticsCollector {
       if (hired) earnedBefore = hired.reward.total_reward_received.toNumber();
       workers += getWorkerRow(worker, earnedBefore);
     });
-    const header = `| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |\n|--|--|--|--|--|--|\n`;
     const groupTag =
       workingGroup === `storage`
         ? `storageProviders`
@@ -397,7 +404,10 @@ export class StatisticsCollector {
         : workingGroup === `operations`
         ? `operations`
         : ``;
-    this.saveStats({ [groupTag]: header + workers });
+    if (workers.length) {
+      const header = `| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |\n|--|--|--|--|--|--|\n`;
+      this.saveStats({ [groupTag]: header + workers });
+    } else this.saveStats({ [groupTag]: `` });
 
     info.rewards = await this.computeReward(
       roundNrBlocks,
@@ -683,38 +693,41 @@ export class StatisticsCollector {
   }
 
   async fillMediaUploadInfo(startHash: Hash, endHash: Hash): Promise<void> {
-    const startMedia = await getNextVideo(this.api, startHash);
-    const endMedia = await getNextVideo(this.api, endHash);
-    const startChannels = await getNextChannel(this.api, startHash);
-    const endChannels = await getNextChannel(this.api, endHash);
+    console.log(`Collecting Media stats`);
+    const startMedia = Number(await getNextVideo(this.api, startHash));
+    const endMedia = Number(await getNextVideo(this.api, endHash));
+    const startChannels = Number(await getNextChannel(this.api, startHash));
+    const endChannels = Number(await getNextChannel(this.api, endHash));
 
     // count size
     let startUsedSpace = 0;
     let endUsedSpace = 0;
     const startBlock = await getBlock(this.api, startHash);
     const endBlock = await getBlock(this.api, endHash);
-    const dataObjects: Map<ContentId, DataObject> = await getDataObjects(
-      this.api
-    );
-    for (let [key, dataObject] of dataObjects) {
-      const added = dataObject.added_at.block.toNumber();
-      const start = startBlock.block.header.number.toNumber();
-      const end = endBlock.block.header.number.toNumber();
-      if (added < start)
-        startUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
-      if (added < end)
-        endUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
-    }
-    this.saveStats({
-      startMedia,
-      endMedia,
-      percNewMedia: getPercent(startMedia, endMedia),
-      startChannels,
-      endChannels,
-      percNewChannels: getPercent(startChannels, endChannels),
-      startUsedSpace: Number(startUsedSpace.toFixed(2)),
-      endUsedSpace: Number(endUsedSpace.toFixed(2)),
-      percNewUsedSpace: getPercent(startUsedSpace, endUsedSpace),
+    getDataObjects(this.api).then((dataObjects: Map<ContentId, DataObject>) => {
+      for (let [key, dataObject] of dataObjects) {
+        const added = dataObject.added_at.block.toNumber();
+        const start = startBlock.block.header.number.toNumber();
+        const end = endBlock.block.header.number.toNumber();
+
+        if (added < start)
+          startUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
+        if (added < end)
+          endUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
+      }
+      if (!startUsedSpace || !endUsedSpace)
+        console.log(`space start, end`, startUsedSpace, endUsedSpace);
+      this.saveStats({
+        startMedia,
+        endMedia,
+        percNewMedia: getPercent(startMedia, endMedia),
+        startChannels,
+        endChannels,
+        percNewChannels: getPercent(startChannels, endChannels),
+        startUsedSpace: Number(startUsedSpace.toFixed(2)),
+        endUsedSpace: Number(endUsedSpace.toFixed(2)),
+        percNewUsedSpace: getPercent(startUsedSpace, endUsedSpace),
+      });
     });
   }
 
@@ -894,7 +907,6 @@ export class StatisticsCollector {
       console.log("Cache file found, loading it...");
       let fileData = await fs.readFile(cacheFile);
       this.blocksEventsCache = new Map(JSON.parse(fileData));
-      console.log("Cache file loaded...");
     }
   }
 }

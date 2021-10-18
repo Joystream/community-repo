@@ -26,11 +26,11 @@ This is a report which explains the current state of the Joystream network in nu
 ### 2.2 Fiat Pool
 | Property            | Start Block, USD | End Block, USD | % Change |
 |---------------------|--------------|--------------|----------|
-| USD Pool |  {startDollarPool} | {endDollarPool} | {dollarPoolPctChange} |
+| USD Pool | {startDollarPool} | {endDollarPool} | {dollarPoolPctChange} |
 
 {dollarPoolRefills}
 
-### 2.3 Mints 
+### 2.3 Mints
 | Property                    | Start Block           | End Block | % Change |
 |-----------------------------|-----------------------|--------------|----------|
 | Council Mint Total Minted   | {startCouncilMinted}  | {endCouncilMinted} |{percNewCouncilMinted} |
@@ -64,10 +64,10 @@ Negative value indicates deflation
 ### 4.1 Validator Information
 * Block generation time (average): {avgBlockProduction}
 
-| Property                    | Start Block | End Block | % Change |
-|-----------------------------|--------------|--------------|----------|
-| Number of Validators       |  {startValidators} | {endValidators} | {percValidators} |
-| Validator Total Stake       | {startValidatorsStake} | {endValidatorsStake} | {percNewValidatorsStake} |
+| Property                   | Start Block | End Block | % Change |
+|----------------------------|--------------|--------------|----------|
+| Number of Validators       | {startValidators} | {endValidators} | {percValidators} |
+| Validator Total Stake      | {startValidatorsStake} | {endValidatorsStake} | {percNewValidatorsStake} |
 
 
 ### 4.2 Storage Role
@@ -89,7 +89,7 @@ Negative value indicates deflation
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of Operations Workers      | {startOperationsWorkers} | {endOperationsWorkers} | {percNewOperationsWorkers} |
-| Total Operations Stake (workers + lead)  | {startOperationsStake} |  {endOperationsStake} | {percNewOperationstake} |
+| Total Operations Stake (workers + lead) | {startOperationsStake} | {endOperationsStake} | {percNewOperationstake} |
 
 {operations}
 
@@ -103,7 +103,7 @@ Negative value indicates deflation
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of uploads       | {startMedia} | {endMedia}  |  {percNewMedia} |
-| Size of content (MB)        |  {startUsedSpace} |  {endUsedSpace} | {percNewUsedSpace} |
+| Size of content (MB)    |  {startUsedSpace} |  {endUsedSpace} | {percNewUsedSpace} |
 | Number of channels      |  {startChannels} | {endChannels} | {percNewChannels} |
 
 ### 5.3 Forum Activity
