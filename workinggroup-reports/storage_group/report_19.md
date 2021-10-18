@@ -1,19 +1,21 @@
-# Storage Working Group Status Reporting - 18
+# Storage Working Group Status Reporting - 19
 
 ## Storage Lead : _0x2bc_
 
 ### Report:
 
-This is the 18th report for the Storage Provider Working Group. 
+This is the 19th report for the Storage Provider Working Group. 
 
-* Storage nodes have been quite stable for last week. 
+* Deputy Lead vacancy was filled by @freakstatic
 
-* Storage WG Lead vacancy was opened https://testnet.joystream.org/#/working-groups/opportunities/storageProviders/lead 
+* Some minor improvements were made for Dashboard
 
-* Deputy Lead vacancy was opened and announced
+* Pavel-LV | C.Sailors is shifting to SSD server
+
+* Helios reports are archived every hour now https://joystreamstats.live/static/helios
 
 
-## Current ipfs repo size : 923 GB
+## Current ipfs repo size : 959 GB
 
 ### 0x2bc
 
@@ -31,9 +33,9 @@ This is the 18th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 22
     url: https://xjames.xyz/storage
-    fetched: 14368/14368
+    fetched: 14735/14735
     failed: 0
-    check took: 100.921s
+    check took: 128.03s
     ------------------------------------------
   ```
 
@@ -42,7 +44,7 @@ This is the 18th report for the Storage Provider Working Group.
 ### joystreamstats
 
 - Worker ID: 3
-- Tokens earned: 15.6357 MJOY
+- Tokens earned: 15.9928 MJOY
 - Missed: 1.3935 MJOY
 - Location: Finland
 - Storage capacity: 1.9T
@@ -55,16 +57,16 @@ This is the 18th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 3
     url: https://ipfs.joystreamstats.live/storage/
-    fetched: 14368/14368
+    fetched: 14735/14735
     failed: 0
-    check took:  81.847s
+    check took:  100.866s
     ------------------------------------------
   ```
   
 ### julysake
 
 - Worker ID: 4
-- Tokens earned: 15.4909 MJOY
+- Tokens earned: 15.8480 MJOY
 - Missed: 1.5383 MJOY
 - Location: EU
 - Storage capacity: 1.6 TB
@@ -77,9 +79,9 @@ This is the 18th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 4
     url: https://mahathvamtv.com/storage/
-    fetched: 14368/14368
+    fetched: 14735/14735
     failed: 0
-    check took: 108.742s
+    check took: 141.485s
     ------------------------------------------
   ```
 
@@ -90,7 +92,7 @@ This is the 18th report for the Storage Provider Working Group.
 ### kalpakci
 
 - Worker ID: 6
-- Tokens earned: 15.7236 MJOY
+- Tokens earned: 16.0808 MJOY
 - Missed: 1.3056 MJOY
 - Location: Nuremberg (Germany)
 - Storage capacity: 1.6TB
@@ -104,9 +106,9 @@ This is the 18th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 6
     url: https://joystreampowered.com/storage/
-    fetched: 14368/14368
+    fetched: 14735/14735
     failed: 0
-    check took: 182.131s
+    check took: 186.205s
     ------------------------------------------
 
     ```
@@ -114,7 +116,7 @@ This is the 18th report for the Storage Provider Working Group.
 ### maxlevush
 
 - Worker ID: 15
-- Tokens earned: 11.0443 MJOY
+- Tokens earned: 11.4015 MJOY
 - Missed: 1.4930 MJOY
 - Location: Helsinki
 - Storage capacity: 4TB
@@ -127,16 +129,16 @@ This is the 18th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 15
     url: https://whitesocks.ru/storage/
-    fetched: 14368/14368
+    fetched: 14735/14735
     failed: 0
-    check took: 97.74s
+    check took: 118.053s
     ------------------------------------------
   ```
 
 ### joyval
 
 - Worker ID: 16
-- Tokens earned: 11.3345 MJOY
+- Tokens earned: 11.6917 MJOY
 - Missed: 1.2028 MJOY
 - Location: New York City
 - Storage capacity: 4TB
@@ -150,9 +152,9 @@ This is the 18th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 16
     url: https://joyrq.com/storage/
-    fetched: 14368/14368
+    fetched: 14735/14735
     failed: 0
-    check took: 135.202s
+    check took: 159.085s
     ------------------------------------------
 
   ```
@@ -160,7 +162,7 @@ This is the 18th report for the Storage Provider Working Group.
 ### dapplooker
 
 - Worker ID: 17
-- Tokens earned: 10.9339 MJOY
+- Tokens earned: 11.2911 MJOY
 - Missed: 1.6034 MJOY
 - Location: Düsseldorf
 - Storage capacity: 4TB
@@ -173,16 +175,16 @@ This is the 18th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 17
     url: https://joystream.dapplooker.com/storage/
-    fetched: 14368/14368
+    fetched: 14735/14735
     failed: 0
-    check took: 80.864s
+    check took: 106.046s
     ------------------------------------------
   ```
 
 ### godshunter
 
 - Worker ID: 18
-- Tokens earned: 8.5761 MJOY
+- Tokens earned: 8.9333 MJOY
 - Missed: 1.3862 MJOY
 - Location: Düsseldorf
 - Storage capacity: 8TB
@@ -195,16 +197,16 @@ This is the 18th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 18
     url: https://joystream.godshunter.su/storage/
-    fetched: 14368/14368
+    fetched: 14735/14735
     failed: 0
-    check took: 104.788s
+    check took: 124.024s
     ------------------------------------------
   ```
 
 ### seainvestor
 
 - Worker ID: 21
-- Tokens earned: 5.3005 MJOY
+- Tokens earned: 5.6577 MJOY
 - Missed: 970.0280 kJOY
 - Location: Los Angeles, USA
 - Storage capacity: 2TB
@@ -218,9 +220,9 @@ This is the 18th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 21
     url: https://gloiaf.eu/storage/
-    fetched: 14368/14368
+    fetched: 14735/14735
     failed: 0
-    check took: 683.386s
+    check took: 124.093s
     ------------------------------------------
   ```
 
@@ -228,23 +230,25 @@ This is the 18th report for the Storage Provider Working Group.
 
 ```
 Found 11 staked providers
-Resolving Provider API Endpoints
-19: Empty public Url
-Testing Provider API Endpoints
-17: https://joystream.dapplooker.com/storage/ - OK - API version 1.1.0
-15: https://whitesocks.ru/storage/ - OK - API version 1.1.0
-4: https://mahathvamtv.com/storage/ - OK - API version 1.1.0
-18: https://joystream.godshunter.su/storage/ - OK - API version 1.1.0
-22: https://xjames.xyz/storage/ - OK - API version 1.1.0
-10: https://rome-rpc-4.joystream.org/ - OK - API version 1.1.0
-16: https://joyrq.com/storage/ - OK - API version 1.1.0
-21: https://gloiaf.eu/storage/ - OK - API version 1.1.0
-3: https://ipfs.joystreamstats.live/storage/ - OK - API version 1.1.0
-6: https://joystreampowered.com/storage/ - OK - API version 1.1.0
 
-Fetching Data Directory objects
-Fetched
-15042 created
-14368 accepted
-13321 unique accepted hashes
+Resolving live provider API Endpoints...
+
+Checking API Endpoints are online
+19 No url set, skipping
+3: https://ipfs.joystreamstats.live/storage/ - OK - storage node version 1.1.0
+15: https://whitesocks.ru/storage/ - OK - storage node version 1.1.0
+17: https://joystream.dapplooker.com/storage/ - OK - storage node version 1.1.0
+21: https://gloiaf.eu/storage/ - OK - storage node version 1.1.0
+18: https://joystream.godshunter.su/storage/ - OK - storage node version 1.1.0
+6: https://joystreampowered.com/storage/ - OK - storage node version 1.1.0
+22: https://xjames.xyz/storage/ - OK - storage node version 1.1.0
+4: https://mahathvamtv.com/storage/ - OK - storage node version 1.1.0
+10: https://rome-rpc-4.joystream.org/ - OK - storage node version 1.1.0
+16: https://joyrq.com/storage/ - OK - storage node version 1.1.0
+
+Data Directory objects:
+15410 created
+14735 accepted
+13661 unique accepted hashes
+
 ```
