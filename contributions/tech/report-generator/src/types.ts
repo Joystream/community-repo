@@ -1,3 +1,17 @@
+export interface Config {
+  repoDir: string,
+  reportsDir: string,
+  spendingCategoriesFile: string,
+  templateFile: string,
+  providerUrl: string,
+  statusUrl: string,
+  burnAddress: string,
+  cacheDir: string,
+  councilRoundOffset: number,
+  videoClassId: number,
+  channelClassId: number,
+}
+
 export class Statistics {
   [key: string]: number | string;
   councilRound: number = 0;

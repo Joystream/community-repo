@@ -9,7 +9,7 @@ import {
   EventRecord,
   Hash,
 } from "@polkadot/types/interfaces";
-import { Media, MintStatistics, Statistics, WorkersInfo } from "./types";
+import { Config, MintStatistics, Statistics, WorkersInfo } from "./types";
 import {
   CacheEvent,
   Bounty,
@@ -100,20 +100,6 @@ const fsSync = require("fs");
 const fs = fsSync.promises;
 const parse = require("csv-parse/lib/sync");
 
-const BURN_ADDRESS = "5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu";
-
-const COUNCIL_ROUND_OFFSET = 2;
-const PROVIDER_URL = "ws://127.0.0.1:9944";
-const STATUS_URL = "https://status.joystream.org/status/";
-
-const CACHE_FOLDER = "cache";
-
-const VIDEO_CLASS_iD = 10;
-const CHANNEL_CLASS_iD = 1;
-
-const SPENDING_PROPOSALS_CATEGORIES_FILE =
-  __dirname + "/../../../../governance/spending_proposal_categories.csv";
-
 export class StatisticsCollector {
   private api?: ApiPromise;
   private blocksEventsCache: Map<number, CacheEvent[]>;
@@ -140,14 +126,17 @@ export class StatisticsCollector {
     return blocks;
   }
 
-  async getStatistics(
+  async getStats(
     startBlock: number,
-    endBlock: number
+    endBlock: number,
+    config: Config
   ): Promise<Statistics> {
-    this.api = await connectApi(PROVIDER_URL);
-    const diff = endBlock - Number(await getHead(this.api));
-    if (diff > 0) {
-      console.log(`End Block is greater than Head, wait ${diff} blocks.`);
+    const { cacheDir, providerUrl, statusUrl } = config;
+    this.api = await connectApi(providerUrl);
+
+    const aboveHead = endBlock - Number(await getHead(this.api));
+    if (aboveHead > 0) {
+      console.log(`End Block is above our Head, wait ${aboveHead} blocks.`);
       return this.statistics;
     }
 
@@ -167,10 +156,10 @@ export class StatisticsCollector {
 
     // run long running tasks in parallel first
     await Promise.all([
-      this.buildBlocksEventCache(startBlock, endBlock).then(() =>
-        this.fillStats(startBlock, endBlock, startHash, endHash)
+      this.buildBlocksEventCache(startBlock, endBlock, cacheDir).then(() =>
+        this.fillStats(startBlock, endBlock, startHash, endHash, config)
       ),
-      this.getFiatEvents(startBlock, endBlock),
+      this.getFiatEvents(startBlock, endBlock, statusUrl),
       this.fillMediaUploadInfo(startHash, endHash),
     ]);
     this.api.disconnect();
@@ -181,13 +170,14 @@ export class StatisticsCollector {
     startBlock: number,
     endBlock: number,
     startHash: Hash,
-    endHash: Hash
+    endHash: Hash,
+    config: Config
   ): Promise<void[]> {
     eventStats(this.blocksEventsCache); // print event stats
     return Promise.all([
-      this.fillTokenGenerationInfo(startBlock, endBlock, startHash, endHash),
+      this.fillTokenInfo(startBlock, endBlock, startHash, endHash, config),
       this.fillMintsInfo(startHash, endHash),
-      this.fillCouncilInfo(startHash, endHash),
+      this.fillCouncilInfo(startHash, endHash, config.councilRoundOffset),
       this.fillCouncilElectionInfo(startBlock),
       this.fillValidatorInfo(startHash, endHash),
       this.fillStorageProviderInfo(startBlock, endBlock, startHash, endHash),
@@ -198,13 +188,13 @@ export class StatisticsCollector {
     ]);
   }
 
-  async getApprovedBounties(): Promise<Bounty[]> {
+  async getApprovedBounties(file: string): Promise<Bounty[]> {
     try {
-      await fs.access(SPENDING_PROPOSALS_CATEGORIES_FILE, constants.R_OK);
+      await fs.access(file, constants.R_OK);
     } catch {
-      console.warn("File with spending proposal categories not found.");
+      console.warn("File with spending proposal categories not found: ${file}");
     }
-    const fileContent = await fs.readFile(SPENDING_PROPOSALS_CATEGORIES_FILE);
+    const fileContent = await fs.readFile(file);
     const proposals = parse(fileContent).slice(1);
     console.log(`Loaded ${proposals.length} proposals.`);
     return proposals
@@ -236,28 +226,29 @@ export class StatisticsCollector {
     this.saveStats({ balancesSetByRoot });
   }
 
-  async fillTokenGenerationInfo(
+  async fillTokenInfo(
     startBlock: number,
     endBlock: number,
     startHash: Hash,
-    endHash: Hash
+    endHash: Hash,
+    config: Config
   ): Promise<void> {
+    const { burnAddress } = config;
+    const proposalsFile = config.repoDir + config.spendingCategoriesFile;
     const startIssuance = (await getIssuance(this.api, startHash)).toNumber();
     const endIssuance = (await getIssuance(this.api, endHash)).toNumber();
+    const burnEvents = this.filterCache(filterMethods.getBurnedTokens);
     this.saveStats({
       startIssuance,
       endIssuance,
       newIssuance: endIssuance - startIssuance,
       percNewIssuance: getPercent(startIssuance, endIssuance),
-      newTokensBurn: await getBurnedTokens(
-        BURN_ADDRESS,
-        this.filterCache(filterMethods.getBurnedTokens)
-      ),
+      newTokensBurn: await getBurnedTokens(burnAddress, burnEvents),
     });
     this.fillSudoSetBalance();
 
     // bounties
-    const bounties = await this.getApprovedBounties();
+    const bounties = await this.getApprovedBounties(proposalsFile);
     const blocks = this.filterCache(filterMethods.finalizedSpendingProposals);
     const spendingProposals: SpendingProposal[] =
       await getFinalizedSpendingProposals(this.api, blocks);
@@ -273,7 +264,7 @@ export class StatisticsCollector {
 
     if (!bountiesTotalPaid) {
       console.warn(
-        `No bounties in selected period. Need to update ${SPENDING_PROPOSALS_CATEGORIES_FILE}?\nLooking for spending proposals titled "bounty":`
+        `No bounties in selected period. Need to update ${proposalsFile}?\n Looking for spending proposals titled "bounty":`
       );
       for (const { title, amount } of spendingProposals) {
         if (!title.toLowerCase().includes("bounty")) continue;
@@ -495,7 +486,11 @@ export class StatisticsCollector {
     ].forEach((group) => this.computeGroupMintStats(group, startHash, endHash));
   }
 
-  async fillCouncilInfo(startHash: Hash, endHash: Hash): Promise<void> {
+  async fillCouncilInfo(
+    startHash: Hash,
+    endHash: Hash,
+    councilRoundOffset: number
+  ): Promise<void> {
     const round = await getCouncilRound(this.api, startHash);
     const startNrProposals = await getProposalCount(this.api, startHash);
     const endNrProposals = await getProposalCount(this.api, endHash);
@@ -517,7 +512,7 @@ export class StatisticsCollector {
     }
 
     this.saveStats({
-      councilRound: round - COUNCIL_ROUND_OFFSET,
+      councilRound: round - councilRoundOffset,
       councilMembers: await getCouncilSize(this.api, startHash),
       newProposals: endNrProposals - startNrProposals,
       newApprovedProposals: approvedProposals.size,
@@ -754,11 +749,15 @@ export class StatisticsCollector {
     });
   }
 
-  async getFiatEvents(startBlockHeight: number, endBlockHeight: number) {
+  async getFiatEvents(
+    startBlockHeight: number,
+    endBlockHeight: number,
+    statusUrl: string
+  ) {
     let sumerGenesis = new Date("2021-04-07T18:20:54.000Z");
 
     console.log("Fetching fiat events....");
-    await axios.get(STATUS_URL).then((response: { data: StatusData }) => {
+    await axios.get(statusUrl).then((response: { data: StatusData }) => {
       let filteredExchanges = response.data.exchanges.filter(
         (exchange) =>
           exchange.blockHeight > startBlockHeight &&
@@ -867,9 +866,10 @@ export class StatisticsCollector {
 
   async buildBlocksEventCache(
     startBlock: number,
-    endBlock: number
+    endBlock: number,
+    cacheDir: string
   ): Promise<void> {
-    const cacheFile = `${CACHE_FOLDER}/${startBlock}-${endBlock}.json`;
+    const cacheFile = `${cacheDir}/${startBlock}-${endBlock}.json`;
     const exists = await fs
       .access(cacheFile, fsSync.constants.R_OK)
       .then(() => true)

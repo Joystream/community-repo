@@ -3,14 +3,26 @@ const exec = require("util").promisify(require("child_process").exec);
 import { StatisticsCollector } from "./StatisticsCollector";
 import { connectApi, getHead, getCouncils } from "./lib/api";
 import { Round } from "./lib/types";
+import { Config } from "./types";
 
-const TEMPLATE_FILE = __dirname + "/../report-template.md";
-const PROVIDER_URL = "ws://127.0.0.1:9944";
+const CONFIG: Config = {
+  repoDir: __dirname + "/../../../../",
+  reportsDir: "council/tokenomics",
+  spendingCategoriesFile: "governance/spending_proposal_categories.csv",
+  templateFile: __dirname + "/../report-template.md",
+  providerUrl: "ws://127.0.0.1:9944",
+  statusUrl: "https://status.joystream.org/status/",
+  burnAddress: "5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu",
+  cacheDir: "cache",
+  councilRoundOffset: 2,
+  videoClassId: 10,
+  channelClassId: 1,
+};
 
-async function main() {
+async function main(config: Config) {
+  const { templateFile } = config;
   const args = process.argv.slice(2);
-
-  if (args.length < 2) return updateReports(Number(args[0]));
+  if (args.length < 2) return updateReports(config, Number(args[0]));
 
   const startBlock = Number(args[0]);
   const endBlock = Number(args[1]);
@@ -18,55 +30,45 @@ async function main() {
   if (isNaN(startBlock) || isNaN(endBlock) || startBlock >= endBlock) {
     console.error("Invalid block range.");
     process.exit(1);
-  } else generateReport(startBlock, endBlock, TEMPLATE_FILE);
+  } else generateReport(startBlock, endBlock, config);
 }
 
-const generateReport = (
+const generateReport = async (
   startBlock: number,
   endBlock: number,
-  templateFile: string
-): Promise<any> => {
+  config: Config
+): Promise<boolean> => {
+  const { templateFile, repoDir, reportsDir } = config;
   let fileData = fs.readFileSync(templateFile, "utf8");
-  let staticCollecttor = new StatisticsCollector();
+  let statsCollecttor = new StatisticsCollector();
   console.log(`-> Collecting stats from ${startBlock} to ${endBlock}`);
-  return staticCollecttor.getStatistics(startBlock, endBlock).then((stats) => {
-    console.log(stats);
-    if (!stats.dateStart) return false;
-    const round = stats.councilRound || 1;
+  const stats = await statsCollecttor.getStats(startBlock, endBlock, config);
+  console.log(stats);
+  if (!stats.dateStart) return false;
+  const round = stats.councilRound || 1;
 
-    const fileName = `Council_Round${round}_${startBlock}-${endBlock}_Tokenomics_Report.md`;
-    // antioch was updated to sumer at 717987
-    const version = startBlock < 717987 ? "antioch-3" : "sumer-4";
-    const dir = __dirname + `/../../../../council/tokenomics/${version}`;
+  const fileName = `Council_Round${round}_${startBlock}-${endBlock}_Tokenomics_Report.md`;
+  // antioch was updated to sumer at 717987
+  const version = startBlock < 717987 ? "antioch-3" : "sumer-4";
+  const dir = `${repoDir}${reportsDir}/${version}`;
 
-    const reports = fs.readdirSync(dir);
-    const exists = reports.find(
-      (file: string) => file.indexOf(`_${endBlock + 1}_T`) !== -1
-    );
-    if (exists && exists !== fileName) {
-      console.log(`INFO renaming ${exists} to ${fileName}`);
-      try {
-        exec(`git mv ${dir}/${exists} ${dir}/${fileName}`);
-      } catch (e) {}
-    }
-
-    console.log(`-> Writing report to ${fileName}`);
-    for (const entry of Object.entries(stats)) {
-      const regex = new RegExp("{" + entry[0] + "}", "g");
-      fileData = fileData.replace(regex, entry[1].toString());
-    }
-    fs.writeFileSync(`${dir}/${fileName}`, fileData);
-    return true;
-  });
+  console.log(`-> Writing report to ${fileName}`);
+  for (const entry of Object.entries(stats)) {
+    const regex = new RegExp("{" + entry[0] + "}", "g");
+    fileData = fileData.replace(regex, entry[1].toString());
+  }
+  fs.writeFileSync(`${dir}/${fileName}`, fileData);
+  return true;
 };
 
-const updateReports = async (round?: number) => {
-  console.debug(`Connecting to ${PROVIDER_URL}`);
-  const api = await connectApi(PROVIDER_URL);
+const updateReports = async (config: Config, round?: number) => {
+  const { templateFile, providerUrl } = config;
+  console.debug(`Connecting to ${providerUrl}`);
+  const api = await connectApi(providerUrl);
   await api.isReady;
 
   console.log(`-> Fetching councils`);
-  const head = await getHead(api)
+  const head = await getHead(api);
   getCouncils(api, +head).then(async (councils: Round[]) => {
     api.disconnect();
     if (round !== null) {
@@ -75,12 +77,12 @@ const updateReports = async (round?: number) => {
       console.log(
         `-> Updating round ${round} (${council.start}-${council.end})`
       );
-      await generateReport(council.start, council.end, TEMPLATE_FILE);
+      await generateReport(council.start, council.end, config);
     } else {
       console.log(`-> Updating reports`);
       await Promise.all(
         councils.map((council) =>
-          generateReport(council.start, council.end, TEMPLATE_FILE)
+          generateReport(council.start, council.end, config)
         )
       );
     }
@@ -88,4 +90,4 @@ const updateReports = async (round?: number) => {
   });
 };
 
-main();
+main(CONFIG);
