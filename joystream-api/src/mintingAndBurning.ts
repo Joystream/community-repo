@@ -4,6 +4,7 @@ import {
   getEvents,
   getIssuance,
   getBlock,
+  getMint,
 } from "./joystream-lib/api";
 import {
   AccountId,
@@ -21,7 +22,7 @@ import {
   MintingAndBurningReport,
   SpendingProposalMint,
   RecurringRewards,
-  BalanceTranfer,
+  ExtrinsicsData,
 } from "./types";
 import { Vec } from "@polkadot/types";
 import { ProposalDetails, ProposalOf } from "@joystream/types/augment/types";
@@ -29,6 +30,7 @@ import { RewardRelationship } from "@joystream/types/recurring-rewards";
 import { ApiPromise } from "@polkadot/api";
 import fs, { PathLike } from "fs";
 import { posix } from "path/posix";
+import { Mint } from "@joystream/types/mint";
 
 const saveFile = (jsonString: string, path: PathLike) => {
   try {
@@ -161,20 +163,34 @@ const processBurnTransfers = async (
 /**
  * Every membership creation burns tokens, checking `members.MemberRegistered` events to detect such burnings.
  */
-const processMembershipCreation = (
+const processMembershipCreation = async (
+  api: ApiPromise,
+  hash: BlockHash,
   membershipEvents: EventRecord[],
   report: MintingAndBurningData
 ) => {
   const { burning } = report;
   if (membershipEvents.length > 0) {
-    const membershipCreationPrice = 100;
+    const membershipCreationPrice = 100; // TODO Find out how to get membership creation fee from the blockchain!
+    const block = await getBlock(api, hash);
+    // Only in case extrinsics is `members.buyMembership`, skipping `members.addScreenedMember` because there is no fee in this case
+    const extrinsics = filterBlockExtrinsicsByMethods(block, [
+      "members.buyMembership",
+    ]);
     membershipEvents.forEach((event) => {
-      burning.totalMembershipCreation += membershipCreationPrice;
       const { data } = event.event;
       const dataJson = data.toJSON() as object[];
       const memberId = dataJson[0] as unknown as number;
       const accountId = dataJson[0] as unknown as string;
-      burning.membershipCreation.push({ memberId, accountId });
+      extrinsics
+      .filter((e) => {
+        const ext = e.toHuman() as unknown as ExtrinsicsData;
+        return ext.method.args[0] === accountId;
+      })
+      .map(() => {
+          burning.totalMembershipCreation += membershipCreationPrice;
+          burning.membershipCreation.push({ memberId, accountId });
+        });
     });
   }
 };
@@ -185,6 +201,7 @@ const processMembershipCreation = (
 const reloadRecurringRewards = async (
   api: ApiPromise,
   recurringRewards: RecurringRewards,
+  blockNumber: number,
   hash: BlockHash
 ) => {
   const totalRewards = Number(
@@ -197,12 +214,26 @@ const reloadRecurringRewards = async (
     ).toJSON() as unknown as RewardRelationship;
     if (reward.next_payment_at_block && reward.amount_per_payout) {
       const paymentBlock = reward.next_payment_at_block as unknown as number;
-      if (recurringRewards.rewards[paymentBlock] === undefined) {
-        recurringRewards.rewards[paymentBlock] = [];
+      if (paymentBlock == blockNumber + 1) {
+        if (recurringRewards.rewards[paymentBlock] === undefined) {
+          recurringRewards.rewards[paymentBlock] = [];
+        }
+        const mint = (
+          await getMint(api, hash, reward.mint_id)
+        ).toJSON() as unknown as Mint;
+
+        const nextBlockPaymentFromCurrentMint = recurringRewards.rewards[
+          paymentBlock
+        ]
+          .filter((r) => r.mint_id == reward.mint_id)
+          .reduce((sum, current) => sum + Number(current.amount_per_payout), 0);
+        if (
+          nextBlockPaymentFromCurrentMint + Number(reward.amount_per_payout) <=
+          Number(mint.capacity)
+        ) {
+          recurringRewards.rewards[paymentBlock].push(reward);
+        }
       }
-      recurringRewards.rewards[paymentBlock].push(
-        Number(reward.amount_per_payout)
-      );
     }
   }
 };
@@ -250,7 +281,7 @@ const processTips = async (
       "members.buyMembership",
     ]);
     for (const item of burnExtrinsics) {
-      const tip = item.toHuman() as unknown as BalanceTranfer;
+      const tip = item.toHuman() as unknown as ExtrinsicsData;
       burning.tokensBurned += extractTipAmount(tip.tip);
     }
   }
@@ -341,7 +372,7 @@ export async function readMintingAndBurning() {
   } as unknown as MintingAndBurningReport;
   console.log(`Process events in a range [${startBlock} - ${endBlock}]`);
   let prevIssuance: number = 0;
-  for (let blockNumber = startBlock; blockNumber < endBlock; blockNumber += 1) {
+  for (let blockNumber = startBlock; blockNumber <= endBlock; blockNumber += 1) {
     if (blockNumber % 10 === 0) {
       console.log(
         `Block [${blockNumber}] Timestamp: [${new Date().toISOString()}]`
@@ -384,17 +415,19 @@ export async function readMintingAndBurning() {
       await processProposals(api, proposalEvents, report, hash);
       processStakingRewards(filterByEvent("staking.Reward", events), report);
       processMembershipCreation(
+        api,
+        hash,
         filterByEvent("members.MemberRegistered", events),
         report
       );
       const setBalanceEvents = filterByEvent("balances.BalanceSet", events);
       processSudoEvents(setBalanceEvents, report);
       await processBurnTransfers(api, blockNumber, events, report);
-      report.minting.totalRecurringRewardsMint = recurringRewards.rewards[
-        blockNumber
-      ]
-        ? recurringRewards.rewards[blockNumber].reduce((a, b) => a + b, 0)
-        : 0;
+      if (recurringRewards.rewards[blockNumber]) {
+        report.minting.totalRecurringRewardsMint = recurringRewards.rewards[
+          blockNumber
+        ].reduce((a, b) => a + Number(b.amount_per_payout), 0);
+      }
       const totalMinted =
         report.minting.totalSudoMint +
         report.minting.totalSpendingProposalsMint +
@@ -428,11 +461,10 @@ export async function readMintingAndBurning() {
       saveToLog(`${blockInfo} ${issuanceInfo} ${mintBurnInfo}`);
       addToMinting(report);
     }
-    await reloadRecurringRewards(api, recurringRewards, hash);
+    await reloadRecurringRewards(api, recurringRewards, blockNumber, hash);
     prevIssuance = totalIssuance;
   }
-
-  saveMinting(mintingAndBurningReport);
+  // saveMinting(mintingAndBurningReport); // TODO Fix final write to make the json valid.
 }
 
 readMintingAndBurning().then((r) => console.log("Processing done."));

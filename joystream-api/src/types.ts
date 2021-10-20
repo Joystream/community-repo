@@ -6,6 +6,7 @@ import { IElectionStake } from "@joystream/types/council";
 import { Channel } from "@joystream/types/content";
 import { WorkerId } from "@joystream/types/working-group";
 import { MemberId } from "@joystream/types/members";
+import { RewardRelationship } from "@joystream/types/recurring-rewards";
 
 export interface Api {
   query: any;
@@ -546,10 +547,10 @@ export interface MintingAndBurningReport {
 }
 
 export interface RecurringRewards {
-  rewards: { [key: number]: number[] };
+  rewards: { [key: number]: RewardRelationship[] };
 }
 
-export interface BalanceTranfer {
+export interface ExtrinsicsData {
   method: {
     args: string[]
   },
