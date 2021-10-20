@@ -94,12 +94,13 @@ const filterBySection = (sectionName: string, events: Vec<EventRecord>) => {
  * Every balances.BalanceSet event is minting new tokens.
  */
 const processSudoEvents = (
-  mintEvents: EventRecord[],
+  events: Vec<EventRecord>,
   report: MintingAndBurningData
 ) => {
+  const setBalanceEvents = filterByEvent("balances.BalanceSet", events);
   const { minting } = report;
-  if (mintEvents.length > 0) {
-    mintEvents.forEach((event: EventRecord) => {
+  if (setBalanceEvents.length > 0) {
+    setBalanceEvents.forEach((event: EventRecord) => {
       const { data } = event.event;
       const amount = Number(data[1]);
       minting.sudoEvents.push({ amount });
@@ -167,9 +168,10 @@ const processBurnTransfers = async (
 const processMembershipCreation = async (
   api: ApiPromise,
   hash: BlockHash,
-  membershipEvents: EventRecord[],
+  events: Vec<EventRecord>,
   report: MintingAndBurningData
 ) => {
+  const membershipEvents = filterByEvent("members.MemberRegistered", events);
   const { burning } = report;
   if (membershipEvents.length > 0) {
     const block = await getBlock(api, hash);
@@ -177,7 +179,6 @@ const processMembershipCreation = async (
     const extrinsics = filterBlockExtrinsicsByMethods(block, [
       "members.buyMembership",
     ]);
-
     for await (const ext of extrinsics) {
       const data = ext.toHuman() as unknown as ExtrinsicsData;
       const paidTermId = Number(data.method.args[0]);
@@ -185,7 +186,6 @@ const processMembershipCreation = async (
       const membershipCreationFee = Number(terms.fee);
       burning.totalMembershipCreation += membershipCreationFee;
     }
-
     membershipEvents.forEach((event) => {
       const { data } = event.event;
       const dataJson = data.toJSON() as object[];
@@ -243,9 +243,10 @@ const reloadRecurringRewards = async (
  * Event `staking.Reward` means validator/nominator got rewarderd.
  */
 const processStakingRewards = (
-  stakingEvents: EventRecord[],
+  events: Vec<EventRecord>,
   report: MintingAndBurningData
 ) => {
+  const stakingEvents = filterByEvent("staking.Reward", events);
   const { minting } = report;
   if (stakingEvents.length > 0) {
     stakingEvents.forEach((event) => {
@@ -375,7 +376,7 @@ export async function readMintingAndBurning() {
   await api.isReady;
   await processBlockRange(api, startBlock, endBlock)
   // TODO uncommment and fill the array with specific blocks if you need to check some specific list of blocks
-  // const specificBlocks = [1521860, 1565294, 1694973]; // balance.transfer
+  // const specificBlocks = [1191475]; // operationsWorkingGroup.updateRewardAmount
   // for (const block of specificBlocks) {
   //   await processBlockRange(api, block - 1, block);
   // }
@@ -427,20 +428,15 @@ async function processBlockRange(api: ApiPromise, start: number, end: number) {
     if (prevIssuance !== 0 && totalIssuance !== prevIssuance) {
       await processTips(api, events, report, hash);
       await processProposals(api, events, report, hash);
-      processStakingRewards(filterByEvent("staking.Reward", events), report);
-      processMembershipCreation(
-        api,
-        hash,
-        filterByEvent("members.MemberRegistered", events),
-        report
-      );
-      processSudoEvents(filterByEvent("balances.BalanceSet", events), report);
+      processStakingRewards(events, report);
+      processMembershipCreation(api, hash, events, report);
+      processSudoEvents(events, report);
+      await processBurnTransfers(api, blockNumber, report);
       if (recurringRewards.rewards[blockNumber]) {
         report.minting.totalRecurringRewardsMint = recurringRewards.rewards[
           blockNumber
         ].reduce((a, b) => a + Number(b.amount_per_payout), 0);
       }
-      await processBurnTransfers(api, blockNumber, report);
       const totalMinted =
         report.minting.totalSudoMint +
         report.minting.totalSpendingProposalsMint +
