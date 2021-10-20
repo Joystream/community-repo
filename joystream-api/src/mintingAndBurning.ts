@@ -6,6 +6,7 @@ import {
   getBlock,
   getMint,
   getPaidMembershipTermsById,
+  getWorker,
 } from "./joystream-lib/api";
 import {
   AccountId,
@@ -13,6 +14,7 @@ import {
   BlockHash,
   SignedBlock,
 } from "@polkadot/types/interfaces";
+import { u128 } from "@polkadot/types/primitive";
 import { Extrinsic } from "@polkadot/types/interfaces";
 import path from "path";
 import {
@@ -33,6 +35,7 @@ import { ApiPromise } from "@polkadot/api";
 import fs, { PathLike } from "fs";
 import { Mint } from "@joystream/types/mint";
 import { FinalizationData, ProposalStatus } from "@joystream/types/proposals";
+import { min } from "lodash";
 
 const saveFile = (jsonString: string, path: PathLike) => {
   try {
@@ -158,6 +161,56 @@ const processBurnTransfers = async (
     const tip = extData.tip.toNumber();
     if (tip > 0 && args[0].toString() === BURN_ADDRESS) {
       burning.tokensBurned += tip;
+    }
+  }
+};
+
+/**
+ * When operationsWorkingGroup.updateRewardAmount happens at the block when worker is expected to be rewarded,
+ * the reward is changed immidiately, so we need to update recurring rewards which we have generated on the previous block.
+ */
+const processWorkerRewardAmountUpdated = async (
+  api: ApiPromise,
+  blockNumber: number,
+  recurringRewards: RecurringRewards
+) => {
+  const hash = await getBlockHash(api, blockNumber);
+  const block = await getBlock(api, hash);
+  const groups = [
+    "operationsWorkingGroup",
+    "contentDirectoryWorkingGroup",
+    "storageWorkingGroup",
+  ];
+  for await (const group of groups) {
+    const extrinsics = filterBlockExtrinsicsByMethods(block, [
+      `${group}.updateRewardAmount`,
+    ]);
+    for (const ext of extrinsics) {
+      const extData = ext as unknown as Extrinsic;
+      const args = extData.method.args;
+      const workerId = Number(args[0]);
+      const newAmount = Number(args[1]);
+      const worker = await getWorker(api, group, hash, workerId);
+      const relationship = Number(worker.reward_relationship.unwrap());
+      const previousBlockWorkerReward = recurringRewards.rewards[
+        blockNumber
+      ].filter((r) => Number(r.recipient) === relationship);
+      if (previousBlockWorkerReward.length == 0) {
+        const reward = (
+          await api.query.recurringRewards.rewardRelationships.at(
+            hash,
+            relationship
+          )
+        ).toJSON() as unknown as RewardRelationship;
+        recurringRewards.rewards[blockNumber].push(reward);
+      } else {
+        previousBlockWorkerReward.forEach(async (reward) => {
+          const mint = (
+            await getMint(api, hash, reward.mint_id)
+          ).toJSON() as unknown as Mint;
+          reward.amount_per_payout = newAmount as unknown as u128;
+        });
+      }
     }
   }
 };
@@ -290,6 +343,23 @@ const processTips = async (
   }
 };
 
+const getTotalMinted = (report: MintingAndBurningData) => {
+  return (
+    report.minting.totalSudoMint +
+    report.minting.totalSpendingProposalsMint +
+    report.minting.stakingRewardsTotal +
+    report.minting.totalRecurringRewardsMint
+  );
+};
+
+const getTotalBurned = (report: MintingAndBurningData) => {
+  return (
+    report.burning.tokensBurned +
+    report.burning.totalProposalCancellationFee +
+    report.burning.totalMembershipCreation
+  );
+};
+
 /**
  * Process event `proposalsEngine.ProposalStatusUpdated`
  * If proposal is cancelled, update the burning with cancellation fee.
@@ -376,7 +446,7 @@ export async function readMintingAndBurning() {
   await api.isReady;
   await processBlockRange(api, startBlock, endBlock)
   // TODO uncommment and fill the array with specific blocks if you need to check some specific list of blocks
-  // const specificBlocks = [1191475]; // operationsWorkingGroup.updateRewardAmount
+  // const specificBlocks = [1556265, 1606888];
   // for (const block of specificBlocks) {
   //   await processBlockRange(api, block - 1, block);
   // }
@@ -431,21 +501,19 @@ async function processBlockRange(api: ApiPromise, start: number, end: number) {
       processStakingRewards(events, report);
       processMembershipCreation(api, hash, events, report);
       processSudoEvents(events, report);
+      await processWorkerRewardAmountUpdated(
+        api,
+        blockNumber,
+        recurringRewards
+      );
       await processBurnTransfers(api, blockNumber, report);
       if (recurringRewards.rewards[blockNumber]) {
         report.minting.totalRecurringRewardsMint = recurringRewards.rewards[
           blockNumber
         ].reduce((a, b) => a + Number(b.amount_per_payout), 0);
       }
-      const totalMinted =
-        report.minting.totalSudoMint +
-        report.minting.totalSpendingProposalsMint +
-        report.minting.stakingRewardsTotal +
-        report.minting.totalRecurringRewardsMint;
-      const totalBurned =
-        report.burning.tokensBurned +
-        report.burning.totalProposalCancellationFee +
-        report.burning.totalMembershipCreation;
+      const totalMinted = getTotalMinted(report);
+      const totalBurned = getTotalBurned(report);
       const calculatedDelta = totalMinted - totalBurned;
       if (
         report.burning.tokensBurned > 0 ||
