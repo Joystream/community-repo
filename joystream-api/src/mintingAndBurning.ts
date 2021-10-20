@@ -31,6 +31,7 @@ import { RewardRelationship } from "@joystream/types/recurring-rewards";
 import { ApiPromise } from "@polkadot/api";
 import fs, { PathLike } from "fs";
 import { Mint } from "@joystream/types/mint";
+import { FinalizationData, ProposalStatus } from "@joystream/types/proposals";
 
 const saveFile = (jsonString: string, path: PathLike) => {
   try {
@@ -341,13 +342,17 @@ const processTips = async (
  */
 const processProposals = async (
   api: ApiPromise,
-  events: EventRecord[],
+  events: Vec<EventRecord>,
   report: MintingAndBurningData,
   hash: BlockHash
 ) => {
+  const proposalEvents = filterByEvent(
+    "proposalsEngine.ProposalStatusUpdated",
+    events
+  );
   const { minting, burning } = report;
-  if (events.length > 0) {
-    for (const event of events) {
+  if (proposalEvents.length > 0) {
+    for (const event of proposalEvents) {
       const { data } = event.event;
       const dataJson = data.toJSON() as object[];
       const proposalId = dataJson[0] as unknown as number;
@@ -357,9 +362,21 @@ const processProposals = async (
         "proposalsEngine.cancelProposal"
       );
       for (const {} of cancelledProposals) {
-        burning.totalProposalCancellationFee += 10000;
+        burning.totalProposalCancellationFee += 10000; // TODO get proposal cancellation fee from chains
         burning.cancelledProposals.push(proposalId);
       }
+      const proposalStatusWrapper = dataJson[1] as unknown as ProposalStatus;
+      const finalizationData = (
+        proposalStatusWrapper as unknown as {
+          [key: string]: FinalizationData[];
+        }
+      )["finalized"] as unknown as FinalizationData;
+      for await (const key of Object.keys(finalizationData.proposalStatus)) {
+        if (key.toString() === "expired" || key.toString() === "rejected") {
+          burning.totalProposalCancellationFee += 5000; // TODO get proposal rejected/expired fee from chains
+        }
+      }
+
       const spendingProposalAmount = await getSpendingProposalAmount(
         api,
         hash,
@@ -413,16 +430,14 @@ export async function readMintingAndBurning() {
   await api.isReady;
   await processBlockRange(api, startBlock, endBlock)
   // TODO uncommment and fill the array with specific blocks if you need to check some specific list of blocks
-  // const specificBlocks = [
-  //   1557912, 1603259, 1604871, 1605505, 1605518, 1607169, 1617522, 1662060,
-  // ];
+  // const specificBlocks = [1521860, 1565294, 1694973]; // balance.transfer
   // for (const block of specificBlocks) {
   //   await processBlockRange(api, block - 1, block);
   // }
 }
 
 async function processBlockRange(api: ApiPromise, start: number, end: number) {
-  console.log(`Process events in a range [${start} - ${end}]`);
+  // console.log(`Process events in a range [${start} - ${end}]`);
   const recurringRewards = {
     rewards: {},
   } as RecurringRewards;
@@ -431,9 +446,9 @@ async function processBlockRange(api: ApiPromise, start: number, end: number) {
   } as unknown as MintingAndBurningReport;
   let prevIssuance: number = 0;
   for (let blockNumber = start; blockNumber <= end; blockNumber += 1) {
-    if (blockNumber % 10 === 0) {
-      console.log(`Block [${blockNumber}] Timestamp: [${new Date().toISOString()}]`);
-    }
+    // if (blockNumber % 10 === 0) {
+    //   console.log(`Block [${blockNumber}] Timestamp: [${new Date().toISOString()}]`);
+    // }
     const hash = await getBlockHash(api, blockNumber);
     const issuance = await getIssuance(api, hash);
     const events = await getEvents(api, hash);
@@ -463,12 +478,8 @@ async function processBlockRange(api: ApiPromise, start: number, end: number) {
     const totalIssuance = report.issuance;
     const actualIssuanceDelta = totalIssuance - prevIssuance;
     if (prevIssuance !== 0 && totalIssuance !== prevIssuance) {
-      const proposalEvents = filterByEvent(
-        "proposalsEngine.ProposalStatusUpdated",
-        events
-      );
       await processTips(api, events, report, hash);
-      await processProposals(api, proposalEvents, report, hash);
+      await processProposals(api, events, report, hash);
       processStakingRewards(filterByEvent("staking.Reward", events), report);
       processMembershipCreation(
         api,
@@ -476,8 +487,7 @@ async function processBlockRange(api: ApiPromise, start: number, end: number) {
         filterByEvent("members.MemberRegistered", events),
         report
       );
-      const setBalanceEvents = filterByEvent("balances.BalanceSet", events);
-      processSudoEvents(setBalanceEvents, report);
+      processSudoEvents(filterByEvent("balances.BalanceSet", events), report);
       if (recurringRewards.rewards[blockNumber]) {
         report.minting.totalRecurringRewardsMint = recurringRewards.rewards[
           blockNumber
