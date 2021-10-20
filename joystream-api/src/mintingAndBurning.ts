@@ -271,7 +271,7 @@ const processTips = async (
   report: MintingAndBurningData,
   hash: BlockHash
 ) => {
-  const { minting, burning } = report;
+  const { burning } = report;
   if (events.length > 0) {
     const block = await getBlock(api, hash);
     const burnExtrinsics = filterBlockExtrinsicsByMethods(block, [
@@ -282,8 +282,9 @@ const processTips = async (
       "members.buyMembership",
     ]);
     for (const item of burnExtrinsics) {
-      const tip = item.toHuman() as unknown as ExtrinsicsData;
-      burning.tokensBurned += extractTipAmount(tip.tip);
+      const ext = item as unknown as Extrinsic;
+      const tip = ext.tip.toNumber();
+      burning.tokensBurned += tip;
     }
   }
 };
@@ -368,15 +369,6 @@ const BURN_ADDRESS = "5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu";
 const args = process.argv.slice(2);
 const startBlock = Number(args[0]) || 720370;
 const endBlock = Number(args[1]) || 2091600;
-
-const extractTipAmount = (tip: string) => {
-  if (tip.indexOf("MJOY") > 0) {
-    return Number(tip.replace("MJOY", "")) * 1000000;
-  } else if (tip.indexOf("kJOY") > 0) {
-    return Number(tip.replace("kJOY", "")) * 1000;
-  }
-  return Number(tip.replace("JOY", ""));
-};
 
 export async function readMintingAndBurning() {
   const api = await connectApi(endpoint);
