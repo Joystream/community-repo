@@ -9,7 +9,6 @@
 [staking bug? - no events]             [WARN] Block: [1292116]. Issuance: [921213567]. Previous issuance: [921713550]. Delta: [-499983]. Calculated Delta: [17]. Total Minted: [17]. Total Burned: [0]
 [staking bug? - no events]             [WARN] Block: [1292121]. Issuance: [920713652]. Previous issuance: [921213635]. Delta: [-499983]. Calculated Delta: [17]. Total Minted: [17]. Total Burned: [0]
 [staking bug? - no events]             [WARN] Block: [1292125]. Issuance: [920213720]. Previous issuance: [920713703]. Delta: [-499983]. Calculated Delta: [17]. Total Minted: [17]. Total Burned: [0]
-[staking bug? - no events]             [WARN] Block: [1359953]. Issuance: [961714365]. Previous issuance: [961719348]. Delta: [-4983]. Calculated Delta: [17]. Total Minted: [17]. Total Burned: [0]
 [operationsWorkingGroup.fillOpening]   [WARN] Block: [1505062]. Issuance: [1032124915]. Previous issuance: [1032624775]. Delta: [-499860]. Calculated Delta: [140]. Total Minted: [140]. Total Burned: [0]
 [balances.BalanceSet]                  [WARN] Block: [1609074]. Issuance: [1069126289]. Previous issuance: [1074035625]. Delta: [-4909336]. Calculated Delta: [0]. Total Minted: [0]. Total Burned: [0]
 [operationsWorkingGroup.fillOpening]   [WARN] Block: [1659176]. Issuance: [1076573667]. Previous issuance: [1076593667]. Delta: [-20000]. Calculated Delta: [0]. Total Minted: [0]. Total Burned: [0]
