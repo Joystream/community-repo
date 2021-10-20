@@ -74,6 +74,7 @@ export class ProposalInfo {
     blocksToFinalized: number = 0;
     failedReason?: ProposalFailedReason;
     paymentDestinationMemberUsername?: string;
+    paymentAmount?: number;
 }
 
 export class ReportData {

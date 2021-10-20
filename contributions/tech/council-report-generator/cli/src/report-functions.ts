@@ -74,7 +74,7 @@ export async function generateReportData(api: ApiPromise, blockRange: BlockRange
 
         proposalsBreakdownText += '\n- Proposal Link: ' + PROPOSAL_URL + proposal.id + '\n' +
             '- Proposal Type: ' + ProposalType[proposal.type] + '\n' +
-            '\t- Amount: ' + (proposal.paymentDestinationMemberUsername ? proposal.paymentDestinationMemberUsername : 'N/A') + '\n';
+            '\t- Amount: ' + (proposal.paymentAmount ? proposal.paymentAmount : 'N/A') + '\n';
         if (proposal.paymentDestinationMemberUsername) {
             proposalsBreakdownText += '\t- Destination member: ' + proposal.paymentDestinationMemberUsername + '\n';
         }
@@ -239,6 +239,7 @@ async function getProposals(api: ApiPromise, range: BlockRange) {
         if (proposalInfo.type == ProposalType.Spending) {
             let spendingData = proposalDetails.asSpending
             let accountId = spendingData[1]
+            proposalInfo.paymentAmount = Number(spendingData[0].toBigInt())
             let paymentDestinationMemberId = await api.query.members.memberIdsByControllerAccountId(accountId);
             if (!paymentDestinationMemberId.isEmpty) {
                 let paymentDestinationMembership = await api.query.members.membershipById(paymentDestinationMemberId) as Membership
