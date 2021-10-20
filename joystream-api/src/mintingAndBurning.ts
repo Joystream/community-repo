@@ -13,6 +13,7 @@ import {
   BlockHash,
   SignedBlock,
 } from "@polkadot/types/interfaces";
+import { Extrinsic } from "@polkadot/types/interfaces";
 import path from "path";
 import {
   MintingBlockData,
@@ -137,73 +138,25 @@ const getSpendingProposalAmount = async (
 };
 
 /**
- * When transfer occurs to a specific BURN_ADDRESS, transfer amount is burned.
+ * When transfer occurs to a specific BURN_ADDRESS then in another transfer it converts to a tip and gets burned.
  */
 const processBurnTransfers = async (
   api: ApiPromise,
   blockNumber: number,
-  events: EventRecord[],
-  report: MintingAndBurningData,
-  totalIssuance: number,
-  prevIssuance: number
+  report: MintingAndBurningData
 ) => {
   const { burning } = report;
-  const totalMinted =
-    report.minting.totalSudoMint +
-    report.minting.totalSpendingProposalsMint +
-    report.minting.stakingRewardsTotal +
-    report.minting.totalRecurringRewardsMint;
-  const totalBurned =
-    report.burning.tokensBurned +
-    report.burning.totalProposalCancellationFee +
-    report.burning.totalMembershipCreation;
-
-  if (events.length > 0) {
-    const hash = await getBlockHash(api, blockNumber);
-    const block = await getBlock(api, hash);
-    if (prevIssuance + totalMinted - totalBurned !== totalIssuance) {
-      const parentHash = block.block.header.parentHash;
-      const parentEvents = await getEvents(api, parentHash);
-      const transferEvents = filterByEvent("balances.Transfer", parentEvents);
-      if (transferEvents.length == 0) {
-        const extrinsics = filterBlockExtrinsicsByMethods(block, [
-          "balances.transfer",
-        ]);
-        for (const ext of extrinsics) {
-          const data = ext.toHuman() as unknown as ExtrinsicsData;
-          // console.log(data)
-          let transferFound = false;
-          // iterate down over last 5 blocks to find the block with balance.Transfer event
-          for (let index = blockNumber; index >= blockNumber - 5; index--) {
-            if (transferFound) {
-              break;
-            }
-            const blockHash = await getBlockHash(api, index);
-            const blockEvents = await getEvents(api, blockHash);
-            const blockTransferEvents = filterByEvent(
-              "balances.Transfer",
-              blockEvents
-            );
-            for (const event of blockTransferEvents) {
-              const { data } = event.event;
-              if (`${data[1]}` === BURN_ADDRESS) {
-                const burnTransferAmount = Number(data[2]);
-                burning.tokensBurned += burnTransferAmount;
-                transferFound = true;
-                break;
-              }
-            }
-          }
-        }
-      } else {
-        transferEvents.forEach((event: EventRecord) => {
-          const { data } = event.event;
-          if (`${data[1]}` === BURN_ADDRESS) {
-            const burnTransferAmount = Number(data[2]);
-            burning.tokensBurned += burnTransferAmount;
-          }
-        });
-      }
+  const hash = await getBlockHash(api, blockNumber);
+  const block = await getBlock(api, hash);
+  const extrinsics = filterBlockExtrinsicsByMethods(block, [
+    "balances.transfer",
+  ]);
+  for (const ext of extrinsics) {
+    const extData = ext as unknown as Extrinsic;
+    const args = extData.method.args;
+    const tip = extData.tip.toNumber();
+    if (tip > 0 && args[0].toString() === BURN_ADDRESS) {
+      burning.tokensBurned += tip;
     }
   }
 };
@@ -437,7 +390,7 @@ export async function readMintingAndBurning() {
 }
 
 async function processBlockRange(api: ApiPromise, start: number, end: number) {
-  // console.log(`Process events in a range [${start} - ${end}]`);
+  console.log(`Process events in a range [${start} - ${end}]`);
   const recurringRewards = {
     rewards: {},
   } as RecurringRewards;
@@ -446,9 +399,11 @@ async function processBlockRange(api: ApiPromise, start: number, end: number) {
   } as unknown as MintingAndBurningReport;
   let prevIssuance: number = 0;
   for (let blockNumber = start; blockNumber <= end; blockNumber += 1) {
-    // if (blockNumber % 10 === 0) {
-    //   console.log(`Block [${blockNumber}] Timestamp: [${new Date().toISOString()}]`);
-    // }
+    if (blockNumber % 10 === 0) {
+      console.log(
+        `Block [${blockNumber}] Timestamp: [${new Date().toISOString()}]`
+      );
+    }
     const hash = await getBlockHash(api, blockNumber);
     const issuance = await getIssuance(api, hash);
     const events = await getEvents(api, hash);
@@ -493,14 +448,7 @@ async function processBlockRange(api: ApiPromise, start: number, end: number) {
           blockNumber
         ].reduce((a, b) => a + Number(b.amount_per_payout), 0);
       }
-      await processBurnTransfers(
-        api,
-        blockNumber,
-        events,
-        report,
-        totalIssuance,
-        prevIssuance
-      );
+      await processBurnTransfers(api, blockNumber, report);
       const totalMinted =
         report.minting.totalSudoMint +
         report.minting.totalSpendingProposalsMint +
