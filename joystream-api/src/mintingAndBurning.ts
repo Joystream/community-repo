@@ -530,8 +530,8 @@ async function processBlockRange(api: ApiPromise, start: number, end: number) {
         totalIssuance !== actualIssuanceDelta &&
         prevIssuance !== actualIssuanceDelta &&
         calculatedDelta !== actualIssuanceDelta;
-      const issuanceInfo = `Issuance: [${issuance}]. Previous issuance: [${prevIssuance}]. Delta: [${actualIssuanceDelta}]. Calculated Delta: [${calculatedDelta}].`;
-      const mintBurnInfo = `Total Minted: [${totalMinted}]. Total Burned: [${totalBurned}]`;
+      const issuanceInfo = `Issuance: [${issuance}] Previous issuance: [${prevIssuance}] Delta: [${actualIssuanceDelta}] Calculated Delta: [${calculatedDelta}]`;
+      const mintBurnInfo = `Total Minted: [${totalMinted}] Total Burned: [${totalBurned}]`;
       const blockInfo = `[${
         shouldWarn ? "WARN" : "INFO"
       }] Block: [${blockNumber}].`;
