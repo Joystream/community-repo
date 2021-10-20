@@ -444,7 +444,7 @@ const endBlock = Number(args[1]) || 2091600;
 export async function readMintingAndBurning() {
   const api = await connectApi(endpoint);
   await api.isReady;
-  await processBlockRange(api, startBlock, endBlock)
+  await processBlockRange(api, startBlock, endBlock);
   // TODO uncommment and fill the array with specific blocks if you need to check some specific list of blocks
   // const specificBlocks = [1556265, 1606888];
   // for (const block of specificBlocks) {
@@ -532,10 +532,10 @@ async function processBlockRange(api: ApiPromise, start: number, end: number) {
         calculatedDelta !== actualIssuanceDelta;
       const issuanceInfo = `Issuance: [${issuance}] Previous issuance: [${prevIssuance}] Delta: [${actualIssuanceDelta}] Calculated Delta: [${calculatedDelta}]`;
       const mintBurnInfo = `Total Minted: [${totalMinted}] Total Burned: [${totalBurned}]`;
-      const blockInfo = `[${
-        shouldWarn ? "WARN" : "INFO"
-      }] Block: [${blockNumber}].`;
-      saveToLog(`${blockInfo} ${issuanceInfo} ${mintBurnInfo}`);
+      const logType = `[${shouldWarn ? "WARN" : "INFO"}]`;
+      saveToLog(
+        `${logType} Block: [${blockNumber}] ${issuanceInfo} ${mintBurnInfo}`
+      );
       addToMinting(report);
     }
     await reloadRecurringRewards(api, recurringRewards, blockNumber, hash);
