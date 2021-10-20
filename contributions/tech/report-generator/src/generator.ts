@@ -71,20 +71,18 @@ const updateReports = async (config: Config, round?: number) => {
   const head = await getHead(api);
   getCouncils(api, +head).then(async (councils: Round[]) => {
     api.disconnect();
-    if (round !== null) {
+    if (round === null || isNaN(round)) {
+      console.log(`-> Updating reports`);
+      await Promise.all(
+        councils.map(({ start, end }) => generateReport(start, end, config))
+      );
+    } else {
       const council = councils.find((c) => c.round === round);
       if (!council) return console.warn(`Round ${round} not found:`, councils);
       console.log(
         `-> Updating round ${round} (${council.start}-${council.end})`
       );
       await generateReport(council.start, council.end, config);
-    } else {
-      console.log(`-> Updating reports`);
-      await Promise.all(
-        councils.map((council) =>
-          generateReport(council.start, council.end, config)
-        )
-      );
     }
     process.exit();
   });

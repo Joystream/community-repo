@@ -264,7 +264,7 @@ export class StatisticsCollector {
 
     if (!bountiesTotalPaid) {
       console.warn(
-        `No bounties in selected period. Need to update ${proposalsFile}?\n Looking for spending proposals titled "bounty":`
+        `No bounties in selected period. Need to update ${proposalsFile}?\nLooking for spending proposals titled "bounty":`
       );
       for (const { title, amount } of spendingProposals) {
         if (!title.toLowerCase().includes("bounty")) continue;
@@ -758,83 +758,69 @@ export class StatisticsCollector {
 
     console.log("Fetching fiat events....");
     await axios.get(statusUrl).then((response: { data: StatusData }) => {
+      console.log("# Exchanges");
       let filteredExchanges = response.data.exchanges.filter(
         (exchange) =>
-          exchange.blockHeight > startBlockHeight &&
+          exchange.blockHeight >= startBlockHeight &&
           exchange.blockHeight <= endBlockHeight &&
           new Date(exchange.date) > sumerGenesis
       );
 
-      console.log("# Exchanges");
       for (let filteredExchange of filteredExchanges) {
         console.log(
           `Block: ${filteredExchange.blockHeight}, USD: ${filteredExchange.amountUSD}`
         );
       }
 
-      console.log("# Burn");
       let filteredBurns = response.data.burns.filter(
         (burn: any) =>
-          burn.blockHeight > startBlockHeight &&
+          burn.blockHeight >= startBlockHeight &&
           burn.blockHeight <= endBlockHeight &&
           new Date(burn.date) > sumerGenesis
       );
-      for (let filteredBurn of filteredBurns) {
-        console.log(
-          `Block: ${filteredBurn.blockHeight}, tJOY: ${filteredBurn.amount}`
+      if (filteredBurns.length) {
+        console.log("# Burns");
+        filteredBurns.forEach(({ blockHeight, amount }) =>
+          console.log(`Block: ${blockHeight}, tJOY: ${amount}`)
         );
       }
 
       console.log("# Dollar Pool Changes");
-      let dollarPoolRefills = ``;
-      let allDollarPoolChanges = response.data.dollarPoolChanges.filter(
+      const allDollarPoolChanges = response.data.dollarPoolChanges.filter(
         (dollarPoolChange: any) =>
-          dollarPoolChange.blockHeight > startBlockHeight &&
+          dollarPoolChange.blockHeight >= startBlockHeight &&
           dollarPoolChange.blockHeight <= endBlockHeight &&
           new Date(dollarPoolChange.blockTime) > sumerGenesis
       );
-
-      let filteredDollarPoolChanges = response.data.dollarPoolChanges.filter(
+      const filteredDollarPoolChanges = response.data.dollarPoolChanges.filter(
         (dollarPoolChange: any) =>
-          dollarPoolChange.blockHeight > startBlockHeight &&
+          dollarPoolChange.blockHeight >= startBlockHeight &&
           dollarPoolChange.blockHeight <= endBlockHeight &&
           dollarPoolChange.change > 0 &&
           new Date(dollarPoolChange.blockTime) > sumerGenesis
       );
 
+      let dollarPoolRefills = ``;
       if (filteredDollarPoolChanges.length > 0) {
-        dollarPoolRefills += "| Refill, USD | Reason | Block # |\n";
-        dollarPoolRefills +=
-          "|---------------------|--------------|--------------|\n";
+        dollarPoolRefills =
+          "| Refill, USD | Reason | Block # |\n|---------------------|--------------|--------------|\n";
+        filteredDollarPoolChanges.forEach(({ blockHeight, change, reason }) => {
+          console.log(
+            `Block: ${blockHeight}, USD: ${change}, Reason: ${reason}`
+          );
+          dollarPoolRefills += `| ${change} | ${reason} | ${blockHeight} |\n`;
+        });
       }
 
-      for (let filteredDollarPoolChange of filteredDollarPoolChanges) {
-        console.log(
-          `Block: ${filteredDollarPoolChange.blockHeight}, USD: ${filteredDollarPoolChange.change}, Reason: ${filteredDollarPoolChange.reason}`
-        );
-        dollarPoolRefills += `|${filteredDollarPoolChange.change}|${filteredDollarPoolChange.reason}|${filteredDollarPoolChange.blockHeight}|\n`;
-      }
-
+      // calculate inflation
       let startTermExchangeRate = 0;
       let endTermExchangeRate = 0;
       if (filteredExchanges.length) {
-        console.log("# USD / 1M tJOY Rate");
-        console.log(
-          `@ Term start (block #${filteredExchanges[0].blockHeight}): ${
-            filteredExchanges[0].price * 1000000
-          }`
-        );
         const lastExchangeEvent =
           filteredExchanges[filteredExchanges.length - 1];
-        console.log(
-          `@ Term End (block #${lastExchangeEvent.blockHeight}): ${
-            lastExchangeEvent.price * 1000000
-          }`
-        );
         startTermExchangeRate = filteredExchanges[0].price * 1000000;
         endTermExchangeRate = lastExchangeEvent.price * 1000000;
       } else {
-        // TODO outsource into separate function and call with either exchanges or dollarpoolchanges
         startTermExchangeRate =
           filteredDollarPoolChanges[0].valueAfter * 1000000;
         const lastEvent =
@@ -842,6 +828,12 @@ export class StatisticsCollector {
         endTermExchangeRate = lastEvent.rateAfter * 1000000;
       }
       let inflationPct = getPercent(endTermExchangeRate, startTermExchangeRate);
+      console.log(
+        "# USD / 1M tJOY Rate\n",
+        `@ Term start (block #${startBlockHeight}: ${startTermExchangeRate}\n`,
+        `@ Term end (block #${endBlockHeight}: ${endTermExchangeRate}\n`,
+        `Inflation: ${inflationPct}`
+      );
 
       const startDollarPool =
         allDollarPoolChanges[0].change > 0
@@ -851,13 +843,13 @@ export class StatisticsCollector {
         allDollarPoolChanges[allDollarPoolChanges.length - 1];
       const endDollarPool = endDollarEvent.valueAfter;
       const dollarPoolPctChange = getPercent(startDollarPool, endDollarPool);
+
       this.saveStats({
-        startTermExchangeRate,
-        endTermExchangeRate,
+        startTermExchangeRate: startTermExchangeRate.toFixed(2),
+        endTermExchangeRate: endTermExchangeRate.toFixed(2),
         inflationPct,
-        startDollarPool,
-        endDollarEvent,
-        endDollarPool,
+        startDollarPool: startDollarPool.toFixed(2),
+        endDollarPool: endDollarPool.toFixed(2),
         dollarPoolPctChange,
         dollarPoolRefills,
       });
