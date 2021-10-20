@@ -109,13 +109,13 @@
       "title": "JS Official Music Theme",
       "openedDate": "2021-10-01",
       "description": "Create a musical theme for Joystream",
-      "managers": ["@agrafen3000"],
+      "managers": [],
       "links": ["https://testnet.joystream.org/#/proposals/606","https://github.com/Joystream/community-repo/issues/384"],
       "reward": 400,
       "notes": "Musical Theme",
       "tags": ["Creative", "Music"],
       "format": "Open",
-      "status": "Open"
+      "status": "Announced"
     }
   ],
   "closedBounties":
