@@ -5,6 +5,7 @@ import {
   getIssuance,
   getBlock,
   getMint,
+  getPaidMembershipTermsById,
 } from "./joystream-lib/api";
 import {
   AccountId,
@@ -29,7 +30,6 @@ import { ProposalDetails, ProposalOf } from "@joystream/types/augment/types";
 import { RewardRelationship } from "@joystream/types/recurring-rewards";
 import { ApiPromise } from "@polkadot/api";
 import fs, { PathLike } from "fs";
-import { posix } from "path/posix";
 import { Mint } from "@joystream/types/mint";
 
 const saveFile = (jsonString: string, path: PathLike) => {
@@ -141,22 +141,69 @@ const getSpendingProposalAmount = async (
 const processBurnTransfers = async (
   api: ApiPromise,
   blockNumber: number,
-  burnEvents: EventRecord[],
-  report: MintingAndBurningData
+  events: EventRecord[],
+  report: MintingAndBurningData,
+  totalIssuance: number,
+  prevIssuance: number
 ) => {
   const { burning } = report;
-  if (burnEvents.length > 0) {
+  const totalMinted =
+    report.minting.totalSudoMint +
+    report.minting.totalSpendingProposalsMint +
+    report.minting.stakingRewardsTotal +
+    report.minting.totalRecurringRewardsMint;
+  const totalBurned =
+    report.burning.tokensBurned +
+    report.burning.totalProposalCancellationFee +
+    report.burning.totalMembershipCreation;
+
+  if (events.length > 0) {
     const hash = await getBlockHash(api, blockNumber);
     const block = await getBlock(api, hash);
-    const parentHash = block.block.header.parentHash;
-    const parentEvents = await getEvents(api, parentHash);
-    const transferEvents = filterByEvent("balances.Transfer", parentEvents);
-    transferEvents.forEach((event: EventRecord) => {
-      const { data } = event.event;
-      if (`${data[1]}` === BURN_ADDRESS) {
-        burning.tokensBurned += Number(data[2]);
+    if (prevIssuance + totalMinted - totalBurned !== totalIssuance) {
+      const parentHash = block.block.header.parentHash;
+      const parentEvents = await getEvents(api, parentHash);
+      const transferEvents = filterByEvent("balances.Transfer", parentEvents);
+      if (transferEvents.length == 0) {
+        const extrinsics = filterBlockExtrinsicsByMethods(block, [
+          "balances.transfer",
+        ]);
+        for (const ext of extrinsics) {
+          const data = ext.toHuman() as unknown as ExtrinsicsData;
+          // console.log(data)
+          let transferFound = false;
+          // iterate down over last 5 blocks to find the block with balance.Transfer event
+          for (let index = blockNumber; index >= blockNumber - 5; index--) {
+            if (transferFound) {
+              break;
+            }
+            const blockHash = await getBlockHash(api, index);
+            const blockEvents = await getEvents(api, blockHash);
+            const blockTransferEvents = filterByEvent(
+              "balances.Transfer",
+              blockEvents
+            );
+            for (const event of blockTransferEvents) {
+              const { data } = event.event;
+              if (`${data[1]}` === BURN_ADDRESS) {
+                const burnTransferAmount = Number(data[2]);
+                burning.tokensBurned += burnTransferAmount;
+                transferFound = true;
+                break;
+              }
+            }
+          }
+        }
+      } else {
+        transferEvents.forEach((event: EventRecord) => {
+          const { data } = event.event;
+          if (`${data[1]}` === BURN_ADDRESS) {
+            const burnTransferAmount = Number(data[2]);
+            burning.tokensBurned += burnTransferAmount;
+          }
+        });
       }
-    });
+    }
   }
 };
 
@@ -171,26 +218,26 @@ const processMembershipCreation = async (
 ) => {
   const { burning } = report;
   if (membershipEvents.length > 0) {
-    const membershipCreationPrice = 100; // TODO Find out how to get membership creation fee from the blockchain!
     const block = await getBlock(api, hash);
-    // Only in case extrinsics is `members.buyMembership`, skipping `members.addScreenedMember` because there is no fee in this case
+    // intentionally skipping `members.addScreenedMember` because there is no paid fee in this case
     const extrinsics = filterBlockExtrinsicsByMethods(block, [
       "members.buyMembership",
     ]);
+
+    for await (const ext of extrinsics) {
+      const data = ext.toHuman() as unknown as ExtrinsicsData;
+      const paidTermId = Number(data.method.args[0]);
+      const terms = await getPaidMembershipTermsById(api, hash, paidTermId);
+      const membershipCreationFee = Number(terms.fee);
+      burning.totalMembershipCreation += membershipCreationFee;
+    }
+
     membershipEvents.forEach((event) => {
       const { data } = event.event;
       const dataJson = data.toJSON() as object[];
       const memberId = dataJson[0] as unknown as number;
       const accountId = dataJson[0] as unknown as string;
-      extrinsics
-      .filter((e) => {
-        const ext = e.toHuman() as unknown as ExtrinsicsData;
-        return ext.method.args[0] === accountId;
-      })
-      .map(() => {
-          burning.totalMembershipCreation += membershipCreationPrice;
-          burning.membershipCreation.push({ memberId, accountId });
-        });
+      burning.membershipCreation.push({ memberId, accountId });
     });
   }
 };
@@ -364,19 +411,28 @@ const extractTipAmount = (tip: string) => {
 export async function readMintingAndBurning() {
   const api = await connectApi(endpoint);
   await api.isReady;
+  await processBlockRange(api, startBlock, endBlock)
+  // TODO uncommment and fill the array with specific blocks if you need to check some specific list of blocks
+  // const specificBlocks = [
+  //   1557912, 1603259, 1604871, 1605505, 1605518, 1607169, 1617522, 1662060,
+  // ];
+  // for (const block of specificBlocks) {
+  //   await processBlockRange(api, block - 1, block);
+  // }
+}
+
+async function processBlockRange(api: ApiPromise, start: number, end: number) {
+  console.log(`Process events in a range [${start} - ${end}]`);
   const recurringRewards = {
     rewards: {},
   } as RecurringRewards;
   const mintingAndBurningReport = {
     blocks: [],
   } as unknown as MintingAndBurningReport;
-  console.log(`Process events in a range [${startBlock} - ${endBlock}]`);
   let prevIssuance: number = 0;
-  for (let blockNumber = startBlock; blockNumber <= endBlock; blockNumber += 1) {
+  for (let blockNumber = start; blockNumber <= end; blockNumber += 1) {
     if (blockNumber % 10 === 0) {
-      console.log(
-        `Block [${blockNumber}] Timestamp: [${new Date().toISOString()}]`
-      );
+      console.log(`Block [${blockNumber}] Timestamp: [${new Date().toISOString()}]`);
     }
     const hash = await getBlockHash(api, blockNumber);
     const issuance = await getIssuance(api, hash);
@@ -422,12 +478,19 @@ export async function readMintingAndBurning() {
       );
       const setBalanceEvents = filterByEvent("balances.BalanceSet", events);
       processSudoEvents(setBalanceEvents, report);
-      await processBurnTransfers(api, blockNumber, events, report);
       if (recurringRewards.rewards[blockNumber]) {
         report.minting.totalRecurringRewardsMint = recurringRewards.rewards[
           blockNumber
         ].reduce((a, b) => a + Number(b.amount_per_payout), 0);
       }
+      await processBurnTransfers(
+        api,
+        blockNumber,
+        events,
+        report,
+        totalIssuance,
+        prevIssuance
+      );
       const totalMinted =
         report.minting.totalSudoMint +
         report.minting.totalSpendingProposalsMint +
@@ -467,4 +530,4 @@ export async function readMintingAndBurning() {
   // saveMinting(mintingAndBurningReport); // TODO Fix final write to make the json valid.
 }
 
-readMintingAndBurning().then((r) => console.log("Processing done."));
+readMintingAndBurning();

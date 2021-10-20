@@ -28,7 +28,7 @@ import {
 } from "@joystream/types/council";
 import { Entity, EntityId } from "@joystream/types/content-directory";
 import { ContentId, DataObject } from "@joystream/types/media";
-import { MemberId, Membership } from "@joystream/types/members";
+import { MemberId, Membership, PaidMembershipTerms, PaidTermId } from "@joystream/types/members";
 import { Mint, MintId } from "@joystream/types/mint";
 import {
   Proposal,
@@ -288,6 +288,12 @@ export const getMint = (
   hash: Hash,
   id: MintId | number
 ): Promise<Mint> => api.query.minting.mints.at(hash, id);
+
+export const getPaidMembershipTermsById = (
+  api: ApiPromise,
+  hash: Hash,
+  id: PaidTermId | number
+): Promise<PaidMembershipTerms> => api.query.members.paidMembershipTermsById.at(hash, id);
 
 // members
 export const getAccounts = async (
