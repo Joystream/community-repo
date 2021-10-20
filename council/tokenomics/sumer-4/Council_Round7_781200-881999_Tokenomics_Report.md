@@ -11,7 +11,7 @@ This is a report which explains the current state of the Joystream network in nu
 | Property            | Start Block | End Block | % Change |
 |---------------------|--------------|--------------|----------|
 | Total Tokens Minted |  756440054 | 790400718 | 4.49 |
-| USD Pool |  25668.443556933882 | 29506.72405554387 | 14.95 |
+| USD Pool |  25235.12 | 29506.72 | 16.93 |
 
 | Property            | Value        |
 |---------------------|--------------|
@@ -26,21 +26,22 @@ This is a report which explains the current state of the Joystream network in nu
 ### 2.2 Fiat Pool
 | Property            | Start Block, USD | End Block, USD | % Change |
 |---------------------|--------------|--------------|----------|
-| USD Pool | 25668.443556933882 | 29506.72405554387 | 14.95 |
+| USD Pool | 25235.12 | 29506.72 | 16.93 |
 
 | Refill, USD | Reason | Block # |
 |---------------------|--------------|--------------|
-|234|bounty 5|845721|
-|87|bounty 9|845724|
-|1220|bounty 10|845727|
-|398|bounty 11|845730|
-|525|bounty 12|845735|
-|87|bounty 13|845738|
-|1125|bounty 14|845741|
-|1793|kpi 6|860450|
+| 500 | recurring-antioch 5 | 781200 |
+| 234 | bounty 5 | 845721 |
+| 87 | bounty 9 | 845724 |
+| 1220 | bounty 10 | 845727 |
+| 398 | bounty 11 | 845730 |
+| 525 | bounty 12 | 845735 |
+| 87 | bounty 13 | 845738 |
+| 1125 | bounty 14 | 845741 |
+| 1793 | kpi 6 | 860450 |
 
 
-### 2.3 Mints 
+### 2.3 Mints
 | Property                    | Start Block           | End Block | % Change |
 |-----------------------------|-----------------------|--------------|----------|
 | Council Mint Total Minted   | 151425941  | 163947460 |8.27 |
@@ -51,8 +52,8 @@ This is a report which explains the current state of the Joystream network in nu
 
 ### 2.4 tJOY Inflation
 
-* Start Block Exchange Rate, USD/1M tJOY: 33.33926461471266
-* End Block Exchange Rate, USD/1M tJOY: 37.53396128038583
+* Start Block Exchange Rate, USD/1M tJOY: 33.34
+* End Block Exchange Rate, USD/1M tJOY: 37.53
 * Inflation, %: -11.18
 
 Negative value indicates deflation

@@ -11,7 +11,7 @@ This is a report which explains the current state of the Joystream network in nu
 | Property            | Start Block | End Block | % Change |
 |---------------------|--------------|--------------|----------|
 | Total Tokens Minted |  1338546840 | 1381714232 | 3.22 |
-| USD Pool |  33860.514793244554 | 34223.241390374475 | 1.07 |
+| USD Pool |  33860.51 | 34223.24 | 1.07 |
 
 | Property            | Value        |
 |---------------------|--------------|
@@ -26,14 +26,14 @@ This is a report which explains the current state of the Joystream network in nu
 ### 2.2 Fiat Pool
 | Property            | Start Block, USD | End Block, USD | % Change |
 |---------------------|--------------|--------------|----------|
-| USD Pool | 33860.514793244554 | 34223.241390374475 | 1.07 |
+| USD Pool | 33860.51 | 34223.24 | 1.07 |
 
 | Refill, USD | Reason | Block # |
 |---------------------|--------------|--------------|
-|1075|recurring-sumer-20|2219900|
+| 1075 | recurring-sumer-20 | 2219900 |
 
 
-### 2.3 Mints 
+### 2.3 Mints
 | Property                    | Start Block           | End Block | % Change |
 |-----------------------------|-----------------------|--------------|----------|
 | Council Mint Total Minted   | 616352734  | 658249653 |6.8 |
@@ -44,8 +44,8 @@ This is a report which explains the current state of the Joystream network in nu
 
 ### 2.4 tJOY Inflation
 
-* Start Block Exchange Rate, USD/1M tJOY: 25.525306587172267
-* End Block Exchange Rate, USD/1M tJOY: 25.740730140001684
+* Start Block Exchange Rate, USD/1M tJOY: 25.53
+* End Block Exchange Rate, USD/1M tJOY: 25.74
 * Inflation, %: -0.84
 
 Negative value indicates deflation
