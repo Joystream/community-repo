@@ -33,47 +33,34 @@ export async function generateReportData(
     blockRange.startBlockHash
   )) as u32;
 
-  const councilRoundInfo = await getCouncilMembersInfo(
-    api,
-    blockRange,
-    proposals
-  );
+  const roundInfo = await getCouncilMembersInfo(api, blockRange, proposals);
+  const { members, membersOwnStake, backersTotalStake } = roundInfo;
+  const { startMinted, endMinted } = roundInfo;
 
   let councilTable =
     "| Username             | Member ID | Prop. Votes Cast | CM Own Stake | CM Voter Stake |\n" +
     "|----------------------|-----------|------------------|--------------|----------------|\n";
-  for (let councilMemberInfo of councilRoundInfo.members) {
-    councilTable +=
-      "| @" +
-      councilMemberInfo.username +
-      " | " +
-      councilMemberInfo.memberId +
-      " | " +
-      councilMemberInfo.votesInProposals +
-      " | " +
-      councilMemberInfo.ownStake +
-      " | " +
-      councilMemberInfo.backersStake +
-      " | \n";
-  }
-  councilTable +=
-    "| | | Subtotal: | " +
-    councilRoundInfo.membersOwnStake +
-    " | " +
-    councilRoundInfo.backersTotalStake +
-    " |\n";
-  councilTable +=
-    "| | | Total: | " +
-    (councilRoundInfo.membersOwnStake + councilRoundInfo.backersTotalStake) +
-    " |  |\n";
 
-  let councilSecretary = getCouncilSecretary(proposals);
-  let councilSecretaryDeputy = getCouncilSecretaryDeputy(proposals);
+  for (const member of members) {
+    const { username, memberId, votesInProposals, ownStake, backersStake } =
+      member;
+    councilTable += `| @${username} | ${memberId} | ${votesInProposals} | {
+      ownStake } | ${backersStake} |\n`;
+  }
+  councilTable += `| | | Subtotal: | ${membersOwnStake} | ${backersTotalStake} |\n`;
+  const totalStake = membersOwnStake + backersTotalStake;
+  councilTable += `| | | Total: | ${totalStake} |  |\n`;
+
+  const councilSecretary = getCouncilSecretary(proposals);
+  const councilSecretaryDeputy = getCouncilSecretaryDeputy(proposals);
 
   let proposalsBreakdownText = "";
-  for (let proposal of proposals) {
+  for (const proposal of proposals) {
+    const { id, name, type, status, failedReason, paymentAmount } = proposal;
+    const { creatorUsername, votersUsernames, blocksToFinalized } = proposal;
+
     let proposalStatusText = "";
-    switch (proposal.status) {
+    switch (status) {
       case ProposalStatus.Active:
         proposalStatusText = "Passed to next council";
         break;
@@ -81,10 +68,9 @@ export async function generateReportData(
         proposalStatusText = "Approved & Executed";
         break;
       case ProposalStatus.ExecutionFailed:
-        proposalStatusText =
-          "Execution failed (" +
-          ProposalFailedReason[proposal.failedReason as ProposalFailedReason] +
-          ")";
+        const reason =
+          ProposalFailedReason[failedReason as ProposalFailedReason];
+        proposalStatusText = `Execution failed (${reason})`;
         break;
       case ProposalStatus.PendingExecution:
         proposalStatusText = "Execution Pending";
@@ -103,48 +89,25 @@ export async function generateReportData(
         break;
     }
 
-    proposalsBreakdownText +=
-      "#### Proposal " + proposal.id + " - " + proposal.name;
+    proposalsBreakdownText += `#### Proposal ${id} - ${name}\n`;
+    proposalsBreakdownText += `- Proposal Link: ${PROPOSAL_URL}${id}\n`;
+    proposalsBreakdownText += `- Proposal Type: ${ProposalType[type]}\n`;
 
-    proposalsBreakdownText +=
-      "\n- Proposal Link: " +
-      PROPOSAL_URL +
-      proposal.id +
-      "\n" +
-      "- Proposal Type: " +
-      ProposalType[proposal.type] +
-      "\n" +
-      "\t- Amount: " +
-      (proposal.paymentAmount ? proposal.paymentAmount : "N/A") +
-      "\n";
-    if (proposal.paymentDestinationMemberUsername) {
-      proposalsBreakdownText +=
-        "\t- Destination member: " +
-        proposal.paymentDestinationMemberUsername +
-        "\n";
-    }
+    if (paymentAmount)
+      proposalsBreakdownText += `\t- Amount: ${paymentAmount}\n`;
 
-    proposalsBreakdownText += "- Status: " + proposalStatusText + "\n";
-    if (
-      proposal.blocksToFinalized > 0 &&
-      proposal.status != ProposalStatus.Cancelled
-    ) {
-      proposalsBreakdownText +=
-        "\t- Time to finalize: " +
-        proposal.blocksToFinalized +
-        " blocks (" +
-        convertBlocksToDays(
-          proposal.blocksToFinalized,
-          averageBlockProductionTime
-        ) +
-        "h)\n";
+    if (proposal.paymentDestinationMemberUsername)
+      proposalsBreakdownText += `\t- Destination member: ${proposal.paymentDestinationMemberUsername}\n`;
+
+    proposalsBreakdownText += `- Status: ${proposalStatusText}\n`;
+    if (blocksToFinalized > 0 && status != ProposalStatus.Cancelled) {
+      const time = averageBlockProductionTime;
+      const days = convertBlocksToHours(blocksToFinalized, time);
+      proposalsBreakdownText += `\t- Time to finalize: ${blocksToFinalized} blocks (${days}h)\n`;
     }
-    proposalsBreakdownText +=
-      "- Created by: @" + proposal.creatorUsername + "\n";
-    let participantsText = proposal.votersUsernames
-      .map((vote) => "@" + vote)
-      .join(", ");
-    proposalsBreakdownText += "- Participants: " + participantsText + "\n\n";
+    proposalsBreakdownText += `- Created by: @${creatorUsername}\n`;
+    let participantsText = votersUsernames.map((vote) => `@${vote}`).join(", ");
+    proposalsBreakdownText += `- Participants: ${participantsText}\n\n`;
   }
   proposalsBreakdownText = proposalsBreakdownText.substring(
     0,
@@ -156,15 +119,11 @@ export async function generateReportData(
   reportData.electionRound = Number(electionRound.toBigInt()) + ELECTION_OFFSET;
   reportData.startBlockHeight = blockRange.startBlockHeight;
   reportData.endBlockHeight = blockRange.endBlockHeight;
-  reportData.startMinted = councilRoundInfo.startMinted;
-  reportData.endMinted = councilRoundInfo.endMinted;
+  reportData.startMinted = startMinted;
+  reportData.endMinted = endMinted;
 
-  reportData.totalNewMinted =
-    councilRoundInfo.endMinted - councilRoundInfo.startMinted;
-  reportData.percNewMinted = convertToPercentage(
-    councilRoundInfo.startMinted,
-    councilRoundInfo.endMinted
-  );
+  reportData.totalNewMinted = endMinted - startMinted;
+  reportData.percNewMinted = convertToPercentage(startMinted, endMinted);
 
   reportData.councilTable = councilTable;
   reportData.councilSecretary =
@@ -229,9 +188,8 @@ export async function generateReportData(
   ).length;
 
   let executedNonCancelledProposals = proposals.filter(
-    (proposal) =>
-      proposal.blocksToFinalized > 0 &&
-      proposal.status != ProposalStatus.Cancelled
+    ({ status, blocksToFinalized }) =>
+      blocksToFinalized > 0 && status != ProposalStatus.Cancelled
   );
   let totalFinalizeTime = executedNonCancelledProposals.reduce(
     (accumulator, proposal) => accumulator + proposal.blocksToFinalized,
@@ -245,19 +203,17 @@ export async function generateReportData(
   );
 
   reportData.proposalsFailedForNotEnoughCapacity = failedProposals.filter(
-    (failedProposal) =>
-      failedProposal.failedReason == ProposalFailedReason.NotEnoughCapacity
+    ({ failedReason }) => failedReason == ProposalFailedReason.NotEnoughCapacity
   ).length;
   reportData.proposalsFailedForExecutionFailed = failedProposals.filter(
-    (failedProposal) =>
-      failedProposal.failedReason == ProposalFailedReason.ExecutionFailed
+    ({ failedReason }) => failedReason == ProposalFailedReason.ExecutionFailed
   ).length;
 
-  reportData.totalProposalsFinalizeTime = convertBlocksToDays(
+  reportData.totalProposalsFinalizeTime = convertBlocksToHours(
     totalFinalizeTime,
     averageBlockProductionTime
   );
-  reportData.averageTimeForProposalsToFinalize = convertBlocksToDays(
+  reportData.averageTimeForProposalsToFinalize = convertBlocksToHours(
     averageFinalizeTime,
     averageBlockProductionTime
   );
@@ -478,10 +434,10 @@ function convertToPercentage(previousValue: number, newValue: number): number {
   return Number(((newValue * 100) / previousValue - 100).toFixed(2));
 }
 
-function convertBlocksToDays(
+function convertBlocksToHours(
   nrBlocks: number,
   averageProductionBlockTime: number
-) {
+): string {
   return ((nrBlocks * averageProductionBlockTime) / 60 / 60).toFixed(2);
 }
 
