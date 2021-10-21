@@ -3,7 +3,7 @@ This is a report which explains the current state of the Joystream network in nu
 
 ## 1.0 Basic Information
 * Block range: 378000 - 478799
-* Date Range: 5/4/2021 - 5/11/2021
+* Date Range: 5/3/2021 - 5/11/2021
 * Council session #: 3
 
 ## 2.0 Tokenomics
@@ -79,7 +79,7 @@ Negative value indicates deflation
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of Storage Workers | 2 | 7 | 250 |
-| Total Storage Stake (workers + lead) | 0 | 0 | 0 |
+| Total Storage Stake (workers + lead) | 50000 | 50000 | 0 |
 
 | # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
 |--|--|--|--|--|--|
@@ -122,7 +122,7 @@ Negative value indicates deflation
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of uploads       | 421 |486 | 15.44 |
-| Size of content (MB) 	  | 79852.53 | 97016.89 | 21.5 |
+| Size of content (MB)    | 79852.53 | 97016.89 | 21.5 |
 | Number of channels      | 55 | 58 | 5.45 |
 
 ### 5.3 Forum Activity

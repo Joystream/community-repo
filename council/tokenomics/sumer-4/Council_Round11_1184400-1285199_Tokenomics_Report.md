@@ -84,7 +84,7 @@ Negative value indicates deflation
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of Storage Workers | 10 | 11 | 10 |
-| Total Storage Stake (workers + lead) | 0 | 300000 | 100 |
+| Total Storage Stake (workers + lead) | 750000 | 850000 | 13.33 |
 
 | # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
 |--|--|--|--|--|--|
@@ -122,7 +122,7 @@ Negative value indicates deflation
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of Operations Workers      | 4 | 8 | 100 |
-| Total Operations Stake (workers + lead) | 150000 | 150000 | 0 |
+| Total Operations Stake (workers + lead) | 1650000 | 3650000 | 121.21 |
 
 | # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
 |--|--|--|--|--|--|
