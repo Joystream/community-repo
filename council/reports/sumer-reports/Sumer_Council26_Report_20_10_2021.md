@@ -158,7 +158,7 @@ Failed Proposals
 #### Proposal 682 - Curator Lead OKR rewards
 - Proposal Link: https://testnet.joystream.org/#/proposals/682
 - Proposal Type: Spending
-	- Amount: laura
+	- Amount: 2321981
 	- Destination member: laura
 - Status: Approved & Executed
 	- Time to finalize: 4355 blocks (7.34h)
@@ -168,7 +168,7 @@ Failed Proposals
 #### Proposal 683 - Payment Bounty 24 (2-nd week)
 - Proposal Link: https://testnet.joystream.org/#/proposals/683
 - Proposal Type: Spending
-	- Amount: N/A
+	- Amount: 12519379
 - Status: Approved & Executed
 	- Time to finalize: 4661 blocks (7.85h)
 - Created by: @laura
@@ -256,7 +256,7 @@ Failed Proposals
 #### Proposal 693 - Payment Bounty 18
 - Proposal Link: https://testnet.joystream.org/#/proposals/693
 - Proposal Type: Spending
-	- Amount: N/A
+	- Amount: 4406130
 - Status: Approved & Executed
 	- Time to finalize: 6453 blocks (10.87h)
 - Created by: @joydiesel
@@ -301,7 +301,7 @@ Failed Proposals
 #### Proposal 698 - OKR Reward for Content Curator
 - Proposal Link: https://testnet.joystream.org/#/proposals/698
 - Proposal Type: Spending
-	- Amount: N/A
+	- Amount: 2316602
 - Status: Approved & Executed
 	- Time to finalize: 3433 blocks (5.78h)
 - Created by: @laura
@@ -310,7 +310,7 @@ Failed Proposals
 #### Proposal 699 - Curator Lead OKR rewards
 - Proposal Link: https://testnet.joystream.org/#/proposals/699
 - Proposal Type: Spending
-	- Amount: laura
+	- Amount: 2318393
 	- Destination member: laura
 - Status: Approved & Executed
 	- Time to finalize: 3704 blocks (6.24h)
