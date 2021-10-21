@@ -9,7 +9,7 @@ The Council Round number is taken from the chain, the KPI rounds have an offset 
 
 ### 1.2 - Council Round Overview
 * Council Election Round: #{electionRound}
-* Council Term: ?
+* Council Term: {councilTerm}
 * Start Block: #{startBlockHeight}
 * End Block: #{endBlockHeight}
 * Forum thread for round feedback: N/A

@@ -17,7 +17,7 @@ import { ProposalDetailsOf, ProposalOf } from "@joystream/types/augment/types";
 import { Moment } from "@polkadot/types/interfaces";
 
 const PROPOSAL_URL = "https://testnet.joystream.org/#/proposals/";
-const ELECTION_OFFSET = 1;
+const ELECTION_OFFSET = 2;
 
 export async function generateReportData(
   api: ApiPromise,
@@ -116,7 +116,8 @@ export async function generateReportData(
 
   let reportData = new ReportData();
   reportData.averageBlockProductionTime = averageBlockProductionTime.toFixed(2);
-  reportData.electionRound = Number(electionRound.toBigInt()) + ELECTION_OFFSET;
+  reportData.electionRound = Number(electionRound.toBigInt());
+  reportData.councilTerm = reportData.electionRound - ELECTION_OFFSET;
   reportData.startBlockHeight = blockRange.startBlockHeight;
   reportData.endBlockHeight = blockRange.endBlockHeight;
   reportData.startMinted = startMinted;

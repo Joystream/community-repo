@@ -82,6 +82,7 @@ export class ProposalInfo {
 export class ReportData {
   averageBlockProductionTime = "";
   electionRound = 0;
+  councilTerm = 0;
   startBlockHeight = 0;
   endBlockHeight = 0;
 
