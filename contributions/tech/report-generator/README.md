@@ -6,7 +6,7 @@ It takes some minutes to complete the report, multiple runs, with the same block
 
 ## Setup
 
-`yarn && yarn build`
+`yarn`
 
 To update the submodule in `src/lib`:
 ```
@@ -16,11 +16,16 @@ git submodule update
 
 ## Usage
 
-`node build/generator.js <start block> <end block>`
+`yarn run report`
 
-## Example
+OR
 
-`node build/generator.js 57601 234038`
+`yarn build && node build/generator.js <start block> <end block>`
+
+## Examples
+
+- `yarn run report 30`
+- `node build/generator.js 57601 234038`
 
 # Contributors
 
