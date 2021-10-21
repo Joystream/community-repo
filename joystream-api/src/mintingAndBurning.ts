@@ -35,7 +35,6 @@ import { ApiPromise } from "@polkadot/api";
 import fs, { PathLike } from "fs";
 import { Mint } from "@joystream/types/mint";
 import { FinalizationData, ProposalStatus } from "@joystream/types/proposals";
-import { min } from "lodash";
 
 const saveFile = (jsonString: string, path: PathLike) => {
   try {
@@ -57,15 +56,21 @@ const saveFile = (jsonString: string, path: PathLike) => {
 const appentToFile = (line: string, path: PathLike) =>
   fs.appendFileSync(path, line);
 
-const saveMinting = (report: MintingAndBurningReport) =>
-  saveFile(JSON.stringify(report, undefined, 4), mintingJsonPath);
+const saveMintingAndBurningJson = (report: MintingAndBurningReport) => {
+  // TODO Update final write to make the json valid instead of full overwrite
+  // saveFile(JSON.stringify(report, undefined, 4), mintingJsonPath);
+};
 
-const addToMinting = (data: MintingAndBurningData) =>
+const addToMintingAndBurningJson = (data: MintingAndBurningData) =>
   appentToFile(`${JSON.stringify(data, undefined, 4)},\n`, mintingJsonPath);
 
-const saveToLog = (line: string) => {
-  console.log(line);
-  appentToFile(`${line}\n`, mintingLogPath);
+const saveToLog = (shouldWarn: boolean, line: string) => {
+  const logLine = `[${shouldWarn ? "WARN" : "INFO"}] ${line}`;
+  console.log(logLine);
+  if (shouldWarn) {
+    appentToFile(`${logLine}\n`, unknownSourcesLogPath);
+  }
+  appentToFile(`${logLine}\n`, mintingLogPath);
 };
 
 const filterBlockExtrinsicsByMethod = (block: SignedBlock, name: string) =>
@@ -83,13 +88,6 @@ const filterByEvent = (eventName: string, events: Vec<EventRecord>) => {
   return events.filter((event) => {
     const { section, method } = event.event;
     return `${section}.${method}` === eventName;
-  });
-};
-
-const filterBySection = (sectionName: string, events: Vec<EventRecord>) => {
-  return events.filter((event) => {
-    const { section } = event.event;
-    return section === sectionName;
   });
 };
 
@@ -152,9 +150,7 @@ const processBurnTransfers = async (
   const { burning } = report;
   const hash = await getBlockHash(api, blockNumber);
   const block = await getBlock(api, hash);
-  const extrinsics = filterBlockExtrinsicsByMethods(block, [
-    "balances.transfer",
-  ]);
+  const extrinsics = filterBlockExtrinsicsByMethod(block, "balances.transfer");
   for (const ext of extrinsics) {
     const extData = ext as unknown as Extrinsic;
     const args = extData.method.args;
@@ -182,9 +178,10 @@ const processWorkerRewardAmountUpdated = async (
     "storageWorkingGroup",
   ];
   for await (const group of groups) {
-    const extrinsics = filterBlockExtrinsicsByMethods(block, [
-      `${group}.updateRewardAmount`,
-    ]);
+    const extrinsics = filterBlockExtrinsicsByMethod(
+      block,
+      `${group}.updateRewardAmount`
+    );
     for (const ext of extrinsics) {
       const extData = ext as unknown as Extrinsic;
       const args = extData.method.args;
@@ -229,9 +226,10 @@ const processMembershipCreation = async (
   if (membershipEvents.length > 0) {
     const block = await getBlock(api, hash);
     // intentionally skipping `members.addScreenedMember` because there is no paid fee in this case
-    const extrinsics = filterBlockExtrinsicsByMethods(block, [
-      "members.buyMembership",
-    ]);
+    const extrinsics = filterBlockExtrinsicsByMethod(
+      block,
+      "members.buyMembership"
+    );
     for await (const ext of extrinsics) {
       const data = ext.toHuman() as unknown as ExtrinsicsData;
       const paidTermId = Number(data.method.args[0]);
@@ -435,6 +433,12 @@ const mintingLogPath = path.resolve(
   "report",
   "mintingAndBurning.log"
 );
+const unknownSourcesLogPath = path.resolve(
+  __dirname,
+  "..",
+  "report",
+  "unknownSources.log"
+);
 const endpoint = "ws://localhost:9944"; // "wss://rome-rpc-endpoint.joystream.org:9944"
 const BURN_ADDRESS = "5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu";
 const args = process.argv.slice(2);
@@ -532,16 +536,14 @@ async function processBlockRange(api: ApiPromise, start: number, end: number) {
         calculatedDelta !== actualIssuanceDelta;
       const issuanceInfo = `Issuance: [${issuance}] Previous issuance: [${prevIssuance}] Delta: [${actualIssuanceDelta}] Calculated Delta: [${calculatedDelta}]`;
       const mintBurnInfo = `Total Minted: [${totalMinted}] Total Burned: [${totalBurned}]`;
-      const logType = `[${shouldWarn ? "WARN" : "INFO"}]`;
-      saveToLog(
-        `${logType} Block: [${blockNumber}] ${issuanceInfo} ${mintBurnInfo}`
-      );
-      addToMinting(report);
+      const logLine = `Block: [${blockNumber}] ${issuanceInfo} ${mintBurnInfo}`;
+      saveToLog(shouldWarn, logLine);
+      addToMintingAndBurningJson(report);
     }
     await reloadRecurringRewards(api, recurringRewards, blockNumber, hash);
     prevIssuance = totalIssuance;
   }
-  // saveMinting(mintingAndBurningReport); // TODO Fix final write to make the json valid.
+  saveMintingAndBurningJson(mintingAndBurningReport);
 }
 
 readMintingAndBurning();
