@@ -34,6 +34,8 @@ One is [`balances.BalanceSet`](https://pioneer.joystreamstats.live/#/explorer/qu
 All the other warnings (22 of 23 warnings) are burning events caused by the runtime bug, when working groups workers application stake was burned.
 
 ## Running script
+`yarn ` - load project dependencies
+
 `yarn start <startBlock> <endBlock>` - Generates some files in `report` folder:
  - `mintingAndBurning.log`: every line is a block where totalIssuance has been changed, showing new issuance, previous issuance, tokens minted and burned. Every line is prefixed with `INFO` if minting and burning source is calculated, `WARN` if the source is unknown
 
