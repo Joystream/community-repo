@@ -4,6 +4,7 @@ Warn report is `unknownSources.log` which contains all the `WARN` blocks, where 
 
 Full report is `mintingAndBurning.log` which contains all the blocks, where minting and/or burning affected the total issuance
 
+**Full minting and burning log** is uploaded as a github gist as per request, and can be accessed [here](https://gist.github.com/oleksanderkorn/d8fef9e023737645ac0bb971978e389b)
 ## Minting Sources:
 ### Event-based
 * `balances.BalanceSet` - when sudo account sets new balance, amount is taken from event data
