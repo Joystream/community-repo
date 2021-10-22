@@ -1,4 +1,4 @@
-# KPI 25.II-3 - Minting and Burning Part 1
+# KPI 27.II-3 - Minting and Burning
 
 Warn report is `unknownSources.log` which contains all the `WARN` blocks, where we cannot calculate what affected the issuance (e.g. a bug with burned stake for Working Groups)
 
