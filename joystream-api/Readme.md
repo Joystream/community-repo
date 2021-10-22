@@ -27,6 +27,11 @@ Full report is `mintingAndBurning.log` which contains all the blocks, where mint
 * `contentDirectoryWorkingGroup.updateRewardAmount` - when storage worker reward amount is updated, amount is added to `amount_per_payout` property of specific worker rewardRelationship
 * `storageWorkingGroup.updateRewardAmount` - when storage worker reward amount is updated, amount is added to `amount_per_payout` property of specific worker rewardRelationship
 
+### Unknown Sources
+All the minting and burning changes which are not calculated by the script are listed in `unknownSources.log`. 
+One is [`balances.BalanceSet`](https://pioneer.joystreamstats.live/#/explorer/query/1609074) to the wrong address, which lead to the burning of `4909336 JOY` by `sudo.sudo` extrinsics.
+All the other warnings (22 of 23 warnings) are burning events caused by the runtime bug, when working groups workers application stake was burned.
+
 ## Running script
 `yarn start <startBlock> <endBlock>` - Generates some files in `report` folder:
  - `mintingAndBurning.log`: every line is a block where totalIssuance has been changed, showing new issuance, previous issuance, tokens minted and burned. Every line is prefixed with `INFO` if minting and burning source is calculated, `WARN` if the source is unknown
