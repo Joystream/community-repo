@@ -1,0 +1,1201 @@
+{
+    "allCouncilPeriodsSumerNetwork": {
+        "currentCouncilPeriod": {
+            "councilPeriodId": 28,
+            "kpiId": 26,
+            "kpiByPeriod": 13,
+            "totalPossibleRewards": "3725$",
+            "kpiText": "https://blog.joystream.org/sumer-kpis/#kpi-26",
+            "kpiDiscussion": "https://pioneer.joystreamstats.live/#/forum/threads/672",
+            "kpiList": [{
+                    "kpiId": "26.I-1",
+                    "kpiName": "Proposal Clearance",
+                    "possibleReward": "200$"
+                },
+                {
+                    "kpiId": "26.I-2",
+                    "kpiName": "Council Secretary",
+                    "possibleReward": "300$"
+                },
+                {
+                    "kpiId": "26.I-3",
+                    "kpiName": "Deputy Council Secretary",
+                    "possibleReward": "150$"
+                },
+                {
+                    "kpiId": "26.I-4",
+                    "kpiName": "Council Minutes",
+                    "possibleReward": "100$"
+                },
+                {
+                    "kpiId": "26.I-5",
+                    "kpiName": "KPI Presentation",
+                    "possibleReward": "500$"
+                },
+                {
+                    "kpiId": "26.II-1",
+                    "kpiName": "Discord & Telegram Channel Management",
+                    "possibleReward": "75$"
+                },
+                {
+                    "kpiId": "26.II-2",
+                    "kpiName": "Create new KPIs",
+                    "possibleReward": "500$"
+                },
+                {
+                    "kpiId": "26.II-3",
+                    "kpiName": "Council Term Summary Videos",
+                    "possibleReward": "500$"
+                },
+                {
+                    "kpiId": "26.III-1",
+                    "kpiName": "Deputy Working Group Lead",
+                    "possibleReward": "200$"
+                },
+                {
+                    "kpiId": "26.IV-1",
+                    "kpiName": "Weekly Bounty Managers",
+                    "possibleReward": "300$"
+                },
+                {
+                    "kpiId": "26.OP-1",
+                    "kpiName": "Runtime Upgrade Verification",
+                    "possibleReward": "300$"
+                },
+                {
+                    "kpiId": "26.OP-2",
+                    "kpiName": "Event Email Service",
+                    "possibleReward": "200$"
+                },
+                {
+                    "kpiId": "26.OP-3",
+                    "kpiName": "Pioneer 2.0",
+                    "possibleReward": "400$"
+                }
+            ]
+        },
+        "previousCouncilPeriods": [{
+                "councilPeriodId": 27,
+                "kpiId": 25,
+                "kpiByPeriod": 18,
+                "totalPossibleRewards": "4875$",
+                "kpiText": "https://blog.joystream.org/sumer-kpis/#kpi-25",
+                "kpiDiscussion": "https://pioneer.joystreamstats.live/#/forum/threads/657",
+                "kpiTermSummaries": "https://pioneer.joystreamstats.live/#/forum/threads/671",
+                "kpiList": [{
+                        "kpiId": "25.I-1",
+                        "kpiName": "Proposal Clearance",
+                        "possibleReward": "200$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.I-2",
+                        "kpiName": "Council Dissent",
+                        "possibleReward": "500$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.I-3",
+                        "kpiName": "Council Secretary",
+                        "possibleReward": "300$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.I-4",
+                        "kpiName": "Deputy Council Secretary",
+                        "possibleReward": "150$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.I-5",
+                        "kpiName": "Council Minutes",
+                        "possibleReward": "100$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.I-6",
+                        "kpiName": "Runtime Paramaters",
+                        "possibleReward": "500$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.II-1",
+                        "kpiName": "Discord & Telegram Channel Management",
+                        "possibleReward": "75$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.II-2",
+                        "kpiName": "Create new KPIs",
+                        "possibleReward": "500$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.II-3",
+                        "kpiName": "Minting and Burning - Part 1",
+                        "possibleReward": "700$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.II-4",
+                        "kpiName": "Council Term Summary Videos",
+                        "possibleReward": "500$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.III-1",
+                        "kpiName": "Follow up the Storage Working Group",
+                        "possibleReward": "0$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.III-2",
+                        "kpiName": "Follow up the Content Curators Working Group",
+                        "possibleReward": "0$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.III-3",
+                        "kpiName": "Follow up the Operations Working Group",
+                        "possibleReward": "0$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.III-4",
+                        "kpiName": "Deputy Working Group Lead",
+                        "possibleReward": "200$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.IV-1",
+                        "kpiName": "Weekly Bounty Managers",
+                        "possibleReward": "300$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.CC-1",
+                        "kpiName": "Discover Category Videos Part 1",
+                        "possibleReward": "250$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.OP-1",
+                        "kpiName": "Runtime Upgrade Verification",
+                        "possibleReward": "300$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    },
+                    {
+                        "kpiId": "25.OP-2",
+                        "kpiName": "Event Email Service",
+                        "possibleReward": "200$",
+                        "rewardedCouncilMembers": null,
+                        "sum": null
+                    }
+                ]
+            },
+            {
+                "councilPeriodId": 26,
+                "kpiId": 24,
+                "kpiByPeriod": 21,
+                "totalPossibleRewards": "5500$",
+                "kpiText": "https://blog.joystream.org/sumer-kpis/#kpi-24",
+                "kpiDiscussion": "https://pioneer.joystreamstats.live/#/forum/threads/639",
+                "kpiTermSummaries": "https://pioneer.joystreamstats.live/#/forum/threads/654",
+                "kpiList": [{
+                        "kpiId": "24.I-1",
+                        "kpiName": "Proposal Clearance",
+                        "possibleReward": "200$",
+                        "rewardedCouncilMembers": [{
+                            "memberHandle": "ilich",
+                            "memberId": 2194,
+                            "voted": 20,
+                            "points": 75,
+                            "reward": "17$"
+                        }, {
+                            "memberHandle": "lkskrn",
+                            "memberId": 644,
+                            "voted": 9,
+                            "points": 29,
+                            "reward": "7$"
+                        }, {
+                            "memberHandle": "l1dev",
+                            "memberId": 515,
+                            "voted": 5,
+                            "points": 16,
+                            "reward": "4$"
+                        }, {
+                            "memberHandle": "0x2bc",
+                            "memberId": 2098,
+                            "voted": 9,
+                            "points": 24,
+                            "reward": "5$"
+                        }, {
+                            "memberHandle": "svasilenko",
+                            "memberId": 2096,
+                            "voted": 16,
+                            "points": 49,
+                            "reward": "11$"
+                        }, {
+                            "memberHandle": "xandrell",
+                            "memberId": 867,
+                            "voted": 22,
+                            "points": 81,
+                            "reward": "19$"
+                        }, {
+                            "memberHandle": "freakstatic_council",
+                            "memberId": 321,
+                            "voted": 23,
+                            "points": 89,
+                            "reward": "20$"
+                        }, {
+                            "memberHandle": "uliczny",
+                            "memberId": 1842,
+                            "voted": 18,
+                            "points": 71,
+                            "reward": "16$"
+                        }, {
+                            "memberHandle": "chiffah",
+                            "memberId": 2462,
+                            "voted": 14,
+                            "points": 50,
+                            "reward": "11$"
+                        }, {
+                            "memberHandle": "tomato",
+                            "memberId": 2,
+                            "voted": 12,
+                            "points": 48,
+                            "reward": "11$"
+                        }, {
+                            "memberHandle": "kalpakci",
+                            "memberId": 2137,
+                            "voted": 10,
+                            "points": 37,
+                            "reward": "8$"
+                        }, {
+                            "memberHandle": "laura",
+                            "memberId": 2329,
+                            "voted": 21,
+                            "points": 84,
+                            "reward": "19$"
+                        }, {
+                            "memberHandle": "art_khabibullin",
+                            "memberId": 2836,
+                            "voted": 8,
+                            "points": 32,
+                            "reward": "7$"
+                        }, {
+                            "memberHandle": "ururu",
+                            "memberId": 790,
+                            "voted": 21,
+                            "points": 83,
+                            "reward": "19$"
+                        }, {
+                            "memberHandle": "maxlevush",
+                            "memberId": 2130,
+                            "voted": 17,
+                            "points": 69,
+                            "reward": "16$"
+                        }, {
+                            "memberHandle": "marat_mu",
+                            "memberId": 2154,
+                            "voted": 10,
+                            "points": 36,
+                            "reward": "8$"
+                        }],
+                        "sum": {
+                            "totalMembersRewarded": 16,
+                            "totalVoted": 235,
+                            "totalPoints": 873,
+                            "totalRewardPaid": "200$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.I-2",
+                        "kpiName": "Council Dissent",
+                        "possibleReward": "500$",
+                        "rewardedCouncilMembers": [{
+                            "memberHandle": "laura",
+                            "memberId": 2329,
+                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=4",
+                            "reward": "30$"
+                        }, {
+                            "memberHandle": "art_khabibulin",
+                            "memberId": 2836,
+                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=7",
+                            "reward": "30$"
+                        }, {
+                            "memberHandle": "marat_mu",
+                            "memberId": 2154,
+                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=8",
+                            "reward": "60$"
+                        }],
+                        "sum": {
+                            "totalMembersRewarded": 3,
+                            "totalRewardPaid": "120$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.I-3",
+                        "kpiName": "Council Secretary",
+                        "possibleReward": "300$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "tomato",
+                            "memberId": 2,
+                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=5",
+                            "reward": "260$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "260$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.I-4",
+                        "kpiName": "Deputy Council Secretary",
+                        "possibleReward": "150$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "laura",
+                            "memberId": 2329,
+                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=4",
+                            "reward": "150$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "150$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.I-5",
+                        "kpiName": "Council Minutes",
+                        "possibleReward": "100$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "ilich",
+                            "memberId": 2194,
+                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=6",
+                            "reward": "100$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "100$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.I-6",
+                        "kpiName": "New Fiat Pool Scheme",
+                        "possibleReward": "200$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.7",
+                        "kpiName": "Runtime Parameters",
+                        "possibleReward": "500$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.II-1",
+                        "kpiName": "Discord & Telegram Channel Management",
+                        "possibleReward": "75$",
+                        "rewardedCouncilMembers": [{
+                            "memberHandle": "xandrell",
+                            "memberId": 867,
+                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=3",
+                            "reward": "25$"
+                        }, {
+                            "memberHandle": "art_khabibulin",
+                            "memberId": 2836,
+                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=7",
+                            "reward": "25$"
+                        }, {
+                            "memberHandle": "chiffah",
+                            "memberId": 2462,
+                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=10",
+                            "reward": "25$"
+                        }],
+                        "sum": {
+                            "totalMembersRewarded": 3,
+                            "totalRewardPaid": "75$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.II-2",
+                        "kpiName": "Find All PRs/Issues That Require Jsgenesis Action",
+                        "possibleReward": "150$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.II-3",
+                        "kpiName": "Create new KPIs",
+                        "possibleReward": "500$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.II-4",
+                        "kpiName": "Minting and Burning - Part 1",
+                        "possibleReward": "700$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.II-5",
+                        "kpiName": "Council Term Summary Videos",
+                        "possibleReward": "500$",
+                        "rewardedCouncilMembers": [{
+                            "memberHandle": "marat_mu",
+                            "memberId": 2154,
+                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=8",
+                            "reward": "375$"
+                        }, {
+                            "memberHandle": "chiffah",
+                            "memberId": 2462,
+                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=10",
+                            "reward": "275$"
+                        }],
+                        "sum": {
+                            "totalMembersRewarded": 2,
+                            "totalRewardPaid": "650$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.II-6",
+                        "kpiName": "Community Calls",
+                        "possibleReward": "200$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "svasilenko",
+                            "memberId": 2096,
+                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=2",
+                            "reward": "100$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "100$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.III-1",
+                        "kpiName": "Follow up the Storage Working Group",
+                        "possibleReward": "300$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.III-2",
+                        "kpiName": "Follow up the Content Curators Working Group",
+                        "possibleReward": "400$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.III-3",
+                        "kpiName": "Follow up the Operations Working Group",
+                        "possibleReward": "100$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.IV.1",
+                        "kpiName": "Weekly Bounty Managers",
+                        "possibleReward": "150$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "ilich",
+                            "memberId": 2194,
+                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=6",
+                            "reward": "50$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "50$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.CC-1",
+                        "kpiName": "Update Featured Video",
+                        "possibleReward": "150$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "laura",
+                            "memberId": 2329,
+                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=4",
+                            "reward": "150$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "150$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.CC-2",
+                        "kpiName": "Discover Category Videos Part 1",
+                        "possibleReward": "250$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.OP-1",
+                        "kpiName": "Runtime Upgrade Verification",
+                        "possibleReward": "300$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.SP-1",
+                        "kpiName": "Storage OKRs",
+                        "possibleReward": "300$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "24.SP-2",
+                        "kpiName": "Storage Provider Sanctions",
+                        "possibleReward": "50$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    }
+                ],
+                "councilWorkDuringThePeriod": [{
+                        "memberHandle": "ilich",
+                        "memberId": 2194,
+                        "proposalReward": "17$",
+                        "kpiReward": "150$",
+                        "totalReward": "167$",
+                        "kpiDone": "3"
+                    },
+                    {
+                        "memberHandle": "lkskrn",
+                        "memberId": 644,
+                        "proposalReward": "7$",
+                        "kpiReward": "0$",
+                        "totalReward": "7$",
+                        "kpiDone": 0
+                    },
+                    {
+                        "memberHandle": "l1dev",
+                        "memberId": 515,
+                        "proposalReward": "4$",
+                        "kpiReward": "0$",
+                        "totalReward": "4$",
+                        "kpiDone": 0
+                    },
+                    {
+                        "memberHandle": "0x2bc",
+                        "memberId": 2098,
+                        "proposalReward": "5$",
+                        "kpiReward": "0$",
+                        "totalReward": "5$",
+                        "kpiDone": 0
+                    }, {
+                        "memberHandle": "svasilenko",
+                        "memberId": 2096,
+                        "proposalReward": "11$",
+                        "kpiReward": "100$",
+                        "totalReward": "111$",
+                        "kpiDone": 1
+                    }, {
+                        "memberHandle": "xandrell",
+                        "memberId": 867,
+                        "proposalReward": "19$",
+                        "kpiReward": "25$",
+                        "totalReward": "44$",
+                        "kpiDone": 1
+                    }, {
+                        "memberHandle": "freakstatic_council",
+                        "memberId": 321,
+                        "proposalReward": "20$",
+                        "kpiReward": "0$",
+                        "totalReward": "20$",
+                        "kpiDone": 0
+                    }, {
+                        "memberHandle": "uliczny",
+                        "memberId": 1842,
+                        "proposalReward": "16$",
+                        "kpiReward": "0$",
+                        "totalReward": "16$",
+                        "kpiDone": 0
+                    }, {
+                        "memberHandle": "chiffah",
+                        "memberId": 2462,
+                        "proposalReward": "11$",
+                        "kpiReward": "300$",
+                        "totalReward": "311$",
+                        "kpiDone": 5
+                    }, {
+                        "memberHandle": "tomato",
+                        "memberId": 2,
+                        "proposalReward": "11$",
+                        "kpiReward": "260$",
+                        "totalReward": "271$",
+                        "kpiDone": 1
+                    }, {
+                        "memberHandle": "kalpakci",
+                        "memberId": 2137,
+                        "proposalReward": "8$",
+                        "kpiReward": "0$",
+                        "totalReward": "8$",
+                        "kpiDone": 0
+                    }, {
+                        "memberHandle": "laura",
+                        "memberId": 2329,
+                        "proposalReward": "19$",
+                        "kpiReward": "330$",
+                        "totalReward": "349$",
+                        "kpiDone": 3
+                    }, {
+                        "memberHandle": "art_khabibullin",
+                        "memberId": 2836,
+                        "proposalReward": "7$",
+                        "kpiReward": "55$",
+                        "totalReward": "62$",
+                        "kpiDone": 1
+                    }, {
+                        "memberHandle": "ururu",
+                        "memberId": 790,
+                        "proposalReward": "19$",
+                        "kpiReward": "0$",
+                        "totalReward": "19$",
+                        "kpiDone": 0
+                    }, {
+                        "memberHandle": "maxlevush",
+                        "memberId": 2130,
+                        "proposalReward": "16$",
+                        "kpiReward": "0$",
+                        "totalReward": "16$",
+                        "kpiDone": 0
+                    }, {
+                        "memberHandle": "marat_mu",
+                        "memberId": 443,
+                        "proposalReward": "8$",
+                        "kpiReward": "435$",
+                        "totalReward": "443$",
+                        "kpiDone": 2
+                    },
+                    {
+                        "totalMembersRewarded": 16,
+                        "totalKpiDone": 9,
+                        "totalRewardPaid": "1953$"
+                    }
+                ]
+            },
+            {
+                "councilPeriodId": 25,
+                "kpiId": 23,
+                "kpiByPeriod": 23,
+                "totalPossibleRewards": "6450$",
+                "kpiText": "https://blog.joystream.org/sumer-kpis/#kpi-23",
+                "kpiDiscussion": "https://pioneer.joystreamstats.live/#/forum/threads/616",
+                "kpiTermSummaries": "https://pioneer.joystreamstats.live/#/forum/threads/628",
+                "kpiList": [{
+                        "kpiId": "23.I-1",
+                        "kpiName": "Proposal Clearance",
+                        "possibleReward": "200$",
+                        "rewardedCouncilMembers": [{
+                            "memberHandle": "ilich",
+                            "memberId": 2194,
+                            "voted": 26,
+                            "points": 97,
+                            "reward": "17$"
+                        }, {
+                            "memberHandle": "lkskrn",
+                            "memberId": 644,
+                            "voted": 21,
+                            "points": 81,
+                            "reward": "14$"
+                        }, {
+                            "memberHandle": "blackmass",
+                            "memberId": 361,
+                            "voted": 11,
+                            "points": 44,
+                            "reward": "8$"
+                        }, {
+                            "memberHandle": "xfactorus",
+                            "memberId": 635,
+                            "voted": 21,
+                            "points": 80,
+                            "reward": "14$"
+                        }, {
+                            "memberHandle": "alexznet",
+                            "memberId": 2574,
+                            "voted": 11,
+                            "points": 44,
+                            "reward": "8$"
+                        }, {
+                            "memberHandle": "xandrell",
+                            "memberId": 867,
+                            "voted": 20,
+                            "points": 74,
+                            "reward": "13$"
+                        }, {
+                            "memberHandle": "freakstatic_council",
+                            "memberId": 321,
+                            "voted": 19,
+                            "points": 69,
+                            "reward": "12$"
+                        }, {
+                            "memberHandle": "uliczny",
+                            "memberId": 1842,
+                            "voted": 14,
+                            "points": 50,
+                            "reward": "9$"
+                        }, {
+                            "memberHandle": "chiffah",
+                            "memberId": 2462,
+                            "voted": 15,
+                            "points": 57,
+                            "reward": "10$"
+                        }, {
+                            "memberHandle": "tomato",
+                            "memberId": 2,
+                            "voted": 10,
+                            "points": 44,
+                            "reward": "8$"
+                        }, {
+                            "memberHandle": "kalpakci",
+                            "memberId": 2137,
+                            "voted": 21,
+                            "points": 81,
+                            "reward": "14$"
+                        }, {
+                            "memberHandle": "laura",
+                            "memberId": 2329,
+                            "voted": 28,
+                            "points": 123,
+                            "reward": "22$"
+                        }, {
+                            "memberHandle": "ururu",
+                            "memberId": 790,
+                            "voted": 22,
+                            "points": 91,
+                            "reward": "16$"
+                        }, {
+                            "memberHandle": "igrex",
+                            "memberId": 1048,
+                            "voted": 26,
+                            "points": 111,
+                            "reward": "20$"
+                        }, {
+                            "memberHandle": "isonar",
+                            "memberId": 2182,
+                            "voted": 20,
+                            "points": 77,
+                            "reward": "14$"
+                        }],
+                        "sum": {
+                            "totalMembersRewarded": 15,
+                            "totalVoted": 184,
+                            "totalPoints": 1123,
+                            "totalRewardPaid": "199$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.I-2",
+                        "kpiName": "Council Dissent",
+                        "possibleReward": "500$",
+                        "rewardedCouncilMembers": [{
+                            "memberHandle": "laura",
+                            "memberId": 2329,
+                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=6",
+                            "reward": "75$"
+                        }, {
+                            "memberHandle": "igrex",
+                            "memberId": 1048,
+                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=4",
+                            "reward": "100$"
+                        }],
+                        "sum": {
+                            "totalMembersRewarded": 2,
+                            "totalRewardPaid": "175$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.I-3",
+                        "kpiName": "Council Secretary",
+                        "possibleReward": "300$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "tomato",
+                            "memberId": 2,
+                            "report": null,
+                            "reward": "270$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "270$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.I-4",
+                        "kpiName": "Deputy Council Secretary",
+                        "possibleReward": "150$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "isonar",
+                            "memberId": 2182,
+                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=2",
+                            "reward": "150$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "150$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.I-5",
+                        "kpiName": "Council Minutes",
+                        "possibleReward": "100$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "ilich",
+                            "memberId": 2194,
+                            "report": "https://testnet.joystream.org/#/proposals/623",
+                            "reward": "100$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "100$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.I-6",
+                        "kpiName": "New Fiat Pool Scheme",
+                        "possibleReward": "200$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.7",
+                        "kpiName": "Expand Council Size",
+                        "possibleReward": "300$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "ilich",
+                            "memberId": 2194,
+                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=8",
+                            "reward": "100$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "100$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.II-1",
+                        "kpiName": "Discord & Telegram Channel Management",
+                        "possibleReward": "75$",
+                        "rewardedCouncilMembers": [{
+                            "memberHandle": "xandrell",
+                            "memberId": 867,
+                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=3",
+                            "reward": "25$"
+                        }, {
+                            "memberHandle": "igrex",
+                            "memberId": 1048,
+                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=4",
+                            "reward": "25$"
+                        }, {
+                            "memberHandle": "chiffah",
+                            "memberId": 2462,
+                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=9",
+                            "reward": "25$"
+                        }],
+                        "sum": {
+                            "totalMembersRewarded": 3,
+                            "totalRewardPaid": "75$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.II-2",
+                        "kpiName": "Find All PRs/Issues That Require Jsgenesis Action",
+                        "possibleReward": "150$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "isonar",
+                            "memberId": 2182,
+                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=2",
+                            "reward": "150$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "150$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.II-3",
+                        "kpiName": "Create new KPIs",
+                        "possibleReward": "500$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "laura",
+                            "memberId": 2329,
+                            "report": null,
+                            "reward": "75$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "75$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.II-4",
+                        "kpiName": "Minting and Burning - Part 1",
+                        "possibleReward": "700$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.II-5",
+                        "kpiName": "Implement Community Repo Changes",
+                        "possibleReward": "150$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "isonar",
+                            "memberId": 2182,
+                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=2",
+                            "reward": "150$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "150$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.II-6",
+                        "kpiName": "Community Calls",
+                        "possibleReward": "200$",
+                        "rewardedCouncilMembers": [{
+                            "memberHandle": "igrex",
+                            "memberId": 1048,
+                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=4",
+                            "reward": "100$"
+                        }, {
+                            "memberHandle": "chiffah",
+                            "memberId": 2462,
+                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=9",
+                            "reward": "100$"
+                        }],
+                        "sum": {
+                            "totalMembersRewarded": 2,
+                            "totalRewardPaid": "200$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.II-7",
+                        "kpiName": "Council Term Summary Videos",
+                        "possibleReward": "500$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.III-1",
+                        "kpiName": "Follow up the Storage Working Group",
+                        "possibleReward": "400$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.III-2",
+                        "kpiName": "Follow up the Content Curators Working Group",
+                        "possibleReward": "400$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.III-3",
+                        "kpiName": "Follow up the Operations Working Group",
+                        "possibleReward": "100$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.IV.1",
+                        "kpiName": "Weekly Bounty Managers",
+                        "possibleReward": "150$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "ilich",
+                            "memberId": 2194,
+                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=8",
+                            "reward": "50$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "50$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.IV.2",
+                        "kpiName": "Other Bounty Managers",
+                        "possibleReward": "300$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.IV.3",
+                        "kpiName": "Decentralized Domains Bounty",
+                        "possibleReward": "500$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "laura",
+                            "memberId": 2329,
+                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=6",
+                            "reward": "175$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "175$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.OP-1",
+                        "kpiName": "Runtime Upgrade Verification",
+                        "possibleReward": "300$",
+                        "rewardedCouncilMembers": 0,
+                        "sum": {
+                            "totalMembersRewarded": 0,
+                            "totalRewardPaid": "0$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.SP-1",
+                        "kpiName": "Storage OKRs",
+                        "possibleReward": "300$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "0x2bc",
+                            "memberId": 2098,
+                            "link": "https://testnet.joystream.org/#/forum/threads/628?page=2&replyIdx=11",
+                            "reward": "300$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "300$"
+                        }
+                    },
+
+                    {
+                        "kpiId": "23.SP-2",
+                        "kpiName": "Storage Provider Sanctions",
+                        "possibleReward": "50$",
+                        "rewardedCouncilMembers": {
+                            "memberHandle": "0x2bc",
+                            "memberId": 2098,
+                            "link": "https://testnet.joystream.org/#/forum/threads/628?page=2&replyIdx=11",
+                            "reward": "50$"
+                        },
+                        "sum": {
+                            "totalMembersRewarded": 1,
+                            "totalRewardPaid": "50$"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+
+}
