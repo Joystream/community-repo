@@ -443,7 +443,7 @@ const endpoint = "ws://localhost:9944"; // "wss://rome-rpc-endpoint.joystream.or
 const BURN_ADDRESS = "5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu";
 const args = process.argv.slice(2);
 const startBlock = Number(args[0]) || 720370;
-const endBlock = Number(args[1]) || 2091600;
+const endBlock = Number(args[1]) || 2862336;
 
 export async function readMintingAndBurning() {
   const api = await connectApi(endpoint);
