@@ -21,3 +21,4 @@
 [operationsWorkingGroup.terminateRole] [WARN] Block: [1726588] Issuance: [1116264921] Previous issuance: [1116764851] Delta: [-499930]  Calculated Delta: [81]  Total Minted: [81]  Total Burned: [0]
 [operationsWorkingGroup.terminateRole] [WARN] Block: [1726592] Issuance: [1115765181] Previous issuance: [1116265131] Delta: [-499950]  Calculated Delta: [70]  Total Minted: [70]  Total Burned: [0]
 [operationsWorkingGroup.terminateRole] [WARN] Block: [1726596] Issuance: [1115665331] Previous issuance: [1115765331] Delta: [-100000]  Calculated Delta: [50]  Total Minted: [50]  Total Burned: [0]
+[staking bug? - no events]             [WARN] Block: [2150656] Issuance: [1353171600] Previous issuance: [1353771600] Delta: [-600000] Calculated Delta: [0] Total Minted: [0] Total Burned: [0]
