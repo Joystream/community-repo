@@ -186,4 +186,4 @@ A powerful professional-grade video editor. DaVinci Resolve is one of the most p
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-PS The part about the window, I shared with the curator @igrex
+PS The part about the windows, I shared with the curator @igrex
