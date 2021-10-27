@@ -10,7 +10,7 @@ Programs are ranked from best to least good:
 ## Corel VideoStudio Pro
 Professional video editing software ($ 90) with video capture, speed up and slow down, color correction, many effects and transitions, video stabilization.
 
-![Corel VideoStudio Pro](img/CorelVS.gif?raw=true)  
+![Corel VideoStudio Pro](img/CorelVS.gif)  
 
    a) Possibly  
    b) Possibly, including video with a transparent background (configurable through a mask)   
@@ -23,7 +23,7 @@ Score: 10/10
 ## Movavi Video Editor Plus
 A very popular video editor for beginners and professionals ($ 24). Has about 200 effects and transitions, a rich library of titles, works with panorama and scale.  
 
-![Movavi Video Editor Plus](img/Movavi_Video_Editor_Plus.gif?raw=true)  
+![Movavi Video Editor Plus](img/Movavi_Video_Editor_Plus.gif)  
 
    a) Possibly  
    b) Possibly, including video with a transparent background (configurable through a mask)  
@@ -36,7 +36,7 @@ A very popular video editor for beginners and professionals ($ 24). Has about 20
 ## ВидеоМОНТАЖ
 A small paid utility ($ 20) in Russian only with transitions and effects. It is possible to insert text, audio and edit a picture. No blur capability and 4k support.  
 
-![ВидеоМОНТАЖ](img/Videomontag.gif?raw=true)  
+![ВидеоМОНТАЖ](img/Videomontag.gif)  
 
    a) Possibly  
    b) Possibly, including with a transparent background  
@@ -49,7 +49,7 @@ A small paid utility ($ 20) in Russian only with transitions and effects. It is 
 ## Adobe Premiere PRO
 A powerful professional program ($ 22 / month) for editing and creating videos and films, processing special effects and 3D models. Convenient interface, several hundred effects. Frame-by-frame processing.  
 
-![Adobe Premiere PRO](img/Adobe_Premiere.gif?raw=true)  
+![Adobe Premiere PRO](img/Adobe_Premiere.gif)  
 
    a) Possibly  
    b) Possibly, including video with a transparent background  
@@ -62,7 +62,7 @@ A powerful professional program ($ 22 / month) for editing and creating videos a
 ## VSDC Free Video Editor
 Free video editing software with a wide range of settings. It has the ability to work with chromakey, a large set of filters. Allows you to record video from your computer screen.  
 
-![VSDC Free Video Editor](img/VSDC_Free_Video_Editor.gif?raw=true)  
+![VSDC Free Video Editor](img/VSDC_Free_Video_Editor.gif)  
 
    a) Possibly  
    b) Possibly, including with a transparent background  
@@ -75,7 +75,7 @@ Free video editing software with a wide range of settings. It has the ability to
 ## DaVinci Resolve
 One of the best free video editor for beginners and professionals. A wide range of tools for working with clips and audio tracks. The program is famous for its rich set of tools for working with color correction.  
 
-![DaVinci Resolve](img/DaVinci.gif?raw=true)  
+![DaVinci Resolve](img/DaVinci.gif)  
 
    a) Possibly  
    b) Possibly, including with a transparent background  
