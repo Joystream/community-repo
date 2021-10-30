@@ -1,1201 +1,504 @@
 {
-    "allCouncilPeriodsSumerNetwork": {
-        "currentCouncilPeriod": {
-            "councilPeriodId": 28,
-            "kpiId": 26,
-            "kpiByPeriod": 13,
-            "totalPossibleRewards": "3725$",
-            "kpiText": "https://blog.joystream.org/sumer-kpis/#kpi-26",
-            "kpiDiscussion": "https://pioneer.joystreamstats.live/#/forum/threads/672",
-            "kpiList": [{
-                    "kpiId": "26.I-1",
-                    "kpiName": "Proposal Clearance",
-                    "possibleReward": "200$"
-                },
+    "rounds": 
+        {
+            "currentRound":
                 {
-                    "kpiId": "26.I-2",
-                    "kpiName": "Council Secretary",
-                    "possibleReward": "300$"
+                    "round": 28,
+                    "reward": "$2375+$590",
+                    "fiatDiff": "$96.5",
+                    "councilMembers": 20,
+                    "electionRound": 30,
+                    "startBlock": 2883600,
+                    "startDate": "26.10.21",
+                    "endBlock": 2984400,
+                    "endDate": "02.11.21",
+                    "deadlineBlock": 3013200,
+                    "deadline": "04.11.21",
+                    "notes": "",
+                    "kpis": {
+                        "discussion": "",
+                        "termSummaries": "",
+                        "sections": [
+                            {
+                                "name": "Section I - Council work, Proposals and Bureaucracy",
+                                "id": "I",
+                                "kpis": [
+                                     "..."
+                                ],
+                                "name": "Section II - Community Management",
+                                "id": "II",
+                                "kpis": [
+                                    "..."
+                                ],
+                                "name": "Section III - Working Groups",
+                                "id": "III",
+                                "kpis": [
+                                    "..."
+                                ],
+                                "name": "Section IV - Bounties",
+                                "id": "IV",
+                                "kpis": [
+                                    "..."
+                                ],
+                                "name": "Working Group KPIs",
+                                "id": "OP",
+                                "kpis": [
+                                    "..."
+                                ]
+                            }
+                        ]
+                    }
                 },
+            "previousRounds": [
                 {
-                    "kpiId": "26.I-3",
-                    "kpiName": "Deputy Council Secretary",
-                    "possibleReward": "150$"
-                },
-                {
-                    "kpiId": "26.I-4",
-                    "kpiName": "Council Minutes",
-                    "possibleReward": "100$"
-                },
-                {
-                    "kpiId": "26.I-5",
-                    "kpiName": "KPI Presentation",
-                    "possibleReward": "500$"
-                },
-                {
-                    "kpiId": "26.II-1",
-                    "kpiName": "Discord & Telegram Channel Management",
-                    "possibleReward": "75$"
-                },
-                {
-                    "kpiId": "26.II-2",
-                    "kpiName": "Create new KPIs",
-                    "possibleReward": "500$"
-                },
-                {
-                    "kpiId": "26.II-3",
-                    "kpiName": "Council Term Summary Videos",
-                    "possibleReward": "500$"
-                },
-                {
-                    "kpiId": "26.III-1",
-                    "kpiName": "Deputy Working Group Lead",
-                    "possibleReward": "200$"
-                },
-                {
-                    "kpiId": "26.IV-1",
-                    "kpiName": "Weekly Bounty Managers",
-                    "possibleReward": "300$"
-                },
-                {
-                    "kpiId": "26.OP-1",
-                    "kpiName": "Runtime Upgrade Verification",
-                    "possibleReward": "300$"
-                },
-                {
-                    "kpiId": "26.OP-2",
-                    "kpiName": "Event Email Service",
-                    "possibleReward": "200$"
-                },
-                {
-                    "kpiId": "26.OP-3",
-                    "kpiName": "Pioneer 2.0",
-                    "possibleReward": "400$"
+                    "round": 26,
+                    "reward": "$2825+$900",
+                    "fiatDiff": "$1035",
+                    "councilMembers": 16,
+                    "electionRound": 28,
+                    "startBlock": 2696400,
+                    "startDate": "12.10.21",
+                    "endBlock": 2797200,
+                    "endDate": "19.10.21",
+                    "deadlineBlock": 2826000,
+                    "deadline": "21.10.21",
+                    "notes": "(Notes are the same as last week ones!) We're adding the new concept of having KPIs affect the fiat pool replenishment rate! As there hasn't been approved proposal to a KPI to this effect, it will work like so:\nEvery KPI now has a *Fiat Pool Factor*, where the minimum is 0. For this round, the maximum is 1, but that may change.\nThis determines how much the fiat pool will grow or shrink depending on the grading. The reasoning behind it's weighting is two-fold:\nImportant and/or urgent KPIs will get a higher number, to incentivize peer pressure and voting power behind getting it done.\nSome KPIs, although they can be important, will be set to zero as the reward doesn't always imply good/bad work has happened. A good examples is the Council Dissent.\nHow it works:\nSuppose a KPI rewards up to $100, and the *Fiat Pool Factor* is 1. Suppose it's the only KPI with a factor not equal to 0.\n- If nothing has been done, the fiat pool replenishment shrinks by $100\n- If it gets graded as partially completed, and rewarded $25, the fiat pool replenishment shrinks by $50\n- It it gets graded as partially completed, and rewarded $50, the fiat pool replenishment is unchanged\n- If it gets graded as partially completed, and rewarded $75, the fiat pool replenishment grows by $50\n- If it gets graded as fully completed, and rewarded $100, the fiat pool replenishment grows by $100\nIf the factor is 0.2, simply multiple the calculated change from the example with 0.2.\nThis will be another way for us to *force* the Council to act on some of the KPIs that has been neglected for a while, in addition to the existing ones (changing rewards, changing the scope, improving the writing).\nNote that if a KPI isn't completed in time for round x, but gets extended to round x+1 where it's fully completed, the net change will be zero. So although there is an incentive to deliver in time, a CM/WG Lead may *redeem* themselves!\nWe hope this will make things more fun, and allow for a gradual increase in the fiat pool replenishment!",
+                    "kpis": {
+                        "discussion": "https://testnet.joystream.org/#/forum/threads/672",
+                        "termSummaries": "https://testnet.joystream.org/#/forum/threads/685",
+                        "sections": [
+                            {
+                                "name": "Section I - Council work, Proposals and Bureaucracy",
+                                "id": "I",
+                                "kpis": [
+                                    {
+                                        "title": "Proposal Clearance",
+                                        "reward": "$200",
+                                        "fiatPool": 0,
+                                        "distribution": "Shared",
+                                        "process": "Automatic",
+                                        "active": "Full Term",
+                                        "purpose": "For the governance process to function properly, all proposals must be processed effectively, and dealt with within a reasonable time frame. Although we have increased number of proposals that can be open at any time from 5 to 20, it is still important that the community gets a quick result when possible.\nThis means the Council should be quick to vote when possible, and ask clarifying questions when information is missing.",
+                                        "scope": ["For the individual Council Member, this means that they must check in frequently, and address each open proposal. If what is presented is reasonable and within the budget, the proposal should in general be approved.\nOf course, the Councils time must be respected, in the sense that the proposal should contain all the information needed to make their verdict. If this is not the case, the proposal discussion system can be used to ask for what is missing.\nWithout going in too much detail:\n- Most proposals will be of type Text or Spending. Along with some of the Working Group proposals, these should also be the most straight forward to vote on.\n- If the Spending proposal is for a Bounty, make sure the formalities, (eg. ask the Bounty Manager) are in order before casting your vote.\n- If you have all the information you need, vote right away.\n - Regardless of your decision, you should also make a brief comment outlining your reasoning.\n- If you don't have all the information, or don't fully understand, check the comments to see if it has already been addressed. If it hasn't, ask!\n- If you are not sure, you can always:\n - ask in the discussion, confer with other CMs on Discord and/or the forum\t- if so, this should be linked to or summarized in the discussion\n - vote abstain"],
+                                        "rewardDistribution": "After the Term is over, we will get all the voting data from the proposals that were open during the Term. The reward will be divided by the number of total proposals.\n- Each time a CM voted for a proposal, they earn 1 point.\n- If they voted the same as the final outcome, they earn 3 more points.\n- If they voted abstain, they also earn 3 more points - as long as they didn't vote abstain on more than 20% of the total proposals.\n- Finally, the first 2 CMs that vote, AND vote *correctly* earns 2 more points.\nThe CMs reward for each proposal will be proportional to their points.\nNote: Once a proposal is finalized, voting stops, so if you want to *piggyback* on the others, you may find yourself not getting to vote in time.",
+                                        "grading": [
+                                            {
+                                                "memberId": 1905,
+                                                "memberHandle": "kate_fm",
+                                                "voted": 27,
+                                                "points": 101,
+                                                "reward": 19
+                                            },
+                                            {
+                                                "memberId": 2194,
+                                                "memberHandle": "ilich",
+                                                "voted": 24,
+                                                "points": 95,
+                                                "reward": 18
+                                            },
+                                            {
+                                                 "memberId": 644,
+                                                 "memberHandle": "lkskrn",
+                                                 "voted": 23,
+                                                 "points": 94,
+                                                 "reward": 18
+                                            },
+                                            {
+                                                "memberId": 361,
+                                                "memberHandle": "blackmass",
+                                                "voted": 6,
+                                                "points": 21,
+                                                "reward": 4
+                                            },
+                                            {
+                                                 "memberId": 515,
+                                                 "memberHandle": "l1dev",
+                                                 "voted": 8,
+                                                 "points": 25,
+                                                 "reward": 5
+                                            },
+                                            {
+                                                "memberId": 2096,
+                                                "memberHandle": "svasilenko",
+                                                "voted": 17,
+                                                "points": 67,
+                                                "reward": 13
+                                            },
+                                            {
+                                                "memberId": 2531,
+                                                "memberHandle": "nanapa6otaet",
+                                                "voted": 16,
+                                                "points": 55,
+                                                "reward": 11
+                                            },
+                                            {
+                                                 "memberId": 321,
+                                                 "memberHandle": "freakstatic_council",
+                                                 "voted": 15,
+                                                 "points": 64,
+                                                 "reward": 11
+                                            },
+                                            {
+                                                "memberId": 2462,
+                                                "memberHandle": "chiffah",
+                                                "voted": 19,
+                                                "points": 78,
+                                                "reward": 15
+                                            },
+                                            {
+                                                "memberId": 2,
+                                                "memberHandle": "tomato",
+                                                "voted": 4,
+                                                "points": 18,
+                                                "reward": 3
+                                            },
+                                            {
+                                                "memberId": 736,
+                                                "memberHandle": "mmsaww",
+                                                "voted": 11,
+                                                "points": 35,
+                                                "reward": 7
+                                            },
+                                            {
+                                                "memberId": 2137,
+                                                "memberHandle": "kalpakci",
+                                                "voted": 16,
+                                                "points": 61,
+                                                "reward": 12
+                                            },
+                                            {
+                                                "memberId": 2329,
+                                                "memberHandle": "laura",
+                                                "voted": 27,
+                                                "points": 110,
+                                                "reward": 21
+                                            },
+                                            {
+                                                "memberId": 2130,
+                                                "memberHandle": "maxlevush",
+                                                "voted": 17,
+                                                "points": 65,
+                                                "reward": 13
+                                            },
+                                            {
+                                                "memberId": 2435,
+                                                "memberHandle": "zazik",
+                                                "voted": 21,
+                                                "points": 76,
+                                                "reward": 15
+                                            },
+                                            {
+                                                "memberId": 2154,
+                                                "memberHandle": "marat_mu",
+                                                "voted": 20,
+                                                "points": 75,
+                                                "reward": 14
+                                            },
+                                            {
+                                                "memberId": "SUM",
+                                                "memberHandle": 16,
+                                                "voted": 271,
+                                                "points": 1040,
+                                                "reward": 200
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "title": "Council Secretary",
+                                        "reward": "$300",
+                                        "fiatPool": 0.1,
+                                        "distribution": "Individual",
+                                        "process": "Manual",
+                                        "active": "Full Term",
+                                        "purpose": "Although this is not a formal role on the platform, having someone responsible for co-ordinating the Council is needed.\nThe role should be occupied by a 'seasoned' Council Member that:\n- is well versed in the platform workings\n- is familiar with github\n- has high availability\nThis role is applied for via text proposal, which happens once per term.",
+                                        "scope": ["The Council Secretary will act as a bridge between the Council and Jsgenesis. This means:\n- Given write access to the Community Repo\n- For all new PRs made to the repo, the Secretary and/or is expected to:\n - perform a review\n - link to a spending or text proposal, confirming the Councils approval\n - request Jsgenesis review for all PRs that require their attention\n - merge the PR, under the conditions that the PR:\t- would not require Jsgenesis to perform any actions related to the tokenomics (payouts or pool increases)\t- does not violate any license\t- does not introduce any code users can run\t- it has also been approved by the Deputy Secretary\n- Signing off on all reports created\n- Assist and support other CMs\n- Monitor the bounties \n - propose/hire Bounty Managers, set their rewards and secure funding after the fact\n - follow up Bounty Managers (and replace if needed)\n - select the 'Weekly Bounty Managers' according to interest (they will be paid through KPI rewards)\n - ensure the bounty information presented on the website is up to date\n - report on progress after the end of the Term\n- Notify Jsgenesis of urgent and important matters on the testnet\n- Open a forum thread for the 'Term Summaries' where the CMs can report on their Council/KPI activities.\n- Ask Jsgenesis to refill the Council Mint in in the #council room on Discord\n* Not before all formalities has been completed, eg. approved by the Council"],
+                                        "rewardDistribution": "Only a single member may be chosen for this role. If more than one proposal for the position is approved, only the first one is considered.",
+                                        "grading":
+                                            {
+                                                "memberId": 2329,
+                                                "memberHandle": "laura",
+                                                "reward": 300,
+                                                "report": "https://testnet.joystream.org/#/forum/threads/685?replyIdx=7"
+                                            }
+                                    },
+                                    {
+                                        "title": "Deputy Council Secretary",
+                                        "reward": "$150",
+                                        "fiatPool": 0.1,
+                                        "distribution": "Individual",
+                                        "process": "Manual",
+                                        "active": "Core Term",
+                                        "startBlock": 2703600,
+                                        "endBlock": 2790000,
+                                        "purpose": "The Council Secretary has been re-elected more than 10 times in a row. We believe the reason is that the Councils seem to recognize their excellent performance - an opinion shared by us.\nIt does however make the platform, albeit in a testnet stage, highly reliant on a single individual or entity, which may cause trouble down the road.\nWe believe it's time to add a deputy. This will hopefully have multiple benefits, the key being preparing more people to coordinate the Council and get a better overview of the recurring and, sometimes, critical tasks that needs to be performed.\nRequirements:\n- must have been on the Council before\n- must be able to check in at least once every day\n- must be eager to learn\n- preferably somewhat familiar with github",
+                                        "scope": ["The main task for the Deputy Council Secretary is to assist and offload the Secretary.\n- Given triage access to the Community Repo\n- Assigning the Secretary, and/or  Jsgenesis to review* all PRs made to the Community Repo, with a link to the text or spending proposals and other applicable information.\n- See the SoW for the Secretary for a full list of tasks\n* Not before all formalities has been completed, eg. approved by the Council"],
+                                        "rewardDistribution": "Only a single member may be chosen for this role. If more than one proposal for the position is approved, only the first one is considered.",
+                                        "grading":
+                                            {
+                                                "memberId": 2194,
+                                                "memberHandle": "ilich",
+                                                "reward": 150,
+                                                "report": "https://testnet.joystream.org/#/forum/threads/685?replyIdx=9"
+                                            }
+                                    },
+                                    {
+                                        "title": "Council Minutes",
+                                        "reward": "$100",
+                                        "fiatPool": 0.5,
+                                        "distribution": "Individual",
+                                        "process": "Manual",
+                                        "active": "Term end + 1 day",
+                                        "startBlock": 2797200,
+                                        "endBlock": 2811600,
+                                        "purpose": "There needs to be some level of accountability and transparency for the Council. For each Council Term the Council must produce a report, that both summarizes their communication, covers all 'events' and generally explains what transpired during the Term.\nAs the KPIs now cover 2 Council Terms, these reports must be generated for both terms. The naming convention should be 19A and 19B to refer to the two terms.",
+                                        "scope": ["1. The 21st & 22nd 'official' Councils (#1990800-#2091600 & #2091600-#2494800) produces a report covering any and all 'events' of interest:\n- Proposals\n- Decisions\n- Voting statistics\n- etc.\n2. The Council Produces a 'Tokenomics' report (for both Council Terms) covering the quantitative aspects of the Term. Must include:\n- Issuance statistics, through: \n - Spending from proposals\n - Role rewards\n - Bounties paid\n - Validator rewards\n - Total tokens minted\n - Total tokens burned\n- Media statistics \n - Note that this should only be a superficial report. A more comprehensive overview should be produced by the Curators.\n- Membership statistics\n- Role occupants, their recurring and earned rewards, hired dates, etc.\n- Forum statistics\nPrevious Council reports can be used as a guideline."],
+                                        "rewardDistribution": "If multiple reports are proposed, only the best one will be rewarded. Ideally however, this would be a collaborative effort.",
+                                        "grading":
+                                            {
+                                                "memberId": 2194,
+                                                "memberHandle": "ilich",
+                                                "reward": 100,
+                                                "report": "https://testnet.joystream.org/#/forum/threads/685?replyIdx=9"
+                                            }
+                                    },
+                                    {
+                                        "title": "KPI Presentation",
+                                        "reward": "$500",
+                                        "fiatPool": 0.5,
+                                        "distribution": "Individual",
+                                        "process": "Manual",
+                                        "active": "Core Term",
+                                        "startBlock": 2703600,
+                                        "endBlock": 2790000,
+                                        "purpose": "There's been plenty of feedback on the rather crude way the KPI's are presented, and how it negatively impacts several aspects of the KPIs.\n- It's very hard to read and parse, scaring people away from even trying\n- There are often errors in the ToC and formatting\n- It's very hard to read and parse the results\n- The page is infinite\nI'm sure I could go on, but let's instead focus on how to improve it.\nThe first key part, which will be addressed separately, is to store the data in a json or yaml format, making so that it can be presented in a flexible way.\nThe second is to start thinking about the design. It's not if this is a task the Council is currently able to attempt, as design is hard. What can be done however, is to write a design brief. In order to do that, we need to establish what the page must and should contain.\nNote that what we're doing here, isn't solely being able to read a single, ungraded KPI, but create (a) page(s) where all the KPI information can be kept in a functional way.",
+                                        "scope": ["1. List 'all of the things' such a page should contain. This can include, but is not limited to:\n- The current KPIs\n- Full (or at least covering a significant part of the) KPI history, with results and stats.\n - Links to all the work that was done\n - Links to all the old term summaries\n - Stats on how many KPIs were 'done' per round\n - Stats on how much was earned for each KPI\n - Stats on how many KPIs each member has done, how much they've earned, and how many councils they've been a part\n - etc.\n- Not clear if these belongs here, and much less clear if it should be prioritized early, but:\n - Should this 'page' also track the token value and inflation over time?\n - Should it include some way to 'claim' you want to work on a task, and other 'KPI manager' tools?\n - What else?\nUse what you find (as a group, this likely requires input from several sources) in one, to either:\n2. Write a design brief, covering at least current KPIs.\n3. Create a wireframe of (at least) the current KPIs. We have been using balsamiq for these things, and will re-imburse anyone giving it a go. If you prefer other tools, preferably open source, that would be even better!"],
+                                        "rewardDistribution": "Grading will be shared across the contributors for 1, individual for 2 and 3.\nWeighting:\n1. 200\n2.100\n3.200",
+                                        "grading": [
+                                            {
+                                                "memberId": 2096,
+                                                "memberHandle": "svasilenko",
+                                                "reward": 125,
+                                                "report": "https://testnet.joystream.org/#/forum/threads/685?replyIdx=4"
+                                            },
+                                            {
+                                                "memberId": 515,
+                                                "memberHandle": "l1dev",
+                                                "reward": 175,
+                                                "report": "https://testnet.joystream.org/#/forum/threads/685?replyIdx=2"
+                                            },
+                                            {
+                                                "memberId": "SUM",
+                                                "memberHandle": 2,
+                                                "reward": 300
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "name": "Section II - Community Management",
+                                "id": "II",
+                                "kpis": [
+                                    {
+                                        "title": "Discord & Telegram Channel Management",
+                                        "reward": "$75",
+                                        "fiatPool": 0,
+                                        "distribution": "Individual",
+                                        "process": "Manual",
+                                        "active": "Full Term",
+                                        "purpose": "To make the Joystream community more welcoming to newcomers on Discord, we need high availability and helpfulness there.",
+                                        "note": "$75 will be added to the budget ref. proposal 393, and removed from this.",
+                                        "scope": "For each of the above groups:\nCheck in multiple times every day, and welcome/assist every user that posts or asks a question. You need to have some knowledge of the particular topic, or read up on it. If you still don't know the answer, tag someone else!",
+                                        "rewardDistribution": "Also note that you will 'keep' this role for 1 day (14,400 blocks) AFTER the term to allow a new CM to take over.\nGrading is individual.",
+                                        "grading": [
+                                            {
+                                                "memberId": 2531,
+                                                "memberHandle": "nanapa6otaet",
+                                                "reward": 25,
+                                                "report": "https://testnet.joystream.org/#/forum/threads/685?replyIdx=3"
+                                            },
+                                            {
+                                                 "memberId": 2435,
+                                                 "memberHandle": "zazik",
+                                                 "reward": 25,
+                                                 report: "https://testnet.joystream.org/#/forum/threads/685?replyIdx=5"
+                                            },
+                                            {
+                                                "memberId": 1905,
+                                                "memberHandle": "kate_fm",
+                                                "reward": 25,
+                                                "report": "https://testnet.joystream.org/#/forum/threads/685?replyIdx=6"
+                                            },
+                                            {
+                                                "memberId": "SUM",
+                                                "memberHandle": 3,
+                                                "reward": 75
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "title": "Create new KPIs",
+                                        "reward": "$500",
+                                        "fiatPool": 0,
+                                        "distribution": "Individual",
+                                        "process": "Automatic",
+                                        "active": "Core Term",
+                                        "startBlock": 2703600,
+                                        "endBlock": 2790000,
+                                        "purpose": "Sometimes, creating valuable KPIs for a new Term is easy, other times it not so obvious what to focus on. Let's get some inputs from the Community!",
+                                        "scope": "1. Draft up one or more new (Council or WGs) KPIs, that follows the format of the existing system. Additionally, place it in the applicable group (or add new ones if needed), estimate the workload and propose a reward.\n2. If specifying it completely, as in the case for 1. is too difficult, or requires JSG input, simply outline what you want a KPI to cover, and what it's meant to achieve.",
+                                        "rewardDistribution": "All CMs and WG Leads can contribute.\nIf your KPI makes it into one or more future set(s) of KPIs, you'll get:\n1. $25 + 25% of the Reward JSG sets (capped at $200)\n2. $25 + 10% of the Reward JSG sets (capped at $100)",
+                                        "grading": [
+                                            {
+                                                "memberId": 2154,
+                                                "memberHandle": "marat_mu",
+                                                "reward": 40,
+                                                "report": "https://testnet.joystream.org/#/forum/threads/685?replyIdx=8"
+                                            },
+                                            {
+                                                "memberId": 2435,
+                                                "memberHandle": "zazik",
+                                                "reward": 40,
+                                                report: "https://testnet.joystream.org/#/forum/threads/685?replyIdx=5"
+                                            },
+                                            {
+                                                "memberId": 1905,
+                                                "memberHandle": "kate_fm",
+                                                "reward": 40,
+                                                "report": "https://testnet.joystream.org/#/forum/threads/685?replyIdx=6"
+                                            },
+                                            {
+                                                "memberId": "SUM",
+                                                "memberHandle": 3,
+                                                "reward": 120
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "title": "Council Term Summary Videos",
+                                        "reward": "$500",
+                                        "fiatPool": 0,
+                                        "distribution": "Individual",
+                                        "process": "Automatic",
+                                        "active": "Term end + 2 days",
+                                        "startBlock": 2797200,
+                                        "endBlock": 2926800,
+                                        "purpose": "Although the community is diligently creating Council Minutes in text format every week, a video platform should have video updates!",
+                                        "scope": ["1. Record a video (in English) presenting the "highlights" of the Term, from a community point of view. The video should be recorded after the following information is secured:\n- The Council Minutes\n- A KPI status update, made by the Council Secretary. Example\n- As many of the Term Summaries as possible.\nThis means the video should be recorded approximately two days after the end of the Term. Some potential topics:\n- Who were on the Council\n- Fiat Pool and exchange rate changes\n- Any changes to the workers or Leads?\n- Did something fun happen?\n2. We imagine the format will change over time, and with feedback, but in order to bootstrap it, someone has to give it a go. After you made your video, create a forum thread for feedback/discussion. Then create a text proposal with the format you opted for, and a link to the forum post.\n3. Have the video re-recorded in Russian, either by yourself, or someone else."],
+                                        "note": "Ideally, this should be a running project (ie. no longer be a KPI) once it 'settles''. In the meantime, if you are fluent in both languages you can make both. If not, collaborate with someone that masters the 'other' language.",
+                                        "rewardDistribution": "Individual grading. If more than one CM creates (a) video(s), the reward is not capped. So multiple people can all earn $400 each.\nWeighting:\n1. $300\n- Soft cap, an extremely good video may earn even more.\n- A 1 min short where someone is reading the Council Minutes will not earn anything.\n2. $50\n3. $150",
+                                        "grading": [
+                                            {
+                                                "memberId": 2154,
+                                                "memberHandle": "marat_mu",
+                                                "reward": 250,
+                                                "report": "https://testnet.joystream.org/#/forum/threads/685?replyIdx=8"
+                                            },
+                                            {
+                                                "memberId": 2329,
+                                                "memberHandle": "laura",
+                                                "reward": 250,
+                                                "report": "https://testnet.joystream.org/#/forum/threads/685?replyIdx=7"
+                                            },
+                                            {
+                                                "memberId": "SUM",
+                                                "memberHandle": 2,
+                                                "reward": 500
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "name": "Section III - Working Groups",
+                                "id": "III",
+                                "kpis": [
+                                    {
+                                        "title": "Deputy Working Group Lead",
+                                        "reward": "$200",
+                                        "fiatPool": 0.2,
+                                        "distribution": "Individual",
+                                        "process": "Automatic",
+                                        "active": "Core Term",
+                                        "startBlock": 2703600,
+                                        "endBlock": 2790000,
+                                        "purpose": "The WG Lead is expected to be available and active, but just as any other job, it's impossible to be available 24/7.\nThe idea of having deputy leads was raised again last Term. As has having Leads in shifts. What should each working group do?",
+                                        "scope": ["For each of the WGs:\n1. Is the groups output, productivity and/or efficiency hampered by the Lead? Is that person a bottleneck for getting things done? (This is not meant to imply the Lead is underperforming. As groups have grown, the workload has followed!)\n2. There are at least three options for each group:\n- Keep the leadership hierarchy as is\n- Assign a deputy Lead\n- Have two (or more) people share the title as Lead\n - Can be done on-chain, or off-chain (by sharing account)\n - What seems like the most 'applicable' for each group?\n3. What does the Leads themselves think of this?"],
+                                        "rewardDistribution": "Grading is individual.\nWeighting:\n1,3: $50\n2: $100",
+                                        "grading":
+                                            {
+                                                "memberId": 2329,
+                                                "memberHandle": "laura",
+                                                "reward": 50,
+                                                "report": "https://testnet.joystream.org/#/forum/threads/685?replyIdx=7"
+                                            }
+                                    }
+                                ],
+                                "name": "Section IV - Bounties",
+                                "id": "IV",
+                                "kpis": [
+                                    {
+                                        "title": "Weekly Bounty Managers",
+                                        "reward": "$300",
+                                        "fiatPool": 0,
+                                        "distribution": "Individual",
+                                        "process": "Automatic",
+                                        "active": "Full Term",
+                                        "purpose": "Keeping track of all bounties is both too much for a single person, and it will require different skillsets. There are currently 4 'weekly' bounties, where 'weekly' means that the Bounty Manager isn't meant to have this role until the bounty is completed. Instead, the Council will choose one of their own to act as the Bounty Manager for each bounty during the Term.\nA new addition is to actually promote the bounties. It appears to be somewhat of a hurdle getting people to apply for, and start working on, our bounties.\nThe scope of work for each Bounty will vary quite a lot, depending on the specific bounty.\nSome general information can be found here.",
+                                        "scope": ["1. Manage Bounty #9. After the Council Term has ended, create a brief 'handover' report for your successor (even if you are re-elected).\n2. Find someone, inside or outside of the community, to start working on a bounty. Any CM that manages to find someone (including themselves) to get assigned for any Bounty, a $100 bonus awaits!\n3. There are currently 10 more open Bounties, some of them not created/funded by Jsgenesis. Which one of these has a format which lends themselves to weekly Bounty Managers?"],
+                                        "rewardDistribution": "Individual. The Council Secretary is responsible for assigning CMs for each Bounty.\nWeighting:\n1: $50\n2: $100\n3: $100",
+                                        "grading":
+                                            {
+                                                "memberId": 2194,
+                                                "memberHandle": "ilich",
+                                                "reward": 50,
+                                                "report": "https://testnet.joystream.org/#/forum/threads/685?replyIdx=9"
+                                            }
+                                    }
+                                ],
+                                "name": "Working Group KPIs",
+                                "id": "OP",
+                                "kpis": [
+                                    {
+                                        "title": "Runtime Upgrade Verification",
+                                        "reward": "$300",
+                                        "fiatPool": 1.5,
+                                        "startBlock": 2696400,
+                                        "endBlock": 2898000,
+                                        "purpose": "With KPI 17.OP-1), the runtime upgrade was tested. However, the results weren't straight forward to parse. We need to verify exactly what happened, before we perform the upgrade on the real testnet!\nNote that an updated version of pioneer can be found here, and that you can use the endpoint wss://staging-3.joystream.app/rpc for both pioneer and the API. Also note that the noteworthy fixes in this runtime upgrade was to:\n1. Fix the bug that caused all stakes when applying to the operations group caused the role and application stakes to get burned.\n2. Increase the max mint capacity increase through proposals from 5,000,000 to 50,000,000.",
+                                        "note": "Extended from last KPI round, with small reward increase.",
+                                        "scope": ["1. After the proposed testing protocol was shared on Discord, I replied with some extra tasks. Although the tasks appear to have been performed, it's not easy to confirm from the results. Go through the list, and verify everything was done.\n2. Using the Member IDs, worker IDs, block heights, membership and worker accounts listed in the report, get the historical chain data from the applicable reports and test/verify for each opening and application:\n- What was the opening ID, opening parameters (max applicants, application/role stake, rewards and the various unstaking parameters)\n- Was the opening created before or after the runtime upgrade\n- What was the member ID, member handle, membership root/controller account, and role account\n- Was the application made before or after the runtime upgrade\n- What was the balance of each account, and the total issuance, on the block, and the block before, the member: \n - applied\n - was crowded out, not hired or hired\n - if hired:\t- fired or quit\n - note that if the unstaking parameter was >0, you need to check the block + the applicable unstaking value\n - note that if they were hired, they may have earned rewards that further complicates things\n - they may also have received tokens from other addresses/rewards in the window\n - also note that if the same member applied to multiple openings, you need to keep track of all stakes/values/rewards\nAfter having generated all this information, create a report containing all the numbers above, an explanation of what you think happened, and whether the bug was fixed."],
+                                        "grading": "completed in the last term"
+                                    },
+                                    {
+                                        "title": "Event Email Service",
+                                        "reward": "$200",
+                                        "fiatPool": 0,
+                                        "startBlock": 2696400,
+                                        "endBlock": 2998800,
+                                        "purpose": "It can be quite useful to have notifications setup for various on chain events. The telegram/discord bots partially fulfills this role, but it could be equally, or more, useful to have email notifications as well!",
+                                        "scope": ["1. Outline the feasibility of deploying a hosted service for this, where a user can sign up, and choose from a list of events to which they want subscribe.\n2. Outline the feasibility of building a self hosted service for users that are running nodes themselves. This would mean making the source code available on our community repo, where users can compile, configure and run it themselves.\n3. Estimate the hours and resource needed to build these tools, and the resource consumption for a user running it themselves like in 2."],
+                                        "grading": "completed in the last term"
+                                    },
+                                    {
+                                        "title": "Pioneer 2.0",
+                                        "reward": "$400",
+                                        "fiatPool": 0.5,
+                                        "startBlock": 2696400,
+                                        "endBlock": 2898000,
+                                        "purpose": "Not that we are finally closing in on the release launching pioneer 2.0, we want to focus on something that we've wanted to for some time. Namely giving the community both an opportunity and reason to contribute.\nAs we've stated many times before, we wish for the community to take charge of the platform in the future, which means they have to understand the software they're working on. Starting early, on an something that's both unfinished and that will require lots of improvements and updates sounds ideal. To make things 'even better', there are both developer docs, contributor guides, and a fair amount of (good first) issues to start with!",
+                                        "scope": ["1. Find your way in to the pioneer repo, try out the build, and play around a bit.\n2. Read through the aforementioned contribution guidelines and developer docs. If they're helpful and all you need, great! If not, make an issue with your feedback.\n3. Review the 'good first issue'(s), and estimate the time needed to solve each of them, assuming you are somewhat comfortable with the stack, but no knowledge of codebase. If anything is unclear in any of the issues, ask kindly for clarification.\n4. Provide feedback on how these issues would best be presented to the community. By that, I mean:\n- Should it be separate bounties for all the n issues?\n- Should there be n-k bounties for these n issues?\n- Should they instead be KPIs, or simply general tasks for (one or more of) the operations group(s) to tackle?\n- Other? Present your findinds not through an issue in the pioneer repo this time, but rather in the community repo."],
+                                        "rewardDistribution": "Grading is individual.",
+                                        "grading":
+                                            {
+                                                "memberId": 515,
+                                                "memberHandle": "l1dev",
+                                                "reward": 400,
+                                                "report": "https://testnet.joystream.org/#/forum/threads/685?replyIdx=2"
+                                            }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 }
             ]
-        },
-        "previousCouncilPeriods": [{
-                "councilPeriodId": 27,
-                "kpiId": 25,
-                "kpiByPeriod": 18,
-                "totalPossibleRewards": "4875$",
-                "kpiText": "https://blog.joystream.org/sumer-kpis/#kpi-25",
-                "kpiDiscussion": "https://pioneer.joystreamstats.live/#/forum/threads/657",
-                "kpiTermSummaries": "https://pioneer.joystreamstats.live/#/forum/threads/671",
-                "kpiList": [{
-                        "kpiId": "25.I-1",
-                        "kpiName": "Proposal Clearance",
-                        "possibleReward": "200$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.I-2",
-                        "kpiName": "Council Dissent",
-                        "possibleReward": "500$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.I-3",
-                        "kpiName": "Council Secretary",
-                        "possibleReward": "300$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.I-4",
-                        "kpiName": "Deputy Council Secretary",
-                        "possibleReward": "150$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.I-5",
-                        "kpiName": "Council Minutes",
-                        "possibleReward": "100$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.I-6",
-                        "kpiName": "Runtime Paramaters",
-                        "possibleReward": "500$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.II-1",
-                        "kpiName": "Discord & Telegram Channel Management",
-                        "possibleReward": "75$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.II-2",
-                        "kpiName": "Create new KPIs",
-                        "possibleReward": "500$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.II-3",
-                        "kpiName": "Minting and Burning - Part 1",
-                        "possibleReward": "700$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.II-4",
-                        "kpiName": "Council Term Summary Videos",
-                        "possibleReward": "500$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.III-1",
-                        "kpiName": "Follow up the Storage Working Group",
-                        "possibleReward": "0$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.III-2",
-                        "kpiName": "Follow up the Content Curators Working Group",
-                        "possibleReward": "0$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.III-3",
-                        "kpiName": "Follow up the Operations Working Group",
-                        "possibleReward": "0$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.III-4",
-                        "kpiName": "Deputy Working Group Lead",
-                        "possibleReward": "200$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.IV-1",
-                        "kpiName": "Weekly Bounty Managers",
-                        "possibleReward": "300$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.CC-1",
-                        "kpiName": "Discover Category Videos Part 1",
-                        "possibleReward": "250$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.OP-1",
-                        "kpiName": "Runtime Upgrade Verification",
-                        "possibleReward": "300$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    },
-                    {
-                        "kpiId": "25.OP-2",
-                        "kpiName": "Event Email Service",
-                        "possibleReward": "200$",
-                        "rewardedCouncilMembers": null,
-                        "sum": null
-                    }
-                ]
-            },
-            {
-                "councilPeriodId": 26,
-                "kpiId": 24,
-                "kpiByPeriod": 21,
-                "totalPossibleRewards": "5500$",
-                "kpiText": "https://blog.joystream.org/sumer-kpis/#kpi-24",
-                "kpiDiscussion": "https://pioneer.joystreamstats.live/#/forum/threads/639",
-                "kpiTermSummaries": "https://pioneer.joystreamstats.live/#/forum/threads/654",
-                "kpiList": [{
-                        "kpiId": "24.I-1",
-                        "kpiName": "Proposal Clearance",
-                        "possibleReward": "200$",
-                        "rewardedCouncilMembers": [{
-                            "memberHandle": "ilich",
-                            "memberId": 2194,
-                            "voted": 20,
-                            "points": 75,
-                            "reward": "17$"
-                        }, {
-                            "memberHandle": "lkskrn",
-                            "memberId": 644,
-                            "voted": 9,
-                            "points": 29,
-                            "reward": "7$"
-                        }, {
-                            "memberHandle": "l1dev",
-                            "memberId": 515,
-                            "voted": 5,
-                            "points": 16,
-                            "reward": "4$"
-                        }, {
-                            "memberHandle": "0x2bc",
-                            "memberId": 2098,
-                            "voted": 9,
-                            "points": 24,
-                            "reward": "5$"
-                        }, {
-                            "memberHandle": "svasilenko",
-                            "memberId": 2096,
-                            "voted": 16,
-                            "points": 49,
-                            "reward": "11$"
-                        }, {
-                            "memberHandle": "xandrell",
-                            "memberId": 867,
-                            "voted": 22,
-                            "points": 81,
-                            "reward": "19$"
-                        }, {
-                            "memberHandle": "freakstatic_council",
-                            "memberId": 321,
-                            "voted": 23,
-                            "points": 89,
-                            "reward": "20$"
-                        }, {
-                            "memberHandle": "uliczny",
-                            "memberId": 1842,
-                            "voted": 18,
-                            "points": 71,
-                            "reward": "16$"
-                        }, {
-                            "memberHandle": "chiffah",
-                            "memberId": 2462,
-                            "voted": 14,
-                            "points": 50,
-                            "reward": "11$"
-                        }, {
-                            "memberHandle": "tomato",
-                            "memberId": 2,
-                            "voted": 12,
-                            "points": 48,
-                            "reward": "11$"
-                        }, {
-                            "memberHandle": "kalpakci",
-                            "memberId": 2137,
-                            "voted": 10,
-                            "points": 37,
-                            "reward": "8$"
-                        }, {
-                            "memberHandle": "laura",
-                            "memberId": 2329,
-                            "voted": 21,
-                            "points": 84,
-                            "reward": "19$"
-                        }, {
-                            "memberHandle": "art_khabibullin",
-                            "memberId": 2836,
-                            "voted": 8,
-                            "points": 32,
-                            "reward": "7$"
-                        }, {
-                            "memberHandle": "ururu",
-                            "memberId": 790,
-                            "voted": 21,
-                            "points": 83,
-                            "reward": "19$"
-                        }, {
-                            "memberHandle": "maxlevush",
-                            "memberId": 2130,
-                            "voted": 17,
-                            "points": 69,
-                            "reward": "16$"
-                        }, {
-                            "memberHandle": "marat_mu",
-                            "memberId": 2154,
-                            "voted": 10,
-                            "points": 36,
-                            "reward": "8$"
-                        }],
-                        "sum": {
-                            "totalMembersRewarded": 16,
-                            "totalVoted": 235,
-                            "totalPoints": 873,
-                            "totalRewardPaid": "200$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.I-2",
-                        "kpiName": "Council Dissent",
-                        "possibleReward": "500$",
-                        "rewardedCouncilMembers": [{
-                            "memberHandle": "laura",
-                            "memberId": 2329,
-                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=4",
-                            "reward": "30$"
-                        }, {
-                            "memberHandle": "art_khabibulin",
-                            "memberId": 2836,
-                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=7",
-                            "reward": "30$"
-                        }, {
-                            "memberHandle": "marat_mu",
-                            "memberId": 2154,
-                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=8",
-                            "reward": "60$"
-                        }],
-                        "sum": {
-                            "totalMembersRewarded": 3,
-                            "totalRewardPaid": "120$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.I-3",
-                        "kpiName": "Council Secretary",
-                        "possibleReward": "300$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "tomato",
-                            "memberId": 2,
-                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=5",
-                            "reward": "260$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "260$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.I-4",
-                        "kpiName": "Deputy Council Secretary",
-                        "possibleReward": "150$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "laura",
-                            "memberId": 2329,
-                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=4",
-                            "reward": "150$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "150$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.I-5",
-                        "kpiName": "Council Minutes",
-                        "possibleReward": "100$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "ilich",
-                            "memberId": 2194,
-                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=6",
-                            "reward": "100$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "100$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.I-6",
-                        "kpiName": "New Fiat Pool Scheme",
-                        "possibleReward": "200$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.7",
-                        "kpiName": "Runtime Parameters",
-                        "possibleReward": "500$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.II-1",
-                        "kpiName": "Discord & Telegram Channel Management",
-                        "possibleReward": "75$",
-                        "rewardedCouncilMembers": [{
-                            "memberHandle": "xandrell",
-                            "memberId": 867,
-                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=3",
-                            "reward": "25$"
-                        }, {
-                            "memberHandle": "art_khabibulin",
-                            "memberId": 2836,
-                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=7",
-                            "reward": "25$"
-                        }, {
-                            "memberHandle": "chiffah",
-                            "memberId": 2462,
-                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=10",
-                            "reward": "25$"
-                        }],
-                        "sum": {
-                            "totalMembersRewarded": 3,
-                            "totalRewardPaid": "75$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.II-2",
-                        "kpiName": "Find All PRs/Issues That Require Jsgenesis Action",
-                        "possibleReward": "150$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.II-3",
-                        "kpiName": "Create new KPIs",
-                        "possibleReward": "500$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.II-4",
-                        "kpiName": "Minting and Burning - Part 1",
-                        "possibleReward": "700$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.II-5",
-                        "kpiName": "Council Term Summary Videos",
-                        "possibleReward": "500$",
-                        "rewardedCouncilMembers": [{
-                            "memberHandle": "marat_mu",
-                            "memberId": 2154,
-                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=8",
-                            "reward": "375$"
-                        }, {
-                            "memberHandle": "chiffah",
-                            "memberId": 2462,
-                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=10",
-                            "reward": "275$"
-                        }],
-                        "sum": {
-                            "totalMembersRewarded": 2,
-                            "totalRewardPaid": "650$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.II-6",
-                        "kpiName": "Community Calls",
-                        "possibleReward": "200$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "svasilenko",
-                            "memberId": 2096,
-                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=2",
-                            "reward": "100$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "100$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.III-1",
-                        "kpiName": "Follow up the Storage Working Group",
-                        "possibleReward": "300$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.III-2",
-                        "kpiName": "Follow up the Content Curators Working Group",
-                        "possibleReward": "400$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.III-3",
-                        "kpiName": "Follow up the Operations Working Group",
-                        "possibleReward": "100$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.IV.1",
-                        "kpiName": "Weekly Bounty Managers",
-                        "possibleReward": "150$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "ilich",
-                            "memberId": 2194,
-                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=6",
-                            "reward": "50$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "50$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.CC-1",
-                        "kpiName": "Update Featured Video",
-                        "possibleReward": "150$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "laura",
-                            "memberId": 2329,
-                            "report": "https://testnet.joystream.org/#/forum/threads/654?replyIdx=4",
-                            "reward": "150$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "150$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.CC-2",
-                        "kpiName": "Discover Category Videos Part 1",
-                        "possibleReward": "250$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.OP-1",
-                        "kpiName": "Runtime Upgrade Verification",
-                        "possibleReward": "300$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.SP-1",
-                        "kpiName": "Storage OKRs",
-                        "possibleReward": "300$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "24.SP-2",
-                        "kpiName": "Storage Provider Sanctions",
-                        "possibleReward": "50$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    }
-                ],
-                "councilWorkDuringThePeriod": [{
-                        "memberHandle": "ilich",
-                        "memberId": 2194,
-                        "proposalReward": "17$",
-                        "kpiReward": "150$",
-                        "totalReward": "167$",
-                        "kpiDone": "3"
-                    },
-                    {
-                        "memberHandle": "lkskrn",
-                        "memberId": 644,
-                        "proposalReward": "7$",
-                        "kpiReward": "0$",
-                        "totalReward": "7$",
-                        "kpiDone": 0
-                    },
-                    {
-                        "memberHandle": "l1dev",
-                        "memberId": 515,
-                        "proposalReward": "4$",
-                        "kpiReward": "0$",
-                        "totalReward": "4$",
-                        "kpiDone": 0
-                    },
-                    {
-                        "memberHandle": "0x2bc",
-                        "memberId": 2098,
-                        "proposalReward": "5$",
-                        "kpiReward": "0$",
-                        "totalReward": "5$",
-                        "kpiDone": 0
-                    }, {
-                        "memberHandle": "svasilenko",
-                        "memberId": 2096,
-                        "proposalReward": "11$",
-                        "kpiReward": "100$",
-                        "totalReward": "111$",
-                        "kpiDone": 1
-                    }, {
-                        "memberHandle": "xandrell",
-                        "memberId": 867,
-                        "proposalReward": "19$",
-                        "kpiReward": "25$",
-                        "totalReward": "44$",
-                        "kpiDone": 1
-                    }, {
-                        "memberHandle": "freakstatic_council",
-                        "memberId": 321,
-                        "proposalReward": "20$",
-                        "kpiReward": "0$",
-                        "totalReward": "20$",
-                        "kpiDone": 0
-                    }, {
-                        "memberHandle": "uliczny",
-                        "memberId": 1842,
-                        "proposalReward": "16$",
-                        "kpiReward": "0$",
-                        "totalReward": "16$",
-                        "kpiDone": 0
-                    }, {
-                        "memberHandle": "chiffah",
-                        "memberId": 2462,
-                        "proposalReward": "11$",
-                        "kpiReward": "300$",
-                        "totalReward": "311$",
-                        "kpiDone": 5
-                    }, {
-                        "memberHandle": "tomato",
-                        "memberId": 2,
-                        "proposalReward": "11$",
-                        "kpiReward": "260$",
-                        "totalReward": "271$",
-                        "kpiDone": 1
-                    }, {
-                        "memberHandle": "kalpakci",
-                        "memberId": 2137,
-                        "proposalReward": "8$",
-                        "kpiReward": "0$",
-                        "totalReward": "8$",
-                        "kpiDone": 0
-                    }, {
-                        "memberHandle": "laura",
-                        "memberId": 2329,
-                        "proposalReward": "19$",
-                        "kpiReward": "330$",
-                        "totalReward": "349$",
-                        "kpiDone": 3
-                    }, {
-                        "memberHandle": "art_khabibullin",
-                        "memberId": 2836,
-                        "proposalReward": "7$",
-                        "kpiReward": "55$",
-                        "totalReward": "62$",
-                        "kpiDone": 1
-                    }, {
-                        "memberHandle": "ururu",
-                        "memberId": 790,
-                        "proposalReward": "19$",
-                        "kpiReward": "0$",
-                        "totalReward": "19$",
-                        "kpiDone": 0
-                    }, {
-                        "memberHandle": "maxlevush",
-                        "memberId": 2130,
-                        "proposalReward": "16$",
-                        "kpiReward": "0$",
-                        "totalReward": "16$",
-                        "kpiDone": 0
-                    }, {
-                        "memberHandle": "marat_mu",
-                        "memberId": 443,
-                        "proposalReward": "8$",
-                        "kpiReward": "435$",
-                        "totalReward": "443$",
-                        "kpiDone": 2
-                    },
-                    {
-                        "totalMembersRewarded": 16,
-                        "totalKpiDone": 9,
-                        "totalRewardPaid": "1953$"
-                    }
-                ]
-            },
-            {
-                "councilPeriodId": 25,
-                "kpiId": 23,
-                "kpiByPeriod": 23,
-                "totalPossibleRewards": "6450$",
-                "kpiText": "https://blog.joystream.org/sumer-kpis/#kpi-23",
-                "kpiDiscussion": "https://pioneer.joystreamstats.live/#/forum/threads/616",
-                "kpiTermSummaries": "https://pioneer.joystreamstats.live/#/forum/threads/628",
-                "kpiList": [{
-                        "kpiId": "23.I-1",
-                        "kpiName": "Proposal Clearance",
-                        "possibleReward": "200$",
-                        "rewardedCouncilMembers": [{
-                            "memberHandle": "ilich",
-                            "memberId": 2194,
-                            "voted": 26,
-                            "points": 97,
-                            "reward": "17$"
-                        }, {
-                            "memberHandle": "lkskrn",
-                            "memberId": 644,
-                            "voted": 21,
-                            "points": 81,
-                            "reward": "14$"
-                        }, {
-                            "memberHandle": "blackmass",
-                            "memberId": 361,
-                            "voted": 11,
-                            "points": 44,
-                            "reward": "8$"
-                        }, {
-                            "memberHandle": "xfactorus",
-                            "memberId": 635,
-                            "voted": 21,
-                            "points": 80,
-                            "reward": "14$"
-                        }, {
-                            "memberHandle": "alexznet",
-                            "memberId": 2574,
-                            "voted": 11,
-                            "points": 44,
-                            "reward": "8$"
-                        }, {
-                            "memberHandle": "xandrell",
-                            "memberId": 867,
-                            "voted": 20,
-                            "points": 74,
-                            "reward": "13$"
-                        }, {
-                            "memberHandle": "freakstatic_council",
-                            "memberId": 321,
-                            "voted": 19,
-                            "points": 69,
-                            "reward": "12$"
-                        }, {
-                            "memberHandle": "uliczny",
-                            "memberId": 1842,
-                            "voted": 14,
-                            "points": 50,
-                            "reward": "9$"
-                        }, {
-                            "memberHandle": "chiffah",
-                            "memberId": 2462,
-                            "voted": 15,
-                            "points": 57,
-                            "reward": "10$"
-                        }, {
-                            "memberHandle": "tomato",
-                            "memberId": 2,
-                            "voted": 10,
-                            "points": 44,
-                            "reward": "8$"
-                        }, {
-                            "memberHandle": "kalpakci",
-                            "memberId": 2137,
-                            "voted": 21,
-                            "points": 81,
-                            "reward": "14$"
-                        }, {
-                            "memberHandle": "laura",
-                            "memberId": 2329,
-                            "voted": 28,
-                            "points": 123,
-                            "reward": "22$"
-                        }, {
-                            "memberHandle": "ururu",
-                            "memberId": 790,
-                            "voted": 22,
-                            "points": 91,
-                            "reward": "16$"
-                        }, {
-                            "memberHandle": "igrex",
-                            "memberId": 1048,
-                            "voted": 26,
-                            "points": 111,
-                            "reward": "20$"
-                        }, {
-                            "memberHandle": "isonar",
-                            "memberId": 2182,
-                            "voted": 20,
-                            "points": 77,
-                            "reward": "14$"
-                        }],
-                        "sum": {
-                            "totalMembersRewarded": 15,
-                            "totalVoted": 184,
-                            "totalPoints": 1123,
-                            "totalRewardPaid": "199$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.I-2",
-                        "kpiName": "Council Dissent",
-                        "possibleReward": "500$",
-                        "rewardedCouncilMembers": [{
-                            "memberHandle": "laura",
-                            "memberId": 2329,
-                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=6",
-                            "reward": "75$"
-                        }, {
-                            "memberHandle": "igrex",
-                            "memberId": 1048,
-                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=4",
-                            "reward": "100$"
-                        }],
-                        "sum": {
-                            "totalMembersRewarded": 2,
-                            "totalRewardPaid": "175$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.I-3",
-                        "kpiName": "Council Secretary",
-                        "possibleReward": "300$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "tomato",
-                            "memberId": 2,
-                            "report": null,
-                            "reward": "270$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "270$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.I-4",
-                        "kpiName": "Deputy Council Secretary",
-                        "possibleReward": "150$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "isonar",
-                            "memberId": 2182,
-                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=2",
-                            "reward": "150$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "150$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.I-5",
-                        "kpiName": "Council Minutes",
-                        "possibleReward": "100$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "ilich",
-                            "memberId": 2194,
-                            "report": "https://testnet.joystream.org/#/proposals/623",
-                            "reward": "100$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "100$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.I-6",
-                        "kpiName": "New Fiat Pool Scheme",
-                        "possibleReward": "200$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.7",
-                        "kpiName": "Expand Council Size",
-                        "possibleReward": "300$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "ilich",
-                            "memberId": 2194,
-                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=8",
-                            "reward": "100$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "100$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.II-1",
-                        "kpiName": "Discord & Telegram Channel Management",
-                        "possibleReward": "75$",
-                        "rewardedCouncilMembers": [{
-                            "memberHandle": "xandrell",
-                            "memberId": 867,
-                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=3",
-                            "reward": "25$"
-                        }, {
-                            "memberHandle": "igrex",
-                            "memberId": 1048,
-                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=4",
-                            "reward": "25$"
-                        }, {
-                            "memberHandle": "chiffah",
-                            "memberId": 2462,
-                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=9",
-                            "reward": "25$"
-                        }],
-                        "sum": {
-                            "totalMembersRewarded": 3,
-                            "totalRewardPaid": "75$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.II-2",
-                        "kpiName": "Find All PRs/Issues That Require Jsgenesis Action",
-                        "possibleReward": "150$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "isonar",
-                            "memberId": 2182,
-                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=2",
-                            "reward": "150$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "150$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.II-3",
-                        "kpiName": "Create new KPIs",
-                        "possibleReward": "500$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "laura",
-                            "memberId": 2329,
-                            "report": null,
-                            "reward": "75$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "75$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.II-4",
-                        "kpiName": "Minting and Burning - Part 1",
-                        "possibleReward": "700$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.II-5",
-                        "kpiName": "Implement Community Repo Changes",
-                        "possibleReward": "150$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "isonar",
-                            "memberId": 2182,
-                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=2",
-                            "reward": "150$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "150$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.II-6",
-                        "kpiName": "Community Calls",
-                        "possibleReward": "200$",
-                        "rewardedCouncilMembers": [{
-                            "memberHandle": "igrex",
-                            "memberId": 1048,
-                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=4",
-                            "reward": "100$"
-                        }, {
-                            "memberHandle": "chiffah",
-                            "memberId": 2462,
-                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=9",
-                            "reward": "100$"
-                        }],
-                        "sum": {
-                            "totalMembersRewarded": 2,
-                            "totalRewardPaid": "200$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.II-7",
-                        "kpiName": "Council Term Summary Videos",
-                        "possibleReward": "500$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.III-1",
-                        "kpiName": "Follow up the Storage Working Group",
-                        "possibleReward": "400$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.III-2",
-                        "kpiName": "Follow up the Content Curators Working Group",
-                        "possibleReward": "400$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.III-3",
-                        "kpiName": "Follow up the Operations Working Group",
-                        "possibleReward": "100$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.IV.1",
-                        "kpiName": "Weekly Bounty Managers",
-                        "possibleReward": "150$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "ilich",
-                            "memberId": 2194,
-                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=8",
-                            "reward": "50$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "50$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.IV.2",
-                        "kpiName": "Other Bounty Managers",
-                        "possibleReward": "300$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.IV.3",
-                        "kpiName": "Decentralized Domains Bounty",
-                        "possibleReward": "500$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "laura",
-                            "memberId": 2329,
-                            "report": "https://testnet.joystream.org/#/forum/threads/628?replyIdx=6",
-                            "reward": "175$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "175$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.OP-1",
-                        "kpiName": "Runtime Upgrade Verification",
-                        "possibleReward": "300$",
-                        "rewardedCouncilMembers": 0,
-                        "sum": {
-                            "totalMembersRewarded": 0,
-                            "totalRewardPaid": "0$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.SP-1",
-                        "kpiName": "Storage OKRs",
-                        "possibleReward": "300$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "0x2bc",
-                            "memberId": 2098,
-                            "link": "https://testnet.joystream.org/#/forum/threads/628?page=2&replyIdx=11",
-                            "reward": "300$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "300$"
-                        }
-                    },
-
-                    {
-                        "kpiId": "23.SP-2",
-                        "kpiName": "Storage Provider Sanctions",
-                        "possibleReward": "50$",
-                        "rewardedCouncilMembers": {
-                            "memberHandle": "0x2bc",
-                            "memberId": 2098,
-                            "link": "https://testnet.joystream.org/#/forum/threads/628?page=2&replyIdx=11",
-                            "reward": "50$"
-                        },
-                        "sum": {
-                            "totalMembersRewarded": 1,
-                            "totalRewardPaid": "50$"
-                        }
-                    }
-                ]
-            }
-        ]
-    }
-
+            
+        }
 }
