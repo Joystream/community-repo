@@ -207,9 +207,9 @@ This is the 21th report for the Storage Provider Working Group.
 - Missed: 1.1287 kJOY
 - Location: Los Angeles, USA
 - Storage capacity: 2TB
-- Type of storage: HDD
+- Type of storage: SSD
 - Discord Name: Pavel-LV#7698
-- Config: `8 vCPU, 16 GB RAM, 2 TB HDD`
+- Config: `AMD Ryzen 5 3600; 12vCPU; 32 GB DDR4;`
 - Cost: 50 USD
 - Helios :
 
