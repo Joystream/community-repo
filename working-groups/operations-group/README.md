@@ -603,3 +603,43 @@
 | 37 | [@surpaul](https://pioneer.joystreamstats.live/#/members/surpaul) | active | 0 | 0.0 | 0.0 |
 | 38 | [@allyes](https://pioneer.joystreamstats.live/#/members/allyes) | active | 0 | 0.0 | 0.0 |
 | 39 | [@whitebarbie](https://pioneer.joystreamstats.live/#/members/whitebarbie) | active | 14 | 0.5 | 0.9 |
+
+### [Round 29](../../council/tokenomics/sumer-4/Council_Round29_2984400-3085199_Tokenomics_Report.md)
+
+- **Date:** `11/2/2021 - 11/9/2021`
+- **Budget:** `$525`
+- **Spent:** `24.1 M / 22.8 M (@23 $/M)`
+- **Balance:** `8.2 M`
+
+| Property                | Start Block | End Block | % Change |
+|-------------------------|--------------|--------------|----------|
+| Number of Operations Workers      | 25 | 25 | 0 |
+| Total Operations Stake (workers + lead) | 2150000 | 2150000 | 0 |
+
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 0 | [@l1dev](https://pioneer.joystreamstats.live/#/members/l1dev) | active | 28 | 1.9 | 40.4 |
+| 15 | [@isonar](https://pioneer.joystreamstats.live/#/members/isonar) | active | 3 | 0.2 | 11.4 |
+| 16 | [@lkskrn](https://pioneer.joystreamstats.live/#/members/lkskrn) | active | 28 | 1.9 | 39.8 |
+| 17 | [@freakstatic](https://pioneer.joystreamstats.live/#/members/freakstatic) | active | 1 | 0.1 | 12.8 |
+| 18 | [@dapplooker](https://pioneer.joystreamstats.live/#/members/dapplooker) | active | 14 | 0.9 | 12.6 |
+| 20 | [@joystreamstats](https://pioneer.joystreamstats.live/#/members/joystreamstats) | active | 15 | 0.9 | 12.1 |
+| 21 | [@isonar](https://pioneer.joystreamstats.live/#/members/isonar) | active | 7 | 0.4 | 2.0 |
+| 22 | [@arseniy2706](https://pioneer.joystreamstats.live/#/members/arseniy2706) | active | 4 | 0.3 | 1.0 |
+| 23 | [@mmsaww](https://pioneer.joystreamstats.live/#/members/mmsaww) | active | 6 | 0.4 | 2.5 |
+| 24 | [@shtihmas](https://pioneer.joystreamstats.live/#/members/shtihmas) | active | 3 | 0.2 | 0.8 |
+| 25 | [@chiffah](https://pioneer.joystreamstats.live/#/members/chiffah) | active | 0 | 0.0 | 0.0 |
+| 26 | [@zazik](https://pioneer.joystreamstats.live/#/members/zazik) | active | 0 | 0.0 | 0.0 |
+| 27 | [@chasil](https://pioneer.joystreamstats.live/#/members/chasil) | active | 0 | 0.0 | 0.0 |
+| 28 | [@mmsaww](https://pioneer.joystreamstats.live/#/members/mmsaww) | active | 0 | 0.0 | 0.0 |
+| 29 | [@goldmember](https://pioneer.joystreamstats.live/#/members/goldmember) | active | 0 | 0.0 | 0.0 |
+| 30 | [@metralunab](https://pioneer.joystreamstats.live/#/members/metralunab) | active | 0 | 0.0 | 0.0 |
+| 31 | [@ilich](https://pioneer.joystreamstats.live/#/members/ilich) | active | 0 | 0.0 | 0.0 |
+| 32 | [@kate_fm](https://pioneer.joystreamstats.live/#/members/kate_fm) | active | 3 | 0.2 | 1.5 |
+| 33 | [@ururu](https://pioneer.joystreamstats.live/#/members/ururu) | active | 0 | 0.0 | 0.0 |
+| 34 | [@andybut](https://pioneer.joystreamstats.live/#/members/andybut) | active | 111 | 6.4 | 29.6 |
+| 35 | [@kriptos](https://pioneer.joystreamstats.live/#/members/kriptos) | active | 0 | 0.0 | 0.0 |
+| 36 | [@chiffah](https://pioneer.joystreamstats.live/#/members/chiffah) | active | 4 | 0.3 | 1.1 |
+| 37 | [@surpaul](https://pioneer.joystreamstats.live/#/members/surpaul) | active | 0 | 0.0 | 0.0 |
+| 38 | [@allyes](https://pioneer.joystreamstats.live/#/members/allyes) | active | 0 | 0.0 | 0.0 |
+| 39 | [@whitebarbie](https://pioneer.joystreamstats.live/#/members/whitebarbie) | active | 14 | 0.9 | 1.9 |
