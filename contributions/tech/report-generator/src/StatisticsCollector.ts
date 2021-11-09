@@ -1,718 +1,904 @@
-import {ApiPromise, WsProvider} from "@polkadot/api";
-import {types} from '@joystream/types'
+import { ApiPromise } from "@polkadot/api";
+
+// types
 import {
-    AccountId,
-    Balance,
-    BalanceOf,
-    BlockNumber,
-    EraIndex,
-    EventRecord,
-    Hash,
-    Moment
+  AccountId,
+  Balance,
+  BalanceOf,
+  BlockNumber,
+  EventRecord,
+  Hash,
 } from "@polkadot/types/interfaces";
+import { Config, MintStatistics, Statistics, WorkersInfo } from "./types";
+import {
+  CacheEvent,
+  Bounty,
+  WorkerReward,
+  SpendingProposal,
+  StatusData,
+} from "./lib/types";
+
+import { Option, u32, Vec } from "@polkadot/types";
+import { ElectionStake, SealedVote, Seats } from "@joystream/types/council";
+import { Mint, MintId } from "@joystream/types/mint";
+import { ContentId, DataObject } from "@joystream/types/media";
+import { CategoryId } from "@joystream/types/forum";
+import { MemberId, Membership } from "@joystream/types/members";
+import {
+  Proposal,
+  ProposalId,
+  SpendingParams,
+} from "@joystream/types/proposals";
+import {
+  RewardRelationship,
+  RewardRelationshipId,
+} from "@joystream/types/recurring-rewards";
+import { Stake } from "@joystream/types/stake";
+import { Worker, WorkerId } from "@joystream/types/working-group";
+import { ProposalDetails, ProposalOf } from "@joystream/types/augment/types";
+import * as constants from "constants";
+import axios from "axios";
+
+// lib
+import { eventStats, getPercent, getTotalMinted, momentToString } from "./lib";
+import {
+  connectApi,
+  getBlock,
+  getBlockHash,
+  getHead,
+  getTimestamp,
+  getIssuance,
+  getEra,
+  getEraStake,
+  getEvents,
+  getCouncil,
+  getCouncilRound,
+  getCouncilSize,
+  getCouncilApplicants,
+  getCouncilApplicantStakes,
+  getCouncilCommitments,
+  getCouncilPayoutInterval,
+  getCouncilPayout,
+  getCouncilElectionDurations,
+  getNextWorker,
+  getWorkers,
+  getWorkerReward,
+  getStake,
+  getCouncilMint,
+  getMintsCreated,
+  getMint,
+  getGroupMint,
+  getNextMember,
+  getMember,
+  getNextPost,
+  getNextThread,
+  getNextCategory,
+  getProposalCount,
+  getProposalInfo,
+  getProposalDetails,
+  getValidatorCount,
+  getValidators,
+  getNextEntity,
+  getNextChannel,
+  getNextVideo,
+  getEntity,
+  getDataObject,
+  getDataObjects,
+} from "./lib/api";
 
 import {
-    CacheEvent,
-    Media,
-    MintStatistics,
-    Statistics,
-    WorkersInfo, Channel, SpendingProposals, Bounty
-} from "./types";
+  filterMethods,
+  getWorkerRewards,
+  getWorkerRow,
+  getBurnedTokens,
+  getFinalizedSpendingProposals,
+  getActiveValidators,
+  getValidatorsRewards,
+} from "./lib/rewards";
 
-import {Option, u32, Vec} from "@polkadot/types";
-import {ElectionStake, SealedVote, Seats} from "@joystream/types/council";
-import {Mint, MintId} from "@joystream/types/mint";
-import {ContentId, DataObject} from "@joystream/types/media";
-
-
-import {ChannelId, PostId, ThreadId} from "@joystream/types/common";
-import {CategoryId} from "@joystream/types/forum";
-
-import {MemberId, Membership} from "@joystream/types/members";
-import {RewardRelationship, RewardRelationshipId} from "@joystream/types/recurring-rewards";
-
-import {Stake} from "@joystream/types/stake";
-
-import {WorkerId} from "@joystream/types/working-group";
-import {Entity, EntityId, PropertyType} from "@joystream/types/content-directory";
-import {ProposalId, Video, VideoId, WorkerOf, } from "@joystream/types/augment-codec/all";
-import {ProposalDetails, ProposalOf} from "@joystream/types/augment/types";
-import {SpendingParams} from "@joystream/types/proposals";
-import * as constants from "constants";
-
-const fsSync = require('fs');
+const fsSync = require("fs");
 const fs = fsSync.promises;
-const parse = require('csv-parse/lib/sync');
-
-const BURN_ADDRESS = '5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu';
-
-const COUNCIL_ROUND_OFFSET = 2;
-const PROVIDER_URL = "ws://localhost:9944";
-
-const CACHE_FOLDER = "cache";
-
-const VIDEO_CLASS_iD = 10;
-const CHANNEL_CLASS_iD = 1;
-
-const SPENDING_PROPOSALS_CATEGORIES_FILE = __dirname + '/../../../documentation/spending_proposal_categories.csv';
+const parse = require("csv-parse/lib/sync");
 
 export class StatisticsCollector {
+  private api?: ApiPromise;
+  private blocksEventsCache: Map<number, CacheEvent[]>;
+  private statistics: Statistics;
 
-    private api?: ApiPromise;
-    private blocksEventsCache: Map<number, CacheEvent[]>;
-    private statistics: Statistics;
+  constructor() {
+    this.blocksEventsCache = new Map<number, CacheEvent[]>();
+    this.statistics = new Statistics();
+  }
 
-    constructor() {
-        this.blocksEventsCache = new Map<number, CacheEvent[]>();
-        this.statistics = new Statistics();
+  saveStats(data: any) {
+    Object.keys(data).map((key: string) => (this.statistics[key] = data[key]));
+  }
+
+  filterCache(
+    filterEvent: (event: CacheEvent) => boolean
+  ): [number, CacheEvent[]][] {
+    const blocks: [number, CacheEvent[]][] = [];
+    for (let block of this.blocksEventsCache) {
+      const [key, events] = block;
+      const filtered = events.filter((event) => filterEvent(event));
+      if (filtered.length) blocks.push([key, filtered]);
+    }
+    return blocks;
+  }
+
+  async getStats(
+    startBlock: number,
+    endBlock: number,
+    config: Config
+  ): Promise<Statistics> {
+    const { cacheDir, providerUrl, statusUrl } = config;
+    this.api = await connectApi(providerUrl);
+
+    const aboveHead = endBlock - Number(await getHead(this.api));
+    if (aboveHead > 0) {
+      console.log(`End Block is above our Head, wait ${aboveHead} blocks.`);
+      return this.statistics;
     }
 
-    async getStatistics(startBlock: number, endBlock: number): Promise<Statistics> {
-        this.api = await StatisticsCollector.connectApi();
+    let startHash: Hash = await getBlockHash(this.api, startBlock);
+    let endHash: Hash = await getBlockHash(this.api, endBlock);
 
-        let startHash = (await this.api.rpc.chain.getBlockHash(startBlock)) as Hash;
-        let endHash = (await this.api.rpc.chain.getBlockHash(endBlock)) as Hash;
+    let dateStart = momentToString(await getTimestamp(this.api, startHash));
+    let dateEnd = momentToString(await getTimestamp(this.api, endHash));
+    this.saveStats({
+      dateStart,
+      dateEnd,
+      startBlock,
+      endBlock,
+      newBlocks: endBlock - startBlock,
+      percNewBlocks: getPercent(startBlock, endBlock),
+    });
 
-        this.statistics.startBlock = startBlock;
-        this.statistics.endBlock = endBlock;
-        this.statistics.newBlocks = endBlock - startBlock;
-        this.statistics.percNewBlocks = StatisticsCollector.convertToPercentage(startBlock, endBlock);
-        await this.buildBlocksEventCache(startBlock, endBlock);
-        await this.fillBasicInfo(startHash, endHash);
-        await this.fillTokenGenerationInfo(startBlock, endBlock, startHash, endHash);
-        await this.fillMintsInfo(startHash, endHash);
-        await this.fillCouncilInfo(startHash, endHash);
-        await this.fillCouncilElectionInfo(startBlock);
-        await this.fillValidatorInfo(startHash, endHash);
-        await this.fillStorageProviderInfo(startBlock, endBlock, startHash, endHash);
-        await this.fillCuratorInfo(startHash, endHash);
-        await this.fillOperationsInfo(startBlock, endBlock, startHash, endHash);
-        await this.fillMembershipInfo(startHash, endHash);
-        await this.fillMediaUploadInfo(startHash, endHash);
-        await this.fillForumInfo(startHash, endHash);
+    // run long running tasks in parallel first
+    await Promise.all([
+      this.buildBlocksEventCache(startBlock, endBlock, cacheDir).then(() =>
+        this.fillStats(startBlock, endBlock, startHash, endHash, config)
+      ),
+      this.getFiatEvents(startBlock, endBlock, statusUrl),
+      this.fillMediaUploadInfo(startHash, endHash),
+    ]);
+    this.api.disconnect();
+    return this.statistics;
+  }
 
-        await this.api.disconnect();
-        return this.statistics;
+  fillStats(
+    startBlock: number,
+    endBlock: number,
+    startHash: Hash,
+    endHash: Hash,
+    config: Config
+  ): Promise<void[]> {
+    eventStats(this.blocksEventsCache); // print event stats
+    return Promise.all([
+      this.fillTokenInfo(startBlock, endBlock, startHash, endHash, config),
+      this.fillMintsInfo(startHash, endHash),
+      this.fillCouncilInfo(startHash, endHash, config.councilRoundOffset),
+      this.fillCouncilElectionInfo(startBlock),
+      this.fillValidatorInfo(startHash, endHash),
+      this.fillStorageProviderInfo(startBlock, endBlock, startHash, endHash),
+      this.fillCuratorInfo(startHash, endHash),
+      this.fillOperationsInfo(startBlock, endBlock, startHash, endHash),
+      this.fillMembershipInfo(startHash, endHash),
+      this.fillForumInfo(startHash, endHash),
+    ]);
+  }
+
+  async getApprovedBounties(file: string): Promise<Bounty[]> {
+    try {
+      await fs.access(file, constants.R_OK);
+    } catch {
+      console.warn("File with spending proposal categories not found: ${file}");
+    }
+    const fileContent = await fs.readFile(file);
+    const proposals = parse(fileContent).slice(1);
+    console.log(`Loaded ${proposals.length} proposals.`);
+    return proposals
+      .filter(
+        (line: string[]) =>
+          line[0] === "Antioch" &&
+          line[3] === "Approved" &&
+          line[8] === "Bounties"
+      )
+      .map((bounty: string[]) => {
+        return new Bounty(
+          bounty[0],
+          Number(bounty[1]),
+          bounty[2],
+          bounty[3],
+          Number(bounty[4]),
+          Number(bounty[5])
+        );
+      });
+  }
+
+  fillSudoSetBalance() {
+    let balancesSetByRoot = 0;
+    this.filterCache(filterMethods.sudoSetBalance).map(([block, events]) =>
+      events.forEach(({ data }) => {
+        balancesSetByRoot += Number(data[1]);
+      })
+    );
+    this.saveStats({ balancesSetByRoot });
+  }
+
+  async fillTokenInfo(
+    startBlock: number,
+    endBlock: number,
+    startHash: Hash,
+    endHash: Hash,
+    config: Config
+  ): Promise<void> {
+    const { burnAddress } = config;
+    const proposalsFile = config.repoDir + config.spendingCategoriesFile;
+    const startIssuance = (await getIssuance(this.api, startHash)).toNumber();
+    const endIssuance = (await getIssuance(this.api, endHash)).toNumber();
+    const burnEvents = this.filterCache(filterMethods.getBurnedTokens);
+    this.saveStats({
+      startIssuance,
+      endIssuance,
+      newIssuance: endIssuance - startIssuance,
+      percNewIssuance: getPercent(startIssuance, endIssuance),
+      newTokensBurn: await getBurnedTokens(burnAddress, burnEvents),
+    });
+    this.fillSudoSetBalance();
+
+    // bounties
+    const bounties = await this.getApprovedBounties(proposalsFile);
+    const blocks = this.filterCache(filterMethods.finalizedSpendingProposals);
+    const spendingProposals: SpendingProposal[] =
+      await getFinalizedSpendingProposals(this.api, blocks);
+
+    let bountiesTotalPaid = 0;
+    for (let bounty of bounties) {
+      const bountySpendingProposal = spendingProposals.find(
+        (spendingProposal) => spendingProposal.id == bounty.proposalId
+      );
+      if (bountySpendingProposal)
+        bountiesTotalPaid += bountySpendingProposal.amount;
     }
 
-    async getApprovedBounties() {
+    if (!bountiesTotalPaid) {
+      console.warn(
+        `No bounties in selected period. Need to update ${proposalsFile}?\nLooking for spending proposals titled "bounty":`
+      );
+      for (const { title, amount } of spendingProposals) {
+        if (!title.toLowerCase().includes("bounty")) continue;
+        bountiesTotalPaid += amount;
+        console.log(` - ${title}: ${amount}`);
+      }
+    }
+    this.saveStats({ bountiesTotalPaid });
+
+    let roundNrBlocks = endBlock - startBlock;
+    const spendingProposalsTotal = spendingProposals.reduce(
+      (n, p) => n + p.amount,
+      0
+    );
+    const newCouncilRewards = await this.computeCouncilReward(
+      roundNrBlocks,
+      endHash
+    );
+    const newCuratorInfo = await this.computeWorkingGroupReward(
+      roundNrBlocks,
+      startHash,
+      endHash,
+      "contentDirectory"
+    );
+
+    this.saveStats({
+      spendingProposalsTotal,
+      newCouncilRewards: newCouncilRewards.toFixed(2),
+      newCuratorRewards: newCuratorInfo.rewards.toFixed(2),
+    });
+  }
+
+  async getMintInfo(
+    api: ApiPromise,
+    mintId: MintId,
+    startHash: Hash,
+    endHash: Hash
+  ): Promise<MintStatistics> {
+    const startMint: Mint = await getMint(api, startHash, mintId);
+    const endMint: Mint = await getMint(api, endHash, mintId);
+    let stats = new MintStatistics();
+    stats.startMinted = getTotalMinted(startMint);
+    stats.endMinted = getTotalMinted(endMint);
+    stats.diffMinted = stats.endMinted - stats.startMinted;
+    stats.percMinted = getPercent(stats.startMinted, stats.endMinted);
+    return stats;
+  }
+
+  async computeCouncilReward(
+    roundNrBlocks: number,
+    endHash: Hash
+  ): Promise<number> {
+    const payoutInterval = Number(
+      (
+        (await getCouncilPayoutInterval(
+          this.api,
+          endHash
+        )) as Option<BlockNumber>
+      ).unwrapOr(0)
+    );
+    const amountPerPayout = (
+      (await getCouncilPayout(this.api, endHash)) as BalanceOf
+    ).toNumber();
+
+    const [
+      announcingPeriod,
+      votingPeriod,
+      revealingPeriod,
+      termDuration,
+    ]: number[] = await getCouncilElectionDurations(this.api, endHash);
+
+    const nrCouncilMembers = ((await getCouncil(this.api, endHash)) as Seats)
+      .length;
+    const totalCouncilRewardsPerBlock =
+      amountPerPayout && payoutInterval
+        ? (amountPerPayout * nrCouncilMembers) / payoutInterval
+        : 0;
+
+    const councilTermDurationRatio =
+      termDuration /
+      (termDuration + votingPeriod + revealingPeriod + announcingPeriod);
+    const avgCouncilRewardPerBlock =
+      councilTermDurationRatio * totalCouncilRewardsPerBlock;
+
+    return avgCouncilRewardPerBlock * roundNrBlocks;
+  }
+
+  // Summarize stakes and rewards at start and end
+  async computeWorkingGroupReward(
+    roundNrBlocks: number,
+    startHash: Hash,
+    endHash: Hash,
+    workingGroup: string
+  ): Promise<WorkersInfo> {
+    const group = workingGroup + "WorkingGroup";
+    let info = new WorkersInfo();
+
+    // stakes at start
+    const workersStart: WorkerReward[] = await getWorkerRewards(
+      this.api,
+      group,
+      startHash
+    );
+    workersStart.forEach(({ stake }) => {
+      if (stake) info.startStake += stake.value.toNumber();
+    });
+
+    // stakes at end
+    const workersEnd: WorkerReward[] = await getWorkerRewards(
+      this.api,
+      group,
+      endHash
+    );
+    let workers = ``;
+    workersEnd.forEach(async (worker) => {
+      if (worker.stake) info.endStake += worker.stake.value.toNumber();
+      if (!worker.reward) return;
+      let earnedBefore = 0;
+      const hired = workersStart.find((w) => w.id === worker.id);
+      if (hired) earnedBefore = hired.reward.total_reward_received.toNumber();
+      workers += getWorkerRow(worker, earnedBefore);
+    });
+    const groupTag =
+      workingGroup === `storage`
+        ? `storageProviders`
+        : workingGroup === `contentDirectory`
+        ? `curators`
+        : workingGroup === `operations`
+        ? `operations`
+        : ``;
+    if (workers.length) {
+      const header = `| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |\n|--|--|--|--|--|--|\n`;
+      this.saveStats({ [groupTag]: header + workers });
+    } else this.saveStats({ [groupTag]: `` });
+
+    info.rewards = await this.computeReward(
+      roundNrBlocks,
+      workersEnd.filter((w) => w.reward).map((w) => w.reward)
+    );
+    info.endNrOfWorkers = workersEnd.length;
+    return info;
+  }
+
+  async computeReward(
+    roundNrBlocks: number,
+    recurringRewards: RewardRelationship[]
+  ): Promise<number> {
+    let rewardPerBlock = 0;
+    recurringRewards.forEach((recurringReward: RewardRelationship) => {
+      if (!recurringReward) return;
+      const amount = recurringReward.amount_per_payout.toNumber();
+      const payoutInterval = Number(recurringReward.payout_interval);
+      if (amount && payoutInterval) rewardPerBlock += amount / payoutInterval;
+    });
+    return rewardPerBlock * roundNrBlocks;
+  }
+
+  async computeGroupMintStats(
+    [label, tag]: string[],
+    startHash: Hash,
+    endHash: Hash
+  ) {
+    const group = label + "WorkingGroup";
+    const mint = await getGroupMint(this.api, group, endHash);
+    const info = await this.getMintInfo(this.api, mint, startHash, endHash);
+    let stats: { [key: string]: number } = {};
+    stats[`start${tag}Minted`] = info.startMinted;
+    stats[`end${tag}Minted`] = info.endMinted;
+    stats[`new${tag}Minted`] = info.diffMinted;
+    stats[`perc${tag}Minted`] = info.percMinted;
+    this.saveStats(stats);
+  }
+
+  async fillMintsInfo(startHash: Hash, endHash: Hash): Promise<void> {
+    const startNrMints = await getMintsCreated(this.api, startHash);
+    const endNrMints = await getMintsCreated(this.api, endHash);
+    const newMints = endNrMints - startNrMints;
+
+    // calcuate sum of all mints
+    let totalMinted = 0;
+    let totalMintCapacityIncrease = 0;
+    // summarize old mints
+    for (let i = 0; i < startNrMints; ++i) {
+      const startMint: Mint = await getMint(this.api, startHash, i);
+      const endMint: Mint = await getMint(this.api, endHash, i);
+      const startMintTotal = getTotalMinted(startMint);
+      const endMintTotal = getTotalMinted(endMint);
+      totalMinted += endMintTotal - startMintTotal;
+      totalMintCapacityIncrease +=
+        parseInt(endMint.getField("capacity").toString()) -
+        parseInt(startMint.getField("capacity").toString());
+    }
+
+    // summarize new mints
+    for (let i = startNrMints; i < endNrMints; ++i) {
+      const endMint: Mint = await getMint(this.api, endHash, i);
+      if (endMint) totalMinted += getTotalMinted(endMint);
+    }
+    this.saveStats({ newMints, totalMinted, totalMintCapacityIncrease });
+
+    // council
+    const councilInfo = await this.getMintInfo(
+      this.api,
+      await getCouncilMint(this.api, endHash),
+      startHash,
+      endHash
+    );
+    this.saveStats({
+      startCouncilMinted: councilInfo.startMinted,
+      endCouncilMinted: councilInfo.endMinted,
+      newCouncilMinted: councilInfo.diffMinted,
+      percNewCouncilMinted: councilInfo.percMinted,
+    });
+    // working groups
+    const groups = [
+      ["contentDirectory", "Curator"],
+      ["storage", "Storage"],
+      ["operations", "Operations"],
+    ].forEach((group) => this.computeGroupMintStats(group, startHash, endHash));
+  }
+
+  async fillCouncilInfo(
+    startHash: Hash,
+    endHash: Hash,
+    councilRoundOffset: number
+  ): Promise<void> {
+    const round = await getCouncilRound(this.api, startHash);
+    const startNrProposals = await getProposalCount(this.api, startHash);
+    const endNrProposals = await getProposalCount(this.api, endHash);
+
+    let approvedProposals = new Set();
+    for (let [key, blockEvents] of this.blocksEventsCache) {
+      for (let event of blockEvents) {
+        if (
+          event.section == "proposalsEngine" &&
+          event.method == "ProposalStatusUpdated"
+        ) {
+          let statusUpdateData = event.data[1] as any;
+          let finalizeData = statusUpdateData.finalized as any;
+          if (finalizeData && finalizeData.proposalStatus.approved) {
+            approvedProposals.add(Number(event.data[0]));
+          }
+        }
+      }
+    }
+
+    this.saveStats({
+      councilRound: round - councilRoundOffset,
+      councilMembers: await getCouncilSize(this.api, startHash),
+      newProposals: endNrProposals - startNrProposals,
+      newApprovedProposals: approvedProposals.size,
+    });
+  }
+
+  async fillCouncilElectionInfo(startBlock: number): Promise<void> {
+    let startBlockHash = await getBlockHash(this.api, startBlock);
+    let events: Vec<EventRecord> = await getEvents(this.api, startBlockHash);
+    let isStartBlockFirstCouncilBlock = events.some(
+      ({ event }) =>
+        event.section == "councilElection" && event.method == "CouncilElected"
+    );
+
+    if (!isStartBlockFirstCouncilBlock)
+      return console.warn(
+        "Note: The given start block is not the first block of the council round so council election information will be empty"
+      );
+
+    let lastBlockHash = await getBlockHash(this.api, startBlock - 1);
+    let applicants: Vec<AccountId> = await getCouncilApplicants(
+      this.api,
+      lastBlockHash
+    );
+    let electionApplicantsStakes = 0;
+    for (let applicant of applicants) {
+      const applicantStakes: ElectionStake = await getCouncilApplicantStakes(
+        this.api,
+        lastBlockHash,
+        applicant
+      );
+      electionApplicantsStakes += applicantStakes.new.toNumber();
+    }
+    // let seats = await getCouncil(this.api,startBlockHash) as Seats;
+    //TODO: Find a more accurate way of getting the votes
+    const votes: Vec<Hash> = await getCouncilCommitments(
+      this.api,
+      lastBlockHash
+    );
+
+    this.saveStats({
+      electionApplicants: applicants.length,
+      electionApplicantsStakes,
+      electionVotes: votes.length,
+    });
+  }
+
+  async fillValidatorInfo(startHash: Hash, endHash: Hash): Promise<void> {
+    const startTimestamp: number = await getTimestamp(this.api, startHash);
+    const endTimestamp: number = await getTimestamp(this.api, endHash);
+    const blocks = this.statistics.newBlocks;
+    const avgBlockProduction = (endTimestamp - startTimestamp) / 1000 / blocks;
+    const maxStartValidators = await getValidatorCount(this.api, startHash);
+    const startValidators = await getActiveValidators(this.api, startHash);
+    const maxEndValidators = await getValidatorCount(this.api, endHash);
+    const endValidators = await getActiveValidators(this.api, endHash, true);
+    const startEra: number = await getEra(this.api, startHash);
+    const endEra: number = await getEra(this.api, endHash);
+
+    const startStake = await getEraStake(this.api, startHash, startEra);
+    const endStake = await getEraStake(this.api, endHash, endEra);
+
+    this.saveStats({
+      avgBlockProduction: Number(avgBlockProduction.toFixed(2)),
+      startValidators: startValidators.length + " / " + maxStartValidators,
+      endValidators: endValidators.length + " / " + maxEndValidators,
+      percValidators: getPercent(startValidators.length, endValidators.length),
+      startValidatorsStake: startStake,
+      endValidatorsStake: endStake,
+      percNewValidatorsStake: getPercent(startStake, endStake),
+      newValidatorRewards: await getValidatorsRewards(
+        this.filterCache(filterMethods.newValidatorsRewards)
+      ),
+    });
+  }
+
+  async fillStorageProviderInfo(
+    startBlock: number,
+    endBlock: number,
+    startHash: Hash,
+    endHash: Hash
+  ): Promise<void> {
+    let roundNrBlocks = endBlock - startBlock;
+    let storageProvidersRewards = await this.computeWorkingGroupReward(
+      roundNrBlocks,
+      startHash,
+      endHash,
+      "storage"
+    );
+    const newStorageProviderReward = Number(
+      storageProvidersRewards.rewards.toFixed(2)
+    );
+    const startStorageProvidersStake = storageProvidersRewards.startStake;
+    const endStorageProvidersStake = storageProvidersRewards.endStake;
+
+    const group = "storageWorkingGroup";
+    const startStorageProviders = await getWorkers(this.api, group, startHash);
+    const endStorageProviders = await getWorkers(this.api, group, endHash);
+
+    this.saveStats({
+      newStorageProviderReward,
+      startStorageProvidersStake,
+      endStorageProvidersStake,
+      percNewStorageProviderStake: getPercent(
+        startStorageProvidersStake,
+        endStorageProvidersStake
+      ),
+      startStorageProviders,
+      endStorageProviders,
+      percNewStorageProviders: getPercent(
+        startStorageProviders,
+        endStorageProviders
+      ),
+    });
+  }
+
+  async fillCuratorInfo(startHash: Hash, endHash: Hash): Promise<void> {
+    const group = "contentDirectoryWorkingGroup";
+    const startCurators = await getWorkers(this.api, group, startHash);
+    const endCurators = await getWorkers(this.api, group, endHash);
+
+    this.saveStats({
+      startCurators,
+      endCurators,
+      percNewCurators: getPercent(startCurators, endCurators),
+    });
+  }
+
+  async fillOperationsInfo(
+    startBlock: number,
+    endBlock: number,
+    startHash: Hash,
+    endHash: Hash
+  ): Promise<void> {
+    const roundNrBlocks = endBlock - startBlock;
+    const operationsRewards = await this.computeWorkingGroupReward(
+      roundNrBlocks,
+      startHash,
+      endHash,
+      "operations"
+    );
+    const newOperationsReward = operationsRewards.rewards.toFixed(2);
+    const startOperationsStake = operationsRewards.startStake;
+    const endOperationsStake = operationsRewards.endStake;
+
+    const group = "operationsWorkingGroup";
+    const startWorkers = await getWorkers(this.api, group, startHash);
+    const endWorkers = await getWorkers(this.api, group, endHash);
+
+    this.saveStats({
+      newOperationsReward: Number(newOperationsReward),
+      startOperationsWorkers: startWorkers,
+      endOperationsWorkers: endWorkers,
+      percNewOperationsWorkers: getPercent(startWorkers, endWorkers),
+      startOperationsStake,
+      endOperationsStake,
+      percNewOperationstake: getPercent(
+        startOperationsStake,
+        endOperationsStake
+      ),
+    });
+  }
+
+  async fillMembershipInfo(startHash: Hash, endHash: Hash): Promise<void> {
+    const startMembers = await getNextMember(this.api, startHash);
+    const endMembers = await getNextMember(this.api, endHash);
+    this.saveStats({
+      startMembers,
+      endMembers,
+      newMembers: endMembers - startMembers,
+      percNewMembers: getPercent(startMembers, endMembers),
+    });
+  }
+
+  async fillMediaUploadInfo(startHash: Hash, endHash: Hash): Promise<void> {
+    console.log(`Collecting Media stats`);
+    const startMedia = Number(await getNextVideo(this.api, startHash));
+    const endMedia = Number(await getNextVideo(this.api, endHash));
+    const startChannels = Number(await getNextChannel(this.api, startHash));
+    const endChannels = Number(await getNextChannel(this.api, endHash));
+
+    // count size
+    let startUsedSpace = 0;
+    let endUsedSpace = 0;
+    const startBlock = await getBlock(this.api, startHash);
+    const endBlock = await getBlock(this.api, endHash);
+    getDataObjects(this.api).then((dataObjects: Map<ContentId, DataObject>) => {
+      for (let [key, dataObject] of dataObjects) {
+        const added = dataObject.added_at.block.toNumber();
+        const start = startBlock.block.header.number.toNumber();
+        const end = endBlock.block.header.number.toNumber();
+
+        if (added < start)
+          startUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
+        if (added < end)
+          endUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
+      }
+      if (!startUsedSpace || !endUsedSpace)
+        console.log(`space start, end`, startUsedSpace, endUsedSpace);
+      this.saveStats({
+        startMedia,
+        endMedia,
+        percNewMedia: getPercent(startMedia, endMedia),
+        startChannels,
+        endChannels,
+        percNewChannels: getPercent(startChannels, endChannels),
+        startUsedSpace: Number(startUsedSpace.toFixed(2)),
+        endUsedSpace: Number(endUsedSpace.toFixed(2)),
+        percNewUsedSpace: getPercent(startUsedSpace, endUsedSpace),
+      });
+    });
+  }
+
+  async fillForumInfo(startHash: Hash, endHash: Hash): Promise<void> {
+    const startPosts = await getNextPost(this.api, startHash);
+    const endPosts = await getNextPost(this.api, endHash);
+    const startThreads = await getNextThread(this.api, startHash);
+    const endThreads = await getNextThread(this.api, endHash);
+    const startCategories = await getNextCategory(this.api, startHash);
+    const endCategories = await getNextCategory(this.api, endHash);
+    this.saveStats({
+      startPosts,
+      endPosts,
+      newPosts: endPosts - startPosts,
+      percNewPosts: getPercent(startPosts, endPosts),
+      startThreads,
+      endThreads,
+      newThreads: endThreads - startThreads,
+      percNewThreads: getPercent(startThreads, endThreads),
+      startCategories,
+      endCategories,
+      newCategories: endCategories - startCategories,
+      perNewCategories: getPercent(startCategories, endCategories),
+    });
+  }
+
+  async getFiatEvents(
+    startBlockHeight: number,
+    endBlockHeight: number,
+    statusUrl: string
+  ) {
+    let sumerGenesis = new Date("2021-04-07T18:20:54.000Z");
+
+    console.log("Fetching fiat events....");
+    await axios.get(statusUrl).then((response: { data: StatusData }) => {
+      console.log("# Exchanges");
+      let filteredExchanges = response.data.exchanges.filter(
+        (exchange) =>
+          exchange.blockHeight >= startBlockHeight &&
+          exchange.blockHeight <= endBlockHeight &&
+          new Date(exchange.date) > sumerGenesis
+      );
+
+      for (let filteredExchange of filteredExchanges) {
+        console.log(
+          `Block: ${filteredExchange.blockHeight}, USD: ${filteredExchange.amountUSD}`
+        );
+      }
+
+      let filteredBurns = response.data.burns.filter(
+        (burn: any) =>
+          burn.blockHeight >= startBlockHeight &&
+          burn.blockHeight <= endBlockHeight &&
+          new Date(burn.date) > sumerGenesis
+      );
+      if (filteredBurns.length) {
+        console.log("# Burns");
+        filteredBurns.forEach(({ blockHeight, amount }) =>
+          console.log(`Block: ${blockHeight}, tJOY: ${amount}`)
+        );
+      }
+
+      console.log("# Dollar Pool Changes");
+      const allDollarPoolChanges = response.data.dollarPoolChanges.filter(
+        (dollarPoolChange: any) =>
+          dollarPoolChange.blockHeight >= startBlockHeight &&
+          dollarPoolChange.blockHeight <= endBlockHeight &&
+          new Date(dollarPoolChange.blockTime) > sumerGenesis
+      );
+      const filteredDollarPoolChanges = response.data.dollarPoolChanges.filter(
+        (dollarPoolChange: any) =>
+          dollarPoolChange.blockHeight >= startBlockHeight &&
+          dollarPoolChange.blockHeight <= endBlockHeight &&
+          dollarPoolChange.change > 0 &&
+          new Date(dollarPoolChange.blockTime) > sumerGenesis
+      );
+
+      let dollarPoolRefills = ``;
+      if (filteredDollarPoolChanges.length > 0) {
+        dollarPoolRefills =
+          "| Refill, USD | Reason | Block # |\n|---------------------|--------------|--------------|\n";
+        filteredDollarPoolChanges.forEach(({ blockHeight, change, reason }) => {
+          console.log(
+            `Block: ${blockHeight}, USD: ${change}, Reason: ${reason}`
+          );
+          dollarPoolRefills += `| ${change} | ${reason} | ${blockHeight} |\n`;
+        });
+      }
+
+      // calculate inflation
+      let startTermExchangeRate = 0;
+      let endTermExchangeRate = 0;
+      if (filteredExchanges.length) {
+        const lastExchangeEvent =
+          filteredExchanges[filteredExchanges.length - 1];
+        startTermExchangeRate = filteredExchanges[0].price * 1000000;
+        endTermExchangeRate = lastExchangeEvent.price * 1000000;
+      } else {
+        startTermExchangeRate =
+          filteredDollarPoolChanges[0].valueAfter * 1000000;
+        const lastEvent =
+          filteredDollarPoolChanges[filteredDollarPoolChanges.length - 1];
+        endTermExchangeRate = lastEvent.rateAfter * 1000000;
+      }
+      let inflationPct = getPercent(endTermExchangeRate, startTermExchangeRate);
+      console.log(
+        "# USD / 1M tJOY Rate\n",
+        `@ Term start (block #${startBlockHeight}: ${startTermExchangeRate}\n`,
+        `@ Term end (block #${endBlockHeight}: ${endTermExchangeRate}\n`,
+        `Inflation: ${inflationPct}`
+      );
+
+      const startDollarPool =
+        allDollarPoolChanges[0].change > 0
+          ? allDollarPoolChanges[0].valueAfter - allDollarPoolChanges[0].change
+          : allDollarPoolChanges[0].valueAfter;
+      const endDollarEvent =
+        allDollarPoolChanges[allDollarPoolChanges.length - 1];
+      const endDollarPool = endDollarEvent.valueAfter;
+      const dollarPoolPctChange = getPercent(startDollarPool, endDollarPool);
+
+      this.saveStats({
+        startTermExchangeRate: startTermExchangeRate.toFixed(2),
+        endTermExchangeRate: endTermExchangeRate.toFixed(2),
+        inflationPct,
+        startDollarPool: startDollarPool.toFixed(2),
+        endDollarPool: endDollarPool.toFixed(2),
+        dollarPoolPctChange,
+        dollarPoolRefills,
+      });
+    });
+  }
+
+  async buildBlocksEventCache(
+    startBlock: number,
+    endBlock: number,
+    cacheDir: string
+  ): Promise<void> {
+    const cacheFile = `${cacheDir}/${startBlock}-${endBlock}.json`;
+    const exists = await fs
+      .access(cacheFile, fsSync.constants.R_OK)
+      .then(() => true)
+      .catch(() => false);
+    if (!exists) {
+      console.log("Building events cache...");
+      let blocksEvents = new Map<number, CacheEvent[]>();
+      for (let i = startBlock; i < endBlock; ++i) {
+        process.stdout.write("\rCaching block: " + i + " until " + endBlock);
+        const blockHash: Hash = await getBlockHash(this.api, i);
+        let eventRecord: EventRecord[] = [];
         try {
-            await fs.access(SPENDING_PROPOSALS_CATEGORIES_FILE, constants.R_OK);
-        } catch {
-            console.warn('File with the spending proposal categories not found');
-            return [];
+          eventRecord = await getEvents(this.api, blockHash);
+        } catch (e) {
+          console.warn(`Failed to get events.`, e);
         }
-
-        const fileContent = await fs.readFile(SPENDING_PROPOSALS_CATEGORIES_FILE);
-        let rawBounties = parse(fileContent);
-        rawBounties.shift();
-        rawBounties = rawBounties.filter((line: string[]) => line[8] == 'Bounties');
-
-        let bounties = rawBounties.map((rawBounty: any) => {
-            return new Bounty(rawBounty[0], rawBounty[1], rawBounty[2], rawBounty[3], rawBounty[4], rawBounty[5]);
-        });
-
-        return bounties.filter((bounty: Bounty) => bounty.status == "Approved" && bounty.testnet == "Antioch");
-    }
-
-
-    async fillValidatorsRewards() {
-        for (let [key, blockEvents] of this.blocksEventsCache) {
-            let validatorRewards = blockEvents.filter((event) => {
-                return event.section == "staking" && event.method == "Reward";
-            });
-            for (let validatorReward of validatorRewards) {
-                this.statistics.newValidatorRewards += Number(validatorReward.data[1]);
-            }
+        let cacheEvents = new Array<CacheEvent>();
+        for (let { event } of eventRecord) {
+          if (!event) {
+            console.warn(`empty event record`);
+            continue;
+          }
+          cacheEvents.push(
+            new CacheEvent(event.section, event.method, event.data)
+          );
         }
+        blocksEvents.set(i, cacheEvents);
+      }
+
+      console.log("\nFinish events cache...");
+      const json = JSON.stringify(Array.from(blocksEvents.entries()), null, 2);
+      fsSync.writeFileSync(cacheFile, json);
+      this.blocksEventsCache = new Map(JSON.parse(json));
+    } else {
+      console.log("Cache file found, loading it...");
+      let fileData = await fs.readFile(cacheFile);
+      this.blocksEventsCache = new Map(JSON.parse(fileData));
     }
-
-    async computeTokensBurn(){
-        let tokensBurned = 0;
-        for (let [, blockEvents] of this.blocksEventsCache) {
-            let transfers = blockEvents.filter((event) => {
-                return event.section == "balances" && event.method == "Transfer";
-            });
-            for (let transfer of transfers) {
-                let receiver = transfer.data[1] as AccountId;
-                let amount = transfer.data[2] as Balance;
-                if (receiver.toString() == BURN_ADDRESS) {
-                    tokensBurned += Number(amount);
-                }
-            }
-        }
-        return tokensBurned;
-    }
-
-    async getFinalizedSpendingProposals(endHash: Hash): Promise<Array<SpendingProposals>> {
-        let spendingProposals = new Array<SpendingProposals>();
-        for (let [key, blockEvents] of this.blocksEventsCache) {
-            let proposalEvents = blockEvents.filter((event) => {
-                return event.section == "proposalsEngine" && event.method == "ProposalStatusUpdated";
-            });
-
-            for (let proposalEvent of proposalEvents) {
-                let statusUpdateData = proposalEvent.data[1] as any;
-                if (!(statusUpdateData.finalized && statusUpdateData.finalized.finalizedAt)) {
-                    continue;
-                }
-
-                let proposalId = proposalEvent.data[0] as ProposalId;
-                let proposalInfo = await this.api.query.proposalsEngine.proposals.at(endHash, proposalId) as ProposalOf;
-                const finalizedData = proposalInfo.status.asFinalized;
-
-                let proposalDetail = await this.api.query.proposalsCodex.proposalDetailsByProposalId.at(endHash, proposalId) as ProposalDetails;
-                if (!finalizedData.proposalStatus.isApproved || !proposalDetail.isSpending) {
-                    continue;
-                }
-
-                let approvedData = finalizedData.proposalStatus.asApproved;
-                if (!approvedData.isExecuted) {
-                    continue;
-                }
-
-                let spendingParams = proposalDetail.asSpending;
-                if (!spendingProposals.some(spendingProposal => (spendingProposal.id == Number(proposalId)))){
-                    spendingProposals.push(new SpendingProposals(Number(proposalId), proposalInfo.title.toString(), Number(spendingParams[0])));
-                }
-            }
-        }
-        return spendingProposals;
-    }
-
-    async fillBasicInfo(startHash: Hash, endHash: Hash) {
-        let startDate = (await this.api.query.timestamp.now.at(startHash)) as Moment;
-        let endDate = (await this.api.query.timestamp.now.at(endHash)) as Moment;
-        this.statistics.dateStart = new Date(startDate.toNumber()).toLocaleDateString("en-US");
-        this.statistics.dateEnd = new Date(endDate.toNumber()).toLocaleDateString("en-US");
-    }
-
-    async fillTokenGenerationInfo(startBlock: number, endBlock: number, startHash: Hash, endHash: Hash) {
-        this.statistics.startIssuance = (await this.api.query.balances.totalIssuance.at(startHash) as Balance).toNumber();
-        this.statistics.endIssuance = (await this.api.query.balances.totalIssuance.at(endHash) as Balance).toNumber();
-        this.statistics.newIssuance = this.statistics.endIssuance - this.statistics.startIssuance;
-        this.statistics.percNewIssuance = StatisticsCollector.convertToPercentage(this.statistics.startIssuance, this.statistics.endIssuance);
-        this.statistics.newTokensBurn = await this.computeTokensBurn();
-
-        let bounties = await this.getApprovedBounties();
-        let spendingProposals = await this.getFinalizedSpendingProposals(endHash);
-
-        this.statistics.bountiesTotalPaid = 0;
-        if (bounties) {
-            for (let bounty of bounties) {
-                let bountySpendingProposal = spendingProposals.find((spendingProposal) => spendingProposal.id == bounty.proposalId);
-                if (bountySpendingProposal) {
-                    this.statistics.bountiesTotalPaid += bountySpendingProposal.spentAmount;
-                }
-            }
-        }
-
-        if (!this.statistics.bountiesTotalPaid) {
-            console.warn('No bounties found in ' + SPENDING_PROPOSALS_CATEGORIES_FILE +', trying to find spending proposals of bounties, please check the values!...');
-            for (const spendingProposal of spendingProposals) {
-                if (spendingProposal.title.toLowerCase().includes("bounty")) {
-                    this.statistics.bountiesTotalPaid += spendingProposal.spentAmount;
-                }
-            }
-        }
-
-        this.statistics.spendingProposalsTotal = spendingProposals.reduce((n, spendingProposal) => n + spendingProposal.spentAmount, 0);
-
-        let roundNrBlocks = endBlock - startBlock;
-        this.statistics.newCouncilRewards = await this.computeCouncilReward(roundNrBlocks, endHash);
-        this.statistics.newCouncilRewards = Number(this.statistics.newCouncilRewards.toFixed(2));
-
-        this.statistics.newCuratorRewards = await this.computeCuratorsReward(roundNrBlocks, startHash, endHash);
-        this.statistics.newCuratorRewards = Number(this.statistics.newCuratorRewards.toFixed(2));
-    }
-
-    async computeCouncilReward(roundNrBlocks: number, endHash: Hash): Promise<number> {
-        const payoutInterval = Number((await this.api.query.council.payoutInterval.at(endHash) as Option<BlockNumber>).unwrapOr(0));
-        const amountPerPayout = (await this.api.query.council.amountPerPayout.at(endHash) as BalanceOf).toNumber();
-
-        const announcing_period = (await this.api.query.councilElection.announcingPeriod.at(endHash)) as BlockNumber;
-        const voting_period = (await this.api.query.councilElection.votingPeriod.at(endHash)) as BlockNumber;
-        const revealing_period = (await this.api.query.councilElection.revealingPeriod.at(endHash)) as BlockNumber;
-        const new_term_duration = (await this.api.query.councilElection.newTermDuration.at(endHash)) as BlockNumber;
-
-        const termDuration = new_term_duration.toNumber();
-        const votingPeriod = voting_period.toNumber();
-        const revealingPeriod = revealing_period.toNumber();
-        const announcingPeriod = announcing_period.toNumber();
-
-        const nrCouncilMembers = (await this.api.query.council.activeCouncil.at(endHash) as Seats).length
-        const totalCouncilRewardsPerBlock = (amountPerPayout && payoutInterval)
-            ? (amountPerPayout * nrCouncilMembers) / payoutInterval
-            : 0;
-
-        const councilTermDurationRatio = termDuration / (termDuration + votingPeriod + revealingPeriod + announcingPeriod);
-        const avgCouncilRewardPerBlock = councilTermDurationRatio * totalCouncilRewardsPerBlock;
-
-        return avgCouncilRewardPerBlock * roundNrBlocks;
-    }
-
-    async computeWorkingGroupReward(roundNrBlocks: number, startHash: Hash, endHash: Hash, workingGroup: string): Promise<WorkersInfo> {
-        let nextWorkerId = (await this.api.query[workingGroup + 'WorkingGroup'].nextWorkerId.at(startHash) as WorkerId).toNumber();
-        let info = new WorkersInfo();
-        for (let i = 0; i < nextWorkerId; ++i) {
-            let worker = await this.api.query[workingGroup + 'WorkingGroup'].workerById.at(endHash, i) as WorkerOf;
-
-            if (!worker.is_active) {
-                continue;
-            }
-
-            if (worker.role_stake_profile.isSome) {
-                let roleStakeProfile = worker.role_stake_profile.unwrap();
-                let stake = await this.api.query.stake.stakes.at(endHash, roleStakeProfile.stake_id) as Stake;
-                info.startStake += stake.value.toNumber();
-            }
-        }
-
-        nextWorkerId = (await this.api.query[workingGroup + 'WorkingGroup'].nextWorkerId.at(endHash) as WorkerId).toNumber();
-        let rewardRelationshipIds = Array<RewardRelationshipId>();
-
-        for (let i = 0; i < nextWorkerId; ++i) {
-            let worker = await this.api.query[workingGroup + 'WorkingGroup'].workerById.at(endHash, i) as WorkerOf;
-
-            if (!worker.is_active) {
-                continue;
-            }
-
-            if (worker.reward_relationship.isSome) {
-                rewardRelationshipIds.push(worker.reward_relationship.unwrap());
-            }
-            if (worker.role_stake_profile.isSome) {
-                let roleStakeProfile = worker.role_stake_profile.unwrap();
-                let stake = await this.api.query.stake.stakes.at(endHash, roleStakeProfile.stake_id) as Stake;
-                info.endStake += stake.value.toNumber();
-            }
-        }
-        info.rewards = await this.computeReward(roundNrBlocks, rewardRelationshipIds, endHash);
-        info.endNrOfWorkers = nextWorkerId;
-        return info;
-    }
-
-    async computeCuratorsReward(roundNrBlocks: number, startHash: Hash, endHash: Hash) {
-        let nextCuratorId = (await this.api.query.contentDirectoryWorkingGroup.nextWorkerId.at(endHash) as WorkerId).toNumber();
-
-        let rewardRelationshipIds = Array<RewardRelationshipId>();
-        for (let i = 0; i < nextCuratorId; ++i) {
-            let worker = await this.api.query.contentDirectoryWorkingGroup.workerById.at(endHash, i) as WorkerOf;
-            if (!worker.is_active) {
-                continue;
-            }
-
-            if (worker.reward_relationship.isSome) {
-                rewardRelationshipIds.push(worker.reward_relationship.unwrap());
-            }
-        }
-        return this.computeReward(roundNrBlocks, rewardRelationshipIds, endHash);
-    }
-
-    async computeReward(roundNrBlocks: number, rewardRelationshipIds: RewardRelationshipId[], hash: Hash) {
-        let recurringRewards = await Promise.all(rewardRelationshipIds.map(async (rewardRelationshipId) => {
-            return await this.api.query.recurringRewards.rewardRelationships.at(hash, rewardRelationshipId) as RewardRelationship;
-        }));
-
-        let rewardPerBlock = 0;
-        for (let recurringReward of recurringRewards) {
-            const amount = recurringReward.amount_per_payout.toNumber();
-            const payoutInterval = recurringReward.payout_interval.unwrapOr(null);
-
-            if (amount && payoutInterval) {
-                rewardPerBlock += amount / payoutInterval;
-            }
-
-        }
-        return rewardPerBlock * roundNrBlocks;
-    }
-
-    async fillMintsInfo(startHash: Hash, endHash: Hash) {
-        let startNrMints = parseInt((await this.api.query.minting.mintsCreated.at(startHash)).toString());
-        let endNrMints = parseInt((await this.api.query.minting.mintsCreated.at(endHash)).toString());
-
-        this.statistics.newMints = endNrMints - startNrMints;
-        // statistics.startMinted = 0;
-        // statistics.endMinted = 0;
-        for (let i = 0; i < startNrMints; ++i) {
-            let startMint = (await this.api.query.minting.mints.at(startHash, i)) as Mint;
-            // if (!startMint) {
-            //     continue;
-            // }
-
-            let endMint = (await this.api.query.minting.mints.at(endHash, i)) as Mint;
-            // let  = endMintResult[0];
-            // if (!endMint) {
-            //     continue;
-            // }
-
-            let startMintTotal = parseInt(startMint.getField("total_minted").toString());
-            let endMintTotal = parseInt(endMint.getField("total_minted").toString());
-
-            // statistics.startMinted += startMintTotal;
-
-            this.statistics.totalMinted += endMintTotal - startMintTotal;
-            this.statistics.totalMintCapacityIncrease += parseInt(endMint.getField("capacity").toString()) - parseInt(startMint.getField("capacity").toString());
-        }
-
-        for (let i = startNrMints; i < endNrMints; ++i) {
-            let endMint = await this.api.query.minting.mints.at(endHash, i) as Mint;
-            if (!endMint) {
-                return;
-            }
-            this.statistics.totalMinted = parseInt(endMint.getField("total_minted").toString());
-        }
-
-        let councilMint = (await this.api.query.council.councilMint.at(endHash)) as MintId;
-        let councilMintStatistics = await this.computeMintInfo(councilMint, startHash, endHash);
-
-        this.statistics.startCouncilMinted = councilMintStatistics.startMinted;
-        this.statistics.endCouncilMinted = councilMintStatistics.endMinted;
-        this.statistics.newCouncilMinted = councilMintStatistics.diffMinted;
-        this.statistics.percNewCouncilMinted = councilMintStatistics.percMinted;
-
-        let curatorMint = (await this.api.query.contentDirectoryWorkingGroup.mint.at(endHash)) as MintId;
-        let curatorMintStatistics = await this.computeMintInfo(curatorMint, startHash, endHash);
-        this.statistics.startCuratorMinted = curatorMintStatistics.startMinted;
-        this.statistics.endCuratorMinted = curatorMintStatistics.endMinted;
-        this.statistics.newCuratorMinted = curatorMintStatistics.diffMinted;
-        this.statistics.percCuratorMinted = curatorMintStatistics.percMinted;
-
-        let storageProviderMint = (await this.api.query.storageWorkingGroup.mint.at(endHash)) as MintId;
-        let storageProviderMintStatistics = await this.computeMintInfo(storageProviderMint, startHash, endHash);
-        this.statistics.startStorageMinted = storageProviderMintStatistics.startMinted;
-        this.statistics.endStorageMinted = storageProviderMintStatistics.endMinted;
-        this.statistics.newStorageMinted = storageProviderMintStatistics.diffMinted;
-        this.statistics.percStorageMinted = storageProviderMintStatistics.percMinted;
-
-        let operationsProviderMint = (await this.api.query.operationsWorkingGroup.mint.at(endHash)) as MintId;
-        let operationsProviderMintStatistics = await this.computeMintInfo(operationsProviderMint, startHash, endHash);
-        this.statistics.startOperationsMinted = operationsProviderMintStatistics.startMinted;
-        this.statistics.endOperationsMinted = operationsProviderMintStatistics.endMinted;
-        this.statistics.newOperationsMinted = operationsProviderMintStatistics.diffMinted;
-        this.statistics.percOperationsMinted = operationsProviderMintStatistics.percMinted;
-    }
-
-
-    async computeMintInfo(mintId: MintId, startHash: Hash, endHash: Hash): Promise<MintStatistics> {
-        // if (mintId.toString() == "0") {
-        //     return new MintStatistics(0, 0, 0);
-        // }
-        let startMint = await this.api.query.minting.mints.at(startHash, mintId) as Mint;
-        // let startMint = startMintResult[0] as unknown as Mint;
-        // if (!startMint) {
-        //     return new MintStatistics(0, 0, 0);
-        // }
-
-        let endMint = await this.api.query.minting.mints.at(endHash, mintId) as Mint;
-        // let endMint = endMintResult[0] as unknown as Mint;
-        // if (!endMint) {
-        //     return new MintStatistics(0, 0, 0);
-        // }
-
-        let mintStatistics = new MintStatistics();
-        mintStatistics.startMinted = parseInt(startMint.getField('total_minted').toString());
-        mintStatistics.endMinted = parseInt(endMint.getField('total_minted').toString());
-        mintStatistics.diffMinted = mintStatistics.endMinted - mintStatistics.startMinted;
-        mintStatistics.percMinted = StatisticsCollector.convertToPercentage(mintStatistics.startMinted, mintStatistics.endMinted);
-        return mintStatistics;
-    }
-
-    async fillCouncilInfo(startHash: Hash, endHash: Hash) {
-        this.statistics.councilRound = (await this.api.query.councilElection.round.at(startHash) as u32).toNumber() - COUNCIL_ROUND_OFFSET;
-        this.statistics.councilMembers = (await this.api.query.councilElection.councilSize.at(startHash) as u32).toNumber();
-        let startNrProposals = await this.api.query.proposalsEngine.proposalCount.at(startHash) as u32;
-        let endNrProposals = await this.api.query.proposalsEngine.proposalCount.at(endHash) as u32;
-        this.statistics.newProposals = endNrProposals.toNumber() - startNrProposals.toNumber();
-
-        let approvedProposals = new Set();
-        for (let [key, blockEvents] of this.blocksEventsCache) {
-            for (let event of blockEvents) {
-                if (event.section == "proposalsEngine" && event.method == "ProposalStatusUpdated") {
-                    let statusUpdateData = event.data[1] as any;
-                    let finalizeData = statusUpdateData.finalized as any
-                    if (finalizeData && finalizeData.proposalStatus.approved) {
-                        approvedProposals.add(Number(event.data[0]));
-                    }
-
-                }
-            }
-        }
-
-        this.statistics.newApprovedProposals = approvedProposals.size;
-    }
-
-    async fillCouncilElectionInfo(startBlock: number) {
-
-        let startBlockHash = await this.api.rpc.chain.getBlockHash(startBlock);
-        let events = await this.api.query.system.events.at(startBlockHash) as Vec<EventRecord>;
-        let isStartBlockFirstCouncilBlock = events.some((event) => {
-            return event.event.section == "councilElection" && event.event.method == "CouncilElected";
-        });
-
-        if (!isStartBlockFirstCouncilBlock) {
-            console.warn('Note: The given start block is not the first block of the council round so council election information will be empty');
-            return;
-        }
-        let previousCouncilRoundLastBlock = startBlock - 1;
-        let previousCouncilRoundLastBlockHash = await this.api.rpc.chain.getBlockHash(previousCouncilRoundLastBlock);
-
-        let applicants = await this.api.query.councilElection.applicants.at(previousCouncilRoundLastBlockHash) as Vec<AccountId>;
-        this.statistics.electionApplicants = applicants.length;
-        for (let applicant of applicants) {
-            let applicantStakes = await this.api.query.councilElection.applicantStakes.at(previousCouncilRoundLastBlockHash, applicant) as unknown as ElectionStake;
-            this.statistics.electionApplicantsStakes += applicantStakes.new.toNumber();
-        }
-        // let seats = await this.api.query.council.activeCouncil.at(startBlockHash) as Seats;
-        //TODO: Find a more accurate way of getting the votes
-        const votes = await this.api.query.councilElection.commitments.at(previousCouncilRoundLastBlockHash) as Vec<Hash>;
-        this.statistics.electionVotes = votes.length;
-    }
-
-    async fillValidatorInfo(startHash: Hash, endHash: Hash) {
-        let startTimestamp = await this.api.query.timestamp.now.at(startHash) as unknown as Moment;
-        let endTimestamp = await this.api.query.timestamp.now.at(endHash) as unknown as Moment;
-        let avgBlockProduction = (((endTimestamp.toNumber() - startTimestamp.toNumber())
-            / 1000) / this.statistics.newBlocks);
-        this.statistics.avgBlockProduction = Number(avgBlockProduction.toFixed(2));
-
-        let maxStartValidators = (await this.api.query.staking.validatorCount.at(startHash) as u32).toNumber();
-        let startValidators = await this.findActiveValidators(startHash, false);
-        this.statistics.startValidators = startValidators.length + " / " + maxStartValidators;
-
-        let maxEndValidators = (await this.api.query.staking.validatorCount.at(endHash) as u32).toNumber();
-        let endValidators = await this.findActiveValidators(endHash, true);
-        this.statistics.endValidators = endValidators.length + " / " + maxEndValidators;
-
-        this.statistics.percValidators = StatisticsCollector.convertToPercentage(startValidators.length, endValidators.length);
-
-        const startEra = await this.api.query.staking.currentEra.at(startHash) as Option<EraIndex>;
-        this.statistics.startValidatorsStake = (await this.api.query.staking.erasTotalStake.at(startHash, startEra.unwrap())).toNumber();
-
-        const endEra = await this.api.query.staking.currentEra.at(endHash) as Option<EraIndex>;
-        this.statistics.endValidatorsStake = (await this.api.query.staking.erasTotalStake.at(endHash, endEra.unwrap())).toNumber();
-
-        this.statistics.percNewValidatorsStake = StatisticsCollector.convertToPercentage(this.statistics.startValidatorsStake, this.statistics.endValidatorsStake);
-        await this.fillValidatorsRewards();
-    }
-
-    async findActiveValidators(hash: Hash, searchPreviousBlocks: boolean): Promise<AccountId[]> {
-        const block = await this.api.rpc.chain.getBlock(hash);
-
-        let currentBlockNr = block.block.header.number.toNumber();
-        let activeValidators;
-        do {
-            let currentHash = (await this.api.rpc.chain.getBlockHash(currentBlockNr)) as Hash;
-            let allValidators = await this.api.query.staking.snapshotValidators.at(currentHash) as Option<Vec<AccountId>>;
-            if (!allValidators.isEmpty) {
-                let max = (await this.api.query.staking.validatorCount.at(currentHash)).toNumber();
-                activeValidators = Array.from(allValidators.unwrap()).slice(0, max);
-            }
-
-            if (searchPreviousBlocks) {
-                --currentBlockNr;
-            } else {
-                ++currentBlockNr;
-            }
-
-        } while (activeValidators == undefined);
-        return activeValidators;
-    }
-
-    async fillStorageProviderInfo(startBlock: number, endBlock: number, startHash: Hash, endHash: Hash) {
-        let roundNrBlocks = endBlock - startBlock;
-
-        let storageProvidersRewards = await this.computeWorkingGroupReward(roundNrBlocks, startHash, endHash, 'storage');
-        this.statistics.newStorageProviderReward = storageProvidersRewards.rewards;
-        this.statistics.newStorageProviderReward = Number(this.statistics.newStorageProviderReward.toFixed(2));
-
-        this.statistics.startStorageProvidersStake = storageProvidersRewards.startStake;
-        this.statistics.endStorageProvidersStake = storageProvidersRewards.endStake;
-        this.statistics.percNewStorageProviderStake = StatisticsCollector.convertToPercentage(this.statistics.startStorageProvidersStake, this.statistics.endStorageProvidersStake);
-
-        this.statistics.startStorageProviders = await this.api.query.storageWorkingGroup.activeWorkerCount.at(startHash);
-        this.statistics.endStorageProviders = await this.api.query.storageWorkingGroup.activeWorkerCount.at(endHash);
-        this.statistics.percNewStorageProviders = StatisticsCollector.convertToPercentage(this.statistics.startStorageProviders, this.statistics.endStorageProviders);
-
-        let nextWorkerId = Number(await this.api.query.storageWorkingGroup.nextWorkerId.at(endHash));
-        this.statistics.storageProviders = "";
-        for (let i = 0; i < nextWorkerId; ++i) {
-            let storageProvider = await this.api.query.storageWorkingGroup.workerById.at(endHash, i) as WorkerOf;
-            if (!storageProvider.is_active) {
-                continue;
-            }
-
-            let membership = await this.api.query.members.membershipById.at(endHash, storageProvider.member_id) as Membership;
-            this.statistics.storageProviders += "@" + membership.handle + " | (" + membership.root_account + ")  \n";
-
-        }
-
-    }
-
-    async fillCuratorInfo(startHash: Hash, endHash: Hash) {
-        this.statistics.startCurators = Number(await this.api.query.contentDirectoryWorkingGroup.activeWorkerCount.at(startHash));
-        this.statistics.endCurators = Number(await this.api.query.contentDirectoryWorkingGroup.activeWorkerCount.at(endHash));
-        this.statistics.percNewCurators = StatisticsCollector.convertToPercentage(this.statistics.startCurators, this.statistics.endCurators);
-
-        let nextCuratorId = Number(await this.api.query.contentDirectoryWorkingGroup.nextWorkerId.at(endHash));
-        this.statistics.curators = "";
-
-        for (let i = 0; i < nextCuratorId; i++) {
-            let worker = await this.api.query.contentDirectoryWorkingGroup.workerById.at(endHash, i) as WorkerOf;
-            if (!worker.is_active) {
-                continue;
-            }
-
-            let curatorMembership = await this.api.query.members.membershipById.at(endHash, worker.member_id) as Membership;
-            this.statistics.curators += "@" + curatorMembership.handle + " | (" + curatorMembership.root_account + ")  \n";
-
-        }
-    }
-
-    async fillOperationsInfo(startBlock: number, endBlock: number, startHash: Hash, endHash: Hash) {
-        let roundNrBlocks = endBlock - startBlock;
-
-        let operationsRewards = await this.computeWorkingGroupReward(roundNrBlocks, startHash, endHash, 'operations');
-        this.statistics.newOperationsReward = operationsRewards.rewards;
-        this.statistics.newOperationsReward = Number(this.statistics.newOperationsReward.toFixed(2));
-
-        this.statistics.startOperationsStake = operationsRewards.startStake;
-        this.statistics.endOperationsStake = operationsRewards.endStake;
-        this.statistics.percNewOperationstake = StatisticsCollector.convertToPercentage(this.statistics.startOperationsStake, this.statistics.endOperationsStake);
-
-        this.statistics.startOperationsWorkers = Number(await this.api.query.operationsWorkingGroup.activeWorkerCount.at(startHash));
-        this.statistics.endOperationsWorkers = Number(await this.api.query.operationsWorkingGroup.activeWorkerCount.at(endHash));
-        this.statistics.percNewOperationsWorkers = StatisticsCollector.convertToPercentage(this.statistics.startOperationsWorkers, this.statistics.endOperationsWorkers);
-
-        let nextOperationsWorkerId = Number(await this.api.query.operationsWorkingGroup.nextWorkerId.at(endHash));
-        this.statistics.operations = "";
-
-        for (let i = 0; i < nextOperationsWorkerId; i++) {
-            let worker = await this.api.query.operationsWorkingGroup.workerById.at(endHash, i) as WorkerOf;
-            if (!worker.is_active) {
-                continue;
-            }
-
-            let operationMembership = await this.api.query.members.membershipById.at(endHash, worker.member_id) as Membership;
-            this.statistics.operations += "@" + operationMembership.handle + " | (" + operationMembership.root_account + ")  \n";
-
-        }
-    }
-
-    async fillMembershipInfo(startHash: Hash, endHash: Hash) {
-        this.statistics.startMembers = (await this.api.query.members.nextMemberId.at(startHash) as MemberId).toNumber();
-        this.statistics.endMembers = (await this.api.query.members.nextMemberId.at(endHash) as MemberId).toNumber();
-        this.statistics.newMembers = this.statistics.endMembers - this.statistics.startMembers;
-        this.statistics.percNewMembers = StatisticsCollector.convertToPercentage(this.statistics.startMembers, this.statistics.endMembers);
-    }
-
-    async fillMediaUploadInfo(startHash: Hash, endHash: Hash) {
-
-        let startVideos = (await this.api.query.content.nextVideoId.at(startHash) as VideoId).toNumber();
-        let endVideos = (await this.api.query.content.nextVideoId.at(endHash) as VideoId).toNumber();
-
-        this.statistics.startMedia = startVideos;
-        this.statistics.endMedia = endVideos;
-        this.statistics.percNewMedia = StatisticsCollector.convertToPercentage(this.statistics.startMedia, this.statistics.endMedia);
-
-        let startChannels = (await this.api.query.content.nextChannelId.at(startHash) as ChannelId).toNumber();
-        let endChannels = (await this.api.query.content.nextChannelId.at(endHash) as ChannelId).toNumber();
-
-        this.statistics.startChannels = startChannels;
-        this.statistics.endChannels = endChannels;
-        this.statistics.percNewChannels = StatisticsCollector.convertToPercentage(this.statistics.startChannels, this.statistics.endChannels);
-
-        let dataObjects = await this.api.query.dataDirectory.dataByContentId.entries() as unknown as Map<ContentId, DataObject>;
-
-        let startObjects = new Map<ContentId, DataObject>();
-        let endObjects = new Map<ContentId, DataObject>();
-
-        const startBlock = await this.api.rpc.chain.getBlock(startHash);
-        const endBlock = await this.api.rpc.chain.getBlock(endHash);
-
-        for (let [key, dataObject] of dataObjects) {
-            if (dataObject.added_at.block.toNumber() < startBlock.block.header.number.toNumber()) {
-                startObjects.set(key, dataObject);
-                this.statistics.startUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
-            }
-
-            if (dataObject.added_at.block.toNumber() < endBlock.block.header.number.toNumber()) {
-                endObjects.set(key, dataObject);
-                this.statistics.endUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
-            }
-        }
-        this.statistics.startUsedSpace = Number(this.statistics.startUsedSpace.toFixed(2));
-        this.statistics.endUsedSpace = Number(this.statistics.endUsedSpace.toFixed(2));
-
-        this.statistics.percNewUsedSpace = StatisticsCollector.convertToPercentage(this.statistics.startUsedSpace, this.statistics.endUsedSpace);
-    }
-
-    async fillForumInfo(startHash: Hash, endHash: Hash) {
-        let startPostId = await this.api.query.forum.nextPostId.at(startHash) as PostId;
-        let endPostId = await this.api.query.forum.nextPostId.at(endHash) as PostId;
-        this.statistics.startPosts = startPostId.toNumber();
-        this.statistics.endPosts = endPostId.toNumber();
-        this.statistics.newPosts = this.statistics.endPosts - this.statistics.startPosts;
-        this.statistics.percNewPosts = StatisticsCollector.convertToPercentage(this.statistics.startPosts, this.statistics.endPosts);
-
-        let startThreadId = ((await this.api.query.forum.nextThreadId.at(startHash)) as unknown) as ThreadId;
-        let endThreadId = ((await this.api.query.forum.nextThreadId.at(endHash)) as unknown) as ThreadId;
-        this.statistics.startThreads = startThreadId.toNumber();
-        this.statistics.endThreads = endThreadId.toNumber();
-        this.statistics.newThreads = this.statistics.endThreads - this.statistics.startThreads;
-        this.statistics.percNewThreads = StatisticsCollector.convertToPercentage(this.statistics.startThreads, this.statistics.endThreads);
-
-        let startCategoryId = (await this.api.query.forum.nextCategoryId.at(startHash)) as CategoryId;
-        let endCategoryId = (await this.api.query.forum.nextCategoryId.at(endHash)) as CategoryId;
-        this.statistics.startCategories = startCategoryId.toNumber();
-        this.statistics.endCategories = endCategoryId.toNumber();
-        this.statistics.newCategories = this.statistics.endCategories - this.statistics.startCategories;
-        this.statistics.perNewCategories = StatisticsCollector.convertToPercentage(this.statistics.startCategories, this.statistics.endCategories);
-    }
-
-    static convertToPercentage(previousValue: number, newValue: number): number {
-        if (previousValue == 0) {
-            return newValue > 0 ? Infinity : 0;
-        }
-        return Number((newValue * 100 / previousValue - 100).toFixed(2));
-    }
-
-    async buildBlocksEventCache(startBlock: number, endBlock: number) {
-        let cacheFile = CACHE_FOLDER + '/' + startBlock + '-' + endBlock + '.json';
-        let exists = await fs.access(cacheFile, fsSync.constants.R_OK).then(() => true)
-            .catch(() => false);
-        // let exists = false;
-        if (!exists) {
-            console.log('Building events cache...');
-            let blocksEvents = new Map<number, CacheEvent[]>();
-            for (let i = startBlock; i < endBlock; ++i) {
-                process.stdout.write('\rCaching block: ' + i + ' until ' + endBlock);
-                const blockHash: Hash = await this.api.rpc.chain.getBlockHash(i);
-                let eventRecord = await this.api.query.system.events.at(blockHash) as Vec<EventRecord>;
-                let cacheEvents = new Array<CacheEvent>();
-                for (let event of eventRecord) {
-                    cacheEvents.push(new CacheEvent(event.event.section, event.event.method, event.event.data));
-                }
-                blocksEvents.set(i, cacheEvents);
-            }
-
-            console.log('\nFinish events cache...');
-            let jsonOutput = JSON.stringify(Array.from(blocksEvents.entries()), null, 2);
-            await fs.writeFile(cacheFile, jsonOutput);
-            this.blocksEventsCache = new Map(JSON.parse(jsonOutput));
-        } else {
-            console.log('Cache file found, loading it...');
-            let fileData = await fs.readFile(cacheFile);
-            this.blocksEventsCache = new Map(JSON.parse(fileData));
-            console.log('Cache file loaded...');
-        }
-    }
-
-    static async connectApi(): Promise<ApiPromise> {
-        // const provider = new WsProvider('wss://testnet.joystream.org:9944');
-        const provider = new WsProvider(PROVIDER_URL);
-
-        // Create the API and wait until ready
-        return await ApiPromise.create({provider, types});
-    }
+  }
 }
