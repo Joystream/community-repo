@@ -737,9 +737,11 @@ export class StatisticsCollector {
     let sumerGenesis = new Date("2021-04-07T18:20:54.000Z");
 
     console.log("Fetching fiat events....");
-    await axios.get(statusUrl).then((response: { data: StatusData }) => {
+    await axios.get(statusUrl).then(({ data }) => {
+      const { burns, exchanges, dollarPoolChanges } = data as StatusData;
+
       console.log("# Exchanges");
-      let filteredExchanges = response.data.exchanges.filter(
+      let filteredExchanges = exchanges.filter(
         (exchange) =>
           exchange.blockHeight >= startBlockHeight &&
           exchange.blockHeight <= endBlockHeight &&
@@ -752,7 +754,7 @@ export class StatisticsCollector {
         );
       }
 
-      let filteredBurns = response.data.burns.filter(
+      let filteredBurns = burns.filter(
         (burn: any) =>
           burn.blockHeight >= startBlockHeight &&
           burn.blockHeight <= endBlockHeight &&
@@ -766,13 +768,13 @@ export class StatisticsCollector {
       }
 
       console.log("# Dollar Pool Changes");
-      const allDollarPoolChanges = response.data.dollarPoolChanges.filter(
+      const allDollarPoolChanges = dollarPoolChanges.filter(
         (dollarPoolChange: any) =>
           dollarPoolChange.blockHeight >= startBlockHeight &&
           dollarPoolChange.blockHeight <= endBlockHeight &&
           new Date(dollarPoolChange.blockTime) > sumerGenesis
       );
-      const filteredDollarPoolChanges = response.data.dollarPoolChanges.filter(
+      const filteredDollarPoolChanges = dollarPoolChanges.filter(
         (dollarPoolChange: any) =>
           dollarPoolChange.blockHeight >= startBlockHeight &&
           dollarPoolChange.blockHeight <= endBlockHeight &&
