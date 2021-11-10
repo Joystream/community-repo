@@ -274,17 +274,15 @@ export class StatisticsCollector {
     }
     this.saveStats({ bountiesTotalPaid });
 
-    let roundNrBlocks = endBlock - startBlock;
     const spendingProposalsTotal = spendingProposals.reduce(
       (n, p) => n + p.amount,
       0
     );
     const newCouncilRewards = await this.computeCouncilReward(
-      roundNrBlocks,
+      endBlock - startBlock,
       endHash
     );
     const newCuratorInfo = await this.computeWorkingGroupReward(
-      roundNrBlocks,
       startHash,
       endHash,
       "contentDirectory"
@@ -354,7 +352,6 @@ export class StatisticsCollector {
 
   // Summarize stakes and rewards at start and end
   async computeWorkingGroupReward(
-    roundNrBlocks: number,
     startHash: Hash,
     endHash: Hash,
     workingGroup: string
@@ -400,26 +397,13 @@ export class StatisticsCollector {
       this.saveStats({ [groupTag]: header + workers });
     } else this.saveStats({ [groupTag]: `` });
 
-    info.rewards = await this.computeReward(
-      roundNrBlocks,
-      workersEnd.filter((w) => w.reward).map((w) => w.reward)
-    );
+    const mintId = await getGroupMint(this.api, group);
+    const mintStart: Mint = await getMint(this.api, startHash, mintId);
+    const mintEnd: Mint = await getMint(this.api, endHash, mintId);
+    const totalMinted = (m: Mint) => Number(m.total_minted);
+    info.rewards = totalMinted(mintEnd) - totalMinted(mintStart);
     info.endNrOfWorkers = workersEnd.length;
     return info;
-  }
-
-  async computeReward(
-    roundNrBlocks: number,
-    recurringRewards: RewardRelationship[]
-  ): Promise<number> {
-    let rewardPerBlock = 0;
-    recurringRewards.forEach((recurringReward: RewardRelationship) => {
-      if (!recurringReward) return;
-      const amount = recurringReward.amount_per_payout.toNumber();
-      const payoutInterval = Number(recurringReward.payout_interval);
-      if (amount && payoutInterval) rewardPerBlock += amount / payoutInterval;
-    });
-    return rewardPerBlock * roundNrBlocks;
   }
 
   async computeGroupMintStats(
@@ -428,7 +412,7 @@ export class StatisticsCollector {
     endHash: Hash
   ) {
     const group = label + "WorkingGroup";
-    const mint = await getGroupMint(this.api, group, endHash);
+    const mint = await getGroupMint(this.api, group);
     const info = await this.getMintInfo(this.api, mint, startHash, endHash);
     let stats: { [key: string]: number } = {};
     stats[`start${tag}Minted`] = info.startMinted;
@@ -595,9 +579,7 @@ export class StatisticsCollector {
     startHash: Hash,
     endHash: Hash
   ): Promise<void> {
-    let roundNrBlocks = endBlock - startBlock;
     let storageProvidersRewards = await this.computeWorkingGroupReward(
-      roundNrBlocks,
       startHash,
       endHash,
       "storage"
@@ -647,9 +629,7 @@ export class StatisticsCollector {
     startHash: Hash,
     endHash: Hash
   ): Promise<void> {
-    const roundNrBlocks = endBlock - startBlock;
     const operationsRewards = await this.computeWorkingGroupReward(
-      roundNrBlocks,
       startHash,
       endHash,
       "operations"

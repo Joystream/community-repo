@@ -11,8 +11,8 @@
 
 - **Date:** `6/1/2021 - 6/8/2021`
 - **Budget:** `$175`
-- **Spent:** `0.9 M / 4.6M (@37.9 $/M)`
-- **Balance:** `3.7 M`
+- **Spent:** `0.3 M / 4.6M (@37.9 $/M)`
+- **Balance:** `4.3 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -28,7 +28,7 @@
 - **Date:** `6/8/2021 - 6/15/2021`
 - **Budget:** `$175`
 - **Spent:** `0.9 M / 4.7M (@37.25 $/M)`
-- **Balance:** `7.5 M`
+- **Balance:** `8.1 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -44,7 +44,7 @@
 - **Date:** `6/15/2021 - 6/22/2021`
 - **Budget:** `$175`
 - **Spent:** `0.9 M / 4.8M (@36.0 $/M)`
-- **Balance:** `11.4 M`
+- **Balance:** `12 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -59,8 +59,8 @@
 
 - **Date:** `6/22/2021 - 6/29/2021`
 - **Budget:** `$175`
-- **Spent:** `0.9 M / 4.9M (@35.4 $/M)`
-- **Balance:** `15.4 M`
+- **Spent:** `1.8 M / 4.9M (@35.4 $/M)`
+- **Balance:** `15.1 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -75,8 +75,8 @@
 
 - **Date:** `6/29/2021 - 7/6/2021`
 - **Budget:** `$175`
-- **Spent:** `3.8 M / 5M (@34.8 $/M)`
-- **Balance:** `16.6 M`
+- **Spent:** `3.3 M / 5M (@34.8 $/M)`
+- **Balance:** `16.8 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -98,8 +98,8 @@
 
 - **Date:** `7/6/2021 - 7/13/2021`
 - **Budget:** `$175`
-- **Spent:** `3.8 M / 5.2M (@33.8 $/M)`
-- **Balance:** `18.0 M`
+- **Spent:** `3.9 M / 5.2M (@33.8 $/M)`
+- **Balance:** `18.1 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -121,8 +121,10 @@
 
 - **Date:** `7/13/2021 - 7/20/2021`
 - **Budget:** `$175`
-- **Spent:** `7.9 M / 5.2M (@33.7 $/M)`
-- **Balance:** `15.3 M`
+- **Spent:** `6.7 M / 5.2M (@33.7 $/M)`
+ - 2 M [Telegram bot](https://pioneer.joystreamstats.live/#/proposals/282)
+ - 0.4 M [Proposing Telegram bot](https://pioneer.joystreamstats.live/#/proposals/283)
+- **Balance:** `14.2 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -144,8 +146,8 @@
 
 - **Date:** `7/20/2021 - 7/27/2021`
 - **Budget:** `$175`
-- **Spent:** `17.4 M / 5.1M (@34 $/M)`
-- **Balance:** `3 M`
+- **Spent:** `12.2 M / 5.1M (@34 $/M)`
+- **Balance:** `7.1 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -168,8 +170,9 @@
 
 - **Date:** `7/27/2021 - 8/3/2021`
 - **Budget:** `$175`
-- **Spent:** `16.3 M / 5.5M (@31.7 $/M)`
-- **Balance:** `-7.8 M`
+- **Spent:** `11.3 M / 5.5M (@31.7 $/M)`
+ - 1.5 M [Discord bot](https://pioneer.joystreamstats.live/#/proposals/335)
+- **Balance:** `-0.2 M`
 
 - [Budget Summary](https://pioneer.joystreamstats.live/#/forum/threads/517?page=2&replyIdx=15)
 - [Budget Overspending Discussion](https://pioneer.joystreamstats.live//#/forum/threads/518)
@@ -197,8 +200,8 @@
 
 - **Date:** `8/3/2021 - 8/10/2021`
 - **Budget:** `$175`
-- **Spent:** `43 M / 6M (@28.9 $/M)`
-- **Balance:** `-44.8 M`
+- **Spent:** `18.8 M / 6M (@28.9 $/M)`
+- **Balance:** `-13 M
 
 - [Proposal 347](https://pioneer.joystreamstats.live/#/proposals/347) (Expired): Operations Tasks Budget
 - [Proposal 377](https://pioneer.joystreamstats.live/#/proposals/377): increase Operations budget to 400$
@@ -221,8 +224,8 @@
 
 - **Date:** `8/10/2021 - 8/17/2021`
 - **Budget:** `$400`
-- **Spent:** `22.2 M / 13 M (@30.7 $/M)`
-- **Balance:** `-54 M`
+- **Spent:** `17.5 M / 13 M (@30.7 $/M)`
+- **Balance:** `-17.5 M`
 
 - [Proposal 426](https://pioneer.joystreamstats.live/#/proposals/377): Bounty for promotional content
 
@@ -243,8 +246,10 @@
 
 - **Date:** `8/17/2021 - 8/24/2021`
 - **Budget:** `$525`
-- **Spent:** `12.3 M / 17.3 M (@30.4 $/M)`
-- **Balance:** `-49 M`
+- **Spent:** `9.1 M / 17.3 M (@30.4 $/M)`
+ - 26 M [jsstats maintenance, HELIOS history, sprites.joystreamstats.live, storage bot](https://pioneer.joystreamstats.live/#/proposals/451)
+ - 9 M [Storage bot](https://joystreamstats.live/proposals/457)
+- **Balance:** `-44.3 M`
 
 - [Proposal 127](https://pioneer.joystreamstats.live/#/proposals/127): Add endpoints budget to Operations ($50 per term), implemented at [block 1,912,078](https://pioneer.joystreamstats.live/#/explorer/query/0xca2763a4a87b533a61ef1604b9309476ae63e73bc76b0b59d09c0dfb44d57f31)
 - [Proposal 393](https://pioneer.joystreamstats.live/#/proposals/393): Pay Community Manager salary for [@andybut](https://pioneer.joystreamstats.live/#/members/andybut) ($75 per term)
@@ -268,8 +273,9 @@
 
 - **Date:** `8/24/2021 - 8/31/2021`
 - **Budget:** `$525`
-- **Spent:** `12.6 M / 18 M (@29.2 $/M)`
-- **Balance:** `-43.6 M`
+- **Spent:** `11.7 M / 18 M (@29.2 $/M)`
+ - 9 M [faucet bot](https://pioneer.joystreamstats.live/#/proposals/499)
+- **Balance:** `-47 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -289,8 +295,10 @@
 
 - **Date:** `8/31/2021 - 9/7/2021`
 - **Budget:** `$525`
-- **Spent:** `11.2 M / 20 M (@26.3 $/M)`
-- **Balance:** `-34.8 M`
+- **Spent:** `10 M / 20 M (@26.3 $/M)`
+- **Balance:** `-37 M`
+
+- **Spending** 11.5 M ($300) [pioneer improvements](https://pioneer.joystreamstats.live/#/proposals/526) (**Canceled**, paid via salary to @freakstatic)
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -310,8 +318,8 @@
 
 - **Date:** `9/7/2021 - 9/14/2021`
 - **Budget:** `$525`
-- **Spent:** `11.2 M / 20.6 M (@25.5 $/M)`
-- **Balance:** `-25.4 M`
+- **Spent:** `8.2 M / 20.6 M (@25.5 $/M)`
+- **Balance:** `-24.6 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -331,8 +339,8 @@
 
 - **Date:** `9/14/2021 - 9/21/2021`
 - **Budget:** `$525`
-- **Spent:** `13.9 M / 21.2 M (@24.8 $/M)`
-- **Balance:** `-18.1 M`
+- **Spent:** `11.5 M / 21.2 M (@24.8 $/M)`
+- **Balance:** `-14.9 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -370,8 +378,8 @@
 
 - **Date:** `9/21/2021 - 9/28/2021`
 - **Budget:** `$525`
-- **Spent:** `14.5 M / 20.8 M (@25.3 $/M)`
-- **Balance:** `-11.8 M`
+- **Spent:** `11.1 M / 20.8 M (@25.3 $/M)`
+- **Balance:** `-5.2 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -410,8 +418,8 @@
 
 - **Date:** `9/28/2021 - 10/5/2021`
 - **Budget:** `$525`
-- **Spent:** `14.4 M / 20.7 M (@25.4 $/M)`
-- **Balance:** `-5.5 M`
+- **Spent:** `5 M / 20.7 M (@25.4 $/M)`
+- **Balance:** `10.5 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -449,8 +457,8 @@
 
 - **Date:** `9/28/2021 - 10/5/2021`
 - **Budget:** `$525`
-- **Spent:** `15.4 M / 19.4 M (@27.1 $/M)`
-- **Balance:** `-1.5 M`
+- **Spent:** `9.5 M / 19.4 M (@27.1 $/M)`
+- **Balance:** `20.4 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -488,8 +496,8 @@
 
 - **Date:** `10/12/2021 - 10/18/2021`
 - **Budget:** `$525`
-- **Spent:** `13.4 M / 20.3 M (@25.9 $/M)`
-- **Balance:** `5.4 M`
+- **Spent:** `10.8 M / 20.3 M (@25.9 $/M)`
+- **Balance:** `29.9 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -527,8 +535,8 @@
 
 - **Date:** `10/18/2021 - 10/26/2021`
 - **Budget:** `$525`
-- **Spent:** `18.5 M / 20.3 M (@25.8 $/M)`
-- **Balance:** `7.7 M`
+- **Spent:** `14.5 M / 20.3 M (@25.8 $/M)`
+- **Balance:** `35.7 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -568,8 +576,8 @@
 
 - **Date:** `10/26/2021 - 11/2/2021`
 - **Budget:** `$525`
-- **Spent:** `18.5 M / 20.3 M (@25.8 $/M)`
-- **Balance:** `9.5 M`
+- **Spent:** `7 M / 20.3 M (@25.8 $/M)`
+- **Balance:** `49 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -609,7 +617,7 @@
 - **Date:** `11/2/2021 - 11/9/2021`
 - **Budget:** `$525`
 - **Spent:** `24.1 M / 22.8 M (@23 $/M)`
-- **Balance:** `8.2 M`
+- **Balance:** `47.7 M`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
