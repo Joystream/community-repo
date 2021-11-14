@@ -5,14 +5,44 @@
 - Tasks: https://git.joystreamstats.live/Operations/process
 - Openings: https://pioneer.joystreamstats.live/#/working-groups/opportunities/operationsGroup
 
+## Budget
+
+| Round | Spent [M tJOY] | Budget [USD] | Rate [$/M tJOY] | Budget [M tJOY] | Term Balance [M tJOY] | Balance [M tJOY] | Balance [$] |
+|-------|----------------|--------------|-----------------|-----------------|-----------------------|------------------|-------------|
+|     7 |            0.3 |          130 |            37.9 |            3.43 |                  3.13 |             3.13 |      118.63 |
+|     8 |            0.9 |          130 |            37.3 |            3.49 |                  2.59 |             5.72 |      213.07 |
+|     9 |            0.9 |          255 |            36.0 |            7.08 |                  6.18 |            11.90 |      428.40 |
+|    10 |            1.8 |          245 |            35.4 |            6.92 |                  5.12 |            17.02 |      602.51 |
+|    11 |            3.3 |          245 |            34.8 |            7.04 |                  3.74 |            20.76 |      722.45 |
+|    12 |            3.9 |          245 |            33.8 |            7.25 |                  3.35 |            24.11 |      814.92 |
+|    13 |            9.1 |          245 |            33.7 |            7.27 |                 -1.83 |            22.28 |      750.84 |
+|    14 |           12.2 |          245 |            34.0 |            7.21 |                 -4.99 |            17.29 |      587.86 |
+|    15 |           12.8 |          245 |            31.7 |            7.73 |                 -5.07 |            12.22 |      387.37 |
+|    16 |           18.8 |          475 |            28.9 |           16.44 |                 -2.36 |             9.86 |      284.95 |
+|    17 |           17.5 |          475 |            30.7 |           15.47 |                 -2.03 |             7.83 |      240.38 |
+|    18 |           44.1 |          600 |            30.4 |           19.74 |                -24.36 |           -16.53 |     -502.51 |
+|    19 |           20.7 |          600 |            29.2 |           20.55 |                 -0.15 |           -16.68 |     -487.06 |
+|    20 |           10.0 |          600 |            26.3 |           22.81 |                 12.81 |            -3.87 |     -101.78 |
+|    21 |            8.2 |          600 |            25.5 |           23.53 |                 15.33 |            11.46 |      292.23 |
+|    22 |           11.5 |          600 |            24.8 |           24.19 |                 12.69 |            24.15 |      598.92 |
+|    23 |           11.1 |          600 |            25.3 |           23.72 |                 12.62 |            36.77 |      930.28 |
+|    24 |            5.0 |          600 |            25.4 |           23.62 |                 18.62 |            55.39 |     1406.91 |
+|    25 |            9.5 |          600 |            27.1 |           22.14 |                 12.64 |            68.03 |     1843.61 |
+|    26 |           10.8 |          600 |            25.9 |           23.17 |                 12.37 |            80.40 |     2082.36 |
+|    27 |           14.5 |          600 |            25.8 |           23.26 |                  8.76 |            89.16 |     2300.33 |
+|    28 |            7.0 |          600 |            25.8 |           23.26 |                 16.26 |           105.42 |     2719.84 |
+|    29 |           24.1 |          600 |            23.0 |           26.09 |                  1.99 |           107.41 |     2470.43 |
+
 ## Reports
 
 ### [Round 7](../../council/tokenomics/sumer-4/Council_Round7_781200-881999_Tokenomics_Report.md)
 
 - **Date:** `6/1/2021 - 6/8/2021`
-- **Budget:** `$175`
-- **Spent:** `0.3 M / 4.6M (@37.9 $/M)`
-- **Balance:** `4.3 M`
+- **Budget:** `$130`
+- **Spent:** `0.3 M / 3.43 M (@37.9 $/M)`
+- **Balance:** `3.13 M ($118.63)`
+
+* [Antioch KPI 6.x - Antioch WG Budget 3(b)](https://pioneer.joystreamstats.live/#/proposals/118)
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -26,9 +56,9 @@
 ### [Round 8](../../council/tokenomics/sumer-4/Council_Round8_882000-982799_Tokenomics_Report.md)
 
 - **Date:** `6/8/2021 - 6/15/2021`
-- **Budget:** `$175`
-- **Spent:** `0.9 M / 4.7M (@37.25 $/M)`
-- **Balance:** `8.1 M`
+- **Budget:** `$130`
+- **Spent:** `0.9 M / 3.49 M (@37.25 $/M)`
+- **Balance:** `5.72 M ($213.07)`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -42,9 +72,11 @@
 ### [Round 9](../../council/tokenomics/sumer-4/Council_Round9_982800-1083599_Tokenomics_Report.md)
 
 - **Date:** `6/15/2021 - 6/22/2021`
-- **Budget:** `$175`
-- **Spent:** `0.9 M / 4.8M (@36.0 $/M)`
-- **Balance:** `12 M`
+- **Budget:** `$255`
+- **Spent:** `0.9 M / 7.8 M (@36.0 $/M)`
+- **Balance:** `11.9 M ($428.40)`
+
+* [KPI 8.8 - Budget 4](https://pioneer.joystreamstats.live/#/proposals/163)
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -58,9 +90,11 @@
 ### [Round 10](../../council/tokenomics/sumer-4/Council_Round10_1083600-1184399_Tokenomics_Report.md)
 
 - **Date:** `6/22/2021 - 6/29/2021`
-- **Budget:** `$175`
-- **Spent:** `1.8 M / 4.9M (@35.4 $/M)`
-- **Balance:** `15.1 M`
+- **Budget:** `$245`
+- **Spent:** `1.8 M / 6.92 M (@35.4 $/M)`
+- **Balance:** `17.2 M ($602.51)`
+
+* [Sumer KPI 9.x - Budget 5 (correction)](https://pioneer.joystreamstats.live/#/proposals/180)
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -74,9 +108,9 @@
 ### [Round 11](../../council/tokenomics/sumer-4/Council_Round11_1184400-1285199_Tokenomics_Report.md)
 
 - **Date:** `6/29/2021 - 7/6/2021`
-- **Budget:** `$175`
-- **Spent:** `3.3 M / 5M (@34.8 $/M)`
-- **Balance:** `16.8 M`
+- **Budget:** `$245`
+- **Spent:** `3.3 M / 7.04 M (@34.8 $/M)`
+- **Balance:** `20.76 M ($722.45)`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -97,9 +131,11 @@
 ### [Round 12](../../council/tokenomics/sumer-4/Council_Round12_1285200-1385999_Tokenomics_Report.md)
 
 - **Date:** `7/6/2021 - 7/13/2021`
-- **Budget:** `$175`
-- **Spent:** `3.9 M / 5.2M (@33.8 $/M)`
-- **Balance:** `18.1 M`
+- **Budget:** `$245`
+- **Spent:** `3.9 M / 7.25 M (@33.8 $/M)`
+- **Balance:** `24.11 M ($814.92)`
+
+* [Budget 6 - July 11 2021](https://pioneer.joystreamstats.live/#/proposals/254)
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -120,11 +156,11 @@
 ### [Round 13](../../council/tokenomics/sumer-4/Council_Round13_1386000-1486799_Tokenomics_Report.md)
 
 - **Date:** `7/13/2021 - 7/20/2021`
-- **Budget:** `$175`
-- **Spent:** `6.7 M / 5.2M (@33.7 $/M)`
+- **Budget:** `$245`
+- **Spent:** `6.7 M / 7.27 M (@33.7 $/M)`
  - 2 M [Telegram bot](https://pioneer.joystreamstats.live/#/proposals/282)
  - 0.4 M [Proposing Telegram bot](https://pioneer.joystreamstats.live/#/proposals/283)
-- **Balance:** `14.2 M`
+- **Balance:** `22.28 M ($750.84)`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -145,9 +181,9 @@
 ### [Round 14](../../council/tokenomics/sumer-4/Council_Round14_1486800-1587599_Tokenomics_Report.md)
 
 - **Date:** `7/20/2021 - 7/27/2021`
-- **Budget:** `$175`
-- **Spent:** `12.2 M / 5.1M (@34 $/M)`
-- **Balance:** `7.1 M`
+- **Budget:** `$245`
+- **Spent:** `12.2 M / 7.21 M (@34 $/M)`
+- **Balance:** `17.29 M ($587.86)`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -169,10 +205,10 @@
 ### [Round 15](../../council/tokenomics/sumer-4/Council_Round15_1587600-1688399_Tokenomics_Report.md)
 
 - **Date:** `7/27/2021 - 8/3/2021`
-- **Budget:** `$175`
-- **Spent:** `11.3 M / 5.5M (@31.7 $/M)`
+- **Budget:** `$245`
+- **Spent:** `11.3 M / 7.73 M (@31.7 $/M)`
  - 1.5 M [Discord bot](https://pioneer.joystreamstats.live/#/proposals/335)
-- **Balance:** `-0.2 M`
+- **Balance:** `12.22 M ($387.37)`
 
 - [Budget Summary](https://pioneer.joystreamstats.live/#/forum/threads/517?page=2&replyIdx=15)
 - [Budget Overspending Discussion](https://pioneer.joystreamstats.live//#/forum/threads/518)
@@ -199,9 +235,9 @@
 ### [Round 16](../../council/tokenomics/sumer-4/Council_Round16_1688400-1789199_Tokenomics_Report.md)
 
 - **Date:** `8/3/2021 - 8/10/2021`
-- **Budget:** `$175`
-- **Spent:** `18.8 M / 6M (@28.9 $/M)`
-- **Balance:** `-13 M
+- **Budget:** `$475`
+- **Spent:** `18.8 M / 16.44 M (@28.9 $/M)`
+- **Balance:** `9.86 M ($284.95)`
 
 - [Proposal 347](https://pioneer.joystreamstats.live/#/proposals/347) (Expired): Operations Tasks Budget
 - [Proposal 377](https://pioneer.joystreamstats.live/#/proposals/377): increase Operations budget to 400$
@@ -223,9 +259,9 @@
 ### [Round 17](../../council/tokenomics/sumer-4/Council_Round17_1789200-1889999_Tokenomics_Report.md)
 
 - **Date:** `8/10/2021 - 8/17/2021`
-- **Budget:** `$400`
-- **Spent:** `17.5 M / 13 M (@30.7 $/M)`
-- **Balance:** `-17.5 M`
+- **Budget:** `$475`
+- **Spent:** `17.5 M / 15.47 M (@30.7 $/M)`
+- **Balance:** `7.83 M ($240.38)`
 
 - [Proposal 426](https://pioneer.joystreamstats.live/#/proposals/377): Bounty for promotional content
 
@@ -245,11 +281,11 @@
 ### [Round 18](../../council/tokenomics/sumer-4/Council_Round18_1890000-1990799_Tokenomics_Report.md)
 
 - **Date:** `8/17/2021 - 8/24/2021`
-- **Budget:** `$525`
-- **Spent:** `9.1 M / 17.3 M (@30.4 $/M)`
+- **Budget:** `$600`
+- **Spent:** `9.1 M / 19.74 M (@30.4 $/M)`
  - 26 M [jsstats maintenance, HELIOS history, sprites.joystreamstats.live, storage bot](https://pioneer.joystreamstats.live/#/proposals/451)
  - 9 M [Storage bot](https://joystreamstats.live/proposals/457)
-- **Balance:** `-44.3 M`
+- **Balance:** `-16.53 M ($-502.51)`
 
 - [Proposal 127](https://pioneer.joystreamstats.live/#/proposals/127): Add endpoints budget to Operations ($50 per term), implemented at [block 1,912,078](https://pioneer.joystreamstats.live/#/explorer/query/0xca2763a4a87b533a61ef1604b9309476ae63e73bc76b0b59d09c0dfb44d57f31)
 - [Proposal 393](https://pioneer.joystreamstats.live/#/proposals/393): Pay Community Manager salary for [@andybut](https://pioneer.joystreamstats.live/#/members/andybut) ($75 per term)
@@ -272,10 +308,10 @@
 ### [Round 19](../../council/tokenomics/sumer-4/Council_Round19_1990800-2091599_Tokenomics_Report.md)
 
 - **Date:** `8/24/2021 - 8/31/2021`
-- **Budget:** `$525`
-- **Spent:** `11.7 M / 18 M (@29.2 $/M)`
+- **Budget:** `$600`
+- **Spent:** `11.7 M / 20.55 M (@29.2 $/M)`
  - 9 M [faucet bot](https://pioneer.joystreamstats.live/#/proposals/499)
-- **Balance:** `-47 M`
+- **Balance:** `-16.68 M ($-487.06)`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -294,9 +330,9 @@
 ### [Round 20](../../council/tokenomics/sumer-4/Council_Round20_2091600-2192399_Tokenomics_Report.md)
 
 - **Date:** `8/31/2021 - 9/7/2021`
-- **Budget:** `$525`
-- **Spent:** `10 M / 20 M (@26.3 $/M)`
-- **Balance:** `-37 M`
+- **Budget:** `$600`
+- **Spent:** `10 M / 22.81 M (@26.3 $/M)`
+- **Balance:** `-3.87 M ($-101.78)`
 
 - **Spending** 11.5 M ($300) [pioneer improvements](https://pioneer.joystreamstats.live/#/proposals/526) (**Canceled**, paid via salary to @freakstatic)
 
@@ -317,9 +353,9 @@
 ### [Round 21](../../council/tokenomics/sumer-4/Council_Round21_2192400-2293199_Tokenomics_Report.md)
 
 - **Date:** `9/7/2021 - 9/14/2021`
-- **Budget:** `$525`
-- **Spent:** `8.2 M / 20.6 M (@25.5 $/M)`
-- **Balance:** `-24.6 M`
+- **Budget:** `$600`
+- **Spent:** `8.2 M / 23.53 M (@25.5 $/M)`
+- **Balance:** `11.46 M ($292.23)`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -338,9 +374,9 @@
 ### [Round 22](../../council/tokenomics/sumer-4/Council_Round22_2293200-2393999_Tokenomics_Report.md)
 
 - **Date:** `9/14/2021 - 9/21/2021`
-- **Budget:** `$525`
-- **Spent:** `11.5 M / 21.2 M (@24.8 $/M)`
-- **Balance:** `-14.9 M`
+- **Budget:** `$600`
+- **Spent:** `11.5 M / 24.19 M (@24.8 $/M)`
+- **Balance:** `24.15 M ($598.92)`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -377,9 +413,9 @@
 ### [Round 23](../../council/tokenomics/sumer-4/Council_Round23_2394000-2494799_Tokenomics_Report.md)
 
 - **Date:** `9/21/2021 - 9/28/2021`
-- **Budget:** `$525`
-- **Spent:** `11.1 M / 20.8 M (@25.3 $/M)`
-- **Balance:** `-5.2 M`
+- **Budget:** `$600`
+- **Spent:** `11.1 M / 23.72 M (@25.3 $/M)`
+- **Balance:** `36.77 M ($930.28)`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -417,9 +453,9 @@
 ### [Round 24](../../council/tokenomics/sumer-4/Council_Round24_2494800-2595599_Tokenomics_Report.md)
 
 - **Date:** `9/28/2021 - 10/5/2021`
-- **Budget:** `$525`
-- **Spent:** `5 M / 20.7 M (@25.4 $/M)`
-- **Balance:** `10.5 M`
+- **Budget:** `$600`
+- **Spent:** `5 M / 23.62 M (@25.4 $/M)`
+- **Balance:** `55.39 M ($1406.91)`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -456,9 +492,9 @@
 ### [Round 25](../../council/tokenomics/sumer-4/Council_Round25_2595600-2696399_Tokenomics_Report.md)
 
 - **Date:** `9/28/2021 - 10/5/2021`
-- **Budget:** `$525`
-- **Spent:** `9.5 M / 19.4 M (@27.1 $/M)`
-- **Balance:** `20.4 M`
+- **Budget:** `$600`
+- **Spent:** `9.5 M / 22.14 M (@27.1 $/M)`
+- **Balance:** `68.03 M ($1843.61)`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -495,9 +531,9 @@
 ### [Round 26](../../council/tokenomics/sumer-4/Council_Round26_2696400-2782799_Tokenomics_Report.md)
 
 - **Date:** `10/12/2021 - 10/18/2021`
-- **Budget:** `$525`
-- **Spent:** `10.8 M / 20.3 M (@25.9 $/M)`
-- **Balance:** `29.9 M`
+- **Budget:** `$600`
+- **Spent:** `10.8 M / 23.17 M (@25.9 $/M)`
+- **Balance:** `80.40 M ($2082.36)`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -534,9 +570,9 @@
 ### [Round 27](../../council/tokenomics/sumer-4/Council_Round27_2782800-2883599_Tokenomics_Report.md)
 
 - **Date:** `10/18/2021 - 10/26/2021`
-- **Budget:** `$525`
-- **Spent:** `14.5 M / 20.3 M (@25.8 $/M)`
-- **Balance:** `35.7 M`
+- **Budget:** `$600`
+- **Spent:** `14.5 M / 23.26 M (@25.8 $/M)`
+- **Balance:** `89.16 M ($2300.33)`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -575,9 +611,9 @@
 ### [Round 28](../../council/tokenomics/sumer-4/Council_Round28_2883600-2984399_Tokenomics_Report.md)
 
 - **Date:** `10/26/2021 - 11/2/2021`
-- **Budget:** `$525`
-- **Spent:** `7 M / 20.3 M (@25.8 $/M)`
-- **Balance:** `49 M`
+- **Budget:** `$600`
+- **Spent:** `7 M / 23.26 M (@25.8 $/M)`
+- **Balance:** `105.42 M ($2719.84)`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
@@ -615,9 +651,9 @@
 ### [Round 29](../../council/tokenomics/sumer-4/Council_Round29_2984400-3085199_Tokenomics_Report.md)
 
 - **Date:** `11/2/2021 - 11/9/2021`
-- **Budget:** `$525`
-- **Spent:** `24.1 M / 22.8 M (@23 $/M)`
-- **Balance:** `47.7 M`
+- **Budget:** `$600`
+- **Spent:** `24.1 M / 26.09 M (@23 $/M)`
+- **Balance:** `107.41 M ($2470.43)`
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
