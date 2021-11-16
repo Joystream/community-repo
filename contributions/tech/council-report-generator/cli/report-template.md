@@ -32,8 +32,8 @@ The Council Round number is taken from the chain, the KPI rounds have an offset 
 * End minted: {endMinted}
 * Total minted during council round: {totalNewMinted} tokens (+{percNewMinted}% from start)
 
-* Budget proposal link: https://testnet.joystream.org/#/proposals/254
-* Budget forum link: https://testnet.joystream.org/#/forum/threads/488
+* Budget proposal link: https://testnet.joystream.org/#/proposals/802
+* Budget forum link: https://testnet.joystream.org/#/forum/threads/717
 
 (Note: The council budget is now based on the rewards for roles, council payments and validator payments. Jsgenesis decides how much to set the mint to.)
 
@@ -115,6 +115,9 @@ Council obligations are payments or items that carry through council sessions. T
 - Bounties are shown on the forum Bounties section: https://testnet.joystream.org/#/forum/categories/10
 
 ## 5 - Report changelog
+- [October, November 2021](https://github.com/Joystream/community-repo/pull/428)
+    - proposals refactor, show amount for spending proposals
+
 - 04.11.2020
     - added working group review section
 
@@ -124,4 +127,4 @@ Council obligations are payments or items that carry through council sessions. T
 
 - 14.09.2020
     - removed member addresses and replaced with member IDs since they take less space
-    - added realized and unrealized spending\
+    - added realized and unrealized spending
