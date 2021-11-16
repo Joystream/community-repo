@@ -44,8 +44,7 @@ export async function generateReportData(
   for (const member of members) {
     const { username, memberId, votesInProposals, ownStake, backersStake } =
       member;
-    councilTable += `| @${username} | ${memberId} | ${votesInProposals} | {
-      ownStake } | ${backersStake} |\n`;
+    councilTable += `| @${username} | ${memberId} | ${votesInProposals} | ${ownStake} | ${backersStake} |\n`;
   }
   councilTable += `| | | Subtotal: | ${membersOwnStake} | ${backersTotalStake} |\n`;
   const totalStake = membersOwnStake + backersTotalStake;
