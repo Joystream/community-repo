@@ -1,4 +1,217 @@
-{
+{    "closedBounties":
+  [
+    {
+      "id": 1,
+      "title": "Update Telegram Bot",
+      "openedDate": "2020-09-23",
+      "description": "As the old bot is not compatible with the new joystream-types, it needs to updated as soon as possible!",
+      "links": ["https://testnet.joystream.org/#/forum/threads/118","https://github.com/Joystream/community-repo/issues/23"],
+      "reward": 300,
+      "tags": ["Coding"],
+      "format": "Reserved",
+      "closedDate": "2020-11-01",
+      "status": "Closed ($300)"
+    },
+    {
+      "id": 2,
+      "title": "Testing of 'polkadot-js'",
+      "openedDate": "2020-09-23",
+      "description": "After the upgrade, we have enabled the polkadot-js extension as part of Pioneer, this bounty is for testing the extension.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/129","https://github.com/Joystream/community-repo/issues/32"],
+      "reward": 200,
+      "tags": ["Testing"],
+      "format": "Reserved",
+      "closedDate": "2021-01-05",
+      "status": "Closed ($200)"
+    },  
+    {
+      "id": 3,
+      "title": "Improve Telegram Bot(s)",
+      "openedDate": "2020-11-08",
+      "description": "After the upgrade, we have enabled the polkadot-js extension as part of Pioneer, this bounty is for testing the extension.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/130","https://github.com/Joystream/community-repo/issues/41"],
+      "reward": 225,
+      "tags": ["Coding"],
+      "format": "Reserved",
+      "closedDate": "2020-12-05",
+      "status": "Closed ($25)"
+    }, 
+    {
+      "id": 4,
+      "title": "Improved Telegram Bot",
+      "openedDate": "2020-12-05",
+      "description": "As the bot still has some issues (due to bugs in the initial bot), we want to both fix these, and expand on the functionality.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/158","https://github.com/Joystream/community-repo/issues/51"],
+      "reward": 825,
+      "tags": ["Coding"],
+      "format": "Reserved",
+      "closedDate": "2021-03-04",
+      "status": "Completed"
+    },
+    {
+      "id": 5,
+      "title": "JS Telegram Sticker pack",
+      "openedDate": "2020-12-05",
+      "description": "Telegram allows for custom sticker packs to be made. These can spice up the conversation a little, and allows the Joystream Community to let their creativity and design show!",
+      "links": ["https://testnet.joystream.org/#/forum/threads/157","https://testnet.joystream.org/#/forum/threads/169","https://github.com/Joystream/community-repo/issues/52"],
+      "reward": 400,
+      "tags": ["Creative", "Stickers"],
+      "format": "Competition",
+      "closedDate": "2021-03-04",
+      "status": "Closed ($300)"
+    },
+    {
+      "id": 6,
+      "title": "Increase Validator Research",
+      "openedDate": "2021-01-17",
+      "description": "Research the costs and parameter changes associated with increasing the Validator count substantially.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/186","https://github.com/Joystream/community-repo/issues/71"],
+      "reward": 200,
+      "tags": ["Research"],
+      "format": "Reserved",
+      "closedDate": "2021-02-13",
+      "status": "Closed ($200)"
+    },
+    {
+      "id": 7,
+      "title": "Joystream Player Loading",
+      "description": "The current implementation of the Joystream Player takes a while to load. The scope of this bounty is to look into what can be done to reduce this.",
+      "openedDate": "2021-02-15",
+      "links": ["https://testnet.joystream.org/#/forum/threads/214","https://github.com/Joystream/community-repo/issues/85"],
+      "reward": 300,
+      "tags": ["Coding","Research"],
+      "format": "Closed",
+      "closedDate": "2021-03-12",
+      "status": "Closed (Withdrawn - No interest)"
+    },
+    {
+      "id": 8,
+      "title": "Ledger on Joystream",
+      "description": "Research how well the Ledger hardware wallets are supported, how to use them on the network, derivation paths and key recovery.",
+      "openedDate": "2021-02-15",
+      "links": ["https://testnet.joystream.org/#/forum/threads/215","https://github.com/Joystream/community-repo/issues/86"],
+      "reward": 450,
+      "tags": ["Research"],
+      "closedDate": "2021-05-12",
+      "status": "Completed ($450)"
+    },
+    {
+      "id": 10,
+      "title": "Upload Public Domain Content",
+      "description": "Upload videos to our testnet, and earn up to $5 per entry! We believe there are some hidden gems available out there, that are licensed permissively.",
+      "openedDate": "2021-02-15",
+      "links": ["https://testnet.joystream.org/#/forum/threads/217","https://github.com/Joystream/community-repo/issues/88"],
+      "reward": 5,
+      "tags": ["Newcomers","Content"],
+      "format": "Free for All",
+      "closedDate": "2021-08-01",
+      "status": "Closed"
+    },
+    {
+      "id": 11,
+      "title": "Design Community Repo Banner",
+      "openedDate": "2021-02-15",
+      "description": "Most of the active repos in the Joystream organization have branded banners in their README.md. The Community Repo also needs one!",
+      "links": ["https://testnet.joystream.org/#/forum/threads/218","https://github.com/Joystream/community-repo/issues/89"],
+      "reward": 300,
+      "notes": "Design a banner for the Community Repo",
+      "tags": ["Design"],
+      "closedDate": "2021-05-13",
+      "status": "Closed ($300)"
+    },
+    {
+      "id": 12,
+      "title": "Deploy Reliable Endpoints",
+      "openedDate": "2021-03-12",
+      "description": "Our endpoint has come under a lot of stress with the large inflow of new users. This bounty covers creating new endpoints.",
+      "links": ["https://testnet.joystream.org/#/forum/threads/324","https://github.com/Joystream/community-repo/issues/101"],
+      "reward": 200,
+      "notes": "Deploy a public endpoint with high capacity",
+      "tags": ["Hosting"],
+      "format": "Closed",
+      "closedDate": "2021-03-19",
+      "status": "Completed - monthly payments"
+    },
+    {
+      "id": 13,
+      "title": "Research Discord Bots",
+      "openedDate": "2021-03-12",
+      "description": "Research, document and create a simple bot for the new Discord server",
+      "links": ["https://testnet.joystream.org/#/forum/threads/326","https://github.com/Joystream/community-repo/issues/123"],
+      "reward": 200,
+      "notes": "Research and document bots for the new Discord server",
+      "tags": ["Coding","Research"],
+      "format": "Closed",
+      "closedDate": "2021-05-12",
+      "status": "Closed ($450)"
+    },
+    {
+      "id": 14,
+      "title": "Polkadot/Substrate Videos",
+      "openedDate": "2021-04-19",
+      "description": "Find Channels, Podcasts and Videos covering Polkadot and Substrate",
+      "links": ["https://testnet.joystream.org/#/forum/threads/358","https://github.com/Joystream/community-repo/issues/142"],
+      "reward": 50,
+      "notes": "Find Polkadot and Substrate content",
+      "tags": ["Content","Research"],
+      "format": "Open",
+      "closedDate": "2021-06-11",
+      "status": "Closed"
+    },
+    {
+      "id": 15,
+      "title": "Transcribe Community Updates",
+      "openedDate": "2021-04-20",
+      "description": "Create summaries and/or transcripts of the Joystream Community Update videos",
+      "links": ["https://testnet.joystream.org/#/forum/threads/363","https://github.com/Joystream/community-repo/issues/143"],
+      "reward": 450,
+      "notes": "Summarize and transcribe video content",
+      "tags": ["Content","Research"],
+      "format": "Mixed",
+      "closedDate": "2021-06-15",
+      "status": "Closed ($375)"
+    },
+   {
+      "id": 17,
+      "title": "Discord Video Bot",
+      "openedDate": "2021-03-12",
+      "description": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
+      "links": ["https://testnet.joystream.org/#/forum/threads/362","https://github.com/Joystream/community-repo/issues/151"],
+      "reward": 150,
+      "notes": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
+      "tags": ["Coding","Research"],
+      "format": "Closed",
+      "closedDate": "2021-11-01",
+      "status": "Completed"
+    },
+    {
+      "id": 19,
+      "title": "Validator Logging Tool",
+      "openedDate": "2021-04-20",
+      "description": "Create a tool to report validator activity",
+      "links": ["https://testnet.joystream.org/#/forum/threads/381","https://github.com/Joystream/community-repo/issues/161"],
+      "reward": 400,
+      "notes": "Create a tool to report validator activity",
+      "tags": ["Coding","Research"],
+      "format": "Closed",
+      "closedDate": "2021-08-17",
+      "status": "Completed"
+    },
+    {
+      "id": 20,
+      "title": "Github Bounty Guide",
+      "openedDate": "2021-07-04",
+      "description": "Create a short video guide explaining how to use GitHub for submitting your bounty work.",
+      "managers": ["@isonar"],
+      "links": ["https://testnet.joystream.org/#/forum/threads/492","https://github.com/Joystream/community-repo/issues/220"],
+      "reward": 350,
+      "notes": "Create GitHub video guides",
+      "tags": ["Content Creation","Coding"],
+      "format": "Free for all",
+      "closedDate": "2021-09-14",
+      "status": "Closed"
+    }
+  ],
   "activeBounties":
   [
     {
@@ -11,7 +224,20 @@
       "reward": 300,
       "tags": ["Newcomers","Research"],
       "format": "Free for All",
-      "status": "Announced"
+      "status": "Weekly Bounty"
+    },
+    {
+      "id": 16,
+      "title": "Translating Update Videos",
+      "openedDate": "2021-04-10",
+      "description": "Translate Community Updates videos to non-English languages.",
+      "managers": ["@mmsaww"],
+      "links": ["https://testnet.joystream.org/#/forum/threads/510","https://github.com/Joystream/community-repo/issues/144"],
+      "reward": 400,
+      "notes": "Translate Joystream Community Updates videos",
+      "tags": ["Content","Documentation"],
+      "format": "NA",
+      "status": "Open"
     },
     {
       "id": 18,
@@ -36,20 +262,7 @@
       "reward": 500,
       "notes": "Translate the Joystream website",
       "tags": ["Research","Coding"],
-      "format": "Closed",
-      "status": "Open"
-    },
-    {
-      "id": 16,
-      "title": "Translating Update Videos",
-      "openedDate": "2021-04-10",
-      "description": "Translate Community Updates videos to non-English languages.",
-      "managers": ["@mmsaww"],
-      "links": ["https://testnet.joystream.org/#/forum/threads/510","https://github.com/Joystream/community-repo/issues/144"],
-      "reward": 400,
-      "notes": "Translate Joystream Community Updates videos",
-      "tags": ["Content","Documentation"],
-      "format": "NA",
+      "format": "Open",
       "status": "Open"
     },
     {
@@ -62,7 +275,7 @@
       "reward": 250,
       "notes": "Create a UI for the council's KPIs.",
       "tags": ["Research","Coding"],
-      "format": "Closed",
+      "format": "Open",
       "status": "Open"
     },
     {
@@ -89,6 +302,19 @@
       "notes": "Upload public domain videos",
       "tags": ["Documentation", "Research"],
       "format": "Open",
+      "status": "Open - Weekly Bounty"
+    },
+    {
+      "id": 25,
+      "title": "Superstar Blogger Competition",
+      "openedDate": "2021-10-01",
+      "description": "Upload original videos",
+      "managers": ["@Millionchic1", "mmm"],
+      "links": ["https://discord.com/channels/811216481340751934/886135291847520276","https://github.com/Joystream/community-repo/issues/311"],
+      "reward": 400,
+      "notes": "Upload original videos",
+      "tags": ["Creative", "Videos"],
+      "format": "Contest",
       "status": "Open"
     },
     {
@@ -115,234 +341,7 @@
       "notes": "Musical Theme",
       "tags": ["Creative", "Music"],
       "format": "Open",
-      "status": "Announced"
-    }
-  ],
-  "closedBounties":
-  [
-    {
-      "id": 11,
-      "title": "Design Community Repo Banner",
-      "openedDate": "2021-02-15",
-      "description": "Most of the active repos in the Joystream organization have branded banners in their README.md. The Community Repo also needs one!",
-      "links": ["https://testnet.joystream.org/#/forum/threads/218","https://github.com/Joystream/community-repo/issues/89"],
-      "reward": 300,
-      "notes": "Design a banner for the Community Repo",
-      "tags": ["Design"],
-      "closedDate": "2021-05-13",
-      "status": "Completed - USD 300"
-    },
-    {
-      "id": 8,
-      "title": "Ledger on Joystream",
-      "description": "Research how well the Ledger hardware wallets are supported, how to use them on the network, derivation paths and key recovery.",
-      "openedDate": "2021-02-15",
-      "links": ["https://testnet.joystream.org/#/forum/threads/215","https://github.com/Joystream/community-repo/issues/86"],
-      "reward": 450,
-      "tags": ["Research"],
-      "closedDate": "2021-05-12",
-      "status": "Completed - USD 450"
-    },
-    {
-      "id": 13,
-      "title": "Research Discord Bots",
-      "openedDate": "2021-03-12",
-      "description": "Research, document and create a simple bot for the new Discord server",
-      "links": ["https://testnet.joystream.org/#/forum/threads/326","https://github.com/Joystream/community-repo/issues/123"],
-      "reward": 200,
-      "notes": "Research and document bots for the new Discord server",
-      "tags": ["Coding","Research"],
-      "format": "Closed",
-      "closedDate": "2021-05-12",
-      "status": "Pending Grading"
-    },
-    {
-      "id": 7,
-      "title": "Joystream Player Loading",
-      "description": "The current implementation of the Joystream Player takes a while to load. The scope of this bounty is to look into what can be done to reduce this.",
-      "openedDate": "2021-02-15",
-      "links": ["https://testnet.joystream.org/#/forum/threads/214","https://github.com/Joystream/community-repo/issues/85"],
-      "reward": 300,
-      "tags": ["Coding","Research"],
-      "format": "Closed",
-      "closedDate": "2021-03-12",
-      "status": "Withdrawn - No Interest - USD 0"
-    },
-    {
-      "id": 6,
-      "title": "Increase Validator Research",
-      "openedDate": "2021-01-17",
-      "description": "Research the costs and parameter changes associated with increasing the Validator count substantially.",
-      "links": ["https://testnet.joystream.org/#/forum/threads/186","https://github.com/Joystream/community-repo/issues/71"],
-      "reward": 200,
-      "tags": ["Research"],
-      "format": "Reserved",
-      "closedDate": "2021-02-13",
-      "status": "Completed - USD 200"
-    },
-    {
-      "id": 5,
-      "title": "JS Telegram Sticker pack",
-      "openedDate": "2020-12-05",
-      "description": "Telegram allows for custom sticker packs to be made. These can spice up the conversation a little, and allows the Joystream Community to let their creativity and design show!",
-      "links": ["https://testnet.joystream.org/#/forum/threads/157","https://testnet.joystream.org/#/forum/threads/169","https://github.com/Joystream/community-repo/issues/52"],
-      "reward": 400,
-      "tags": ["Creative", "Stickers"],
-      "format": "Competition",
-      "closedDate": "2021-03-04",
-      "status": "Completed - USD 358"
-    },
-    {
-      "id": 4,
-      "title": "Improved Telegram Bot",
-      "openedDate": "2020-12-05",
-      "description": "As the bot still has some issues (due to bugs in the initial bot), we want to both fix these, and expand on the functionality.",
-      "links": ["https://testnet.joystream.org/#/forum/threads/158","https://github.com/Joystream/community-repo/issues/51"],
-      "reward": 825,
-      "tags": ["Coding"],
-      "format": "Reserved",
-      "closedDate": "2021-03-04",
-      "status": "Closed"
-    },
-    {
-      "id": 3,
-      "title": "Improve Telegram Bot(s)",
-      "openedDate": "2020-11-08",
-      "description": "After the upgrade, we have enabled the polkadot-js extension as part of Pioneer, this bounty is for testing the extension.",
-      "links": ["https://testnet.joystream.org/#/forum/threads/130","https://github.com/Joystream/community-repo/issues/41"],
-      "reward": 225,
-      "tags": ["Coding"],
-      "format": "Reserved",
-      "closedDate": "2020-12-05",
-      "status": "Closed - USD 25"
-    },
-    {
-      "id": 2,
-      "title": "Testing of 'polkadot-js'",
-      "openedDate": "2020-09-23",
-      "description": "After the upgrade, we have enabled the polkadot-js extension as part of Pioneer, this bounty is for testing the extension.",
-      "links": ["https://testnet.joystream.org/#/forum/threads/129","https://github.com/Joystream/community-repo/issues/32"],
-      "reward": 200,
-      "tags": ["Testing"],
-      "format": "Reserved",
-      "closedDate": "2021-01-05",
-      "status": "Completed - USD 200"
-    },
-    {
-      "id": 1,
-      "title": "Update Telegram Bot",
-      "openedDate": "2020-09-23",
-      "description": "As the old bot is not compatible with the new joystream-types, it needs to updated as soon as possible!",
-      "links": ["https://testnet.joystream.org/#/forum/threads/118","https://github.com/Joystream/community-repo/issues/23"],
-      "reward": 300,
-      "tags": ["Coding"],
-      "format": "Reserved",
-      "closedDate": "2020-11-01",
-      "status": "Completed - USD 300"
-    },
-    {
-      "id": 17,
-      "title": "Discord Video Bot",
-      "openedDate": "2021-03-12",
-      "description": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
-      "links": ["https://testnet.joystream.org/#/forum/threads/362","https://github.com/Joystream/community-repo/issues/151"],
-      "reward": 150,
-      "notes": "Code a bot that mirrors new uploads to Joystream to a Discord channel",
-      "tags": ["Coding","Research"],
-      "format": "Closed",
-      "closedDate": "2021-11-01",
-      "status": "Completed - USD 150"
-    },
-    {
-      "id": 12,
-      "title": "Deploy Reliable Endpoints",
-      "openedDate": "2021-03-12",
-      "description": "Our endpoint has come under a lot of stress with the large inflow of new users. This bounty covers creating new endpoints.",
-      "links": ["https://testnet.joystream.org/#/forum/threads/324","https://github.com/Joystream/community-repo/issues/101"],
-      "reward": 200,
-      "notes": "Deploy a public endpoint with high capacity",
-      "tags": ["Hosting"],
-      "format": "Closed",
-      "closedDate": "2021-03-19",
-      "status": "Completed - monthly payments"
-    },
-    {
-      "id": 14,
-      "title": "Polkadot/Substrate Videos",
-      "openedDate": "2021-04-19",
-      "description": "Find Channels, Podcasts and Videos covering Polkadot and Substrate",
-      "links": ["https://testnet.joystream.org/#/forum/threads/358","https://github.com/Joystream/community-repo/issues/142"],
-      "reward": 50,
-      "notes": "Find Polkadot and Substrate content",
-      "tags": ["Content","Research"],
-      "format": "Open",
-      "closedDate": "2021-06-11",
-      "status": "Closed - pending payouts"
-    },
-    {
-      "id": 15,
-      "title": "Transcribe Community Updates",
-      "openedDate": "2021-04-20",
-      "description": "Create summaries and/or transcripts of the Joystream Community Update videos",
-      "links": ["https://testnet.joystream.org/#/forum/threads/363","https://github.com/Joystream/community-repo/issues/143"],
-      "reward": 450,
-      "notes": "Summarize and transcribe video content",
-      "tags": ["Content","Research"],
-      "format": "Mixed",
-      "closedDate": "2021-06-15",
-      "status": "Completed - USD 375"
-    },
-    {
-      "id": 10,
-      "title": "Upload Public Domain Content",
-      "description": "Upload videos to our testnet, and earn up to $5 per entry! We believe there are some hidden gems available out there, that are licensed permissively.",
-      "openedDate": "2021-02-15",
-      "links": ["https://testnet.joystream.org/#/forum/threads/217","https://github.com/Joystream/community-repo/issues/88"],
-      "reward": 5,
-      "tags": ["Newcomers","Content"],
-      "format": "Free for All",
-      "closedDate": "2021-08-01",
-      "status": "Closed"
-    },
-    {
-      "id": 19,
-      "title": "Validator Logging Tool",
-      "openedDate": "2021-04-20",
-      "description": "Create a tool to report validator activity",
-      "links": ["https://testnet.joystream.org/#/forum/threads/381","https://github.com/Joystream/community-repo/issues/161"],
-      "reward": 400,
-      "notes": "Create a tool to report validator activity",
-      "tags": ["Coding","Research"],
-      "format": "Closed",
-      "closedDate": "2021-08-17",
-      "status": "Completed - USD 400"
-    },
-    {
-      "id": 20,
-      "title": "Github Bounty Guide",
-      "openedDate": "2021-07-04",
-      "description": "Create a short video guide explaining how to use GitHub for submitting your bounty work.",
-      "managers": ["@isonar"],
-      "links": ["https://testnet.joystream.org/#/forum/threads/492","https://github.com/Joystream/community-repo/issues/220"],
-      "reward": 350,
-      "notes": "Create GitHub video guides",
-      "tags": ["Content Creation","Coding"],
-      "format": "Free for all",
-      "closedDate": "2021-09-14",
-      "status": "Completed - 800 USD"
-    },
-    {
-      "id": 25,
-      "title": "Superstar Blogger Competition",
-      "openedDate": "2021-10-01",
-      "description": "Upload original videos",
-      "managers": ["@Millionchic1", "mmm"],
-      "links": ["https://discord.com/channels/811216481340751934/886135291847520276","https://github.com/Joystream/community-repo/issues/311"],
-      "reward": 400,
-      "notes": "Upload original videos",
-      "tags": ["Creative", "Videos"],
-      "format": "Contest",
-      "status": "Closed"
-    }
+      "status": "Open"
+   }
   ]
 }
