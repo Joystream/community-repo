@@ -304,7 +304,7 @@
       "links": ["https://discord.com/channels/811216481340751934/886135291847520276","https://github.com/Joystream/community-repo/issues/311"],
       "reward": 400,
       "notes": "Upload original videos",
-      "tags": ["Creative", "Videos"],
+      "tags": ["Content", "Videos"],
       "format": "Contest",
       "status": "Open"
     },
@@ -316,7 +316,7 @@
       "links": ["https://testnet.joystream.org/#/forum/threads/594","https://github.com/Joystream/community-repo/issues/342"],
       "reward": 500,
       "notes": "Upload original videos",
-      "tags": ["Creative", "Videos"],
+      "tags": ["Content", "Videos"],
       "format": "Open",
       "status": "Open"
     },
@@ -328,7 +328,7 @@
       "links": ["https://testnet.joystream.org/#/proposals/606","https://github.com/Joystream/community-repo/issues/384"],
       "reward": 400,
       "notes": "Musical Theme",
-      "tags": ["Creative", "Music"],
+      "tags": ["Content", "Music"],
       "format": "Open",
       "status": "Open"
    }
