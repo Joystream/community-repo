@@ -33,7 +33,7 @@ Bounty 18 and Bounty 24 are working properly and are being checked, bounty manag
 |-----------------------------------|
 | Total: 129                        |
 | Day: 21.5                         |
-| Hour: 1,79                        | 
+| Hour: 0,89                        | 
 |-----------------------------------|          
 | Video duration                    |    
 | Seconds: 120468                   |
