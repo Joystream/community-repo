@@ -33,6 +33,7 @@
 | [28](#round-28) |            7.0 |          365 |            25.8 |           14.15 |                  7.15 |            50.91 |     1313.48 |
 | [29](#round-29) |           24.1 |          365 |            23.0 |           15.87 |                 -8.23 |            42.68 |      981.64 |
 | [30](#round-30) |           13.1 |          365 |            24.9 |           14.66 |                  1.56 |            44.24 |     1101.58 |
+| [31](#round-31) |           56.3 |          700 |           29.35 |           23.85 |                -32.45 |            11.79 |      346.04 |
 
 ## Reports
 
@@ -721,3 +722,37 @@
 | 34 | [@andybut](https://pioneer.joystreamstats.live/#/members/andybut) | active | 28 | 4.6 | 34.2 |
 | 36 | [@chiffah](https://pioneer.joystreamstats.live/#/members/chiffah) | active | 4 | 0.3 | 1.4 |
 | 39 | [@whitebarbie](https://pioneer.joystreamstats.live/#/members/whitebarbie) | active | 14 | 0.9 | 2.8 |
+
+### [Round 31](../../council/tokenomics/sumer-4/Council_Round31_3186000-3286799_Tokenomics_Report.md)
+
+- **Date:** `11/16/2021 - 11/23/2021`
+- **Budget:** `$700`
+- **Spent:** `10.3 M / 23.85 M (@29.35 $/M)`
+ - 46 M [joystream-lib & tokenomics refactor](https://pioneer.joystreamstats.live/#/proposals/824)
+- **Balance:** `11.79 M ($346.04)`
+
+- [Budget 8](https://pioneer.joystreamstats.live/#/proposals/813) (Approved 15 Nov 2021), increase OWG budget ($100 lead salary, $600 expenses + worker salaries)
+
+| Property                | Start Block | End Block | % Change |
+|-------------------------|--------------|--------------|----------|
+| Number of Operations Workers      | 16 | 16 | 0 |
+| Total Operations Stake (workers + lead) | 1150000 | 1150000 | 0 |
+
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 0 | [@l1dev](https://pioneer.joystreamstats.live/#/members/l1dev) | active | 28 | 2.0 | 44.4 |
+| 15 | [@isonar](https://pioneer.joystreamstats.live/#/members/isonar) | active | 3 | 0.2 | 11.8 |
+| 16 | [@lkskrn](https://pioneer.joystreamstats.live/#/members/lkskrn) | active | 14 | 1.1 | 42.3 |
+| 17 | [@freakstatic](https://pioneer.joystreamstats.live/#/members/freakstatic) | active | 1 | 0.1 | 13.1 |
+| 18 | [@dapplooker](https://pioneer.joystreamstats.live/#/members/dapplooker) | active | 3 | 0.2 | 13.3 |
+| 20 | [@joystreamstats](https://pioneer.joystreamstats.live/#/members/joystreamstats) | active | 15 | 1.1 | 14.1 |
+| 22 | [@arseniy2706](https://pioneer.joystreamstats.live/#/members/arseniy2706) | active | 7 | 0.5 | 1.9 |
+| 24 | [@shtihmas](https://pioneer.joystreamstats.live/#/members/shtihmas) | active | 3 | 0.2 | 1.2 |
+| 26 | [@zazik](https://pioneer.joystreamstats.live/#/members/zazik) | active | 0 | 0.0 | 0.0 |
+| 29 | [@goldmember](https://pioneer.joystreamstats.live/#/members/goldmember) | active | 0 | 0.0 | 0.0 |
+| 31 | [@ilich](https://pioneer.joystreamstats.live/#/members/ilich) | active | 3 | 0.2 | 0.3 |
+| 32 | [@kate_fm](https://pioneer.joystreamstats.live/#/members/kate_fm) | active | 3 | 0.2 | 1.9 |
+| 33 | [@ururu](https://pioneer.joystreamstats.live/#/members/ururu) | active | 14 | 1.1 | 2.0 |
+| 34 | [@andybut](https://pioneer.joystreamstats.live/#/members/andybut) | active | 28 | 2.1 | 36.3 |
+| 36 | [@chiffah](https://pioneer.joystreamstats.live/#/members/chiffah) | active | 4 | 0.3 | 1.7 |
+| 39 | [@whitebarbie](https://pioneer.joystreamstats.live/#/members/whitebarbie) | active | 14 | 1.1 | 3.9 |
