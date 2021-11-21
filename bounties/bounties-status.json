@@ -205,7 +205,7 @@
       "links": ["https://testnet.joystream.org/#/forum/threads/492","https://github.com/Joystream/community-repo/issues/220"],
       "reward": 350,
       "notes": "Create GitHub video guides",
-      "tags": ["Content Creation","Coding"],
+      "tags": ["Content","Coding"],
       "format": "Free for all",
       "closedDate": "2021-09-14",
       "status": "Closed"
@@ -267,7 +267,7 @@
       "description": "Create a UI for the council's KPIs.",
       "links": ["https://testnet.joystream.org/#/forum/threads/510","https://github.com/Joystream/community-repo/issues/280"],
       "reward": 250,
-      "notes": "Create a UI for the council's KPIs.",
+      "notes": "Create a UI for the council's KPIs",
       "tags": ["Research","Coding"],
       "format": "Open",
       "status": "Open"
@@ -280,7 +280,7 @@
       "links": ["https://testnet.joystream.org/#/forum/threads/541","https://github.com/Joystream/community-repo/issues/289"],
       "reward": 65,
       "notes": "Runtime Update Explanation",
-      "tags": ["Documentation", "Research"],
+      "tags": ["Documentation","Research"],
       "format": "Open",
       "status": "Open"
     },
@@ -292,7 +292,7 @@
       "links": ["https://testnet.joystream.org/#/forum/threads/623","https://github.com/Joystream/community-repo/issues/295"],
       "reward": 300,
       "notes": "Upload public domain videos",
-      "tags": ["Documentation", "Research"],
+      "tags": ["Documentation","Research"],
       "format": "Open",
       "status": "Open - Weekly Bounty"
     },
