@@ -286,6 +286,102 @@ async function getCouncilMembersInfo(
   return councilRoundInfo;
 }
 
+async function getProposal(
+  api: ApiPromise,
+  range: BlockRange,
+  id: number
+): Promise<ProposalInfo | undefined> {
+  const proposal = (await api.query.proposalsEngine.proposals.at(
+    range.endBlockHash,
+    id
+  )) as ProposalOf;
+  if (proposal.createdAt?.toBigInt() < range.startBlockHeight) {
+    return;
+  }
+
+  let proposalInfo = new ProposalInfo();
+  proposalInfo.id = id;
+  proposalInfo.name = proposal.title?.toString();
+  try {
+    const proposer = (await api.query.members.membershipById(
+      proposal.proposerId
+    )) as Membership;
+    proposalInfo.creatorUsername = proposer.handle.toString();
+  } catch (e) {
+    proposalInfo.creatorUsername = ``;
+    console.error(`Failed to fetch proposer: ${e.message}`);
+  }
+
+  if (proposal.status.isFinalized) {
+    const finalizedData = proposal.status.asFinalized;
+
+    if (finalizedData.proposalStatus.isCanceled) {
+      proposalInfo.status = ProposalStatus.Cancelled;
+    } else if (finalizedData.proposalStatus.isExpired) {
+      proposalInfo.status = ProposalStatus.Expired;
+    } else if (finalizedData.proposalStatus.isRejected) {
+      proposalInfo.status = ProposalStatus.Rejected;
+    } else if (finalizedData.proposalStatus.isApproved) {
+      let approvedData = finalizedData.proposalStatus.asApproved;
+      if (approvedData.isExecuted) {
+        proposalInfo.status = ProposalStatus.Executed;
+      } else if (approvedData.isPendingExecution) {
+        proposalInfo.status = ProposalStatus.PendingExecution;
+      } else if (approvedData.isExecutionFailed) {
+        proposalInfo.status = ProposalStatus.ExecutionFailed;
+        let executionFailedData = approvedData.asExecutionFailed;
+        if (executionFailedData.error.toString() == "NotEnoughCapacity") {
+          proposalInfo.failedReason = ProposalFailedReason.NotEnoughCapacity;
+        } else {
+          proposalInfo.failedReason = ProposalFailedReason.ExecutionFailed;
+        }
+      }
+    } else if (finalizedData.proposalStatus.isSlashed) {
+      proposalInfo.status = ProposalStatus.Slashed;
+    }
+
+    proposalInfo.blocksToFinalized =
+      Number(proposal.status.asFinalized.finalizedAt.toBigInt()) -
+      Number(proposal.createdAt.toBigInt());
+
+    const proposalByVoters =
+      await api.query.proposalsEngine.voteExistsByProposalByVoter.entries(id);
+
+    for (let proposalByVoter of proposalByVoters) {
+      let key = proposalByVoter[0] as StorageKey;
+      let memberId = key.args[1] as MemberId;
+      let member = (await api.query.members.membershipById(
+        memberId
+      )) as Membership;
+      proposalInfo.votersUsernames.push(member.handle.toString());
+    }
+  }
+
+  let proposalDetails =
+    (await api.query.proposalsCodex.proposalDetailsByProposalId(
+      id
+    )) as ProposalDetailsOf;
+  let typeString = proposalDetails.type as keyof typeof ProposalType;
+  proposalInfo.type = ProposalType[typeString];
+
+  if (proposalInfo.type == ProposalType.Spending) {
+    let spendingData = proposalDetails.asSpending;
+    let accountId = spendingData[1];
+    proposalInfo.paymentAmount = Number(spendingData[0].toBigInt());
+    let paymentDestinationMemberId =
+      await api.query.members.memberIdsByControllerAccountId(accountId);
+    if (!paymentDestinationMemberId.isEmpty) {
+      let paymentDestinationMembership =
+        (await api.query.members.membershipById(
+          paymentDestinationMemberId
+        )) as Membership;
+      proposalInfo.paymentDestinationMemberUsername =
+        paymentDestinationMembership.handle.toString();
+    }
+  }
+  return proposalInfo;
+}
+
 async function getProposals(api: ApiPromise, range: BlockRange) {
   let startProposalCount = Number(
     (
@@ -304,91 +400,12 @@ async function getProposals(api: ApiPromise, range: BlockRange) {
 
   let proposals = new Array<ProposalInfo>();
   for (let i = startProposalCount - 1; i <= endProposalCount; i++) {
-    let proposal = (await api.query.proposalsEngine.proposals.at(
-      range.endBlockHash,
-      i
-    )) as ProposalOf;
-    if (proposal.createdAt.toBigInt() < range.startBlockHeight) {
-      continue;
+    try {
+      const proposal = await getProposal(api, range, i);
+      if (proposal) proposals.push(proposal);
+    } catch (e) {
+      console.error(`Failed to fetch proposal ${i}: ${e.message}`);
     }
-
-    let proposer = (await api.query.members.membershipById(
-      proposal.proposerId
-    )) as Membership;
-    let proposalInfo = new ProposalInfo();
-    proposalInfo.id = i;
-    proposalInfo.name = proposal.title.toString();
-    proposalInfo.creatorUsername = proposer.handle.toString();
-
-    if (proposal.status.isFinalized) {
-      const finalizedData = proposal.status.asFinalized;
-
-      if (finalizedData.proposalStatus.isCanceled) {
-        proposalInfo.status = ProposalStatus.Cancelled;
-      } else if (finalizedData.proposalStatus.isExpired) {
-        proposalInfo.status = ProposalStatus.Expired;
-      } else if (finalizedData.proposalStatus.isRejected) {
-        proposalInfo.status = ProposalStatus.Rejected;
-      } else if (finalizedData.proposalStatus.isApproved) {
-        let approvedData = finalizedData.proposalStatus.asApproved;
-        if (approvedData.isExecuted) {
-          proposalInfo.status = ProposalStatus.Executed;
-        } else if (approvedData.isPendingExecution) {
-          proposalInfo.status = ProposalStatus.PendingExecution;
-        } else if (approvedData.isExecutionFailed) {
-          proposalInfo.status = ProposalStatus.ExecutionFailed;
-          let executionFailedData = approvedData.asExecutionFailed;
-          if (executionFailedData.error.toString() == "NotEnoughCapacity") {
-            proposalInfo.failedReason = ProposalFailedReason.NotEnoughCapacity;
-          } else {
-            proposalInfo.failedReason = ProposalFailedReason.ExecutionFailed;
-          }
-        }
-      } else if (finalizedData.proposalStatus.isSlashed) {
-        proposalInfo.status = ProposalStatus.Slashed;
-      }
-
-      proposalInfo.blocksToFinalized =
-        Number(proposal.status.asFinalized.finalizedAt.toBigInt()) -
-        Number(proposal.createdAt.toBigInt());
-
-      const proposalByVoters =
-        await api.query.proposalsEngine.voteExistsByProposalByVoter.entries(i);
-
-      for (let proposalByVoter of proposalByVoters) {
-        let key = proposalByVoter[0] as StorageKey;
-        let memberId = key.args[1] as MemberId;
-        let member = (await api.query.members.membershipById(
-          memberId
-        )) as Membership;
-        proposalInfo.votersUsernames.push(member.handle.toString());
-      }
-    }
-
-    let proposalDetails =
-      (await api.query.proposalsCodex.proposalDetailsByProposalId(
-        i
-      )) as ProposalDetailsOf;
-    let typeString = proposalDetails.type as keyof typeof ProposalType;
-    proposalInfo.type = ProposalType[typeString];
-
-    if (proposalInfo.type == ProposalType.Spending) {
-      let spendingData = proposalDetails.asSpending;
-      let accountId = spendingData[1];
-      proposalInfo.paymentAmount = Number(spendingData[0].toBigInt());
-      let paymentDestinationMemberId =
-        await api.query.members.memberIdsByControllerAccountId(accountId);
-      if (!paymentDestinationMemberId.isEmpty) {
-        let paymentDestinationMembership =
-          (await api.query.members.membershipById(
-            paymentDestinationMemberId
-          )) as Membership;
-        proposalInfo.paymentDestinationMemberUsername =
-          paymentDestinationMembership.handle.toString();
-      }
-    }
-
-    proposals.push(proposalInfo);
   }
 
   return proposals;
