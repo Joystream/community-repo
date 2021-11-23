@@ -386,16 +386,10 @@ export const heartbeat = async (
   const pending = proposals.active.length;
   const finalized = proposals.executing.length;
   const p = (n: number) => (n > 1 ? "proposals" : "proposal");
-  let proposalString: string[] = pending
-    ? [
-        `<a href="${domain}/#/proposals">${pending} pending ${p(pending)}</a> `,
-        `${pending} active ${p(pending)} ${domain}/#/proposals`,
-      ]
-    : ["", ""];
-  if (finalized)
-    proposalString = proposalString.map(
-      (s) => (s += `${finalized} ${p(finalized)} in grace period.`)
-    );
+  let proposalString: string[] = [
+    `<a href="${domain}/#/proposals">Active proposals</a> `,
+    `Active proposals: ${domain}/#/proposals`,
+  ];
 
   const msg = `  ${blocks.length} blocks produced in ${timePassed}
   Blocktime: ${blocktime.toFixed(3)}s
