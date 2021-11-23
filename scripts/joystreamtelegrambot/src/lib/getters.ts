@@ -66,11 +66,23 @@ export const activeProposals = async (
   api: Api,
   last: number
 ): Promise<number[]> => {
-  const count = Number(await api.query.proposalsEngine.activeProposalCount());
+  let count = 0;
+  try {
+    console.log(`fetching active proposal count`);
+    count = Number(await api.query.proposalsEngine.activeProposalCount());
+  } catch (e) {
+    console.error(`failed to fetch active proposal count: ${e.message}`);
+  }
   let ids: number[] = [];
   for (let id = last; ids.length < count; id--) {
-    const proposal = await proposalDetail(api, id);
-    if (proposal.result === "Pending") ids.push(id);
+    if ([837, 839].includes(id)) continue;
+    try {
+      console.log(`fetching proposal ${id}`);
+      const proposal = await proposalDetail(api, id);
+      if (proposal && proposal.result === "Pending") ids.push(id);
+    } catch (e) {
+      console.error(`Failed to fetch proposal ${id}: ${e.message}`);
+    }
   }
   return ids;
 };
@@ -85,9 +97,17 @@ const getProposalType = async (api: Api, id: number): Promise<string> => {
 export const proposalDetail = async (
   api: Api,
   id: number
-): Promise<ProposalDetail> => {
-  const proposal: Proposal = await api.query.proposalsEngine.proposals(id);
+): Promise<ProposalDetail | undefined> => {
+  let proposal: Proposal;
+  try {
+    proposal = await api.query.proposalsEngine.proposals(id);
+    if (!proposal) return;
+  } catch (e) {
+    console.log(`Failed to fetch proposal detail ${id}`);
+    return;
+  }
   const status: { [key: string]: any } = proposal.status;
+  if (!status) return;
   const stage: string = status.isActive ? "Active" : "Finalized";
   const { finalizedAt, proposalStatus } = status[`as${stage}`];
   const result: string = proposalStatus

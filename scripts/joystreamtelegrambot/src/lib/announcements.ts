@@ -295,15 +295,16 @@ export const posts = async (
 };
 
 export const proposalCreated = (
-  proposal: ProposalDetail,
+  proposal: ProposalDetail | undefined,
   sendMessage: Send,
   channel: any
 ): void => {
+  if (!proposal) return;
   const { id, createdAt, finalizedAt, message, parameters, result } = proposal;
   if (!createdAt) return console.warn(`proposalCreated: wrong data`, proposal);
   const votingEndsAt = createdAt + parameters.votingPeriod.toNumber();
   const endTime = moment()
-    .add(6 * (votingEndsAt - id), "second")
+    .add(6 * parameters.votingPeriod.toNumber(), "second")
     .format("DD/MM/YYYY HH:mm");
   const link = `${domain}/#/proposals/${id}`;
   const tg = `<a href="${link}">Proposal ${id}</a> <b>created</b> at block ${createdAt}.\r\n${message.tg}\r\nYou can <a href="${link}">vote</a> until block ${votingEndsAt} (${endTime} UTC).`;
@@ -312,11 +313,12 @@ export const proposalCreated = (
 };
 
 export const proposalUpdated = (
-  proposal: ProposalDetail,
+  proposal: ProposalDetail | undefined,
   blockId: number,
   sendMessage: Send,
   channel: any
 ): void => {
+  if (!proposal) return;
   const { id, finalizedAt, message, parameters, result, stage } = proposal;
   const link = `${domain}/#/proposals/${id}`;
   if (stage === "Finalized") {

@@ -40,7 +40,7 @@ let discordChannels: { [key: string]: any } = {};
 const client = new Client();
 client.login(discordToken);
 client.on("ready", async () => {
-  if (!client.user) return;
+  if (!client.user) return console.error(`Empty discord user.`);
   console.log(`Logged in to discord as ${client.user.tag}!`);
   discordChannels.council = await findDiscordChannel("council");
   discordChannels.proposals = await findDiscordChannel("proposals-bot");
@@ -71,9 +71,7 @@ const findDiscordChannel = (name: string) =>
 
 client.on("message", async (msg) => {
   const user = msg.author;
-  if (msg.content === "/status") {
-    msg.reply(`reporting to discord`);
-  }
+  if (msg.content === "/status") msg.reply(`${user}, reporting to discord.`);
 });
 
 bot?.on("message", (msg: TelegramBot.Message) => {
@@ -100,25 +98,24 @@ const sendMessage = (
   msg: { tg: string; tgParseMode: ParseMode | undefined; discord: string },
   channel: any
 ) => {
-  if (msg.tg === "") return;
-  sendDiscord(msg.discord, channel);
-  sendTelegram(msg.tg, msg.tgParseMode);
+  if (msg.discord.length) sendDiscord(msg.discord, channel);
+  if (msg.tg.length) sendTelegram(msg.tg, msg.tgParseMode);
 };
 const sendTelegram = (msg: string, tgParseMode: ParseMode | undefined) => {
-  try {
-    if (bot)
+  if (bot) {
+    try {
       bot.sendMessage(chatid, msg, { parse_mode: tgParseMode || "HTML" });
-    else console.log(msg);
-  } catch (e) {
-    console.log(`Failed to send to telegram: ${e}`);
-  }
+    } catch (e) {
+      console.log(`Failed to send to telegram: ${e}`);
+    }
+  } else console.log(msg);
 };
 const sendDiscord = (msg: string, channel: any) => {
-  if (!channel || !msg.length) return;
+  if (!channel) return;
   try {
     channel.send(msg);
   } catch (e) {
-    console.log(e);
+    console.log(`Failed to send to discord: ${e.message}`);
   }
 };
 
@@ -170,6 +167,7 @@ const main = async () => {
   }
 
   if (opts.proposals) {
+    console.log(`updating proposals`);
     proposals.last = await get.proposalCount(api);
     proposals.active = await get.activeProposals(api, proposals.last);
   }
@@ -267,7 +265,7 @@ const main = async () => {
         created.map(({ event }) =>
           get
             .proposalDetail(api, Number(event.data[1]))
-            .then((proposal: ProposalDetail) =>
+            .then((proposal: ProposalDetail | undefined) =>
               announce.proposalCreated(
                 proposal,
                 sendMessage,
@@ -293,7 +291,7 @@ const main = async () => {
           seen.push(proposalId);
           get
             .proposalDetail(api, proposalId)
-            .then((proposal: ProposalDetail) =>
+            .then((proposal: ProposalDetail | undefined) =>
               announce.proposalUpdated(
                 proposal,
                 id,
