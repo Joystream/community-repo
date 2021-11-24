@@ -12,7 +12,7 @@ The Council Round number is taken from the chain, the KPI rounds have an offset 
 * Council Term: 31
 * Start Block: #3186000
 * End Block: #3286800
-* Forum thread for round feedback: N/A
+* Forum thread for round feedback: https://pioneer.joystreamstats.live/#/forum/threads/773
 
 ### 1.3 - Council members & vote participation
 * All usernames are listed in the order given by `activeCouncil` from chain state.
@@ -298,16 +298,16 @@ Failed Proposals
 - Participants: 
 
 ### 2.4 - Select threads & events
-N/A
+
 
 ### 2.5 - Working Group Spotchecks
-- Storage Role Spot Check: N/A
-- Curator Role Spot Check: N/A
-- Operations Role Spot Check: N/A
+- Storage Role Spot Check: https://pioneer.joystreamstats.live/#/forum/threads/409
+- Curator Role Spot Check: https://pioneer.joystreamstats.live/#/forum/threads/411
+- Operations Role Spot Check: https://pioneer.joystreamstats.live/#/forum/threads/417
 
 ## 3 - Review
 ### 3.1 - Workflow, Performance, Challenged & Thinking
-* N/A
+* https://pioneer.joystreamstats.live/#/forum/threads/771
 
 ## 4 - Obligations
 Council obligations are payments or items that carry through council sessions. These are noted so that future councils can easily see what items they should be aware of. Items can be removed from here once they have been resolved or become outdated.
