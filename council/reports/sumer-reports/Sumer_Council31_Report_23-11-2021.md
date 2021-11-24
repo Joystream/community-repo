@@ -56,7 +56,7 @@ The Council Round number is taken from the chain, the KPI rounds have an offset 
 * End minted: 993087115
 * Total minted during council round: 60380715 tokens (+6.47% from start)
 
-* Budget proposal link: https://testnet.joystream.org/#/proposals/802
+* Budget proposal link: https://testnet.joystream.org/#/proposals/813
 * Budget forum link: https://testnet.joystream.org/#/forum/threads/717
 
 (Note: The council budget is now based on the rewards for roles, council payments and validator payments. Jsgenesis decides how much to set the mint to.)
