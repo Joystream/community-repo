@@ -46,9 +46,9 @@ This is a report which explains the current state of the Joystream network in nu
 
 ### 2.4 tJOY Inflation
 
-* Start Block Exchange Rate, USD/1M tJOY: 20313583208.09
+* Start Block Exchange Rate, USD/1M tJOY: 38.53
 * End Block Exchange Rate, USD/1M tJOY: 38.53
-* Inflation, %: 52720887426.14
+* Inflation, %: 0
 
 Negative value indicates deflation
 
