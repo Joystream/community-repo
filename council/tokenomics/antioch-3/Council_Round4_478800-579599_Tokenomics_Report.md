@@ -41,7 +41,7 @@ This is a report which explains the current state of the Joystream network in nu
 | Council Mint Total Minted   | 100409182  | 122782509 |22.28 |
 | Curator Mint Total Minted   | 6735808 | 11417565 | 69.51 |
 | Storage Mint Total Minted   | 3452244 | 6525811 | 89.03 |
-| Operations Mint Total Minted | 100409182 | 122782509 | 22.28 |
+| Operations Mint Total Minted | 0 | 0 | 0 |
 
 
 ### 2.4 tJOY Inflation
