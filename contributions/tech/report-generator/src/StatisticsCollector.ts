@@ -804,7 +804,7 @@ export class StatisticsCollector {
         endTermExchangeRate = lastExchangeEvent.price * 1000000;
       } else {
         startTermExchangeRate =
-          filteredDollarPoolChanges[0].valueAfter * 1000000;
+          filteredDollarPoolChanges[0].rateAfter * 1000000;
         const lastEvent =
           filteredDollarPoolChanges[filteredDollarPoolChanges.length - 1];
         endTermExchangeRate = lastEvent.rateAfter * 1000000;
