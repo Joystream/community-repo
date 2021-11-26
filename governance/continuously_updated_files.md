@@ -6,3 +6,4 @@ Some files on the community repo recieve regular minor updates and it would crea
 * `community-repo/bounties/overview/bounties-status.json` - This file is updated when new bounties are added or old bounties removed.
 * `community-repo/bounties/overview/README.md` - This file contains the table of bounties, which is updated whenever new bounties are added/approved
 * `community-repo/governance/jsg_requests.md` - This file contains a list of approved proposals that are addressed to Jsgenesis. It will be updated when proposals recieve a response.
+* `community-repo/governance/council_member_discord_usernames.md` - This file contains a list of Discord and Telegram handles of Council Members, it is now being used by a bot so updating it regularly is essential.
