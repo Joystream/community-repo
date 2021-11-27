@@ -1,15 +1,17 @@
 export interface Config {
-  repoDir: string,
-  reportsDir: string,
-  spendingCategoriesFile: string,
-  templateFile: string,
-  providerUrl: string,
-  statusUrl: string,
-  burnAddress: string,
-  cacheDir: string,
-  councilRoundOffset: number,
-  videoClassId: number,
-  channelClassId: number,
+  repoDir: string;
+  reportsDir: string;
+  spendingCategoriesFile: string;
+  councilTemplate: string;
+  tokenomicsTemplate: string;
+  providerUrl: string;
+  proposalUrl: string;
+  statusUrl: string;
+  burnAddress: string;
+  cacheDir: string;
+  councilRoundOffset: number;
+  videoClassId: number;
+  channelClassId: number;
 }
 
 export class Statistics {

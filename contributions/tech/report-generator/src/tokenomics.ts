@@ -9,7 +9,7 @@ import {
   EventRecord,
   Hash,
 } from "@polkadot/types/interfaces";
-import { Config, MintStatistics, Statistics, WorkersInfo } from "./types";
+import { Config, MintStatistics, Statistics, WorkersInfo } from "./types/tokenomics";
 import {
   CacheEvent,
   Bounty,

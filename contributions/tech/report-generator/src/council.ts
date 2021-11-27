@@ -8,7 +8,7 @@ import {
   ProposalStatus,
   ProposalType,
   ReportData,
-} from "./types";
+} from "./types/council";
 import { StorageKey, U32, u32, Vec } from "@polkadot/types";
 import { Seats } from "@joystream/types/council";
 import { MemberId, Membership } from "@joystream/types/members";
@@ -296,7 +296,7 @@ async function getProposal(
     id
   )) as ProposalOf;
   if (proposal.createdAt?.toBigInt() < range.startBlockHeight) {
-    return;
+    return null;
   }
 
   let proposalInfo = new ProposalInfo();
