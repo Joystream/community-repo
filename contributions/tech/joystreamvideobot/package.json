@@ -15,7 +15,7 @@
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
     "bn.js": "^4.11.8",
-    "axios": "^0.21.1"
+    "axios": "^0.21.2"
   },  
   "devDependencies": {
     "@polkadot/ts": "^0.1.56",
