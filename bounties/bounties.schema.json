@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://joystream.org/bounties.schema.json",
+  "title": "bountiesSchema",
+  "description": "JSON schema to describe bounties for the Joystream Community",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "activeBounties": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/activeBounty"}
+    },
+    "closedBounties": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/closedBounty"}
+    }
+  },
+  "definitions": {
+    "activeBounty": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "description",
+        "openedDate",
+        "links",
+        "reward",
+        "tags"
+      ],
+      "properties": {
+        "id": { "$ref": "#/definitions/id"},
+        "title": { "$ref": "#/definitions/title"},
+        "description": { "$ref": "#/definitions/description"},
+        "openedDate": { "$ref": "#/definitions/openedDate"},
+        "links": { "$ref": "#/definitions/links"},
+        "reward": { "$ref": "#/definitions/reward"},
+        "tags":  { "$ref": "#/definitions/tags"},
+        "status": { "$ref": "#/definitions/status"},
+        "format": { "$ref": "#/definitions/format"}
+      }
+    },
+    "closedBounty": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "description",
+        "openedDate",
+        "links",
+        "reward",
+        "tags"
+      ],
+      "properties": {
+        "id": { "$ref": "#/definitions/id"},
+        "title": { "$ref": "#/definitions/title"},
+        "description": { "$ref": "#/definitions/description"},
+        "openedDate": { "$ref": "#/definitions/openedDate"},
+        "links": { "$ref": "#/definitions/links"},
+        "reward": { "$ref": "#/definitions/reward"},
+        "tags":  { "$ref": "#/definitions/tags"},
+        "closedDate": { "$ref": "#/definitions/closedDate"},
+        "format": { "$ref": "#/definitions/format"}
+      }
+    },
+    "id": {
+      "type": "integer",
+      "uniqueItems": true,
+      "minimum": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 29
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 190
+    },
+    "openedDate": {
+      "type":"string",
+      "format": "date"
+    },
+    "links": {
+      "type":"array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/definitions/link" }
+    },
+    "reward": {
+      "type": "integer"
+    },
+    "tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/definitions/tagName" }
+    },
+    "closedDate": {
+      "type":"string",
+      "format": "date"
+    },
+    "status": {
+      "type":"string"
+    },
+    "format": {
+      "type":"string"
+    },
+    "tagName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20
+    },
+    "link": {
+      "type":"string",
+      "format": "uri"
+    }
+  }
+}

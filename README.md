@@ -1,24 +1,31 @@
-<div align="center">
-  <h1>Joystream Community Repo<h1>
-</div>
-<div align="center">
-  <h3>A repo for community reports, tools and contributions.<h3>
-</div>
+<img style="align:center" src="img/community.png" alt="Joystream Community Repository for reports, researches, tools and other community contributions." />
 
 <div align="center">
   <h4>
     <a href="/council-reports">
     Council Reports
     </a>
-    <span> | </span>
-    <a href="/tokenomics-reports">
-    Tokenomics Reports
-    </a>
-    <span> | </span>
+	  <span> | </span>
     <a href="/community-contributions">
     Community Contributions
     </a>
+	  <span> | </span>
+    <a href="/documentation">
+    Documentation
     </a>
+	  <span> | </span>
+    <a href="/submission-log">
+    Submission Log
+    </a>
+    <span> | </span>
+    <a href="/tokenomics-reports">
+    Tokenomics Reports
+  </a>
+     <span> | </span>
+    <a href="/workinggroup-reports">
+    Working group Reports
+  </a>
+   <span> | </span>
   </h4>
 </div>
 
@@ -27,6 +34,7 @@ Table of Contents
 
 <!-- TOC START min:1 max:3 link:true asterisk:false update:true -->
 - [Overview](#overview)
+  - [Community Bounties](#community-bounties)
   - [Workflow](#workflow)
     - [KPI Related Submissions](#kpi-related-submissions)
     - [Individual Submissions](#individual-submissions)
@@ -36,6 +44,7 @@ Table of Contents
     - [`council-reports`](#council-reports)
     - [`community-contributions`](#community-contributions)
     - [`tokenomics-reports`](#tokenomics-reports)
+    - [`workinggroup-reports`](#workinggroup-reports)
     - [`submission-log`](#submission-log)
 <!-- TOC END -->
 
@@ -46,6 +55,16 @@ The Joystream Community Repo is meant both as a resource for the community membe
 If a KPI requires submitting a deliverable, eg. reports or some code, it is expected that a PR is made to this repo in order to qualify.
 
 Although the community is meant to control the repo, Jsgenesis will approve and merge any pull requests for now. Note that the repo is licensed under [GPLv3](/LICENSE).
+
+## Community Bounties
+
+Community Bounties are bounties made available for the community to work on, with a reward available for completing some or all of the work for each bounty. Bounties are created by Jsgenesis and managed by the council. The bounties can be for a variety of tasks including coding, producing documentation or producing media content. Community Bounties are submitted via a proposal on the platform and may also include a Pull Request within this repo.
+
+The forum is the primary place for discussion of bounties, and you can look through the "Joystream Bounties" forum category for more details about current bounties. Each time a new bounty is added there will be a forum thread created for discussion of the bounty: https://testnet.joystream.org/#/forum/categories/10
+
+If you have questions about a bounty or want to apply for a bounty, you should primarily use the forum. but you can also ask on Telegram. If you plan to work on a bounty, you should let others know this via the forum so that multiple people do not work on the same thing.
+
+You can read more about Community Bounties on the Joystream Helpdesk repo: https://github.com/Joystream/helpdesk/tree/master/roles/builders#community-bounties
 
 ## Workflow
 
@@ -92,10 +111,14 @@ This folder can be used for creating council reports. The council reports submit
 `Council Round #n - DD/MM/YYYY - Council Report.md`
 ### `community-contributions`
 This folder can be used for community coded bots and projects and anything that doesn't fit elsewhere. Each submission should be in a unique folder within this directory.
-### `tokenomics-reports`
-This folder can be used for creating tokenomics reports, tokenomics reports are to be submitted during each `Council Round`. The tokenomics reports submitted should be formatted in the following way:
-`Council Round #n - DD/MM/YYYY - Tokenomics Report.md`
+### `documentation`
+This folder can be used for documentation.
 ### `submission-log`
 This folder can be used for maintaining a log of submissions. If the testnet is started from fresh, a new file should be made.
 Each entry in the log should include the Joystream username of the submission, a link to the proposal, a link to the PR and the amount of tokens awarded to the user (if applicable).
 `#1 - Rome Testnet - Community Repo Submission Log.md`
+### `tokenomics-reports`
+This folder can be used for creating tokenomics reports, tokenomics reports are to be submitted during each `Council Round`. The tokenomics reports submitted should be formatted in the following way:
+`Council Round #n - DD/MM/YYYY - Tokenomics Report.md`
+### `workinggroup-reports`
+This folder can be used for creating reports specific to working groups like the storage or curator working groups.

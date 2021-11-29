@@ -1,0 +1,317 @@
+﻿1
+00:00:00,719 --> 00:00:04,960
+All right. So, thank you for joining me on this part four on Hydra v3. 
+
+2
+00:00:04,960 --> 00:00:18,240
+Now this is largely just going to be about what Hydra is but we are working towards v3 which is a major milestone for us in terms of the functionality that's needed,
+
+3
+00:00:18,240 --> 00:00:28,960
+and we really think that with this release it's really becoming possible for people to build very powerful applications,
+
+4
+00:00:28,960 --> 00:00:34,800
+front-end applications for substrate chains using Hydra, so we're extremely excited about it.
+
+5
+00:00:34,800 --> 00:00:42,550
+As I’ll get to, you know, it's actually a pretty astounding achievement to be able to build and manage this on top of everything else we're doing
+
+6
+00:00:42,559 --> 00:00:50,710
+because you will find many other projects that are very large teams entirely devoted to building something like Hydra,
+
+7
+00:00:50,719 --> 00:00:55,360
+so it's something we're really proud of, and we want to assist other people in adopting as well.
+
+8
+00:00:55,360 --> 00:01:04,550
+So, Hydra. What is the, I guess, the best way to understand it is just in terms of what problem is it solving. 
+
+9
+00:01:04,559 --> 00:01:18,470
+Imagine a hypothetical blogging blockchain which is sort of a substrate chain which has the single purpose of sort of implementing some kind of a social blogging platform,
+
+10
+00:01:18,479 --> 00:01:33,920
+and, in fact, a one well-known substrate project called Subsocial which is covered under my little video in the top bottom right corner actually has implemented Hydra
+
+11
+00:01:33,920 --> 00:01:39,520
+so it's not entirely hypothetical, but just for the sake of an argument imagine this kind of a blockchain.
+
+12
+00:01:39,520 --> 00:01:47,360
+So, you have users submitting extrinsics or transactions where they make threads and posts, this sort of stuff.
+
+13
+00:01:47,360 --> 00:01:50,000
+So, that's pretty, you know, simple.
+
+14
+00:01:50,000 --> 00:01:59,110
+And then you can imagine building some sort of an application that's supposed to display something about this blogging infrastructure
+
+15
+00:01:59,119 --> 00:02:06,560
+like allowing people to post stuff, allowing people to read what's happening across different blogs and so on. 
+
+16
+00:02:06,560 --> 00:02:13,520
+So, the naive way you would do it and the way most apps for substrate have been built is that you just build some front-end app, 
+
+17
+00:02:13,520 --> 00:02:26,310
+you hook it up to your substrate full node, and it queries it in order to ask some simple questions about what the structure of the blog is and who's doing what and so on.
+
+18
+00:02:26,319 --> 00:02:36,950
+The problem that you'll pretty quickly run into is that there are a bunch of very simple queries that are needed in order to render the sort of user experience
+
+19
+00:02:36,959 --> 00:02:43,120
+that people are used to, certainly in Web 2.0 world that just are not possible if you ask a full node directly.
+
+20
+00:02:43,120 --> 00:02:56,230
+If you ask for any of these examples and really any number of other examples you could think of as they are totally reasonable, the full node won't have a pre-prepared 
+
+21
+00:02:56,239 --> 00:03:02,640
+index over its history and state which would allow you to easily query and ask for those.
+
+22
+00:03:02,640 --> 00:03:14,480
+The thing that you see people doing is either you have like a front-end app which takes a very long time to sync up because it downloads everything
+
+23
+00:03:14,480 --> 00:03:24,720
+or a large chunk of either what's in the state or history in order to do a bunch of processing on the client side in order to show the right thing for the user.
+
+24
+00:03:24,720 --> 00:03:29,200
+That's slow, complicated, in general just doesn't really scale.
+
+25
+00:03:29,200 --> 00:03:38,560
+This is really the problem that you'll run into writing really any blockchain application, you will, if you're going to make something that's, 
+
+26
+00:03:38,560 --> 00:03:43,280
+I would say, has a non-trivial user experience, you're going to have to somehow solve this problem.  
+
+27
+00:03:43,280 --> 00:03:52,790
+And specifically for substrate chains, Hydra is the framework approach we've taken to solve this.
+
+28
+00:03:52,799 --> 00:03:58,400
+So, what it is? It's a software framework where it makes it very easy for someone who's developing a substrate chain,
+
+29
+00:03:58,400 --> 00:04:05,120
+such as Joystream, to focus only on the parts that are relevant to them.
+
+30
+00:04:05,120 --> 00:04:18,000
+They get this whole set of tools and nodes that automatically does everything else they need in order to provide this API basically which can, 
+
+31
+00:04:18,000 --> 00:04:22,470
+for example, respond to the sort of queries that I showed you before.
+
+32
+00:04:22,479 --> 00:04:26,720
+So, that's the Hydra framework.
+
+33
+00:04:26,720 --> 00:04:37,190
+We actually were really proud to see that the Hakusama judges picked it as the first entrant winner, so that was pretty cool in the,
+
+34
+00:04:37,199 --> 00:04:44,800
+I believe it was the open category if I hadn't… I think that was, yeah, open hack, so that was really cool.
+
+35
+00:04:44,800 --> 00:04:53,040
+For some of you, maybe the way I am describing it, you may feel like you've heard of this before, in particular coming from the Ethereum space, 
+
+36
+00:04:53,040 --> 00:04:59,040
+and this is basically because this is very very similar to what the Graph tries to do for Ethereum.
+
+37
+00:04:59,040 --> 00:05:10,800
+Basically, it tries to give that kind of a service for smart contracts whilst we do it for standalone chains.
+
+38
+00:05:10,800 --> 00:05:16,400
+There are some big important differences between the Graph and the Hydra framework.
+
+39
+00:05:16,400 --> 00:05:28,720
+One important difference is, well, at least before the way the Graph used to work was that the Graph company sort of hosted a service where everyone who built an app 
+
+40
+00:05:28,720 --> 00:05:36,880
+that was talking to the Ethereum chain would sort of just talk to a server that the Graph company was running.
+
+41
+00:05:36,880 --> 00:05:47,360
+They were sort of not that happy with that, it's not really sort of in the spirit of the Web 3 vision
+
+42
+00:05:47,360 --> 00:05:56,800
+so they always had the goal of building this distributed peer-to-peer type of network that would replace their role in provisioning that service.
+
+43
+00:05:56,800 --> 00:06:03,120
+That's not an easy thing to do but that's something they've started to roll out, so I think over the next coming months
+
+44
+00:06:03,120 --> 00:06:14,470
+or so there's going to be some version of what the Graph, the hosted version of the Graph does for that is decentralized in some way.
+
+45
+00:06:14,479 --> 00:06:18,080
+I mean I could get into the details of what that is but I think that would be a big distraction here.
+
+46
+00:06:18,080 --> 00:06:27,600
+The way we run Hydra and generally people are expected to run Hydra is that the person who hosts the front-end application
+
+47
+00:06:27,600 --> 00:06:29,520
+would pretty much run the query node instance.
+
+48
+00:06:29,520 --> 00:06:34,800
+That's sort of the way we're envisioning this being provisioned.
+
+49
+00:06:34,800 --> 00:06:44,800
+Maybe that we end up shipping a working group which has people running query nodes which, this is what we call Hydra nodes basically, 
+
+50
+00:06:44,800 --> 00:06:54,000
+where people are incentivized by our DAO to run them for the benefit of people using either Atlas or Pioneer or any other
+
+51
+00:06:54,000 --> 00:07:03,360
+major front-end application but this is one of those decisions that we are still quite early on in terms of how it's going to be provisioned at scale.
+
+52
+00:07:03,360 --> 00:07:08,160
+How is it that this actually works for a developer?
+
+53
+00:07:08,160 --> 00:07:11,440
+What a developer has to do is they have to define two things.
+
+54
+00:07:11,440 --> 00:07:18,080
+The whole point of Hydra is to alleviate the burden of having to do everything like talking to the chain, 
+
+55
+00:07:18,080 --> 00:07:22,800
+and managing a database, and putting your events in there, and making an API. 
+
+56
+00:07:22,800 --> 00:07:28,400
+It's a lot of work to get that to happen every time for a new substrate chain.
+
+57
+00:07:28,400 --> 00:07:37,440
+So, what a substrate developer has to do is, first, they have to just define the way the data in their system is organized
+
+58
+00:07:37,440 --> 00:07:44,240
+in a really nice simple sort of GraphQL like markup language. 
+
+59
+00:07:44,240 --> 00:07:55,030
+There you would say, for example, if we take the Subsocial example that you have, you know, a blog, and you have posts, and blogs have authors, and posts are part of blogs.
+
+60
+00:07:55,039 --> 00:08:02,800
+You would sort of define a very convenient way, in a way that developers are very comfortable with, how the data is organized.
+
+61
+00:08:02,800 --> 00:08:11,030
+And then you would define what are called mappings which are basically rules which say when I see this kind of an event or this kind of a transaction
+
+62
+00:08:11,039 --> 00:08:16,080
+in the substrate chain, I'm going to put something in the database which then will be queryable later.
+
+63
+00:08:16,080 --> 00:08:25,680
+Either put something or update something or delete something, basically, update the database that holds the information that the front-end apps are interested in.
+
+64
+00:08:25,680 --> 00:08:29,680
+If you provide these two, you basically get everything else for free.
+
+65
+00:08:29,680 --> 00:08:42,080
+So, the way Hydra sort of works in production is that your application talks to a GraphQL server which has the API, 
+
+66
+00:08:42,080 --> 00:08:50,880
+that's the API which will allow you to ask those pretty questions that I mentioned in the beginning of the slide deck here that talks to a specific database
+
+67
+00:08:50,880 --> 00:08:57,120
+which holds the data that I just talked about which is managed, sorted by these mappings.
+
+68
+00:08:57,120 --> 00:09:08,240
+Then there is a processor which is this long running process that runs these mappings whenever it sees that the underlying full node 
+
+69
+00:09:08,240 --> 00:09:12,800
+has produced some new blocks and some new events and some new transactions.
+
+70
+00:09:12,800 --> 00:09:23,920
+Basically, this indexer database holds a sort of long-standing index of 
+all the stuff that's happened in your substrate full node.
+
+71
+00:09:23,920 --> 00:09:29,440
+That is the basic architecture that makes a single Hydra node sort of come together.
+
+72
+00:09:29,440 --> 00:09:40,560
+You can basically think of the mappings as defining how the query database looks, and then you can think of the mappings as the logic that runs in the processor.
+
+73
+00:09:40,560 --> 00:09:44,320
+It's quite a nice abstraction.
+
+74
+00:09:44,320 --> 00:09:50,080
+We are extremely proud of having been able to have done that on a relatively small team.
+
+75
+00:09:50,080 --> 00:09:59,270
+A lot of these abstractions have been identified by the Graph, and they've done an amazing job, but it certainly has not been
+
+76
+00:09:59,279 --> 00:10:04,390
+easy to do this with a smaller project with a separate purpose.
+
+77
+00:10:04,399 --> 00:10:09,680
+We're very happy about having developed this, and we hope more people will continue to adopt it.
+
+78
+00:10:09,680 --> 00:10:18,160
+That's the story on Hydra of which v3 is the next major release.
+
+79
+00:10:18,160 --> 00:10:23,600
+So, that's it, see you for the next video.
+

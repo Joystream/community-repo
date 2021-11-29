@@ -1,0 +1,645 @@
+.
+├── LICENSE
+├── README.md
+├── bounties
+│   ├── overview
+│   │   ├── README.md
+│   │   ├── bounties-status.json
+│   │   ├── bounties.schema.json
+│   │   └── img
+│   │       └── bounties_new.svg
+│   └── reports
+│       ├── Adding_new_conditions_to_Bounty_18.md
+│       ├── Bounty22_terms_and_conditions.md
+│       ├── Update_Featured_Video_Rules.md
+│       ├── bounty10
+│       │   └── payments
+│       │       ├── BountyPayments2.csv
+│       │       ├── BountyPayments3.csv
+│       │       ├── README.md
+│       │       ├── Sheet1_Bounty10.csv
+│       │       ├── Sheet2_Table1.csv
+│       │       └── payment_4.csv
+│       ├── bounty10_crash_payouts.csv
+│       ├── bounty15
+│       │   ├── antioch-network_subtitles.srt
+│       │   ├── bounty15.md
+│       │   ├── hydra-v3_subtitles.srt
+│       │   ├── introduction_subtitles.srt
+│       │   ├── new-specifications_subtitles.srt
+│       │   ├── olympia-network_subtitles.srt
+│       │   ├── slides
+│       │   │   ├── jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.001.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.002.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.003.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.004.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.005.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.006.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.007.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.008.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.009.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.010.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.011.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.012.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.013.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.014.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.015.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.016.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.017.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.018.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.019.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.020.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.021.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.022.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.023.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.024.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.025.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.026.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.027.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.028.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.029.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.030.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.031.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.032.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.033.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.034.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.035.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.036.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.037.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.038.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.039.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.040.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.041.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.042.jpeg
+│       │   │   │   ├── Joystream_Community_Update_1.043.jpeg
+│       │   │   │   └── Joystream_Community_Update_1.044.jpeg
+│       │   │   └── pdf
+│       │   │       └── Joystream_Community_Update_1.pdf
+│       │   └── sumer-network_subtitles.srt
+│       ├── bounty20-part1.md
+│       ├── bounty20-part2.md
+│       ├── bounty_10_revised_rules_draft.md
+│       ├── bounty_16_report
+│       │   ├── Community.srt
+│       │   ├── New\ Specifications.srt
+│       │   ├── Olympia.srt
+│       │   ├── Sumer.srt
+│       │   ├── antioch.srt
+│       │   ├── introduction.srt
+│       │   └── report-1.md
+│       └── weekly-bounty-report
+│           ├── 18-report-18.09.2021.md
+│           ├── 2021-03-09-Weekly_Bounty_Report.md
+│           ├── 2021-03-17-Weekly_Bounty_Report.md
+│           ├── 2021-04-15-Weekly_Bounty_Report.md
+│           ├── 2021-04-28-Weekly_Bounty_Report.md
+│           ├── bounty-18-report-04.09.2021.md
+│           ├── bounty-18-report-12.09.2021.md
+│           └── bounty18_report_25.07.21.csv
+├── contributions
+│   ├── KPI\ 11.4\ -\ Research\ Max\ Validator\ Change
+│   ├── community-contributions
+│   │   ├── KPI\ 11.4\ -\ Research\ Max\ Validator\ Change
+│   │   ├── KPI-22.10-KPIs-Overview
+│   │   │   └── council.json
+│   │   ├── creative
+│   │   │   ├── banner-competition
+│   │   │   │   └── banner-competition-initial-process.md
+│   │   │   ├── community-repo_banners
+│   │   │   │   ├── CheOmsk
+│   │   │   │   │   ├── CommunityRepo_banner.png
+│   │   │   │   │   └── CommunityRepo_banner.svg
+│   │   │   │   ├── GameOverMachine
+│   │   │   │   │   ├── A\ repo\ for\ community\ reports,\ tools\ and\ contributions_.svg
+│   │   │   │   │   ├── Community\ Repo.svg
+│   │   │   │   │   ├── Community_Repo.svg
+│   │   │   │   │   ├── Joystream.png
+│   │   │   │   │   ├── Joystream.psd
+│   │   │   │   │   ├── Joystream.svg
+│   │   │   │   │   ├── athens.svg
+│   │   │   │   │   ├── mask.svg
+│   │   │   │   │   ├── rome.svg
+│   │   │   │   │   ├── rosette.svg
+│   │   │   │   │   ├── storage.svg
+│   │   │   │   │   ├── tokens.svg
+│   │   │   │   │   └── Слой\ 1.svg
+│   │   │   │   ├── MarkusDM
+│   │   │   │   │   ├── banJoy.svg
+│   │   │   │   │   └── bannerjoy.png
+│   │   │   │   ├── hanna-liashchuk
+│   │   │   │   │   ├── CommunityRepo_banner.png
+│   │   │   │   │   └── CommunityRepo_banner.svg
+│   │   │   │   ├── leSua-lab
+│   │   │   │   │   ├── CommunityRepo_banner.png
+│   │   │   │   │   └── CommunityRepo_banner.svg
+│   │   │   │   ├── mgogol
+│   │   │   │   │   ├── joystream-banner.png
+│   │   │   │   │   └── joystream-banner.svg
+│   │   │   │   ├── traumschule
+│   │   │   │   │   ├── community.png
+│   │   │   │   │   └── community.xcf
+│   │   │   │   └── vulxbuga
+│   │   │   │       ├── Repo\ banner\ V1\ edit\ font.png
+│   │   │   │       └── Repo\ banner\ V1\ edit\ font.svg
+│   │   │   └── stickers-competition
+│   │   │       ├── Joystream\ Sticker\ Competition\ -\ Final\ Report.md
+│   │   │       ├── Joystream\ Sticker\ Competition\ -\ Instructions\ +\ Competition\ Plan.md
+│   │   │       ├── Joystream\ Sticker\ Competition\ -\ Overview.md
+│   │   │       ├── Joystream\ Sticker\ Competition\ -\ Report.md
+│   │   │       ├── proposal108-oiclid
+│   │   │       │   └── 0.png
+│   │   │       ├── proposal108b-oiclid
+│   │   │       │   └── 0-1.png
+│   │   │       ├── proposal109-spock
+│   │   │       │   └── 0.png
+│   │   │       ├── proposal139-zoomersevntu
+│   │   │       │   └── 0.png
+│   │   │       ├── proposal141-okayko
+│   │   │       │   ├── 0.png
+│   │   │       │   └── 1.png
+│   │   │       ├── proposal143-botzmann
+│   │   │       │   ├── 0.png
+│   │   │       │   ├── 1.png
+│   │   │       │   ├── 2.png
+│   │   │       │   ├── 3.png
+│   │   │       │   ├── 4.png
+│   │   │       │   ├── 5.png
+│   │   │       │   ├── 6.png
+│   │   │       │   ├── 7.png
+│   │   │       │   ├── 8.png
+│   │   │       │   └── 9.png
+│   │   │       ├── proposal145-vulxx
+│   │   │       │   ├── 0.png
+│   │   │       │   ├── 1.png
+│   │   │       │   ├── 2.png
+│   │   │       │   ├── 3.png
+│   │   │       │   ├── 4.png
+│   │   │       │   ├── 5.png
+│   │   │       │   ├── 6.png
+│   │   │       │   ├── 7.png
+│   │   │       │   ├── 8.png
+│   │   │       │   └── 9.png
+│   │   │       ├── proposal152-vulxx
+│   │   │       │   ├── 0.png
+│   │   │       │   ├── 1.png
+│   │   │       │   ├── 2.png
+│   │   │       │   ├── 3.png
+│   │   │       │   ├── 4.png
+│   │   │       │   ├── 5.png
+│   │   │       │   ├── 6.png
+│   │   │       │   ├── 7.png
+│   │   │       │   ├── 8.png
+│   │   │       │   └── 9.png
+│   │   │       ├── proposal196-oskarte
+│   │   │       │   ├── 0.png
+│   │   │       │   ├── 1.png
+│   │   │       │   ├── 2.png
+│   │   │       │   ├── 3.png
+│   │   │       │   ├── 4.png
+│   │   │       │   └── 5.png
+│   │   │       ├── proposal200-boris143
+│   │   │       │   ├── 0.png
+│   │   │       │   ├── 1.png
+│   │   │       │   ├── 2.png
+│   │   │       │   ├── 3.png
+│   │   │       │   ├── 4.png
+│   │   │       │   ├── 5.png
+│   │   │       │   ├── 6.png
+│   │   │       │   ├── 7.png
+│   │   │       │   ├── 8.png
+│   │   │       │   └── 9.png
+│   │   │       ├── proposal84-jamesr
+│   │   │       │   ├── 0.png
+│   │   │       │   ├── 1.png
+│   │   │       │   ├── 10.png
+│   │   │       │   ├── 11.png
+│   │   │       │   ├── 12.png
+│   │   │       │   ├── 13.png
+│   │   │       │   ├── 14.png
+│   │   │       │   ├── 15.png
+│   │   │       │   ├── 16.png
+│   │   │       │   ├── 17.png
+│   │   │       │   ├── 18.png
+│   │   │       │   ├── 19.png
+│   │   │       │   ├── 2.png
+│   │   │       │   ├── 20.png
+│   │   │       │   ├── 21.png
+│   │   │       │   ├── 22.png
+│   │   │       │   ├── 23.png
+│   │   │       │   ├── 24.png
+│   │   │       │   ├── 25.png
+│   │   │       │   ├── 26.png
+│   │   │       │   ├── 27.png
+│   │   │       │   ├── 28.png
+│   │   │       │   ├── 29.png
+│   │   │       │   ├── 3.png
+│   │   │       │   ├── 30.png
+│   │   │       │   ├── 31.png
+│   │   │       │   ├── 32.png
+│   │   │       │   ├── 33.png
+│   │   │       │   ├── 34.png
+│   │   │       │   ├── 35.png
+│   │   │       │   ├── 36.png
+│   │   │       │   ├── 37.png
+│   │   │       │   ├── 38.png
+│   │   │       │   ├── 39.png
+│   │   │       │   ├── 4.png
+│   │   │       │   ├── 40.png
+│   │   │       │   ├── 41.png
+│   │   │       │   ├── 42.png
+│   │   │       │   ├── 43.png
+│   │   │       │   ├── 44.png
+│   │   │       │   ├── 45.png
+│   │   │       │   ├── 46.png
+│   │   │       │   ├── 47.png
+│   │   │       │   ├── 5.png
+│   │   │       │   ├── 6.png
+│   │   │       │   ├── 7.png
+│   │   │       │   ├── 8.png
+│   │   │       │   └── 9.png
+│   │   │       └── proposal95-oiclid
+│   │   │           └── 0.png
+│   │   ├── ideas
+│   │   │   ├── community_calendar.md
+│   │   │   └── sprocket.md
+│   │   ├── joystream-leaderboard-bot
+│   │   │   ├── README.md
+│   │   │   ├── db.js
+│   │   │   ├── discord.pm2.config.js
+│   │   │   ├── index.js
+│   │   │   ├── package-lock.json
+│   │   │   ├── package.json
+│   │   │   ├── src
+│   │   │   │   ├── botService.ts
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── faucet.ts
+│   │   │   │   │   ├── start.ts
+│   │   │   │   │   ├── transferTokens.ts
+│   │   │   │   │   └── validation.ts
+│   │   │   │   ├── db.ts
+│   │   │   │   ├── discord.ts
+│   │   │   │   ├── getFmInfo.ts
+│   │   │   │   ├── telegram.ts
+│   │   │   │   └── types.ts
+│   │   │   ├── telegram.pm2.config.js
+│   │   │   └── tsconfig.json
+│   │   ├── joystream-scoring-period-bot
+│   │   │   ├── Readme.md
+│   │   │   ├── package.json
+│   │   │   ├── src
+│   │   │   │   ├── bot-en.ts
+│   │   │   │   └── bot-ru.ts
+│   │   │   ├── tsconfig.json
+│   │   │   └── yarn.lock
+│   │   ├── miscellaneous_reports
+│   │   ├── research
+│   │   │   ├── discordbot
+│   │   │   │   ├── README.md
+│   │   │   │   └── images
+│   │   │   │       ├── bot1.png
+│   │   │   │       ├── bot2.jpg
+│   │   │   │       ├── bot3.jpg
+│   │   │   │       └── bot4.jpg
+│   │   │   ├── founding-member-survey
+│   │   │   │   └── results.md
+│   │   │   ├── increase_validators_set.md
+│   │   │   ├── ledger-for-joystream
+│   │   │   │   └── README.md
+│   │   │   ├── polkadot_js_extension.md
+│   │   │   └── substrate_polkadot_content_list
+│   │   │       └── polkadot_substrate_content_list.csv
+│   │   └── tech
+│   │       ├── joystream-api
+│   │       │   ├── README.md
+│   │       │   ├── package.json
+│   │       │   ├── scripts
+│   │       │   │   ├── example.js
+│   │       │   │   ├── export-data-directory.js
+│   │       │   │   ├── index.js
+│   │       │   │   └── list-data-directory.js
+│   │       │   ├── src
+│   │       │   │   ├── curators
+│   │       │   │   │   ├── functions.ts
+│   │       │   │   │   └── get-media-change.ts
+│   │       │   │   ├── examples
+│   │       │   │   │   ├── council.ts
+│   │       │   │   │   ├── functions.ts
+│   │       │   │   │   ├── general.ts
+│   │       │   │   │   ├── get-events-and-extrinsics.ts
+│   │       │   │   │   ├── interfaces.ts
+│   │       │   │   │   ├── proposals.ts
+│   │       │   │   │   └── working-groups.ts
+│   │       │   │   └── general
+│   │       │   │       ├── get-code.ts
+│   │       │   │       ├── script.ts
+│   │       │   │       ├── status.ts
+│   │       │   │       ├── tobytes.ts
+│   │       │   │       └── tohex.ts
+│   │       │   ├── tsconfig.json
+│   │       │   └── yarn.lock
+│   │       ├── joystreamtelegrambot
+│   │       │   ├── LICENSE
+│   │       │   ├── README.md
+│   │       │   ├── config.ts
+│   │       │   ├── package.json
+│   │       │   ├── src
+│   │       │   │   ├── bot.ts
+│   │       │   │   ├── lib
+│   │       │   │   │   ├── announcements.ts
+│   │       │   │   │   ├── getters.ts
+│   │       │   │   │   └── util.ts
+│   │       │   │   ├── tests.ts
+│   │       │   │   └── types
+│   │       │   │       └── index.ts
+│   │       │   └── tsconfig.json
+│   │       ├── joystreamvideobot
+│   │       │   ├── README.md
+│   │       │   ├── config.ts
+│   │       │   ├── licenses.json
+│   │       │   ├── package.json
+│   │       │   ├── query_params.json
+│   │       │   ├── request.json
+│   │       │   ├── src
+│   │       │   │   ├── bot.ts
+│   │       │   │   ├── sizeformat.ts
+│   │       │   │   └── types.ts
+│   │       │   ├── tsconfig.json
+│   │       │   ├── videos_query.graphql
+│   │       │   └── yarn.lock
+│   │       ├── node-setup-script
+│   │       │   ├── README.md
+│   │       │   └── joystream-node-install.sh
+│   │       ├── report-generator
+│   │       │   ├── README.md
+│   │       │   ├── cache
+│   │       │   ├── package.json
+│   │       │   ├── report-template.md
+│   │       │   ├── report-template.md.old
+│   │       │   ├── src
+│   │       │   │   ├── StatisticsCollector.ts
+│   │       │   │   ├── generator.ts
+│   │       │   │   └── types.ts
+│   │       │   └── tsconfig.json
+│   │       ├── storagesize-bot
+│   │       │   ├── db.json
+│   │       │   ├── index.js
+│   │       │   ├── package-lock.json
+│   │       │   ├── package.json
+│   │       │   └── readme.md
+│   │       ├── validator-report-backend
+│   │       │   ├── README.md
+│   │       │   ├── package.json
+│   │       │   ├── src
+│   │       │   │   ├── ascii.ts
+│   │       │   │   ├── block_range_import.ts
+│   │       │   │   ├── db
+│   │       │   │   │   ├── db.ts
+│   │       │   │   │   ├── index.ts
+│   │       │   │   │   ├── models
+│   │       │   │   │   │   ├── account.ts
+│   │       │   │   │   │   ├── balance.ts
+│   │       │   │   │   │   ├── block.ts
+│   │       │   │   │   │   ├── era.ts
+│   │       │   │   │   │   ├── event.ts
+│   │       │   │   │   │   ├── index.ts
+│   │       │   │   │   │   ├── startblock.ts
+│   │       │   │   │   │   └── validatorstats.ts
+│   │       │   │   │   ├── native_queries.ts
+│   │       │   │   │   └── seed.ts
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── init_db.ts
+│   │       │   │   ├── joystream
+│   │       │   │   │   ├── index.ts
+│   │       │   │   │   └── ws.ts
+│   │       │   │   ├── socket.ts
+│   │       │   │   ├── types.js
+│   │       │   │   └── validators.ts
+│   │       │   └── tsconfig.json
+│   │       └── validator-report-ui
+│   │           ├── README.md
+│   │           ├── package-lock.json
+│   │           ├── package.json
+│   │           ├── public
+│   │           │   ├── favicon.ico
+│   │           │   ├── index.html
+│   │           │   ├── joystream.svg
+│   │           │   └── robots.txt
+│   │           ├── src
+│   │           │   ├── App.css
+│   │           │   ├── App.test.tsx
+│   │           │   ├── BootstrapButton.tsx
+│   │           │   ├── LinearProgressWithLabel.tsx
+│   │           │   ├── LiveStatsWS.tsx
+│   │           │   ├── Types.tsx
+│   │           │   ├── ValidatorReport.tsx
+│   │           │   ├── ValidatorsStats.tsx
+│   │           │   ├── debug.ts
+│   │           │   ├── get-status.ts
+│   │           │   ├── index.css
+│   │           │   ├── index.tsx
+│   │           │   ├── joyApi.ts
+│   │           │   ├── joystream.svg
+│   │           │   ├── react-app-env.d.ts
+│   │           │   ├── reportWebVitals.ts
+│   │           │   ├── setupTests.ts
+│   │           │   └── utils.ts
+│   │           ├── tsconfig.json
+│   │           └── yarn.lock
+│   └── miscellaneous_reports
+├── council
+│   ├── council-survey
+│   │   ├── README.md
+│   │   └── antioch1
+│   │       ├── antioch1-survey.md
+│   │       ├── antioch2-survey.md
+│   │       ├── general.md
+│   │       └── unsuccessful-council-survey.md
+│   ├── kpi
+│   │   └── sumer
+│   │       ├── 06.6
+│   │       │   └── Content_Sourcing_Report.md
+│   │       ├── 09.6
+│   │       │   └── KPI_09-6-initial_sprocket.md
+│   │       ├── 11.4
+│   │       │   └── report.md
+│   │       ├── 16.9
+│   │       │   └── kpi_169_-_follow_up_the_storage_working_group.md
+│   │       ├── 17.8
+│   │       │   └── Sumer_KPI_17.8_Clean_Up_Community_Repo_16.08.2021.md
+│   │       └── 23.2-5
+│   │           └── structure_before.txt
+│   ├── reports
+│   │   ├── antioch-reports
+│   │   │   ├── Antioch_Council0_Report_20-04-2021.md
+│   │   │   ├── Antioch_Council1_Report_28-04-2021.md
+│   │   │   ├── Antioch_Council2_Report_05-05-2021.md
+│   │   │   ├── Antioch_Council3_Report_14-05-2021.md
+│   │   │   ├── Antioch_Council4_Report_20-05-2021.md
+│   │   │   ├── Antioch_Council5_Report_27-05-2021.md
+│   │   │   └── Antioch_Council6_Report_03-06-2021.md
+│   │   ├── archived-reports
+│   │   │   ├── Council_Round21+22_08-09-2020_Council_Report.md
+│   │   │   ├── alexandria-testnet
+│   │   │   │   ├── Alexandria-Council-Leaderboard.md
+│   │   │   │   ├── Alexandria_Council1_report_10-10-2020.md
+│   │   │   │   ├── Alexandria_Council2_report_24-10-2020.md
+│   │   │   │   ├── Alexandria_Council3_report_05-11-2020.md
+│   │   │   │   ├── Alexandria_Council4_Report_22-11-2020.md
+│   │   │   │   ├── Alexandria_Council5_report_07-12-2020.md
+│   │   │   │   ├── Alexandria_Council6_Report_20-12-2020.md
+│   │   │   │   └── Alexandria_Council7_Report_03-01-2021.md
+│   │   │   ├── babylon
+│   │   │   │   ├── Babylon_Council10_Report_17-02-2021.md
+│   │   │   │   ├── Babylon_Council11_Report_04-03-2021.md
+│   │   │   │   ├── Babylon_Council12_Report_18-03-2021.md
+│   │   │   │   ├── Babylon_Council8_Report_17-01-2021.md
+│   │   │   │   └── Babylon_Council9_Report_01-02-2021.md
+│   │   │   └── constantinople-testnet
+│   │   │       ├── Council_Round17_07-08-2020_Council_Report.md
+│   │   │       ├── Council_Round18_14-08-2020_Council_Report.md
+│   │   │       ├── Council_Round22_14-09-2020_Council_Report.md
+│   │   │       ├── Council_Round8_12-06-2020_Council_Report.md
+│   │   │       ├── Council_Round9_19-06-2020_Council_Report.md
+│   │   │       └── Council_Round_19_02-09-2020_Council_Report.md
+│   │   ├── council-reports
+│   │   ├── sumer-reports
+│   │   │   ├── Sumer_Council10_Report_01-07-2021.md
+│   │   │   ├── Sumer_Council11_Report_06-07-2021.md
+│   │   │   ├── Sumer_Council12_Report_16-07-2021.md
+│   │   │   ├── Sumer_Council13_Report_23-07-2021.md
+│   │   │   ├── Sumer_Council14_Report_27-07-2021.md
+│   │   │   ├── Sumer_Council15_Report_03-08-2021.md
+│   │   │   ├── Sumer_Council16_Report_10-08-2021.md
+│   │   │   ├── Sumer_Council17_Report_18-08-2021.md
+│   │   │   ├── Sumer_Council18_Report_25-08-2021.md
+│   │   │   ├── Sumer_Council19_Report_31-08-2021.md
+│   │   │   ├── Sumer_Council20_Report_08-09-2021.md
+│   │   │   ├── Sumer_Council21_Report_14-09-2021.md
+│   │   │   ├── Sumer_Council21_Report_21-09-2021.md
+│   │   │   ├── Sumer_Council7_Report_09-06-2021.md
+│   │   │   ├── Sumer_Council8_Report_16-06-2021.md
+│   │   │   └── Sumer_Council9_Report_23-06-2021.md
+│   │   └── templates
+│   │       └── council_report_template_v1.md
+│   ├── submission-log
+│   │   └── submission-log.md
+│   └── tokenomics
+│       ├── alexandria-1
+│       │   ├── Alexandria_Council_Round1_57601_201601_Tokenomics_Report.md
+│       │   ├── Alexandria_Council_Round2_259201_460801_Tokenomics_Report.md
+│       │   ├── Alexandria_Council_Round3_460801_662401_Tokenomics_Report.md
+│       │   ├── Alexandria_Council_Round4_662401_864001_Tokenomics_Report.md
+│       │   ├── Alexandria_Council_Round5_864001_1065601_Tokenomics_Report.md
+│       │   └── Alexandria_Council_Round6_1065601_1267201_Tokenomics_Report.md
+│       ├── antioch-3
+│       │   ├── Council_Round0_0_86400_Tokenomics_Report.md
+│       │   ├── Council_Round1_118800_277200_Tokenomics_Report.md
+│       │   ├── Council_Round2_277200_378000_Tokenomics.md
+│       │   ├── Council_Round3_378000_478800_Tokenomics.md
+│       │   ├── Council_Round4_478800_579600_Tokenomics.md
+│       │   ├── Council_Round5_579600_694800_Tokenomics.md
+│       │   ├── Council_Round6_680400_781200_Tokenomics.md
+│       │   └── Council_Round_7_781200_882000_Tokenomics.md
+│       ├── babylon-2
+│       │   ├── Council_Round10_1872001_2073601_Tokenomics_Report.md
+│       │   ├── Council_Round11_2073601_2275201_Tokenomics_Report.md
+│       │   ├── Council_Round12_2275201_2476801_Tokenomics_Report.md
+│       │   ├── Council_Round8_1468801_1670401_Tokenomics_Report.md
+│       │   └── Council_Round9_1670401_1872001_Tokenomics_Report.md
+│       ├── constaninople-0
+│       │   ├── README.md
+│       │   └── src
+│       │       └── placeholder.ts
+│       ├── sumer-4
+│       │   ├── Council_Round10_1083600_1184400_Tokenomics_Report.md
+│       │   ├── Council_Round11_1184400_1285200_Tokenomics_Report.md
+│       │   ├── Council_Round12_1285200_1386000_Tokenomics_Report.md
+│       │   ├── Council_Round13_1386000_1486800_Tokenomics_Report.md
+│       │   ├── Council_Round14_1486800_1587600_Tokenomics_Report.md
+│       │   ├── Council_Round15_1587600_1688400_Tokenomics_Report.md
+│       │   ├── Council_Round16_1688400_1789200_Tokenomics_Report.md
+│       │   ├── Council_Round17_1789200_1890000_Tokenomics_Report.md
+│       │   ├── Council_Round18_1890000_1990800_Tokenomics_Report.md
+│       │   ├── Council_Round19_1990800_2091600_Tokenomics_Report.md
+│       │   ├── Council_Round20_2091600-2192400_Tokenomics_Report.md
+│       │   ├── Council_Round21_2192400-2293200_Tokenomics_Report.md
+│       │   ├── Council_Round22_2293200_2394000_Tokenomics_Report.md
+│       │   ├── Council_Round8_882000_982800_Tokenomics_Report.md
+│       │   └── Council_Round9_982800_1083600_Tokenomics_Report.md
+│       └── templates
+│           └── Tokenomics_Network_Report_Template.md
+├── governance
+│   ├── Conditions_update_Featured_videos_for_main_site.md
+│   ├── Content_Curator_WG_Lead-Tasks_Reporting_Requirements.md
+│   ├── Content_Curator_WG_OKRs.md
+│   ├── Curation_Policy.md
+│   ├── Global_objectives.md
+│   ├── Storage_WG_Lead-Report_and_Tasks.md
+│   ├── Storage_WG_OKR.md
+│   ├── WG_Lead_Term_Limits.md
+│   ├── Warn-Slash-Fire_rules_for_leads.md
+│   ├── community_etiquette.md
+│   ├── community_survey_march_2021.md
+│   ├── continuously_updated_files.md
+│   ├── council_member_discord_usernames.md
+│   ├── council_secretary_workflow.md
+│   ├── council_tasks_rate_sheet.md
+│   ├── kpi12-wg-reports
+│   │   ├── wg_tasks.md
+│   │   ├── working_group_followup.md
+│   │   └── working_group_status.md
+│   ├── kpi19-sp2-sanctions_slas.md
+│   ├── kpi_earnings_per_term.json
+│   ├── kpi_leaderboard.json
+│   ├── platform-reports
+│   │   └── State_of_Joystream
+│   │       └── Templates
+│   │           └── state_of_joystream_template.md
+│   ├── proposal_guidelines.md
+│   ├── roles_and_responsibilities.md
+│   ├── spending_proposal_categories.csv
+│   ├── spending_proposal_categories.json
+│   └── the_future_and_beyond.md
+├── structure_after.txt
+└── working-groups
+    ├── curator-group
+    │   ├── Performance_of_Curator_Lead_1048-Igrex.md
+    │   ├── Substrate_research_DNS_service.md
+    │   ├── Video_Statistic_Overview_for_Council_Term_17.md
+    │   ├── Video_Statistic_Overview_for_Council_Term_18.md
+    │   ├── Weekly_Curator_Working_Group_Report_13.md
+    │   ├── Weekly_Curator_Working_Group_Report_18.md
+    │   ├── Weekly_Curator_Working_Group_Report_21.md
+    │   ├── Weekly_Curator_Working_Group_Report_22.md
+    │   ├── curator_Lead_Report_SP_12.csv
+    │   ├── curator_Lead_Report_SP_6.csv
+    │   ├── curator_Lead_Report_SP_6.md
+    │   ├── curator_Lead_Report_SP_8.csv
+    │   └── curator_working_group_evaluation.md
+    ├── operations-group
+    │   ├── 2505-testing.csv
+    │   ├── Performance_of_Operations_Lead_515-l1dev.md
+    │   ├── Runtime_Upgrade_Testing_Notes.csv
+    │   ├── cli-poll-responses.csv
+    │   ├── kpi17-op2-cli-integration.md
+    │   ├── kpi_schema.json
+    │   ├── operations_task_list.md
+    │   └── operations_tasks_budget_workflow.md
+    └── storage-group
+        ├── Performance_of_Storage_Lead_4-Nexusfallout.md
+        ├── august_2020_storage_evaluation.md
+        ├── council-spotchecks
+        │   └── kpi_157_landing_page_stats.md
+        ├── report-10.md
+        ├── report-11.md
+        ├── report-12.md
+        ├── report-13.md
+        ├── report-14.md
+        ├── report-15.md
+        ├── report-6.md
+        ├── report-7.md
+        ├── report-8.md
+        └── report-9.md
+
+120 directories, 522 files

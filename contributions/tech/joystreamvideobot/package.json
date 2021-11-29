@@ -1,0 +1,29 @@
+{
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "dev": "node src/bot.ts",
+    "build": "tsc --build tsconfig.json",
+    "start": "node ./lib/src/bot.js"
+  },
+
+  "dependencies": {
+    "@joystream/types": "^0.16.0",
+    "@polkadot/util@6.6.1": "^6.6.1",
+    "@polkadot/util-crypto": "^6.6.1",
+    "@types/bn.js": "^4.11.5",
+    "discord.js": "^12.5.3",
+    "moment": "^2.29.1",
+    "moment-duration-format": "^2.3.2",
+    "bn.js": "^4.11.8",
+    "axios": "^0.21.1"
+  },  
+  "devDependencies": {
+    "@polkadot/ts": "^0.1.56",
+    "typescript": "^4.3.2"
+  },
+  "name": "joystream-discord-bot",
+  "version": "1.0.0",
+  "main": "src/bot.ts",
+  "author": "",
+  "description": ""
+}
