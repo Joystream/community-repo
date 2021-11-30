@@ -117,6 +117,7 @@ Council obligations are payments or items that carry through council sessions. T
 ## 5 - Report changelog
 - [October, November 2021](https://github.com/Joystream/community-repo/pull/428)
     - proposals refactor, show amount for spending proposals
+    - merge council report script into tokenomics generator ([PR #485](https://github.com/Joystream/community-repo/pull/485))
 
 - 04.11.2020
     - added working group review section
