@@ -307,16 +307,17 @@ Failed Proposals
 - Participants: 
 
 ### 2.4 - Select threads & events
-N/A
+* [Most interesting / important questions of 1th community call](https://pioneer.joystreamstats.live/#/forum/threads/777)
+* [Your opinion. 32.I-8 - Review New Incentives Draft](https://pioneer.joystreamstats.live/#/forum/threads/778)
 
 ### 2.5 - Working Group Spotchecks
-- Storage Role Spot Check: N/A
-- Curator Role Spot Check: N/A
-- Operations Role Spot Check: N/A
+- Storage Role Spot Check: https://pioneer.joystreamstats.live/#/forum/threads/409
+- Curator Role Spot Check: https://pioneer.joystreamstats.live/#/forum/threads/411
+- Operations Role Spot Check: https://pioneer.joystreamstats.live/#/forum/threads/417
 
 ## 3 - Review
 ### 3.1 - Workflow, Performance, Challenged & Thinking
-* N/A
+KPI Reports: https://pioneer.joystreamstats.live/#/forum/threads/783
 
 ## 4 - Obligations
 Council obligations are payments or items that carry through council sessions. These are noted so that future councils can easily see what items they should be aware of. Items can be removed from here once they have been resolved or become outdated.
