@@ -311,9 +311,9 @@ Failed Proposals
 * [Your opinion. 32.I-8 - Review New Incentives Draft](https://pioneer.joystreamstats.live/#/forum/threads/778)
 
 ### 2.5 - Working Group Spotchecks
-- Storage Role Spot Check: https://pioneer.joystreamstats.live/#/forum/threads/409
-- Curator Role Spot Check: https://pioneer.joystreamstats.live/#/forum/threads/411
-- Operations Role Spot Check: https://pioneer.joystreamstats.live/#/forum/threads/417
+- Storage Role Spot Check: N/A
+- Curator Role Spot Check: N/A
+- Operations Role Spot Check: N/A
 
 ## 3 - Review
 ### 3.1 - Workflow, Performance, Challenged & Thinking
