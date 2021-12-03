@@ -19,9 +19,9 @@ This is a report which explains the current state of the Joystream network in nu
 | Spending Proposals (Executed) | 51216981 |
 | Bounties paid       | 13275805 |
 | Validator Role      | 12241670 |
-| Storage Role        | 11561085.31 |
-| Curator Role        | 8469915.97 |
-| Operations Role     | 12320857.77 |
+| Storage Role        | 8707707 |
+| Curator Role        | 8470000.00 |
+| Operations Role     | 9182695 |
 
 ### 2.2 Fiat Pool
 | Property            | Start Block, USD | End Block, USD | % Change |
