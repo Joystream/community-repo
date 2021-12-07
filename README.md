@@ -1,31 +1,8 @@
-<img style="align:center" src="img/community.png" alt="Joystream Community Repository for reports, researches, tools and other community contributions." />
+<img style="align:center" src="contributions/creative/community-repo_banners/traumschule/community.png" alt="Joystream Community Repository for reports, researches, tools and other community contributions." />
 
 <div align="center">
   <h4>
-    <a href="/council/reports">
-    Council Reports
-    </a>
-	  <span> | </span>
-    <a href="/contributions">
-    Community Contributions
-    </a>
-	  <span> | </span>
-    <a href="/governance">
-    Documentation
-    </a>
-	  <span> | </span>
-    <a href="/council/submission-log/submission-log.md">
-    Submission Log
-    </a>
-    <span> | </span>
-    <a href="/tokenomics">
-    Tokenomics Reports
-  </a>
-     <span> | </span>
-    <a href="/working-groups">
-    Working group Reports
-  </a>
-   <span> | </span>
+    <a href="/council">Council Reports</a> | <a href="/governance">Documentation</a> | <a href="/working-groups">WG Reports</a> | <a href="/bounties">Bounties</a> |  <a href="/contributions/research">Research</a> | <a href="/contributions/tech">Scripts</a>
   </h4>
 </div>
 
