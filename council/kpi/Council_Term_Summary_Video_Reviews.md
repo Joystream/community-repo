@@ -78,7 +78,7 @@ Overall, all comments were positive. The videos recorded by the author were sati
 
 ### Having (re-) watched the videos, was any of the feedback "fixed" in future videos?
 
-Changes were applied to the video in accordance with the rules of the CRPD. There were no requests from the participants to correct any flaws.
+Changes were applied to the video in accordance with the rules of the KPI. There were no requests from the participants to correct any flaws.
 A moment with subtitles was noticed (lagging behind the recording). This has been fixed in the future.
 
 ### Does any of the feedback strike a chord with you - meaning: "I should have written that"? If so, what is it?
