@@ -1,8 +1,12 @@
 # [32.CC-2 - Update Featured Categories](https://blog.joystream.org/sumer-kpis/#32.CC-2)
 
-Re-generate schedule: `node generateSchedule.js`
+```
+yarn
+yarn run categories COMMAND
+```
 
-Update `videos.json` after changing files:
-- Enter directory `Discover Category Videos`
-- Generate file list: `find > list`
-- `node updateVideos.js`
+Commands
+- `get`: show current category videos // TODO FIX
+- `set`: display mutation requests
+- `update`: updates videos.json from `list` (generate with `find DirectoryWithCategoryVideosCuts > list`
+- `schedule`: regenerates schedule
