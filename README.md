@@ -2,27 +2,27 @@
 
 <div align="center">
   <h4>
-    <a href="/council-reports">
+    <a href="/council/reports">
     Council Reports
     </a>
 	  <span> | </span>
-    <a href="/community-contributions">
+    <a href="/contributions">
     Community Contributions
     </a>
 	  <span> | </span>
-    <a href="/documentation">
+    <a href="/governance">
     Documentation
     </a>
 	  <span> | </span>
-    <a href="/submission-log">
+    <a href="/council/submission-log/submission-log.md">
     Submission Log
     </a>
     <span> | </span>
-    <a href="/tokenomics-reports">
+    <a href="/tokenomics">
     Tokenomics Reports
   </a>
      <span> | </span>
-    <a href="/workinggroup-reports">
+    <a href="/working-groups">
     Working group Reports
   </a>
    <span> | </span>
