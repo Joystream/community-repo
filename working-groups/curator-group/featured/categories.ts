@@ -99,13 +99,17 @@ const generateSchedule = (maxDays: number = 7): Schedule => {
 };
 
 const getCategoryFeaturedVideos = (): Promise<string> => {
-  //const headers = {};
-  const data =
-    '{ query: "query GetCategoriesFeaturedVideos {\n  allCategoriesFeaturedVideos {\n    categoryId\n    videos {\n      videoId\n      videoCutUrl\n    }\n  }\n}" }';
-  console.log(`sending`, data);
+  const data = {
+    query:
+      "query GetCategoriesFeaturedVideos {\n  allCategoriesFeaturedVideos {\n    categoryId\n    videos {\n      videoId\n      videoCutUrl\n    }\n  }\n}",
+  };
   return axios
     .post(orionUrl, data)
-    .then(({ data }: any) => JSON.stringify(data))
+    .then(({ data }: any) => {
+      fs.writeFileSync(`featured.json`, JSON.stringify(data));
+      console.log(`Wrote featured.json`);
+      return data;
+    })
     .catch((error: any) => error.message + JSON.stringify(error));
 };
 
@@ -131,7 +135,7 @@ const setCategoryFeaturedVideos = async (
     .post(orionUrl, { headers, data })
     .then(async (res: any) => {
       console.log(`sent post request to orion (${orionUrl})`, res);
-      //console.log(await getCategoryFeaturedVideos());
+      getCategoryFeaturedVideos();
     })
     .catch((error: any) => {
       console.error(
@@ -145,8 +149,7 @@ const setCategoryFeaturedVideos = async (
 const main = async (args: string[]) => {
   switch (args[0]) {
     case "get":
-      //const categoryId = Number(process.argv[2]);
-      console.log(await getCategoryFeaturedVideos());
+      getCategoryFeaturedVideos();
       break;
     case "set":
       try {
