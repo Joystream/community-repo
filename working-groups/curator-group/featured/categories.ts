@@ -110,39 +110,38 @@ const getCategoryFeaturedVideos = (): Promise<string> => {
       console.log(`Wrote featured.json`);
       return data;
     })
-    .catch((error: any) => error.message + JSON.stringify(error));
+    .catch((error: any) => error.message + error);
 };
 
-const setCategoryVideos = (categoryId: number, videos: OrionVideo[]): string =>
-  `mutation {
-    setCategoryFeaturedVideos(
-        categoryId: "${categoryId}"
-        videos: ${JSON.stringify(videos)}
-    ) {
+const setCategoryVideos = (categoryId: number): string =>
+  `
+mutation SetFeaturedVideos ($videos: [FeaturedVideoInput!]!) {
+  setCategoryFeaturedVideos(categoryId: "${categoryId}", videos: $videos) {
         videoId
         videoCutUrl
-    }
-}`.replace(/\n/, "\n");
+  }
+}
+`;
 
 const setCategoryFeaturedVideos = async (
   categoryId: number,
   videos: OrionVideo[]
 ) => {
   const headers = { Authorization: orionHeader };
-  const data = setCategoryVideos(categoryId, videos);
-  return console.log(`request`, data); // TODO remove after fixing request
+  const query = setCategoryVideos(categoryId);
   axios
-    .post(orionUrl, { headers, data })
-    .then(async (res: any) => {
-      console.log(`sent post request to orion (${orionUrl})`, res);
-      getCategoryFeaturedVideos();
-    })
+    .post(orionUrl, { query, variables: { videos } }, { headers })
+    .then(async ({ status, statusText }: any) =>
+      console.log(`Set videos for category ${categoryId}:`, status, statusText)
+    )
     .catch((error: any) => {
       console.error(
-        `Failed to set featured videos for category ${categoryId}: ${JSON.stringify(
-          error
-        )}`
+        `Failed to set featured videos for category ${categoryId}:`,
+        error.response.data.errors.map(
+          (e: any) => e.message + JSON.stringify(e.locations)
+        )
       );
+      process.exit(1);
     });
 };
 
@@ -154,7 +153,6 @@ const main = async (args: string[]) => {
     case "set":
       try {
         const schedule: Schedule = require(scheduleFile);
-        //console.log(getDay(), Object.keys(schedule));
         if (!schedule || !schedule[getDay()]) {
           console.error(`Current day not found in schedule. Run update again.`);
           process.exit(1);
