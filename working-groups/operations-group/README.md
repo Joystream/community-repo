@@ -35,6 +35,7 @@
 | [30](#round-30) |           13.1 |          365 |            24.9 |           14.66 |                  1.56 |            44.24 |     1101.58 |
 | [31](#round-31) |           56.3 |          700 |           29.35 |           23.85 |                -32.45 |            11.79 |      346.04 |
 | [32](#round-32) |           10.4 |          700 |           28.42 |           24.63 |                 14.23 |            26.02 |      739.49 |
+| [33](#round-33) |           22.7 |          700 |           28.45 |           24.60 |                   1.9 |            27.92 |      794.32 |
 
 ## Reports
 
@@ -788,3 +789,41 @@
 | 34 | [@andybut](https://pioneer.joystreamstats.live/#/members/andybut) | active | 28 | 2.0 | 38.3 |
 | 36 | [@chiffah](https://pioneer.joystreamstats.live/#/members/chiffah) | active | 4 | 0.3 | 2.0 |
 | 39 | [@whitebarbie](https://pioneer.joystreamstats.live/#/members/whitebarbie) | active | 14 | 1.1 | 4.9 |
+
+### [Round 33](../../council/tokenomics/sumer-4/Council_Round33_3387600-3488399_Tokenomics_Report.md)
+
+- **Date:** `11/30/2021 - 12/8/2021`
+- **Budget:** `$700`
+- **Spent:** `22.7.7 M / 24.6 M (@28.45 $/M)`
+- **Balance:** `27.97 M ($794.32)`
+- 9 M [Payment for WG salaries on jsstats](https://pioneer.joystreamstats.live/#/proposals/883)
+
+- [Update OWG Worflow](https://joystreamstats.live/proposals/877)
+- [Investigate Validators](https://joystreamstats.live/proposals/881)
+
+| Property                | Start Block | End Block | % Change |
+|-------------------------|--------------|--------------|----------|
+| Number of Operations Workers      | 20 | 21 | 5 |
+| Total Operations Stake (workers + lead) | 1150000 | 1150000 | 0 |
+
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 0 | [@l1dev](https://pioneer.joystreamstats.live/#/members/l1dev) | active | 35 | 3.1 | 49.9 |
+| 15 | [@isonar](https://pioneer.joystreamstats.live/#/members/isonar) | active | 4 | 0.4 | 12.4 |
+| 16 | [@lkskrn](https://pioneer.joystreamstats.live/#/members/lkskrn) | active | 14 | 1.2 | 44.5 |
+| 17 | [@freakstatic](https://pioneer.joystreamstats.live/#/members/freakstatic) | active | 1 | 0.1 | 13.3 |
+| 18 | [@dapplooker](https://pioneer.joystreamstats.live/#/members/dapplooker) | active | 3 | 0.2 | 13.8 |
+| 20 | [@joystreamstats](https://pioneer.joystreamstats.live/#/members/joystreamstats) | active | 15 | 1.3 | 16.4 |
+| 22 | [@arseniy2706](https://pioneer.joystreamstats.live/#/members/arseniy2706) | active | 7 | 0.6 | 3.0 |
+| 24 | [@shtihmas](https://pioneer.joystreamstats.live/#/members/shtihmas) | active | 0 | 0.2 | 1.6 |
+| 26 | [@zazik](https://pioneer.joystreamstats.live/#/members/zazik) | active | 0 | 0.0 | 0.0 |
+| 29 | [@goldmember](https://pioneer.joystreamstats.live/#/members/goldmember) | active | 0 | 0.0 | 0.0 |
+| 31 | [@ilich](https://pioneer.joystreamstats.live/#/members/ilich) | active | 3 | 0.2 | 0.8 |
+| 32 | [@kate_fm](https://pioneer.joystreamstats.live/#/members/kate_fm) | active | 3 | 0.2 | 2.3 |
+| 33 | [@ururu](https://pioneer.joystreamstats.live/#/members/ururu) | active | 14 | 1.2 | 4.2 |
+| 34 | [@andybut](https://pioneer.joystreamstats.live/#/members/andybut) | active | 28 | 2.4 | 40.7 |
+| 36 | [@chiffah](https://pioneer.joystreamstats.live/#/members/chiffah) | active | 4 | 0.4 | 2.4 |
+| 39 | [@whitebarbie](https://pioneer.joystreamstats.live/#/members/whitebarbie) | active | 14 | 1.2 | 6.1 |
+| 44 | [@oxygen](https://pioneer.joystreamstats.live/#/members/oxygen) | active | 28 | 0.9 | 0.9 |
+
+@spat_sochi, @svasilenko and @sevenup were hired as well but i made a mistake (next payment: #33829000) and will need to rehire.
