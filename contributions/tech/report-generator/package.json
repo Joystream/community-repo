@@ -6,6 +6,7 @@
   "scripts": {
     "report": "ts-node src/generator.ts",
     "build": "tsc --build tsconfig.json",
+    "storage": "node src/storage",
     "status": "node lib/status"
   },
   "dependencies": {
