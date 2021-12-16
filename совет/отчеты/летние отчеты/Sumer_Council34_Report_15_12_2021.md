@@ -319,9 +319,6 @@ Failed Proposals
 Joystream Community Call #4
 
 ### 2.5 - Working Group Spotchecks
-- Storage Role Spot Check: N/A
-- Curator Role Spot Check: N/A
-- Operations Role Spot Check: N/A
 
 ## 3 - Review
 ### 3.1 - Workflow, Performance, Challenged & Thinking
