@@ -44,7 +44,7 @@ I want to say thank you to the curators for the excellent work! Great guys.
 |-----------------------------------|          
 | Video duration                    |    
 | Seconds: 74482                    |
-| Minutes: 1741.36                  | 
+| Minutes: 1241.36                  | 
 | Hours: 20.68                      | 
 | Days: 0.86                        | 
 | ----------------------------------| 
