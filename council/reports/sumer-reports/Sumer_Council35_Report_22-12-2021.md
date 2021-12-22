@@ -247,7 +247,7 @@ Failed Proposals
 
 ## 3 - Review
 ### 3.1 - Workflow, Performance, Challenges & Thoughts
-- [Change of the Content Working Group Leader](https://testnet.joystream.org/#/forum/threads/829)
+- [Change of the Content Working Group Leader](https://testnet.joystream.org/#/forum/threads/817)
 
 ## 4 - Obligations
 Council obligations are payments or items that carry through council sessions. These are noted so that future councils can easily see what items they should be aware of. Items can be removed from here once they have been resolved or become outdated.
