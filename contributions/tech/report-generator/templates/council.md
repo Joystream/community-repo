@@ -74,7 +74,7 @@ Failed Proposals
 
 {proposalBreakdown}
 
-### 2.4 - Select threads & events
+### 2.4 - Selected Threads & Events
 N/A
 
 ### 2.5 - Working Group Spotchecks
@@ -83,7 +83,7 @@ N/A
 - Operations Role Spot Check: N/A
 
 ## 3 - Review
-### 3.1 - Workflow, Performance, Challenged & Thinking
+### 3.1 - Workflow, Performance, Challenges & Thoughts
 * N/A
 
 ## 4 - Obligations
