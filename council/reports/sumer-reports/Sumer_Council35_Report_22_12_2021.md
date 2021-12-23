@@ -56,7 +56,7 @@ The Council Round number is taken from the chain, the KPI rounds have an offset 
 * End minted: 1124802052
 * Total minted during council round: 27942116 tokens (+2.55% from start)
 
-* Budget proposal link: https://testnet.joystream.org/#/proposals/802
+* Budget proposal link: https://testnet.joystream.org/#/proposals/813
 * Budget forum link: https://testnet.joystream.org/#/forum/threads/717
 
 (Note: The council budget is now based on the rewards for roles, council payments and validator payments. Jsgenesis decides how much to set the mint to.)
@@ -251,7 +251,7 @@ https://testnet.joystream.org/#/forum/threads/828
 
 ## 3 - Review
 ### 3.1 - Workflow, Performance, Challenged & Thinking
-https://pioneer.joystreamstats.live/#/forum/threads/826
+https://testnet.joystream.org/#/forum/threads/817
 
 ## 4 - Obligations
 Council obligations are payments or items that carry through council sessions. These are noted so that future councils can easily see what items they should be aware of. Items can be removed from here once they have been resolved or become outdated.
