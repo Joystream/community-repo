@@ -484,6 +484,12 @@ chmod +x joystream-node
 | 42200 | 70 | 100010000 | 10300000 | 10.3 | 2756 | |
 | 42800 | 71 | 100010000 | 10400000 | 10.4 | 2725 | [Bonded 100K](https://staging.joystreamstats.live/#/explorer/query/42880) |
 | 43400 | 72 | 100010000 | 10500000 | 10.5 | 2696 | |
+| 61400 | 102 | 100010000 | 10500000 | 10.5 | 2696 | Transferred 2M to 2 new validators ([1](https://staging.joystreamstats.live/#/explorer/query/61861) and [2](https://staging.joystreamstats.live/#/explorer/query/61885)) and bonded: [1](https://staging.joystreamstats.live/#/explorer/query/61877) and [2](https://staging.joystreamstats.live/#/explorer/query/61892) |
+| 62000 | 103 | 100010000 | 10500000 | 10.5 | 2696 | |
+| 62600 | 104 | 100010000 | 12499998 | 12.5 | 2178 | |
+| 63200 | 105 | 100010000 | 11499999 | 11.5 | 2421 | |
+| 71000 | 118 | 100010000 | 11499999 | 11.5 | 2421 | Turned off 2 nodes, 1 validator slashed: [Offline](https://staging.joystreamstats.live/#/explorer/query/71121) and [SomeOffline](https://staging.joystreamstats.live/#/explorer/query/71204) |
+| 71600 | 119 | 100010000 | 10500000 | 10.5 | 2696 | |
 
 (Periods without changes left out.)
 
