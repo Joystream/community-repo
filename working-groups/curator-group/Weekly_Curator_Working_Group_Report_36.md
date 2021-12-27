@@ -10,14 +10,14 @@
 
 | Worker ID | Name Worker | Region/Time Zone | Language | Perfomance | Notes            |
 | --------- | ----------- | ---------------- | -------- | ---------- | ---------------- |
-| 7         | l1dev       | UTC              | EN       | \-         | Technical worker |
+| 7         | l1dev       | UTC              | EN       |  -         | Technical worker |
 | 16        | kiraa       | UTC+3            | EN/RU    | 100%       | Skipper#0353     |
 | 18        | mmsaww      | UTC+3            | EN/RU    | 100%       | Mikhail#7681     |
 | 19        | kadyrovs    | UTC+3            | EN/RU    | 100%       | Ruslan#4019      |
 | 22        | igrex       | UTC+3            | EN/RU    | 100%       | IgreX#0267       |
-| 24        | spat\_sochi | UTC+3            | EN/RU    | 100%       | spat\_sochi#8803 |
+| 24        | spat_sochi  | UTC+3            | EN/RU    | 100%       | spat_sochi#8803  |
 
-During this reporting period, 120 videos were uploaded, all of them verified.
+During this reporting period, 171 videos were uploaded, all of them verified.
 
 Everything is optimized, each curator does their job perfectly! Thank you all for your work!)
 
@@ -30,43 +30,43 @@ For convenience and statistics collection, general tables for Bounty 24 and Boun
 ## Start Block/Date: #3658506 / 20.12.21
 ## End Block/Date: #3757847 / 26.12.21
 
-| Number of uploads                 |          |
-| --------------------------------- | -------- |
-| Total:                            | 120      |
-| Day:                              | 17.14    |
-| Hour:                             | 0.71     |
-| ———————————————                   |          |
-| Video duration                    |          |
-| Seconds:                          | 73461    |
-| Minutes:                          | 1224.35  |
-| Hours:                            | 20.41    |
-| Days:                             | 0.85     |
-| ———————————————                   |          |
-| Average duration                  |          |
-| Seconds:                          | 612      |
-| Minutes:                          | 10.2     |
-| Hours:                            | 0.17     |
-| ———————————————                   |          |
-| Median                            | 467.5    |
-| ———————————————                   |          |
-| Video file size (mb)              |          |
-| Total:                            | 17114.35 |
-| Average:                          | 142.62   |
-| Median:                           | 78.25    |
-| ———————————————                   |          |
-| Number of videos in each category |          |
-| Comedy                            |          |
-| Education                         | 5        |
-| Entertainment                     | 3        |
-| Film & Animation                  | 9        |
-| Gaming                            | 1        |
-| Music                             | 3        |
-| News & Politics                   |          |
-| People & Blogs                    | 28       |
-| Pets & Animals                    | 4        |
-| Howto & Style                     | 1        |
-| Science & Technology              | 32       |
-| Sports                            | 16       |
-| Travel & Events                   | 4        |
-| Autos & Vehicles                  | 14       |
-| Nonprofits & Activism             |          |
+| Number of uploads                 |         |
+| --------------------------------- | ------- |
+| Total:                            | 171     |
+| Day:                              | 24.43   |
+| Hour:                             | 1.02    |
+| ——————————                        |         |
+| Video duration                    |         |
+| Seconds:                          | 107006  |
+| Minutes:                          | 1783.43 |
+| Hours:                            | 29.72   |
+| Days:                             | 1.24    |
+| ——————————                        |         |
+| Average duration                  |         |
+| Seconds:                          | 626     |
+| Minutes:                          | 10.43   |
+| Hours:                            | 0.17    |
+| ——————————                        |         |
+| Median                            | 463     |
+| ——————————                        |         |
+| Video file size (mb)              |         |
+| Total:                            | 24730   |
+| Average:                          | 144.62  |
+| Median:                           | 79.44   |
+| ——————————                        |         |
+| Number of videos in each category |         |
+| Comedy                            |         |
+| Education                         | 6       |
+| Entertainment                     | 3       |
+| Film & Animation                  | 12      |
+| Gaming                            | 1       |
+| Music                             | 3       |
+| News & Politics                   |         |
+| People & Blogs                    | 38      |
+| Pets & Animals                    | 4       |
+| Howto & Style                     | 11      |
+| Science & Technology              | 42      |
+| Sports                            | 26      |
+| Travel & Events                   | 11      |
+| Autos & Vehicles                  | 14      |
+| Nonprofits & Activism             |         |
