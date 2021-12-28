@@ -55,13 +55,13 @@ For convenience and statistics collection, general tables for Bounty 24 and Boun
 | Median:                           | 79.44   |
 | ——————————                        |         |
 | Number of videos in each category |         |
-| Comedy                            |         |
+| Comedy                            | 0       |
 | Education                         | 6       |
 | Entertainment                     | 3       |
 | Film & Animation                  | 12      |
 | Gaming                            | 1       |
 | Music                             | 3       |
-| News & Politics                   |         |
+| News & Politics                   | 0       |
 | People & Blogs                    | 38      |
 | Pets & Animals                    | 4       |
 | Howto & Style                     | 11      |
@@ -69,4 +69,4 @@ For convenience and statistics collection, general tables for Bounty 24 and Boun
 | Sports                            | 26      |
 | Travel & Events                   | 11      |
 | Autos & Vehicles                  | 14      |
-| Nonprofits & Activism             |         |
+| Nonprofits & Activism             | 0       |
