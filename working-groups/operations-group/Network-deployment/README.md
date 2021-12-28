@@ -490,8 +490,12 @@ chmod +x joystream-node
 | 63200 | 105 | 100010000 | 11499999 | 11.5 | 2421 | |
 | 71000 | 118 | 100010000 | 11499999 | 11.5 | 2421 | Turned off 2 nodes, 1 validator slashed: [Offline](https://staging.joystreamstats.live/#/explorer/query/71121) and [SomeOffline](https://staging.joystreamstats.live/#/explorer/query/71204) |
 | 71600 | 119 | 100010000 | 10500000 | 10.5 | 2696 | |
+| 84200 | 141 | 100010000 | 10500000 | 10.5 | 2696 | |
+| 84800 | 142 | 100010000 | 10500000 | 10.5 | 1048 | [setCode](https://staging.joystreamstats.live/#/explorer/query/85190): [Abstain votes don't count as NO](https://github.com/Joystream/joystream/pull/2952) (rebased onto [`giza_staging`](https://github.com/Joystream/joystream/commits/giza_staging) @[f5d5002](https://github.com/Joystream/joystream/commit/f5d5002e5fd30698315c3fffd5554f60519ffb2e)): > 2021-12-25 11:59:11        API/INIT: Runtime version updated to spec=13, tx=1 |
 
 (Periods without changes left out.)
+
+The runtime upgrade at block 85190 was unrelated to this KPI. If you are interested to test it, see you in #operations.
 
 ### Code
 
