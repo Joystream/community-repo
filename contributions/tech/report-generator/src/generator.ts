@@ -1,16 +1,40 @@
 import fs from "fs";
 const exec = require("util").promisify(require("child_process").exec);
-import { StatisticsCollector } from "./StatisticsCollector";
-import { connectApi, getHead, getCouncils } from "./lib/api";
+
+import { ApiPromise } from "@polkadot/api";
+import { connectApi, getHead, getCouncils, getCouncilRound } from "./lib/api";
+import { StatisticsCollector } from "./tokenomics";
+import { generateReportData } from "./council";
+import { Config } from "./types/tokenomics";
+
+// types
 import { Round } from "./lib/types";
-import { Config } from "./types";
+import { types as joyTypes } from "@joystream/types";
+import { Hash, Moment } from "@polkadot/types/interfaces";
+import {
+  BlockRange,
+  CouncilMemberInfo,
+  CouncilRoundInfo,
+  ProposalFailedReason,
+  ProposalInfo,
+  ProposalStatus,
+  ProposalType,
+  ReportData,
+} from "./types/council";
+import { Seats } from "@joystream/types/council";
+import { MemberId, Membership } from "@joystream/types/members";
+import { StorageKey, u32, U32, Vec } from "@polkadot/types";
+import { Mint, MintId } from "@joystream/types/mint";
+import { ProposalDetailsOf, ProposalOf } from "@joystream/types/augment/types";
 
 const CONFIG: Config = {
   repoDir: __dirname + "/../../../../",
   reportsDir: "council/tokenomics",
   spendingCategoriesFile: "governance/spending_proposal_categories.csv",
-  templateFile: __dirname + "/../report-template.md",
+  councilTemplate: __dirname + "/../templates/council.md",
+  tokenomicsTemplate: __dirname + "/../templates/tokenomics.md",
   providerUrl: "ws://127.0.0.1:9944",
+  proposalUrl: "https://testnet.joystream.org/#/proposals/",
   statusUrl: "https://status.joystream.org/status/",
   burnAddress: "5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu",
   cacheDir: "cache",
@@ -19,31 +43,62 @@ const CONFIG: Config = {
   channelClassId: 1,
 };
 
-async function main(config: Config) {
-  const { templateFile } = config;
-  const args = process.argv.slice(2);
-  if (args.length < 2) return updateReports(config, Number(args[0]));
+const councilReport = async (
+  startBlock: number,
+  endBlock: number,
+  config: Config
+) => {
+  const { repoDir, councilTemplate, providerUrl } = config;
+  const api: ApiPromise = await connectApi(providerUrl);
+  await api.isReady;
 
-  const startBlock = Number(args[0]);
-  const endBlock = Number(args[1]);
+  // council report
+  const startHash: Hash = await api.rpc.chain.getBlockHash(startBlock);
+  const endHash: Hash = await api.rpc.chain.getBlockHash(endBlock);
+  const blockRange = new BlockRange(startBlock, startHash, endBlock, endHash);
 
-  if (isNaN(startBlock) || isNaN(endBlock) || startBlock >= endBlock) {
-    console.error("Invalid block range.");
-    process.exit(1);
-  } else generateReport(startBlock, endBlock, config);
-}
+  const data = await generateReportData(api, blockRange);
+  const report = await generateCouncilReport(data, councilTemplate);
 
-const generateReport = async (
+  const term = data.councilTerm;
+  const version = startBlock < 717987 ? "antioch" : "sumer";
+  const versionStr = version[0].toUpperCase() + version.slice(1);
+  const filename = `council/reports/${version}-reports/${versionStr}_Council${term}_Report.md`;
+  fs.writeFileSync(repoDir + filename, report);
+  console.log(`-> Wrote ${filename}`);
+
+  api.disconnect();
+};
+
+const generateCouncilReport = async (
+  data: ReportData,
+  templateFile: string
+) => {
+  try {
+    let fileData = await fs.readFileSync(templateFile, "utf8");
+    let entries = Object.entries(data);
+
+    for (let entry of entries) {
+      let regex = new RegExp("{" + entry[0] + "}", "g");
+      fileData = fileData.replace(regex, entry[1].toString());
+    }
+    return fileData;
+  } catch (e) {
+    console.error(e);
+    return "";
+  }
+};
+
+const tokenomicsReport = async (
   startBlock: number,
   endBlock: number,
   config: Config
 ): Promise<boolean> => {
-  const { templateFile, repoDir, reportsDir } = config;
-  let fileData = fs.readFileSync(templateFile, "utf8");
+  const { tokenomicsTemplate, repoDir, reportsDir } = config;
+  let fileData = fs.readFileSync(tokenomicsTemplate, "utf8");
   let statsCollecttor = new StatisticsCollector();
   console.log(`-> Collecting stats from ${startBlock} to ${endBlock}`);
   const stats = await statsCollecttor.getStats(startBlock, endBlock, config);
-  console.log(stats);
   if (!stats.dateStart) return false;
   const round = stats.councilRound || 1;
 
@@ -62,9 +117,9 @@ const generateReport = async (
 };
 
 const updateReports = async (config: Config, round?: number) => {
-  const { templateFile, providerUrl } = config;
+  const { providerUrl } = config;
   console.debug(`Connecting to ${providerUrl}`);
-  const api = await connectApi(providerUrl);
+  const api: ApiPromise = await connectApi(providerUrl);
   await api.isReady;
 
   console.log(`-> Fetching councils`);
@@ -74,7 +129,7 @@ const updateReports = async (config: Config, round?: number) => {
     if (round === null || isNaN(round)) {
       console.log(`-> Updating reports`);
       await Promise.all(
-        councils.map(({ start, end }) => generateReport(start, end, config))
+        councils.map(({ start, end }) => createReports(start, end, config))
       );
     } else {
       const council = councils.find((c) => c.round === round);
@@ -82,10 +137,33 @@ const updateReports = async (config: Config, round?: number) => {
       console.log(
         `-> Updating round ${round} (${council.start}-${council.end})`
       );
-      await generateReport(council.start, council.end, config);
+      await createReports(council.start, council.end, config);
     }
     process.exit();
   });
 };
 
+const createReports = (
+  startBlock: number,
+  endBlock: number,
+  config: Config
+) => {
+  councilReport(startBlock, endBlock, config);
+  return tokenomicsReport(startBlock, endBlock, config);
+};
+
+const main = async (config: Config) => {
+  const args = process.argv.slice(2);
+  if (args.length < 2) return updateReports(config, Number(args[0]));
+
+  const startBlock = Number(args[0]);
+  const endBlock = Number(args[1]);
+
+  if (isNaN(startBlock) || isNaN(endBlock) || startBlock >= endBlock) {
+    console.error("Invalid block range.");
+    process.exit(1);
+  }
+
+  createReports(startBlock, endBlock, config);
+};
 main(CONFIG);

@@ -1,4 +1,4 @@
-# Tokenomics Report Generator
+# Council + Tokenomics Report Generator
 
 This scripts collects some information from Joystream chain. \
 It was created to allow the council to generate a report in the finish of the council round. \

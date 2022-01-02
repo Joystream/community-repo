@@ -74,7 +74,7 @@ Failed Proposals
 
 {proposalBreakdown}
 
-### 2.4 - Select threads & events
+### 2.4 - Selected Threads & Events
 N/A
 
 ### 2.5 - Working Group Spotchecks
@@ -83,7 +83,7 @@ N/A
 - Operations Role Spot Check: N/A
 
 ## 3 - Review
-### 3.1 - Workflow, Performance, Challenged & Thinking
+### 3.1 - Workflow, Performance, Challenges & Thoughts
 * N/A
 
 ## 4 - Obligations
@@ -117,6 +117,7 @@ Council obligations are payments or items that carry through council sessions. T
 ## 5 - Report changelog
 - [October, November 2021](https://github.com/Joystream/community-repo/pull/428)
     - proposals refactor, show amount for spending proposals
+    - merge council report script into tokenomics generator ([PR #485](https://github.com/Joystream/community-repo/pull/485))
 
 - 04.11.2020
     - added working group review section
