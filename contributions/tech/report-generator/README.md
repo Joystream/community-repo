@@ -1,8 +1,7 @@
-# Council + Tokenomics Report Generator
+# Council Minutes generator
 
-This scripts collects some information from Joystream chain. \
-It was created to allow the council to generate a report in the finish of the council round. \
-It takes some minutes to complete the report, multiple runs, with the same block range, will be quicker since it has a "cache" system for the block events.  
+- Counil & Tokenomics Report: `yarn run report  [round|block range]` collects information from the [Joystream chain](https://testnet.joystream.org/). It was created to allow the council to generate a report after the end of a council round. It takes some minutes to cache all events. The next run with the same block range, will be quicker.
+- Storage: `yarn run storage` generates a table with stats how many liaisons each storage worker has (similar to https://joystreamstats.live/storage)
 
 ## Setup
 
@@ -30,5 +29,5 @@ OR
 # Contributors
 
 * [freakstatic](https://github.com/freakstatic)
-* [l1dev](https://git.joystreamstats.live/l1devx)
+* [l1dev](https://git.joystreamstats.live/l1dev)
 * [isonar](https://github.com/singulart)
