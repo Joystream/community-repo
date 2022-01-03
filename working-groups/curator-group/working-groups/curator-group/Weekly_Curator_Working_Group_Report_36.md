@@ -1,6 +1,6 @@
 # Curator Working Group Report 36
 
-## Weekly Curator Working Group Report 35 (20.12.21-26.12.21) 
+## Weekly Curator Working Group Report 36 (20.12.21-26.12.21) 
 
 - Pre-proposal Discussion https://testnet.joystream.org/#/forum/threads/371
 
@@ -10,12 +10,12 @@
 
 | Worker ID | Name Worker | Region/Time Zone | Language | Perfomance | Notes            |
 | --------- | ----------- | ---------------- | -------- | ---------- | ---------------- |
-| 7         | l1dev       | UTC              | EN       | \-         | Technical worker |
+| 7         | l1dev       | UTC              | EN       | -          | Technical worker |
 | 16        | kiraa       | UTC+3            | EN/RU    | 100%       | Skipper#0353     |
 | 18        | mmsaww      | UTC+3            | EN/RU    | 100%       | Mikhail#7681     |
 | 19        | kadyrovs    | UTC+3            | EN/RU    | 100%       | Ruslan#4019      |
 | 22        | igrex       | UTC+3            | EN/RU    | 100%       | IgreX#0267       |
-| 24        | spat\_sochi | UTC+3            | EN/RU    | 100%       | spat\_sochi#8803 |
+| 24        | spat_sochi  | UTC+3            | EN/RU    | 100%       | spat_sochi#8803  |
 
 During this reporting period, 120 videos were uploaded, all of them verified.
 
@@ -24,6 +24,7 @@ Everything is optimized, each curator does their job perfectly! Thank you all fo
 Bounty 18 and Bounty 24 are working properly and are being checked, bounty managers are appointed.
 
 For convenience and statistics collection, general tables for Bounty 24 and Bounty 18 have been added.
+
 
 # Video Statistic Overview for Council Term: 36
 ## Overview Length: 7 days / 88000
@@ -55,13 +56,13 @@ For convenience and statistics collection, general tables for Bounty 24 and Boun
 | Median:                           | 78.25    |
 | ———————————————                   |          |
 | Number of videos in each category |          |
-| Comedy                            |          |
+| Comedy                            | 0        |
 | Education                         | 5        |
 | Entertainment                     | 3        |
 | Film & Animation                  | 9        |
 | Gaming                            | 1        |
 | Music                             | 3        |
-| News & Politics                   |          |
+| News & Politics                   | 0        |
 | People & Blogs                    | 28       |
 | Pets & Animals                    | 4        |
 | Howto & Style                     | 1        |
@@ -69,4 +70,4 @@ For convenience and statistics collection, general tables for Bounty 24 and Boun
 | Sports                            | 16       |
 | Travel & Events                   | 4        |
 | Autos & Vehicles                  | 14       |
-| Nonprofits & Activism             |          |
+| Nonprofits & Activism             | 0        |
