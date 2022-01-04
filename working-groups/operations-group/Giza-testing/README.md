@@ -127,3 +127,90 @@ See [docs/node](https://github.com/Joystream/joystream/blob/giza_staging/distrib
 2022-01-04 16:25:39:2539 SubstrateApi info: Sending storage.setDistributionOperatorMetadata extrinsic from 5DCCUrwUZuqBHMMcaswK5rk1DpFNGvuZvoZHWiHYNyqjEvK9
 2022-01-04 16:25:42:2542 CLI info: Bucket operator metadata succesfully set/updated!
 ```
+
+## Runtime
+### Staking and Rewards (WGs)
+
+> For each group (incl. Leads), check that:
+> - staking and unstaking works as expected
+> - rewards are paid out as they should
+
+### Validator Rewards
+
+> The runtime upgrade included a change in these params. For each `era`, get:
+>   - total issuance
+>   - total stake
+>   - total reward
+>   - ~blockheight
+
+| Block | Era | Issuance | Stake | % Staked | Era Reward | Action |
+|---|---|---|---|---|---|---|
+| 0 | 0 | 574460220 | 15000 | 0.0 | 3275 | |
+| 6000 | 10 | 574460120 | 15000 | 0.0 | 3275 | |
+| 6600 | 11 | 574455020 | 15000 | 0.0 | 5698 | |
+| 7200 | 12 | 1000000000 | 200000000 | 20.0 | 58841 | |
+| 13200 | 22 | 1000000000 | 200000000 | 20.0 | 58841 | |
+| 13800 | 23 | 999999800 | 200000000 | 20.0 | 14805 | |
+| 14400 | 24 | 999999700 | 200000000 | 20.0 | 14780 | |
+| 15000 | 25 | 999999700 | 100007500 | 10.0 | 10250 | |
+| 15600 | 26 | 999999600 | 100007500 | 10.0 | 10250 | |
+| 16200 | 27 | 999999600 | 100007500 | 10.0 | 10250 | |
+| 16800 | 28 | 999999600 | 200000000 | 20.0 | 14805 | |
+| 151800 | 253 | 999999500 | 200000000 | 20.0 | 14805 | |
+| 152400 | 254 | 999999500 | 200000000 | 20.0 | 14780 | |
+| 153000 | 255 | 999999500 | 200000000 | 20.0 | 14805 | |
+| 161400 | 269 | 999999400 | 200000000 | 20.0 | 14805 | |
+| 162000 | 270 | 999999400 | 200500000 | 20.1 | 14828 | |
+| 187800 | 313 | 999999400 | 200500000 | 20.1 | 14828 | |
+| 188400 | 314 | 999999400 | 200500000 | 20.1 | 15397 | |
+| 192000 | 320 | 1099991546 | 200500000 | 18.2 | 15397 | |
+
+## Storage
+
+1. What happens when a storage node runs out of (local) storage?
+  - eg. the bucket is configured to accept 100GB, whereas the node runs out at 80GB
+2. What happens when a bucket is full (ref. bucket config on-chain) and you upload more from a channel where it's assigned to accept from?
+3. What happens when a bucket is full (ref. bucket config on-chain) and you assign a new bag to it?
+4. What happens when a SP node, that is the only source of some data goes down?
+  - Cases:
+    1. No distributor has it (or is assigned): Try to assign the channel bag to another SP, and use the re-upload command (cli and/or atlas)
+    2. One or more distributors has it (and is assigned): Try to assign the channel bag to another SP, and use the re-upload command (cli and/or atlas)
+    3. One or more distributors has it (and is assigned): Try to assign the channel bag to another SP, and try to fetch 5it from the distributor
+5. How does the blacklist work?
+  - Cases:
+    1. One distributor has (and is assigned) the file. asset it get censored in atlas?
+      - What happens if you upload the asset again?
+    2. No distributor has the file (or is assigned). When one gets assigned it, does it get it?
+      - What happens if you upload the asset again?
+
+### CLI
+
+> - Check that doing `--help` for all commands
+>  - provides a useful description
+>  - everything is correct
+>  - syntax is consistent
+
+See [Commands](Commands.md)
+
+## Distributor
+
+1. What happens when a distributor node runs out of storage?
+  - eg. the bucket is configured to accept 100GB, whereas the node runs out at 80GB
+
+### CLI
+- Check that doing `--help` for all commands
+  - provides a useful description
+  - everything is correct
+  - syntax is consistent
+  - all the examples are correct
+(I know there are issues, but haven't collected them)
+
+See [Commands](Commands.md)
+
+# Hours
+
+| Date        | Hours | Task                                           |
+|-------------+-------+------------------------------------------------|
+| Jan 2 13-17 |     4 | start node, storage provider, distributor      |
+| Jan 4 15-18 |     3 | storage provider and distributor configuration |
+| Jan 4 19-22 |     3 | check commands, validator eras                 |
