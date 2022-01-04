@@ -1,14 +1,14 @@
+- [Storage node](#storage)
+- [Distributor node](#distributor)
 
-# Test Commands
-
-## Storage
+# [Storage node](https://github.com/Joystream/joystream/tree/giza_staging/storage-node-v2#cli-commands)
 
 commands-storage.txt
 > dev:init dev:multihash dev:sync dev:upload dev:verify-bag-id help leader:cancel-invite leader:create-bucket leader:delete-bucket leader:invite-operator leader:remove-operator leader:set-bucket-limits leader:set-global-uploading-status leader:update-bag leader:update-bag-limit leader:update-blacklist leader:update-bucket-status leader:update-data-fee leader:update-dynamic-bag-policy leader:update-voucher-limits operator:accept-invitation operator:set-metadata server
 
 `for cmd in $(cat commands-storage.txt);do echo $cmd ; ~/joystream/storage-node-v2/bin/run $cmd --help ; done`
 
-### dev:init
+## dev:init
 
 Initialize development environment. Sets Alice as storage working group leader.
 
@@ -31,7 +31,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### dev:multihash
+## dev:multihash
 
 Creates a multihash (blake3) for a file.
 
@@ -44,7 +44,7 @@ OPTIONS
   -h, --help       show CLI help
 ```
 
-### dev:sync
+## dev:sync
 
 Synchronizes the data - it fixes the differences between local data folder and worker ID obligations from the runtime.
 
@@ -71,7 +71,7 @@ OPTIONS
   -w, --workerId=workerId                            (required) Storage node operator worker ID.
 ```
 
-### dev:upload
+## dev:upload
 
 Upload data object (development mode only).
 
@@ -97,7 +97,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### dev:verify-bag-id
+## dev:verify-bag-id
 The command verifies bag id supported by the storage node. Requires chain connection.
 
 ```
@@ -122,7 +122,8 @@ OPTIONS
            - dynamic:member:4
 ```
 
-#### help
+## help
+
 Joystream storage subsystem.
 
 ```
@@ -142,7 +143,7 @@ COMMANDS
   server  Starts the storage node server.
 ```
 
-### leader:cancel-invite
+## leader:cancel-invite
 
 Cancel a storage bucket operator invite. Requires storage working group leader permissions.
 
@@ -166,7 +167,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### leader:create-bucket
+## leader:create-bucket
 
 Create new storage bucket. Requires storage working group leader permissions.
 
@@ -194,7 +195,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### leader:delete-bucket
+## leader:delete-bucket
 
 Delete a storage bucket. Requires storage working group leader permissions.
 
@@ -218,7 +219,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### leader:invite-operator
+## leader:invite-operator
 
 Invite a storage bucket operator. Requires storage working group leader permissions.
 
@@ -244,7 +245,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### leader:remove-operator
+## leader:remove-operator
 
 Remove a storage bucket operator. Requires storage working group leader permissions.
 
@@ -268,7 +269,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### leader:set-bucket-limits
+## leader:set-bucket-limits
 
 Set VoucherObjectsSizeLimit and VoucherObjectsNumberLimit for the storage bucket.
 
@@ -295,7 +296,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### leader:set-global-uploading-status
+## leader:set-global-uploading-status
 
 Set global uploading block. Requires storage working group leader permissions.
 
@@ -320,7 +321,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### leader:update-bag
+## leader:update-bag
 
 Add/remove a storage bucket from a bag (adds by default).
 
@@ -368,7 +369,7 @@ OPTIONS
       ACCOUNT_URI environment variable.
 ```
 
-### leader:update-bag-limit
+## leader:update-bag-limit
 
 Update StorageBucketsPerBagLimit variable in the Joystream node storage.
 
@@ -392,7 +393,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### leader:update-blacklist
+## leader:update-blacklist
 
 Add/remove a content ID from the blacklist (adds by default).
 
@@ -418,7 +419,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### leader:update-bucket-status
+## leader:update-bucket-status
 
 Update storage bucket status (accepting new bags).
 
@@ -444,7 +445,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### leader:update-data-fee
+## leader:update-data-fee
 
 Update data size fee. Requires storage working group leader permissions.
 
@@ -468,7 +469,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### leader:update-dynamic-bag-policy
+## leader:update-dynamic-bag-policy
 
 Update number of storage buckets used in the dynamic bag creation policy.
 
@@ -494,7 +495,7 @@ OPTIONS
                                   flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### leader:update-voucher-limits
+## leader:update-voucher-limits
 
 Update VoucherMaxObjectsSizeLimit and VoucherMaxObjectsNumberLimit for the Joystream node storage.
 
@@ -520,7 +521,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### operator:accept-invitation
+## operator:accept-invitation
 
 Accept pending storage bucket invitation.
 
@@ -552,7 +553,7 @@ OPTIONS
                                                  environment variable.
 ```
 
-### operator:set-metadata
+## operator:set-metadata
 
 Set metadata for the storage bucket.
 
@@ -580,7 +581,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### server
+## server
 
 Starts the storage node server.
 
@@ -634,18 +635,19 @@ OPTIONS
                                                      ACCOUNT_URI environment variable.
 ```
 
-## Distributor
+
+# [Distributor node](https://github.com/Joystream/joystream/tree/giza_staging/distributor-node/docs/commands)
 
 commands-distributor.txt
 > start help dev:init dev:batchUpload operator:accept-invitation operator:set-metadata node:set-buckets node:set-worker node:shutdown node:start-public-api node:stop-public-api leader:cancel-invitation leader:create-bucket leader:create-bucket-family leader:delete-bucket leader:delete-bucket-family leader:invite-bucket-operator leader:remove-bucket-operator leader:set-bucket-family-metadata leader:set-buckets-per-bag-limit leader:update-bag leader:update-bucket-mode leader:update-bucket-status leader:update-dynamic-bag-policy
 
 `for cmd in $(cat commands-distributor.txt);do echo $cmd ; ~/joystream/storage-node-v2/bin/run $cmd --help ; done`
 
-### start
+## start
 
 >  ›   Error: command start not found
 
-### help
+## help
 
 Joystream storage subsystem.
 
@@ -666,7 +668,7 @@ COMMANDS
   server  Starts the storage node server.
 ```
 
-### dev:init
+## dev:init
 
 Initialize development environment. Sets Alice as storage working group leader.
 
@@ -689,11 +691,11 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### dev:batchUpload
+## dev:batchUpload
 
 >  ›   Error: command dev:batchUpload not found
 
-### operator:accept-invitation
+## operator:accept-invitation
 
 Accept pending storage bucket invitation.
 
@@ -725,7 +727,7 @@ OPTIONS
                                                  environment variable.
 ```
 
-### operator:set-metadata
+## operator:set-metadata
 
 Set metadata for the storage bucket.
 
@@ -753,19 +755,19 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### node:set-buckets
+## node:set-buckets
 
 >  ›   Error: command node:set-buckets not found
 
-### node:set-worker
+## node:set-worker
 
 > ›   Error: command node:set-worker not found
 
-### node:shutdown
+## node:shutdown
 
 > ›   Error: command node:shutdown not found
 
-### node:start-public-api
+## node:start-public-api
 
 > ›   Error: command node:start-public-api not found
 
@@ -805,11 +807,11 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### leader:create-bucket-family
+## leader:create-bucket-family
 
 >  ›   Error: command leader:create-bucket-family not found
 
-### leader:delete-bucket
+## leader:delete-bucket
 
 Delete a storage bucket. Requires storage working group leader permissions.
 
@@ -833,23 +835,23 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### leader:delete-bucket-family
+## leader:delete-bucket-family
 
 > ›   Error: command leader:delete-bucket-family not found
 
-### leader:invite-bucket-operator
+## leader:invite-bucket-operator
 > ›   Error: command leader:invite-bucket-operator not found
 
-### leader:remove-bucket-operator
+## leader:remove-bucket-operator
 > ›   Error: command leader:remove-bucket-operator not found
 
-### leader:set-bucket-family-metadata
+## leader:set-bucket-family-metadata
 > ›   Error: command leader:set-bucket-family-metadata not found
 
-### leader:set-buckets-per-bag-limit
+## leader:set-buckets-per-bag-limit
 > ›   Error: command leader:set-buckets-per-bag-limit not found
  
-### leader:update-bag
+## leader:update-bag
 
 Add/remove a storage bucket from a bag (adds by default).
 
@@ -897,11 +899,11 @@ OPTIONS
       ACCOUNT_URI environment variable.
 ```
 
-### leader:update-bucket-mode
+## leader:update-bucket-mode
 
 > ›   Error: command leader:update-bucket-mode not found
 
-### leader:update-bucket-status
+## leader:update-bucket-status
 
 Update storage bucket status (accepting new bags).
 
@@ -927,7 +929,7 @@ OPTIONS
                                flags. Could be overriden by ACCOUNT_URI environment variable.
 ```
 
-### leader:update-dynamic-bag-policy
+## leader:update-dynamic-bag-policy
 
 Update number of storage buckets used in the dynamic bag creation policy.
 
