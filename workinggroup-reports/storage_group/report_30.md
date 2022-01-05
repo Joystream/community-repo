@@ -237,9 +237,9 @@ Testing Provider API Endpoints
 6: https://joystreampowered.com/storage/ - OK - API version 1.1.0
 4: https://mahathvamtv.com/storage/ - OK - API version 1.1.0
 
-19130 created
-18430 accepted
-17153 unique accepted hashes
+19371 created
+18668 accepted
+17386 unique accepted hashes
 
 
 
