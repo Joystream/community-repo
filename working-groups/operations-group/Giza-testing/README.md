@@ -25,6 +25,19 @@ yarn build:www
 rsync -aP packages/apps/build/ /var/www/pioneer
 ```
 
+To pre-select your endpoint, edit `packages/apps-config/src/settings/endpoints.js` and add
+```
+  {
+    info: 'Joystream Giza',
+    text: t('giza-l1dev', 'Joystream Giza (l1dev)', { ns: 'apps-config' }),
+    value: 'wss://giza-l1dev.joystream.app/rpc'
+  },
+```
+as first array entry for `createLive` (line 23). Run `yarn build:www` again and you should see:
+> i18next-scanner: Added a new translation key { "giza-l1dev": "Joystream Giza (l1dev)" } to "packages/apps/public/locales/en/apps-config.json"
+
+Alternatively it is possible to set `WS_URL` during build time: `WS_URL=wss://myendpoint yarn build:www`
+
 ### Atlas
 
 ```
