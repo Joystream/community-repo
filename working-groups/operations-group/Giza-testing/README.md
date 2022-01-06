@@ -1,6 +1,6 @@
 # [KPI 36.OP-1](https://blog.joystream.org/sumer-kpis/#36.OP-1)
 
-The goal is to install a [GIZA](https://github.com/Joystream/joystream/tree/giza_staging) validator, storage provider and distributor on a fresh VPS.
+The goal is to install a [GIZA](https://github.com/Joystream/joystream/tree/giza_staging) validator, query node, storage provider and distributor on a fresh VPS.
 
 ## Setup
 
@@ -8,9 +8,33 @@ The goal is to install a [GIZA](https://github.com/Joystream/joystream/tree/giza
 
 See [Network deployment](../Network-deployment)
 
+### [Query-node](https://github.com/Joystream/joystream/tree/giza_staging/query-node)
+
+Download these to `~/joystream` (or your repository root):
+- [.env](.env)
+- [import-qn-data.sh](import-qn-data.sh)
+- [deploy-qn.sh](deploy-qn.sh)
+- [reset-qn.sh](reset-qn.sh)
+
+Adapt `JOYSTREAM_NODE_WS` in `.env` and `import-qn-data.sh` if necessary.
+
+```
+cd ~/joystream/query-node
+yarn build
+nano manifest.yml
+# change second to last line to:
+---
+           height: "[13876,13876]"
+---
+cd ..
+sudo docker-compose up
+chmod +x import-qn-data.sh deploy-qn.sh reset-qn.sh
+./reset-qn.sh
+```
+
 ### Storage
 
-See [storage-node](https://github.com/Joystream/joystream/tree/giza_staging/storage-node-v2).
+See [storage-node](https://github.com/Joystream/joystream/tree/giza_staging/storage-node).
 
 ### Distributor
 
@@ -364,3 +388,6 @@ No help:
 | Jan 2 13-17 |     4 | start node, storage provider, distributor      |
 | Jan 4 15-18 |     3 | storage provider and distributor configuration |
 | Jan 4 19-22 |     3 | check commands, validator eras                 |
+| Jan 5 20-23 |     3 | nginx config                                   |
+| Jan 6 18-23 |     5 | content creation                               |
+| Jan 7 12-15 |     3 | query-node deployment                          |
