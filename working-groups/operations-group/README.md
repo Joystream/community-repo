@@ -2,8 +2,42 @@
 
 - Intro: https://github.com/Joystream/helpdesk#builders
 - Forum: https://pioneer.joystreamstats.live/#/forum/categories/51
-- Tasks: https://git.joystreamstats.live/Operations/process
 - Openings: https://pioneer.joystreamstats.live/#/working-groups/opportunities/operationsGroup
+
+## Tasks & Achievements
+
+- [Operations Tasks and Budget Workflow](operations_tasks_budget_workflow.md)
+- [Issue Tracker](https://git.joystreamstats.live/Operations/process) - [Funded Issues](https://git.joystreamstats.live/Operations/process/issues?labels=8)
+- [Joystream Opportunities](https://www.joystream.org/get-started#opportunities) - [Open Bounties](https://joystreamstats.live/bounties) - [All](../../bounties)
+
+| Task                                                                             | Proposer  | Funded    | Amount USD | Status                                                                              |
+|----------------------------------------------------------------------------------------|-----------|-----------|------------|-------------------------------------------------------------------------------|
+| [API improvements](https://pioneer.joystreamstats.live/#/proposals/893)                | tomato    | 12-Jul-21 |   150 | [Assigned](https://github.com/Joystream/community-repo/issues/509) to lkskrn          |
+| [js:stats multi-lingual](https://pioneer.joystreamstats.live/#/proposals/800)          | l1dev     | 12-Aug-21 |  100+ | [Open](https://git.joystreamstats.live/Operations/process/issues/30)                  |
+| [Opportunities & Applications UI](https://pioneer.joystreamstats.live/#/proposals/581) | l1dev     | 18-Sep-21 | 25/hr | [Open](https://git.joystreamstats.live/Operations/process/issues/42)                  |
+| [Reputation Bot](https://pioneer.joystreamstats.live/#/proposals/992)                  | tomato    | 06-Jan-22 |   250 | [Open](https://git.joystreamstats.live/Operations/process/issues/49)                  |
+| [WG Bot](https://pioneer.joystreamstats.live/#/proposals/993)                          | tomato    | 06-Jan-22 |   200 | [Open](https://git.joystreamstats.live/Operations/process/issues/50)                  |
+| [Improved Council Minutes](https://pioneer.joystreamstats.live/#/proposals/994)        | tomato    | 06-Jan-22 |   300 | [Open](https://git.joystreamstats.live/Operations/process/issues/48)                  |
+| [Council Daily Bot](https://pioneer.joystreamstats.live/#/proposals/991)               | tomato    | 06-Jan-22 |   150 | [Assigned](https://git.joystreamstats.live/Operations/process/issues/39) to lkskrn    |
+| [js:stats roadmap](https://pioneer.joystreamstats.live/#/proposals/1023)               | l1dev     | 15-Jan-22 | 25/hr | [Open](https://git.joystreamstats.live/Operations/process/issues/16)                  |
+| [Storage Status Tools](https://testnet.joystream.org/#/proposals/128)                  | tomato    | 31-May-21 |       | [Implemented](https://git.joystreamstats.live/Operations/process/issues/4) by l1dev   |
+| [API scripts maintenance](https://testnet.joystream.org/#/proposals/127)               | tomato    | 08-Apr-21 |   150 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/18) by isonar |
+| [Basic Video Stats Website](https://testnet.joystream.org/#/proposals/127)             | tomato    | 31-May-21 |   150 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/19) by dapplooker |
+| [Run the Discord Video Bot](https://testnet.joystream.org/#/proposals/155)             | tomato    | 12-Jun-21 |       | [Implemented](https://git.joystreamstats.live/Operations/process/issues/17) by l1dev  |
+| [Maintenance of joystreamstats.live](https://testnet.joystream.org/#/proposals/164)    | tomato    | 15-Jun-21 |       | [Implemented](https://git.joystreamstats.live/Operations/process/issues/16) by l1dev  |
+| [Automated HELIOS + HELIOS History](https://testnet.joystream.org/#/proposals/173)     | tomato    | 17-Jun-21 |       | [Implemented](https://git.joystreamstats.live/Operations/process/issues/12) by l1dev  |
+| [Atlas Thumbnail Preview](https://testnet.joystream.org/#/proposals/385)               | bedeho    | 08-Jun-21 |   480 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/2) by lkskrn  |
+| [Create a block explorer](https://testnet.joystream.org/#/proposals/160)               | maxlevush | 14-Jun-21 |   150 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/15) by isonar |
+| [Storage Performance](https://testnet.joystream.org/#/proposals/409)                   | l1dev     | 13-Aug-21 |   250 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/13) by dapplooker |
+| [Show salaries on jsstats](https://testnet.joystream.org/#/proposals/412)              | l1dev     | 13-Aug-21 |   250 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/34) by l1dev  |
+| [drag-n-drop task list for jsstats](https://testnet.joystream.org/#/proposals/417)     | l1dev     | 14-Aug-21 |   450 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/8) by lkskrn  |
+| [FAQ and Intro page for jsstats](https://testnet.joystream.org/#/proposals/423)        | l1dev     | 15-Aug-21 |   150 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/28) by lkskrn |
+| [review dependabot PRs](https://testnet.joystream.org/#/proposals/862)                 | tomato    | 29-Nov-21 |   100 | [Implemented](https://github.com/Joystream/community-repo/issues/500) by isonar       |
+| [welcome bot](https://testnet.joystream.org/#/proposals/1025)                          | okayko    |           |       | Idea |
+| [mobile app](https://github.com/Joystream/community-repo/issues/555)                   | tomato    |           |       | Idea |
+
+More [Community Ideas](https://github.com/Joystream/community-repo/issues)
+
 
 ## Budget
 
@@ -40,6 +74,7 @@
 | [35](#round-35) |           14.7 |          700 |           27.23 |           25.71 |                 11.01 |            49.07 |     1336.18 |
 | [36](#round-36) |           10.3 |          700 |           27.89 |           25.10 |                  14.8 |            63.87 |     1781.33 |
 | [37](#round-37) |            8.2 |          700 |            26.3 |           26.62 |                 18.42 |            82.29 |     2164.23 |
+| [38](#round-38) |
 
 ## Reports
 
@@ -975,3 +1010,38 @@
 | 45 | [@spat_sochi](https://pioneer.joystreamstats.live/#/members/spat_sochi) | active | 3 | 0.1 | 5.0 |
 | 46 | [@svasilenko](https://pioneer.joystreamstats.live/#/members/svasilenko) | active | 3 | 0.1 | 0.7 |
 | 47 | [@catemoon](https://pioneer.joystreamstats.live/#/members/catemoon) | active | 3 | 0.1 | 0.7 |
+
+### [Round 38](../../council/tokenomics/sumer-4/Council_Round38_3891600-3992399_Tokenomics_Report.md)
+
+- **Date:** `1/5/2022 - 1/12/2022`
+- **Budget:** `$700`
+- **Spent:** `11.7 M / 26.3 M (@27.08 $/M)`
+- **Balance:** `96.44 M ($2611.60)`
+
+| Property                | Start Block | End Block | % Change |
+|-------------------------|--------------|--------------|----------|
+| Number of Operations Workers      | 20 | 20 | 0 |
+| Total Operations Stake (workers + lead) | 1150000 | 1150000 | 0 |
+
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 0 | [@l1dev](https://pioneer.joystreamstats.live/#/members/l1dev) | active | 35 | 2.6 | 61.3 |
+| 15 | [@isonar](https://pioneer.joystreamstats.live/#/members/isonar) | active | 3 | 0.2 | 16.3 |
+| 16 | [@lkskrn](https://pioneer.joystreamstats.live/#/members/lkskrn) | active | 28 | 2.1 | 50.1 |
+| 17 | [@freakstatic](https://pioneer.joystreamstats.live/#/members/freakstatic) | active | 1 | 0.1 | 13.8 |
+| 18 | [@dapplooker](https://pioneer.joystreamstats.live/#/members/dapplooker) | active | 3 | 0.2 | 14.7 |
+| 20 | [@joystreamstats](https://pioneer.joystreamstats.live/#/members/joystreamstats) | active | 15 | 1.2 | 21.4 |
+| 22 | [@arseniy2706](https://pioneer.joystreamstats.live/#/members/arseniy2706) | active | 3 | 0.2 | 4.9 |
+| 24 | [@shtihmas](https://pioneer.joystreamstats.live/#/members/shtihmas) | active | 0 | 0.0 | 1.6 |
+| 26 | [@zazik](https://pioneer.joystreamstats.live/#/members/zazik) | active | 0 | 0.0 | 0.0 |
+| 29 | [@goldmember](https://pioneer.joystreamstats.live/#/members/goldmember) | active | 0 | 0.0 | 0.0 |
+| 31 | [@ilich](https://pioneer.joystreamstats.live/#/members/ilich) | active | 3 | 0.2 | 1.8 |
+| 32 | [@kate_fm](https://pioneer.joystreamstats.live/#/members/kate_fm) | active | 3 | 0.2 | 3.2 |
+| 33 | [@ururu](https://pioneer.joystreamstats.live/#/members/ururu) | active | 3 | 0.2 | 7.8 |
+| 34 | [@andybut](https://pioneer.joystreamstats.live/#/members/andybut) | active | 28 | 2.1 | 49.9 |
+| 36 | [@chiffah](https://pioneer.joystreamstats.live/#/members/chiffah) | active | 4 | 0.3 | 3.8 |
+| 39 | [@whitebarbie](https://pioneer.joystreamstats.live/#/members/whitebarbie) | active | 14 | 1.1 | 10.8 |
+| 44 | [@oxygen](https://pioneer.joystreamstats.live/#/members/oxygen) | active | 3 | 0.2 | 3.8 |
+| 45 | [@spat_sochi](https://pioneer.joystreamstats.live/#/members/spat_sochi) | active | 3 | 0.2 | 5.2 |
+| 46 | [@svasilenko](https://pioneer.joystreamstats.live/#/members/svasilenko) | active | 3 | 0.2 | 0.9 |
+| 47 | [@catemoon](https://pioneer.joystreamstats.live/#/members/catemoon) | active | 3 | 0.2 | 0.9 |
