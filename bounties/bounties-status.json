@@ -332,5 +332,29 @@
       "format": "Open",
       "status": "Open"
    }
+    {
+      "id": 28,
+      "title": "Educational Content",
+      "openedDate": "2021-10-04",
+      "description": "Goal of this bounty - to fill the Atlas interesting high quality content and attract new users to watch it there and become active users in the future.",
+      "links": ["https://testnet.joystream.org/#/proposals/547"],
+      "reward": 250,
+      "notes": "Educational Content",
+      "tags": ["Content"],
+      "format": "Open",
+      "status": "Open"
+   }
+{
+      "id": 29,
+      "title": "Update Featured Video",
+      "openedDate": "2021-10-06",
+      "description": "We want to target changing the featured video somewhere between every two or four weeks. In order to do so, let's create a Bounty for it.",
+      "links": ["https://testnet.joystream.org/#/proposals/657"],
+      "reward": 180,
+      "notes": "Content",
+      "tags": ["Content"],
+      "format": "Open",
+      "status": "Open"
+   }
   ]
 }
