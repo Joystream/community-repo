@@ -1,4 +1,4 @@
-<p align="center"><img src="/img/bounties_new.svg"></p>
+<p align="center"><img src="img/bounties_new.svg"></p>
 
 ## Community Bounties
 
