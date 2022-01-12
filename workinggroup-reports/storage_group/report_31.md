@@ -13,8 +13,8 @@ This is the 30th report for the Storage Provider Working Group.
 ### 0x2bc
 
 - Worker ID: 22
-- Tokens earned: 25.5391  MJOY
-- Missed: 5.1649 kJOY
+- Tokens earned: 27.6260  MJOY
+- Missed: 5.6866 kJOY
 - Location: France
 - Storage capacity: 1.92TB
 - Type of storage: SSD
@@ -37,8 +37,8 @@ This is the 30th report for the Storage Provider Working Group.
 ### joystreamstats
 
 - Worker ID: 3
-- Tokens earned: 22.1865 MJOY
-- Missed: 3.0604 MJOY
+- Tokens earned: 23.0961 MJOY
+- Missed: 3.2878 MJOY
 - Location: Finland
 - Storage capacity: 1.9T
 - Type of storage: SSD/NVME
@@ -59,8 +59,8 @@ This is the 30th report for the Storage Provider Working Group.
 ### julysake
 
 - Worker ID: 4
-- Tokens earned: 22.0284 MJOY
-- Missed: 3.2184 MJOY
+- Tokens earned: 22.9380 MJOY
+- Missed: 3.4458 MJOY
 - Location: EU
 - Storage capacity: 1.6 TB
 - Type of storage: HDD
@@ -85,8 +85,8 @@ This is the 30th report for the Storage Provider Working Group.
 ### kalpakci
 
 - Worker ID: 6
-- Tokens earned: 22.2744 MJOY
-- Missed: 2.9724 MJOY
+- Tokens earned: 23.1840 MJOY
+- Missed: 3.1998 MJOY
 - Location: Nuremberg (Germany)
 - Storage capacity: 1.6TB
 - Type of storage: SSD
@@ -109,8 +109,8 @@ This is the 30th report for the Storage Provider Working Group.
 ### maxlevush
 
 - Worker ID: 15
-- Tokens earned: 17.3166 MJOY
-- Missed: 3.4384 MJOY
+- Tokens earned: 18.1883 MJOY
+- Missed: 3.7037 MJOY
 - Location: Helsinki
 - Storage capacity: 4TB
 - Type of storage: HDD
@@ -131,8 +131,8 @@ This is the 30th report for the Storage Provider Working Group.
 ### joyval
 
 - Worker ID: 16
-- Tokens earned: 17.8853 MJOY
-- Missed: 2.8697 MJOY
+- Tokens earned: 18.7949 MJOY
+- Missed: 3.0971 MJOY
 - Location: New York City
 - Storage capacity: 4TB
 - Type of storage: SSD
@@ -155,8 +155,8 @@ This is the 30th report for the Storage Provider Working Group.
 ### dapplooker
 
 - Worker ID: 17
-- Tokens earned: 17.2062 MJOY
-- Missed: 3.5488 MJOY
+- Tokens earned: 18.0779 MJOY
+- Missed: 3.8141 MJOY
 - Location: Düsseldorf
 - Storage capacity: 4TB
 - Type of storage: HDD
@@ -177,8 +177,8 @@ This is the 30th report for the Storage Provider Working Group.
 ### godshunter
 
 - Worker ID: 18
-- Tokens earned: 15.1137 MJOY
-- Missed: 3.0663 MJOY
+- Tokens earned: 16.0233 MJOY
+- Missed: 3.2937 MJOY
 - Location: Düsseldorf
 - Storage capacity: 8TB
 - Type of storage: HDD
@@ -199,8 +199,8 @@ This is the 30th report for the Storage Provider Working Group.
 ### seainvestor
 
 - Worker ID: 21
-- Tokens earned: 11.8892 MJOY
-- Missed: 2.5989 kJOY
+- Tokens earned: 12.7988 MJOY
+- Missed: 2.8263 kJOY
 - Location: Los Angeles, USA
 - Storage capacity: 2TB
 - Type of storage: SSD
