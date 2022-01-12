@@ -8,7 +8,7 @@ This is the 31th report for the Storage Provider Working Group.
 
 * One more week was completed without incidents.
 
-* We are preparing for the launch of new release.
+* We are preparing for a launch of the new release.
 
 
 ## Current ipfs repo size : 1251 GB
