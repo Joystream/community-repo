@@ -4,11 +4,14 @@
 
 ### Report:
 
-This is the 30th report for the Storage Provider Working Group. 
+This is the 31th report for the Storage Provider Working Group. 
 
 * One more week was completed without incidents.
 
-## Current ipfs repo size : 1224 GB
+* We are preparing for the launch of new release.
+
+
+## Current ipfs repo size : 1251 GB
 
 ### 0x2bc
 
@@ -26,9 +29,9 @@ This is the 30th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 22
     url: https://xjames.xyz/storage
-    fetched: 18668/18668
+    fetched: 19100/19100
     failed: 0
-    check took: 163.64s
+    check took: 145.132s
     ------------------------------------------
   ```
 
@@ -50,9 +53,9 @@ This is the 30th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 3
     url: https://ipfs.joystreamstats.live/storage/
-    fetched: 18668/18668
+    fetched: 19100/19100
     failed: 0
-    check took:  146.59s
+    check took:  143.277s
     ------------------------------------------
   ```
   
@@ -72,9 +75,9 @@ This is the 30th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 4
     url: https://mahathvamtv.com/storage/
-    fetched: 18668/18668
+    fetched: 19100/19100
     failed: 0
-    check took: 192.489s
+    check took: 261.383s
     ------------------------------------------
   ```
 
@@ -99,9 +102,9 @@ This is the 30th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 6
     url: https://joystreampowered.com/storage/
-    fetched: 18668/18668
+    fetched: 19100/19100
     failed: 0
-    check took: 215.092s
+    check took: 379.786s
     ------------------------------------------
 
     ```
@@ -122,9 +125,9 @@ This is the 30th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 15
     url: https://whitesocks.ru/storage/
-    fetched: 18668/18668
+    fetched: 19100/19100
     failed: 0
-    check took: 157.564s
+    check took: 155.977s
     ------------------------------------------
   ```
 
@@ -145,9 +148,9 @@ This is the 30th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 16
     url: https://joyrq.com/storage/
-    fetched: 18668/18668
+    fetched: 19100/19100
     failed: 0
-    check took: 204.264s
+    check took: 314.296s
     ------------------------------------------
 
   ```
@@ -168,9 +171,9 @@ This is the 30th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 17
     url: https://joystream.dapplooker.com/storage/
-    fetched: 18668/18668
+    fetched: 19100/19100
     failed: 0
-    check took: 146.145s
+    check took: 155.07s
     ------------------------------------------
   ```
 
@@ -190,9 +193,9 @@ This is the 30th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 18
     url: https://joystream.godshunter.su/storage/
-    fetched: 18668/18668
+    fetched: 19100/19100
     failed: 0
-    check took: 171.269s
+    check took: 163.75s
     ------------------------------------------
   ```
 
@@ -213,9 +216,9 @@ This is the 30th report for the Storage Provider Working Group.
     ---------------------------------------
     Final Result for provider 21
     url: https://gloiaf.eu/storage/
-    fetched: 18668/18668
+    fetched: 19100/19100
     failed: 0
-    check took: 153.021s
+    check took: 156.439s
     ------------------------------------------
   ```
 
@@ -237,9 +240,9 @@ Testing Provider API Endpoints
 6: https://joystreampowered.com/storage/ - OK - API version 1.1.0
 4: https://mahathvamtv.com/storage/ - OK - API version 1.1.0
 
-19371 created
-18668 accepted
-17386 unique accepted hashes
+19806 created
+19100 accepted
+17804 unique accepted hashes
 
 
 
