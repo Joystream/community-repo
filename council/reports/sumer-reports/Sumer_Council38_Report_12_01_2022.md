@@ -12,7 +12,7 @@ The Council Round number is taken from the chain, the KPI rounds have an offset 
 * Council Term: 38
 * Start Block: #3891600
 * End Block: #3992399
-* Forum thread for round feedback: N/A
+* Forum thread for round feedback: https://testnet.joystream.org/#/forum/threads/871
 
 ### 1.3 - Council members & vote participation
 * All usernames are listed in the order given by `activeCouncil` from chain state.
@@ -56,7 +56,7 @@ The Council Round number is taken from the chain, the KPI rounds have an offset 
 * End minted: 1195208797
 * Total minted during council round: 11644497 tokens (+0.98% from start)
 
-* Budget proposal link: https://testnet.joystream.org/#/proposals/802
+* Budget proposal link: https://testnet.joystream.org/#/proposals/813
 * Budget forum link: https://testnet.joystream.org/#/forum/threads/717
 
 (Note: The council budget is now based on the rewards for roles, council payments and validator payments. Jsgenesis decides how much to set the mint to.)
@@ -334,16 +334,12 @@ Failed Proposals
 - Participants: 
 
 ### 2.4 - Selected Threads & Events
-N/A
-
-### 2.5 - Working Group Spotchecks
-- Storage Role Spot Check: N/A
-- Curator Role Spot Check: N/A
-- Operations Role Spot Check: N/A
+- [Creation and development of the German community](https://testnet.joystream.org/#/forum/threads/862)
+- [Tidy up #active-bounties](https://testnet.joystream.org/#/forum/threads/866)
 
 ## 3 - Review
 ### 3.1 - Workflow, Performance, Challenges & Thoughts
-* N/A
+- [Council Term Summaries](https://testnet.joystream.org/#/forum/threads/870)
 
 ## 4 - Obligations
 Council obligations are payments or items that carry through council sessions. These are noted so that future councils can easily see what items they should be aware of. Items can be removed from here once they have been resolved or become outdated.
