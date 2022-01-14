@@ -38,6 +38,8 @@
 | [33](#round-33) |           22.7 |          700 |           28.45 |           24.60 |                   1.9 |            27.92 |      794.32 |
 | [34](#round-34) |             15 |          700 |           27.84 |           25.14 |                 10.14 |            38.06 |     1059.59 |
 | [35](#round-35) |           14.7 |          700 |           27.23 |           25.71 |                 11.01 |            49.07 |     1336.18 |
+| [36](#round-36) |           10.3 |          700 |           27.89 |           25.10 |                  14.8 |            63.87 |     1781.33 |
+| [37](#round-37) |            8.2 |          700 |            26.3 |           26.62 |                 18.42 |            82.29 |     2164.23 |
 
 ## Reports
 
@@ -901,3 +903,75 @@
 | 45 | [@spat_sochi](https://pioneer.joystreamstats.live/#/members/spat_sochi) | active | 3 | 1.1 | 4.7 |
 | 46 | [@svasilenko](https://pioneer.joystreamstats.live/#/members/svasilenko) | active | 3 | 0.2 | 0.4 |
 | 47 | [@catemoon](https://pioneer.joystreamstats.live/#/members/catemoon) | active | 3 | 0.2 | 0.4 |
+
+
+### [Round 36](../../council/tokenomics/sumer-4/Council_Round36_3690000-3790799_Tokenomics_Report.md)
+
+- **Date:** `12/22/2021 - 12/29/2021`
+- **Budget:** `$700`
+- **Spent:** `10.3 M / 25.1 M (@27.89 $/M)`
+- **Balance:** `63.87 M ($1781.33)`
+
+| Property                | Start Block | End Block | % Change |
+|-------------------------|--------------|--------------|----------|
+| Number of Operations Workers      | 20 | 20 | 0 |
+| Total Operations Stake (workers + lead) | 1150000 | 1150000 | 0 |
+
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 0 | [@l1dev](https://pioneer.joystreamstats.live/#/members/l1dev) | active | 35 | 2.1 | 56.9 |
+| 15 | [@isonar](https://pioneer.joystreamstats.live/#/members/isonar) | active | 28 | 1.7 | 14.9 |
+| 16 | [@lkskrn](https://pioneer.joystreamstats.live/#/members/lkskrn) | active | 14 | 0.8 | 47.5 |
+| 17 | [@freakstatic](https://pioneer.joystreamstats.live/#/members/freakstatic) | active | 1 | 0.1 | 13.6 |
+| 18 | [@dapplooker](https://pioneer.joystreamstats.live/#/members/dapplooker) | active | 3 | 0.1 | 14.4 |
+| 20 | [@joystreamstats](https://pioneer.joystreamstats.live/#/members/joystreamstats) | active | 15 | 0.8 | 19.5 |
+| 22 | [@arseniy2706](https://pioneer.joystreamstats.live/#/members/arseniy2706) | active | 7 | 0.3 | 4.4 |
+| 24 | [@shtihmas](https://pioneer.joystreamstats.live/#/members/shtihmas) | active | 0 | 0.0 | 1.6 |
+| 26 | [@zazik](https://pioneer.joystreamstats.live/#/members/zazik) | active | 0 | 0.0 | 0.0 |
+| 29 | [@goldmember](https://pioneer.joystreamstats.live/#/members/goldmember) | active | 0 | 0.0 | 0.0 |
+| 31 | [@ilich](https://pioneer.joystreamstats.live/#/members/ilich) | active | 3 | 0.1 | 1.4 |
+| 32 | [@kate_fm](https://pioneer.joystreamstats.live/#/members/kate_fm) | active | 3 | 0.1 | 2.9 |
+| 33 | [@ururu](https://pioneer.joystreamstats.live/#/members/ururu) | active | 14 | 0.7 | 7.0 |
+| 34 | [@andybut](https://pioneer.joystreamstats.live/#/members/andybut) | active | 28 | 1.6 | 46.5 |
+| 36 | [@chiffah](https://pioneer.joystreamstats.live/#/members/chiffah) | active | 4 | 0.2 | 3.3 |
+| 39 | [@whitebarbie](https://pioneer.joystreamstats.live/#/members/whitebarbie) | active | 14 | 0.8 | 9.1 |
+| 44 | [@oxygen](https://pioneer.joystreamstats.live/#/members/oxygen) | active | 3 | 0.2 | 3.4 |
+| 45 | [@spat_sochi](https://pioneer.joystreamstats.live/#/members/spat_sochi) | active | 3 | 0.2 | 4.8 |
+| 46 | [@svasilenko](https://pioneer.joystreamstats.live/#/members/svasilenko) | active | 3 | 0.2 | 0.6 |
+| 47 | [@catemoon](https://pioneer.joystreamstats.live/#/members/catemoon) | active | 3 | 0.2 | 0.6 |
+
+
+### [Round 37](../../council/tokenomics/sumer-4/Council_Round37_3790800-3891599_Tokenomics_Report.md)
+
+- **Date:** `12/15/2021 - 12/22/2021`
+- **Budget:** `$700`
+- **Spent:** `8.2 M / 26.3 M (@27.23 $/M)`
+- **Balance:** `82.29 M ($2164.23)`
+
+| Property                | Start Block | End Block | % Change |
+|-------------------------|--------------|--------------|----------|
+| Number of Operations Workers      | 20 | 20 | 0 |
+| Total Operations Stake (workers + lead) | 1150000 | 1150000 | 0 |
+
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 0 | [@l1dev](https://pioneer.joystreamstats.live/#/members/l1dev) | active | 35 | 1.7 | 58.7 |
+| 15 | [@isonar](https://pioneer.joystreamstats.live/#/members/isonar) | active | 3 | 1.1 | 16.0 |
+| 16 | [@lkskrn](https://pioneer.joystreamstats.live/#/members/lkskrn) | active | 3 | 0.6 | 48.0 |
+| 17 | [@freakstatic](https://pioneer.joystreamstats.live/#/members/freakstatic) | active | 1 | 0.1 | 13.7 |
+| 18 | [@dapplooker](https://pioneer.joystreamstats.live/#/members/dapplooker) | active | 3 | 0.1 | 14.5 |
+| 20 | [@joystreamstats](https://pioneer.joystreamstats.live/#/members/joystreamstats) | active | 15 | 0.7 | 20.2 |
+| 22 | [@arseniy2706](https://pioneer.joystreamstats.live/#/members/arseniy2706) | active | 3 | 0.3 | 4.7 |
+| 24 | [@shtihmas](https://pioneer.joystreamstats.live/#/members/shtihmas) | active | 0 | 0.0 | 1.6 |
+| 26 | [@zazik](https://pioneer.joystreamstats.live/#/members/zazik) | active | 0 | 0.0 | 0.0 |
+| 29 | [@goldmember](https://pioneer.joystreamstats.live/#/members/goldmember) | active | 0 | 0.0 | 0.0 |
+| 31 | [@ilich](https://pioneer.joystreamstats.live/#/members/ilich) | active | 3 | 0.1 | 1.5 |
+| 32 | [@kate_fm](https://pioneer.joystreamstats.live/#/members/kate_fm) | active | 3 | 0.1 | 3.0 |
+| 33 | [@ururu](https://pioneer.joystreamstats.live/#/members/ururu) | active | 3 | 0.6 | 7.5 |
+| 34 | [@andybut](https://pioneer.joystreamstats.live/#/members/andybut) | active | 28 | 1.3 | 47.8 |
+| 36 | [@chiffah](https://pioneer.joystreamstats.live/#/members/chiffah) | active | 4 | 0.2 | 3.5 |
+| 39 | [@whitebarbie](https://pioneer.joystreamstats.live/#/members/whitebarbie) | active | 14 | 0.7 | 9.7 |
+| 44 | [@oxygen](https://pioneer.joystreamstats.live/#/members/oxygen) | active | 3 | 0.1 | 3.5 |
+| 45 | [@spat_sochi](https://pioneer.joystreamstats.live/#/members/spat_sochi) | active | 3 | 0.1 | 5.0 |
+| 46 | [@svasilenko](https://pioneer.joystreamstats.live/#/members/svasilenko) | active | 3 | 0.1 | 0.7 |
+| 47 | [@catemoon](https://pioneer.joystreamstats.live/#/members/catemoon) | active | 3 | 0.1 | 0.7 |
