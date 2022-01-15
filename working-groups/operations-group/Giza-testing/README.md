@@ -10,6 +10,8 @@ See [Network deployment](../Network-deployment)
 
 ### [Query-node](https://github.com/Joystream/joystream/tree/giza_staging/query-node)
 
+Edit: Some instructions have been simplified since the test ([README olympia QN](https://github.com/Lezek123/substrate-runtime-joystream/tree/olympia-readme/query-node)).
+
 Download these to `~/joystream` (or your repository root):
 - [.env](.env)
 - [import-qn-data.sh](import-qn-data.sh)
@@ -328,6 +330,8 @@ See [docs/node](https://github.com/Joystream/joystream/blob/giza_staging/distrib
 
 ## Storage
 
+The storage tests are delayed to improve the content migration script (for non-sudo uploads and to support dynamic channel-bucket-provider assignment - see ([PR #3034](https://github.com/Joystream/joystream/pull/3034)).
+
 1. What happens when a storage node runs out of (local) storage?
   - eg. the bucket is configured to accept 100GB, whereas the node runs out at 80GB
 2. What happens when a bucket is full (ref. bucket config on-chain) and you upload more from a channel where it's assigned to accept from?
@@ -391,3 +395,7 @@ No help:
 | Jan 5 20-23 |     3 | nginx config                                   |
 | Jan 6 18-23 |     5 | content creation                               |
 | Jan 7 12-15 |     3 | query-node deployment                          |
+| Jan 10 6-11 |     5 | research joystream issue updates               |
+| Jan 13 6-12 |     6 | content-migration script, PR #3034             |
+| Jan 14 2-7  |     5 | content-migration script, PR #3034             |
+|             |    37 |                                                |
