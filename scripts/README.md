@@ -1,9 +1,14 @@
-Here you find scripts and info how to retrieve data from the joystream [chain](https://www.joystream.org/roles/).
+# Community Scripts
+
+![](img/pioneer.png)
+
+Here you find scripts and info how to retrieve and mutate data on joystream [blockchains](https://www.joystream.org/roles/).
 
 There are several ways to access the chain storage. The easiest is the governance app [pioneer](/joystream/joystream/tree/master/pioneer).
 - [How to use the `Chain State` in Pioneer](#chain-state)
 - [How to use the `Javascript` page in Pioneer](#js)
 - [joystream-cli](#joystream-cli)
+- [joystream-lib](#joystream-lib)
 - [api](#api)
 
 Scripts
@@ -23,18 +28,17 @@ Telgram & Discord Bots
 - [joystreamvideobot](joystreamvideobot) - posts video uploads to `#video` on Discord
 - [storagesize-bot](storagesize-bot) - posts storage provider space usage to #storage-provider on Discord
 
-# Contact
+## Contact
 
 For usage questions: [#tech-support](https://discord.com/channels/811216481340751934/815192060276506664).
+To join development come to [#operations](https://discord.com/channels/811216481340751934/812344874099277824) and check [Operations reports](../working-groups/operations-group).
 
-To join development come to [#operations](https://discord.com/channels/811216481340751934/812344874099277824) and check [Operations reports](../working-groups/operations-group)
 
-
-# Chain State
+## Chain State
 
 First select `Fully Featured` for `interface operation mode` on [Settings](https://testnet.joystream.org/#/settings) and click `Save`.
 
-Go to [Chain State](https://testnet.joystream.org/#/settings)
+Go to [Chain State](https://testnet.joystream.org/#/settings) and select `section` and `method`. Generally it is possible to disable the input field to retrieve a list of all entries (equivalent to for example `api.query.system.account.entries()` - see [double maps](https://polkadot.js.org/docs/api/cookbook/storage/#how-do-i-use-entrieskeys-on-double-maps)).
 
 To see the balance of an account navigate to `system.account`, select or enter a key and press the `+` button.
 
@@ -45,7 +49,7 @@ If the handle is known: `members.membershipById`. The result is the membership I
 - With `node.js`: `Buffer.from("handle").toString('hex')`)
 - On [JS](https://testnet.joystream.org/#/js) enter `console.log('handle'.split("").map(c => c.charCodeAt(0).toString(16).padStart(2, "0")).join(""))` (save as `string to hex` for later by clicking on the disk button)
 
-With the member info two keys are included, `root_account` and `root_account`. These are usually equal, except someone change the controller.
+With the member info two keys are included, `root_account` and `contoller_account`. These are usually equal, except someone changed the controller.
 ```
 members.membershipById: Membership
 {
@@ -65,11 +69,11 @@ members.membershipById: Membership
 ```
 You can try this key with `system.account` to get the current balance.
 
-For all above and generally it is possible to disable the input to retrieve a list of all entries (equivalent to for example `api.query.system.account.entries()` - see [double maps](https://polkadot.js.org/docs/api/cookbook/storage/#how-do-i-use-entrieskeys-on-double-maps)). 
+With the key more lookups are possible:
+- [https://api.joystreamstats.live/api/v1/accounts](https://api.joystreamstats.live/api/v1/accounts/5C8BEb4AwVmDnxkZmbh4PVxJR5TMQ7QxU6nZtYkqTAvXhUP3) - shows authored blocks for validators
+- https://joystreamstats.live/transactions - recent token transfers
 
-
-
-# JS
+## JS
 
 To use the `Javascript` page in Pioneer first select `Fully Featured` for `interface operation mode` on [Settings](https://testnet.joystream.org/#/settings) and click `Save`.
 
@@ -158,7 +162,7 @@ See [augment-api-events.ts](https://github.com/Joystream/joystream/blob/master/t
 - [script to show era payouts](https://github.com/joystream/community-repo/tree/kpi35op3/working-groups/operations-group/Network-deployment#code)
 
 
-# joystream-cli
+## joystream-cli
 
 Another useful even tough at first time consuming tool to inspect working groups for example is the [cli](https://github.com/Joystream/joystream/tree/master/cli):
 ```
@@ -173,7 +177,7 @@ yarn link || bash # Start a new shell after linking `cli`
 To select another group: `-g storageProviders, curators, operations[Alpha,Beta,Gamma]`
 
 
-# api
+## api
 
 All methods in `Chain State` are available using the `api`
 
@@ -213,7 +217,7 @@ The [folder](joystream-api) has more examples and it is worth to look around. Yo
   console.log(`Chain '${chain}' - node: ${nodeName} v${nodeVersion}`);
 ```
 
-For the current testnet [augment-api-query.ts](https://github.com/Joystream/joystream/blob/master/types/augment/augment-api-query.ts#L511) gives a list with descriptions (also in `node_modules/@joystream/types/augment`) of :
+For the current testnet [augment-api-query.ts](https://github.com/Joystream/joystream/blob/master/types/augment/augment-api-query.ts#L511) gives a list of all api queries with descriptions (also in `node_modules/@joystream/types/augment`):
 ```
 /**
        * Registered unique handles and their mapping to their owner
@@ -231,4 +235,67 @@ For the current testnet [augment-api-query.ts](https://github.com/Joystream/joys
        * Mapping of member's id to their membership profile
        **/
       membershipById: AugmentedQuery<ApiType, (arg: MemberId | AnyNumber | Uint8Array) => Observable<Membership>, [MemberId]>;
+```
+
+
+## joystream-lib
+
+The [joystream-lib](https://git.joystreamstats.live/Operations/joystream-lib) is a collection of functions used by for example the [report-generator](report-generator), [minting-burning-report](minting-burning-report) and [js:stats](https://git.joystreamstats.live/Operations/jsstats). It makes the code a little more readable and requires less work on type upgrades.
+
+from [generator.ts](report-generator/src/generator.ts):
+```
+import { ApiPromise } from "@polkadot/api";
+import { connectApi, getHead, getCouncils, getCouncilRound } from "./lib/api";
+import { Round } from "./lib/types";
+
+const providerUrl = "ws://127.0.0.1:9944"
+
+async function printRounds () {
+  const api: ApiPromise = await connectApi(providerUrl);
+  await api.isReady;
+
+  const head = await getHead(api);
+  console.log(`current head: #${head}, round: ${await getCouncilRound(api)}`)
+  getCouncils(api, +head).then(async (councils: Round[]) => {
+    api.disconnect();
+    councils.map(({ round, start, end }) => console.log(round, start, end))
+    process.exit();
+  });
+}
+printRounds()
+```
+
+Try to create this file in `report-generator/src/rounds.ts`, add `"rounds": "node build/rounds",` to the scripts in `packages.json` (after `storage`, note that in json the last element has no `,`) and run:
+```
+cd community-repo/scripts/report-generator
+yarn && yarn build
+yarn rounds
+```
+Result:
+```
+yarn run v1.22.17
+$ node build/rounds
+current head: #4041100, round: 42
+2 118800 277199
+4 277200 377999
+5 378000 478799
+6 478800 579599
+7 579600 680399
+...
+```
+
+To use it in your project just add it as [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) like [here](../.gitmodules) do
+```
+cd your-project
+git submodule add https://git.joystreamstats.live/Operations/joystream-lib lib
+git status # should show: 	new file:   .gitmodules
+git commit -m "add joystream-lib submodule"
+git push
+```
+
+When cloning:
+```
+git clone URL project
+cd project
+git submodule update --init --recursive
 ```
