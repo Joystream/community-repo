@@ -209,7 +209,43 @@
       "format": "Free for all",
       "closedDate": "2021-09-14",
       "status": "Closed"
-    }
+    },
+    {
+      "id": 25,
+      "title": "Superstar Blogger Competition",
+      "openedDate": "2021-10-01",
+      "description": "Upload original videos",
+      "links": ["https://discord.com/channels/811216481340751934/886135291847520276","https://github.com/Joystream/community-repo/issues/311"],
+      "reward": 400,
+      "notes": "Upload original videos",
+      "tags": ["Content"],
+      "format": "Contest",
+      "status": "Closed"
+    },
+    {
+      "id": 27,
+      "title": "JS Official Music Theme",
+      "openedDate": "2021-10-01",
+      "description": "Create a musical theme for Joystream",
+      "links": ["https://testnet.joystream.org/#/proposals/606","https://github.com/Joystream/community-repo/issues/384"],
+      "reward": 400,
+      "notes": "Musical Theme",
+      "tags": ["Content"],
+      "format": "Open",
+      "status": "Closed"
+   },
+   {
+      "id": 28,
+      "title": "Educational Content",
+      "openedDate": "2021-10-04",
+      "description": "Goal of this bounty - to fill the Atlas interesting high quality content and attract new users to watch it there and become active users in the future.",
+      "links": ["https://testnet.joystream.org/#/proposals/547"],
+      "reward": 250,
+      "notes": "Educational Content",
+      "tags": ["Content"],
+      "format": "Open",
+      "status": "Closed"
+   }
   ],
   "activeBounties":
   [
@@ -297,18 +333,6 @@
       "status": "Open - Weekly Bounty"
     },
     {
-      "id": 25,
-      "title": "Superstar Blogger Competition",
-      "openedDate": "2021-10-01",
-      "description": "Upload original videos",
-      "links": ["https://discord.com/channels/811216481340751934/886135291847520276","https://github.com/Joystream/community-repo/issues/311"],
-      "reward": 400,
-      "notes": "Upload original videos",
-      "tags": ["Content"],
-      "format": "Contest",
-      "status": "Open"
-    },
-    {
       "id": 26,
       "title": "JS + Other Platform Videos",
       "openedDate": "2021-10-01",
@@ -320,30 +344,6 @@
       "format": "Open",
       "status": "Open"
     },
-    {
-      "id": 27,
-      "title": "JS Official Music Theme",
-      "openedDate": "2021-10-01",
-      "description": "Create a musical theme for Joystream",
-      "links": ["https://testnet.joystream.org/#/proposals/606","https://github.com/Joystream/community-repo/issues/384"],
-      "reward": 400,
-      "notes": "Musical Theme",
-      "tags": ["Content"],
-      "format": "Open",
-      "status": "Open"
-   },
-   {
-      "id": 28,
-      "title": "Educational Content",
-      "openedDate": "2021-10-04",
-      "description": "Goal of this bounty - to fill the Atlas interesting high quality content and attract new users to watch it there and become active users in the future.",
-      "links": ["https://testnet.joystream.org/#/proposals/547"],
-      "reward": 250,
-      "notes": "Educational Content",
-      "tags": ["Content"],
-      "format": "Open",
-      "status": "Open"
-   },
    {
       "id": 29,
       "title": "Update Featured Video",
