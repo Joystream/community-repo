@@ -2,7 +2,7 @@
 
 <div align="center">
   <h4>
-    <a href="/council">Council Reports</a> | <a href="/governance">Documentation</a> | <a href="/working-groups">WG Reports</a> | <a href="/bounties">Bounties</a> |  <a href="/contributions/research">Research</a> | <a href="/contributions/tech">Scripts</a>
+    <a href="/council">Council Reports</a> | <a href="/governance">Documentation</a> | <a href="/working-groups">WG Reports</a> | <a href="/bounties">Bounties</a> |  <a href="/contributions/research">Research</a> | <a href="scripts">Scripts</a>
   </h4>
 </div>
 
