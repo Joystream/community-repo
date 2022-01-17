@@ -15,16 +15,32 @@ import {
 } from "../config";
 
 // types
-import { Block, Council, Options, Proposals, ProposalDetail } from "./types";
+import { Block, Council, Options, Proposals, ProposalVotes } from "./types";
+import { ProposalDetail } from "./lib/types";
 import { types } from "@joystream/types";
+import { ProposalId } from "@joystream/types/proposals";
 import { ApiPromise, WsProvider } from "@polkadot/api";
 import { AccountId, Header, EventRecord } from "@polkadot/types/interfaces";
 
 // functions
-import { getEvents, getBlockHash, getProposalPost } from "./joystream-lib/api";
-import * as announce from "./lib/announcements";
-import * as get from "./lib/getters";
-import { parseArgs, printStatus, passedTime } from "./lib/util";
+import {
+  getActiveProposals,
+  getProposal,
+  getProposalInfo,
+  getBestHash,
+  getBlockHash,
+  getTimestamp,
+  getCouncil,
+  getEvents,
+  getMember,
+  getNextPost,
+  getNextThread,
+  getProposalCount,
+  getProposalPost,
+  getProposalVotes,
+} from "./lib/api";
+import * as announce from "./announcements";
+import { getCouncilHandles, parseArgs, printStatus, passedTime } from "./util";
 import moment from "moment";
 
 const opts: Options = parseArgs(process.argv.slice(2));
@@ -102,7 +118,7 @@ const sendMessage = (
   if (msg.tg.length) sendTelegram(msg.tg, msg.tgParseMode);
 };
 const sendTelegram = (msg: string, tgParseMode: ParseMode | undefined) => {
-  if (bot) {
+  if (bot && msg.length) {
     try {
       bot.sendMessage(chatid, msg, { parse_mode: tgParseMode || "HTML" });
     } catch (e) {
@@ -114,15 +130,48 @@ const sendDiscord = (msg: string, channel: any) => {
   if (!channel) return;
   try {
     channel.send(msg);
-  } catch (e) {
+  } catch (e: any) {
     console.log(`Failed to send to discord: ${e.message}`);
   }
+};
+
+const missingVotesMessages = async (api: ApiPromise, council: Council) => {
+  const active = await getActiveProposals(api);
+  const proposals = await Promise.all(
+    active.map((id) =>
+      getProposalInfo(api, id as unknown as ProposalId).then(({ title }) =>
+        getProposalVotes(api, id).then((votes) => {
+          return { id, title: String(title.toHuman()), votes };
+        })
+      )
+    )
+  );
+  return announce.missingProposalVotes(proposals, council);
 };
 
 const main = async () => {
   const provider = new WsProvider(wsLocation);
   const api = await ApiPromise.create({ provider, types });
   await api.isReady;
+
+  let council: Council = { round: 0, last: "", seats: [] };
+  council.seats = await getCouncilHandles(api);
+
+  client.on("message", (msg): void => {
+    const user = msg.author.id;
+    if (msg.content === "/proposals") {
+      msg
+        .reply(`Checking..`)
+        .then(async (reply) =>
+          reply.edit(
+            await missingVotesMessages(api, council).then(
+              ({ discord }) => discord || `No active proposals.`
+            )
+          )
+        )
+        .catch((error) => console.log(`Discord /proposals: ${error.message}`));
+    }
+  });
 
   const [chain, node, version] = await Promise.all([
     String(await api.rpc.system.chain()),
@@ -131,10 +180,9 @@ const main = async () => {
   ]);
   log(`Subscribed to ${chain} on ${node} v${version}`);
 
-  let council: Council = { round: 0, last: "" };
   let blocks: Block[] = [];
   let lastEra = 0;
-  let timestamp = await get.timestamp(api);
+  let timestamp = await getTimestamp(api, await getBestHash(api));
   let duration = 0;
   let lastHeartbeat = timestamp;
   let lastCouncilHeartbeat = timestamp;
@@ -162,14 +210,15 @@ const main = async () => {
   let lastProposalUpdate = 0;
 
   if (opts.forum) {
-    posts[0] = await get.currentPostId(api);
-    threads[0] = await get.currentThreadId(api);
+    const hash = await getBestHash(api);
+    posts[0] = (await getNextPost(api, hash)) - 1;
+    threads[0] = (await getNextThread(api, hash)) - 1;
   }
 
   if (opts.proposals) {
     console.log(`updating proposals`);
-    proposals.last = await get.proposalCount(api);
-    proposals.active = await get.activeProposals(api, proposals.last);
+    proposals.last = await getProposalCount(api);
+    proposals.active = await getActiveProposals(api);
   }
 
   const getReward = async (era: number) =>
@@ -178,12 +227,11 @@ const main = async () => {
   api.rpc.chain.subscribeNewHeads(async (header: Header): Promise<void> => {
     // current block
     const id = header.number.toNumber();
-    const hash = await getBlockHash(api, id);
-    const events: EventRecord[] = await getEvents(api, hash);
-
     if (lastBlock.id === id) return;
-    timestamp = await get.timestamp(api);
+    const hash = await getBlockHash(api, id);
+    timestamp = await getTimestamp(api, hash);
     duration = lastBlock.timestamp ? timestamp - lastBlock.timestamp : 0;
+    const events: EventRecord[] = await getEvents(api, hash);
 
     // update validators and nominators every era
     const era = Number(await api.query.staking.currentEra());
@@ -220,6 +268,16 @@ const main = async () => {
       issued,
     };
     if (duration) blocks = blocks.concat(block);
+
+    // send proposal reminder
+    if (timestamp > lastProposalUpdate + heartbeat) {
+      const msg = await missingVotesMessages(api, council);
+      const channel = await findDiscordChannel("proposals");
+      console.log(msg);
+      //sendMessage(msg, channel);
+      //sendDiscord("Please vote:\n" + msg.discord, channel);
+      lastProposalUpdate = timestamp;
+    }
 
     // heartbeat
     if (timestamp > lastHeartbeat + heartbeat) {
@@ -260,18 +318,16 @@ const main = async () => {
       if (created.length) {
         console.log(
           `proposal created`,
-          created.map((e) => e.toHuman())
+          created.map(({ event }) => event.data)
         );
         created.map(({ event }) =>
-          get
-            .proposalDetail(api, Number(event.data[1]))
-            .then((proposal: ProposalDetail | undefined) =>
-              announce.proposalCreated(
-                proposal,
-                sendMessage,
-                discordChannels.proposals
-              )
+          getProposal(api, event.data[1] as ProposalId).then((proposal) =>
+            announce.proposalCreated(
+              proposal,
+              sendMessage,
+              discordChannels.proposals
             )
+          )
         );
       }
 
@@ -289,22 +345,20 @@ const main = async () => {
           const proposalId = Number(event.data[0]);
           if (seen.includes(proposalId)) return;
           seen.push(proposalId);
-          get
-            .proposalDetail(api, proposalId)
-            .then((proposal: ProposalDetail | undefined) =>
-              announce.proposalUpdated(
-                proposal,
-                id,
-                sendMessage,
-                discordChannels.proposals
-              )
-            );
+          getProposal(api, event.data[0] as ProposalId).then((proposal) =>
+            announce.proposalUpdated(
+              proposal,
+              id,
+              sendMessage,
+              discordChannels.proposals
+            )
+          );
         });
       }
     }
 
     if (opts.forum) {
-      posts[1] = await get.currentPostId(api);
+      posts[1] = (await getNextPost(api, hash)) - 1;
       announce.posts(api, posts, sendMessage, discordChannels.forum);
       posts[0] = posts[1];
     }

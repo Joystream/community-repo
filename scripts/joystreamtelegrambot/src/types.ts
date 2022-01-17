@@ -1,18 +1,11 @@
-import { ApiPromise } from "@polkadot/api";
 import { MemberId } from "@joystream/types/members";
-import { ProposalParameters, ProposalStatus } from "@joystream/types/proposals";
-import { Nominations } from "@polkadot/types/interfaces";
-import { Option } from "@polkadot/types/codec";
-import { StorageKey } from "@polkadot/types/primitive";
+import { Post } from "@joystream/types/forum";
 import { ParseMode } from "node-telegram-bot-api";
-
-export interface Api {
-  query: any;
-}
 
 export interface Council {
   round: number;
   last: string;
+  seats: MemberHandles[];
 }
 
 export interface Options {
@@ -23,23 +16,11 @@ export interface Options {
   proposals: boolean;
 }
 
-export interface ProposalDetail {
-  id: number;
-  createdAt: number;
-  finalizedAt: number;
-  message: { tg: string; discord: string };
-  parameters: ProposalParameters;
-  stage: string;
-  result: string;
-}
-
-export type ProposalArray = number[];
-
 export interface Proposals {
   current: number;
   last: number;
-  active: ProposalArray;
-  executing: ProposalArray;
+  active: ProposalId[];
+  executing: number[];
 }
 
 export interface Member {
@@ -63,3 +44,18 @@ export type Send = (
   msg: { tg: string; discord: string; tgParseMode: ParseMode | undefined },
   channel: any
 ) => void;
+
+// github
+export interface MemberHandles {
+  memberId: MemberId;
+  handle: string;
+  discord?: { handle: string; id: number };
+  telegram?: string;
+}
+
+// jstats
+export interface ProposalVotes {
+  id: ProposalId;
+  title: string;
+  votes: { memberId: MemberId; vote: string }[];
+}
