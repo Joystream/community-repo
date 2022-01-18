@@ -1,4 +1,4 @@
-<img style="align:center" src="contributions/creative/community-repo_banners/traumschule/community.png" alt="Joystream Community Repository for reports, researches, tools and other community contributions." />
+<img style="align:center" src="contributions/creative/banner-competition/leSua-lab/CommunityRepo_banner.png" alt="Joystream Community Repository for reports, researches, tools and other community contributions." />
 
 <div align="center">
   <h4>
