@@ -5,6 +5,7 @@ import { ProposalParameters, ProposalStatus } from "@joystream/types/proposals";
 import { Nominations } from "@polkadot/types/interfaces";
 import { Option } from "@polkadot/types/codec";
 import { StorageKey } from "@polkadot/types/primitive";
+import { ParseMode } from "node-telegram-bot-api";
 
 export interface Api {
   query: any;
@@ -59,4 +60,7 @@ export interface Block {
   reward: number;
 }
 
-export type Send = (msg: { tg: string; discord: string }, channel: any) => void;
+export type Send = (
+  msg: { tg: string; discord: string; tgParseMode: ParseMode | undefined },
+  channel: any
+) => void;

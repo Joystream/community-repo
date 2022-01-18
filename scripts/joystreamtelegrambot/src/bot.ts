@@ -1,5 +1,8 @@
 import { Client } from "discord.js";
-import TelegramBot from "node-telegram-bot-api";
+import TelegramBot, {
+  ParseMode,
+  SendMessageOptions,
+} from "node-telegram-bot-api";
 import {
   discordToken,
   tgToken,
@@ -7,6 +10,7 @@ import {
   heartbeat,
   proposalDelay,
   wsLocation,
+  councilStatusHeartbeat,
 } from "../config";
 
 // types
@@ -52,15 +56,38 @@ client.on("message", async (msg) => {
   }
 });
 
+bot?.on("message", (msg: TelegramBot.Message) => {
+  if (!msg.reply_to_message) {
+    const chatId = msg.chat.id;
+    console.log(chatId);
+    const username = `${msg.from?.first_name} ${
+      msg.from?.last_name || ""
+    }`.trim();
+    const userParsed = `[${username}](tg://user?id=${msg.from?.id})`;
+    const options: SendMessageOptions = { parse_mode: "Markdown" };
+    if (msg.text?.startsWith("/status")) {
+      bot.sendMessage(
+        chatId,
+        `Hi ${userParsed}, **on demand status is still in progress**`,
+        options
+      );
+    }
+  }
+});
+
 // send to telegram and discord
-const sendMessage = (msg: { tg: string; discord: string }, channel: any) => {
+const sendMessage = (
+  msg: { tg: string; tgParseMode: ParseMode | undefined; discord: string },
+  channel: any
+) => {
   if (msg.tg === "") return;
   sendDiscord(msg.discord, channel);
-  sendTelegram(msg.tg);
+  sendTelegram(msg.tg, msg.tgParseMode);
 };
-const sendTelegram = (msg: string) => {
+const sendTelegram = (msg: string, tgParseMode: ParseMode | undefined) => {
   try {
-    if (bot) bot.sendMessage(chatid, msg, { parse_mode: "HTML" });
+    if (bot)
+      bot.sendMessage(chatid, msg, { parse_mode: tgParseMode || "HTML" });
     else console.log(msg);
   } catch (e) {
     console.log(`Failed to send to telegram: ${e}`);
@@ -93,6 +120,7 @@ const main = async () => {
   let timestamp = await get.timestamp(api);
   let duration = 0;
   let lastHeartbeat = timestamp;
+  let lastCouncilHeartbeat = timestamp;
   let lastBlock: Block = {
     id: 0,
     duration: 0,
@@ -129,105 +157,106 @@ const main = async () => {
   const getReward = async (era: number) =>
     Number(await api.query.staking.erasValidatorReward(era));
 
-  api.rpc.chain.subscribeNewHeads(
-    async (header: Header): Promise<void> => {
-      // current block
-      const id = header.number.toNumber();
+  api.rpc.chain.subscribeNewHeads(async (header: Header): Promise<void> => {
+    // current block
+    const id = header.number.toNumber();
 
-      if (lastBlock.id === id) return;
-      timestamp = await get.timestamp(api);
-      duration = lastBlock.timestamp ? timestamp - lastBlock.timestamp : 0;
+    if (lastBlock.id === id) return;
+    timestamp = await get.timestamp(api);
+    duration = lastBlock.timestamp ? timestamp - lastBlock.timestamp : 0;
 
-      // update validators and nominators every era
-      const era = Number(await api.query.staking.currentEra());
+    // update validators and nominators every era
+    const era = Number(await api.query.staking.currentEra());
 
-      if (era > lastEra) {
-        vals = (await api.query.session.validators()).length;
-        stake = Number(await api.query.staking.erasTotalStake(era));
-        issued = Number(await api.query.balances.totalIssuance());
-        reward = (await getReward(era - 1)) || (await getReward(era - 2));
+    if (era > lastEra) {
+      vals = (await api.query.session.validators()).length;
+      stake = Number(await api.query.staking.erasTotalStake(era));
+      issued = Number(await api.query.balances.totalIssuance());
+      reward = (await getReward(era - 1)) || (await getReward(era - 2));
 
-        // nominator count
-        noms = 0;
-        const nominators: { [key: string]: number } = {};
-        const stashes = (await api.derive.staking.stashes())
-          .map((s) => String(s))
-          .map(async (v) => {
-            const stakers = await api.query.staking.erasStakers(era, v);
-            stakers.others.forEach(
-              (n: { who: AccountId }) => nominators[String(n.who)]++
-            );
-            noms = Object.keys(nominators).length;
-          });
-        lastEra = era;
-      }
-
-      const block: Block = {
-        id,
-        timestamp,
-        duration,
-        stake,
-        noms,
-        vals,
-        reward,
-        issued,
-      };
-      if (duration) blocks = blocks.concat(block);
-
-      // heartbeat
-      if (timestamp > lastHeartbeat + heartbeat) {
-        const time = passedTime(lastHeartbeat, timestamp);
-        announce.heartbeat(
-          api,
-          blocks,
-          time,
-          proposals,
-          sendMessage,
-          discordChannels.tokenomics
-        );
-        lastHeartbeat = block.timestamp;
-        blocks = [];
-      }
-
-      // announcements
-      if (opts.council && block.id > lastBlock.id)
-        council = await announce.council(
-          api,
-          council,
-          block.id,
-          sendMessage,
-          discordChannels.council
-        );
-
-      if (opts.proposals) {
-        proposals.current = await get.proposalCount(api);
-
-        if (
-          proposals.current > proposals.last &&
-          !announced[proposals.current]
-        ) {
-          announced[`proposal${proposals.current}`] = true;
-          proposals = await announce.proposals(
-            api,
-            proposals,
-            id,
-            sendMessage,
-            discordChannels.proposals
+      // nominator count
+      noms = 0;
+      const nominators: { [key: string]: number } = {};
+      const stashes = (await api.derive.staking.stashes())
+        .map((s) => String(s))
+        .map(async (v) => {
+          const stakers = await api.query.staking.erasStakers(era, v);
+          stakers.others.forEach(
+            (n: { who: AccountId }) => nominators[String(n.who)]++
           );
-          lastProposalUpdate = timestamp;
-        }
-      }
-
-      if (opts.forum) {
-        posts[1] = await get.currentPostId(api);
-        announce.posts(api, posts, sendMessage, discordChannels.forum);
-        posts[0] = posts[1];
-      }
-
-      printStatus(opts, { block: id, chain, posts, proposals });
-      lastBlock = block;
+          noms = Object.keys(nominators).length;
+        });
+      lastEra = era;
     }
-  );
+
+    const block: Block = {
+      id,
+      timestamp,
+      duration,
+      stake,
+      noms,
+      vals,
+      reward,
+      issued,
+    };
+    if (duration) blocks = blocks.concat(block);
+
+    // heartbeat
+    if (timestamp > lastHeartbeat + heartbeat) {
+      const time = passedTime(lastHeartbeat, timestamp);
+      announce.heartbeat(
+        api,
+        blocks,
+        time,
+        proposals,
+        sendMessage,
+        discordChannels.tokenomics
+      );
+      lastHeartbeat = block.timestamp;
+      blocks = [];
+    }
+
+    if (timestamp > lastCouncilHeartbeat + councilStatusHeartbeat) {
+      announce.councilStatus(api, block, sendMessage, discordChannels.council);
+      lastCouncilHeartbeat = block.timestamp;
+    }
+
+    // announcements
+    if (opts.council && block.id > lastBlock.id) {
+      council = await announce.council(
+        api,
+        council,
+        block.id,
+        sendMessage,
+        discordChannels.council
+      );
+    }
+
+    if (opts.proposals) {
+      proposals.current = await get.proposalCount(api);
+
+      if (proposals.current > proposals.last && !announced[proposals.current]) {
+        announced[`proposal${proposals.current}`] = true;
+        proposals = await announce.proposals(
+          api,
+          proposals,
+          id,
+          sendMessage,
+          discordChannels.proposals
+        );
+        lastProposalUpdate = timestamp;
+      }
+    }
+
+    if (opts.forum) {
+      posts[1] = await get.currentPostId(api);
+      announce.posts(api, posts, sendMessage, discordChannels.forum);
+      posts[0] = posts[1];
+    }
+
+    printStatus(opts, { block: id, chain, posts, proposals });
+    lastBlock = block;
+  });
 };
 main().catch((error) => {
   console.log(error);

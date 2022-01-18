@@ -20,8 +20,9 @@ import {
   fetchTokenValue,
   fetchStorageSize,
 } from "./getters";
-import moment from "moment";
+import moment, { now } from "moment";
 
+const dateFormat = "DD-MM-YYYY HH:mm (UTC)";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // query API repeatedly to ensure a result
@@ -59,7 +60,11 @@ export const channels = async (
     );
   }
   sendMessage(
-    { tg: messages[0].join("\r\n\r\n"), discord: messages[1].join(`\n\n`) },
+    {
+      tg: messages[0].join("\r\n\r\n"),
+      discord: messages[1].join(`\n\n`),
+      tgParseMode: "HTML",
+    },
     channel
   );
 };
@@ -82,15 +87,17 @@ export const council = async (
   if (!stage || stage.toJSON() === null) {
     stageString = "elected";
     const councilEnd: BlockNumber = await api.query.council.termEndsAt();
-    const termDuration: BlockNumber = await api.query.councilElection.newTermDuration();
+    const termDuration: BlockNumber =
+      await api.query.councilElection.newTermDuration();
     const block = councilEnd.toNumber() - termDuration.toNumber();
     if (currentBlock - block < 2000) {
       const remainingBlocks = councilEnd.toNumber() - currentBlock;
       const m = moment().add(remainingBlocks * 6, "s");
-      const endDate = formatTime(m, "DD/MM/YYYY");
-
+      const endDate = formatTime(m, dateFormat);
       const handles: string[] = await Promise.all(
-        (await api.query.council.activeCouncil()).map(
+        (
+          await api.query.council.activeCouncil()
+        ).map(
           async (seat: { member: string }) =>
             await memberHandleByAccount(api, seat.member)
         )
@@ -103,16 +110,16 @@ export const council = async (
   } else {
     const remainingBlocks = stage.toJSON()[stageString] - currentBlock;
     const m = moment().add(remainingBlocks * 6, "second");
-    const endDate = formatTime(m, "DD-MM-YYYY HH:mm (UTC)");
+    const endDate = formatTime(m, dateFormat);
 
     const link = `${domain}/#/council/`;
-    if (stageString === "Announcing") {
+    if (stageString === "announcing") {
       msg[0] = `Council election started. You can <b><a href="${link}applicants">announce your application</a></b> until ${endDate}`;
       msg[1] = `Council election started. You can **announce your application** until ${endDate} ${link}applicants`;
-    } else if (stageString === "Voting") {
+    } else if (stageString === "voting") {
       msg[0] = `Council election: <b><a href="${link}applicants">Vote</a></b> until ${endDate}`;
       msg[1] = `Council election: **Vote* until ${endDate} ${link}applicants`;
-    } else if (stageString === "Revealing") {
+    } else if (stageString === "revealing") {
       msg[0] = `Council election: <b><a href="${link}votes">Reveal your votes</a></b> until ${endDate}`;
       msg[1] = `Council election: **Reveal your votes** until ${endDate} ${link}votes`;
     }
@@ -122,9 +129,93 @@ export const council = async (
     council.last !== "" &&
     round !== council.round &&
     stageString !== council.last
-  )
-    sendMessage({ tg: msg[0], discord: msg[1] }, channel);
+  ) {
+    sendMessage({ tg: msg[0], discord: msg[1], tgParseMode: "HTML" }, channel);
+  }
   return { round, last: stageString };
+};
+
+export const councilStatus = async (
+  api: Api,
+  block: Block,
+  sendMessage: Send,
+  channel: any
+): Promise<void> => {
+  const currentBlock = block.id;
+  const councilTermEndBlock: number = (
+    await api.query.council.termEndsAt()
+  ).toJSON();
+  const announcingPeriod: number = (
+    await api.query.councilElection.announcingPeriod()
+  ).toJSON();
+  const votingPeriod: number = (
+    await api.query.councilElection.votingPeriod()
+  ).toJSON();
+  const revealingPeriod: number = (
+    await api.query.councilElection.revealingPeriod()
+  ).toJSON();
+  const stage: any = await api.query.councilElection.stage();
+  const stageObj = JSON.parse(JSON.stringify(stage));
+  let stageString = stageObj ? Object.keys(stageObj)[0] : "";
+
+  let stageEndDate = moment();
+  if (!stage || stage.toJSON() === null) {
+    stageString = "elected";
+    const councilEnd: BlockNumber = await api.query.council.termEndsAt();
+    const termDuration: BlockNumber =
+      await api.query.councilElection.newTermDuration();
+    const block = councilEnd.toNumber() - termDuration.toNumber();
+    if (currentBlock - block < 2000) {
+      const remainingBlocks = councilEnd.toNumber() - currentBlock;
+      stageEndDate = moment().add(remainingBlocks * 6, "s");
+    }
+  } else {
+    const remainingBlocks = stage.toJSON()[stageString] - currentBlock;
+    stageEndDate = moment().add(remainingBlocks * 6, "second");
+  }
+
+  const blockTillTermEnd =
+    councilTermEndBlock < currentBlock
+      ? councilTermEndBlock +
+        announcingPeriod +
+        votingPeriod +
+        revealingPeriod -
+        currentBlock
+      : currentBlock +
+        councilTermEndBlock +
+        announcingPeriod +
+        votingPeriod +
+        revealingPeriod -
+        councilTermEndBlock;
+
+  let councilEndDate = moment().add(blockTillTermEnd * 6, "seconds");
+  let councilEndDateString = formatTime(councilEndDate, dateFormat);
+  let councilDaysLeft = councilEndDate.diff(moment(), "d");
+  let councilDurationSuffix = "day(s)";
+  if (councilDaysLeft <= 0) {
+    councilDaysLeft = councilEndDate.diff(moment(), "h");
+    councilDurationSuffix = "hour(s)";
+  }
+  if (councilDaysLeft <= 0) {
+    councilDaysLeft = councilEndDate.diff(moment(), "m");
+    councilDurationSuffix = "minute(s)";
+  }
+
+  let stageEndDateString = formatTime(stageEndDate, dateFormat);
+  let stageDaysLeft = stageEndDate.diff(moment(), "d");
+  let stageDurationSuffix = "day(s)";
+  if (stageDaysLeft <= 0) {
+    stageDaysLeft = stageEndDate.diff(moment(), "h");
+    stageDurationSuffix = "hour(s)";
+  }
+  if (stageDaysLeft <= 0) {
+    stageDaysLeft = stageEndDate.diff(moment(), "m");
+    stageDurationSuffix = "minute(s)";
+  }
+
+  const msgTg = `It is block number *#${currentBlock}* \nCouncil ends in *${councilDaysLeft} ${councilDurationSuffix}* on *${councilEndDateString}* \nCurrent stage *${stageString}* ends in *${stageDaysLeft} ${stageDurationSuffix}* on *${stageEndDateString}*.`;
+  const msgDs = `It is block number **#${currentBlock}** \nCouncil ends in **${councilDaysLeft} ${councilDurationSuffix}** on *${councilEndDateString}* \nCurrent stage **${stageString}** ends in *${stageDaysLeft} ${stageDurationSuffix}* on *${stageEndDateString}*.`;
+  sendMessage({ tg: msgTg, discord: msgDs, tgParseMode: "Markdown" }, channel);
 };
 
 // forum
@@ -149,7 +240,11 @@ export const categories = async (
   }
 
   sendMessage(
-    { tg: messages[0].join("\r\n\r\n"), discord: messages[1].join(`\n\n`) },
+    {
+      tg: messages[0].join("\r\n\r\n"),
+      discord: messages[1].join(`\n\n`),
+      tgParseMode: "HTML",
+    },
     channel
   );
   return category[1];
@@ -199,7 +294,11 @@ export const posts = async (
   }
 
   sendMessage(
-    { tg: messages[0].join("\r\n\r\n"), discord: messages[1].join(`\n\n`) },
+    {
+      tg: messages[0].join("\r\n\r\n"),
+      discord: messages[1].join(`\n\n`),
+      tgParseMode: "HTML",
+    },
     channel
   );
   return current;
@@ -225,7 +324,7 @@ export const proposals = async (
     const link = `${domain}/#/proposals/${id}`;
     const tg = `<a href="${link}">Proposal ${id}</a> <b>created</b> at block ${createdAt}.\r\n${message.tg}\r\nYou can <a href="${link}">vote</a> until block ${votingEndsAt} (${endTime} UTC).`;
     const discord = `Proposal ${id} **created** at block ${createdAt}.\n${message.discord}\nVote until block ${votingEndsAt} (${endTime} UTC): ${link}\n`;
-    sendMessage({ tg, discord }, channel);
+    sendMessage({ tg, discord, tgParseMode: "HTML" }, channel);
     active.push(id);
   }
 
@@ -242,7 +341,7 @@ export const proposals = async (
       const link = `${domain}/#/proposals/${id}`;
       const tg = `<a href="${link}">Proposal ${id}</a> <b>${label}</b> at block ${finalizedAt}.\r\n${message.tg}`;
       const discord = `Proposal ${id} **${label}** at block ${finalizedAt}.\n${message.discord}\n${link}\n`;
-      sendMessage({ tg, discord }, channel);
+      sendMessage({ tg, discord, tgParseMode: "HTML" }, channel);
       active = active.filter((a) => a !== id);
     }
   }
@@ -255,7 +354,7 @@ export const proposals = async (
     const link = `${domain}/#/proposals/${id}`;
     const tg = `<a href="${link}">Proposal ${id}</a> <b>executed</b> at block ${executesAt}.\r\n${message.tg}`;
     const discord = `Proposal ${id} **executed** at block ${executesAt}.\n${message.discord}\n${link}\n`;
-    sendMessage({ tg, discord }, channel);
+    sendMessage({ tg, discord, tgParseMode: "HTML" }, channel);
     executing = executing.filter((e) => e !== id);
   }
 
@@ -317,7 +416,7 @@ export const heartbeat = async (
   Volume: ${storageSize}\n`;
   const tg = msg + proposalString[0];
   const discord = msg + proposalString[1];
-  sendMessage({ tg, discord }, channel);
+  sendMessage({ tg, discord, tgParseMode: "HTML" }, channel);
 };
 
 export const formatProposalMessage = (
