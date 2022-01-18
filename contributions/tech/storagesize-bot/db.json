@@ -1,9 +1,0 @@
-{
-  "config": {
-    "timeStamp": "2021-07-21T18:42:22Z",
-    "size": "592GB"
-  },
-  "dataURL": "https://analytics.dapplooker.com/api/public/dashboard/c70b56bd-09a0-4472-a557-796afdc64d3b/card/155",
-  "storageProviderChannelName": "storage-provider",
-  "reRunCronTimingInHour": 5
-}

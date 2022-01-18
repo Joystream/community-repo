@@ -1,0 +1,207 @@
+Block,Action Taken,Notes,Total Issuance
+"1,930,574",Opening #6 created,"________________ Opening details _________________
+
+WG Opening ID                 6
+Opening ID                    14
+Type                          Worker
+Stage                         Accepting Applications
+Last status change            ~ 9:53:48 PM 8/16/2021 (#1930574)
+Application stake             >= 5.0000 kJOY
+Role stake                    >= 5.0000 kJOY
+
+_______________ Unstaking periods ________________
+
+Crowded Out Application Stake Unstaking Period Length:                  0 blocks
+Crowded Out Role Stake Unstaking Period Length:                         0 blocks
+Exit Role Application Stake Unstaking Period:                           0 blocks
+Exit Role Stake Unstaking Period:                                       0 blocks
+Fill Opening Failed Applicant Application Stake Unstaking Period:       0 blocks
+Fill Opening Failed Applicant Role Stake Unstaking Period:              0 blocks
+Fill Opening Successful Applicant Application Stake Unstaking Period:   0 blocks
+Review Period Expired Application Stake Unstaking Period Length:        0 blocks
+Review Period Expired Role Stake Unstaking Period Length:               0 blocks
+Terminate Application Stake Unstaking Period:                           0 blocks
+Terminate Role Stake Unstaking Period:                                  0 blocks
+
+________________ Applications (0) ________________",455226324
+"1,930,787",Send 100k to 5DJ7B5qdxpRTBiWNqr9MX5oYgYyb6aqcGTBE5RqWyZcYE3FQ,,455331324
+"1,930,796",Send 100k to 5Fe1QGWCsrctNsSRzzGhmmB9f9SPLY7hZgESiC5qd4cpTnrw,,455336324
+"1,930,815",Membership Created for w1111,,455346224
+"1,930,817",Membership Created for w2222,,455346124
+"1,930,840","w2222 applied for Opening
+    [
+      77
+    ],
+    {
+      created: 1,930,840,
+      staking_status: {
+        Staked: {
+          staked_amount: 10,000,
+          staked_status: {
+            Normal: null
+          },
+          next_slash_id: 0,
+          ongoing_slashes: {}
+        }
+      }
+    }
+{
+  created: 1,930,840,
+  staking_status: {
+    Staked: {
+      staked_amount: 80,000,
+      staked_status: {
+        Normal: null
+      },
+      next_slash_id: 0,
+      ongoing_slashes: {}
+    }
+  }
+}
+BALANCE: 9,900.000 JOY","________________ Opening details _________________
+
+WG Opening ID                 6
+Opening ID                    14
+Type                          Worker
+Stage                         Accepting Applications
+Last status change            ~ 9:53:48 PM 8/16/2021 (#1930574)
+Application stake             >= 5.0000 kJOY
+Role stake                    >= 5.0000 kJOY
+
+_______________ Unstaking periods ________________
+
+Crowded Out Application Stake Unstaking Period Length:                  0 blocks
+Crowded Out Role Stake Unstaking Period Length:                         0 blocks
+Exit Role Application Stake Unstaking Period:                           0 blocks
+Exit Role Stake Unstaking Period:                                       0 blocks
+Fill Opening Failed Applicant Application Stake Unstaking Period:       0 blocks
+Fill Opening Failed Applicant Role Stake Unstaking Period:              0 blocks
+Fill Opening Successful Applicant Application Stake Unstaking Period:   0 blocks
+Review Period Expired Application Stake Unstaking Period Length:        0 blocks
+Review Period Expired Role Stake Unstaking Period Length:               0 blocks
+Terminate Application Stake Unstaking Period:                           0 blocks
+Terminate Role Stake Unstaking Period:                                  0 blocks
+
+________________ Applications (1) ________________
+
+WG appl. ID     Appl. ID     Member     Stage      Appl. stake     Role stake     Total stake
+12              21           w2222      Active     80000           10000          90000",455361124
+"1,930,892",Start review,,455386124
+1930902,"Filled Opening, hired no one
+{
+  created: 1,930,840,
+  staking_status: {
+    NotStaked: null
+  }
+}
+{
+  created: 1,930,840,
+  staking_status: {
+    NotStaked: null
+  }
+}
+Balance:99,900.000 JOY
+","________________ Opening details _________________
+
+WG Opening ID                 6
+Opening ID                    14
+Type                          Worker
+Stage                         Complete
+Last status change            ~ 10:26:36 PM 8/16/2021 (#1930902)
+Application stake             >= 5.0000 kJOY
+Role stake                    >= 5.0000 kJOY
+
+_______________ Unstaking periods ________________
+
+Crowded Out Application Stake Unstaking Period Length:                  0 blocks
+Crowded Out Role Stake Unstaking Period Length:                         0 blocks
+Exit Role Application Stake Unstaking Period:                           0 blocks
+Exit Role Stake Unstaking Period:                                       0 blocks
+Fill Opening Failed Applicant Application Stake Unstaking Period:       0 blocks
+Fill Opening Failed Applicant Role Stake Unstaking Period:              0 blocks
+Fill Opening Successful Applicant Application Stake Unstaking Period:   0 blocks
+Review Period Expired Application Stake Unstaking Period Length:        0 blocks
+Review Period Expired Role Stake Unstaking Period Length:               0 blocks
+Terminate Application Stake Unstaking Period:                           0 blocks
+Terminate Role Stake Unstaking Period:                                  0 blocks
+
+________________ Applications (1) ________________
+
+WG appl. ID     Appl. ID     Member     Stage         Appl. stake     Role stake     Total stake
+12              21           w2222      Unstaking     0               0              0",455391124
+"1,930,946",opening #7 created,"________________ Opening details _________________
+
+WG Opening ID                 7
+Opening ID                    15
+Type                          Worker
+Stage                         Accepting Applications
+Last status change            ~ 10:31:00 PM 8/16/2021 (#1930946)
+Application stake             >= 5.0000 kJOY
+Role stake                    >= 5.0000 kJOY
+
+_______________ Unstaking periods ________________
+
+Crowded Out Application Stake Unstaking Period Length:                  0 blocks
+Crowded Out Role Stake Unstaking Period Length:                         0 blocks
+Exit Role Application Stake Unstaking Period:                           0 blocks
+Exit Role Stake Unstaking Period:                                       0 blocks
+Fill Opening Failed Applicant Application Stake Unstaking Period:       0 blocks
+Fill Opening Failed Applicant Role Stake Unstaking Period:              0 blocks
+Fill Opening Successful Applicant Application Stake Unstaking Period:   0 blocks
+Review Period Expired Application Stake Unstaking Period Length:        0 blocks
+Review Period Expired Role Stake Unstaking Period Length:               0 blocks
+Terminate Application Stake Unstaking Period:                           0 blocks
+Terminate Role Stake Unstaking Period:                                  0 blocks
+
+________________ Applications (0) ________________",455411124
+"1,931,004","w2222 applied for Opening
+{
+  created: 1,931,004,
+  staking_status: {
+    Staked: {
+      staked_amount: 5,000,
+      staked_status: {
+        Normal: null
+      },
+      next_slash_id: 0,
+      ongoing_slashes: {}
+    }
+  }
+}Balance:89,900.000 JOY
+","________________ Applications (1) ________________
+
+WG appl. ID     Appl. ID     Member     Stage      Appl. stake     Role stake     Total stake
+13              22           w2222      Active     5000            5000           10000",455441124
+"1,931,036","W1111 applied for opening: 
+{
+  created: 1,931,036,
+  staking_status: {
+    Staked: {
+      staked_amount: 5,000,
+      staked_status: {
+        Normal: null
+      },
+      next_slash_id: 0,
+      ongoing_slashes: {}
+    }
+  }
+}","________________ Applications (2) ________________
+
+WG appl. ID     Appl. ID     Member     Stage      Appl. stake     Role stake     Total stake
+13              22           w2222      Active     5000            5000           10000
+14              23           w1111      Active     5000            5000           10000",455456124
+"1,931,060",Review Started,"________________ Applications (2) ________________
+
+WG appl. ID     Appl. ID     Member     Stage      Appl. stake     Role stake     Total stake
+13              22           w2222      Active     5000            5000           10000
+14              23           w1111      Active     5000            5000           10000",455471124
+"1,931,079","Filled Opening, hired both
+
+
+Balance:94,900.000 JOY
+Balance:94,900.000 JOY
+","________________ Applications (2) ________________
+
+WG appl. ID     Appl. ID     Member     Stage         Appl. stake     Role stake     Total stake
+13              22           w2222      Unstaking     0               5000           5000
+14              23           w1111      Unstaking     0               5000           5000",455476124

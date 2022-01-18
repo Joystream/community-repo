@@ -1,5 +1,0 @@
-{
-    "operationName":"GetVideosConnection",
-    "variables": __PARAMS__,
-    "query": "__QUERY__"
-}
