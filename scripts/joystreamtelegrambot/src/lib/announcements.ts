@@ -174,21 +174,10 @@ export const councilStatus = async (
     stageEndDate = moment().add(remainingBlocks * 6, "second");
   }
 
-  const blockTillTermEnd =
-    councilTermEndBlock < currentBlock
-      ? councilTermEndBlock +
-        announcingPeriod +
-        votingPeriod +
-        revealingPeriod -
-        currentBlock
-      : currentBlock +
-        councilTermEndBlock +
-        announcingPeriod +
-        votingPeriod +
-        revealingPeriod -
-        councilTermEndBlock;
-
-  let councilEndDate = moment().add(blockTillTermEnd * 6, "seconds");
+  const revealingEndsAt =
+    councilTermEndBlock + announcingPeriod + votingPeriod + revealingPeriod;
+  const termBlocksRemaining = revealingEndsAt - currentBlock;
+  let councilEndDate = moment().add(termBlocksRemaining * 6, "seconds");
   let councilEndDateString = formatTime(councilEndDate, dateFormat);
   let councilDaysLeft = councilEndDate.diff(moment(), "d");
   let councilDurationSuffix = "day(s)";
