@@ -21,7 +21,7 @@ Webapps
 - [validator-report-ui](validator-report-u) - frontend to show eras for selected validator
 - [validator-report-backend](validator-report-backend) - stores validator data for each era
 
-Telgram & Discord Bots
+Telgram & Discord Bots - [How to write a Discord bot](discordbot)]
 - [joystream-leaderboard-bot](joystream-leaderboard-bot) - show FM stats + faucet
 - [joystream-scoring-period-bot](joystream-scoring-period-bot) - sends scoring period deadlines to Telegram
 - [joystreamtelegrambot](joystreamtelegrambot) - posts proposal updates and forum posts on Discord and Telegram
