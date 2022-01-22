@@ -41,7 +41,7 @@
     "mongoose": "5.9.25",
     "node-telegram-bot-api": "^0.53.0",
     "puppeteer": "^10.2.0",
-    "shelljs": "^0.8.4",
+    "shelljs": "^0.8.5",
     "slug": "^5.1.0",
     "ts-node": "^10.1.0",
     "tsconfig-paths": "^3.10.1",
