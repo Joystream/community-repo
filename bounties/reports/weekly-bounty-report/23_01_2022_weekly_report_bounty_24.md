@@ -5,7 +5,7 @@ https://github.com/Joystream/community-repo/pull/367
 
 Videos were eveluated and checked.
 
-   1. Today the number of uploaded videos were 132.
+   1. Today the number of uploaded videos were 132 (115 submissions were approved).
    2. BM checked all videos. Work of BM were re-checked Curators Lead.
    3. General reward for all videos were 250$
 
