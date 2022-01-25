@@ -11,7 +11,7 @@
 - [Issue Tracker](https://git.joystreamstats.live/Operations/process) - [Funded Issues](https://git.joystreamstats.live/Operations/process/issues?labels=8)
 - [Joystream Opportunities](https://www.joystream.org/get-started#opportunities) - [Open Bounties](https://joystreamstats.live/bounties) - [All](../../bounties)
 
-General Tasks
+*General Tasks*
 - Operations Group is given a budget to work with, the lead needs to report on how this budget is used
 - Lead + workers are supposed to be responsive on Discord and Forums
 - Lead has to update worker rewards per budget
@@ -20,27 +20,37 @@ General Tasks
 
 | Task                                                                             | Proposer  | Funded    | Amount USD | Status                                                                              |
 |----------------------------------------------------------------------------------------|-----------|-----------|------------|-------------------------------------------------------------------------------|
-| [js:stats multi-lingual](https://pioneer.joystreamstats.live/#/proposals/800)          | l1dev     | 12-Aug-21 |  100+ | [Open](https://git.joystreamstats.live/Operations/process/issues/30)                  |
-| [Opportunities & Applications UI](https://pioneer.joystreamstats.live/#/proposals/581) | l1dev     | 18-Sep-21 | 25/hr | [Open](https://git.joystreamstats.live/Operations/process/issues/42)                  |
-| [API improvements](https://pioneer.joystreamstats.live/#/proposals/893)                | tomato    | 07-Dec-21 |   150 | [Assigned](https://github.com/Joystream/community-repo/issues/509) to lkskrn          |
-| [Reputation Bot](https://pioneer.joystreamstats.live/#/proposals/992)                  | tomato    | 06-Jan-22 |   250 | [Assigned](https://git.joystreamstats.live/Operations/process/issues/49) to Ars44     |
-| [WG Bot](https://pioneer.joystreamstats.live/#/proposals/993)                          | tomato    | 06-Jan-22 |   200 | [Open](https://git.joystreamstats.live/Operations/process/issues/50)                  |
-| [Improved Council Minutes](https://pioneer.joystreamstats.live/#/proposals/994)        | tomato    | 06-Jan-22 |   300 | [Open](https://git.joystreamstats.live/Operations/process/issues/48)                  |
-| [Council Daily Bot](https://pioneer.joystreamstats.live/#/proposals/991)               | tomato    | 06-Jan-22 |   150 | [Assigned](https://git.joystreamstats.live/Operations/process/issues/39) to lkskrn    |
+| Task                                                                                   | Proposer  | Funded    | Amount USD | Status |
+|----------------------------------------------------------------------------------------|-----------|-----------|------------|---|
+| [Network Test Scripts](https://pioneer.joystreamstats.live/#/proposals/1076)           | l1dev     | 24-Jan-22 | 25/h  | [Open](https://git.joystreamstats.live/Operations/process/issues/52)                  |
 | [js:stats roadmap](https://pioneer.joystreamstats.live/#/proposals/1023)               | l1dev     | 15-Jan-22 | 25/hr | [Open](https://git.joystreamstats.live/Operations/process/issues/16)                  |
-| [Storage Status Tools](https://testnet.joystream.org/#/proposals/128)                  | tomato    | 31-May-21 |       | [Implemented](https://git.joystreamstats.live/Operations/process/issues/4) by l1dev   |
-| [API scripts maintenance](https://testnet.joystream.org/#/proposals/127)               | tomato    | 08-Apr-21 |   150 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/18) by isonar |
-| [Basic Video Stats Website](https://testnet.joystream.org/#/proposals/127)             | tomato    | 31-May-21 |   150 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/19) by dapplooker |
-| [Run the Discord Video Bot](https://testnet.joystream.org/#/proposals/155)             | tomato    | 12-Jun-21 |       | [Implemented](https://git.joystreamstats.live/Operations/process/issues/17) by l1dev  |
-| [Maintenance of joystreamstats.live](https://testnet.joystream.org/#/proposals/164)    | tomato    | 15-Jun-21 |       | [Implemented](https://git.joystreamstats.live/Operations/process/issues/16) by l1dev  |
-| [Automated HELIOS + HELIOS History](https://testnet.joystream.org/#/proposals/173)     | tomato    | 17-Jun-21 |       | [Implemented](https://git.joystreamstats.live/Operations/process/issues/12) by l1dev  |
-| [Atlas Thumbnail Preview](https://testnet.joystream.org/#/proposals/385)               | bedeho    | 08-Jun-21 |   480 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/2) by lkskrn  |
-| [Create a block explorer](https://testnet.joystream.org/#/proposals/160)               | maxlevush | 14-Jun-21 |   150 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/15) by isonar |
-| [Storage Performance](https://testnet.joystream.org/#/proposals/409)                   | l1dev     | 13-Aug-21 |   250 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/13) by dapplooker |
-| [Show salaries on jsstats](https://testnet.joystream.org/#/proposals/412)              | l1dev     | 13-Aug-21 |   250 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/34) by l1dev  |
+| [js:stats multi-lingual](https://pioneer.joystreamstats.live/#/proposals/800)          | l1dev     | 12-Aug-21 |  100+ | [Open](https://git.joystreamstats.live/Operations/process/issues/30)                  |
+| [Reputation Bot](https://pioneer.joystreamstats.live/#/proposals/992)                  | tomato    | 06-Jan-22 |   250 | [Assigned](https://git.joystreamstats.live/Operations/process/issues/49) to ars44     |
+| [WG Bot](https://pioneer.joystreamstats.live/#/proposals/993)                          | tomato    | 06-Jan-22 |   200 | [Assigned](https://git.joystreamstats.live/Operations/process/issues/50) to isonar    |
+| [Improved Council Minutes](https://pioneer.joystreamstats.live/#/proposals/994)        | tomato    | 06-Jan-22 |   300 | [Assigned](https://git.joystreamstats.live/Operations/process/issues/48) to freakstatic |
+| [API improvements](https://pioneer.joystreamstats.live/#/proposals/893)                | tomato    | 07-Dec-21 |   150 | [Assigned](https://github.com/Joystream/community-repo/issues/509) to lkskrn          |
+| [Community Manager](https://pioneer.joystreamstats.live/#/proposals/393)               | maxlevush | 09-Aug-21 |    75 | [Continuous](https://git.joystreamstats.live/Operations/process/issues/16) by andybut |
+| [Maintenance of joystreamstats.live](https://testnet.joystream.org/#/proposals/164)    | tomato    | 15-Jun-21 |    25 | [Continuous](https://git.joystreamstats.live/Operations/process/issues/16) by l1dev |
+| [Council Daily Bot](https://pioneer.joystreamstats.live/#/proposals/991)               | tomato    | 06-Jan-22 |   150 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/39) by lkskrn    |
+| [review dependabot PRs](https://testnet.joystream.org/#/proposals/862)                 | tomato    | 29-Nov-21 |   100 | [Implemented](https://github.com/Joystream/community-repo/issues/500) by isonar       |
+| [joystream-lib](https://pioneer.joystreamstats.live/#/proposals/795)                   | l1dev     | 19-Nov-21 | [1340](https://pioneer.joystreamstats.live/#/proposals/824) | [Implemented](https://git.joystreamstats.live/Operations/joystream-lib) by l1dev |
+| [Opportunities & Applications UI](https://pioneer.joystreamstats.live/#/proposals/581) | l1dev     | 18-Sep-21 | 25/hr | [Implemented](https://git.joystreamstats.live/Operations/process/issues/42) by l1dev  |
+| [pioneer improvements](https://pioneer.joystreamstats.live/#/proposals/526)            | freakstatic | 03-Sep-21 | 300 | Implemented by freakstatic |
+| [Discord Storage Notification Bot](https://joystreamstats.live/proposals/457)          | l1dev     | 19-Aug-21 |   225 | [Implemented](https://github.com/Joystream/community-repo/tree/master/scripts/storagesize-bot) by nexusfallout |
 | [drag-n-drop task list for jsstats](https://testnet.joystream.org/#/proposals/417)     | l1dev     | 14-Aug-21 |   450 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/8) by lkskrn  |
 | [FAQ and Intro page for jsstats](https://testnet.joystream.org/#/proposals/423)        | l1dev     | 15-Aug-21 |   150 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/28) by lkskrn |
-| [review dependabot PRs](https://testnet.joystream.org/#/proposals/862)                 | tomato    | 29-Nov-21 |   100 | [Implemented](https://github.com/Joystream/community-repo/issues/500) by isonar       |
+| [Storage Performance](https://testnet.joystream.org/#/proposals/409)                   | l1dev     | 13-Aug-21 |   250 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/13) by dapplooker |
+| [Show salaries on jsstats](https://testnet.joystream.org/#/proposals/412)              | l1dev     | 13-Aug-21 |   250 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/34) by l1dev  |
+| [Atlas Thumbnail Preview](https://pioneer.joystreamstats.live/#/proposals/385)         | l1dev     | 6-Aug-21  |   480 | [Implemented](https://sprites.joystreamstats.live) by lk1krn |
+| [Automated HELIOS + HELIOS History](https://testnet.joystream.org/#/proposals/173)     | tomato    | 17-Jun-21 |   150 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/12) by l1dev  |
+| [Maintenance of joystreamstats.live](https://testnet.joystream.org/#/proposals/164)    | tomato    | 15-Jun-21 |       | [Implemented](https://git.joystreamstats.live/Operations/process/issues/16) by l1dev  |
+| [Create a block explorer](https://testnet.joystream.org/#/proposals/160)               | maxlevush | 14-Jun-21 |   150 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/15) by isonar |
+| [Telegram FM bot](https://pioneer.joystreamstats.live/#/proposals/282) + [Proposal 335](https://pioneer.joystreamstats.live/#/proposals/335) | andybut   | 15-Jul-21   |    60 | [Implemented](http://t.me/JoystreamLeaderboardBot) by ururu |
+| [Run the Discord Video Bot](https://testnet.joystream.org/#/proposals/155)             | tomato    | 12-Jun-21 |       | [Implemented](https://git.joystreamstats.live/Operations/process/issues/17) by l1dev  |
+| [Atlas Thumbnail Preview](https://testnet.joystream.org/#/proposals/385)               | bedeho    | 08-Jun-21 |   480 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/2) by lkskrn  |
+| [Storage Status Tools](https://testnet.joystream.org/#/proposals/128)                  | tomato    | 31-May-21 |   150 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/4) by l1dev   |
+| [Basic Video Stats Website](https://testnet.joystream.org/#/proposals/127)             | tomato    | 31-May-21 |   150 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/19) by dapplooker |
+| [API scripts maintenance](https://testnet.joystream.org/#/proposals/127)               | tomato    | 08-Apr-21 |   150 | [Implemented](https://git.joystreamstats.live/Operations/process/issues/18) by isonar |
 | [welcome bot](https://testnet.joystream.org/#/proposals/1025)                          | okayko    |           |       | Idea |
 | [mobile app](https://github.com/Joystream/community-repo/issues/555)                   | tomato    |           |       | Idea |
 
