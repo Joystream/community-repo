@@ -19,7 +19,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@polkadot/types/augment": ["./node_modules/@joystream/types/augment-codec/augment-types.ts"]
+      "@polkadot/types/augment": ["./node_modules/@joystream/types/augment-codec/augment-types.ts"],
+      "@polkadot/api/types/events": ["./node_modules/@joystream/types/augment/augment-api-events.ts"]
     },
     "typeRoots": [
       "./node_modules/@polkadot/ts",
