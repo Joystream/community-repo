@@ -28,9 +28,9 @@ import { Mint, MintId } from "@joystream/types/mint";
 import { ProposalDetailsOf, ProposalOf } from "@joystream/types/augment/types";
 
 const CONFIG: Config = {
-  repoDir: __dirname + "/../../../../",
+  repoDir: __dirname + "/../../../",
   reportsDir: "council/tokenomics",
-  spendingCategoriesFile: "governance/spending_proposal_categories.csv",
+  spendingCategoriesFile: "council/spending_proposal_categories.csv",
   councilTemplate: __dirname + "/../templates/council.md",
   tokenomicsTemplate: __dirname + "/../templates/tokenomics.md",
   providerUrl: "ws://127.0.0.1:9944",
