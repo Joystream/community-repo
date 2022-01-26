@@ -9,8 +9,9 @@ import {
   ProposalType,
   ReportData,
 } from "./types/council";
+import { getCouncilAt } from "./lib/api";
 import { StorageKey, U32, u32, Vec } from "@polkadot/types";
-import { Seats } from "@joystream/types/council";
+import { Backer, Seats } from "@joystream/types/council";
 import { MemberId, Membership } from "@joystream/types/members";
 import { Mint, MintId } from "@joystream/types/mint";
 import { ProposalDetailsOf, ProposalOf } from "@joystream/types/augment/types";
@@ -226,13 +227,11 @@ async function getCouncilMembersInfo(
   range: BlockRange,
   proposals: Array<ProposalInfo>
 ) {
-  const seats = (await api.query.council.activeCouncil.at(
-    range.startBlockHash
-  )) as Seats;
+  const seats: Seats = await getCouncilAt(api, range.startBlockHash);
 
   let councilRoundInfo = new CouncilRoundInfo();
   councilRoundInfo.members = await Promise.all(
-    seats.map(async (seat) => {
+    seats.map(async (seat): Promise<CouncilMemberInfo> => {
       let info = new CouncilMemberInfo();
       let memberKey = seat.member.toString();
       info.memberId = Number(
@@ -247,10 +246,8 @@ async function getCouncilMembersInfo(
       )) as Membership;
       info.username = membership.handle.toString();
       info.ownStake = Number(seat.stake.toBigInt());
-      const backersStakeArray = seat.backers.map((backer) =>
-        Number(backer.stake.toBigInt())
-      );
-      info.backersStake = backersStakeArray.reduce((a, b) => a + b, 0);
+      const sum = (a: number[]) => a.reduce((s: number, i: number) => s + i, 0);
+      info.backersStake = sum(seat.backers.map((b: Backer) => +b.stake));
       return info;
     })
   );
@@ -399,7 +396,7 @@ async function getProposals(api: ApiPromise, range: BlockRange) {
   );
 
   let proposals = new Array<ProposalInfo>();
-  for (let i = startProposalCount - 1; i <= endProposalCount; i++) {
+  for (let i = startProposalCount; i <= endProposalCount; i++) {
     try {
       const proposal = await getProposal(api, range, i);
       if (proposal) proposals.push(proposal);

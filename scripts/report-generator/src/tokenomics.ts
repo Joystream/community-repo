@@ -9,7 +9,12 @@ import {
   EventRecord,
   Hash,
 } from "@polkadot/types/interfaces";
-import { Config, MintStatistics, Statistics, WorkersInfo } from "./types/tokenomics";
+import {
+  Config,
+  MintStatistics,
+  Statistics,
+  WorkersInfo,
+} from "./types/tokenomics";
 import {
   CacheEvent,
   Bounty,
@@ -21,7 +26,7 @@ import {
 import { Option, u32, Vec } from "@polkadot/types";
 import { ElectionStake, SealedVote, Seats } from "@joystream/types/council";
 import { Mint, MintId } from "@joystream/types/mint";
-import { ContentId, DataObject } from "@joystream/types/media";
+import { ContentId, DataObjectType } from "@joystream/types/legacy"; //@joystream/types/storage
 import { CategoryId } from "@joystream/types/forum";
 import { MemberId, Membership } from "@joystream/types/members";
 import {
@@ -34,6 +39,7 @@ import {
   RewardRelationshipId,
 } from "@joystream/types/recurring-rewards";
 import { Stake } from "@joystream/types/stake";
+import { StorageBucket, StorageBucketId } from "@joystream/types/storage";
 import { Worker, WorkerId } from "@joystream/types/working-group";
 import { ProposalDetails, ProposalOf } from "@joystream/types/augment/types";
 import * as constants from "constants";
@@ -78,12 +84,10 @@ import {
   getProposalDetails,
   getValidatorCount,
   getValidators,
-  getNextEntity,
   getNextChannel,
   getNextVideo,
-  getEntity,
-  getDataObject,
-  getDataObjects,
+  getStorageBucket,
+  getStorageBuckets,
 } from "./lib/api";
 
 import {
@@ -334,8 +338,7 @@ export class StatisticsCollector {
       termDuration,
     ]: number[] = await getCouncilElectionDurations(this.api, endHash);
 
-    const nrCouncilMembers = ((await getCouncil(this.api, endHash)) as Seats)
-      .length;
+    const nrCouncilMembers = ((await getCouncil(this.api)) as Seats).length;
     const totalCouncilRewardsPerBlock =
       amountPerPayout && payoutInterval
         ? (amountPerPayout * nrCouncilMembers) / payoutInterval
@@ -675,35 +678,34 @@ export class StatisticsCollector {
     const endChannels = Number(await getNextChannel(this.api, endHash));
 
     // count size
-    let startUsedSpace = 0;
-    let endUsedSpace = 0;
-    const startBlock = await getBlock(this.api, startHash);
-    const endBlock = await getBlock(this.api, endHash);
-    getDataObjects(this.api).then((dataObjects: Map<ContentId, DataObject>) => {
-      for (let [key, dataObject] of dataObjects) {
-        const added = dataObject.added_at.block.toNumber();
-        const start = startBlock.block.header.number.toNumber();
-        const end = endBlock.block.header.number.toNumber();
+    getStorageBuckets(this.api).then(
+      async (buckets: Map<StorageBucketId, StorageBucket>) => {
+        let startUsedSpace = 0;
+        let endUsedSpace = 0;
+        for (const [id, bucket] of buckets) {
+          const atStart = await getStorageBucket(this.api, id, startHash);
+          const atEnd = await getStorageBucket(this.api, id, endHash);
+          const growth =
+            atEnd.voucher.sizeUsed.toNumber() -
+            atStart.voucher.sizeUsed.toNumber();
 
-        if (added < start)
-          startUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
-        if (added < end)
-          endUsedSpace += dataObject.size_in_bytes.toNumber() / 1024 / 1024;
-      }
-      if (!startUsedSpace || !endUsedSpace)
+          startUsedSpace += atStart.voucher.sizeUsed.toNumber() / 1024 / 1024;
+          endUsedSpace += atEnd.voucher.sizeUsed.toNumber() / 1024 / 1024;
+        }
         console.log(`space start, end`, startUsedSpace, endUsedSpace);
-      this.saveStats({
-        startMedia,
-        endMedia,
-        percNewMedia: getPercent(startMedia, endMedia),
-        startChannels,
-        endChannels,
-        percNewChannels: getPercent(startChannels, endChannels),
-        startUsedSpace: Number(startUsedSpace.toFixed(2)),
-        endUsedSpace: Number(endUsedSpace.toFixed(2)),
-        percNewUsedSpace: getPercent(startUsedSpace, endUsedSpace),
-      });
-    });
+        this.saveStats({
+          startMedia,
+          endMedia,
+          percNewMedia: getPercent(startMedia, endMedia),
+          startChannels,
+          endChannels,
+          percNewChannels: getPercent(startChannels, endChannels),
+          startUsedSpace: Number(startUsedSpace.toFixed(2)),
+          endUsedSpace: Number(endUsedSpace.toFixed(2)),
+          percNewUsedSpace: getPercent(startUsedSpace, endUsedSpace),
+        });
+      }
+    );
   }
 
   async fillForumInfo(startHash: Hash, endHash: Hash): Promise<void> {
