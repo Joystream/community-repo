@@ -1,8 +1,11 @@
 import { connectUpstream } from './joystream/ws'
 import { ApiPromise } from '@polkadot/api'
-import { BlockHash, EventRecord, Header } from '@polkadot/types/interfaces'
+import { BlockHash, Event, EventRecord, Header } from '@polkadot/types/interfaces'
 import { wgEvents, workingGroups } from './config'
 import Discord, { Intents } from 'discord.js';
+import { getWorker, getMember, getEvents, getBlockHash } from './lib/api';
+import { Vec } from '@polkadot/types';
+
 
 const TYPES_AVAILABLE = [] as const
 type ApiType = typeof TYPES_AVAILABLE[number]
@@ -23,13 +26,13 @@ const discordBotToken = process.env.TOKEN || undefined // environment variable T
     await client.login(discordBotToken); 
     console.log('Bot logged in successfully');    
     
-    connectUpstream().then( async (api: any) => {
+    connectUpstream().then( async (api: ApiPromise) => {
         api.rpc.chain.subscribeNewHeads(async (header: Header) => {
-          const id = +header.number
-          const hash = await getBlockHash(api, id)
-          const blockEvents = await api.query.system.events.at(hash)
-          blockEvents.forEach(async ({ event }: EventRecord) => {
-            let { section, method, data } = event
+          const id = +header.number;
+          const hash = await getBlockHash(api, id);
+          const blockEvents = await getEvents(api, hash);
+          blockEvents.forEach(async (value: EventRecord, index: number, array: EventRecord[]) => {
+            let { section, method, data } = value.event;
             if (wgEvents.includes(method) && Object.keys(workingGroups).includes(section)) {
                 console.log(section);
                 console.log(method);
@@ -54,6 +57,3 @@ const discordBotToken = process.env.TOKEN || undefined // environment variable T
         })  
       })
 })()
-
-const getBlockHash = (api: ApiPromise, blockId: number) =>
-  api.rpc.chain.getBlockHash(blockId).then((hash: BlockHash) => hash.toString())

@@ -7,5 +7,8 @@ Supports new Working Groups introduced in Olympia network. (Add context link)
 
 # Installation
 
+Build with `yarn`
+
+Run using `TOKEN=<BOT TOKEN> RPC_ENDPOINT=wss://rome-rpc-endpoint.joystream.org:9944 ts-node src/index.ts`
 
 # Troubleshooting
