@@ -9,7 +9,7 @@ const wsLocation =
 
 export const connectUpstream = async (): Promise<ApiPromise> => {
     try {
-        //console.debug(`[Joystream] Connecting to ${wsLocation}`)
+        console.debug(`[Joystream] Opening websocket ${wsLocation}`)
         const provider = new WsProvider(wsLocation)
         const api = await ApiPromise.create({ provider, types })
         await api.isReady
