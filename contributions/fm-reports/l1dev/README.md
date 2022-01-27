@@ -201,3 +201,25 @@ Thanks to @tomato for providing a VPS to host `joystreamstats.live` during all p
 - *Dec 6th* [Pioneer: Show active proposals per default](https://github.com/Joystream/joystream/pull/2896)
 - [Storage Provider](https://github.com/Joystream/community-repo/blame/master/working-groups/storage-group/report_28.md)
 - [10 endpoints for load-balancing](https://pioneer.joystreamstats.live/#/proposals/historical/193)
+
+## [#23: 21/12/21 - 03/01/22](https://github.com/Joystream/founding-members/blob/main/scoring-periods/23.md)
+
+- [Operations lead](https://github.com/Joystream/community-repo/tree/master/working-groups/operations-group#round-36)
+- [Council Member](https://github.com/Joystream/community-repo/blob/master/council/reports/sumer-reports/Sumer_Council35_Report_22-12-2021.md) - [KPI 35 Report](https://pioneer.joystreamstats.live/#/forum/threads/826?replyIdx=3)
+- [KPI 37 Report](https://pioneer.joystreamstats.live/#/forum/threads/816?replyIdx=2)
+- [Storage Provider](https://github.com/Joystream/community-repo/blame/master/working-groups/storage-group/report_29.md)
+- [10 endpoints for load-balancing](https://pioneer.joystreamstats.live/#/proposals/historical/193)
+
+## [#24: 03/01/22 - 25/01/22](https://github.com/Joystream/founding-members/blob/main/scoring-periods/24.md)
+
+- [Operations lead](https://github.com/Joystream/community-repo/tree/master/working-groups/operations-group#round-38)
+- [contributions to the joystream repo](https://github.com/Joystream/joystream/issues?q=author%3Atraumschule) (suggested [changes to election system](https://github.com/Joystream/joystream/issues/3066))
+- [improvements to community tools](https://github.com/Joystream/community-repo/pull/601)
+- [work on joystream-org](https://github.com/Joystream/joystream-org/issues?q=author%3Atraumschule) (Onboarding UI)
+- [KPI 38 Report](https://pioneer.joystreamstats.live/#/forum/threads/870?replyIdx=9)
+- [KPI 39 Report](https://pioneer.joystreamstats.live/#/forum/threads/882?replyIdx=3)
+- [KPI 40 Report](https://pioneer.joystreamstats.live/#/forum/threads/917?replyIdx=4)
+- [Storage Provider](https://github.com/Joystream/community-repo/blame/master/working-groups/storage-group/report_31.md)
+- [10 endpoints for load-balancing](https://pioneer.joystreamstats.live/#/proposals/historical/193)
+
+*final report: Jan, 27th 2022*
