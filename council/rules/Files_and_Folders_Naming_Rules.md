@@ -25,7 +25,9 @@ This folder can be used for creating reports specific to working groups like the
 
 ## Files
 
-For regular files, the general rule should be to use lower snake case: `lower_Snake_Case`. Uppercase is allowed, as well as numbers.
+For regular files, the general rule should be to use lower snake case for separating words instead of spaces: `lower_Snake_Case`. Uppercase is allowed, as well as numbers.
+
+The symbol `-` can be used in file names in all the cases when this symbol is used in usual writing. For example, for blocks range designation in Council Minutes reports: https://github.com/Joystream/community-repo/tree/master/council/tokenomics/sumer-4. One more example - member_handle-member_id or member_id-member_handle (svasilenko-2096 or 2096-swasilenko).
 
 Not recommended to use:
 1. Spaces
