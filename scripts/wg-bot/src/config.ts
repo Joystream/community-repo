@@ -34,3 +34,5 @@ export const wgEvents = [
     'WorkerRoleAccountUpdated', 
     'WorkerStorageUpdated'
 ]
+
+export const joystreamBlue = '#4038FF' // official joystream blue, see https://www.joystream.org/brand/guides/
