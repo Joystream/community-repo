@@ -1,6 +1,7 @@
 import { MemberId } from "@joystream/types/members";
 import { Post } from "@joystream/types/forum";
 import { ParseMode } from "node-telegram-bot-api";
+import { ProposalId } from "@joystream/types/proposals";
 
 export interface Council {
   round: number;

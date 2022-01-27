@@ -45,6 +45,7 @@ import moment from "moment";
 
 const opts: Options = parseArgs(process.argv.slice(2));
 const log = (msg: string): void | number => opts.verbose && console.log(msg);
+log(JSON.stringify(opts));
 process.env.NTBA_FIX_319 ||
   log("TL;DR: Set NTBA_FIX_319 to hide this warning.");
 
@@ -136,10 +137,10 @@ const sendDiscord = (msg: string, channel: any) => {
 };
 
 const missingVotesMessages = async (api: ApiPromise, council: Council) => {
-  const active = await getActiveProposals(api);
+  const active: ProposalId[] = await getActiveProposals(api);
   const proposals = await Promise.all(
-    active.map((id) =>
-      getProposalInfo(api, id as unknown as ProposalId).then(({ title }) =>
+    active.map((id: ProposalId) =>
+      getProposalInfo(api, id).then(({ title }) =>
         getProposalVotes(api, id).then((votes) => {
           return { id, title: String(title.toHuman()), votes };
         })
