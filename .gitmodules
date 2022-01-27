@@ -1,6 +1,6 @@
 [submodule "lib"]
 	path = scripts/report-generator/src/lib
 	url = https://git.joystreamstats.live/Operations/joystream-lib
-[submodule "scripts/wg-bot/src/lib"]
+[submodule "wg-bot-lib"]
 	path = scripts/wg-bot/src/lib
-	url = https://git.joystreamstats.live/Operations/joystream-lib.git
+	url = https://git.joystreamstats.live/Operations/joystream-lib
