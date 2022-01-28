@@ -5,7 +5,9 @@ import {processBlock} from './joystream/discord'
 import { workingGroups } from './config'
 
 const eventsMapping = {
-    'MintCapacityChanged': 4211575
+    'MintCapacityChanged': 4211575,
+    'OpeningFilled': 4206250,
+    'WorkerRewardAmountUpdated': 4222426
 }
 
 
