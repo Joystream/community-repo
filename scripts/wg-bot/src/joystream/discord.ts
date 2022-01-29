@@ -1,6 +1,6 @@
 import { EventRecord } from '@polkadot/types/interfaces'
 import { getWorker, getMember, getMint, getEvents, getBlockHash } from '../lib/api';
-import { getOpening } from './api_extension';
+import { getHiringOpening, getOpening } from './api_extension';
 
 import { wgEvents, workingGroups, joystreamBlue } from '../config'
 import Discord from 'discord.js';
@@ -39,13 +39,18 @@ export const processBlock = async (api: ApiPromise, client: Discord.Client, bloc
                     channel.send({ embeds: [exampleEmbed] });
                 } else if (method === 'OpeningAdded') {
                     const openingId = (data[0] as u32).toNumber()
-                    const opening = (await getOpening(api, hash, openingId)).human_readable_text.toJSON()
+                    const openingObject = await getOpening(api, section, hash, openingId)
+                    const hiringOpening = await getHiringOpening(api, hash, openingObject.hiring_opening_id)
+                    const opening = JSON.parse(hiringOpening.human_readable_text.toString())
                     const exampleEmbed = new Discord.MessageEmbed()
                         .setColor(joystreamBlue)
-                        .setTitle(`Apply for new Opening!`)
-                        .setDescription(opening)
+                        .setTitle(`⛩ ${opening.headline} ⛩`)
+                        .setDescription(opening.job.description)
                         .addFields(
-                            //   { name: 'Opening', value: , inline: true },
+                            { name: 'Reward', value: opening.reward, inline: true },
+                            { name: 'Application Stake', value: openingObject.policy_commitment.application_staking_policy.unwrap().amount.toString() || 'Not Set', inline: true },
+                            { name: 'Role Stake', value: openingObject.policy_commitment.role_staking_policy.unwrap().amount.toString() || 'Not Set', inline: true },
+                            { name: 'Created By', value: opening.creator.membership.handle, inline: true },
                             { name: 'Block', value: blockNumber + "", inline: true },
                             { name: 'Tx', value: value.hash.toString(), inline: true },
                         )
@@ -56,10 +61,13 @@ export const processBlock = async (api: ApiPromise, client: Discord.Client, bloc
                     const workerId = Object.values(JSON.parse(data[1].toString()))[0] as number
                     const worker = (await getWorker(api, section, hash, workerId))
                     const member = (await getMember(api, worker.member_id))
-                    const opening = (await getOpening(api, hash, openingId)).human_readable_text.toJSON()
+                    const openingObject = await getOpening(api, section, hash, openingId)
+                    const hiringOpening = await getHiringOpening(api, hash, openingObject.hiring_opening_id)
+                    const opening = JSON.parse(hiringOpening.human_readable_text.toString())
                     const exampleEmbed = new Discord.MessageEmbed()
                         .setColor(joystreamBlue)
-                        .setTitle(`🎉 🥳 👏🏻 ${member.handle} was hired as ${JSON.parse(opening).job.title} 🎉 🥳 👏🏻`)
+                        .setTitle(`🎉 🥳 👏🏻 ${member.handle} was hired as ${opening.job.title} 🎉 🥳 👏🏻`)
+                        // .setTitle(`🎉 🥳 👏🏻 ${member.handle} was hired as !!!!!!!!!!!!!!!!!!!!!!!!!! 🎉 🥳 👏🏻`)
                         .addFields(
                             { name: 'Block', value: blockNumber + "", inline: true },
                             { name: 'Tx', value: value.hash.toString(), inline: true },
