@@ -109,8 +109,10 @@ const tokenomicsReport = async (
 
   console.log(`-> Writing report to ${fileName}`);
   for (const entry of Object.entries(stats)) {
-    const regex = new RegExp("{" + entry[0] + "}", "g");
-    fileData = fileData.replace(regex, entry[1].toString());
+    if (entry[1] !== null) {
+      let regex = new RegExp("{" + entry[0] + "}", "g");
+      fileData = fileData.replace(regex, entry[1]?.toString());
+    } else console.warn(`empty value:`, entry[0]);
   }
   fs.writeFileSync(`${dir}/${fileName}`, fileData);
   return true;

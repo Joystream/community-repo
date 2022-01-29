@@ -9,6 +9,7 @@ import {
   ProposalType,
   ReportData,
 } from "./types/council";
+import { sum } from "./lib";
 import { getCouncilAt } from "./lib/api";
 import { StorageKey, U32, u32, Vec } from "@polkadot/types";
 import { Backer, Seats } from "@joystream/types/council";
@@ -246,7 +247,6 @@ async function getCouncilMembersInfo(
       )) as Membership;
       info.username = membership.handle.toString();
       info.ownStake = Number(seat.stake.toBigInt());
-      const sum = (a: number[]) => a.reduce((s: number, i: number) => s + i, 0);
       info.backersStake = sum(seat.backers.map((b: Backer) => +b.stake));
       return info;
     })

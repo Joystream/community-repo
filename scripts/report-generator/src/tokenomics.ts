@@ -9,12 +9,8 @@ import {
   EventRecord,
   Hash,
 } from "@polkadot/types/interfaces";
-import {
-  Config,
-  MintStatistics,
-  Statistics,
-  WorkersInfo,
-} from "./types/tokenomics";
+import { Config, MintStats, Statistics, WorkersInfo } from "./types/tokenomics";
+import { sum } from "./lib";
 import {
   CacheEvent,
   Bounty,
@@ -22,11 +18,9 @@ import {
   SpendingProposal,
   StatusData,
 } from "./lib/types";
-
 import { Option, u32, Vec } from "@polkadot/types";
 import { ElectionStake, SealedVote, Seats } from "@joystream/types/council";
 import { Mint, MintId } from "@joystream/types/mint";
-import { ContentId, DataObjectType } from "@joystream/types/legacy"; //@joystream/types/storage
 import { CategoryId } from "@joystream/types/forum";
 import { MemberId, Membership } from "@joystream/types/members";
 import {
@@ -108,6 +102,16 @@ export class StatisticsCollector {
   private api?: ApiPromise;
   private blocksEventsCache: Map<number, CacheEvent[]>;
   private statistics: Statistics;
+  private groups = [
+    // map chain prefix to group tag
+    ["contentWorkingGroup", "Curators", "curators"],
+    ["storageWorkingGroup", "Storage Providers", "storageProviders"],
+    ["distributionWorkingGroup", "Distribution", "distribution"],
+    //["gatewayWorkingGroup", "Gateways", "gateways"],
+    ["operationsWorkingGroupAlpha", "Operations", "operationsGroupAlpha"],
+    ["operationsWorkingGroupBeta", "Marketing", "operationsGroupBeta"],
+    ["operationsWorkingGroupGamma", "Gamma", "operationsGroupGamma"],
+  ];
 
   constructor() {
     this.blocksEventsCache = new Map<number, CacheEvent[]>();
@@ -115,6 +119,7 @@ export class StatisticsCollector {
   }
 
   saveStats(data: any) {
+    console.debug(`saving`, Object.keys(data));
     Object.keys(data).map((key: string) => (this.statistics[key] = data[key]));
   }
 
@@ -180,15 +185,13 @@ export class StatisticsCollector {
     eventStats(this.blocksEventsCache); // print event stats
     return Promise.all([
       this.fillTokenInfo(startBlock, endBlock, startHash, endHash, config),
-      this.fillMintsInfo(startHash, endHash),
+      this.fillMintsInfo([startHash, endHash]),
       this.fillCouncilInfo(startHash, endHash, config.councilRoundOffset),
       this.fillCouncilElectionInfo(startBlock),
       this.fillValidatorInfo(startHash, endHash),
-      this.fillStorageProviderInfo(startBlock, endBlock, startHash, endHash),
-      this.fillCuratorInfo(startHash, endHash),
-      this.fillOperationsInfo(startBlock, endBlock, startHash, endHash),
       this.fillMembershipInfo(startHash, endHash),
       this.fillForumInfo(startHash, endHash),
+      this.fillWorkingGroupsInfo([startHash, endHash]),
     ]);
   }
 
@@ -198,8 +201,12 @@ export class StatisticsCollector {
     } catch {
       console.warn("File with spending proposal categories not found: ${file}");
     }
-    const fileContent = await fs.readFile(file);
-    const proposals = parse(fileContent).slice(1);
+    const proposals = fsSync
+      .readFileSync(file, "utf-8")
+      .split("\n")
+      .map((line: string) => line.split(","))
+      .filter((fields: string[]) => fields.length === 12)
+      .slice(1);
     console.log(`Loaded ${proposals.length} proposals.`);
     return proposals
       .filter(
@@ -286,35 +293,13 @@ export class StatisticsCollector {
       endBlock - startBlock,
       endHash
     );
-    const newCuratorInfo = await this.computeWorkingGroupReward(
-      startHash,
-      endHash,
-      "contentDirectory"
-    );
-
     this.saveStats({
       spendingProposalsTotal,
       newCouncilRewards: newCouncilRewards.toFixed(2),
-      newCuratorRewards: newCuratorInfo.rewards.toFixed(2),
     });
   }
 
-  async getMintInfo(
-    api: ApiPromise,
-    mintId: MintId,
-    startHash: Hash,
-    endHash: Hash
-  ): Promise<MintStatistics> {
-    const startMint: Mint = await getMint(api, startHash, mintId);
-    const endMint: Mint = await getMint(api, endHash, mintId);
-    let stats = new MintStatistics();
-    stats.startMinted = getTotalMinted(startMint);
-    stats.endMinted = getTotalMinted(endMint);
-    stats.diffMinted = stats.endMinted - stats.startMinted;
-    stats.percMinted = getPercent(stats.startMinted, stats.endMinted);
-    return stats;
-  }
-
+  //
   async computeCouncilReward(
     roundNrBlocks: number,
     endHash: Hash
@@ -353,79 +338,77 @@ export class StatisticsCollector {
     return avgCouncilRewardPerBlock * roundNrBlocks;
   }
 
-  // Summarize stakes and rewards at start and end
-  async computeWorkingGroupReward(
-    startHash: Hash,
-    endHash: Hash,
-    workingGroup: string
-  ): Promise<WorkersInfo> {
-    const group = workingGroup + "WorkingGroup";
-    let info = new WorkersInfo();
+  // Generate mint stats and WG sections
+  fillWorkingGroupsInfo(range: Hash[]) {
+    const promises = this.groups.map((group: string[], i: number) =>
+      this.groupStats(group, range, i).then((stats) => this.groupSection(stats))
+    );
+    Promise.all(promises).then((sections) =>
+      this.saveStats({ workingGroups: sections.join() })
+    );
+  }
 
-    // stakes at start
+  // Generate WG markdown
+  groupSection({ workers, stakes, workersTable, index, labels }: WorkersInfo) {
+    const [chainName, tag, pioneerName] = labels;
+    return `
+
+### 4.${index} ${tag}
+* [*${chainName}*](https://testnet.joystream.org/#/working-groups/opportunities/${pioneerName})
+| Property                | Start Block | End Block | % Change |
+|-------------------------|--------------|--------------|----------|
+| Number of  Workers | ${workers.start} | ${workers.end} | ${workers.change} |
+| Total  Stake | ${stakes.start} | ${stakes.end} | ${stakes.change} |
+
+${workersTable}
+`;
+  }
+
+  // Summarize stakes and rewards at start and end
+  async groupStats(
+    labels: string[],
+    range: Hash[],
+    index: number
+  ): Promise<WorkersInfo> {
+    const [startHash, endHash] = range;
+    const [group, tag] = labels;
+    let workers = { start: 0, end: 0, change: 0 };
+    let stakes = { start: 0, end: 0, change: 0 };
     const workersStart: WorkerReward[] = await getWorkerRewards(
       this.api,
       group,
       startHash
     );
-    workersStart.forEach(({ stake }) => {
-      if (stake) info.startStake += stake.value.toNumber();
-    });
-
-    // stakes at end
+    workers.start = workersStart.length;
+    stakes.start = sum(workersStart.map(({ stake }) => +stake?.value || 0));
     const workersEnd: WorkerReward[] = await getWorkerRewards(
       this.api,
       group,
       endHash
     );
-    let workers = ``;
+    workers.end = workersEnd.length;
+    workers.change = getPercent(workers.start, workers.end);
+    let workerRows = ``; // rewards table
     workersEnd.forEach(async (worker) => {
-      if (worker.stake) info.endStake += worker.stake.value.toNumber();
+      if (worker.stake) stakes.end += worker.stake.value.toNumber();
       if (!worker.reward) return;
       let earnedBefore = 0;
       const hired = workersStart.find((w) => w.id === worker.id);
       if (hired) earnedBefore = hired.reward.total_reward_received.toNumber();
-      workers += getWorkerRow(worker, earnedBefore);
+      workerRows += getWorkerRow(worker, earnedBefore);
     });
-    const groupTag =
-      workingGroup === `storage`
-        ? `storageProviders`
-        : workingGroup === `contentDirectory`
-        ? `curators`
-        : workingGroup === `operations`
-        ? `operations`
-        : ``;
-    if (workers.length) {
-      const header = `| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |\n|--|--|--|--|--|--|\n`;
-      this.saveStats({ [groupTag]: header + workers });
-    } else this.saveStats({ [groupTag]: `` });
-
-    const mintId = await getGroupMint(this.api, group);
-    const mintStart: Mint = await getMint(this.api, startHash, mintId);
-    const mintEnd: Mint = await getMint(this.api, endHash, mintId);
-    const totalMinted = (m: Mint) => Number(m.total_minted);
-    info.rewards = totalMinted(mintEnd) - totalMinted(mintStart);
-    info.endNrOfWorkers = workersEnd.length;
-    return info;
+    stakes.change = getPercent(stakes.start, stakes.end);
+    const workersTable = this.workersTable(workerRows);
+    return { labels, index, workers, stakes, workersTable };
   }
 
-  async computeGroupMintStats(
-    [label, tag]: string[],
-    startHash: Hash,
-    endHash: Hash
-  ) {
-    const group = label + "WorkingGroup";
-    const mint = await getGroupMint(this.api, group);
-    const info = await this.getMintInfo(this.api, mint, startHash, endHash);
-    let stats: { [key: string]: number } = {};
-    stats[`start${tag}Minted`] = info.startMinted;
-    stats[`end${tag}Minted`] = info.endMinted;
-    stats[`new${tag}Minted`] = info.diffMinted;
-    stats[`perc${tag}Minted`] = info.percMinted;
-    this.saveStats(stats);
+  workersTable(rows: string) {
+    if (!rows.length) return ``;
+    return `| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |\n|--|--|--|--|--|--|\n${rows}`;
   }
 
-  async fillMintsInfo(startHash: Hash, endHash: Hash): Promise<void> {
+  async fillMintsInfo(range: Hash[]): Promise<void> {
+    const [startHash, endHash] = range;
     const startNrMints = await getMintsCreated(this.api, startHash);
     const endNrMints = await getMintsCreated(this.api, endHash);
     const newMints = endNrMints - startNrMints;
@@ -453,24 +436,36 @@ export class StatisticsCollector {
     this.saveStats({ newMints, totalMinted, totalMintCapacityIncrease });
 
     // council
-    const councilInfo = await this.getMintInfo(
-      this.api,
-      await getCouncilMint(this.api, endHash),
-      startHash,
-      endHash
+    const councilStats = await getCouncilMint(this.api, endHash).then(
+      async (id) => this.mintStats(this.api, id, range)
     );
-    this.saveStats({
-      startCouncilMinted: councilInfo.startMinted,
-      endCouncilMinted: councilInfo.endMinted,
-      newCouncilMinted: councilInfo.diffMinted,
-      percNewCouncilMinted: councilInfo.percMinted,
+    const { start, end, diff, change } = councilStats;
+    let tokenomics = `| Council | ${diff} |\n`;
+    let mintStats = `| Council Total Minted | ${start} | ${end} | ${diff} | ${change} |\n`;
+
+    // Calculate WG Mint Growth
+    const promises = this.groups.map(async ([group, tag]: string[]) => {
+      const id = await getGroupMint(this.api, group);
+      const stats = await this.mintStats(this.api, id, range);
+      const { start, end, diff, change } = stats;
+      tokenomics += `| ${tag} | ${diff} |\n`;
+      mintStats += `| ${tag} Minted | ${start} | ${end} | ${diff} | ${change} |\n`;
     });
-    // working groups
-    const groups = [
-      ["contentDirectory", "Curator"],
-      ["storage", "Storage"],
-      ["operations", "Operations"],
-    ].forEach((group) => this.computeGroupMintStats(group, startHash, endHash));
+    Promise.all(promises).then(() => this.saveStats({ mintStats, tokenomics }));
+  }
+
+  // Calculate growth
+  async mintStats(
+    api: ApiPromise,
+    mintId: MintId,
+    range: Hash[]
+  ): Promise<MintStats> {
+    const [startHash, endHash] = range;
+    const startMint: Mint = await getMint(api, startHash, mintId);
+    const endMint: Mint = await getMint(api, endHash, mintId);
+    const start = getTotalMinted(startMint);
+    const end = getTotalMinted(endMint);
+    return this.formatChange(start, end);
   }
 
   async fillCouncilInfo(
@@ -514,10 +509,17 @@ export class StatisticsCollector {
         event.section == "councilElection" && event.method == "CouncilElected"
     );
 
-    if (!isStartBlockFirstCouncilBlock)
+    let election = {
+      electionApplicants: 0,
+      electionApplicantsStakes: 0,
+      electionVotes: 0,
+    };
+    if (!isStartBlockFirstCouncilBlock) {
+      this.saveStats(election);
       return console.warn(
         "Note: The given start block is not the first block of the council round so council election information will be empty"
       );
+    }
 
     let lastBlockHash = await getBlockHash(this.api, startBlock - 1);
     let applicants: Vec<AccountId> = await getCouncilApplicants(
@@ -533,18 +535,12 @@ export class StatisticsCollector {
       );
       electionApplicantsStakes += applicantStakes.new.toNumber();
     }
-    // let seats = await getCouncil(this.api,startBlockHash) as Seats;
-    //TODO: Find a more accurate way of getting the votes
-    const votes: Vec<Hash> = await getCouncilCommitments(
+    election.electionApplicants = applicants.length;
+    election.electionVotes = await getCouncilCommitments(
       this.api,
       lastBlockHash
-    );
-
-    this.saveStats({
-      electionApplicants: applicants.length,
-      electionApplicantsStakes,
-      electionVotes: votes.length,
-    });
+    ).then((votes: Vec<Hash>) => votes.length);
+    this.saveStats(election);
   }
 
   async fillValidatorInfo(startHash: Hash, endHash: Hash): Promise<void> {
@@ -572,89 +568,6 @@ export class StatisticsCollector {
       percNewValidatorsStake: getPercent(startStake, endStake),
       newValidatorRewards: await getValidatorsRewards(
         this.filterCache(filterMethods.newValidatorsRewards)
-      ),
-    });
-  }
-
-  async fillStorageProviderInfo(
-    startBlock: number,
-    endBlock: number,
-    startHash: Hash,
-    endHash: Hash
-  ): Promise<void> {
-    let storageProvidersRewards = await this.computeWorkingGroupReward(
-      startHash,
-      endHash,
-      "storage"
-    );
-    const newStorageProviderReward = Number(
-      storageProvidersRewards.rewards.toFixed(2)
-    );
-    const startStorageProvidersStake = storageProvidersRewards.startStake;
-    const endStorageProvidersStake = storageProvidersRewards.endStake;
-
-    const group = "storageWorkingGroup";
-    const startStorageProviders = await getWorkers(this.api, group, startHash);
-    const endStorageProviders = await getWorkers(this.api, group, endHash);
-
-    this.saveStats({
-      newStorageProviderReward,
-      startStorageProvidersStake,
-      endStorageProvidersStake,
-      percNewStorageProviderStake: getPercent(
-        startStorageProvidersStake,
-        endStorageProvidersStake
-      ),
-      startStorageProviders,
-      endStorageProviders,
-      percNewStorageProviders: getPercent(
-        startStorageProviders,
-        endStorageProviders
-      ),
-    });
-  }
-
-  async fillCuratorInfo(startHash: Hash, endHash: Hash): Promise<void> {
-    const group = "contentDirectoryWorkingGroup";
-    const startCurators = await getWorkers(this.api, group, startHash);
-    const endCurators = await getWorkers(this.api, group, endHash);
-
-    this.saveStats({
-      startCurators,
-      endCurators,
-      percNewCurators: getPercent(startCurators, endCurators),
-    });
-  }
-
-  async fillOperationsInfo(
-    startBlock: number,
-    endBlock: number,
-    startHash: Hash,
-    endHash: Hash
-  ): Promise<void> {
-    const operationsRewards = await this.computeWorkingGroupReward(
-      startHash,
-      endHash,
-      "operations"
-    );
-    const newOperationsReward = operationsRewards.rewards.toFixed(2);
-    const startOperationsStake = operationsRewards.startStake;
-    const endOperationsStake = operationsRewards.endStake;
-
-    const group = "operationsWorkingGroup";
-    const startWorkers = await getWorkers(this.api, group, startHash);
-    const endWorkers = await getWorkers(this.api, group, endHash);
-
-    this.saveStats({
-      newOperationsReward: Number(newOperationsReward),
-      startOperationsWorkers: startWorkers,
-      endOperationsWorkers: endWorkers,
-      percNewOperationsWorkers: getPercent(startWorkers, endWorkers),
-      startOperationsStake,
-      endOperationsStake,
-      percNewOperationstake: getPercent(
-        startOperationsStake,
-        endOperationsStake
       ),
     });
   }
@@ -797,47 +710,60 @@ export class StatisticsCollector {
       }
 
       // calculate inflation
-      let startTermExchangeRate = 0;
-      let endTermExchangeRate = 0;
+      let [rateStart, rateEnd, fiatStart, fiatEnd] = [0, 0, 0, 0];
       if (filteredExchanges.length) {
         const lastExchangeEvent =
           filteredExchanges[filteredExchanges.length - 1];
-        startTermExchangeRate = filteredExchanges[0].price * 1000000;
-        endTermExchangeRate = lastExchangeEvent.price * 1000000;
-      } else {
-        startTermExchangeRate =
-          filteredDollarPoolChanges[0].rateAfter * 1000000;
+        rateStart = filteredExchanges[0].price * 1000000;
+        rateEnd = lastExchangeEvent.price * 1000000;
+      } else if (filteredDollarPoolChanges.length) {
+        rateStart = filteredDollarPoolChanges[0].rateAfter * 1000000;
         const lastEvent =
           filteredDollarPoolChanges[filteredDollarPoolChanges.length - 1];
-        endTermExchangeRate = lastEvent.rateAfter * 1000000;
+        rateEnd = lastEvent.rateAfter * 1000000;
       }
-      let inflationPct = getPercent(endTermExchangeRate, startTermExchangeRate);
+
+      // dollar pool size
+      if (allDollarPoolChanges.length) {
+        fiatStart =
+          allDollarPoolChanges[0].change > 0
+            ? allDollarPoolChanges[0].valueAfter -
+              allDollarPoolChanges[0].change
+            : allDollarPoolChanges[0].valueAfter;
+        const endDollarEvent =
+          allDollarPoolChanges[allDollarPoolChanges.length - 1];
+        fiatEnd = endDollarEvent.valueAfter;
+      }
+      const fiat = this.formatChangePrefix(fiatStart, fiatEnd, "fiat");
+      const rate = this.formatChangePrefix(rateStart, rateEnd, "price");
       console.log(
         "# USD / 1M tJOY Rate\n",
-        `@ Term start (block #${startBlockHeight}: ${startTermExchangeRate}\n`,
-        `@ Term end (block #${endBlockHeight}: ${endTermExchangeRate}\n`,
-        `Inflation: ${inflationPct}`
+        `@ Term start (block #${startBlockHeight}: ${rate.start}\n`,
+        `@ Term end (block #${endBlockHeight}: ${rate.end}\n`,
+        `Inflation: ${rate.change}`
       );
-
-      const startDollarPool =
-        allDollarPoolChanges[0].change > 0
-          ? allDollarPoolChanges[0].valueAfter - allDollarPoolChanges[0].change
-          : allDollarPoolChanges[0].valueAfter;
-      const endDollarEvent =
-        allDollarPoolChanges[allDollarPoolChanges.length - 1];
-      const endDollarPool = endDollarEvent.valueAfter;
-      const dollarPoolPctChange = getPercent(startDollarPool, endDollarPool);
-
-      this.saveStats({
-        startTermExchangeRate: startTermExchangeRate.toFixed(2),
-        endTermExchangeRate: endTermExchangeRate.toFixed(2),
-        inflationPct,
-        startDollarPool: startDollarPool.toFixed(2),
-        endDollarPool: endDollarPool.toFixed(2),
-        dollarPoolPctChange,
-        dollarPoolRefills,
-      });
+      this.saveStats({ ...fiat, ...rate, dollarPoolRefills });
     });
+  }
+
+  formatChange(input: number, output: number): MintStats {
+    const diff = output - input;
+    const change = getPercent(output, input);
+    return { start: input.toFixed(2), end: output.toFixed(2), diff, change };
+  }
+  formatChangePrefix(
+    input: number,
+    output: number,
+    pre: string
+  ): { [key: string]: string | number } {
+    const diff = output - input;
+    const change = getPercent(output, input);
+    return {
+      [`${pre}Start`]: input.toFixed(2),
+      [`${pre}End`]: output.toFixed(2),
+      [`${pre}Diff`]: diff,
+      [`${pre}Change`]: change,
+    };
   }
 
   async buildBlocksEventCache(

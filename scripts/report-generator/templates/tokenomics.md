@@ -11,39 +11,33 @@ This is a report which explains the current state of the Joystream network in nu
 | Property            | Start Block | End Block | % Change |
 |---------------------|--------------|--------------|----------|
 | Total Tokens Minted |  {startIssuance} | {endIssuance} | {percNewIssuance} |
-| USD Pool |  {startDollarPool} | {endDollarPool} | {dollarPoolPctChange} |
+| USD Pool |  {fiatStart} | {fiatEnd} | {fiatChange} |
 
-| Property            | Value        |
+| Role                | Value        |
 |---------------------|--------------|
 | Total Tokens Burned | {newTokensBurn} |
 | Spending Proposals (Executed) | {spendingProposalsTotal} |
 | Bounties paid       | {bountiesTotalPaid} |
 | Validator Role      | {newValidatorRewards} |
-| Storage Role        | {newStorageProviderReward} |
-| Curator Role        | {newCuratorRewards} |
-| Operations Role     | {newOperationsReward} |
+{tokenomics}
 
 ### 2.2 Fiat Pool
 | Property            | Start Block, USD | End Block, USD | % Change |
 |---------------------|--------------|--------------|----------|
-| USD Pool | {startDollarPool} | {endDollarPool} | {dollarPoolPctChange} |
+| USD Pool |  {fiatStart} | {fiatEnd} | {fiatChange} |
 
 {dollarPoolRefills}
 
 ### 2.3 Mints
-| Property                    | Start Block           | End Block | % Change |
+| Minted per Role             | Start Block           | End Block | Difference | % Change |
 |-----------------------------|-----------------------|--------------|----------|
-| Council Mint Total Minted   | {startCouncilMinted}  | {endCouncilMinted} |{percNewCouncilMinted} |
-| Curator Mint Total Minted   | {startCuratorMinted} | {endCuratorMinted} | {percCuratorMinted} |
-| Storage Mint Total Minted   | {startStorageMinted} | {endStorageMinted} | {percStorageMinted} |
-| Operations Mint Total Minted | {startOperationsMinted} | {endOperationsMinted} | {percOperationsMinted} |
-
+{mintStats}
 
 ### 2.4 tJOY Inflation
 
-* Start Block Exchange Rate, USD/1M tJOY: {startTermExchangeRate}
-* End Block Exchange Rate, USD/1M tJOY: {endTermExchangeRate}
-* Inflation, %: {inflationPct}
+* Start Block Exchange Rate, USD/1M tJOY: {priceStart}
+* End Block Exchange Rate, USD/1M tJOY: {priceEnd}
+* Inflation, %: {priceChange}
 
 Negative value indicates deflation
 
@@ -69,29 +63,7 @@ Negative value indicates deflation
 | Number of Validators       | {startValidators} | {endValidators} | {percValidators} |
 | Validator Total Stake      | {startValidatorsStake} | {endValidatorsStake} | {percNewValidatorsStake} |
 
-
-### 4.2 Storage Role
-| Property                | Start Block | End Block | % Change |
-|-------------------------|--------------|--------------|----------|
-| Number of Storage Workers | {startStorageProviders} | {endStorageProviders} | {percNewStorageProviders} |
-| Total Storage Stake (workers + lead) | {startStorageProvidersStake} | {endStorageProvidersStake} | {percNewStorageProviderStake} |
-
-{storageProviders}
-
-### 4.3 Curator Role
-| Property                | Start Block | End Block | % Change |
-|-------------------------|--------------|--------------|----------|
-| Number of Curators      | {startCurators} | {endCurators} | {percNewCurators} |
-
-{curators}
-
-### 4.4 Operations Role
-| Property                | Start Block | End Block | % Change |
-|-------------------------|--------------|--------------|----------|
-| Number of Operations Workers      | {startOperationsWorkers} | {endOperationsWorkers} | {percNewOperationsWorkers} |
-| Total Operations Stake (workers + lead) | {startOperationsStake} | {endOperationsStake} | {percNewOperationstake} |
-
-{operations}
+{workingGroups}
 
 ## 5.0 User Generated Content
 ### 5.1 Membership Information
