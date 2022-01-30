@@ -3,7 +3,7 @@ import { Opening, OpeningId } from "@joystream/types/hiring";
 import { ApiPromise } from "@polkadot/api";
 import { Hash } from "@polkadot/types/interfaces";
 
-export const getOpening = async (api: ApiPromise, group: string, hash: Hash, openingId: number): Promise<OpeningOf> => {
+export const getOpening = async (api: ApiPromise, group: string, hash: Hash, openingId: OpeningId): Promise<OpeningOf> => {
     return api.query[group].openingById.at(hash, openingId)
 }
 
