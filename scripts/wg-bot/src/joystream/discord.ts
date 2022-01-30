@@ -1,13 +1,13 @@
 import { EventRecord } from '@polkadot/types/interfaces'
 import { getWorker, getMember, getMint, getEvents, getBlockHash, getWorkerReward } from '../lib/api';
-import { getHiringOpening, getOpening } from './api_extension';
-import { getLeaderSetEmbed, getLeaderUnsetEmbed, getMintCapacityChangedEmbed, getOpeningAddedEmbed, getOpeningFilledEmbed, getWorkerExitedEmbed, getWorkerRewardAmountUpdatedEmbed, getWorkerTerminatedEmbed } from './embeds';
+import { getApplication, getHiringApplication, getHiringOpening, getOpening } from './api_extension';
+import { getApplicationTerminatedEmbed, getApplicationWithdrawnEmbed, getAppliedOnOpeningEmbed, getLeaderSetEmbed, getLeaderUnsetEmbed, getMintCapacityChangedEmbed, getOpeningAddedEmbed, getOpeningFilledEmbed, getWorkerExitedEmbed, getWorkerRewardAmountUpdatedEmbed, getWorkerTerminatedEmbed } from './embeds';
 
 import { wgEvents, workingGroups } from '../config'
 import Discord from 'discord.js';
 import { ApiPromise } from '@polkadot/api';
 import { MintBalanceOf, MintId } from '@joystream/types/mint';
-import { OpeningId } from '@joystream/types/hiring';
+import { ApplicationId, OpeningId } from '@joystream/types/hiring';
 import { RationaleText, WorkerId } from '@joystream/types/working-group';
 
 export const processBlock = async (api: ApiPromise, client: Discord.Client, blockNumber: number) => {
@@ -21,6 +21,30 @@ export const processBlock = async (api: ApiPromise, client: Discord.Client, bloc
             const channel: Discord.TextChannel = client.channels.cache.get(workingGroups[section]) as Discord.TextChannel;
             if (channel) {
                 switch(method) {
+                    case "ApplicationTerminated":
+                        const id = data[0] as ApplicationId
+                        const terminatedApplication = await getApplication(api, section, hash, id);
+                        const memberTerminatedApplication = await getMember(api, terminatedApplication.member_id);
+                        channel.send({ embeds: [getApplicationTerminatedEmbed(id, terminatedApplication, memberTerminatedApplication, blockNumber, value)] });
+                        break;
+                    case "ApplicationWithdrawn":
+                        const withdrawnId = data[0] as ApplicationId
+                        const withdrawnApplication = await getApplication(api, section, hash, withdrawnId);
+                        const memberWithdrawnApplication = await getMember(api, withdrawnApplication.member_id);
+                        channel.send({ embeds: [getApplicationWithdrawnEmbed(id, withdrawnApplication, memberWithdrawnApplication, blockNumber, value)] });
+                        break;
+                    case "AppliedOnOpening":
+                        const applicationOpeningId = data[0] as OpeningId;
+                        const applicationId = data[1] as ApplicationId;
+                        const application = await getApplication(api, section, hash, applicationId);
+                        const hiringApplication = await getHiringApplication(api, section, hash, applicationId);
+                        const hiringApplicationText = JSON.parse(hiringApplication.human_readable_text.toString());
+                        const openingObject = await getOpening(api, section, hash, applicationOpeningId);
+                        const hiringOpening = await getHiringOpening(api, hash, openingObject.hiring_opening_id);
+                        const openingText = JSON.parse(hiringOpening.human_readable_text.toString());
+                        const applicant = await getMember(api, application.member_id);
+                        channel.send({ embeds: [getAppliedOnOpeningEmbed(applicationId, application, openingText, hiringApplicationText, applicant, blockNumber, value)] });
+                        break;
                     case "MintCapacityChanged":
                         const mintId = (data[0] as MintId).toNumber();
                         const minted = (data[1] as MintBalanceOf).toNumber();

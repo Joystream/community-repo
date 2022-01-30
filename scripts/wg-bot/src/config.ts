@@ -13,7 +13,7 @@ export const workingGroups = {
 
 
 export const wgEvents = [
-    'AcceptedApplications', 
+    // 'AcceptedApplications', internal event ?
     'ApplicationTerminated',
     'ApplicationWithdrawn',
     'AppliedOnOpening',
