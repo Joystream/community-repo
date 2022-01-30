@@ -18,11 +18,9 @@
 - Lead should fire and/or slash unresponsive workers
 - Lead assigns Bounty Managers for technical bounties (such as bounty 9 and bounty 19)
 
-| Task                                                                             | Proposer  | Funded    | Amount USD | Status                                                                              |
-|----------------------------------------------------------------------------------------|-----------|-----------|------------|-------------------------------------------------------------------------------|
 | Task                                                                                   | Proposer  | Funded    | Amount USD | Status |
 |----------------------------------------------------------------------------------------|-----------|-----------|------------|---|
-| [Network Test Scripts](https://pioneer.joystreamstats.live/#/proposals/1076)           | l1dev     | 24-Jan-22 | 25/h  | [Open](https://git.joystreamstats.live/Operations/process/issues/52)                  |
+| [Network Test Scripts](https://pioneer.joystreamstats.live/#/proposals/1076)           | l1dev     | 24-Jan-22 | 25/hr | [Open](https://git.joystreamstats.live/Operations/process/issues/52)                  |
 | [js:stats roadmap](https://pioneer.joystreamstats.live/#/proposals/1023)               | l1dev     | 15-Jan-22 | 25/hr | [Open](https://git.joystreamstats.live/Operations/process/issues/16)                  |
 | [js:stats multi-lingual](https://pioneer.joystreamstats.live/#/proposals/800)          | l1dev     | 12-Aug-21 |  100+ | [Assigned](https://git.joystreamstats.live/Operations/process/issues/30) to darcksday |
 | [Reputation Bot](https://pioneer.joystreamstats.live/#/proposals/992)                  | tomato    | 06-Jan-22 |   250 | [Assigned](https://git.joystreamstats.live/Operations/process/issues/49) to ars44     |
@@ -93,6 +91,7 @@ More [Community Ideas](https://github.com/Joystream/community-repo/issues)
 | [37](#round-37) |            8.2 |          700 |            26.3 |           26.62 |                 18.42 |            82.29 |     2164.23 |
 | [38](#round-38) |           11.7 |          700 |           27.08 |           25.85 |                 14.15 |            96.44 |     2611.60 |
 | [39](#round-39) |            8.2 |          700 |            26.3 |           26.62 |                 18.42 |           114.86 |     3020.82 |
+| [40](#round-40) |           12.6 |          700 |            25.7 |           27.24 |                 14.64 |           129.50 |     3328.15 |
 
 ## Reports
 
@@ -1099,7 +1098,7 @@ More [Community Ideas](https://github.com/Joystream/community-repo/issues)
 | 46 | [@svasilenko](https://pioneer.joystreamstats.live/#/members/svasilenko) | active | 3 | 0.1 | 1.1 |
 | 47 | [@catemoon](https://pioneer.joystreamstats.live/#/members/catemoon) | active | 3 | 0.1 | 1.1 |
 
-### [Round 40](../../council/tokenomics/sumer/Council_Round40_4093200-4193999_Tokenomics_Report.md)
+### [Round 40](../../council/tokenomics/giza/Council_Round40_4093200-4193999_Tokenomics_Report.md)
 
 - **Date:** `1/19/2022 - 1/26/2022`
 - **Budget:** `$700`
