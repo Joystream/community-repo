@@ -1,14 +1,14 @@
 import { EventRecord } from '@polkadot/types/interfaces'
 import { getWorker, getMember, getMint, getEvents, getBlockHash, getWorkerReward } from '../lib/api';
 import { getHiringOpening, getOpening } from './api_extension';
-import { getMintCapacityChangedEmbed, getOpeningAddedEmbed, getOpeningFilledEmbed, getWorkerRewardAmountUpdatedEmbed } from './embeds';
+import { getLeaderSetEmbed, getLeaderUnsetEmbed, getMintCapacityChangedEmbed, getOpeningAddedEmbed, getOpeningFilledEmbed, getWorkerExitedEmbed, getWorkerRewardAmountUpdatedEmbed, getWorkerTerminatedEmbed } from './embeds';
 
 import { wgEvents, workingGroups } from '../config'
 import Discord from 'discord.js';
 import { ApiPromise } from '@polkadot/api';
 import { MintBalanceOf, MintId } from '@joystream/types/mint';
 import { OpeningId } from '@joystream/types/hiring';
-import { WorkerId } from '@joystream/types/working-group';
+import { RationaleText, WorkerId } from '@joystream/types/working-group';
 
 export const processBlock = async (api: ApiPromise, client: Discord.Client, blockNumber: number) => {
     const hash = await getBlockHash(api, blockNumber);
@@ -50,6 +50,30 @@ export const processBlock = async (api: ApiPromise, client: Discord.Client, bloc
                         const member = await getMember(api, worker.member_id);
                         const reward = await getWorkerReward(api, hash, worker.reward_relationship.unwrap());
                         channel.send({ embeds: [getWorkerRewardAmountUpdatedEmbed(reward, member, blockNumber, value)] });
+                        break;
+                    case "TerminatedLeader":
+                    case "TerminatedWorker":
+                        const terminatedId = data[0] as WorkerId;
+                        const terminatedReason = (data[1] as RationaleText).toString();
+                        const terminatedIdWorker = await getWorker(api, section, hash, terminatedId.toNumber());
+                        const terminatedMember = await getMember(api, terminatedIdWorker.member_id);
+                        channel.send({ embeds: [getWorkerTerminatedEmbed(terminatedMember, terminatedReason, blockNumber, value)] });
+                        break;
+                    case "WorkerExited":
+                        const exitedId = data[0] as WorkerId;
+                        const exitedReason = (data[1] as RationaleText).toString();
+                        const exitedIdWorker = await getWorker(api, section, hash, exitedId.toNumber());
+                        const exitedMember = await getMember(api, exitedIdWorker.member_id);
+                        channel.send({ embeds: [getWorkerExitedEmbed(exitedMember, exitedReason, blockNumber, value)] });
+                        break;
+                    case "LeaderSet": 
+                        const leaderId = data[0] as WorkerId;
+                        const leaderIdWorker = await getWorker(api, section, hash, leaderId.toNumber());
+                        const leaderMember = await getMember(api, leaderIdWorker.member_id);
+                        channel.send({ embeds: [getLeaderSetEmbed(leaderMember, blockNumber, value)] });
+                        break;
+                    case "LeaderUnset": 
+                        channel.send({ embeds: [getLeaderUnsetEmbed(blockNumber, value)] });
                         break;
                 }
             } else {

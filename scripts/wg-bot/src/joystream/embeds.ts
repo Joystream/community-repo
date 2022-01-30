@@ -63,3 +63,51 @@ export const getWorkerRewardAmountUpdatedEmbed = (reward: RewardRelationship, me
         )
         .setTimestamp();
 }
+
+export const getLeaderSetEmbed = (member: Membership, blockNumber: number, event: EventRecord): Discord.MessageEmbed => {
+
+    return new Discord.MessageEmbed()
+        .setColor(joystreamBlue)
+        .setTitle(`🏛 ${member.handle} is a new Lead`)
+        .addFields(
+            { name: 'Block', value: blockNumber + "", inline: true },
+            { name: 'Tx', value: event.hash.toString(), inline: true },
+        )
+        .setTimestamp();
+}
+
+export const getLeaderUnsetEmbed = (blockNumber: number, event: EventRecord): Discord.MessageEmbed => {
+
+    return new Discord.MessageEmbed()
+        .setColor(joystreamBlue)
+        .setTitle(`🏛 Leader was unset`)
+        .addFields(
+            { name: 'Block', value: blockNumber + "", inline: true },
+            { name: 'Tx', value: event.hash.toString(), inline: true },
+        )
+        .setTimestamp();
+}
+
+export const getWorkerTerminatedEmbed = (member: Membership, reason: string,
+    blockNumber: number, event: EventRecord): Discord.MessageEmbed => {
+    return getWorkerExitedOrTerminatedEmbed('been terminated', member, reason, blockNumber, event);
+}
+
+export const getWorkerExitedEmbed = (member: Membership, reason: string,
+    blockNumber: number, event: EventRecord): Discord.MessageEmbed => {
+    return getWorkerExitedOrTerminatedEmbed('exited', member, reason, blockNumber, event);
+}
+
+export const getWorkerExitedOrTerminatedEmbed = (action: string, member: Membership, reason: string,
+    blockNumber: number, event: EventRecord): Discord.MessageEmbed => {
+
+    return new Discord.MessageEmbed()
+        .setColor(joystreamBlue)
+        .setTitle(`🏛 Worker ${member.handle} has ${action}`)
+        .addFields(
+            { name: 'Reason', value: reason, inline: true },
+            { name: 'Block', value: blockNumber + "", inline: true },
+            { name: 'Tx', value: event.hash.toString(), inline: true },
+        )
+        .setTimestamp();
+}
