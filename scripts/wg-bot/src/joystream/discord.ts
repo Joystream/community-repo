@@ -1,7 +1,20 @@
 import { EventRecord } from '@polkadot/types/interfaces'
-import { getWorker, getMember, getMint, getEvents, getBlockHash, getWorkerReward } from '../lib/api';
+import { getWorker, getMember, getMint, getEvents, getBlockHash, getWorkerReward, getStake } from '../lib/api';
 import { getApplication, getHiringApplication, getHiringOpening, getOpening } from './api_extension';
-import { getApplicationTerminatedEmbed, getApplicationWithdrawnEmbed, getAppliedOnOpeningEmbed, getLeaderSetEmbed, getLeaderUnsetEmbed, getMintCapacityChangedEmbed, getOpeningAddedEmbed, getOpeningFilledEmbed, getWorkerExitedEmbed, getWorkerRewardAmountUpdatedEmbed, getWorkerTerminatedEmbed } from './embeds';
+import { 
+    getApplicationTerminatedEmbed, 
+    getApplicationWithdrawnEmbed, 
+    getAppliedOnOpeningEmbed, 
+    getLeaderSetEmbed, 
+    getLeaderUnsetEmbed, 
+    getMintCapacityChangedEmbed, 
+    getOpeningAddedEmbed, 
+    getOpeningFilledEmbed, 
+    getStakeUpdatedEmbed, 
+    getWorkerExitedEmbed, 
+    getWorkerRewardAmountUpdatedEmbed, 
+    getWorkerTerminatedEmbed 
+} from './embeds';
 
 import { wgEvents, workingGroups } from '../config'
 import Discord from 'discord.js';
@@ -98,6 +111,15 @@ export const processBlock = async (api: ApiPromise, client: Discord.Client, bloc
                         break;
                     case "LeaderUnset": 
                         channel.send({ embeds: [getLeaderUnsetEmbed(blockNumber, value)] });
+                        break;
+                    case "StakeDecreased":
+                    case "StakeIncreased":
+                    case "StakeSlashed":
+                        const stakeWorkerId = data[0] as WorkerId;
+                        const stakeWorker = await getWorker(api, section, hash, stakeWorkerId.toNumber());
+                        const stakeMember = await getMember(api, stakeWorker.member_id);
+                        const stake = await getStake(api, stakeWorker.role_stake_profile.unwrap().stake_id)
+                        channel.send({ embeds: [getStakeUpdatedEmbed(stake, stakeMember, method.replace('Stake', ''), blockNumber, value)] });
                         break;
                 }
             } else {

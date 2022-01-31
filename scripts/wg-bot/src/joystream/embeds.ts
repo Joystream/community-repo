@@ -3,7 +3,7 @@ import { formatBalance } from '@polkadot/util';
 import { u128 } from '@polkadot/types';
 import { EventRecord } from '@polkadot/types/interfaces';
 import Discord from 'discord.js';
-import { ApplicationId, ApplicationOf, Membership, OpeningOf, RewardRelationship } from '@joystream/types/augment-codec/all';
+import { ApplicationId, ApplicationOf, Membership, OpeningOf, RewardRelationship, Stake, WorkerOf } from '@joystream/types/augment-codec/all';
 
 
 export const getMintCapacityChangedEmbed = (minted: number, mint: u128, blockNumber: number, event: EventRecord): Discord.MessageEmbed => {
@@ -151,6 +151,19 @@ export const getApplicationTerminatedOrWithdrawEmbed = (action: string, applicat
         .addFields(
             { name: 'Application ID', value: applicationId.toString(), inline: true },
             { name: 'Opening ID', value: application.opening_id.toString(), inline: true },
+            { name: 'Block', value: blockNumber + "", inline: true },
+            { name: 'Tx', value: event.hash.toString(), inline: true },
+        )
+        .setTimestamp();
+}
+
+export const getStakeUpdatedEmbed = (stake: Stake, member: Membership, action: string, blockNumber: number, event: EventRecord): Discord.MessageEmbed => {
+
+    return new Discord.MessageEmbed()
+        .setColor(joystreamBlue)
+        .setTitle(`💰💰💰 ${member.handle} stake has been ${action} `)
+        .addFields(
+            { name: 'Stake', value: formatBalance(stake.value.toString(), { withUnit: 'JOY' }), inline: true },
             { name: 'Block', value: blockNumber + "", inline: true },
             { name: 'Tx', value: event.hash.toString(), inline: true },
         )
