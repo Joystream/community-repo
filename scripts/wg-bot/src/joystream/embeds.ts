@@ -3,7 +3,7 @@ import { formatBalance } from '@polkadot/util';
 import { u128 } from '@polkadot/types';
 import { EventRecord } from '@polkadot/types/interfaces';
 import Discord from 'discord.js';
-import { ApplicationId, ApplicationOf, Membership, OpeningOf, RewardRelationship, Stake, WorkerOf } from '@joystream/types/augment-codec/all';
+import { ApplicationId, ApplicationOf, Membership, OpeningOf, RewardRelationship, Stake } from '@joystream/types/augment-codec/all';
 
 
 export const getMintCapacityChangedEmbed = (minted: number, mint: u128, blockNumber: number, event: EventRecord): Discord.MessageEmbed => {

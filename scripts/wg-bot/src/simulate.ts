@@ -9,7 +9,7 @@ const eventsMapping = {
     'OpeningFilled': 4206250,
     'OpeningAdded': 4224720,
     'WorkerRewardAmountUpdated': 4222426,
-    'AppliedOnOpening': 4252114,
+    'AppliedOnOpening': 4264168,
 }
 
 
