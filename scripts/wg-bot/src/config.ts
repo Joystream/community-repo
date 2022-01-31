@@ -13,7 +13,6 @@ export const workingGroups = {
 
 
 export const wgEvents = [
-    // 'AcceptedApplications', internal event ?
     'ApplicationTerminated',
     'ApplicationWithdrawn',
     'AppliedOnOpening',
@@ -29,10 +28,7 @@ export const wgEvents = [
     'TerminatedLeader', 
     'TerminatedWorker', 
     'WorkerExited', 
-    'WorkerRewardAccountUpdated',
     'WorkerRewardAmountUpdated', 
-    'WorkerRoleAccountUpdated', 
-    'WorkerStorageUpdated'
 ]
 
 export const joystreamBlue = '#4038FF' // official joystream blue, see https://www.joystream.org/brand/guides/
