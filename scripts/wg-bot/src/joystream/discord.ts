@@ -5,6 +5,7 @@ import {
     getApplicationTerminatedEmbed, 
     getApplicationWithdrawnEmbed, 
     getAppliedOnOpeningEmbed, 
+    getBeganApplicationReviewEmbed, 
     getLeaderSetEmbed, 
     getLeaderUnsetEmbed, 
     getMintCapacityChangedEmbed, 
@@ -34,6 +35,17 @@ export const processBlock = async (api: ApiPromise, client: Discord.Client, bloc
             const channel: Discord.TextChannel = client.channels.cache.get(workingGroups[section]) as Discord.TextChannel;
             if (channel) {
                 switch(method) {
+                    case "BeganApplicationReview":
+                        const beganReviewId = data[0] as OpeningId
+                        const beganReviewOpeningObject = await getOpening(api, section, hash, beganReviewId);
+                        const beganReviewHiringOpening = await getHiringOpening(api, hash, beganReviewOpeningObject.hiring_opening_id);
+                        const applicants = await Promise.all([...beganReviewOpeningObject.applications].map( async(appId: ApplicationId) => {
+                            const application = await getApplication(api, section, hash, appId);
+                            return await getMember(api, application.member_id);
+                        }));
+                        const beganReviewHiringOpeningText = JSON.parse(beganReviewHiringOpening.human_readable_text.toString());
+                        channel.send({ embeds: [getBeganApplicationReviewEmbed(beganReviewHiringOpeningText, applicants, blockNumber, value)] });
+                        break;
                     case "ApplicationTerminated":
                         const id = data[0] as ApplicationId
                         const terminatedApplication = await getApplication(api, section, hash, id);

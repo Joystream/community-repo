@@ -115,10 +115,18 @@ export const getApplicationTerminatedOrWithdrawEmbed = (action: string, applicat
 export const getStakeUpdatedEmbed = (stake: Stake, member: Membership, action: string, blockNumber: number, event: EventRecord): Discord.MessageEmbed => {
     
     return addCommonProperties(new Discord.MessageEmbed()
-        .setTitle(`💰💰💰 ${member.handle}'s stake has been ${action} `)
+        .setTitle(`💰💰💰 ${member.handle}'s stake has been ${action}`)
         .addFields(
             { name: 'Stake', value: formatBalance(stake.value.toString(), { withUnit: 'JOY' }), inline: true }
         ), blockNumber, event );
+}
+
+export const getBeganApplicationReviewEmbed = (opening: any, applicants: Membership[], blockNumber: number, event: EventRecord): Discord.MessageEmbed => {
+    return addCommonProperties(new Discord.MessageEmbed()
+        .setTitle(`🏛 🏛 🏛 Applications review for opening '${opening.job.title}' started!`)
+        .setDescription(`Applicants: \n${applicants.map((applicant: Membership) => 
+            `📁 **${applicant.handle}** [\`${applicant.controller_account}\`]`).join('\n')}`), 
+            blockNumber, event);
 }
 
 const addCommonProperties = (embed: Discord.MessageEmbed, blockNumber: number, event: EventRecord) => {
