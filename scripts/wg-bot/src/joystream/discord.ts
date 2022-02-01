@@ -103,10 +103,10 @@ export const processBlock = async (api: ApiPromise, client: Discord.Client, bloc
                     case "TerminatedLeader":
                     case "TerminatedWorker":
                         const terminatedId = data[0] as WorkerId;
-                        const terminatedReason = (data[1] as RationaleText).toString();
+                        const terminatedReason = (data[1] as RationaleText).toHuman();
                         const terminatedIdWorker = await getWorker(api, section, hash, terminatedId.toNumber());
                         const terminatedMember = await getMember(api, terminatedIdWorker.member_id);
-                        channel.send({ embeds: [getWorkerTerminatedEmbed(terminatedMember, terminatedReason, blockNumber, value)] });
+                        channel.send({ embeds: [getWorkerTerminatedEmbed(terminatedMember, terminatedReason.toString(), blockNumber, value)] });
                         break;
                     case "WorkerExited":
                         const exitedId = data[0] as WorkerId;

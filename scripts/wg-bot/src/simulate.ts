@@ -13,6 +13,8 @@ const eventsMapping = {
     'StakeIncreased': 4264798,
     'StakeDecreased': 4264862,
     'BeganApplicationReview': 4276739,
+    'TerminatedLeader': 4282370,
+    'LeaderUnset': 4282370
 }
 
 
