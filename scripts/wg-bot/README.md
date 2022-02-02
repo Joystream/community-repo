@@ -8,8 +8,16 @@ Supports new Working Groups [introduced in Giza network](https://github.com/Joys
 
 How would this product evolve depends chiefly on the demand from the DAO. However, it seems reasonable to add the following features:
 
-1. Show "before/after" state for Salary and Stake events
-2. Add a clickable link to apply on an opening
+1. Interactive slash commands (`/salary` to see my salary, `/earnings` to get earnings for last X days, etc.) ONLY YOUR IMAGINATION IS THE LIMIT HERE :) 
+2. Show "before/after" state for Salary and Stake events
+3. Add a clickable link to apply on an opening
+4. [Support for new events](https://discord.com/channels/811216481340751934/933726271832227911/938414244876136478)
+
+# Issues
+
+1. [Missed some events](https://discord.com/channels/811216481340751934/933726271832227911/938506091510243340)
+2. [Title needed instead of headline](https://discord.com/channels/811216481340751934/933726271832227911/938456356682346566)
+
 
 
 # Configuration

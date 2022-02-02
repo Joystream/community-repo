@@ -1,5 +1,3 @@
-// TODO allow alternative backends
-
 import { ApiPromise, WsProvider } from '@polkadot/api'
 import { types } from '@joystream/types'
 
