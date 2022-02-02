@@ -1,4 +1,4 @@
-import { channelId, hydraLocation, waitFor, waitTimeUnit, createdAgo, createdAgoUnit } from "../config";
+import { channelId, hydraLocation, waitFor, waitTimeUnit, createdAgo, createdAgoUnit, storageServer } from "../config";
 import { readFileSync } from 'fs';
 import axios from 'axios';
 import {IVideoResponse, LooseObject}  from './types';
@@ -37,13 +37,13 @@ const main = async () => {
     console.log(`Checking for new videos uploaded since ${formattedDate}`);
 
     await axios
-      .post(hydraLocation, httpRequestBody.replace('__DATE_AFTER__', formattedDate), {headers: {'Content-Type': 'application/json'}})
+      .post(hydraLocation, JSON.parse(httpRequestBody.replace('__DATE_AFTER__', formattedDate)))
       .then((res: any) => {
         let response: IVideoResponse = <IVideoResponse>res.data;
         if(response.data.videosConnection) {
           console.log(`${response.data.videosConnection.edges.length} new videos uploaded`)
           for (let edge of response.data.videosConnection.edges) {   
-            if (!edge.node.thumbnailPhotoDataObject) {
+            if (!edge.node.thumbnailPhoto) {
               continue; // metadata for this video is not yet ready. Video will be announced in next iterations.
             }
             if (lookup(ids, edge.node.id)) {
@@ -61,23 +61,20 @@ const main = async () => {
                   { name: 'Category', value: edge.node.category.name, inline: true},
                   { name: 'Duration', value: durationFormat(edge.node.duration), inline: true },
                   { name: 'Language', value: edge.node.language.iso, inline: true },
-                  { name: 'Size', value: humanFileSize(edge.node.mediaDataObject.size), inline: true },
+                  { name: 'Size', value: humanFileSize(edge.node.media.size), inline: true },
                   { name: 'License', value: licenses[licenseKey], inline: true },
                 )
                 .setTimestamp();
-                const uploaderTitle = `${edge.node.channel.title} (${edge.node.channel.ownerMember.rootAccount})`
-                const avatarObj = edge.node.channel.avatarPhotoDataObject?.liaison
-                if(avatarObj && (avatarObj.metadata.startsWith('http://') || avatarObj.metadata.startsWith('https://'))) {
+                const uploaderTitle = `${edge.node.channel.title} (${edge.node.channel.ownerMember.controllerAccount})`
+                const avatarObj = edge.node.channel.avatarPhoto?.id
+                if(avatarObj) {
                   const avatar = 
-                        `${avatarObj.metadata}asset/v0/${edge.node.channel.avatarPhotoDataObject.joystreamContentId}`;
+                        `${storageServer}/${avatarObj}`;
                   exampleEmbed.setAuthor(uploaderTitle, avatar, `https://play.joystream.org/channel/${edge.node.channel.id}`);
                 } else {
                   exampleEmbed.setAuthor(uploaderTitle, null, `https://play.joystream.org/channel/${edge.node.channel.id}`);
                 }
-                const liaison = edge.node.thumbnailPhotoDataObject?.liaison
-                if(liaison && (liaison.metadata.startsWith('http://') || liaison.metadata.startsWith('https://')) ) {
-                  exampleEmbed.setImage(`${liaison.metadata}asset/v0/${edge.node.thumbnailPhotoDataObject.joystreamContentId}`)
-                }
+                exampleEmbed.setImage(`${storageServer}/${edge.node.thumbnailPhoto.id}`)
               channel.send(exampleEmbed);
               ids.push({id: edge.node.id, createdAt: Date.parse(edge.node.createdAt)});
             }
@@ -86,8 +83,9 @@ const main = async () => {
         }
       })
       .catch((error: any) => {
+        console.log(error)
         const {response} = error
-        console.error(response.data.errors);
+        console.error(response.data);
       });
 
       // waiting... 
