@@ -1,0 +1,12 @@
+{
+  "name":"joystream-migration-verification",
+  "dependencies": "MIT",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "request": "^2.88.2"
+  },
+  "scripts": {
+      "start": "yarn verify",
+      "verify": "node verify.js"
+  }
+}
