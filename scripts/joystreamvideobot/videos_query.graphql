@@ -1,15 +1,5 @@
-query GetVideosConnection(
-  $first: Int
-  $after: String
-  $_v0_where: VideoWhereInput
-  $_v0_orderBy: [VideoOrderByInput!]
-) {
-  videosConnection(
-    first: $first
-    after: $after
-    where: $_v0_where
-    orderBy: $_v0_orderBy
-  ) {
+query GetVideosConnection($first: Int, $after: String, $_v0_where: VideoWhereInput, $_v0_orderBy: [VideoOrderByInput!]) {
+  videosConnection(first: $first, after: $after, where: $_v0_where, orderBy: $_v0_orderBy) {
     edges {
       cursor
       node {
@@ -27,6 +17,7 @@ query GetVideosConnection(
     __typename
   }
 }
+
 fragment VideoFields on Video {
   id
   title
@@ -36,6 +27,7 @@ fragment VideoFields on Video {
     name
     __typename
   }
+  views
   duration
   createdAt
   isPublic
@@ -52,16 +44,12 @@ fragment VideoFields on Video {
     ...VideoMediaMetadataFields
     __typename
   }
-  mediaUrls
-  mediaAvailability
-  mediaDataObject {
-    ...DataObjectFields
+  media {
+    ...StorageDataObjectFields
     __typename
   }
-  thumbnailPhotoUrls
-  thumbnailPhotoAvailability
-  thumbnailPhotoDataObject {
-    ...DataObjectFields
+  thumbnailPhoto {
+    ...StorageDataObjectFields
     __typename
   }
   channel {
@@ -74,53 +62,50 @@ fragment VideoFields on Video {
   }
   __typename
 }
+
+fragment VideoMediaMetadataFields on VideoMediaMetadata {
+  id
+  pixelHeight
+  pixelWidth
+  __typename
+}
+
+fragment StorageDataObjectFields on StorageDataObject {
+  id
+  createdAt
+  size
+  isAccepted
+  ipfsHash
+  storageBag {
+    id
+    __typename
+  }
+  type {
+    __typename
+  }
+  __typename
+}
+
+fragment BasicChannelFields on Channel {
+  id
+  title
+  createdAt
+  views
+  follows
+  avatarPhoto {
+    ...StorageDataObjectFields
+    __typename
+  }
+  ownerMember {
+    controllerAccount
+  }  
+  __typename
+}
+
 fragment LicenseFields on License {
   id
   code
   attribution
   customText
-  __typename
-}
-fragment BasicChannelFields on Channel {
-  id
-  title
-  ownerMember {
-    rootAccount
-  }
-  createdAt
-  createdById
-  avatarPhotoUrls
-  avatarPhotoAvailability
-  avatarPhotoDataObject {
-    ...DataObjectFields
-    __typename
-  }
-  __typename
-}
-fragment DataObjectFields on DataObject {
-  id
-  createdAt
-  size
-  liaison {
-    ...BasicWorkerFields
-    __typename
-  }
-  liaisonJudgement
-  ipfsContentId
-  joystreamContentId
-  __typename
-}
-fragment BasicWorkerFields on Worker {
-  id
-  workerId
-  metadata
-  isActive
-  type
-  __typename
-}
-fragment VideoMediaMetadataFields on VideoMediaMetadata {
-  id
-  pixelHeight
-  pixelWidth
   __typename
 }

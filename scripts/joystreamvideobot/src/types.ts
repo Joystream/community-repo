@@ -19,12 +19,12 @@ export interface INode {
     description: string,
     duration: number,
     id: string,
-    thumbnailPhotoDataObject: IThumb,
+    thumbnailPhoto: IThumb,
     channel: IChannel,
     category: ICategory,
     language: ILanguage,
     license: ILicense,
-    mediaDataObject: IMediaDataObject,
+    media: IMediaDataObject,
     createdAt: string
 }
 
@@ -37,8 +37,7 @@ export interface ILicense {
 }
 
 export interface IThumb {
-    liaison: ILiaison,
-    joystreamContentId: string
+    id: number
 }
 
 export interface ILiaison {
@@ -49,12 +48,12 @@ export interface IChannel {
     title: string,
     id: string,
     ownerMember: IOwnerMember,
-    avatarPhotoDataObject: IThumb,
+    avatarPhoto: IThumb,
     createdById: string;
 }
 
 export interface IOwnerMember {
-    rootAccount: string;
+    controllerAccount: string;
 }
 
 export interface ICategory {
