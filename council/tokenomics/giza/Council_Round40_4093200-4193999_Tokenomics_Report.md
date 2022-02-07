@@ -109,7 +109,6 @@ Negative value indicates deflation
 | 27 | [@arseniy2706](https://pioneer.joystreamstats.live/#/members/arseniy2706) | active | 12 | 1.0 | 2.7 |
 | 28 | [@jen4ph](https://pioneer.joystreamstats.live/#/members/jen4ph) | active | 12 | 0.9 | 2.7 |
 
-,
 
 ### 4.1 Storage Providers
 * [openings for storageWorkingGroup](https://testnet.joystream.org/#/working-groups/opportunities/storageProviders)
@@ -132,8 +131,6 @@ Negative value indicates deflation
 | 21 | [@seainvestor](https://pioneer.joystreamstats.live/#/members/seainvestor) | active | 11 | 0.7 | 14.3 |
 | 22 | [@0x2bc](https://pioneer.joystreamstats.live/#/members/0x2bc) | active | 24 | 1.6 | 30.8 |
 
-,
-
 ### 4.2 Distribution
 * [openings for distributionWorkingGroup](https://testnet.joystream.org/#/working-groups/opportunities/distribution)
 
@@ -142,8 +139,6 @@ Negative value indicates deflation
 | Number of  Workers | 0 | 3 | 100 |
 | Total  Stake | 0 | 0 | 0 |
 
-
-,
 
 ### 4.3 Operations
 * [openings for operationsWorkingGroupAlpha](https://testnet.joystream.org/#/working-groups/opportunities/operationsGroupAlpha)
@@ -186,7 +181,6 @@ Negative value indicates deflation
 | 56 | [@oskarte](https://pioneer.joystreamstats.live/#/members/oskarte) | active | 3 | 0.2 | 0.2 |
 | 57 | [@arsonque](https://pioneer.joystreamstats.live/#/members/arsonque) | active | 3 | 0.2 | 0.2 |
 
-,
 
 ### 4.4 Marketing
 * [openings for operationsWorkingGroupBeta](https://testnet.joystream.org/#/working-groups/opportunities/operationsGroupBeta)
@@ -197,8 +191,6 @@ Negative value indicates deflation
 | Total  Stake | 0 | 0 | 0 |
 
 
-,
-
 ### 4.5 Gamma
 * [openings for operationsWorkingGroupGamma](https://testnet.joystream.org/#/working-groups/opportunities/operationsGroupGamma)
 
@@ -206,8 +198,6 @@ Negative value indicates deflation
 |-------------------------|--------------|--------------|----------|
 | Number of  Workers | 0 | 0 | 0 |
 | Total  Stake | 0 | 0 | 0 |
-
-
 
 
 ## 5.0 User Generated Content
