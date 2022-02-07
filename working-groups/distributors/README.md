@@ -14,13 +14,13 @@ Details about inception of the group are reported [here](https://pioneer.joystre
 
 - [Apply](https://pioneer.joystreamstats.live/#/working-groups/opportunities/distributionWorkingGroup): [Distributor in Central and South America](https://discord.com/channels/811216481340751934/933726271832227911/938557848294678598)
 
-- Task: Develop tools to implement [Quality of Service](giza1#qos)
+- Task: Develop tools to implement [Quality of Service](giza1.md#qos)
 
 - Deputy role: Based on available buckets, which channels should be distributed where? Weekly update per bucket: `0-0: number[]`
 
 - Create DP map: [discussion](https://discord.com/channels/811216481340751934/813361923172335648/939636962925641868)
 
-![](telemetry-map.png)
+![Telemtry](img/telemetry-map.png)
 
 Image source: https://telemetry.joystream.org/#/Joystream
 
@@ -79,7 +79,7 @@ query { storageDataObjects(where: { id_eq: "9506" }) {
 ```
 
 #### Storage Objects with license, bucket status and location
-This can help curators to review new entries (the lead can assign *offsets* to curators:
+For curators to review new entries - the lead can assign each *offset* to a worker:
 ```
 query getDataObjectsByVideoId { storageDataObjects(limit: 100, offset: 1) { id size deletionPrize storageBagId ipfsHash videomedia { id description licenseId license { code } media { storageBag { id owner { __typename } storageBuckets { id operatorMetadata { nodeLocation { countryCode } nodeEndpoint } createdById operatorStatus { __typename } dataObjectsSize acceptingNewBags dataObjectsCount dataObjectsSizeLimit } distributionBuckets { id bucketIndex familyId distributing createdById acceptingNewBags } } } } } }
 ```
