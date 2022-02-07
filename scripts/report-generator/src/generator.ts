@@ -35,12 +35,20 @@ const CONFIG: Config = {
   tokenomicsTemplate: __dirname + "/../templates/tokenomics.md",
   providerUrl: "ws://127.0.0.1:9944",
   proposalUrl: "https://testnet.joystream.org/#/proposals/",
-  statusUrl: "https://status.joystream.org/status/",
+  statusUrl: "https://status.joystream.org/status",
   burnAddress: "5D5PhZQNJzcJXVBxwJxZcsutjKPqUPydrvpu6HeiBfMaeKQu",
   cacheDir: "cache",
   councilRoundOffset: 2,
   videoClassId: 10,
   channelClassId: 1,
+};
+
+const createDir = (dir: string) => {
+  try {
+    fs.statSync(dir);
+  } catch (e) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
 };
 
 const councilReport = async (
@@ -61,12 +69,15 @@ const councilReport = async (
   const report = await generateCouncilReport(data, councilTemplate);
 
   const term = data.councilTerm;
-  const version = startBlock < 717987 ? "antioch" : "sumer";
+  let version = "giza";
+  if (endBlock < 4191207) version = "sumer";
+  if (startBlock < 717987) "antioch";
   const versionStr = version[0].toUpperCase() + version.slice(1);
-  const filename = `council/reports/${version}-reports/${versionStr}_Council${term}_Report.md`;
-  fs.writeFileSync(repoDir + filename, report);
-  console.log(`-> Wrote ${filename}`);
-
+  const dir = repoDir + `council/reports/` + version + `/`;
+  const filename = `${versionStr}_Council${term}_Report.md`;
+  createDir(dir);
+  fs.writeFileSync(dir + filename, report);
+  console.log(`-> Wrote ${dir + filename}`);
   api.disconnect();
 };
 
@@ -104,8 +115,10 @@ const tokenomicsReport = async (
 
   const fileName = `Council_Round${round}_${startBlock}-${endBlock}_Tokenomics_Report.md`;
   // antioch was updated to sumer at 717987
-  const version = startBlock < 717987 ? "antioch-3" : "sumer-4";
+  const version =
+    startBlock < 717987 ? "antioch-3" : endBlock > 4191207 ? "giza" : "sumer-4";
   const dir = `${repoDir}${reportsDir}/${version}`;
+  createDir(dir);
 
   console.log(`-> Writing report to ${fileName}`);
   for (const entry of Object.entries(stats)) {

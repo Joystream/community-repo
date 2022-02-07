@@ -119,7 +119,6 @@ export class StatisticsCollector {
   }
 
   saveStats(data: any) {
-    console.debug(`saving`, Object.keys(data));
     Object.keys(data).map((key: string) => (this.statistics[key] = data[key]));
   }
 
@@ -344,24 +343,22 @@ export class StatisticsCollector {
       this.groupStats(group, range, i).then((stats) => this.groupSection(stats))
     );
     Promise.all(promises).then((sections) =>
-      this.saveStats({ workingGroups: sections.join() })
+      this.saveStats({ workingGroups: sections.join("\n\n") })
     );
   }
 
   // Generate WG markdown
   groupSection({ workers, stakes, workersTable, index, labels }: WorkersInfo) {
     const [chainName, tag, pioneerName] = labels;
-    return `
+    return `### 4.${index + 2} ${tag}
+* [openings for ${chainName}](https://testnet.joystream.org/#/working-groups/opportunities/${pioneerName})
 
-### 4.${index} ${tag}
-* [*${chainName}*](https://testnet.joystream.org/#/working-groups/opportunities/${pioneerName})
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of  Workers | ${workers.start} | ${workers.end} | ${workers.change} |
 | Total  Stake | ${stakes.start} | ${stakes.end} | ${stakes.change} |
 
-${workersTable}
-`;
+${workersTable}`;
   }
 
   // Summarize stakes and rewards at start and end
@@ -736,11 +733,12 @@ ${workersTable}
       }
       const fiat = this.formatChangePrefix(fiatStart, fiatEnd, "fiat");
       const rate = this.formatChangePrefix(rateStart, rateEnd, "price");
+      rate.priceChange = -1 * +rate.priceChange; // rate increase means deflation
       console.log(
         "# USD / 1M tJOY Rate\n",
-        `@ Term start (block #${startBlockHeight}: ${rate.start}\n`,
-        `@ Term end (block #${endBlockHeight}: ${rate.end}\n`,
-        `Inflation: ${rate.change}`
+        `@ Term start (block #${startBlockHeight}: ${rate.priceStart}\n`,
+        `@ Term end (block #${endBlockHeight}: ${rate.priceEnd}\n`,
+        `Inflation: ${rate.priceChange}`
       );
       this.saveStats({ ...fiat, ...rate, dollarPoolRefills });
     });
@@ -757,7 +755,7 @@ ${workersTable}
     pre: string
   ): { [key: string]: string | number } {
     const diff = output - input;
-    const change = getPercent(output, input);
+    const change = getPercent(input, output);
     return {
       [`${pre}Start`]: input.toFixed(2),
       [`${pre}End`]: output.toFixed(2),

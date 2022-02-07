@@ -298,7 +298,7 @@ async function getProposal(
 
   let proposalInfo = new ProposalInfo();
   proposalInfo.id = id;
-  proposalInfo.name = proposal.title?.toString();
+  proposalInfo.name = String(proposal.title?.toHuman());
   try {
     const proposer = (await api.query.members.membershipById(
       proposal.proposerId

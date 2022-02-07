@@ -1,13 +1,17 @@
 # Tokenomics + Network Report
+
 This is a report which explains the current state of the Joystream network in numbers. It pulls figures from the chain and tries to provide a basic level of information about the network, tokens and more. 
 
 ## 1.0 Basic Information
+
 * Block range: {startBlock} - {endBlock}
 * Date Range: {dateStart} - {dateEnd}
 * Council session #: {councilRound}
 
 ## 2.0 Tokenomics
+
 ### 2.1 Token generation breakdown
+
 | Property            | Start Block | End Block | % Change |
 |---------------------|--------------|--------------|----------|
 | Total Tokens Minted |  {startIssuance} | {endIssuance} | {percNewIssuance} |
@@ -22,6 +26,7 @@ This is a report which explains the current state of the Joystream network in nu
 {tokenomics}
 
 ### 2.2 Fiat Pool
+
 | Property            | Start Block, USD | End Block, USD | % Change |
 |---------------------|--------------|--------------|----------|
 | USD Pool |  {fiatStart} | {fiatEnd} | {fiatChange} |
@@ -29,8 +34,9 @@ This is a report which explains the current state of the Joystream network in nu
 {dollarPoolRefills}
 
 ### 2.3 Mints
+
 | Minted per Role             | Start Block           | End Block | Difference | % Change |
-|-----------------------------|-----------------------|--------------|----------|
+|-----------------------------|-----------------------|-----------|------------|----------|
 {mintStats}
 
 ### 2.4 tJOY Inflation
@@ -42,12 +48,14 @@ This is a report which explains the current state of the Joystream network in nu
 Negative value indicates deflation
 
 ## 3.0 Council
+
 * Council session #: {councilRound}
 * Number of council members: {councilMembers}
 * Total number of proposals: {newProposals}
 * Total number of Approved proposals: {newApprovedProposals}
 
 ### 3.1 Elections
+
 | Property                    | Start Block  |
 |-----------------------------|--------------|
 | Total Applicants            | {electionApplicants} |
@@ -55,7 +63,9 @@ Negative value indicates deflation
 | Total Votes                 | {electionVotes} |
 
 ## 4 Roles
+
 ### 4.1 Validator Information
+
 * Block generation time (average): {avgBlockProduction}
 
 | Property                   | Start Block | End Block | % Change |
