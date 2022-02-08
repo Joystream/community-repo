@@ -14,7 +14,7 @@ Details about inception of the group are reported [here](https://pioneer.joystre
 
 - [Apply](https://pioneer.joystreamstats.live/#/working-groups/opportunities/distributionWorkingGroup): [Distributor in Central and South America](https://discord.com/channels/811216481340751934/933726271832227911/938557848294678598)
 
-- Task: Develop tools to implement [Quality of Service](giza1.md#qos)
+- Task: Develop tools to implement [Quality of Service](giza1.md#quality-of-service)
 
 - Deputy role: Based on available buckets, which channels should be distributed where? Weekly update per bucket: `0-0: number[]`
 

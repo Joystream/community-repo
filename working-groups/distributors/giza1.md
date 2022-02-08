@@ -1,6 +1,6 @@
 # Giza - Council 42
 
-First complete [Giza](..) term. Lead: @l1dev
+First complete [Giza](./) term. Lead: @l1dev
 
 ## [42.DT-1 - Maintain Distributor System](https://blog.joystream.org/sumer-kpis/#42.DT-1)
 
@@ -12,8 +12,8 @@ First complete [Giza](..) term. Lead: @l1dev
 > - 3 (new) have accepted invite+set metadata (6 in total)
 > - 5/6 have working, running nodes
 
-- [Families](#families)
-- [Quality of Service](#qos)
+- [Families](#distribution-bucket-families)
+- [Quality of Service](#quality-of-service)
 - [Config](#config)
 - [Workers](#workers)
 - [Log](#log)
@@ -28,15 +28,30 @@ The strategy was to find at least 1 worker per family and compare prices per TB 
 
 | # | Family                      |       Distributing | Hired         | Capacity TB | Target Providers | Target Capacity TB |
 |---|-----------------------------|--------------------|------------------|----------|------------------|-----------------|
-| 0 | Temporary                   |              @bwhm |                  |          |                  |                 |
+| 0 | Temporary                   |              @bwhm |                  | .1       |                  |                 |
 | 1 | Central and northern Europe | @razumv @maxlevush @art_khabibullin | | 5.7      |                2 | 2               |
-| 2 | Russia and eastern Europe   | @lkskrn@Ilichhh @MikeShipa (@l1dev) | | 5.5 (4 HDD) |             2 | 2 TB            |
-| 3 | North America (east)        | @l1dev            |                   | .1       |                2 | 1 TB            |
+| 2 | Russia and eastern Europe   | @lkskrn @ilich @MikeShipa (@l1dev)  | | 5.5 (4 HDD) |             2 | 2 TB            |
+| 3 | North America (east)        | (@l1dev)          |                   | .05      |                1 | 1 TB            |
 | 4 | Central and South America   |                   |                   |          |                1 | 500 GB          |
 | 5 | North Africa                |                   |                   |          |                1 | 100 GB          |
-| 6 | East and South East Asia    | @igrex            | @leetjoy          | 2.39     |                2 | 1 TB            |
-| 7 | Australia                   | @l1dev            |                   | .1       |                1 | .1              |
+| 6 | East and South East Asia    | @igrex @leetjoy   |                   | 2.39     |                2 | 1 TB            |
+| 7 | Australia                   | (@l1dev)          |                   | .1       |                1 | .1              |
+| 7 | North America (west)        |                   | @leet-joy         | 1        |                1 | .1              |
 
+End of term status compared to [conceptual targets](Distribution_Concept.md):
+> - primary families: US, EU, ASIA
+> - secondary families: south/central america (SA), africa (AF) - from my research more expensive
+> - one family for the line sydney-tokyo-hongkong (at first probably lower demand)
+> - 6 in primary regions ($500) with double replication
+> - 4 in secondary ($200) for full coverage with low replication*
+
+- Primary: 3 EU, 4 RU, 2 NA, 2 AS = 11 (/6)
+- Secondary: 0 SA, 0 AF, 1 OC = 1 (/3)
+- **Total**: 13 (3 included in lead salary)
+
+Minted: <29 M ($667 /$700), including lead salary.
+
+For bucket details see [Workers](#workers) section.
 
 ## Quality of Service
 
@@ -131,24 +146,35 @@ Sever cost total: `$768` (without setup fee).
 
 See [Discussion](https://pioneer.joystreamstats.live/#/forum/threads/943) about salary models.
 
+### OKR
+
+> All WGs will have a large part of their rewards tied to [OKRs](https://gist.github.com/bwhm/261c1ca9d9a23b29970755e5f4ab1919#okrs).
+
+[Storage and Distribution OKR](https://gist.github.com/bwhm/261c1ca9d9a23b29970755e5f4ab1919#storage-and-distribution-groups)
+- Upload speed: applies only to SP
+- Download speed: modify sp-download-tester to record regular spot checks
+- "Correct" redundancy: lead has to define what that means and seek council approval
+- High uptime across nodes: to measure this record status per provider each era
+- Geographical location distribution: global presence  with focus on user clusters
+- Cost management: spending needs to be in relation to storage group
+
 ## Workers
 
 This simple model pays 25% increased server costs to insure for good performance and high responsiveness.                                                        
-| Member         | Worker | Bucket | Location | Cache TB |      GB/$ | cost $/m | cost+25% | salary $/w |   MtJOY/w | payouts | tJOY/payout |
+| Member         | Worker | Bucket | Location   | Cache TB |      GB/$ | cost $/m | cost+25% | salary $/w |   MtJOY/w | payouts | tJOY/payout |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| bmwh           |      1 |    0:0 | Frankfurt/M |       |        |          |       0 |         0 |        0 |         |         |
-| maxlevush      |      2 |    1:0 | Helsinki    |   1.7 |      29.8 |       57 |    71.25 |      17.81 |       2.9 |      84 |       34905 |
-| razumv         |      3 |    1:1 | Helsinki    |     4 |     133.3 |       30 |     37.5 |       9.37 |       1.5 |      84 |       18371 |
-| art_khabibulin |      4 |    1:2 | Munich      |    .5 |     0.025 |       20 |      25. |       6.25 |         1 |      84 |       11904 |
-| ilich          |      6 |    2:0 | Novosibirsk |    .5 |      11.3 |       44 |       55 |      13.75 |       2.2 |      28 |       80834 |
-| lkskrn         |      7 |    2:1 | Moscow      |   .48 |       9.4 |       51 |    63.75 |      15.93 |       2.6 |      28 |       93694 |
-| oxygen         |      8 |    2:2 | Moscow      |   .43 |       9.1 |       47 |    58.75 |      14.68 |       2.4 |      28 |       86346 |
-| l1dev          |      5 |    2:3 | Petersburg  |     4 |     117.6 |       34 |     42.5 |      10.62 |       1.7 |      84 |       20821 |
-| l1dev          |      5 |    3:0 | Quebec      |    .1 |         5 |       20 |      25 |       6.25 |       1.0 |      84 |       12247 |
-| leet_joy       |      9 |  (2:4) | Vladivostok |   .48 |         3 |      160 |     200 |        50. |       8.2 |      28 |      293944 |
-| leet_joy       |      9 |    6:0 | Singapore   |  1.75 |       9.7 |      180 |     225 |      56.25 |       9.2 |      28 |      330687 |
-| igrex          |     10 |    6:1 | Tokio       |   .64 |         4 |      160 |     200 |        50. |       8.2 |      28 |      293944 |
-| l1dev          |      5 |    7:0 | Sydney      |    .1 |         5 |       20 |      25 |       6.25 |       1.0 |      28 |       36743 |
+| bmwh           |      1 |    0:0 | Frankfurt/M |         |        |          |       0 |         0 |        0 |         |         |
+| maxlevush      |      2 |    1:0 | Helsinki    | 1.4/1.7 |      29.8 |       57 |    71.25 |      17.81 |       2.9 |      84 |       34905 |
+| razumv         |      3 |    1:1 | Helsinki    |    .1/4 |     133.3 |       30 |     37.5 |       9.37 |       1.5 |      84 |       18371 |
+| art_khabibulin |      4 |    1:2 | Munich      |   .1/.5 |     0.025 |       20 |      25. |       6.25 |         1 |      84 |       11904 |
+| ilich          |      6 |    2:0 | Novosibirsk |   .1/.5 |      11.3 |       44 |       55 |      13.75 |       2.2 |      28 |       80834 |
+| lkskrn         |      7 |    2:1 | Moscow      |  .1/.48 |       9.4 |       51 |    63.75 |      15.93 |       2.6 |      28 |       93694 |
+| oxygen         |      8 |    2:2 | Moscow      |  .1/.43 |       9.1 |       47 |    58.75 |      14.68 |       2.4 |      28 |       86346 |
+| l1dev          |      5 |    2:3 | Petersburg  |    .5/4 |     117.6 |       34 |     42.5 |      10.62 |       1.7 |      84 |       20821 |
+| l1dev          |      5 |    3:0 | Quebec      |  .05/.1 |         5 |       20 |      25 |       6.25 |       1.0 |      84 |       12247 |
+| leet_joy       |      9 |    6:0 | Singapore   | .1/1.75 |       9.7 |      180 |     225 |      56.25 |       9.2 |      28 |      330687 |
+| igrex          |     10 |    6:1 | Tokio       |  .1/.64 |         4 |      160 |     200 |        50. |       8.2 |      28 |      293944 |
+| l1dev          |      5 |    7:0 | Sydney      |  .05/.1 |         5 |       20 |      25 |       6.25 |       1.0 |      28 |       36743 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Total          |        |        |             | 13.9 | 30.7 |      768 |     960 |       240. | 39.5 |     504 |   78385 |
 
@@ -430,6 +456,16 @@ $ /home/pioneer/joystream/node_modules/.bin/joystream-distributor leader:update-
 - 2022-02-06 13:31: Bucket `6:1 is u! `leader:update-bucket-mode -B 6:1 -d on -y` + `leader:update-bucket-status -B 6:1 -a yes -y`
 - [4350105](https://discord.com/channels/811216481340751934/933726271832227911/939682987258302534): reward worker 10
 - [4367580](https://discord.com/channels/811216481340751934/933726271832227911/940336769130459206): reward worker 9
+- [#4381320](https://pioneer.joystreamstats.live/#/explorer/query/4381320): create bucket 3:1 (`leader:create-bucket -a no -f 3`)
+- [#4381333](https://pioneer.joystreamstats.live/#/explorer/query/4381333): invite worker 9 to bucket 3:1 (`leader:invite-bucket-operator -B 3:1 -w 9`)
+- [#4382546](https://pioneer.joystreamstats.live/#/explorer/query/4382546): set bucket 3:1 to not distributing ( `leader:update-bucket-mode -B 3:1 -d off` - `storage.DistributionBucketModeUpdated`)
+- 4383614: `leader:create-bucket-family` => 8
+- 4383614: `leader:set-bucket-family-metadata -f 8 -i ~/distribution-family8.json`
+- 4383681: `leader:cancel-invitation -B 3:1 -w 9`
+- 4383706: `leader:create-bucket -a no -f 8`
+- 4383724: `leader:invite-bucket-operator -B 8:0 -w 9`
+- 4383748: `leader:update-bucket-mode -B 8:0 -d off`
+
 ```
 yarn joystream-distributor leader:update-bag -f 1 -a 2 -b dynamic:channel:777 -y
 yarn run v1.22.17
