@@ -53,9 +53,32 @@ Query nodes accept a specific [syntax](https://graphql.org/learn/queries/).
 Each query takes optional `offset` and `limit` arguments (up to 10k depending on setup). When pasting a query he `PRETTIFY` button in graphql expands it.
 `query { distributionBucketOperators (limit: 2, offset: 3) { workerId } }`
 
-This returns workers 4 and 7. Note that features like sorting and more advanced filtering are not in scope and need to be implemented client side.
+This returns workers 4 and 7 (see sorting below). Note that features like advanced filtering are not in scope and need to be implemented client side.
 
 For more details start a [history lesson](https://github.com/Joystream/joystream/issues/358).
+Do not miss to try below queries.
+
+#### Sorting queries
+
+````
+orderBy: [DistributionBucketOperatorOrderByInput!]
+enum DistributionBucketOperatorOrderByInput {
+createdAt_ASC
+createdAt_DESC
+updatedAt_ASC
+updatedAt_DESC
+deletedAt_ASC
+deletedAt_DESC
+distributionBucket_ASC
+distributionBucket_DESC
+workerId_ASC
+workerId_DESC
+status_ASC
+status_DESC
+metadata_ASC
+metadata_DESC
+}
+```
 
 #### Distribution Families with endpoint operators
 ```
