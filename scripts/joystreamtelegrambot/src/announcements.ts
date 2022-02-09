@@ -1,3 +1,5 @@
+import { ParseMode } from "node-telegram-bot-api";
+
 import {
   getBlockHash,
   getCouncil,
@@ -63,14 +65,9 @@ export const channels = async (
       `**Channel ${id}** by ${member.handle} (${member.id})\n${domain}/#//media/channels/${id}`
     );
   }
-  sendMessage(
-    {
-      tg: messages[0].join("\r\n\r\n"),
-      discord: messages[1].join(`\n\n`),
-      tgParseMode: "HTML",
-    },
-    channel
-  );
+  const tg = messages[0].join("\r\n\r\n");
+  const discord = messages[1].join(`\n\n`);
+  sendMessage({ tg, tgParseMode: "HTML", discord }, channel);
 };
 
 // announce council change
@@ -201,15 +198,9 @@ export const categories = async (
       `Category ${id}: **${cat.title}** ${domain}/#/forum/categories/${id}`
     );
   }
-
-  sendMessage(
-    {
-      tg: messages[0].join("\r\n\r\n"),
-      discord: messages[1].join(`\n\n`),
-      tgParseMode: "HTML",
-    },
-    channel
-  );
+  const tg = messages[0].join("\r\n\r\n");
+  const discord = messages[1].join(`\n\n`);
+  sendMessage({ tg, discord, tgParseMode: "HTML" }, channel);
   return category[1];
 };
 
@@ -248,15 +239,9 @@ export const posts = async (
       `**[${category.title}]** ${handle} posted in **${thread.title}**:\n*${s.content}*\nMore: ${s.link}`
     );
   }
-
-  sendMessage(
-    {
-      tg: messages[0].join("\r\n\r\n"),
-      discord: messages[1].join(`\n\n`),
-      tgParseMode: "HTML",
-    },
-    channel
-  );
+  const tg = messages[0].join("\r\n\r\n");
+  const discord = messages[1].join(`\n\n`);
+  sendMessage({ tg, discord, tgParseMode: "HTML" }, channel);
   return current;
 };
 
@@ -311,13 +296,12 @@ export const proposalPost = async (
   proposalId: number,
   sendMessage: Send,
   channel: any
-) => {
+): Promise<void> => {
   const { text, created_at, author_id, thread_id } = post;
   const txt = text.slice(0, 100);
   const link = `${domain}/#/proposals/${proposalId}`;
   const tg = `<b>${author}</b> commented on <b><a href="${link}">Proposal ${proposalId}</a></b>: ${txt}`;
   const discord = `**${author}** commented on **Proposal ${proposalId}**: ${txt} $link`;
-  console.log(tg);
   sendMessage({ tg, discord, tgParseMode: "HTML" }, channel);
 };
 
@@ -374,29 +358,31 @@ export const heartbeat = async (
 
 export const formatProposalMessage = (
   data: string[]
-): { tg: string; discord: string } => {
+): { discord: string; tg: string; tgParseMode: ParseMode } => {
   const [id, title, type, stage, result, handle] = data;
   const tg = `<b>Type</b>: ${type}\r\n<b>Proposer</b>: <a href="${domain}/#/members/${handle}">${handle}</a>\r\n<b>Title</b>: <a href="${domain}/#/proposals/${id}">${title}</a>\r\n<b>Stage</b>: ${stage}\r\n<b>Result</b>: ${result}`;
   const discord = `**Type**: ${type}\n**Proposer**: ${handle}\n**Title**: ${title}\n**Stage**: ${stage}\n**Result**: ${result}`;
-  return { tg, discord };
+  return { tg, discord, tgParseMode: "HTML" };
 };
 
 export const missingProposalVotes = async (
   proposals: ProposalVotes[],
   council: Council
-): Promise<{ discord: string; tg: string }> => {
+): Promise<{ discord: string; tg: string; tgParseMode: ParseMode }> => {
   const messages = ["", ""]; // discord, telegram
 
   proposals.map(({ id, title, votes }) => {
     if (!title) return;
     const notifyMembers: string[][] = [[], []];
+    // find members that are did not vote
     const needToVote = council.seats
       .filter(
-        ({ memberId }) => !votes.find((vote) => vote.memberId === memberId)
+        ({ memberId }) => !votes.find((vote) => +vote.memberId === +memberId)
       )
       .map((consul) => {
         if (consul.discord) {
-          const who = `${consul.handle}`; // consul.discord.handle
+          //const who = `<${consul.discord.id}> `; // TODO let bot mention users
+          const who = consul.discord.handle;
           if (!notifyMembers[0].includes(who)) notifyMembers[0].push(who);
         } else if (consul.telegram?.length)
           notifyMembers[1].push(consul.telegram);
@@ -408,11 +394,10 @@ export const missingProposalVotes = async (
     if (selected[1].length)
       messages[1] += `- ${id} <a href="${domain}/#/proposals/${id}}">${title}</a>: ${selected[1]}\n`;
   });
-
-  console.log(messages[0]);
   const prefix = `*Active Proposals*\n`;
   return {
     tg: messages[1].length ? messages[1] : ``,
-    discord: messages[0].length ? prefix + messages[0] : ``,
+    tgParseMode: "Markdown",
+    discord: messages[0].length ? (prefix + messages[0]).slice(0, 2000) : ``,
   };
 };

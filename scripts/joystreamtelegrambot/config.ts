@@ -1,3 +1,5 @@
+import { ChannelNames } from "./src/types";
+
 // website
 export const domain = "https://pioneer.joystreamstats.live";
 export const apiUrl = "https://api.joystreamstats.live/api";
@@ -37,7 +39,7 @@ export const storageServer =
   "https://storage-1.joystream.org/argus/api/v1/assets/";
 
 // wg bot
-export const channelNames = {
+export const channelNames: ChannelNames = {
   council: "council",
   proposals: "proposals-bot",
   forum: "forum-bot",

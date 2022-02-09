@@ -81,7 +81,7 @@ export const fetchTokenValue = (): Promise<string> =>
 // member handles (tg, discord, github)
 export const getMemberHandles = async (): Promise<MemberHandles[]> => {
   console.debug(`Fetching user handles`);
-  const rawUrl = `https://raw.githubusercontent.com/Joystream/community-repo/master/council/council_member_discord_usernames.md`;
+  const rawUrl = `https://raw.githubusercontent.com/Joystream/community-repo/master/council/guides/council_member_discord_usernames.md`;
   return await axios
     .get(rawUrl)
     .then(({ data }) => {

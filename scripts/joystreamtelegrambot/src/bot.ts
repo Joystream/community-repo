@@ -154,19 +154,20 @@ const sendDiscord = (msg: string, channel: any) => {
   }
 };
 
-const missingVotesMessages = async (api: ApiPromise, council: Council) => {
-  const active: ProposalId[] = await getActiveProposals(api);
-  const proposals = await Promise.all(
-    active.map((id: ProposalId) =>
-      getProposalInfo(api, id).then(({ title }) =>
-        getProposalVotes(api, id).then((votes) => {
-          return { id, title: String(title.toHuman()), votes };
-        })
+const missingVotesMessages = async (api: ApiPromise, council: Council) =>
+  getActiveProposals(api)
+    .then((active) =>
+      Promise.all(
+        active.map((id: ProposalId) =>
+          getProposalInfo(api, id).then(({ title }) =>
+            getProposalVotes(api, id).then((votes) => {
+              return { id, title: String(title.toHuman()), votes };
+            })
+          )
+        )
       )
     )
-  );
-  return announce.missingProposalVotes(proposals, council);
-};
+    .then((proposals) => announce.missingProposalVotes(proposals, council));
 
 const main = async () => {
   const provider = new WsProvider(wsLocation);
@@ -178,7 +179,8 @@ const main = async () => {
 
   client.on("message", (msg): void => {
     const user = msg.author.id;
-    if (msg.content === "/status") msg.reply(`${user}, reporting to discord.`);
+    if (msg.content === "/status")
+      msg.reply(`Hello <@${user}>, reporting to discord.`);
     if (msg.content === "/proposals") {
       msg
         .reply(`Checking..`)
@@ -237,7 +239,6 @@ const main = async () => {
   const posts: number[] = [0, 0];
   const threads: number[] = [0, 0];
   let proposals: Proposals = { last: 0, current: 0, active: [], executing: [] };
-  let lastProposalUpdate = 0;
 
   if (opts.forum) {
     const hash = await getBestHash(api);
@@ -300,16 +301,6 @@ const main = async () => {
     };
     if (duration) blocks = blocks.concat(block);
 
-    // send proposal reminder
-    if (timestamp > lastProposalUpdate + heartbeat) {
-      const msg = await missingVotesMessages(api, council);
-      const channel = discordChannels.proposals;
-      console.log(msg);
-      //sendMessage(msg, channel);
-      //sendDiscord("Please vote:\n" + msg.discord, channel);
-      lastProposalUpdate = timestamp;
-    }
-
     // heartbeat
     if (timestamp > lastHeartbeat + heartbeat) {
       const time = passedTime(lastHeartbeat, timestamp);
@@ -329,6 +320,11 @@ const main = async () => {
     if (timestamp > lastCouncilHeartbeat + councilStatusHeartbeat) {
       announce.councilStatus(api, block, sendMessage, discordChannels.council);
       lastCouncilHeartbeat = block.timestamp;
+
+      // send proposal reminder
+      missingVotesMessages(api, council).then((msg) =>
+        sendMessage(msg, discordChannels.proposals)
+      );
     }
 
     if (opts.council && block.id > lastBlock.id) {
