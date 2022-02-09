@@ -96,7 +96,10 @@ export const getMemberHandles = async (): Promise<MemberHandles[]> => {
         return { handle, discord: { handle: discord, id }, telegram, github };
       });
     })
-    .catch((error) => console.error(`Fetch user handles.`, error.message));
+    .catch((error) => {
+      console.error(`Fetch user handles.`, error.message);
+      return [];
+    });
 };
 
 // find handle from account

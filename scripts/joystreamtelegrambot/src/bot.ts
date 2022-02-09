@@ -45,9 +45,14 @@ import moment from "moment";
 
 const opts: Options = parseArgs(process.argv.slice(2));
 const log = (msg: string): void | number => opts.verbose && console.log(msg);
-log(JSON.stringify(opts));
 process.env.NTBA_FIX_319 ||
   log("TL;DR: Set NTBA_FIX_319 to hide this warning.");
+
+if (!discordToken.length) {
+  console.error(`Error: No discord token provided.`);
+  process.exit(1);
+}
+log(JSON.stringify(opts));
 
 // connect to telegram
 const bot = tgToken ? new TelegramBot(tgToken, { polling: true }) : null;
