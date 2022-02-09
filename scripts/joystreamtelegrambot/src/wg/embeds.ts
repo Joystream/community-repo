@@ -1,4 +1,4 @@
-import { joystreamBlue } from '../config'
+import { joystreamBlue } from '../../config'
 import { formatBalance } from '@polkadot/util';
 import { u128 } from '@polkadot/types';
 import { EventRecord } from '@polkadot/types/interfaces';
