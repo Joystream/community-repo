@@ -14,6 +14,7 @@ import {
   councilStatusHeartbeat,
 } from "../config";
 import { scheduleStorageUpdates, generateStorageMsg } from "./storage";
+import { videoUpdates } from "./video";
 
 // types
 import { Block, Council, Options, Proposals, ProposalVotes } from "./types";
@@ -70,13 +71,16 @@ client.on("ready", async () => {
   discordChannels.forum = await findDiscordChannel("forum-bot");
   discordChannels.tokenomics = await findDiscordChannel("tokenomics");
   discordChannels.storage = await findDiscordChannel("storage-provider");
+  discordChannels.videos = await findDiscordChannel("video-bot");
   discordChannels.distribution = await findDiscordChannel("distributors");
   discordChannels.curation = await findDiscordChannel("content-curator");
   discordChannels.hr = await findDiscordChannel("kpis");
   discordChannels.marketing = await findDiscordChannel("content-creator");
   discordChannels.general = await findDiscordChannel("general");
   deleteDuplicateMessages(discordChannels.proposals);
+
   scheduleStorageUpdates(discordChannels.storage);
+  videoUpdates(discordChannels.videos);
 });
 
 const deleteDuplicateMessages = (channel: any) => {

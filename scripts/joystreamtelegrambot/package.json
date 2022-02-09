@@ -29,6 +29,7 @@
     "discord.js": "^12.5.3",
     "dotenv": "^16.0.0",
     "moment": "^2.29.1",
+    "moment-duration-format": "^2.3.2",
     "node-schedule": "^2.1.0",
     "node-telegram-bot-api": "^0.51.0",
     "ws": "^7.4.1"

@@ -1,4 +1,4 @@
-import { channelId, hydraLocation, waitFor, waitTimeUnit, createdAgo, createdAgoUnit, storageServer } from "../config";
+import { channelId, hydraLocation, waitFor, waitTimeUnit, createdAgo, createdAgoUnit, storageServer } from "../../config";
 import { readFileSync } from 'fs';
 import axios from 'axios';
 import {IVideoResponse, LooseObject}  from './types';
@@ -11,24 +11,13 @@ momentFormat(moment);
 
 const delay = (ms: number | undefined) => new Promise(res => setTimeout(res, ms));
 
-const queryParams = readFileSync('./query_params.json', 'utf-8');
-const graphql = readFileSync('./videos_query.graphql', 'utf-8').replaceAll("\n", "\\n");
-const httpRequestBody = readFileSync('./request.json', 'utf-8').replace('__PARAMS__', queryParams).replace('__QUERY__', graphql);
-const licenses: LooseObject = JSON.parse(readFileSync('./licenses.json', 'utf-8'));
+const path = "./src/video/"
+const queryParams = readFileSync(path + "query_params.json", "utf-8")
+const graphql = readFileSync(path + 'videos_query.graphql', 'utf-8').replaceAll("\n", "\\n")
+const httpRequestBody = readFileSync(path + 'request.json', 'utf-8').replace('__PARAMS__', queryParams).replace('__QUERY__', graphql)
+const licenses: LooseObject = require("./licenses.json")
 
-
-const main = async () => {
-
-  const client = new Discord.Client();
-
-  client.once("ready", async () => {
-    console.log('Discord.js client ready');
-    await client.channels.fetch(channelId);
-  });
-  
-  await client.login(process.env.TOKEN); // environment variable TOKEN must be set
-  console.log('Bot logged in successfully');
-
+export const videoUpdates = async (channel: any) => {
   let ids: any[] = [];
 
   do {
