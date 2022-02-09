@@ -30,7 +30,48 @@ export const suppressedThreads = [180, 265, 275, 390]; // 180 tokens, 265 faucet
 export const channelId = "938526399801729024";
 export const hydraLocation = "https://orion.joystream.org/graphql";
 export const waitFor = 60;
-export const waitTimeUnit = 'seconds';
+export const waitTimeUnit = "seconds";
 export const createdAgo = 30;
-export const createdAgoUnit = 'minutes';
-export const storageServer = 'https://storage-1.joystream.org/argus/api/v1/assets/'
+export const createdAgoUnit = "minutes";
+export const storageServer =
+  "https://storage-1.joystream.org/argus/api/v1/assets/";
+
+// wg bot
+export const channelNames = {
+  council: "council",
+  proposals: "proposals-bot",
+  forum: "forum-bot",
+  tokenomics: "tokenomics",
+  videos: "video-bot",
+  general: "general",
+
+  // groups https://github.com/Joystream/joystream/blob/giza/node/src/chain_spec/mod.rs#L302-L350
+  contentWorkingGroup: "content-curator",
+  storageWorkingGroup: "storage-provider",
+  distributionWorkingGroup: "distributors",
+  gatewayWorkingGroup: "gateways",
+  operationsWorkingGroupAlpha: "operations",
+  operationsWorkingGroupGamma: "kpis",
+  operationsWorkingGroupBeta: "content-creator",
+};
+
+export const wgEvents = [
+  "ApplicationTerminated",
+  "ApplicationWithdrawn",
+  "AppliedOnOpening",
+  "BeganApplicationReview",
+  "LeaderSet",
+  "LeaderUnset",
+  "MintCapacityChanged",
+  "OpeningAdded",
+  "OpeningFilled",
+  "StakeDecreased",
+  "StakeIncreased",
+  "StakeSlashed",
+  "TerminatedLeader",
+  "TerminatedWorker",
+  "WorkerExited",
+  "WorkerRewardAmountUpdated",
+];
+
+export const joystreamBlue = "#4038FF"; // official joystream blue, see https://www.joystream.org/brand/guides/

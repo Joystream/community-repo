@@ -1,4 +1,4 @@
-import { Client } from "discord.js";
+import Discord, { Client } from "discord.js";
 import TelegramBot, {
   ParseMode,
   SendMessageOptions,
@@ -8,16 +8,26 @@ import {
   discordToken,
   tgToken,
   chatid,
+  channelNames,
   heartbeat,
   proposalDelay,
   wsLocation,
   councilStatusHeartbeat,
 } from "../config";
+import { processGroupEvents } from "./wg";
 import { scheduleStorageUpdates, generateStorageMsg } from "./storage";
 import { videoUpdates } from "./video";
 
 // types
-import { Block, Council, Options, Proposals, ProposalVotes } from "./types";
+import {
+  ChannelNames,
+  DiscordChannels,
+  Block,
+  Council,
+  Options,
+  Proposals,
+  ProposalVotes,
+} from "./types";
 import { ProposalDetail } from "./lib/types";
 import { types } from "@joystream/types";
 import { ProposalId } from "@joystream/types/proposals";
@@ -60,30 +70,27 @@ log(JSON.stringify(opts));
 const bot = tgToken ? new TelegramBot(tgToken, { polling: true }) : null;
 
 // connect to discord
-let discordChannels: { [key: string]: any } = {};
+let discordChannels: DiscordChannels = {};
 const client = new Client();
 client.login(discordToken);
 client.on("ready", async () => {
   if (!client.user) return console.error(`Empty discord user.`);
   console.log(`Logged in to discord as ${client.user.tag}!`);
-  discordChannels.council = await findDiscordChannel("council");
-  discordChannels.proposals = await findDiscordChannel("proposals-bot");
-  discordChannels.forum = await findDiscordChannel("forum-bot");
-  discordChannels.tokenomics = await findDiscordChannel("tokenomics");
-  discordChannels.storage = await findDiscordChannel("storage-provider");
-  discordChannels.videos = await findDiscordChannel("video-bot");
-  discordChannels.distribution = await findDiscordChannel("distributors");
-  discordChannels.curation = await findDiscordChannel("content-curator");
-  discordChannels.hr = await findDiscordChannel("kpis");
-  discordChannels.marketing = await findDiscordChannel("content-creator");
-  discordChannels.general = await findDiscordChannel("general");
-  deleteDuplicateMessages(discordChannels.proposals);
 
+  await Promise.all(
+    Object.keys(channelNames).map(
+      async (c) =>
+        (discordChannels[c] = await findDiscordChannel(channelNames[c]))
+    )
+  );
+
+  deleteDuplicateMessages(discordChannels.proposals);
   scheduleStorageUpdates(discordChannels.storage);
   videoUpdates(discordChannels.videos);
 });
 
 const deleteDuplicateMessages = (channel: any) => {
+  if (!channel) return console.warn(`deleteDuplicateMessages: empty channel`);
   let messages: { [key: string]: any } = {};
   channel.messages.fetch({ limit: 100 }).then((msgs: any) =>
     msgs.map((msg: any) => {
@@ -101,11 +108,6 @@ const deleteDuplicateMessages = (channel: any) => {
 
 const findDiscordChannel = (name: string) =>
   client.channels.cache.find((channel: any) => channel.name === name);
-
-client.on("message", async (msg) => {
-  const user = msg.author;
-  if (msg.content === "/status") msg.reply(`${user}, reporting to discord.`);
-});
 
 bot?.on("message", (msg: TelegramBot.Message) => {
   if (!msg.reply_to_message) {
@@ -176,6 +178,7 @@ const main = async () => {
 
   client.on("message", (msg): void => {
     const user = msg.author.id;
+    if (msg.content === "/status") msg.reply(`${user}, reporting to discord.`);
     if (msg.content === "/proposals") {
       msg
         .reply(`Checking..`)
@@ -259,6 +262,7 @@ const main = async () => {
     timestamp = await getTimestamp(api, hash);
     duration = lastBlock.timestamp ? timestamp - lastBlock.timestamp : 0;
     const events: EventRecord[] = await getEvents(api, hash);
+    processGroupEvents(api, id, hash, events, discordChannels);
 
     // update validators and nominators every era
     const era = Number(await api.query.staking.currentEra());
@@ -299,7 +303,7 @@ const main = async () => {
     // send proposal reminder
     if (timestamp > lastProposalUpdate + heartbeat) {
       const msg = await missingVotesMessages(api, council);
-      const channel = await findDiscordChannel("proposals");
+      const channel = discordChannels.proposals;
       console.log(msg);
       //sendMessage(msg, channel);
       //sendDiscord("Please vote:\n" + msg.discord, channel);

@@ -3,6 +3,13 @@ import { Post } from "@joystream/types/forum";
 import { ParseMode } from "node-telegram-bot-api";
 import { ProposalId } from "@joystream/types/proposals";
 
+export interface ChannelNames {
+  [key: string]: string;
+}
+export interface DiscordChannels {
+  [key: string]: Discord.TextChannel;
+}
+
 export interface Council {
   round: number;
   last: string;
