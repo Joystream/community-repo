@@ -9,6 +9,7 @@ import {
 } from "../../config";
 import { readFileSync } from "fs";
 import axios from "axios";
+import { cleanup, lookup, durationFormat } from "./util";
 import { IVideoResponse, LooseObject } from "./types";
 
 import { humanFileSize } from "./sizeformat";
@@ -30,6 +31,8 @@ const httpRequestBody = readFileSync(path + "request.json", "utf-8")
   .replace("__PARAMS__", queryParams)
   .replace("__QUERY__", graphql);
 const licenses: LooseObject = require("./licenses.json");
+const formatQuery = (date: string) =>
+  httpRequestBody.replace("__DATE_AFTER__", date);
 
 export const videoUpdates = async (channel: any) => {
   let ids: any[] = [];
@@ -40,10 +43,7 @@ export const videoUpdates = async (channel: any) => {
     console.log(`Checking for new videos uploaded since ${formattedDate}`);
 
     await axios
-      .post(
-        hydraLocation,
-        JSON.parse(httpRequestBody.replace("__DATE_AFTER__", formattedDate))
-      )
+      .post(hydraLocation, JSON.parse(formatQuery(formattedDate)))
       .then((res: any) => {
         let response: IVideoResponse = <IVideoResponse>res.data;
         if (response.data.videosConnection) {
@@ -57,7 +57,6 @@ export const videoUpdates = async (channel: any) => {
             if (lookup(ids, edge.node.id)) {
               console.log(`Video ${edge.node.id} already announced. `);
             } else {
-              const channel = client.channels.cache.get(channelId);
               const licenseKey = edge.node.license.code;
               const exampleEmbed = new Discord.MessageEmbed()
                 .setColor("#4038FF") // official joystream blue, see https://www.joystream.org/brand/guides/
@@ -128,38 +127,3 @@ export const videoUpdates = async (channel: any) => {
     await delay(moment.duration(waitFor, waitTimeUnit).asMilliseconds());
   } while (true);
 };
-
-const cleanup = (ids: any[], cutoffDate: Date) => {
-  console.log("Local storage cleaning in progress");
-  let cleaned = 0;
-  ids.reduceRight(function (acc, item, index, object) {
-    if (item.createdAt < cutoffDate) {
-      object.splice(index, 1);
-      cleaned += 1;
-    }
-  }, []);
-  if (cleaned > 0) {
-    console.log(`Cleaned records: ${cleaned}`);
-  }
-};
-
-const lookup = (ids: any[], id: string) => {
-  for (let video of ids) {
-    if (video.id === id) {
-      return true;
-    }
-  }
-  return false;
-};
-
-const durationFormat = (duration: number) => {
-  if (duration < 60) {
-    return `${duration}s.`;
-  } else {
-    return moment.duration(duration, "seconds").format("hh:mm:ss");
-  }
-};
-
-main()
-  .catch(console.error)
-  .finally(() => process.exit());
