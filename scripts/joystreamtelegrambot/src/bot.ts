@@ -13,6 +13,7 @@ import {
   wsLocation,
   councilStatusHeartbeat,
 } from "../config";
+import { scheduleStorageUpdates, generateStorageMsg } from "./storage";
 
 // types
 import { Block, Council, Options, Proposals, ProposalVotes } from "./types";
@@ -68,8 +69,14 @@ client.on("ready", async () => {
   discordChannels.proposals = await findDiscordChannel("proposals-bot");
   discordChannels.forum = await findDiscordChannel("forum-bot");
   discordChannels.tokenomics = await findDiscordChannel("tokenomics");
-
+  discordChannels.storage = await findDiscordChannel("storage-provider");
+  discordChannels.distribution = await findDiscordChannel("distributors");
+  discordChannels.curation = await findDiscordChannel("content-curator");
+  discordChannels.hr = await findDiscordChannel("kpis");
+  discordChannels.marketing = await findDiscordChannel("content-creator");
+  discordChannels.general = await findDiscordChannel("general");
   deleteDuplicateMessages(discordChannels.proposals);
+  scheduleStorageUpdates(discordChannels.storage);
 });
 
 const deleteDuplicateMessages = (channel: any) => {
@@ -176,6 +183,16 @@ const main = async () => {
           )
         )
         .catch((error) => console.log(`Discord /proposals: ${error.message}`));
+    }
+    if (msg.content === "/storagesize") {
+      msg
+        .reply("Calculating... ")
+        .then(async (oldMessage) => {
+          generateStorageMsg(oldMessage, user);
+        })
+        .catch((error) => {
+          console.log("Not able to send message", error);
+        });
     }
   });
 
