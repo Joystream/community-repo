@@ -378,7 +378,7 @@ Failed Proposals
 
 ## 3 - Review
 ### 3.1 - Workflow, Performance, Challenges & Thoughts
-- [Council Term Summaries](https://testnet.joystream.org/#/forum/threads/928)
+- [Council Term Summaries](https://testnet.joystream.org/#/forum/threads/938)
 
 ## 4 - Obligations
 Council obligations are payments or items that carry through council sessions. These are noted so that future councils can easily see what items they should be aware of. Items can be removed from here once they have been resolved or become outdated.
