@@ -23,7 +23,7 @@ const discordBotToken = process.env.TOKEN || undefined // environment variable T
     console.log('Bot logged in successfully');    
     
     connectUpstream().then( async (api: ApiPromise) => {
-        api.rpc.chain.subscribeNewHeads(async (header: Header) => {
+        api.rpc.chain.subscribeFinalizedHeads(async (header: Header) => {
           const id = +header.number;
           await processBlock(api, client, id);
         })  
