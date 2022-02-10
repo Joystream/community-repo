@@ -746,9 +746,10 @@ ${workersTable}`;
 
   formatChange(input: number, output: number): MintStats {
     const diff = output - input;
-    const change = getPercent(output, input);
+    const change = getPercent(input, output);
     return { start: input.toFixed(2), end: output.toFixed(2), diff, change };
   }
+
   formatChangePrefix(
     input: number,
     output: number,
