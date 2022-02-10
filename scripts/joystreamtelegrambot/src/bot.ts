@@ -1,4 +1,4 @@
-import Discord, { Client } from "discord.js";
+import Discord from "discord.js";
 import TelegramBot, {
   ParseMode,
   SendMessageOptions,
@@ -8,19 +8,19 @@ import {
   discordToken,
   tgToken,
   chatid,
-  channelNames,
   heartbeat,
   proposalDelay,
   wsLocation,
   councilStatusHeartbeat,
 } from "../config";
+import { clientOptions, deleteDuplicateMessages } from "./discord";
 import { processGroupEvents } from "./wg";
 import { scheduleStorageUpdates, generateStorageMsg } from "./storage";
 import { videoUpdates } from "./video";
+import db from "./db";
 
 // types
 import {
-  ChannelNames,
   DiscordChannels,
   Block,
   Council,
@@ -52,7 +52,13 @@ import {
   getProposalVotes,
 } from "./lib/api";
 import * as announce from "./announcements";
-import { getCouncilHandles, parseArgs, printStatus, passedTime } from "./util";
+import {
+  getCouncilHandles,
+  getDiscordChannels,
+  parseArgs,
+  printStatus,
+  passedTime,
+} from "./util";
 import moment from "moment";
 
 const opts: Options = parseArgs(process.argv.slice(2));
@@ -70,44 +76,18 @@ log(JSON.stringify(opts));
 const bot = tgToken ? new TelegramBot(tgToken, { polling: true }) : null;
 
 // connect to discord
-let discordChannels: DiscordChannels = {};
-const client = new Client();
+let discordChannels: DiscordChannels;
+const client = new Discord.Client({ ...clientOptions });
 client.login(discordToken);
 client.on("ready", async () => {
   if (!client.user) return console.error(`Empty discord user.`);
   console.log(`Logged in to discord as ${client.user.tag}!`);
-
-  await Promise.all(
-    Object.keys(channelNames).map(
-      async (c) =>
-        (discordChannels[c] = await findDiscordChannel(channelNames[c]))
-    )
-  );
-
+  discordChannels = await getDiscordChannels(client);
   deleteDuplicateMessages(discordChannels.proposals);
-  scheduleStorageUpdates(discordChannels.storage);
+  scheduleStorageUpdates(db, discordChannels.storageWorkingGroup);
   videoUpdates(discordChannels.videos);
+  console.debug(`Updated discord channels`);
 });
-
-const deleteDuplicateMessages = (channel: any) => {
-  if (!channel) return console.warn(`deleteDuplicateMessages: empty channel`);
-  let messages: { [key: string]: any } = {};
-  channel.messages.fetch({ limit: 100 }).then((msgs: any) =>
-    msgs.map((msg: any) => {
-      const txt = msg.content.slice(0, 100);
-      if (messages[txt]) {
-        if (msg.deleted) console.log(`duplicate msg already deleted`);
-        else {
-          console.log(`deleting duplicate message`, msg.content);
-          msg.delete().then(() => console.log(`deleted message ${msg.id}`));
-        }
-      } else messages[txt] = msg;
-    })
-  );
-};
-
-const findDiscordChannel = (name: string) =>
-  client.channels.cache.find((channel: any) => channel.name === name);
 
 bot?.on("message", (msg: TelegramBot.Message) => {
   if (!msg.reply_to_message) {
@@ -185,11 +165,13 @@ const main = async () => {
 
   client.on("message", (msg): void => {
     const user = msg.author.id;
-    if (!msg.author.bot) console.debug(`msg by`, msg.author, msg.content);
-    const authorString = `@${msg.author.username}#${msg.author.discriminator}`;
+    if (!msg.author.bot) console.info(`${msg.author.username}: `, msg.content);
+
     if (msg.content === "/status")
       msg.reply(`Hello <@${user}>, reporting to discord.`);
+
     if (["/proposals", "proposals"].includes(msg.content)) {
+      const authorString = `@${msg.author.username}#${msg.author.discriminator}`;
       msg
         .reply(`Checking..`)
         .then(async (reply) =>
@@ -201,15 +183,11 @@ const main = async () => {
         )
         .catch((error) => console.log(`Discord /proposals: ${error.message}`));
     }
-    if (msg.content === "/storagesize") {
+    if (["/size", "/storage", "/storagesize"].includes(msg.content)) {
       msg
         .reply("Calculating... ")
-        .then(async (oldMessage) => {
-          generateStorageMsg(oldMessage, user);
-        })
-        .catch((error) => {
-          console.log("Not able to send message", error);
-        });
+        .then(async (mymsg) => generateStorageMsg(db, mymsg, user, true))
+        .catch((e) => console.error("Discord: ", e.message));
     }
   });
 
@@ -263,144 +241,151 @@ const main = async () => {
   const getReward = async (era: number) =>
     Number(await api.query.staking.erasValidatorReward(era));
 
-  api.rpc.chain.subscribeNewHeads(async (header: Header): Promise<void> => {
-    // current block
-    const id = header.number.toNumber();
-    if (lastBlock.id === id) return;
-    const hash = await getBlockHash(api, id);
-    timestamp = await getTimestamp(api, hash);
-    duration = lastBlock.timestamp ? timestamp - lastBlock.timestamp : 0;
-    const events: EventRecord[] = await getEvents(api, hash);
-    processGroupEvents(api, id, hash, events, discordChannels);
+  api.rpc.chain.subscribeFinalizedHeads(
+    async (header: Header): Promise<void> => {
+      // current block
+      const id = header.number.toNumber();
+      if (lastBlock.id === id) return;
+      const hash = await getBlockHash(api, id);
+      timestamp = await getTimestamp(api, hash);
+      duration = lastBlock.timestamp ? timestamp - lastBlock.timestamp : 0;
+      const events: EventRecord[] = await getEvents(api, hash);
+      processGroupEvents(api, id, hash, events, discordChannels);
 
-    // update validators and nominators every era
-    const era = Number(await api.query.staking.currentEra());
+      // update validators and nominators every era
+      const era = Number(await api.query.staking.currentEra());
 
-    if (era > lastEra) {
-      vals = (await api.query.session.validators()).length;
-      stake = Number(await api.query.staking.erasTotalStake(era));
-      issued = Number(await api.query.balances.totalIssuance());
-      reward = (await getReward(era - 1)) || (await getReward(era - 2));
+      if (era > lastEra) {
+        vals = (await api.query.session.validators()).length;
+        stake = Number(await api.query.staking.erasTotalStake(era));
+        issued = Number(await api.query.balances.totalIssuance());
+        reward = (await getReward(era - 1)) || (await getReward(era - 2));
 
-      // nominator count
-      noms = 0;
-      const nominators: { [key: string]: number } = {};
-      const stashes = (await api.derive.staking.stashes())
-        .map((s) => String(s))
-        .map(async (v) => {
-          const stakers = await api.query.staking.erasStakers(era, v);
-          stakers.others.forEach(
-            (n: { who: AccountId }) => nominators[String(n.who)]++
-          );
-          noms = Object.keys(nominators).length;
-        });
-      lastEra = era;
-    }
+        // nominator count
+        noms = 0;
+        const nominators: { [key: string]: number } = {};
+        const stashes = (await api.derive.staking.stashes())
+          .map((s) => String(s))
+          .map(async (v) => {
+            const stakers = await api.query.staking.erasStakers(era, v);
+            stakers.others.forEach(
+              (n: { who: AccountId }) => nominators[String(n.who)]++
+            );
+            noms = Object.keys(nominators).length;
+          });
+        lastEra = era;
+      }
 
-    const block: Block = {
-      id,
-      timestamp,
-      duration,
-      stake,
-      noms,
-      vals,
-      reward,
-      issued,
-    };
-    if (duration) blocks = blocks.concat(block);
+      const block: Block = {
+        id,
+        timestamp,
+        duration,
+        stake,
+        noms,
+        vals,
+        reward,
+        issued,
+      };
+      if (duration) blocks = blocks.concat(block);
 
-    // heartbeat
-    if (timestamp > lastHeartbeat + heartbeat) {
-      const time = passedTime(lastHeartbeat, timestamp);
-      announce.heartbeat(
-        api,
-        blocks,
-        time,
-        proposals,
-        sendMessage,
-        discordChannels.tokenomics
-      );
-      lastHeartbeat = block.timestamp;
-      blocks = [];
-    }
-
-    // announcements
-    if (timestamp > lastCouncilHeartbeat + councilStatusHeartbeat) {
-      announce.councilStatus(api, block, sendMessage, discordChannels.council);
-      lastCouncilHeartbeat = block.timestamp;
-
-      // send proposal reminder
-      missingVotesMessages(api, council).then((msg) =>
-        sendMessage(msg, discordChannels.proposals)
-      );
-    }
-
-    if (opts.council && block.id > lastBlock.id) {
-      council = await announce.council(
-        api,
-        council,
-        block.id,
-        sendMessage,
-        discordChannels.council
-      );
-    }
-
-    if (opts.proposals) {
-      // new proposal
-      const created = events.filter(
-        ({ event }: EventRecord) => event.method === "ProposalCreated"
-      );
-      if (created.length) {
-        console.log(
-          `proposal created`,
-          created.map(({ event }) => event.data)
+      // heartbeat
+      if (timestamp > lastHeartbeat + heartbeat) {
+        const time = passedTime(lastHeartbeat, timestamp);
+        announce.heartbeat(
+          api,
+          blocks,
+          time,
+          proposals,
+          sendMessage,
+          discordChannels.tokenomics
         );
-        created.map(({ event }) =>
-          getProposal(api, event.data[1] as ProposalId).then((proposal) =>
-            announce.proposalCreated(
-              proposal,
-              sendMessage,
-              discordChannels.proposals
-            )
-          )
+        lastHeartbeat = block.timestamp;
+        blocks = [];
+      }
+
+      // announcements
+      if (timestamp > lastCouncilHeartbeat + councilStatusHeartbeat) {
+        announce.councilStatus(
+          api,
+          block,
+          sendMessage,
+          discordChannels.council
+        );
+        lastCouncilHeartbeat = block.timestamp;
+
+        // send proposal reminder
+        missingVotesMessages(api, council).then((msg) =>
+          sendMessage(msg, discordChannels.proposals)
         );
       }
 
-      // status update
-      const updated = events.filter(
-        ({ event }: EventRecord) => event.method === "ProposalStatusUpdated"
-      );
-      let seen: number[] = [];
-      if (updated.length) {
-        console.log(
-          `proposal update`,
-          updated.map((e) => e.toHuman())
+      if (opts.council && block.id > lastBlock.id) {
+        council = await announce.council(
+          api,
+          council,
+          block.id,
+          sendMessage,
+          discordChannels.council
         );
-        updated.map(({ event }) => {
-          const proposalId = Number(event.data[0]);
-          if (seen.includes(proposalId)) return;
-          seen.push(proposalId);
-          getProposal(api, event.data[0] as ProposalId).then((proposal) =>
-            announce.proposalUpdated(
-              proposal,
-              id,
-              sendMessage,
-              discordChannels.proposals
+      }
+
+      if (opts.proposals) {
+        // new proposal
+        const created = events.filter(
+          ({ event }: EventRecord) => event.method === "ProposalCreated"
+        );
+        if (created.length) {
+          console.log(
+            `proposal created`,
+            created.map(({ event }) => event.data)
+          );
+          created.map(({ event }) =>
+            getProposal(api, event.data[1] as ProposalId).then((proposal) =>
+              announce.proposalCreated(
+                proposal,
+                sendMessage,
+                discordChannels.proposals
+              )
             )
           );
-        });
+        }
+
+        // status update
+        const updated = events.filter(
+          ({ event }: EventRecord) => event.method === "ProposalStatusUpdated"
+        );
+        let seen: number[] = [];
+        if (updated.length) {
+          console.log(
+            `proposal update`,
+            updated.map((e) => e.toHuman())
+          );
+          updated.map(({ event }) => {
+            const proposalId = Number(event.data[0]);
+            if (seen.includes(proposalId)) return;
+            seen.push(proposalId);
+            getProposal(api, event.data[0] as ProposalId).then((proposal) =>
+              announce.proposalUpdated(
+                proposal,
+                id,
+                sendMessage,
+                discordChannels.proposals
+              )
+            );
+          });
+        }
       }
-    }
 
-    if (opts.forum) {
-      posts[1] = (await getNextPost(api, hash)) - 1;
-      announce.posts(api, posts, sendMessage, discordChannels.forum);
-      posts[0] = posts[1];
-    }
+      if (opts.forum) {
+        posts[1] = (await getNextPost(api, hash)) - 1;
+        announce.posts(api, posts, sendMessage, discordChannels.forum);
+        posts[0] = posts[1];
+      }
 
-    printStatus(opts, { block: id, chain, posts, proposals });
-    lastBlock = block;
-  });
+      printStatus(opts, { block: id, chain, posts, proposals });
+      lastBlock = block;
+    }
+  );
 };
 main().catch((error) => {
   console.log(error);

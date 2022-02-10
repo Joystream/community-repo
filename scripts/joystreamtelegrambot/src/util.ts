@@ -1,12 +1,21 @@
-import { apiUrl, statusEndpoint } from "../config";
-import { Options, Proposals, MemberHandles, ProposalVotes } from "./types";
+import { Client } from "discord.js";
+import { apiUrl, statusUrl, channelNames } from "../config";
 import { getCouncil, getMemberHandle, getMemberIdByAccount } from "./lib/api";
+import { findDiscordChannel } from "./discord";
 import moment from "moment";
 import axios from "axios";
 
 //types
 import { ApiPromise } from "@polkadot/api";
 import { AccountId } from "@polkadot/types/interfaces";
+import {
+  ChannelNames,
+  DiscordChannels,
+  Options,
+  Proposals,
+  MemberHandles,
+  ProposalVotes,
+} from "./types";
 
 export const parseArgs = (args: string[]): Options => {
   const inArgs = (term: string): boolean => {
@@ -23,6 +32,17 @@ export const parseArgs = (args: string[]): Options => {
 
   if (options.verbose > 1) console.debug("args", args, "\noptions", options);
   return options;
+};
+
+export const getDiscordChannels = async (
+  client: Client
+): Promise<DiscordChannels> => {
+  let discordChannels: DiscordChannels = {};
+  Object.keys(channelNames).map(async (c) => {
+    const channel = findDiscordChannel(client, channelNames[c]);
+    if (channel) discordChannels[c] = channel;
+  });
+  return discordChannels;
 };
 
 export const printStatus = (
@@ -69,10 +89,10 @@ const formatPrice = (price: number) =>
 
 export const fetchTokenValue = (): Promise<string> =>
   axios
-    .get(statusEndpoint[0])
+    .get(statusUrl)
     .then(({ data }) => formatPrice(+data.price))
     .catch(async () => {
-      const { data } = await axios.get(statusEndpoint[1]);
+      const { data } = await axios.get(statusUrl);
       if (data && !data.error) return formatPrice(+data.price);
       console.log(`Failed to fetch status.`);
       return `?`;

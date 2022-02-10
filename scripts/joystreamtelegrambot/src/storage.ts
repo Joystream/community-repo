@@ -1,77 +1,84 @@
 import axios from "axios";
 import moment from "moment";
-import fs from "fs";
-import path, { join } from "path";
-import dotenv from "dotenv";
 import schedule from "node-schedule";
-dotenv.config();
+import { statusUrl, dapplookerUrl, reRunCronTimingInHour } from "../config";
+import { Db, Status, Storage } from "./types";
+import { saveDb } from "./db";
 
-// defaults
-interface Db {
-  config: { dataURL: string; reRunCronTimingInHour: number };
-  timeStamp: string;
-  size: string;
-}
-const config = {
-  dbFile: join(path.resolve(), "db.json"),
-  dataURL:
-    "https://analytics.dapplooker.com/api/public/dashboard/c70b56bd-09a0-4472-a557-796afdc64d3b/card/155",
-  reRunCronTimingInHour: 5,
-};
+const tb = (bytes: number) => (bytes / 1024 ** 4).toFixed(3) + " TB";
 
-// DB
-const loadDb = (): Db => {
-  try {
-    fs.statSync(config.dbFile);
-  } catch (e) {
-    writeDb({ config });
-  }
-  return require(config.dbFile);
-};
-const writeDb = (data = {}) => {
-  fs.writeFileSync(config.dbFile, JSON.stringify(data));
-  return data;
-};
-const db = loadDb();
+export const scheduleStorageUpdates = (db: Db, channel: any) =>
+  schedule.scheduleJob(`0 */${reRunCronTimingInHour} * * *`, () => {
+    const oldSize = db.storage?.size;
+    updateStorage().then(({ channels, size, files, curators, providers }) => {
+      if (oldSize === size) return;
+      if (!channel)
+        return console.warn(`scheduleStorageUpdates: empty channel`);
+      channel.send(`Current storage size: ${tb(size)} TB`);
+    });
+  });
 
-export const scheduleStorageUpdates = (channel: any) =>
-  schedule.scheduleJob(`0 */${db.config.reRunCronTimingInHour} * * *`, () =>
-    getSize().then((size) => channel.send(`Current storage size: ${size}`))
+export const generateStorageMsg = async (
+  db: Db,
+  msg: any,
+  user: any,
+  dm?: boolean
+) =>
+  getOrUpdateStorage(db, dm).then(
+    ({ channels, curators, files, providers, size }: Storage) =>
+      msg.edit(`<@${user}>, Current storage:
+    Size: ${tb(size)}
+    Files: ${files}
+    Channels: ${channels}
+    Curators: ${curators}
+    Providers: ${providers}`)
   );
 
-export const generateStorageMsg = async (msg: any, user: any) =>
-  getSize().then((size) =>
-    msg?.edit(`<@${user}>, Current storage size: ${size}`)
-  );
+const getOrUpdateStorage = (db: Db, dm?: boolean): Promise<Storage> =>
+  !db.storage || dm || isCacheOld(db)
+    ? updateStorage()
+    : Promise.resolve(db.storage);
 
-const getSize = (): Promise<string> =>
-  isCacheOld() ? getSizeFromAPI() : Promise.resolve(db.size);
-
-const getSizeFromAPI = async (): Promise<string> =>
+const getDapplookerSize = () =>
   axios
-    .get(db.config.dataURL)
+    .get(dapplookerUrl)
     .then((response: { data: { data: { rows: any } } }) => {
       if (!response?.data?.data?.rows[0]) {
-        console.warn(`Malformed response  `);
+        console.warn(`Malformed response from dapplooker`, response);
+        return;
       }
-      const res = Math.round(response?.data?.data?.rows[0][0]) + "GB";
-      db.size = `${res}`;
-      db.timeStamp = moment.utc().format();
-      writeDb(db);
-      return res;
+      return Math.round(response?.data?.data?.rows[0][0] * 1024 ** 2);
+    })
+    .catch((e) => null);
+
+const updateStorage = (): Promise<Storage> =>
+  axios
+    .get(statusUrl)
+    .then(async ({ data }: { data: Status }) => {
+      const { activeCurators, channels, media_files, size } = data.media;
+      const dapplookerSize = await getDapplookerSize();
+      const storage: Storage = {
+        size: dapplookerSize || size,
+        files: media_files,
+        curators: activeCurators,
+        channels: channels,
+        providers: data.roles.storage_providers,
+        timeStamp: moment.utc().format(),
+      };
+      saveDb({ storage });
+      return storage;
     })
     .catch((error: { message: string }) => {
-      console.log("Storage API failed", error.message);
-      return `?`;
+      console.log("Status API failed", error.message);
+      return updateStorage(); // TODO risk for stack too deep
     });
 
-const isCacheOld = () => {
-  //returns true if the timestamp is older than 2 hours
-  let lastTime = db.timeStamp;
+//returns true if the timestamp is older than 2 hours
+const isCacheOld = (db: Db) => {
+  let lastTime = db.storage?.timeStamp;
   if (lastTime) {
     const today = moment();
     const diff = today.diff(lastTime, "minutes");
-    console.log("Cache is old", diff, "minutes");
     return diff > 120;
   }
   return true;

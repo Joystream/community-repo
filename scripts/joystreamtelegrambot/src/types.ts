@@ -1,7 +1,35 @@
+import Discord from "discord.js";
 import { MemberId } from "@joystream/types/members";
 import { Post } from "@joystream/types/forum";
 import { ParseMode } from "node-telegram-bot-api";
 import { ProposalId } from "@joystream/types/proposals";
+
+export interface Storage {
+  channels: number;
+  curators: number;
+  files: number;
+  providers: number;
+  size: number;
+  timeStamp: string;
+}
+
+export interface Db {
+  args: string[];
+  council: { timestamp: Date };
+  tokenomics: { timestamp: Date };
+  validators: { timestamp: Date };
+  storage?: Storage;
+}
+
+export interface Status {
+  roles: { storage_providers: number };
+  media: {
+    media_files: number;
+    size: number;
+    activeCurators: number;
+    channels: number;
+  };
+}
 
 export interface ChannelNames {
   [key: string]: string;

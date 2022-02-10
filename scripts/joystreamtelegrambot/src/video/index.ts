@@ -30,7 +30,9 @@ const graphql = readFileSync(path + "videos_query.graphql", "utf-8").replaceAll(
 const httpRequestBody = readFileSync(path + "request.json", "utf-8")
   .replace("__PARAMS__", queryParams)
   .replace("__QUERY__", graphql);
-const licenses: LooseObject = require("./licenses.json");
+const licenses: LooseObject = JSON.parse(
+  readFileSync(path + "licenses.json", "utf-8")
+);
 const formatQuery = (date: string) =>
   httpRequestBody.replace("__DATE_AFTER__", date);
 
