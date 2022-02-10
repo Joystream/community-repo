@@ -1,4 +1,4 @@
-# Sumer - Council Election Round #42  - Performance Review and Minutes
+# Giza - Council Election Round #42  - Performance Review and Minutes
 ## 1 - Basic Information
 ### 1.1 - Introduction
 The council is expected to produce reports during each round and provide feedback in the form of workflow, challenges, thinking and performance as well as minutes covering important events during the council session.

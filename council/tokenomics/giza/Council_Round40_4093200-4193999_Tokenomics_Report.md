@@ -15,7 +15,7 @@ This is a report which explains the current state of the Joystream network in nu
 | Property            | Start Block | End Block | % Change |
 |---------------------|--------------|--------------|----------|
 | Total Tokens Minted |  2731872354 | 2804502818 | 2.66 |
-| USD Pool |  70150.50 | 68411.12 | 2.54 |
+| USD Pool |  70150.50 | 68411.12 | -2.48 |
 
 | Role                | Value        |
 |---------------------|--------------|
@@ -36,7 +36,7 @@ This is a report which explains the current state of the Joystream network in nu
 
 | Property            | Start Block, USD | End Block, USD | % Change |
 |---------------------|--------------|--------------|----------|
-| USD Pool |  70150.50 | 68411.12 | 2.54 |
+| USD Pool |  70150.50 | 68411.12 | -2.48 |
 
 
 
@@ -44,11 +44,11 @@ This is a report which explains the current state of the Joystream network in nu
 
 | Minted per Role             | Start Block           | End Block | Difference | % Change |
 |-----------------------------|-----------------------|-----------|------------|----------|
-| Council Total Minted | 1231476567.00 | 1314147879.00 | 82671312 | -6.29 |
-| Curators Minted | 258637842.00 | 266999021.00 | 8361179 | -3.13 |
-| Storage Providers Minted | 243613217.00 | 250939253.00 | 7326036 | -2.92 |
+| Council Total Minted | 1231476567.00 | 1314147879.00 | 82671312 | 6.71 |
+| Curators Minted | 258637842.00 | 266999021.00 | 8361179 | 3.23 |
+| Storage Providers Minted | 243613217.00 | 250939253.00 | 7326036 | 3.01 |
 | Distribution Minted | 0.00 | 0.00 | 0 | 0 |
-| Operations Minted | 316197128.00 | 328811672.00 | 12614544 | -3.84 |
+| Operations Minted | 316197128.00 | 328811672.00 | 12614544 | 3.99 |
 | Marketing Minted | 0.00 | 0.00 | 0 | 0 |
 | Gamma Minted | 0.00 | 0.00 | 0 | 0 |
 
@@ -57,7 +57,7 @@ This is a report which explains the current state of the Joystream network in nu
 
 * Start Block Exchange Rate, USD/1M tJOY: 25.70
 * End Block Exchange Rate, USD/1M tJOY: 24.38
-* Inflation, %: 5.4
+* Inflation, %: 5.13
 
 Negative value indicates deflation
 
@@ -87,9 +87,7 @@ Negative value indicates deflation
 | Number of Validators       | 67 / 75 | 60 / 75 | -10.45 |
 | Validator Total Stake      | 751498042 | 652692414 | -13.15 |
 
-
-
-### 4.0 Curators
+### 4.2 Curators
 * [openings for contentWorkingGroup](https://testnet.joystream.org/#/working-groups/opportunities/curators)
 
 | Property                | Start Block | End Block | % Change |
@@ -110,7 +108,7 @@ Negative value indicates deflation
 | 28 | [@jen4ph](https://pioneer.joystreamstats.live/#/members/jen4ph) | active | 12 | 0.9 | 2.7 |
 
 
-### 4.1 Storage Providers
+### 4.3 Storage Providers
 * [openings for storageWorkingGroup](https://testnet.joystream.org/#/working-groups/opportunities/storageProviders)
 
 | Property                | Start Block | End Block | % Change |
@@ -131,7 +129,7 @@ Negative value indicates deflation
 | 21 | [@seainvestor](https://pioneer.joystreamstats.live/#/members/seainvestor) | active | 11 | 0.7 | 14.3 |
 | 22 | [@0x2bc](https://pioneer.joystreamstats.live/#/members/0x2bc) | active | 24 | 1.6 | 30.8 |
 
-### 4.2 Distribution
+### 4.4 Distribution
 * [openings for distributionWorkingGroup](https://testnet.joystream.org/#/working-groups/opportunities/distribution)
 
 | Property                | Start Block | End Block | % Change |
@@ -140,13 +138,13 @@ Negative value indicates deflation
 | Total  Stake | 0 | 0 | 0 |
 
 
-### 4.3 Operations
+### 4.5 Operations
 * [openings for operationsWorkingGroupAlpha](https://testnet.joystream.org/#/working-groups/opportunities/operationsGroupAlpha)
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of  Workers | 48 | 58 | 20.83 |
-| Total  Stake | 1150000 | 1150000 | 0 |
+| Total  Stake | 1850000 | 1850000 | 0 |
 
 | # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
 |--|--|--|--|--|--|
@@ -182,7 +180,7 @@ Negative value indicates deflation
 | 57 | [@arsonque](https://pioneer.joystreamstats.live/#/members/arsonque) | active | 3 | 0.2 | 0.2 |
 
 
-### 4.4 Marketing
+### 4.6 Marketing
 * [openings for operationsWorkingGroupBeta](https://testnet.joystream.org/#/working-groups/opportunities/operationsGroupBeta)
 
 | Property                | Start Block | End Block | % Change |
@@ -191,7 +189,7 @@ Negative value indicates deflation
 | Total  Stake | 0 | 0 | 0 |
 
 
-### 4.5 Gamma
+### 4.7 Gamma
 * [openings for operationsWorkingGroupGamma](https://testnet.joystream.org/#/working-groups/opportunities/operationsGroupGamma)
 
 | Property                | Start Block | End Block | % Change |
