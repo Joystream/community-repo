@@ -55,7 +55,7 @@ export type Send = (
 
 // github
 export interface MemberHandles {
-  memberId: MemberId;
+  memberId: number;
   handle: string;
   discord?: { handle: string; id: number };
   telegram?: string;

@@ -367,22 +367,38 @@ export const formatProposalMessage = (
 
 export const missingProposalVotes = async (
   proposals: ProposalVotes[],
-  council: Council
+  council: Council,
+  privateContext: string = ``
 ): Promise<{ discord: string; tg: string; tgParseMode: ParseMode }> => {
-  const messages = ["", ""]; // discord, telegram
-
+  let messages = ["", ""]; // discord, telegram
   proposals.map(({ id, title, votes }) => {
     if (!title) return;
+    const url = `${domain}/#/proposals/${id}`;
     const notifyMembers: string[][] = [[], []];
     // find members that are did not vote
-    const needToVote = council.seats
+    if (privateContext.length) {
+      const seat = council.seats.find(
+        (s) => s.discord?.handle === privateContext
+      );
+      if (!seat) console.log(`consul not found`, privateContext, council.seats);
+      else {
+        const voted = votes.find((vote) => +vote.memberId === +seat?.memberId);
+        if (voted) return;
+        console.debug(`${seat.handle} needs to vote on ${id} ${title}`);
+        messages[0] += `- **${title}** ${url}\n`;
+        return;
+      }
+    }
+    // otherwise print all consuls who need to vote
+    council.seats
       .filter(
         ({ memberId }) => !votes.find((vote) => +vote.memberId === +memberId)
       )
       .map((consul) => {
         if (consul.discord) {
-          //const who = `<${consul.discord.id}> `; // TODO let bot mention users
-          const who = consul.discord.handle;
+          const who = privateContext.length
+            ? consul.handle
+            : consul.discord.handle; // TODO fix mention by ID: `<${consul.discord.id}> `;
           if (!notifyMembers[0].includes(who)) notifyMembers[0].push(who);
         } else if (consul.telegram?.length)
           notifyMembers[1].push(consul.telegram);
@@ -390,11 +406,13 @@ export const missingProposalVotes = async (
       });
     const selected = [notifyMembers[0].join(" "), notifyMembers[1].join(" ")];
     if (selected[0].length)
-      messages[0] += `- ${id} **${title}** ${selected[0]} ${domain}/#/proposals/${id}\n`;
+      messages[0] += `- ${id} **${title}** (${votes.length}) ${selected[0]} ${url}\n`;
     if (selected[1].length)
-      messages[1] += `- ${id} <a href="${domain}/#/proposals/${id}}">${title}</a>: ${selected[1]}\n`;
+      messages[1] += `- ${id} <a href="${url}">${title}</a>: ${selected[1]}\n`;
   });
-  const prefix = `*Active Proposals*\n`;
+  const prefix = privateContext.length
+    ? `*You need to vote on*\n`
+    : `*Active Proposals*\n`;
   return {
     tg: messages[1].length ? messages[1] : ``,
     tgParseMode: "Markdown",

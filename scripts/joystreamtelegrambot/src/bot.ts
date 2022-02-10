@@ -154,7 +154,11 @@ const sendDiscord = (msg: string, channel: any) => {
   }
 };
 
-const missingVotesMessages = async (api: ApiPromise, council: Council) =>
+const missingVotesMessages = async (
+  api: ApiPromise,
+  council: Council,
+  isDM: string = ``
+) =>
   getActiveProposals(api)
     .then((active) =>
       Promise.all(
@@ -167,7 +171,9 @@ const missingVotesMessages = async (api: ApiPromise, council: Council) =>
         )
       )
     )
-    .then((proposals) => announce.missingProposalVotes(proposals, council));
+    .then((proposals) =>
+      announce.missingProposalVotes(proposals, council, isDM)
+    );
 
 const main = async () => {
   const provider = new WsProvider(wsLocation);
@@ -179,14 +185,16 @@ const main = async () => {
 
   client.on("message", (msg): void => {
     const user = msg.author.id;
+    if (!msg.author.bot) console.debug(`msg by`, msg.author, msg.content);
+    const authorString = `@${msg.author.username}#${msg.author.discriminator}`;
     if (msg.content === "/status")
       msg.reply(`Hello <@${user}>, reporting to discord.`);
-    if (msg.content === "/proposals") {
+    if (["/proposals", "proposals"].includes(msg.content)) {
       msg
         .reply(`Checking..`)
         .then(async (reply) =>
           reply.edit(
-            await missingVotesMessages(api, council).then(
+            await missingVotesMessages(api, council, authorString).then(
               ({ discord }) => discord || `No active proposals.`
             )
           )

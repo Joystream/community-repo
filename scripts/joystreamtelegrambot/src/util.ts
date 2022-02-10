@@ -111,7 +111,7 @@ export const getMemberHandlesByAccount = async (
   const memberId = await getMemberIdByAccount(api, account);
   const handle = await getMemberHandle(api, memberId);
   const member = handles.find((m) => m.handle === handle);
-  return { ...member, handle, memberId };
+  return { ...member, handle, memberId: +memberId };
 };
 
 export const getCouncilHandles = async (
@@ -122,11 +122,4 @@ export const getCouncilHandles = async (
   return await Promise.all(
     seats.map((seat) => getMemberHandlesByAccount(api, handles, seat.member))
   );
-};
-
-// jstats
-export const getProposals = async (): Promise<ProposalVotes[]> => {
-  console.debug(`Fetching proposals`);
-  const { data } = await axios.get(apiUrl + `/v1/proposals`);
-  return data;
 };
