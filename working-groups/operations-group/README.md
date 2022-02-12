@@ -22,11 +22,15 @@
 
 | Task                                                                                   | Proposer  | Funded    | Amount USD | Status |
 |----------------------------------------------------------------------------------------|-----------|-----------|------------|---|
-| [Network Test Scripts](https://pioneer.joystreamstats.live/#/proposals/1076)           | l1dev     | 24-Jan-22 | 25/hr | [Open](https://git.joystreamstats.live/Operations/process/issues/52)                  |
+| [Content benchmark](https://pioneer.joystreamstats.live/#/proposals/1150)              | l1dev     | 09-Feb-22 | 500   | Open |
+| [Validate SP files](https://pioneer.joystreamstats.live/#/proposals/1145)              | 0x2bc     | 08-Feb-22 | 150   | Open |
+| [Update Featured Categories](https://pioneer.joystreamstats.live/#/proposals/1120)     | oxygen    | 04-Feb-22 | 100   | Open |
+| [Network Test Scripts](https://pioneer.joystreamstats.live/#/proposals/1076)           | l1dev     | 24-Jan-22 | 25/h  | [Open](https://git.joystreamstats.live/Operations/process/issues/52)                  |
 | [js:stats roadmap](https://pioneer.joystreamstats.live/#/proposals/1023)               | l1dev     | 15-Jan-22 | 25/hr | [Open](https://git.joystreamstats.live/Operations/process/issues/16)                  |
-| [js:stats multi-lingual](https://pioneer.joystreamstats.live/#/proposals/800)          | l1dev     | 12-Aug-21 |  100+ | [Assigned](https://git.joystreamstats.live/Operations/process/issues/30) to darcksday |
+| [Block Explorer II](https://pioneer.joystreamstats.live/#/proposals/1143)              | l1dev     | 08-Feb-22 | 500 | Assigned to l1dev |
 | [Reputation Bot](https://pioneer.joystreamstats.live/#/proposals/992)                  | tomato    | 06-Jan-22 |   250 | [Assigned](https://git.joystreamstats.live/Operations/process/issues/49) to ars44     |
 | [Improved Council Minutes](https://pioneer.joystreamstats.live/#/proposals/994)        | tomato    | 06-Jan-22 |   300 | [Assigned](https://git.joystreamstats.live/Operations/process/issues/48) to freakstatic |
+| [js:stats multi-lingual](https://pioneer.joystreamstats.live/#/proposals/800)          | l1dev     | 12-Aug-21 |  100+ | [Assigned](https://git.joystreamstats.live/Operations/process/issues/30) to darcksday |
 | [API improvements](https://pioneer.joystreamstats.live/#/proposals/893)                | tomato    | 07-Dec-21 |   150 | [Assigned](https://github.com/Joystream/community-repo/issues/509) to lkskrn          |
 | [Community Manager](https://pioneer.joystreamstats.live/#/proposals/393)               | maxlevush | 09-Aug-21 |    75 | [Continuous](https://git.joystreamstats.live/Operations/process/issues/16) by andybut |
 | [Maintenance of joystreamstats.live](https://testnet.joystream.org/#/proposals/164)    | tomato    | 15-Jun-21 |    25 | [Continuous](https://git.joystreamstats.live/Operations/process/issues/16) by l1dev |
@@ -95,6 +99,7 @@ More [Community Ideas](https://github.com/Joystream/community-repo/issues)
 | [39](reports/sumer.md#round-39) |            8.2 |          700 |            26.3 |           26.62 |                 18.42 |           114.86 |     3020.82 |
 | [40](reports/sumer.md#round-40) |           12.6 |          700 |            25.7 |           27.24 |                 14.64 |           129.50 |     3328.15 |
 | [41](#round-41)                 |           21.5 |          700 |           24.39 |           28.70 |                   7.2 |           136.70 |     3334.11 |
+| [42](#round-42)                 |           34.9 |          700 |           24.67 |           28.37 |                 -6.53 |           130.17 |     3211.29 |
 
 ## Reports
 
@@ -145,3 +150,48 @@ More [Community Ideas](https://github.com/Joystream/community-repo/issues)
 | 55 | [@ars44](https://pioneer.joystreamstats.live/#/members/ars44) | active | 3 | 0.3 | 0.5 |
 | 56 | [@oskarte](https://pioneer.joystreamstats.live/#/members/oskarte) | active | 3 | 0.3 | 0.5 |
 | 57 | [@arsonque](https://pioneer.joystreamstats.live/#/members/arsonque) | active | 3 | 0.3 | 0.5 |
+
+### [Round 42](../../council/tokenomics/giza/Council_Round42_4294800-4395599_Tokenomics_Report.md)
+
+- **Date:** `2/2/2022 - 2/9/2022`
+- **Budget:** `$700`
+- **Spent:** `34.9 M / 28.37 M (@24.67 $/M)`
+- **Balance:** `130.17 M ($3211.29)`
+
+| Property                | Start Block | End Block | % Change |
+|-------------------------|--------------|--------------|----------|
+| Number of  Workers | 58 | 58 | 0 |
+| Total  Stake | 1850000 | 1850000 | 0 |
+
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 0 | [@l1dev](https://pioneer.joystreamstats.live/#/members/l1dev) | active | 40 | 4.0 | 73.2 |
+| 15 | [@isonar](https://pioneer.joystreamstats.live/#/members/isonar) | active | 44 | 13.3 | 32.6 |
+| 16 | [@lkskrn](https://pioneer.joystreamstats.live/#/members/lkskrn) | active | 56 | 5.6 | 62.8 |
+| 17 | [@freakstatic](https://pioneer.joystreamstats.live/#/members/freakstatic) | active | 6 | 0.6 | 14.9 |
+| 18 | [@dapplooker](https://pioneer.joystreamstats.live/#/members/dapplooker) | active | 3 | 0.3 | 15.6 |
+| 20 | [@joystreamstats](https://pioneer.joystreamstats.live/#/members/joystreamstats) | active | 15 | 1.4 | 26.1 |
+| 22 | [@arseniy2706](https://pioneer.joystreamstats.live/#/members/arseniy2706) | active | 3 | 0.3 | 5.8 |
+| 24 | [@shtihmas](https://pioneer.joystreamstats.live/#/members/shtihmas) | active | 0 | 0.0 | 1.6 |
+| 26 | [@zazik](https://pioneer.joystreamstats.live/#/members/zazik) | active | 0 | 0.0 | 0.0 |
+| 29 | [@goldmember](https://pioneer.joystreamstats.live/#/members/goldmember) | active | 0 | 0.0 | 0.0 |
+| 31 | [@ilich](https://pioneer.joystreamstats.live/#/members/ilich) | active | 3 | 0.3 | 2.6 |
+| 32 | [@kate_fm](https://pioneer.joystreamstats.live/#/members/kate_fm) | active | 3 | 0.3 | 4.1 |
+| 33 | [@ururu](https://pioneer.joystreamstats.live/#/members/ururu) | active | 3 | 0.3 | 8.7 |
+| 34 | [@andybut](https://pioneer.joystreamstats.live/#/members/andybut) | active | 28 | 2.8 | 58.9 |
+| 36 | [@chiffah](https://pioneer.joystreamstats.live/#/members/chiffah) | active | 4 | 0.4 | 5.2 |
+| 39 | [@whitebarbie](https://pioneer.joystreamstats.live/#/members/whitebarbie) | active | 14 | 1.4 | 15.3 |
+| 44 | [@oxygen](https://pioneer.joystreamstats.live/#/members/oxygen) | active | 3 | 0.3 | 4.7 |
+| 45 | [@spat_sochi](https://pioneer.joystreamstats.live/#/members/spat_sochi) | active | 3 | 0.3 | 6.1 |
+| 46 | [@svasilenko](https://pioneer.joystreamstats.live/#/members/svasilenko) | active | 4 | 0.4 | 2.0 |
+| 47 | [@catemoon](https://pioneer.joystreamstats.live/#/members/catemoon) | active | 3 | 0.3 | 1.8 |
+| 48 | [@vlodkowjs](https://pioneer.joystreamstats.live/#/members/vlodkowjs) | active | 3 | 0.3 | 0.8 |
+| 49 | [@darcksday](https://pioneer.joystreamstats.live/#/members/darcksday) | active | 3 | 0.3 | 0.8 |
+| 50 | [@jen4ph](https://pioneer.joystreamstats.live/#/members/jen4ph) | active | 3 | 0.3 | 0.8 |
+| 51 | [@igor171](https://pioneer.joystreamstats.live/#/members/igor171) | active | 3 | 0.3 | 0.8 |
+| 52 | [@joyanna](https://pioneer.joystreamstats.live/#/members/joyanna) | active | 3 | 0.3 | 0.8 |
+| 53 | [@pavlov](https://pioneer.joystreamstats.live/#/members/pavlov) | active | 3 | 0.3 | 0.8 |
+| 54 | [@pizel](https://pioneer.joystreamstats.live/#/members/pizel) | active | 3 | 0.3 | 0.8 |
+| 55 | [@ars44](https://pioneer.joystreamstats.live/#/members/ars44) | active | 3 | 0.3 | 0.8 |
+| 56 | [@oskarte](https://pioneer.joystreamstats.live/#/members/oskarte) | active | 3 | 0.3 | 0.8 |
+| 57 | [@arsonque](https://pioneer.joystreamstats.live/#/members/arsonque) | active | 3 | 0.3 | 0.8 |
