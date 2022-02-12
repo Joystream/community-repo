@@ -245,11 +245,8 @@
       "tags": ["Content"],
       "format": "Open",
       "status": "Closed"
-   }
-  ],
-  "activeBounties":
-  [
-    {
+   },
+   {
       "id": 9,
       "title": "Repo/Docs Improvements",
       "description": "Improve the quality of our documentation on GitHub, by making PRs and issues.",
@@ -258,7 +255,7 @@
       "reward": 300,
       "tags": ["Newcomers","Research"],
       "format": "Free for All",
-      "status": "Weekly Bounty"
+      "status": "Closed"
     },
     {
       "id": 16,
@@ -270,19 +267,7 @@
       "notes": "Translate Joystream Community Updates videos",
       "tags": ["Content","Documentation"],
       "format": "NA",
-      "status": "Open"
-    },
-    {
-      "id": 18,
-      "title": "Original Video Bounty",
-      "openedDate": "2021-05-29",
-      "description": "Create and upload original videos on Joystream",
-      "links": ["https://testnet.joystream.org/#/forum/threads/422","https://github.com/Joystream/community-repo/issues/162"],
-      "reward": 200,
-      "notes": "Create and upload original videos on Joystream",
-      "tags": ["Content"],
-      "format": "Open",
-      "status": "Open - Weekly Bounty"
+      "status": "Closed"
     },
     {
       "id": 21,
@@ -293,6 +278,18 @@
       "reward": 500,
       "notes": "Translate the Joystream website",
       "tags": ["Research","Coding"],
+      "format": "Open",
+      "status": "Closed"
+    },
+    {
+      "id": 26,
+      "title": "JS + Other Platform Videos",
+      "openedDate": "2021-10-01",
+      "description": "Create Promo Videos for JS",
+      "links": ["https://testnet.joystream.org/#/forum/threads/594","https://github.com/Joystream/community-repo/issues/342"],
+      "reward": 500,
+      "notes": "Upload original videos",
+      "tags": ["Content"],
       "format": "Open",
       "status": "Open"
     },
@@ -306,7 +303,34 @@
       "notes": "Create a UI for the council's KPIs",
       "tags": ["Research","Coding"],
       "format": "Open",
-      "status": "Open"
+      "status": "Closed"
+    },
+    {
+      "id": 29,
+      "title": "Update Featured Video",
+      "openedDate": "2021-10-06",
+      "description": "We want to target changing the featured video somewhere between every two or four weeks. In order to do so, let's create a Bounty for it.",
+      "links": ["https://testnet.joystream.org/#/proposals/657"],
+      "reward": 180,
+      "notes": "Content",
+      "tags": ["Content"],
+      "format": "Open",
+      "status": "Closed"
+   }
+  ],
+  "activeBounties":
+  [
+    {
+      "id": 18,
+      "title": "Original Video Bounty",
+      "openedDate": "2021-05-29",
+      "description": "Create and upload original videos on Joystream",
+      "links": ["https://testnet.joystream.org/#/forum/threads/422","https://github.com/Joystream/community-repo/issues/162"],
+      "reward": 200,
+      "notes": "Create and upload original videos on Joystream",
+      "tags": ["Content"],
+      "format": "Open",
+      "status": "Open - Weekly Bounty"
     },
     {
       "id": 23,
@@ -331,30 +355,6 @@
       "tags": ["Documentation","Research"],
       "format": "Open",
       "status": "Open - Weekly Bounty"
-    },
-    {
-      "id": 26,
-      "title": "JS + Other Platform Videos",
-      "openedDate": "2021-10-01",
-      "description": "Create Promo Videos for JS",
-      "links": ["https://testnet.joystream.org/#/forum/threads/594","https://github.com/Joystream/community-repo/issues/342"],
-      "reward": 500,
-      "notes": "Upload original videos",
-      "tags": ["Content"],
-      "format": "Open",
-      "status": "Open"
-    },
-   {
-      "id": 29,
-      "title": "Update Featured Video",
-      "openedDate": "2021-10-06",
-      "description": "We want to target changing the featured video somewhere between every two or four weeks. In order to do so, let's create a Bounty for it.",
-      "links": ["https://testnet.joystream.org/#/proposals/657"],
-      "reward": 180,
-      "notes": "Content",
-      "tags": ["Content"],
-      "format": "Open",
-      "status": "Open"
-   }
+    }
   ]
 }
