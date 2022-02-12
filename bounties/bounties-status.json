@@ -305,6 +305,18 @@
       "format": "Open",
       "status": "Closed"
     },
+    {
+      "id": 29,
+      "title": "Update Featured Video",
+      "openedDate": "2021-10-06",
+      "description": "We want to target changing the featured video somewhere between every two or four weeks. In order to do so, let's create a Bounty for it.",
+      "links": ["https://testnet.joystream.org/#/proposals/657"],
+      "reward": 180,
+      "notes": "Content",
+      "tags": ["Content"],
+      "format": "Open",
+      "status": "Closed"
+   }
   ],
   "activeBounties":
   [
@@ -343,18 +355,6 @@
       "tags": ["Documentation","Research"],
       "format": "Open",
       "status": "Open - Weekly Bounty"
-    },
-   {
-      "id": 29,
-      "title": "Update Featured Video",
-      "openedDate": "2021-10-06",
-      "description": "We want to target changing the featured video somewhere between every two or four weeks. In order to do so, let's create a Bounty for it.",
-      "links": ["https://testnet.joystream.org/#/proposals/657"],
-      "reward": 180,
-      "notes": "Content",
-      "tags": ["Content"],
-      "format": "Open",
-      "status": "Open"
-   }
+    }
   ]
 }
