@@ -42,16 +42,14 @@ export const videoUpdates = async (channel: any) => {
   do {
     const createdAt = moment().utc().subtract(createdAgo, createdAgoUnit); // current time minus some configurable number of time units
     const formattedDate = createdAt.format("YYYY-DD-MMMTHH:mm:ssZ");
-    console.log(`Checking for new videos uploaded since ${formattedDate}`);
-
+    console.debug(`Checking for videos since ${formattedDate}`);
     await axios
       .post(hydraLocation, JSON.parse(formatQuery(formattedDate)))
       .then((res: any) => {
         let response: IVideoResponse = <IVideoResponse>res.data;
         if (response.data.videosConnection) {
-          console.log(
-            `${response.data.videosConnection.edges.length} new videos uploaded`
-          );
+          const uploads = response.data.videosConnection.edges;
+          if (uploads.length) console.log(`${uploads.length} new videos`);
           for (let edge of response.data.videosConnection.edges) {
             if (!edge.node.thumbnailPhoto) {
               continue; // metadata for this video is not yet ready. Video will be announced in next iterations.

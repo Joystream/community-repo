@@ -70,7 +70,7 @@ if (!discordToken.length) {
   console.error(`Error: No discord token provided.`);
   process.exit(1);
 }
-log(JSON.stringify(opts));
+if (opts.verbose) log(JSON.stringify(opts));
 
 // connect to telegram
 const bot = tgToken ? new TelegramBot(tgToken, { polling: true }) : null;
@@ -155,7 +155,7 @@ const missingVotesMessages = async (
       announce.missingProposalVotes(proposals, council, isDM)
     );
 
-const main = async () => {
+(async () => {
   const provider = new WsProvider(wsLocation);
   const api = await ApiPromise.create({ provider, types });
   await api.isReady;
@@ -183,6 +183,7 @@ const main = async () => {
         )
         .catch((error) => console.log(`Discord /proposals: ${error.message}`));
     }
+
     if (["/size", "/storage", "/storagesize"].includes(msg.content)) {
       msg
         .reply("Calculating... ")
@@ -233,7 +234,6 @@ const main = async () => {
   }
 
   if (opts.proposals) {
-    console.log(`updating proposals`);
     proposals.last = await getProposalCount(api);
     proposals.active = await getActiveProposals(api);
   }
@@ -386,8 +386,4 @@ const main = async () => {
       lastBlock = block;
     }
   );
-};
-main().catch((error) => {
-  console.log(error);
-  process.exit();
-});
+})();

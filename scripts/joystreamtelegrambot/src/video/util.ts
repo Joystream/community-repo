@@ -1,6 +1,5 @@
 const moment = require("moment");
 export const cleanup = (ids: any[], cutoffDate: Date) => {
-  console.log("Local storage cleaning in progress");
   let cleaned = 0;
   ids.reduceRight(function (acc, item, index, object) {
     if (item.createdAt < cutoffDate) {
@@ -8,9 +7,6 @@ export const cleanup = (ids: any[], cutoffDate: Date) => {
       cleaned += 1;
     }
   }, []);
-  if (cleaned > 0) {
-    console.log(`Cleaned records: ${cleaned}`);
-  }
 };
 
 export const lookup = (ids: any[], id: string) => {

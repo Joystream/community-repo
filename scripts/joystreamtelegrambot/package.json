@@ -7,6 +7,7 @@
     "all": "ts-node src/bot.ts --channel --council --forum --proposals",
     "quiet": "ts-node src/bot.ts --quiet --channel --council --forum --proposals",
     "verbose": "ts-node src/bot.ts --verbose --channel --council --forum --proposals",
+    "trace": "node --trace-deprecation dist/src/bot.js --verbose",
     "channel": "ts-node src/bot.ts --channel",
     "council": "ts-node src/bot.ts --council",
     "forum": "ts-node src/bot.ts --forum",

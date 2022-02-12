@@ -58,14 +58,13 @@ export const printStatus = (
 
   const { block, chain, proposals, posts } = data;
   const date = formatTime();
-  let message = `[${date}] Chain:${chain} Block:${block} `;
+  let message = `[${date}] ${chain} #${block} `;
 
-  if (opts.forum) message += `Post:${posts[1]} `;
-
+  if (opts.forum) message += `Posts:${posts[1]} `;
   if (opts.proposals)
-    message += `Proposals:${proposals.current} (Active:${proposals.active.length} Pending:${proposals.executing.length}) `;
+    message += `Proposals:${proposals.current} (Voting:${proposals.active.length} GracePeriod:${proposals.executing.length}) `;
 
-  console.log(message);
+  console.debug(message);
 };
 
 // time
