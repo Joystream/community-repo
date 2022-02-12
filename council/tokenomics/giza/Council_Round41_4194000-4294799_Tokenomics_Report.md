@@ -50,11 +50,11 @@ This is a report which explains the current state of the Joystream network in nu
 
 | Minted per Role             | Start Block           | End Block | Difference | % Change |
 |-----------------------------|-----------------------|-----------|------------|----------|
-| Council Total Minted | 1314147879.00 | 1353804132.00 | 39656253 | -2.93 |
-| Curators Minted | 266999021.00 | 277478633.00 | 10479612 | -3.78 |
-| Storage Providers Minted | 250939253.00 | 260227225.00 | 9287972 | -3.57 |
+| Council Total Minted | 1314147879.00 | 1353804132.00 | 39656253 | 3.02 |
+| Curators Minted | 266999021.00 | 277478633.00 | 10479612 | 3.92 |
+| Storage Providers Minted | 250939253.00 | 260227225.00 | 9287972 | 3.7 |
 | Distribution Minted | 0.00 | 0.00 | 0 | 0 |
-| Operations Minted | 328811672.00 | 350389331.00 | 21577659 | -6.16 |
+| Operations Minted | 328811672.00 | 350389331.00 | 21577659 | 6.56 |
 | Marketing Minted | 0.00 | 0.00 | 0 | 0 |
 | Gamma Minted | 0.00 | 0.00 | 0 | 0 |
 
@@ -142,7 +142,7 @@ Negative value indicates deflation
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of  Workers | 3 | 6 | 100 |
-| Total  Stake | 0 | 500000 | 100 |
+| Total  Stake | 0 | 500000 | Infinity |
 
 
 
@@ -218,7 +218,7 @@ Negative value indicates deflation
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of uploads       | 11520 | 14571  |  26.48 |
-| Size of content (MB)    |  0 |  0 | 0 |
+| Size of content (MB)    |  210186.67 |  1312171.18 | 524.29 |
 | Number of channels      |  891 | 918 | 3.03 |
 
 ### 5.3 Forum Activity
