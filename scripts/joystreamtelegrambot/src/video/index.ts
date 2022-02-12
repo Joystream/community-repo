@@ -6,6 +6,7 @@ import {
   createdAgo,
   createdAgoUnit,
   storageServer,
+  joystreamBlue,
 } from "../../config";
 import { readFileSync } from "fs";
 import axios from "axios";
@@ -50,69 +51,58 @@ export const videoUpdates = async (channel: any) => {
         if (response.data.videosConnection) {
           const uploads = response.data.videosConnection.edges;
           if (uploads.length) console.log(`${uploads.length} new videos`);
-          for (let edge of response.data.videosConnection.edges) {
-            if (!edge.node.thumbnailPhoto) {
-              continue; // metadata for this video is not yet ready. Video will be announced in next iterations.
+          for (const edge of response.data.videosConnection.edges) {
+            const id = edge.node.id;
+            const thumb = edge.node.thumbnailPhoto;
+            if (!thumb) {
+              console.debug(`Video ${id} has no metadata yet.`);
+              continue;
             }
-            if (lookup(ids, edge.node.id)) {
-              console.log(`Video ${edge.node.id} already announced. `);
-            } else {
-              const licenseKey = edge.node.license.code;
-              const exampleEmbed = new Discord.MessageEmbed()
-                .setColor("#4038FF") // official joystream blue, see https://www.joystream.org/brand/guides/
-                .setTitle(edge.node.title)
-                .setURL(`https://play.joystream.org/video/${edge.node.id}`)
-                .setDescription(edge.node.description.substring(0, 200)) // cut off lengthy descriptions
-                .addFields(
-                  { name: "ID", value: edge.node.id, inline: true },
-                  {
-                    name: "Category",
-                    value: edge.node.category.name,
-                    inline: true,
-                  },
-                  {
-                    name: "Duration",
-                    value: durationFormat(edge.node.duration),
-                    inline: true,
-                  },
-                  {
-                    name: "Language",
-                    value: edge.node.language.iso,
-                    inline: true,
-                  },
-                  {
-                    name: "Size",
-                    value: humanFileSize(edge.node.media.size),
-                    inline: true,
-                  },
-                  { name: "License", value: licenses[licenseKey], inline: true }
-                )
-                .setTimestamp();
-              const uploaderTitle = `${edge.node.channel.title} (${edge.node.channel.ownerMember.controllerAccount})`;
-              const avatarObj = edge.node.channel.avatarPhoto?.id;
-              if (avatarObj) {
-                const avatar = `${storageServer}/${avatarObj}`;
-                exampleEmbed.setAuthor(
-                  uploaderTitle,
-                  avatar,
-                  `https://play.joystream.org/channel/${edge.node.channel.id}`
-                );
-              } else {
-                exampleEmbed.setAuthor(
-                  uploaderTitle,
-                  null,
-                  `https://play.joystream.org/channel/${edge.node.channel.id}`
-                );
-              }
-              exampleEmbed.setImage(
-                `${storageServer}/${edge.node.thumbnailPhoto.id}`
-              );
-              channel.send(exampleEmbed);
-              ids.push({
-                id: edge.node.id,
-                createdAt: Date.parse(edge.node.createdAt),
-              });
+            if (lookup(ids, id)) {
+              console.log(`Video ${id} already announced. `);
+              continue;
             }
+            const createdAt = Date.parse(edge.node.createdAt);
+            const licenseKey = edge.node.license.code;
+            const exampleEmbed = new Discord.MessageEmbed()
+              .setColor(joystreamBlue)
+              .setTitle(edge.node.title)
+              .setURL(`https://play.joystream.org/video/${edge.node.id}`)
+              .setDescription(edge.node.description.substring(0, 200)) // cut off lengthy descriptions
+              .addFields(
+                { name: "ID", value: id, inline: true },
+                {
+                  name: "Category",
+                  value: edge.node.category.name,
+                  inline: true,
+                },
+                {
+                  name: "Duration",
+                  value: durationFormat(edge.node.duration),
+                  inline: true,
+                },
+                {
+                  name: "Language",
+                  value: edge.node.language.iso,
+                  inline: true,
+                },
+                {
+                  name: "Size",
+                  value: humanFileSize(edge.node.media.size),
+                  inline: true,
+                },
+                { name: "License", value: licenses[licenseKey], inline: true }
+              )
+              .setTimestamp();
+            const uploaderTitle = `${edge.node.channel.title} (${edge.node.channel.ownerMember.controllerAccount})`;
+            const avatarObj = edge.node.channel.avatarPhoto?.id;
+            const avatar = avatarObj ? `${storageServer}/${avatarObj}` : null;
+            const link = `https://play.joystream.org/channel/${edge.node.channel.id}`;
+            exampleEmbed.setAuthor(uploaderTitle, avatar, link);
+            exampleEmbed.setImage(`${storageServer}/${thumb.id}`);
+            console.log(exampleEmbed);
+            channel.send(exampleEmbed);
+            ids.push({ id, createdAt });
           }
           cleanup(ids, createdAt);
         }
