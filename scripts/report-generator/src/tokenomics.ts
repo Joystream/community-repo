@@ -209,10 +209,7 @@ export class StatisticsCollector {
     console.log(`Loaded ${proposals.length} proposals.`);
     return proposals
       .filter(
-        (line: string[]) =>
-          line[0] === "Antioch" &&
-          line[3] === "Approved" &&
-          line[8] === "Bounties"
+        (line: string[]) => line[3] === "Approved" && line[8] === "Bounties"
       )
       .map((bounty: string[]) => {
         return new Bounty(
@@ -259,43 +256,35 @@ export class StatisticsCollector {
 
     // bounties
     const bounties = await this.getApprovedBounties(proposalsFile);
+    console.log(bounties.length, `bounties found`);
     const blocks = this.filterCache(filterMethods.finalizedSpendingProposals);
     const spendingProposals: SpendingProposal[] =
       await getFinalizedSpendingProposals(this.api, blocks);
-
     let bountiesTotalPaid = 0;
-    for (let bounty of bounties) {
-      const bountySpendingProposal = spendingProposals.find(
-        (spendingProposal) => spendingProposal.id == bounty.proposalId
-      );
-      if (bountySpendingProposal)
-        bountiesTotalPaid += bountySpendingProposal.amount;
+    for (let { proposalId } of bounties) {
+      const bounty = spendingProposals.find(({ id }) => +id === +proposalId);
+      if (!bounty) continue; // not in this period
+      const { amount, title } = bounty;
+      bountiesTotalPaid += amount;
+      console.log(`Bounty: ${amount} ${title}`);
     }
 
-    if (!bountiesTotalPaid) {
-      console.warn(
-        `No bounties in selected period. Need to update ${proposalsFile}?\nLooking for spending proposals titled "bounty":`
-      );
+    if (!spendingProposals.length || !bountiesTotalPaid) {
+      const file = require("path").resolve(proposalsFile);
+      console.log(`\n!!! Please update\n!!! ${file}\n\nFiltering by title:`);
       for (const { title, amount } of spendingProposals) {
         if (!title.toLowerCase().includes("bounty")) continue;
         bountiesTotalPaid += amount;
         console.log(` - ${title}: ${amount}`);
       }
     }
+    console.log(`Paid for bounties: ${bountiesTotalPaid}\n`);
     this.saveStats({ bountiesTotalPaid });
-
-    const spendingProposalsTotal = spendingProposals.reduce(
-      (n, p) => n + p.amount,
-      0
-    );
-    const newCouncilRewards = await this.computeCouncilReward(
-      endBlock - startBlock,
-      endHash
-    );
-    this.saveStats({
-      spendingProposalsTotal,
-      newCouncilRewards: newCouncilRewards.toFixed(2),
-    });
+    const spent = spendingProposals.reduce((n, p) => n + p.amount, 0);
+    const newCouncilRewards = (
+      await this.computeCouncilReward(endBlock - startBlock, endHash)
+    ).toFixed(2);
+    this.saveStats({ spendingProposalsTotal: spent, newCouncilRewards });
   }
 
   //
