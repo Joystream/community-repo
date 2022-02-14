@@ -10,11 +10,10 @@
     "postinstall": "yarn build"
   },
   "dependencies": {
-    "@joystream/metadata-protobuf": "^1.0.0",
     "@joystream/types": "^0.18.2",
+    "@joystream/metadata-protobuf": "^1.0.0",
     "@polkadot/types": "5.9.1",
-    "@types/bn.js": "^4.11.5",
-    "bn.js": "5.1.2"
+    "@types/bn.js": "^4.11.5"
   },
   "resolutions": {
     "@polkadot/util-crypto": "7.3.1"
@@ -23,6 +22,14 @@
     "@types/node": "^10.17.18",
     "@polkadot/ts": "^0.4.8",
     "ts-node": "^10.5.0",
+    "@polkadot/api": "5.9.1",
+    "@polkadot/api-contract": "5.3.2",
+    "@polkadot/keyring": "^7.1.1",
+    "@types/bn.js": "^4.11.5",
+    "bn.js": "^5.1.2"
+  },
+  "devDependencies": {
+    "@polkadot/ts": "^0.4.4",
     "typescript": "^4.3.5"
   }
 }
