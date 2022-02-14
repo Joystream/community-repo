@@ -525,18 +525,19 @@ ${workersTable}`;
     );
     let electionApplicantsStakes = 0;
     for (let applicant of applicants) {
-      const applicantStakes: ElectionStake = await getCouncilApplicantStakes(
+      const stake: ElectionStake = await getCouncilApplicantStakes(
         this.api,
         lastBlockHash,
         applicant
       );
-      electionApplicantsStakes += applicantStakes.new.toNumber();
+      electionApplicantsStakes += +stake.new + +stake.transferred;
     }
     election.electionApplicants = applicants.length;
     election.electionVotes = await getCouncilCommitments(
       this.api,
       lastBlockHash
     ).then((votes: Vec<Hash>) => votes.length);
+    election.electionApplicantsStakes = electionApplicantsStakes;
     this.saveStats(election);
   }
 
