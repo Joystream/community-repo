@@ -20,8 +20,8 @@ This is a report which explains the current state of the Joystream network in nu
 | Role                | Value        |
 |---------------------|--------------|
 | Total Tokens Burned | 180705196 |
-| Spending Proposals (Executed) | 0 |
-| Bounties paid       | 0 |
+| Spending Proposals (Executed) | 30228283 |
+| Bounties paid       | 24800132 |
 | Validator Role      | 5207343 |
 | Council | 35088283 |
 | Curators | 10489612 |
@@ -73,7 +73,7 @@ Negative value indicates deflation
 | Property                    | Start Block  |
 |-----------------------------|--------------|
 | Total Applicants            | 32 |
-| Total Applicant Stake       | 0 |
+| Total Applicant Stake       | 503441233 |
 | Total Votes                 | 60 |
 
 ## 4 Roles
@@ -136,7 +136,7 @@ Negative value indicates deflation
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of  Workers | 6 | 11 | 83.33 |
-| Total  Stake | 500000 | 5500000 | 1000 |
+| Total  Stake | 2000000 | 7000000 | 250 |
 
 | # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
 |--|--|--|--|--|--|

@@ -20,8 +20,8 @@ This is a report which explains the current state of the Joystream network in nu
 | Role                | Value        |
 |---------------------|--------------|
 | Total Tokens Burned | 71323082 |
-| Spending Proposals (Executed) | 0 |
-| Bounties paid       | 0 |
+| Spending Proposals (Executed) | 77811312 |
+| Bounties paid       | 68433865 |
 | Validator Role      | 30743788 |
 | Council | 82671312 |
 | Curators | 8361179 |
@@ -73,7 +73,7 @@ Negative value indicates deflation
 | Property                    | Start Block  |
 |-----------------------------|--------------|
 | Total Applicants            | 30 |
-| Total Applicant Stake       | 0 |
+| Total Applicant Stake       | 504837999 |
 | Total Votes                 | 44 |
 
 ## 4 Roles
@@ -134,7 +134,7 @@ Negative value indicates deflation
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of  Workers | 0 | 3 | 100 |
+| Number of  Workers | 0 | 3 | Infinity |
 | Total  Stake | 0 | 0 | 0 |
 
 
@@ -208,7 +208,7 @@ Negative value indicates deflation
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of uploads       | 9299 | 11520  |  23.88 |
-| Size of content (MB)    |  0 |  0 | 0 |
+| Size of content (MB)    |  0 |  210186.67 | Infinity |
 | Number of channels      |  694 | 891 | 28.39 |
 
 ### 5.3 Forum Activity
