@@ -50,7 +50,7 @@ async function main() {
   const proposalIds = proposalKeys.map(
     ({ args: [proposalId] }) => proposalId
   ) as Vec<ProposalId>;
-  proposalIds.sort((a, b) => a.toNumber() - b.toNumber());
+  proposalIds.sort((a, b) => +a - +b);
   console.log("number of proposals", proposalIds.length);
 
   // get all stakeIds associated with proposalIds
@@ -59,7 +59,7 @@ async function main() {
   const stakeIdsOfProposalIds = stakeIdOfProposalId.map(
     ({ args: [stakeId] }) => stakeId
   ) as Vec<StakeId>;
-  stakeIdsOfProposalIds.sort((a, b) => a.toNumber() - b.toNumber());
+  stakeIdsOfProposalIds.sort((a, b) => +a - +b);
   console.log("number of stakeIdsOfProposalIds:", stakeIdsOfProposalIds.length);
 
   for (let id of proposalIds) {
@@ -76,12 +76,12 @@ async function main() {
       (await api.query.proposalsCodex.proposalDetailsByProposalId(
         id
       )) as ProposalDetails;
-    let stakeId = stakeIdsOfProposalIds[proposalIds.indexOf(id)].toNumber();
+    let stakeId = stakeIdsOfProposalIds[proposalIds.indexOf(id)];
     let stake = 0;
     if (
-      (
-        (await api.query.proposalsEngine.stakesProposals(stakeId)) as ProposalId
-      ).toNumber() === id.toNumber()
+      ((await api.query.proposalsEngine.stakesProposals(
+        stakeId
+      )) as ProposalId) === id
     ) {
       const blockHash = await api.rpc.chain.getBlockHash(proposal.createdAt);
       const proposalStake = (await api.query.stake.stakes.at(
@@ -89,20 +89,17 @@ async function main() {
         stakeId
       )) as Stake;
       if (proposalStake.staking_status instanceof Staked) {
-        stake = proposalStake.staking_status.staked_amount.toNumber();
+        stake = +proposalStake.staking_status.staked_amount;
       }
-    } else {
-      // This should never be the case...
-      stakeId = -1;
     }
     const proposalData: ProposalOverview = {
-      id: id.toNumber(),
+      id: +id,
       type: proposalDetails.type.toString(),
       title: proposal.title.toString(),
-      createdBy: [proposal.proposerId.toNumber(), proposerHandle],
-      stakeId,
+      createdBy: [+proposal.proposerId, proposerHandle],
+      stakeId: +stakeId,
       stake,
-      created: proposal.createdAt.toNumber(),
+      created: +proposal.createdAt,
       status: proposal.status.value.toString(),
     };
     // these proposals will have an annoyngly large 'execution'
@@ -119,15 +116,14 @@ async function main() {
       // There really isn't any other options here...
       if (proposalStatus instanceof Finalized) {
         proposalData.status = proposalStatus.proposalStatus.type;
-        proposalData.finalizedAt = proposalStatus.finalizedAt.toNumber();
+        proposalData.finalizedAt = +proposalStatus.finalizedAt;
         proposalData.voteResult = proposal.votingResults.toHuman();
         const proposalResult = proposalStatus.proposalStatus.value;
         // check if the proposal is "Approved"
         if (proposalResult instanceof Approved) {
           proposalData.feePaid = 0;
-          const gracePeriod = proposal.parameters.gracePeriod.toNumber();
-          proposalData.executeAt =
-            proposalStatus.finalizedAt.toNumber() + gracePeriod;
+          const gracePeriod = +proposal.parameters.gracePeriod;
+          proposalData.executeAt = +proposalStatus.finalizedAt + gracePeriod;
           proposalData.executionStatus = proposalResult.type;
           // "Executed" and "PendingExecution" works differently than "ExecutionFailed"
           // the latter will have some information on what went wrong

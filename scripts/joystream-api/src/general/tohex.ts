@@ -1,5 +1,5 @@
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import { CuratorApplicationId } from '@joystream/types/content-working-group';
+import { ApplicationId } from '@joystream/types/working-group';
 import { BTreeSet } from '@polkadot/types';
 import { types } from '@joystream/types'
 
@@ -9,10 +9,10 @@ async function main() {
 
     let wgId = [1, 2]
 
-    let set = new BTreeSet<CuratorApplicationId>(api.registry, CuratorApplicationId, []);
+    let set = new BTreeSet<ApplicationId>(api.registry, ApplicationId, []);
     
     wgId.forEach((id) => {
-        set.add(new CuratorApplicationId(api.registry, id))
+        set.add(new ApplicationId(api.registry, id))
     })
     
     /*

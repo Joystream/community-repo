@@ -23,7 +23,7 @@ export async function getParticipant(
     isMemberCtrl.length == 1
   ) {
     console.log("true");
-    memberId = isMemberRoot[0].toNumber();
+    memberId = +isMemberRoot[0];
     const handle = (
       (await api.query.members.membershipById(isMemberRoot[0])) as Membership
     ).handle.toString();
@@ -37,8 +37,8 @@ export async function getParticipant(
     const memberIds: number[] = [];
     const handle: string[] = [];
     for (let ids of isMemberRoot && isMemberCtrl) {
-      if (!memberIds.includes(ids.toNumber())) {
-        memberIds.push(ids.toNumber());
+      if (!memberIds.includes(+ids)) {
+        memberIds.push(+ids);
         handle.push(
           (
             (await api.query.members.membershipById(ids)) as Membership
@@ -80,11 +80,11 @@ export async function getParticipantAt(
       accountId
     )) as Vec<MemberId>;
   if (
-    isMemberRoot[0].toNumber() === isMemberCtrl[0].toNumber() &&
+    +isMemberRoot[0] === +isMemberCtrl[0] &&
     isMemberRoot.length == 1 &&
     isMemberCtrl.length == 1
   ) {
-    memberId = isMemberRoot[0].toNumber();
+    memberId = +isMemberRoot[0];
     const handle = (
       (await api.query.members.membershipById.at(
         blockHash,
@@ -101,8 +101,8 @@ export async function getParticipantAt(
     const memberIds: number[] = [];
     const handle: string[] = [];
     for (let ids of isMemberRoot && isMemberCtrl) {
-      if (!memberIds.includes(ids.toNumber())) {
-        memberIds.push(ids.toNumber());
+      if (!memberIds.includes(+ids)) {
+        memberIds.push(+ids);
         handle.push(
           (
             (await api.query.members.membershipById.at(

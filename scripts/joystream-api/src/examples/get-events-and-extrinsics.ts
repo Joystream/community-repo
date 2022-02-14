@@ -22,7 +22,7 @@ async function main() {
     for (let blockHeight=firstBlock; blockHeight<lastBlock; blockHeight++) {
       const blockHash = await api.rpc.chain.getBlockHash(blockHeight)
       const events = await api.query.system.events.at(blockHash) as Vec<EventRecord>;
-      const getBlock = await api.rpc.chain.getBlock(blockHash) as SignedBlock
+      const getBlock = (await api.rpc.chain.getBlock(blockHash)) as SignedBlock
       const extrinsics = getBlock.block.extrinsics as Vec<Extrinsic>
       for (let { event } of events) {
         const section = event.section

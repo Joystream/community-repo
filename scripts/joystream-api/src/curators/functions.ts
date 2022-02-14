@@ -1,7 +1,6 @@
-import { Actor} from "@joystream/types/content-directory";
 import { ApiPromise } from "@polkadot/api";
 import { Vec } from "@polkadot/types";
-import { EventRecord, Extrinsic, Hash, SignedBlock } from "@polkadot/types/interfaces";
+import { AccountId,EventRecord, Extrinsic, Hash, SignedBlock } from "@polkadot/types/interfaces";
 import { AnyJson } from "@polkadot/types/types";
 
 interface ActionData {
@@ -24,7 +23,7 @@ export async function getChangeAction(api: ApiPromise, method: string, blockHeig
       extrinscIndex +=1
       if (eventIndex == extrinscIndex) {
         const extrinsic = extrinsics[n]
-        const actor = extrinsic.args[0] as Actor
+        const actor = extrinsic.args[0] as AccountId
         const ent = event.event.data[1]
         let entityId:number = +(ent.toString())
         const video:ActionData = {

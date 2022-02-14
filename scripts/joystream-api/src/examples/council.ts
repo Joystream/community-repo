@@ -40,30 +40,27 @@ async function main() {
     const electionStatus = (await api.query.councilElection.stage.at(
       blockHash
     )) as Option<ElectionStage>;
-    const electionRound = (await api.query.councilElection.round.at(
+    const electionRound = +((await api.query.councilElection.round.at(
       blockHash
-    )) as u32;
+    )) as u32);
     console.log(`
       at block: ${blocks[i]},
       the election stage was: ${electionStatus.value.toString()},
-      of election round: ${electionRound.toNumber()},
+      of election round: ${electionRound}
     `);
     if (electionStatus.value instanceof ElectionStage) {
       const electionStage = electionStatus.unwrap();
       if (electionStage.value instanceof Announcing) {
         console.log(
           "In 'Announcing' stage - ends at block",
-          electionStage.value.toNumber()
+          +electionStage.value
         );
       } else if (electionStage.value instanceof Voting) {
-        console.log(
-          "In 'Voting' stage - ends at block",
-          electionStage.value.toNumber()
-        );
+        console.log("In 'Voting' stage - ends at block", +electionStage.value);
       } else if (electionStage.value instanceof Revealing) {
         console.log(
           "In 'Revealing' stage - ends at block",
-          electionStage.value.toNumber()
+          +electionStage.value
         );
       } else {
       }
@@ -87,20 +84,19 @@ async function main() {
           const voterId = await getParticipantAt(api, backer.member, blockHash);
           const voter: VoterData = {
             voterId,
-            voterStake: backer.stake.toNumber(),
+            voterStake: +backer.stake,
             stakeRatioExJSGvotes: 0,
             kpiRewardRatio: 0,
           };
-          otherStake += backer.stake.toNumber();
+          otherStake += +backer.stake;
           if (backer.member.toString() === joystreamVoter) {
-            jsgStake += backer.stake.toNumber();
+            jsgStake += +backer.stake;
           }
           voters.push(voter);
         }
-        const ownStake = member.stake.toNumber();
-        const totalStakeExJSGvotes =
-          member.stake.toNumber() + otherStake - jsgStake;
-        const totalStake = member.stake.toNumber() + otherStake;
+        const ownStake = +member.stake;
+        const totalStakeExJSGvotes = +member.stake + otherStake - jsgStake;
+        const totalStake = +member.stake + otherStake;
         const councilMember: CouncilMemberData = {
           councilMemberId,
           totalStake,
@@ -137,29 +133,21 @@ async function main() {
           }
         }
       }
-      const termEnd = (
-        (await api.query.council.termEndsAt.at(blockHash)) as BlockNumber
-      ).toNumber();
-      const announcing = (
-        (await api.query.councilElection.announcingPeriod.at(
-          blockHash
-        )) as BlockNumber
-      ).toNumber();
-      const voting = (
-        (await api.query.councilElection.votingPeriod.at(
-          blockHash
-        )) as BlockNumber
-      ).toNumber();
-      const revealing = (
-        (await api.query.councilElection.votingPeriod.at(
-          blockHash
-        )) as BlockNumber
-      ).toNumber();
-      const term = (
-        (await api.query.councilElection.newTermDuration.at(
-          blockHash
-        )) as BlockNumber
-      ).toNumber();
+      const termEnd = +((await api.query.council.termEndsAt.at(
+        blockHash
+      )) as BlockNumber);
+      const announcing = +((await api.query.councilElection.announcingPeriod.at(
+        blockHash
+      )) as BlockNumber);
+      const voting = +((await api.query.councilElection.votingPeriod.at(
+        blockHash
+      )) as BlockNumber);
+      const revealing = +((await api.query.councilElection.votingPeriod.at(
+        blockHash
+      )) as BlockNumber);
+      const term = +((await api.query.councilElection.newTermDuration.at(
+        blockHash
+      )) as BlockNumber);
 
       // this will not always be correct...
       const electedAtBlock = termEnd - term;
@@ -178,16 +166,17 @@ async function main() {
         electedHash,
         councilMint
       )) as Mint;
-      const mintCapacityAtStart = mintAtStart.capacity.toNumber();
+      const mintCapacityAtStart = +mintAtStart.capacity;
 
       let rewardInterval = 3600;
       if (!(getRewardInterval.value instanceof Null)) {
-        rewardInterval = getRewardInterval.unwrap().toNumber();
+        rewardInterval = +getRewardInterval.unwrap();
       }
 
-      const rewardamountPerPayout = (
-        (await api.query.council.amountPerPayout.at(electedHash)) as BalanceOf
-      ).toNumber();
+      const rewardamountPerPayout =
+        +((await api.query.council.amountPerPayout.at(
+          electedHash
+        )) as BalanceOf);
       const expectedIndividualRewards =
         (rewardamountPerPayout * term) / rewardInterval;
 
@@ -208,7 +197,7 @@ async function main() {
         elected,
         electionData: councilMembers,
       };
-      const bestHeight = (await api.derive.chain.bestNumber()).toNumber();
+      const bestHeight = +(await api.derive.chain.bestNumber());
       if (bestHeight > newCouncilStartsAt) {
         const endHash = (await api.rpc.chain.getBlockHash(
           newCouncilStartsAt
@@ -217,10 +206,9 @@ async function main() {
           endHash,
           councilMint
         )) as Mint;
-        council.mintCapacityAtEnd = mintAtEnd.capacity.toNumber();
+        council.mintCapacityAtEnd = +mintAtEnd.capacity;
         council.councilSpending =
-          mintAtEnd.total_minted.toNumber() -
-          mintAtStart.total_minted.toNumber();
+          +mintAtEnd.total_minted - +mintAtStart.total_minted;
       }
       councils.push(council);
     }

@@ -56,7 +56,7 @@ async function main() {
   const storageWorkerIds = storageWorkerKeys.map(
     ({ args: [workerId] }) => workerId
   ) as Vec<WorkerId>;
-  storageWorkerIds.sort((a, b) => a.toNumber() - b.toNumber());
+  storageWorkerIds.sort((a, b) => +a - +b);
   console.log("all storageWorkerIds:", storageWorkerIds.join(", "));
   for (let key of storageWorkerIds) {
     const worker = (await api.query.storageWorkingGroup.workerById(
@@ -64,8 +64,8 @@ async function main() {
     )) as Worker;
     //console.log("worker",worker.toHuman())
     const storageProvider: StorageProvider = {
-      workerId: key.toNumber(),
-      memberId: worker.member_id.toNumber(),
+      workerId: +key,
+      memberId: +worker.member_id,
       roleAccount: worker.role_account_id.toString(),
     };
     if (worker.reward_relationship.isSome) {
@@ -78,18 +78,17 @@ async function main() {
       let rewardInterval = 0;
       let rewardPerWeek = 0;
       if (!(rewardRelationship.payout_interval.value instanceof Null)) {
-        rewardInterval = rewardRelationship.payout_interval.unwrap().toNumber();
+        rewardInterval = +rewardRelationship.payout_interval.unwrap();
         rewardPerWeek =
-          (rewardRelationship.amount_per_payout.toNumber() * 100800) /
-          rewardInterval;
+          (+rewardRelationship.amount_per_payout * 100800) / rewardInterval;
       }
       storageProvider.rewardRelationship = {
-        rewardRelationshipId: rewardRelationshipId.toNumber(),
-        rewardSize: rewardRelationship.amount_per_payout.toNumber(),
+        rewardRelationshipId: +rewardRelationshipId,
+        rewardSize: +rewardRelationship.amount_per_payout,
         rewardInterval,
         rewardPerWeek,
-        totalEarned: rewardRelationship.total_reward_received.toNumber(),
-        totalMissed: rewardRelationship.total_reward_missed.toNumber(),
+        totalEarned: +rewardRelationship.total_reward_received,
+        totalMissed: +rewardRelationship.total_reward_missed,
       };
     }
     if (
@@ -104,8 +103,8 @@ async function main() {
       const stakingStatus = (workerStake.staking_status as StakingStatus).value;
       if (stakingStatus instanceof Staked) {
         storageProvider.stakeProfile = {
-          stakeId: stake.stake_id.toNumber(),
-          roleStake: stakingStatus.staked_amount.toNumber(),
+          stakeId: +stake.stake_id,
+          roleStake: +stakingStatus.staked_amount,
         };
       }
     }
@@ -135,7 +134,7 @@ async function main() {
           (await api.query.contentDirectoryWorkingGroup.applicationById(
             j
           )) as ApplicationOf;
-        if (appId.member_id?.toNumber() == curator.member_id?.toNumber()) {
+        if (+appId.member_id == +curator.member_id) {
           applicationId = appId;
           break;
         }
@@ -143,9 +142,9 @@ async function main() {
 
       const contentCurator: ContentCurator = {
         curatorId: i,
-        memberId: applicationId?.member_id.toNumber(),
+        memberId: +applicationId?.member_id,
         roleAccount: curator.role_account_id.toString(),
-        applicationId: applicationId?.application_id.toNumber(),
+        applicationId: +applicationId?.application_id,
       };
       if (curator.reward_relationship.isSome) {
         const rewardRelationshipId = curator.reward_relationship.unwrap();
@@ -157,20 +156,17 @@ async function main() {
         let rewardInterval = 0;
         let rewardPerWeek = 0;
         if (!(rewardRelationship.payout_interval.value instanceof Null)) {
-          rewardInterval = rewardRelationship.payout_interval
-            .unwrap()
-            .toNumber();
+          rewardInterval = +rewardRelationship.payout_interval.unwrap();
           rewardPerWeek =
-            (rewardRelationship.amount_per_payout.toNumber() * 100800) /
-            rewardInterval;
+            (+rewardRelationship.amount_per_payout * 100800) / rewardInterval;
         }
         contentCurator.rewardRelationship = {
-          rewardRelationshipId: rewardRelationshipId.toNumber(),
-          rewardSize: rewardRelationship.amount_per_payout.toNumber(),
+          rewardRelationshipId: +rewardRelationshipId,
+          rewardSize: +rewardRelationship.amount_per_payout,
           rewardInterval,
           rewardPerWeek,
-          totalEarned: rewardRelationship.total_reward_received.toNumber(),
-          totalMissed: rewardRelationship.total_reward_missed.toNumber(),
+          totalEarned: +rewardRelationship.total_reward_received,
+          totalMissed: +rewardRelationship.total_reward_missed,
         };
       }
       if (
@@ -186,8 +182,8 @@ async function main() {
           .value;
         if (stakingStatus instanceof Staked) {
           contentCurator.stakeProfile = {
-            stakeId: stake.stake_id.toNumber(),
-            roleStake: stakingStatus.staked_amount.toNumber(),
+            stakeId: +stake.stake_id,
+            roleStake: +stakingStatus.staked_amount,
           };
         }
       }
