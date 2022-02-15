@@ -8,6 +8,19 @@ import AccountTransferTokens from './transferTokens';
 
 const prod = process.env.PRODUCTION === 'true';
 
+// get chat id of corresponding messenger
+function getMessagerChatId(props: BotServiceProps, message: any) {
+  try {
+    // TG
+    var chat_id = props.getChatId(message)
+  }
+  catch (e) {
+    // Discord
+    chat_id = null
+  }
+  return chat_id
+}
+
 async function setLastCommand(
   member: IMember | null,
   message: any,
@@ -19,16 +32,17 @@ async function setLastCommand(
       [props.dbId]: props.getId(message),
       date: props.getDate(message),
       lastCommand,
-      lastCommandChatId: props.getChatId(message)
+      lastCommandChatId: getMessagerChatId(props, message)
+
     };
 
     await MemberModel.create(newMember);
   } else {
-    console.log('faucet model update', props.getChatId(message));
-    
+    console.log('faucet model update', getMessagerChatId(props, message));
+
     await MemberModel.updateOne(
       { [props.dbId]: props.getId(message) },
-      { $set: { lastCommand, lastCommandChatId: props.getChatId(message) } }
+      { $set: { lastCommand, lastCommandChatId: getMessagerChatId(props, message) } }
     );
   }
 }
@@ -77,7 +91,7 @@ export default async function faucetCommand(
       const errorText = 'You can use the bot no more then once every 10 minutes';
       throw new Error(errorText);
     }
-    
+
     if (walletAddress) {
       await faucetTransfer(member, message, props, walletAddress, faucetMemberData);
       return await props.send(message, `${props.getName(message)}, operation completed.`);
@@ -90,7 +104,7 @@ export default async function faucetCommand(
   } else if (
     member &&
     member.lastCommand === 'faucet' &&
-    member.lastCommandChatId === props.getChatId(message) &&
+    member.lastCommandChatId === getMessagerChatId(props, message) &&
     currentMessage?.toLowerCase() === 'q'
   ) {
     // Cancel
@@ -99,7 +113,7 @@ export default async function faucetCommand(
   } else if (
     member &&
     member.lastCommand === 'faucet' &&
-    member.lastCommandChatId === props.getChatId(message) &&
+    member.lastCommandChatId === getMessagerChatId(props, message) &&
     !faucetMemberData?.addresses.includes(currentMessage) &&
     new Date().getTime() - dateLastOperation > faucetPeriod
   ) {
@@ -108,7 +122,7 @@ export default async function faucetCommand(
   } else if (
     member &&
     member.lastCommand === 'faucet' &&
-    member.lastCommandChatId !== props.getChatId(message) &&
+    member.lastCommandChatId !== getMessagerChatId(props, message) &&
     (faucetMemberData?.addresses.includes(currentMessage) ||
       new Date().getTime() - dateLastOperation < faucetPeriod)
   ) {
@@ -127,7 +141,7 @@ async function faucetTransfer(
   props: BotServiceProps,
   currentMessage: string,
   faucetMemberData: IFaucet
-  ) {
+) {
   // Transfer
 
   await props.send(message, 'Wait a few minutes...');
