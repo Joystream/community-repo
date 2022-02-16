@@ -13,6 +13,8 @@ const eventsMapping = {
     'WorkerRewardAmountUpdated2': 4222426,
     'AppliedOnOpening': 4264168,
     'AppliedOnOpening2': 4393863,
+    'AppliedOnOpening3': 4482398,
+    'AppliedOnOpening4': 4483407,
     'StakeIncreased': 4264798,
     'StakeDecreased': 4264862,
     'BeganApplicationReview': 4276739,

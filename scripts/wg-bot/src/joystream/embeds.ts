@@ -36,14 +36,15 @@ export const getOpeningFilledEmbed = (opening: any, member: Membership, blockNum
 
 export const getAppliedOnOpeningEmbed = (applicationId: ApplicationId, application: ApplicationOf, 
     openingText: any, hiringApplicationText: any, applicant: Membership, blockNumber: number, event: EventRecord): Discord.MessageEmbed => {
-
+    const applicantName = hiringApplicationText['About you'] ? (hiringApplicationText['About you']['Your name'] || '') : '';
+    const description = hiringApplicationText['About you'] ? (hiringApplicationText['About you']['What makes you a good fit for the job?'] || '') : '';
     return addCommonProperties(new Discord.MessageEmbed()
         .setTitle(`🏛 ${applicant.handle} applied to opening ${openingText.job.title}`)
-        .setDescription(hiringApplicationText['About you']['What makes you a good fit for the job?'] || 'No description provided by applicant')
+        .setDescription(description)
         .addFields(
             { name: 'Application ID', value: applicationId.toString(), inline: true},
             { name: 'Opening', value:  openingText.headline, inline: true},
-            { name: 'Applicant', value: `[${application.member_id}] ${hiringApplicationText['About you']['Your name']}`, inline: true},
+            { name: 'Applicant', value: `[${application.member_id}] ${applicantName}`, inline: true},
         ), blockNumber, event );
 }
 
