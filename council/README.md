@@ -1,21 +1,14 @@
-[The Joystream Code](https://pioneer.joystreamstats.live/#/forum/threads/595)
+# Council Info
 
-proposal_guidelines.md
-Files_and_Folders_Naming_Rules.md
-continuously_updated_files.md
+*This file is maintained by the [Council Secretary](guides/council_secretary_workflow.md) among other things with [Guides](guides)
+and [Rules](rules).*
 
-Please follow the [community etiquette](community_etiquette.md).
+## Reports
 
-Guides
-- joystream_intro.md
-- Global_objectives.md
-- roles_and_responsibilities.md - rename, include in README?
-- the_future_and_beyond.md - mainnet ideas
+- [Council Reports](reports)
+- [Tokenomics Reprots](tokenomics)
 
-No rules
-- Communication_between_JSG_and_community
-- spending_proposal_categories.csv -> council
-- spending_proposal_categories.json -> council
-- community_survey_march_2021.md -> contributions/research
-- jsg_requests.md - still relevant?
-- state_of_joystream_template.md
+## Discussions
+- [The Joystream Code](https://pioneer.joystreamstats.live/#/forum/threads/595)
+
+Please follow the [community etiquette](guides/community_etiquette.md).
