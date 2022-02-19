@@ -1,0 +1,13 @@
+{
+  "name": "joystreams-provider-test",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "test": "node channels.js",
+    "logs": "node logs.js"
+  },
+  "dependencies": {
+    "axios": "^0.26.0",
+    "moment": "^2.29.1"
+  }
+}
