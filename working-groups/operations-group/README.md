@@ -1,19 +1,18 @@
-# Operations WG
+# Builders WG
 
 - Intro: https://github.com/Joystream/helpdesk#builders
 - Forum: https://pioneer.joystreamstats.live/#/forum/categories/51
-- Openings: https://pioneer.joystreamstats.live/#/working-groups/opportunities/operationsGroup
-- Contact: Join `#operations` and https://discord.gg/KMF9gCyZ
+- Openings: https://pioneer.joystreamstats.live/#/working-groups/opportunities/operationsGroupAlpha
+- Contact: Join `#builders` and https://discord.gg/KMF9gCyZ
 
-*Who creates a [banner](https://discord.com/channels/811216481340751934/936282365259571260/936295270617055292) for Operations*
+*Who creates a [banner](https://discord.com/channels/811216481340751934/936282365259571260/936295270617055292) for the Builders group?*
 
 ## Tasks & Achievements
 
-- [Operations Tasks and Budget Workflow](operations_tasks_budget_workflow.md)
 - [Issue Tracker](https://git.joystreamstats.live/Operations/process) - [Funded Issues](https://git.joystreamstats.live/Operations/process/issues?labels=8)
 - [Joystream Opportunities](https://www.joystream.org/get-started#opportunities) - [Open Bounties](https://joystreamstats.live/bounties) - [All](../../bounties)
 
-*General Tasks*
+[Process](operations_tasks_budget_workflow.md)
 - Operations Group is given a budget to work with, the lead needs to report on how this budget is used
 - Lead + workers are supposed to be responsive on Discord and Forums
 - Lead has to update worker rewards per budget
@@ -22,7 +21,7 @@
 
 | Task                                                                                   | Proposer  | Funded    | Amount USD | Status |
 |----------------------------------------------------------------------------------------|-----------|-----------|------------|---|
-| [Content benchmark](https://pioneer.joystreamstats.live/#/proposals/1150)              | l1dev     | 09-Feb-22 | 500   | Open |
+| [Content benchmark](https://pioneer.joystreamstats.live/#/proposals/1150)              | l1dev     | 09-Feb-22 | 200   | [Open](https://github.com/Joystream/community-repo/issues/656), Part 3 [Implemented](https://joystreamstats.live/storage) by l1dev and [dapplooker](https://network.dapplooker.com/joystream/provider-performance) |
 | [Validate SP files](https://pioneer.joystreamstats.live/#/proposals/1145)              | 0x2bc     | 08-Feb-22 | 150   | Open |
 | [Update Featured Categories](https://pioneer.joystreamstats.live/#/proposals/1120)     | oxygen    | 04-Feb-22 | 100   | Open |
 | [Network Test Scripts](https://pioneer.joystreamstats.live/#/proposals/1076)           | l1dev     | 24-Jan-22 | 25/h  | [Open](https://git.joystreamstats.live/Operations/process/issues/52)                  |
@@ -100,13 +99,15 @@ More [Community Ideas](https://github.com/Joystream/community-repo/issues)
 | [40](reports/sumer.md#round-40) |           12.6 |          700 |            25.7 |           27.24 |                 14.64 |           129.50 |     3328.15 |
 | [41](#round-41)                 |           21.5 |          700 |           24.39 |           28.70 |                   7.2 |           136.70 |     3334.11 |
 | [42](#round-42)                 |           34.9 |          700 |           24.67 |           28.37 |                 -6.53 |           130.17 |     3211.29 |
+| [43](#round-43)                 |           29.4 |          700 |           23.65 |           29.60 |                   0.2 |           130.37 |     3083.25 |
 
 ## Reports
 
 * [Sumer](reports/sumer.md)
 
+### Giza
 
-### [Round 41](../../council/tokenomics/giza/Council_Round41_4194000-4294799_Tokenomics_Report.md)
+#### [Round 41](../../council/tokenomics/giza/Council_Round41_4194000-4294799_Tokenomics_Report.md)
 
 - **Date:** `1/26/2022 - 2/2/2022`
 - **Budget:** `$700`
@@ -151,7 +152,7 @@ More [Community Ideas](https://github.com/Joystream/community-repo/issues)
 | 56 | [@oskarte](https://pioneer.joystreamstats.live/#/members/oskarte) | active | 3 | 0.3 | 0.5 |
 | 57 | [@arsonque](https://pioneer.joystreamstats.live/#/members/arsonque) | active | 3 | 0.3 | 0.5 |
 
-### [Round 42](../../council/tokenomics/giza/Council_Round42_4294800-4395599_Tokenomics_Report.md)
+#### [Round 42](../../council/tokenomics/giza/Council_Round42_4294800-4395599_Tokenomics_Report.md)
 
 - **Date:** `2/2/2022 - 2/9/2022`
 - **Budget:** `$700`
@@ -195,3 +196,42 @@ More [Community Ideas](https://github.com/Joystream/community-repo/issues)
 | 55 | [@ars44](https://pioneer.joystreamstats.live/#/members/ars44) | active | 3 | 0.3 | 0.8 |
 | 56 | [@oskarte](https://pioneer.joystreamstats.live/#/members/oskarte) | active | 3 | 0.3 | 0.8 |
 | 57 | [@arsonque](https://pioneer.joystreamstats.live/#/members/arsonque) | active | 3 | 0.3 | 0.8 |
+
+#### [Round 43](../../council/tokenomics/giza/Council_Round42_4294800-4395599_Tokenomics_Report.md)
+
+- **Date:** `2/2/2022 - 2/9/2022`
+- **Budget:** `$700`
+- **Spent:** `29.4 M / 29.6 M (@23.65 $/M)`
+- **Balance:** `130.37 M ($3085.25)`
+
+| Property                | Start Block | End Block | % Change |
+|-------------------------|--------------|--------------|----------|
+| Number of  Workers | 58 | 58 | 0 |
+| Total  Stake | 1850000 | 1850000 | 0 |
+
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 0 | [@l1dev](https://pioneer.joystreamstats.live/#/members/l1dev) | active | 40 | 4.0 | 77.2 |
+| 15 | [@isonar](https://pioneer.joystreamstats.live/#/members/isonar) | active | 44 | 4.4 | 37.0 |
+| 16 | [@lkskrn](https://pioneer.joystreamstats.live/#/members/lkskrn) | active | 56 | 5.6 | 68.4 |
+| 17 | [@freakstatic](https://pioneer.joystreamstats.live/#/members/freakstatic) | active | 6 | 0.6 | 15.4 |
+| 18 | [@dapplooker](https://pioneer.joystreamstats.live/#/members/dapplooker) | active | 28 | 1.7 | 17.3 |
+| 20 | [@joystreamstats](https://pioneer.joystreamstats.live/#/members/joystreamstats) | active | 15 | 1.5 | 27.5 |
+| 22 | [@arseniy2706](https://pioneer.joystreamstats.live/#/members/arseniy2706) | active | 3 | 0.3 | 6.1 |
+| 24 | [@shtihmas](https://pioneer.joystreamstats.live/#/members/shtihmas) | active | 0 | 0.0 | 1.6 |
+| 31 | [@ilich](https://pioneer.joystreamstats.live/#/members/ilich) | active | 3 | 0.3 | 2.9 |
+| 32 | [@kate_fm](https://pioneer.joystreamstats.live/#/members/kate_fm) | active | 3 | 0.3 | 4.4 |
+| 33 | [@ururu](https://pioneer.joystreamstats.live/#/members/ururu) | active | 3 | 0.3 | 8.9 |
+| 34 | [@andybut](https://pioneer.joystreamstats.live/#/members/andybut) | active | 28 | 2.8 | 61.7 |
+| 36 | [@chiffah](https://pioneer.joystreamstats.live/#/members/chiffah) | active | 4 | 0.4 | 5.6 |
+| 39 | [@whitebarbie](https://pioneer.joystreamstats.live/#/members/whitebarbie) | active | 14 | 1.4 | 16.6 |
+| 44 | [@oxygen](https://pioneer.joystreamstats.live/#/members/oxygen) | active | 3 | 0.3 | 4.9 |
+| 45 | [@spat_sochi](https://pioneer.joystreamstats.live/#/members/spat_sochi) | active | 3 | 0.3 | 6.4 |
+| 46 | [@svasilenko](https://pioneer.joystreamstats.live/#/members/svasilenko) | active | 4 | 0.4 | 2.4 |
+| 48 | [@vlodkowjs](https://pioneer.joystreamstats.live/#/members/vlodkowjs) | active | 28 | 1.0 | 1.8 |
+| 49 | [@darcksday](https://pioneer.joystreamstats.live/#/members/darcksday) | active | 28 | 1.0 | 1.8 |
+| 50 | [@jen4ph](https://pioneer.joystreamstats.live/#/members/jen4ph) | active | 3 | 0.3 | 1.0 |
+| 51 | [@igor171](https://pioneer.joystreamstats.live/#/members/igor171) | active | 3 | 0.3 | 1.0 |
+| 55 | [@ars44](https://pioneer.joystreamstats.live/#/members/ars44) | active | 28 | 1.0 | 1.8 |
+| 56 | [@oskarte](https://pioneer.joystreamstats.live/#/members/oskarte) | active | 3 | 0.3 | 1.0 |
+| 57 | [@arsonque](https://pioneer.joystreamstats.live/#/members/arsonque) | active | 3 | 0.3 | 1.0 |
