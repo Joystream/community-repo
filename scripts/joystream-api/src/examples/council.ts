@@ -214,7 +214,7 @@ async function main() {
     }
   }
   console.log("councils", JSON.stringify(councils, null, 4));
-  api.disconnect();
+  await api.disconnect();
 }
 
 main();

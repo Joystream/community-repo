@@ -2,9 +2,6 @@ import { WsProvider, ApiPromise } from "@polkadot/api";
 import { types } from "@joystream/types";
 import { Worker, WorkerId } from "@joystream/types/working-group";
 import { Null, Vec } from "@polkadot/types";
-// import { RewardRelationship } from "@joystream/types/recurring-rewards";
-// import { Stake, StakingStatus, Staked } from "@joystream/types/stake";
-// import { ApplicationOf, WorkerOf } from "@joystream/types/augment-codec/all";
 
 interface WorkingGroupStake {
   stakeId: number;
@@ -54,8 +51,8 @@ async function main() {
   const storageWorkerKeys =
     await api.query.storageWorkingGroup.workerById.keys();
   const storageWorkerIds = storageWorkerKeys.map(
-    ({ args: [workerId] }) => workerId
-  ) as Vec<WorkerId>;
+      (key) => key.args[0] as WorkerId
+  ) as WorkerId[];
   storageWorkerIds.sort((a, b) => +a - +b);
   console.log("all storageWorkerIds:", storageWorkerIds.join(", "));
   for (let key of storageWorkerIds) {
@@ -116,22 +113,22 @@ async function main() {
     let i = 0;
     i <
     +(
-      await api.query.contentDirectoryWorkingGroup.activeWorkerCount()
+      await api.query.contentWorkingGroup.activeWorkerCount()
     ).toString();
     i++
   ) {
-    const curator = (await api.query.contentDirectoryWorkingGroup.workerById(
+    const curator = (await api.query.contentWorkingGroup.workerById(
       i
     )) as WorkerOf;
     // filter out inactive
     if (curator.is_active) {
       const nextApplicationId = +(
-        await api.query.contentDirectoryWorkingGroup.nextApplicationId()
+        await api.query.contentWorkingGroup.nextApplicationId()
       ).toString();
       let applicationId = {} as ApplicationOf;
       for (let j = 0; j < nextApplicationId - 1; j++) {
         const appId =
-          (await api.query.contentDirectoryWorkingGroup.applicationById(
+          (await api.query.contentWorkingGroup.applicationById(
             j
           )) as ApplicationOf;
         if (+appId.member_id == +curator.member_id) {
@@ -194,7 +191,7 @@ async function main() {
 
   console.log("contentCurators", JSON.stringify(contentCurators, null, 4));
 
-  api.disconnect();
+  await api.disconnect();
 }
 
 main();

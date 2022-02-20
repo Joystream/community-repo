@@ -52,18 +52,6 @@ async function main() {
     console.log("");
   }
 
-  // get events in newest block:
-  const events = (await api.query.system.events()) as Vec<EventRecord>;
-  for (let { event } of events) {
-    const section = event.section;
-    const method = event.method;
-    const data = event.data;
-    console.log("section", section);
-    console.log("method", method);
-    console.log("data", data.toHuman());
-    console.log("");
-  }
-
   // get extrinsics in finalized head block:
   const getLatestBlock = (await api.rpc.chain.getBlock(
     finalizedHeadHash
@@ -82,7 +70,7 @@ async function main() {
     }
   }
 
-  api.disconnect();
+  await api.disconnect();
 }
 
 main();

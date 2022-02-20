@@ -88,14 +88,14 @@ async function main() {
         blockHash,
         stakeId
       )) as Stake;
-      if (proposalStake.staking_status instanceof Staked) {
-        stake = +proposalStake.staking_status.staked_amount;
+      if (proposalStake.staking_status.isOfType('Staked')) {
+        stake += Number((proposalStake.staking_status.asType('Staked') as Staked).staked_amount);
       }
     }
     const proposalData: ProposalOverview = {
       id: +id,
       type: proposalDetails.type.toString(),
-      title: proposal.title.toString(),
+      title: Buffer.from(proposal.title.toString().substr(2), 'hex').toString(),
       createdBy: [+proposal.proposerId, proposerHandle],
       stakeId: +stakeId,
       stake,
@@ -111,7 +111,7 @@ async function main() {
     }
     // check if the proposal is "Active"
     if (proposalStatus instanceof Active) {
-      proposalData.status = proposalStatus.value.toString();
+      proposalData.status = proposalStatus.toString();
     } else {
       // There really isn't any other options here...
       if (proposalStatus instanceof Finalized) {
@@ -153,7 +153,7 @@ async function main() {
 
   console.log("allProposals", JSON.stringify(allProposals, null, 4));
 
-  api.disconnect();
+  await api.disconnect();
 }
 
 main();

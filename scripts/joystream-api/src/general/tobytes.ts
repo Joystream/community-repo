@@ -1,7 +1,7 @@
 
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { Bytes } from '@polkadot/types';
-import { types } from '@joystream/types'
+import { types } from "@joystream/types";
 
 async function main() {
   const provider = new WsProvider('ws://127.0.0.1:9944');
@@ -18,7 +18,7 @@ async function main() {
 
   console.log("input string", input)
   console.log("output, as bytes toHex",output.toHex())
-  api.disconnect()
+  await api.disconnect()
 }
 
 main()

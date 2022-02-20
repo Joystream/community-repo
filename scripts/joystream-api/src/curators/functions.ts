@@ -1,6 +1,7 @@
 import { ApiPromise } from "@polkadot/api";
 import { Vec } from "@polkadot/types";
-import { AccountId,EventRecord, Extrinsic, Hash, SignedBlock } from "@polkadot/types/interfaces";
+import {AccountId, EventRecord, Extrinsic, Hash} from "@polkadot/types/interfaces";
+import { SignedBlock} from '@polkadot/types/interfaces';
 import { AnyJson } from "@polkadot/types/types";
 
 interface ActionData {

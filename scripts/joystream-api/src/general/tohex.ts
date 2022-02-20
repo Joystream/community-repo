@@ -1,7 +1,7 @@
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { ApplicationId } from '@joystream/types/working-group';
 import { BTreeSet } from '@polkadot/types';
-import { types } from '@joystream/types'
+import { types } from "@joystream/types";
 
 async function main() {
     const provider = new WsProvider('ws://127.0.0.1:9944');
@@ -10,11 +10,11 @@ async function main() {
     let wgId = [1, 2]
 
     let set = new BTreeSet<ApplicationId>(api.registry, ApplicationId, []);
-    
+
     wgId.forEach((id) => {
         set.add(new ApplicationId(api.registry, id))
     })
-    
+
     /*
     Replace the integers inside the bracket in:
     let wgId:number[] = [1, 2];
