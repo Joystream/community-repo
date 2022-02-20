@@ -360,19 +360,21 @@ ${workersTable}`;
     const [group, tag] = labels;
     let workers = { start: 0, end: 0, change: 0 };
     let stakes = { start: 0, end: 0, change: 0 };
+    const getActive = (workers: WorkerReward[]) =>
+      workers.filter(({ status }) => status === `active`);
     const workersStart: WorkerReward[] = await getWorkerRewards(
       this.api,
       group,
       startHash
     );
-    workers.start = workersStart.length;
+    workers.start = getActive(workersStart).length;
     stakes.start = sum(workersStart.map(({ stake }) => +stake?.value || 0));
     const workersEnd: WorkerReward[] = await getWorkerRewards(
       this.api,
       group,
       endHash
     );
-    workers.end = workersEnd.length;
+    workers.end = getActive(workersEnd).length;
     workers.change = getPercent(workers.start, workers.end);
     let workerRows = ``; // rewards table
     workersEnd.forEach(async (worker) => {
