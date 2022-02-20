@@ -96,7 +96,7 @@ Negative value indicates deflation
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of  Workers | 29 | 29 | 0 |
+| Number of  Workers | 9 | 8 | 0 |
 | Total  Stake | 500000 | 500000 | 0 |
 
 | # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
@@ -116,7 +116,7 @@ Negative value indicates deflation
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of  Workers | 23 | 23 | 0 |
+| Number of  Workers | 11 | 11 | 0 |
 | Total  Stake | 1100000 | 1100000 | 0 |
 
 | # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
@@ -162,7 +162,7 @@ Negative value indicates deflation
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of  Workers | 58 | 58 | 0 |
+| Number of  Workers | 30 | 24 | 0 |
 | Total  Stake | 1850000 | 1850000 | 0 |
 
 | # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
