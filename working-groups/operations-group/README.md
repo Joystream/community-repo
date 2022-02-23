@@ -100,6 +100,7 @@ More [Community Ideas](https://github.com/Joystream/community-repo/issues)
 | [41](#round-41)                 |           21.5 |          700 |           24.39 |           28.70 |                   7.2 |           136.70 |     3334.11 |
 | [42](#round-42)                 |           34.9 |          700 |           24.67 |           28.37 |                 -6.53 |           130.17 |     3211.29 |
 | [43](#round-43)                 |           29.4 |          700 |           23.65 |           29.60 |                   0.2 |           130.37 |     3083.25 |
+| [44](#round-44)                 |           38.6 |          700 |           23.14 |           30.25 |                 -8.35 |           122.02 |     2823.54 |
 
 ## Reports
 
@@ -235,3 +236,41 @@ More [Community Ideas](https://github.com/Joystream/community-repo/issues)
 | 55 | [@ars44](https://pioneer.joystreamstats.live/#/members/ars44) | active | 28 | 1.0 | 1.8 |
 | 56 | [@oskarte](https://pioneer.joystreamstats.live/#/members/oskarte) | active | 3 | 0.3 | 1.0 |
 | 57 | [@arsonque](https://pioneer.joystreamstats.live/#/members/arsonque) | active | 3 | 0.3 | 1.0 |
+
+#### [Round 44](../../council/tokenomics/giza/Council_Round44_4496400-4597199_Tokenomics_Report.md)
+
+- **Date:** `2/16/2022 - 2/23/2022`
+- **Budget:** `$700`
+- **Spent:** `38.6 M / 30.25 M (@23.13 $/M)`
+- **Balance:** `122.02 M ($2823.54)`
+
+| Property                | Start Block | End Block | % Change |
+|-------------------------|--------------|--------------|----------|
+| Number of  Workers | 24 | 23 | -4.17 |
+| Total  Stake | 1850000 | 1850000 | 0 |
+
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 0 | [@l1dev](https://pioneer.joystreamstats.live/#/members/l1dev) | active | 40 | 3.9 | 81.1 |
+| 15 | [@isonar](https://pioneer.joystreamstats.live/#/members/isonar) | active | 69 | 5.4 | 42.4 |
+| 16 | [@lkskrn](https://pioneer.joystreamstats.live/#/members/lkskrn) | active | 14 | 1.9 | 70.3 |
+| 17 | [@freakstatic](https://pioneer.joystreamstats.live/#/members/freakstatic) | active | 69 | 3.6 | 19.1 |
+| 18 | [@dapplooker](https://pioneer.joystreamstats.live/#/members/dapplooker) | active | 69 | 4.5 | 21.8 |
+| 20 | [@joystreamstats](https://pioneer.joystreamstats.live/#/members/joystreamstats) | active | 15 | 1.4 | 28.9 |
+| 22 | [@arseniy2706](https://pioneer.joystreamstats.live/#/members/arseniy2706) | active | 28 | 1.0 | 7.1 |
+| 24 | [@shtihmas](https://pioneer.joystreamstats.live/#/members/shtihmas) | active | 0 | 0.0 | 1.6 |
+| 31 | [@ilich](https://pioneer.joystreamstats.live/#/members/ilich) | active | 3 | 0.3 | 3.2 |
+| 32 | [@kate_fm](https://pioneer.joystreamstats.live/#/members/kate_fm) | active | 3 | 0.3 | 4.7 |
+| 33 | [@ururu](https://pioneer.joystreamstats.live/#/members/ururu) | active | 3 | 0.3 | 9.2 |
+| 34 | [@andybut](https://pioneer.joystreamstats.live/#/members/andybut) | active | 33 | 2.8 | 64.5 |
+| 36 | [@chiffah](https://pioneer.joystreamstats.live/#/members/chiffah) | active | 4 | 0.4 | 6.1 |
+| 39 | [@whitebarbie](https://pioneer.joystreamstats.live/#/members/whitebarbie) | active | 14 | 1.4 | 18.0 |
+| 44 | [@oxygen](https://pioneer.joystreamstats.live/#/members/oxygen) | active | 3 | 0.3 | 5.2 |
+| 45 | [@spat_sochi](https://pioneer.joystreamstats.live/#/members/spat_sochi) | active | 3 | 0.3 | 6.7 |
+| 48 | [@vlodkowjs](https://pioneer.joystreamstats.live/#/members/vlodkowjs) | active | 28 | 2.6 | 4.3 |
+| 49 | [@darcksday](https://pioneer.joystreamstats.live/#/members/darcksday) | active | 28 | 2.6 | 4.3 |
+| 50 | [@jen4ph](https://pioneer.joystreamstats.live/#/members/jen4ph) | active | 3 | 0.3 | 1.3 |
+| 51 | [@igor171](https://pioneer.joystreamstats.live/#/members/igor171) | active | 3 | 0.3 | 1.3 |
+| 55 | [@ars44](https://pioneer.joystreamstats.live/#/members/ars44) | active | 69 | 4.5 | 6.3 |
+| 56 | [@oskarte](https://pioneer.joystreamstats.live/#/members/oskarte) | active | 3 | 0.3 | 1.3 |
+| 57 | [@arsonque](https://pioneer.joystreamstats.live/#/members/arsonque) | active | 3 | 0.3 | 1.3 |
