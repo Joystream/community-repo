@@ -35,8 +35,6 @@ export const waitFor = 60;
 export const waitTimeUnit = "seconds";
 export const createdAgo = 30;
 export const createdAgoUnit = "minutes";
-export const storageServer =
-  "https://storage-1.joystream.org/argus/api/v1/assets/";
 
 // wg bot
 export const channelNames: ChannelNames = {

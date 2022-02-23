@@ -78,6 +78,13 @@ fragment StorageDataObjectFields on StorageDataObject {
   ipfsHash
   storageBag {
     id
+    distributionBuckets {
+     operators {
+      metadata {
+       nodeEndpoint
+      }
+     }
+    }
     __typename
   }
   type {

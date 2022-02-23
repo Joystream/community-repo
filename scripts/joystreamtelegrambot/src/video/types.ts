@@ -38,6 +38,25 @@ export interface ILicense {
 
 export interface IThumb {
     id: number
+    storageBag: IStorageBag
+}
+
+export interface IStorageBag {
+    id: number
+    distributionBuckets: IDistributionBucket[]
+}
+
+export interface IDistributionBucket {
+    id: number
+    operators: IOperator[]
+}
+
+export interface IOperator {
+    metadata: IMetadata
+}
+
+export interface IMetadata {
+    nodeEndpoint: string
 }
 
 export interface ILiaison {

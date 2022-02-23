@@ -1,11 +1,9 @@
 import {
-  channelId,
   hydraLocation,
   waitFor,
   waitTimeUnit,
   createdAgo,
   createdAgoUnit,
-  storageServer,
   joystreamBlue,
 } from "../../config";
 import { readFileSync } from "fs";
@@ -14,9 +12,9 @@ import { cleanup, lookup, durationFormat } from "./util";
 import { IVideoResponse, LooseObject } from "./types";
 
 import { humanFileSize } from "./sizeformat";
+import { MessageEmbed, TextChannel } from "discord.js";
 const moment = require("moment");
 const momentFormat = require("moment-duration-format");
-const Discord = require("discord.js");
 momentFormat(moment);
 
 const delay = (ms: number | undefined) =>
@@ -37,7 +35,7 @@ const licenses: LooseObject = JSON.parse(
 const formatQuery = (date: string) =>
   httpRequestBody.replace("__DATE_AFTER__", date);
 
-export const videoUpdates = async (channel: any) => {
+export const videoUpdates = async (channel: TextChannel) => {
   let ids: any[] = [];
 
   do {
@@ -52,6 +50,7 @@ export const videoUpdates = async (channel: any) => {
           const uploads = response.data.videosConnection.edges;
           if (uploads.length) console.log(`${uploads.length} new videos`);
           for (const edge of response.data.videosConnection.edges) {
+            console.log(JSON.stringify(edge));
             const id = edge.node.id;
             const thumb = edge.node.thumbnailPhoto;
             if (!thumb) {
@@ -64,7 +63,7 @@ export const videoUpdates = async (channel: any) => {
             }
             const createdAt = Date.parse(edge.node.createdAt);
             const licenseKey = edge.node.license.code;
-            const exampleEmbed = new Discord.MessageEmbed()
+            const exampleEmbed = new MessageEmbed()
               .setColor(joystreamBlue)
               .setTitle(edge.node.title)
               .setURL(`https://play.joystream.org/video/${edge.node.id}`)
@@ -96,12 +95,12 @@ export const videoUpdates = async (channel: any) => {
               .setTimestamp();
             const uploaderTitle = `${edge.node.channel.title} (${edge.node.channel.ownerMember.controllerAccount})`;
             const avatarObj = edge.node.channel.avatarPhoto?.id;
-            const avatar = avatarObj ? `${storageServer}/${avatarObj}` : null;
+            const avatar = avatarObj ? `${edge.node.channel.avatarPhoto?.storageBag.distributionBuckets[0].operators[0].metadata.nodeEndpoint}api/v1/assets/${avatarObj}` : '';
             const link = `https://play.joystream.org/channel/${edge.node.channel.id}`;
             exampleEmbed.setAuthor(uploaderTitle, avatar, link);
-            exampleEmbed.setImage(`${storageServer}/${thumb.id}`);
+            exampleEmbed.setImage(`${thumb.storageBag.distributionBuckets[0].operators[0].metadata.nodeEndpoint}api/v1/assets/${thumb.id}`);
             console.log(exampleEmbed);
-            channel.send(exampleEmbed);
+            channel.send({embeds: [exampleEmbed]});
             ids.push({ id, createdAt });
           }
           cleanup(ids, createdAt);
