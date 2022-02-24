@@ -232,7 +232,7 @@ Negative value indicates deflation
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of uploads       | 14790 | 15082  |  1.97 |
-| Size of content (MB)    |  2998056.68 |  3541028.53 | 18.11 |
+| Size of content (MB)    |  2678319.03 |  3539443.44 | 32.15 |
 | Number of channels      |  931 | 951 | 2.15 |
 
 ### 5.3 Forum Activity
