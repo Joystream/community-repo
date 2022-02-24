@@ -38,9 +38,10 @@ import { Worker, WorkerId } from "@joystream/types/working-group";
 import { ProposalDetails, ProposalOf } from "@joystream/types/augment/types";
 import * as constants from "constants";
 import axios from "axios";
+import moment from "moment";
 
 // lib
-import { eventStats, getPercent, getTotalMinted, momentToString } from "./lib";
+import { eventStats, getPercent, getTotalMinted } from "./lib";
 import {
   connectApi,
   getBlock,
@@ -150,15 +151,27 @@ export class StatisticsCollector {
 
     let startHash: Hash = await getBlockHash(this.api, startBlock);
     let endHash: Hash = await getBlockHash(this.api, endBlock);
+    const tsStart = await getTimestamp(this.api, startHash);
+    const tsEnd = await await getTimestamp(this.api, endHash);
+    let dateStart = moment(tsStart).format("MM/DD/YYYY HH:mm:ss");
+    let dateEnd = moment(tsEnd).format("MM/DD/YYYY HH:mm:ss");
+    const termDuration = (tsEnd - tsStart) / 1000;
+    const termDurationIdeal = 6 * (endBlock - startBlock);
+    const difference = Math.round(termDuration - termDurationIdeal);
+    const diffString: string = moment().add(difference, `s`).fromNow(true);
+    const termDurationDifference = `${difference}s (${diffString})`;
+    const blocktime = termDuration / (endBlock - startBlock);
 
-    let dateStart = momentToString(await getTimestamp(this.api, startHash));
-    let dateEnd = momentToString(await getTimestamp(this.api, endHash));
     this.saveStats({
       dateStart,
       dateEnd,
       startBlock,
       endBlock,
       newBlocks: endBlock - startBlock,
+      termDuration: termDuration.toFixed(),
+      termDurationIdeal,
+      termDurationDifference,
+      blocktime: blocktime.toFixed(3),
       percNewBlocks: getPercent(startBlock, endBlock),
     });
 

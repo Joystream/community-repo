@@ -7,6 +7,10 @@ This is a report which explains the current state of the Joystream network in nu
 * Block range: {startBlock} - {endBlock}
 * Date Range: {dateStart} - {dateEnd}
 * Council session #: {councilRound}
+* Term Duration [s]: {termDuration}
+* Ideal Term Duration [s]: {termDurationIdeal}
+* Difference: {termDurationDifference}
+* Average Block Time: {blocktime}s
 
 ## 2.0 Tokenomics
 
