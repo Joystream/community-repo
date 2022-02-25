@@ -5,8 +5,12 @@ This is a report which explains the current state of the Joystream network in nu
 ## 1.0 Basic Information
 
 * Block range: 4093200 - 4193999
-* Date Range: 1/19/2022 - 1/26/2022
+* Date Range: 01/19/2022 15:13:00 - 01/26/2022 16:56:54
 * Council session #: 40
+* Term Duration [s]: 611034
+* Ideal Term Duration [s]: 604794
+* Difference: 6240s (2 hours)
+* Average Block Time: 6.062s
 
 ## 2.0 Tokenomics
 
