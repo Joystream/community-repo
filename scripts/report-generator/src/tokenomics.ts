@@ -153,12 +153,12 @@ export class StatisticsCollector {
     let endHash: Hash = await getBlockHash(this.api, endBlock);
     const tsStart = await getTimestamp(this.api, startHash);
     const tsEnd = await await getTimestamp(this.api, endHash);
-    let dateStart = moment(tsStart).format("MM/DD/YYYY HH:mm:ss");
-    let dateEnd = moment(tsEnd).format("MM/DD/YYYY HH:mm:ss");
+    let dateStart = moment.utc(tsStart).format("MM/DD/YYYY HH:mm:ss");
+    let dateEnd = moment.utc(tsEnd).format("MM/DD/YYYY HH:mm:ss");
     const termDuration = (tsEnd - tsStart) / 1000;
     const termDurationIdeal = 6 * (endBlock - startBlock);
     const difference = Math.round(termDuration - termDurationIdeal);
-    const diffString: string = moment().add(difference, `s`).fromNow(true);
+    const diffString: string = moment.utc().add(difference, `s`).fromNow(true);
     const termDurationDifference = `${difference}s (${diffString})`;
     const blocktime = termDuration / (endBlock - startBlock);
 
