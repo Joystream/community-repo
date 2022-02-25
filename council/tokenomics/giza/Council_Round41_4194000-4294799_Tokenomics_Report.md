@@ -5,8 +5,12 @@ This is a report which explains the current state of the Joystream network in nu
 ## 1.0 Basic Information
 
 * Block range: 4194000 - 4294799
-* Date Range: 1/26/2022 - 2/2/2022
+* Date Range: 01/26/2022 16:57:00 - 02/02/2022 17:54:36
 * Council session #: 41
+* Term Duration [s]: 608256
+* Ideal Term Duration [s]: 604794
+* Difference: 3462s (an hour)
+* Average Block Time: 6.034s
 
 ## 2.0 Tokenomics
 
@@ -20,8 +24,8 @@ This is a report which explains the current state of the Joystream network in nu
 | Role                | Value        |
 |---------------------|--------------|
 | Total Tokens Burned | 142343001 |
-| Spending Proposals (Executed) | 0 |
-| Bounties paid       | 0 |
+| Spending Proposals (Executed) | 34796253 |
+| Bounties paid       | 25698675 |
 | Validator Role      | 13741709 |
 | Council | 39656253 |
 | Curators | 10479612 |
@@ -79,7 +83,7 @@ Negative value indicates deflation
 | Property                    | Start Block  |
 |-----------------------------|--------------|
 | Total Applicants            | 36 |
-| Total Applicant Stake       | 0 |
+| Total Applicant Stake       | 549261399 |
 | Total Votes                 | 49 |
 
 ## 4 Roles
@@ -98,7 +102,7 @@ Negative value indicates deflation
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of  Workers | 29 | 29 | 0 |
+| Number of  Workers | 9 | 9 | 0 |
 | Total  Stake | 500000 | 500000 | 0 |
 
 | # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
@@ -119,7 +123,7 @@ Negative value indicates deflation
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of  Workers | 23 | 23 | 0 |
+| Number of  Workers | 11 | 11 | 0 |
 | Total  Stake | 1100000 | 1100000 | 0 |
 
 | # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
@@ -141,8 +145,8 @@ Negative value indicates deflation
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of  Workers | 3 | 6 | 100 |
-| Total  Stake | 0 | 500000 | Infinity |
+| Number of  Workers | 3 | 5 | 66.67 |
+| Total  Stake | 0 | 2000000 | Infinity |
 
 
 
@@ -151,7 +155,7 @@ Negative value indicates deflation
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of  Workers | 58 | 58 | 0 |
+| Number of  Workers | 30 | 30 | 0 |
 | Total  Stake | 1850000 | 1850000 | 0 |
 
 | # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |

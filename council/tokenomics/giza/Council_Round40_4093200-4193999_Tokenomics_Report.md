@@ -5,8 +5,12 @@ This is a report which explains the current state of the Joystream network in nu
 ## 1.0 Basic Information
 
 * Block range: 4093200 - 4193999
-* Date Range: 1/19/2022 - 1/26/2022
+* Date Range: 01/19/2022 15:13:00 - 01/26/2022 16:56:54
 * Council session #: 40
+* Term Duration [s]: 611034
+* Ideal Term Duration [s]: 604794
+* Difference: 6240s (2 hours)
+* Average Block Time: 6.062s
 
 ## 2.0 Tokenomics
 
@@ -20,8 +24,8 @@ This is a report which explains the current state of the Joystream network in nu
 | Role                | Value        |
 |---------------------|--------------|
 | Total Tokens Burned | 71323082 |
-| Spending Proposals (Executed) | 0 |
-| Bounties paid       | 0 |
+| Spending Proposals (Executed) | 77811312 |
+| Bounties paid       | 30371918 |
 | Validator Role      | 30743788 |
 | Council | 82671312 |
 | Curators | 8361179 |
@@ -73,7 +77,7 @@ Negative value indicates deflation
 | Property                    | Start Block  |
 |-----------------------------|--------------|
 | Total Applicants            | 30 |
-| Total Applicant Stake       | 0 |
+| Total Applicant Stake       | 504837999 |
 | Total Votes                 | 44 |
 
 ## 4 Roles
@@ -92,7 +96,7 @@ Negative value indicates deflation
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of  Workers | 29 | 29 | 0 |
+| Number of  Workers | 9 | 9 | 0 |
 | Total  Stake | 500000 | 500000 | 0 |
 
 | # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
@@ -113,7 +117,7 @@ Negative value indicates deflation
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of  Workers | 23 | 23 | 0 |
+| Number of  Workers | 11 | 11 | 0 |
 | Total  Stake | 1100000 | 1100000 | 0 |
 
 | # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
@@ -129,13 +133,15 @@ Negative value indicates deflation
 | 21 | [@seainvestor](https://pioneer.joystreamstats.live/#/members/seainvestor) | active | 11 | 0.7 | 14.3 |
 | 22 | [@0x2bc](https://pioneer.joystreamstats.live/#/members/0x2bc) | active | 24 | 1.6 | 30.8 |
 
+
 ### 4.4 Distribution
 * [openings for distributionWorkingGroup](https://testnet.joystream.org/#/working-groups/opportunities/distribution)
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of  Workers | 0 | 3 | 100 |
+| Number of  Workers | 0 | 3 | Infinity |
 | Total  Stake | 0 | 0 | 0 |
+
 
 
 ### 4.5 Operations
@@ -143,7 +149,7 @@ Negative value indicates deflation
 
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
-| Number of  Workers | 48 | 58 | 20.83 |
+| Number of  Workers | 20 | 30 | 50 |
 | Total  Stake | 1850000 | 1850000 | 0 |
 
 | # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
@@ -189,6 +195,7 @@ Negative value indicates deflation
 | Total  Stake | 0 | 0 | 0 |
 
 
+
 ### 4.7 Gamma
 * [openings for operationsWorkingGroupGamma](https://testnet.joystream.org/#/working-groups/opportunities/operationsGroupGamma)
 
@@ -196,6 +203,7 @@ Negative value indicates deflation
 |-------------------------|--------------|--------------|----------|
 | Number of  Workers | 0 | 0 | 0 |
 | Total  Stake | 0 | 0 | 0 |
+
 
 
 ## 5.0 User Generated Content
@@ -208,7 +216,7 @@ Negative value indicates deflation
 | Property                | Start Block | End Block | % Change |
 |-------------------------|--------------|--------------|----------|
 | Number of uploads       | 9299 | 11520  |  23.88 |
-| Size of content (MB)    |  0 |  0 | 0 |
+| Size of content (MB)    |  0 |  210186.67 | Infinity |
 | Number of channels      |  694 | 891 | 28.39 |
 
 ### 5.3 Forum Activity
