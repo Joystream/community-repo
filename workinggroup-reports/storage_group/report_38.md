@@ -4,7 +4,7 @@
 
 ### Report:
 
-This is the 37th report for the Storage Provider Working Group. 
+This is the 38th report for the Storage Provider Working Group. 
 
 * One more week without incidents
 
