@@ -36,7 +36,7 @@ This is the 38th report for the Storage Provider Working Group.
 - Tokens earned: 29.2746 MJOY
 - Missed: 4.6943 MJOY
 
-  Server1
+Server1
 - Location: Finland
 - Storage capacity: 1.9T
 - Type of storage: SSD/NVME
@@ -44,15 +44,15 @@ This is the 38th report for the Storage Provider Working Group.
 - Config: `CPU: AMD Ryzen™ 7 3700X Octa-Core, RAM: 64 GB DDR4, 2 × 1TB SSD (RAID 0)`
 - Cost: 75.17 USD
 - Helios:
-  
-  Server2
+
+Server2
 - Location: Russia
 - Storage capacity: 4T
 - Type of storage: HDD
 - Discord Name: freakstatic#0197 / l1dev#4675
 - Config: CPU: Intel(R) Xeon(R) CPU L5630  @ 2.13GHzAMD, 16 cores, RAM: 24 GB DDR4, 4 × 1TB HDD (RAID 0)
 - Cost: 35 USD
--
+
 ### julysake
 
 - Worker ID: 4
