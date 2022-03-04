@@ -111,7 +111,7 @@ export class StatisticsCollector {
     //["gatewayWorkingGroup", "Gateways", "gateways"],
     ["operationsWorkingGroupAlpha", "Operations", "operationsGroupAlpha"],
     ["operationsWorkingGroupBeta", "Marketing", "operationsGroupBeta"],
-    ["operationsWorkingGroupGamma", "Gamma", "operationsGroupGamma"],
+    ["operationsWorkingGroupGamma", "HR", "operationsGroupGamma"],
   ];
 
   constructor() {
