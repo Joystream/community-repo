@@ -30,32 +30,32 @@ async function main() {
   for (let i = 0; i < blocks.length; i++) {
     const councilMembers: CouncilMemberData[] = [];
     const blockHash = (await api.rpc.chain.getBlockHash(blocks[i])) as Hash;
-    const electionStatus = (await api.query.councilElection.stage.at(blockHash)) as Option<ElectionStage>;
+    // const electionStatus = (await api.query.councilElection.stage.at(blockHash)) as Option<ElectionStage>;
     const electionRound = +((await api.query.councilElection.announcementPeriodNr.at(
       blockHash
     )))
-    console.log(`
-      at block: ${blocks[i]},
-      the election stage was: ${electionStatus.value.toString()},
-      of election round: ${electionRound}
-    `);
-    if (electionStatus.value instanceof CouncilStageElection) {
-      const electionStage = electionStatus.unwrap();
-      if (electionStage.value instanceof Announcing) {
-        console.log(
-          "In 'Announcing' stage - ends at block",
-          +electionStage.value
-        );
-      } else if (electionStage.value instanceof Voting) {
-        console.log("In 'Voting' stage - ends at block", +electionStage.value);
-      } else if (electionStage.value instanceof Revealing) {
-        console.log(
-          "In 'Revealing' stage - ends at block",
-          +electionStage.value
-        );
-      } else {
-      }
-    }
+    // console.log(`
+    //   at block: ${blocks[i]},
+    //   the election stage was: ${electionStatus.value.toString()},
+    //   of election round: ${electionRound}
+    // // `);
+    // if (electionStatus.value instanceof CouncilStageElection) {
+    //   const electionStage = electionStatus.unwrap();
+    //   if (electionStage.value instanceof Announcing) {
+    //     console.log(
+    //       "In 'Announcing' stage - ends at block",
+    //       +electionStage.value
+    //     );
+    //   } else if (electionStage.value instanceof Voting) {
+    //     console.log("In 'Voting' stage - ends at block", +electionStage.value);
+    //   } else if (electionStage.value instanceof Revealing) {
+    //     console.log(
+    //       "In 'Revealing' stage - ends at block",
+    //       +electionStage.value
+    //     );
+    //   } else {
+    //   }
+    // }
     const activeCouncil = (await api.query.council.activeCouncil.at(blockHash)) as CouncilMember[];
     if (activeCouncil.length) {
       const elected: Participant[] = [];
@@ -80,20 +80,20 @@ async function main() {
 
         */
 
-        for (let backer of member.backers) {
-          const voterId = await getParticipantAt(api, backer.member, blockHash);
-          const voter: VoterData = {
-            voterId,
-            voterStake: +backer.stake,
-            stakeRatioExJSGvotes: 0,
-            kpiRewardRatio: 0,
-          };
-          otherStake += +backer.stake;
-          if (backer.member.toString() === joystreamVoter) {
-            jsgStake += +backer.stake;
-          }
-          voters.push(voter);
-        }
+        // for (let backer of member.backers) {
+        //   const voterId = await getParticipantAt(api, backer.member, blockHash);
+        //   const voter: VoterData = {
+        //     voterId,
+        //     voterStake: +backer.stake,
+        //     stakeRatioExJSGvotes: 0,
+        //     kpiRewardRatio: 0,
+        //   };
+        //   otherStake += +backer.stake;
+        //   if (backer.member.toString() === joystreamVoter) {
+        //     jsgStake += +backer.stake;
+        //   }
+        //   voters.push(voter);
+        // }
         const ownStake = +member.stake;
         const totalStakeExJSGvotes = +member.stake + otherStake - jsgStake;
         const totalStake = +member.stake + otherStake;
