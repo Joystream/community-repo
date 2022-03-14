@@ -10,7 +10,7 @@ This is the 40th report for the Storage Provider Working Group.
 
 * Totally 8/9 workers are up and operational.  
 
-* Bags replication rate (see https://drive.google.com/file/d/1cqUzWWUFvWkyugekKMCGbnHAtjg0bbwh/view?usp=sharing). This is updated on March 10.
+* Bags replication rate (see https://drive.google.com/file/d/1cqUzWWUFvWkyugekKMCGbnHAtjg0bbwh/view?usp=sharing). This is updated on March 15.
 
 * 46.III-1 - 'Old' Working Groups Status (see https://docs.google.com/document/d/18aVU8EyzqxXfQJ854fvhDzZPsJ_WXTwGhNY_koeZ2ag/edit#)
 
