@@ -102,6 +102,8 @@ More [Community Ideas](https://github.com/Joystream/community-repo/issues)
 | [43](#round-43)                 |           29.4 |          700 |           23.65 |           29.60 |                   0.2 |           130.37 |     3083.25 |
 | [44](#round-44)                 |           38.6 |          700 |           23.14 |           30.25 |                 -8.35 |           122.02 |     2823.54 |
 | [45](#round-45)                 |           51.0 |          700 |           22.08 |           31.70 |                 -19.3 |           102.72 |     2268.06 |
+| [46](#round-46)                 |            7.5 |          700 |           20.94 |           33.43 |                 25.93 |           128.65 |     2693.93 |
+| [47](#round-47)                 |           46.3 |          700 |           20.48 |           34.18 |                -12.12 |           116.53 |     2386.53 |
 
 ## Reports
 
@@ -352,3 +354,41 @@ More [Community Ideas](https://github.com/Joystream/community-repo/issues)
 | 55 | [@ars44](https://pioneer.joystreamstats.live/#/members/ars44) | active | 69 | 1.0 | 14.3 |
 | 56 | [@oskarte](https://pioneer.joystreamstats.live/#/members/oskarte) | active | 3 | 0.0 | 1.6 |
 | 57 | [@arsonque](https://pioneer.joystreamstats.live/#/members/arsonque) | active | 3 | 0.0 | 1.6 |
+
+#### [Round 47](../../council/tokenomics/giza/Council_Round47_4798800-4899599_Tokenomics_Report.md)
+
+- **Date:** `03/09/2022 - 03/16/2022`
+- **Budget:** `$700`
+- **Spent:** `46.3 M / 34.18 M (@20.94 $/M)`
+- **Balance:** `116.53 M ($2386.53)`
+
+| Property                | Start Block | End Block | % Change |
+|-------------------------|--------------|--------------|----------|
+| Number of  Workers | 23 | 23 | 0 |
+| Total  Stake | 1850000 | 1850000 | 0 |
+
+| # | Member | Status | tJOY / Block | M tJOY Term | M tJOY total |
+|--|--|--|--|--|--|
+| 0 | [@l1dev](https://pioneer.joystreamstats.live/#/members/l1dev) | active | 40 | 3.7 | 89.6 |
+| 15 | [@isonar](https://pioneer.joystreamstats.live/#/members/isonar) | active | 69 | 6.5 | 56.9 |
+| 16 | [@lkskrn](https://pioneer.joystreamstats.live/#/members/lkskrn) | active | 14 | 1.3 | 73.2 |
+| 17 | [@freakstatic](https://pioneer.joystreamstats.live/#/members/freakstatic) | active | 69 | 6.3 | 33.3 |
+| 18 | [@dapplooker](https://pioneer.joystreamstats.live/#/members/dapplooker) | active | 69 | 6.3 | 36.1 |
+| 20 | [@joystreamstats](https://pioneer.joystreamstats.live/#/members/joystreamstats) | active | 15 | 1.3 | 32.0 |
+| 22 | [@arseniy2706](https://pioneer.joystreamstats.live/#/members/arseniy2706) | active | 28 | 2.5 | 12.8 |
+| 24 | [@shtihmas](https://pioneer.joystreamstats.live/#/members/shtihmas) | active | 0 | 0.0 | 1.6 |
+| 31 | [@ilich](https://pioneer.joystreamstats.live/#/members/ilich) | active | 3 | 0.3 | 3.8 |
+| 32 | [@kate_fm](https://pioneer.joystreamstats.live/#/members/kate_fm) | active | 3 | 0.3 | 5.3 |
+| 33 | [@ururu](https://pioneer.joystreamstats.live/#/members/ururu) | active | 3 | 0.3 | 9.8 |
+| 34 | [@andybut](https://pioneer.joystreamstats.live/#/members/andybut) | active | 33 | 3.0 | 71.3 |
+| 36 | [@chiffah](https://pioneer.joystreamstats.live/#/members/chiffah) | active | 4 | 0.4 | 6.9 |
+| 39 | [@whitebarbie](https://pioneer.joystreamstats.live/#/members/whitebarbie) | active | 0 | 0.9 | 20.6 |
+| 44 | [@oxygen](https://pioneer.joystreamstats.live/#/members/oxygen) | active | 3 | 0.3 | 5.8 |
+| 45 | [@spat_sochi](https://pioneer.joystreamstats.live/#/members/spat_sochi) | active | 3 | 0.3 | 7.2 |
+| 48 | [@vlodkowjs](https://pioneer.joystreamstats.live/#/members/vlodkowjs) | active | 28 | 2.5 | 10.1 |
+| 49 | [@darcksday](https://pioneer.joystreamstats.live/#/members/darcksday) | active | 28 | 2.5 | 10.1 |
+| 50 | [@jen4ph](https://pioneer.joystreamstats.live/#/members/jen4ph) | active | 3 | 0.3 | 1.9 |
+| 51 | [@igor171](https://pioneer.joystreamstats.live/#/members/igor171) | active | 3 | 0.3 | 1.9 |
+| 55 | [@ars44](https://pioneer.joystreamstats.live/#/members/ars44) | active | 100 | 7.0 | 21.3 |
+| 56 | [@oskarte](https://pioneer.joystreamstats.live/#/members/oskarte) | active | 3 | 0.3 | 1.9 |
+| 57 | [@arsonque](https://pioneer.joystreamstats.live/#/members/arsonque) | active | 3 | 0.3 | 1.9 |
