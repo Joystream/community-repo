@@ -19,9 +19,13 @@ None of these are automated yet. There is a script that reports performance stat
 
 - Organizing: I use an [emacs org-mode table](https://orgmode.org/org.html#Advanced-features) with some formulas to calculate rewards. I can share if there is interest but i doubt anyone would do the same. Also keeping a permanent bash session in tmux to fast find previously used commands with ctrl+r or `history`, also in the mentioned text file.
 
+![](img/emacs-org-mode.png)
+
 - Hiring: This involves a lot of simple steps that are all explained [here](https://github.com/Joystream/helpdesk/tree/master/roles/distributors-lead). Some possible improvements are shared in the [wishlist](https://github.com/Joystream/joystream/issues/276).
 
 - Managing the Workers (at the "human" level): This is the actual fun part of the job because every worker is different and brings their level of versality. Some need no input and some ask every step on the way even when the manual is publicly known. I appreciate both ways because communication can be fun when there is nothing else pressing. I recommend doing max in private messages to burden everyone else and just pin selected compacted instructions / experiences with everyone.
+
+![](img/tmux-history.png)
 
 - Adjusting rewards: This was definitively the most challenging part because there was no input by anyone about intended budget. Rules like the $80 setup bonus were needed for some and had to be granted to all just to be fair. After filling all families and gaining some experience with prices i would probably be more strict about allowed price ranges when hiring. Also better not to hire before the worker set up a node although this would leave the risk (setup fee, work) on them. Every lead has to find their way.
 
