@@ -10,14 +10,9 @@ Details about inception of the group are reported [here](https://pioneer.joystre
 - Contact: [#distributors](https://discord.com/channels/811216481340751934/933726271832227911)
 
 
-## Openings
-
-- [Apply](https://pioneer.joystreamstats.live/#/working-groups/opportunities/distributionWorkingGroup): [Distributor in Central and South America](https://discord.com/channels/811216481340751934/933726271832227911/938557848294678598)
-
-- Task: Develop tools to implement [Quality of Service](giza1.md#quality-of-service)
-
-- Deputy role: Based on available buckets, which channels should be distributed where? Weekly update per bucket: `0-0: number[]`
-
+## Tasks
+- Develop tools to implement [Quality of Service](giza1.md#quality-of-service)
+- Deputy role: Based on available buckets, which channels should be distributed where?
 - Create DP map: [discussion](https://discord.com/channels/811216481340751934/813361923172335648/939636962925641868)
 
 ![Telemtry](img/telemetry-map.png)
@@ -31,6 +26,8 @@ Image source: https://telemetry.joystream.org/#/Joystream
 
 
 ## Tools
+
+- [How to lead](Skillshare.md)
 
 - GraphQL Playground comes with every [Query node](https://github.com/Joystream/joystream/tree/masyer/query-node): https://hydra.joystream.org/graphql (see [Queries](#queries) below)
 
@@ -60,7 +57,7 @@ Do not miss to try below queries.
 
 #### Sorting queries
 
-````
+```
 orderBy: [DistributionBucketOperatorOrderByInput!]
 enum DistributionBucketOperatorOrderByInput {
 createdAt_ASC
@@ -96,6 +93,7 @@ Filters need to be applied to the first (or second) level (query node doesn't su
 ```
 query { storageDataObjects(where: { id_eq: "9506" }) {
     id storageBag {
+      id
       distributionBuckets {
         id operators {
           metadata { nodeEndpoint } } } } } }
