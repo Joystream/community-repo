@@ -27,7 +27,7 @@ Image source: https://telemetry.joystream.org/#/Joystream
 
 ## Tools
 
-- [How to lead](Skillshare.md)
+- [How to lead](skillshare.md)
 
 - GraphQL Playground comes with every [Query node](https://github.com/Joystream/joystream/tree/masyer/query-node): https://hydra.joystream.org/graphql (see [Queries](#queries) below)
 
