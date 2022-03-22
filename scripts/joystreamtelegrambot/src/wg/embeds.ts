@@ -112,12 +112,11 @@ export const getApplicationTerminatedOrWithdrawEmbed = (action: string, applicat
         ), blockNumber, event );
 }
 
-export const getStakeUpdatedEmbed = (stake: Stake, member: Membership, action: string, blockNumber: number, event: EventRecord): Discord.MessageEmbed => {
-    
+export const getStakeUpdatedEmbed = (stake: Stake | null, member: Membership, action: string, blockNumber: number, event: EventRecord): Discord.MessageEmbed => {    
     return addCommonProperties(new Discord.MessageEmbed()
         .setTitle(`💰💰💰 ${member.handle}'s stake has been ${action}`)
         .addFields(
-            { name: 'Stake', value: formatBalance(stake.value.toString(), { withUnit: 'JOY' }), inline: true }
+            { name: "Stake", value: stake ? formatBalance(stake.value.toString(), { withUnit: "JOY" }) : "Not Set", inline: true }
         ), blockNumber, event );
 }
 

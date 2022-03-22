@@ -35,6 +35,7 @@ import { DiscordChannels } from "../types";
 import { ApiPromise } from "@polkadot/api";
 import { MintBalanceOf, MintId } from "@joystream/types/mint";
 import { ApplicationId, OpeningId } from "@joystream/types/hiring";
+import { Stake } from "@joystream/types/stake";
 import { RationaleText, WorkerId } from "@joystream/types/working-group";
 
 export const processGroupEvents = (
@@ -364,10 +365,10 @@ export const processGroupEvents = (
               stakeWorkerId.toNumber()
             );
             const stakeMember = await getMember(api, stakeWorker.member_id);
-            const stake = await getStake(
-              api,
-              stakeWorker.role_stake_profile.unwrap().stake_id
-            );
+            const stakeProfile = stakeWorker.role_stake_profile;
+            let stake: Stake | null = null;
+            if (stakeProfile.isSome)
+              stake = await getStake(api, stakeProfile.unwrap().stake_id);
             channel.send({
               embeds: [
                 getStakeUpdatedEmbed(
