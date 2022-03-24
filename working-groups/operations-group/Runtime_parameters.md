@@ -1,7 +1,7 @@
 # Runtime Parameters - ([Bounty 23](https://pioneer.joystreamstats.live/#/proposals/249), #289)
 
-This lists and briefly describes chain constants that are changed via [runtime](https://github.com/Joystream/joystream/tree/master/runtime) upgrades for Joystream [substrate](https://github.com/paritytech/substrate) based testnets.
-With the [Olympia release](https://github.com/Joystream/joystream/issues/2855) parameter [profiles](https://github.com/Joystream/joystream/pull/3462) are introduced.
+This lists and briefly describes chain constants that are changed via [runtime](https://github.com/Joystream/joystream/tree/master/runtime) upgrades for Joystream [substrate](https://github.com/paritytech/substrate) based testnets prior and including [Giza](https://www.joystream.org/giza/).
+With the [Olympia release](https://github.com/Joystream/joystream/issues/2855) parameter [profiles](https://github.com/Joystream/joystream/pull/3462) are introduced (not part of this document).
 
 Changing [constants](https://github.com/Joystream/joystream/blob/master/runtime/src/constants.rs) requires [test deployments](./Network-deployment) for verification and extensive testing to catch bugs.
 - `MILLISECS_PER_BLOCK`: defines target duration per block. Actual average duration varies depending on [network performance](https://github.com/Joystream/community-repo/blob/master/contributions/research/validators/Babylon/11.4_Research_Max_Validator_Change_report.md).
