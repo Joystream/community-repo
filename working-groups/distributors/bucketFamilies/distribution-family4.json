@@ -1,0 +1,10 @@
+{
+    "region": "south-america",
+    "description": "Central and South America",
+    "latencyTestTargets": [],
+    "areas": [
+        {
+            "continentCode": "SA"
+        }
+    ]
+}
