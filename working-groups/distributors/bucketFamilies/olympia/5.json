@@ -1,0 +1,13 @@
+{
+    "region": "af-1",
+    "description": "Northern Africa / Southern Europe",
+    "latencyTestTargets": [],
+    "areas": [
+        {
+            "continentCode": "AF"
+        },
+        {
+            "continentCode": "EU"
+        }
+    ]
+}

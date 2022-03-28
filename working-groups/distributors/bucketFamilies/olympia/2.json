@@ -1,0 +1,13 @@
+{
+    "region": "as-1",
+    "description": "NE Asia / Eastern Europe",
+    "latencyTestTargets": [],
+    "areas": [
+        {
+            "continentCode": "AS"
+        },
+        {
+            "continentCode": "EU"
+        }
+    ]
+}
