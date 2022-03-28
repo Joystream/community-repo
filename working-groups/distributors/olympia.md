@@ -10,18 +10,18 @@ https://dao.joystream.org/#/working-groups/distribution
 | Family | Label | Region | Workers |
 |---|---|---|---|
 | 0 | EU-1 | N EU | @l1 @max @mike |
-| 1 | EU-2 | central EU | @yasir (should be family 0) |
+| 1 | EU-2 | central EU | @yasir @l1 |
 | 2 | AS-1 | E EU / NW AS | @lkskrn @mike |
 | 3 | AS-2 | E AS | @ilich |
 | 4 | AS-3 | SEA |  @cooloNe |
-| 5 | AF-1 | northern AF / southern EU | |
-| 6 | AF-2 | southern AF | @Alex |
-| 7 | OC | | |
-| 8 | SA-1 | SA south | |
-| 9 S| A-2 | SA north + central | @0x2bc @spat |
-| 10 | NA-1 | NA west | @cooloNe |
+| 5 | AF-1 | N AF / S EU | |
+| 6 | AF-2 | S AF | @Alex |
+| 7 | OC | AU / Oceania | @l1 |
+| 8 | SA-1 | S SA | |
+| 9 | SA-2 | N SA + central | @0x2bc @spat |
+| 10 | NA-1 | NA W | @cooloNe |
 | 11 | NA-2 | NA central | |
-| 12 | NA-3 | NA east | |
+| 12 | NA-3 | NA E | @l1 |
 
 ## Workers
 
@@ -41,18 +41,21 @@ https://dao.joystream.org/#/working-groups/distribution
 | Member | Bucket | Worker | Location | Size TB | USD / mon |
 |---|---|----|---|---|---|
 | @l1dev | 0:0 | 0 | Helsinki | 2 | 75 |
+| @l1dev | 1:1 | 0 | Nuremberg | .2 | 32 |
+| @l1dev | 12:0 | 0 | Montreal | .15 | 24 |
+| @l1dev | 0:0 | 0 | Sydney | .16 | 20 |
 | @cooloNe | 10:0 | 1 | Los Angeles | 0.8 | 84 |
 | @cooloNe | 4:0| 1 | Singapore | 0.8 | 225 |
 | @Ilich | 3:0 | 2 | Novosibirsk | 0.3 | 44 |
 | @AlexZNet | 6:0 | 3 | Johannesburg | 0.1 | 60 |
-| @xJames#8645 |  9:0 | 4 | Sao Paolo | 0.75 | 177 |
-| @Lelik_maxi#6419 |  0:1 | 5 | Helsinki | 1.4 | 57 |
-| @lkskrn#8336 |  2:0 | 6 | Moscow | 0.3 | 51 |
-| @yasir#4678 | 1:0 | 7 | Finland | 1.8 | 170 |
-| @spat_sochi#8803 |  9:1 | 8 | Bogota | 0.1 | 69 |
-| @MikeShipa#1881 | 0:2 | 9 | Helsinki | 0.48 | 50 |
-| @MikeShipa#1881 | 2:1 | 9 | Moscow | 3.5 | 96 |
-| **Total** | | | | | 1183 (300/w) |
+| @xJames |  9:0 | 4 | Sao Paolo | 0.75 | 177 |
+| @Lelik_maxi |  0:1 | 5 | Helsinki | 1.4 | 57 |
+| @lkskrn |  2:0 | 6 | Moscow | 0.3 | 51 |
+| @yasir | 1:0 | 7 | Nuremberg | 0.4 | 35 |
+| @spat_sochi |  9:1 | 8 | Bogota | 0.1 | 69 |
+| @MikeShipa | 0:2 | 9 | Helsinki | 0.48 | 50 |
+| @MikeShipa | 2:1 | 9 | Moscow | 3.5 | 96 |
+| **Total** | | | | | 1200 (300/w) |
 
 ## Setup
 
