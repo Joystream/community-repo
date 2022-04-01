@@ -306,6 +306,18 @@
       "status": "Closed"
     },
     {
+      "id": 23,
+      "title": "Runtime Update Explanation",
+      "openedDate": "2021-08-14",
+      "description": "Create an explanation of what a runtime upgrade can do",
+      "links": ["https://testnet.joystream.org/#/forum/threads/541","https://github.com/Joystream/community-repo/issues/289"],
+      "reward": 65,
+      "notes": "Runtime Update Explanation",
+      "tags": ["Documentation","Research"],
+      "format": "Open",
+      "status": "Closed"
+    },
+    {
       "id": 29,
       "title": "Update Featured Video",
       "openedDate": "2021-10-06",
@@ -331,18 +343,6 @@
       "tags": ["Content"],
       "format": "Open",
       "status": "Open - Weekly Bounty"
-    },
-    {
-      "id": 23,
-      "title": "Runtime Update Explanation",
-      "openedDate": "2021-08-14",
-      "description": "Create an explanation of what a runtime upgrade can do",
-      "links": ["https://testnet.joystream.org/#/forum/threads/541","https://github.com/Joystream/community-repo/issues/289"],
-      "reward": 65,
-      "notes": "Runtime Update Explanation",
-      "tags": ["Documentation","Research"],
-      "format": "Open",
-      "status": "Closed"
     },
     {
       "id": 24,
