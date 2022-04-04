@@ -1,5 +1,23 @@
 # Distribution Working Group
 
+- [Intro for Leads](skillshare.md)
+
+## Tasks
+- **Bounty**: [Collect info for group reports](https://discord.com/channels/811216481340751934/943152435432669266/960206661753143367)
+- Develop tools to implement [Quality of Service](giza1.md#quality-of-service), https://github.com/Joystream/community-repo/issues/656
+- Deputy role: Based on available buckets, which channels should be distributed where?
+- Create DP map: [discussion](https://discord.com/channels/811216481340751934/813361923172335648/939636962925641868)
+
+![Telemtry](img/telemetry-map.png)
+
+Image source: https://telemetry.joystream.org/#/Joystream
+
+## Olympia
+
+Reports now on [Notion](https://www.notion.so/joystream/Distribution-1f4cfbbb2e934c79bf20b8db7f019d32)
+
+## Giza
+
 With [release of the Giza Testnet](https://blog.joystream.org/giza-released/) selected channels were [migrated from Sumer](https://github.com/traumschule/community-repo/tree/patch-2/working-groups/distributors/Sumer-Giza-migration) previous IPFS based storage system to complete in-house hosting with [storage nodes](https://github.com/Joystream/helpdesk/tree/master/roles/distributors) for bigger portions of assets and local [distribution nodes](https://github.com/Joystream/helpdesk/tree/master/roles/distributors) (read first).
 
 ![Giza Testnet](img/joystream-org-giza.png)
@@ -9,25 +27,12 @@ Details about inception of the group are reported [here](https://pioneer.joystre
 - Lead: [@l1dev](https://pioneer.joystreamstats.live/#/proposals/1112) ([Concept](Distribution_Concept.md))
 - Contact: [#distributors](https://discord.com/channels/811216481340751934/933726271832227911)
 
-
-## Tasks
-- Develop tools to implement [Quality of Service](giza1.md#quality-of-service)
-- Deputy role: Based on available buckets, which channels should be distributed where?
-- Create DP map: [discussion](https://discord.com/channels/811216481340751934/813361923172335648/939636962925641868)
-
-![Telemtry](img/telemetry-map.png)
-
-Image source: https://telemetry.joystream.org/#/Joystream
-
-
-## Reports
+### Reports
 
 - [Giza 42](giza1.md)
 
 
 ## Tools
-
-- [How to lead](skillshare.md)
 
 - GraphQL Playground comes with every [Query node](https://github.com/Joystream/joystream/tree/masyer/query-node): https://hydra.joystream.org/graphql (see [Queries](#queries) below)
 
