@@ -1,0 +1,10 @@
+{
+    "region": "oc",
+    "description": "Australia / Oceania",
+    "latencyTestTargets": [],
+    "areas": [
+        {
+            "continentCode": "OC"
+        }
+    ]
+}
