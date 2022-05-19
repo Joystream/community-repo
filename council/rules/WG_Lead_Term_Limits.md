@@ -2,16 +2,16 @@
 
 *This document was last updated for the [Rhodes Testnet](https://github.com/Joystream/joystream/issues/3296). It is based on [Sumer KPI 10.11](https://blog.joystream.org/sumer-kpis/#10.11).*
 
-1. The council has to make sure  that for each group an `opening` for a new lead position exiists at all times. This is to motivate non founding members to take on responisble positions in the DAO.
+1. The council has to make sure  that for each group an `opening` for a new lead position exists at all times. This is to motivate non founding members to take on responsible positions in the DAO.
 2. Every WG Lead is supposed to hire a Deputy Lead for training and support.
-3. Each WG needs an Onboarding document that explains duties and how to perform all tasks to maintain idea [group score](https://joystream.gitbook.io/testnet-workspace/testnet/council-period-scoring/general-working-group-score).
+3. Each WG needs an Onboarding document that explains duties and how to perform all tasks to maintain ideal [group score](https://joystream.gitbook.io/testnet-workspace/testnet/council-period-scoring/general-working-group-score).
 
 ### For current Leads the soft term limit (starting from when this proposal is approved) is 1 month.
 
-- To comply with [**Lead Opportunities**](https://joystream.gitbook.io/testnet-workspace/testnet/council-period-scoring#lead-opportunities) WG leads are preferrably not FM. For FM in lead positions latest after one month the council is induced to start a transition of power to the Deputy Lead.
-- The council advises the lead to promote and train a worker as **Deputy Lead** by creating a signal proposal that informs the council to involve the worker in meetings to support the onboarding. The council is free to involve other candidates in job interviews.
+- To comply with [**Lead Opportunities**](https://joystream.gitbook.io/testnet-workspace/testnet/council-period-scoring#lead-opportunities) WG leads are preferably not FM. For FM in lead positions latest after one month the council is induced to start a transition of power to the Deputy Lead.
+- The council advises the lead to promote and train a worker as **Deputy Lead** by creating a signal proposal that informs the council to involve the worker in meetings to support the Onboarding process. The council is free to involve other candidates in job interviews.
 - The lead can define the time for the transition of power but latest after two weeks after the council terminates the FM lead and fills the lead opening.
-- During this period the candidates are hired as lead on a test network to train using the CLI and other tools to perform all necessary tasks.
+- During this period the candidates are hired as lead on a test network to train using the [CLI](https://github.com/Joystream/joystream/tree/master/cli) and other tools to perform all necessary tasks.
 - For Storage. Distribution and Builders this can include to prepare a fresh server in a shared session to set up a node and commonly needed tools.
 - The goal is to guarantee a smooth transition of power and to reduce the time until a lead is fully capable to perform all duties.
 
