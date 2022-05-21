@@ -1,34 +1,40 @@
 # WG Lead Term Limits
 
-*Based on the KPIs https://blog.joystream.org/sumer-kpis/#10.11*
+*This document was last updated for the [Rhodes Testnet](https://github.com/Joystream/joystream/issues/3296). It is based on [Sumer KPI 10.11](https://blog.joystream.org/sumer-kpis/#10.11).*
 
-*Pre-proposal Discussion https://testnet.joystream.org/#/forum/threads/372*
+1. The council has to make sure  that for each group an `opening` for a new lead position exists at all times. This is to motivate non founding members to take on responsible positions in the DAO.
+2. Every WG Lead is supposed to hire a Deputy Lead for training and support.
+3. Each WG needs an Onboarding document that explains duties and how to perform all tasks to maintain ideal [group score](https://joystream.gitbook.io/testnet-workspace/testnet/council-period-scoring/general-working-group-score).
 
 ### For current Leads the soft term limit (starting from when this proposal is approved) is 1 month.
 
-The process once 1 month has been reached:
-1. The council secretary or deputy will create an `opening` for a new lead position, to see who is interested in doing the role. A proposal will then be created to begin review of applicants 1 week after.
-2. Once the review period starts, any user with enough tokens can create a proposal to fire the current lead and/or hire a new lead. Note: the current lead must be fired if a new lead is to be hired.
-3. Whatever proposals are made by the community (including by council members), the council can at this point vote on whether to fire the previous lead and hire a new lead, or to keep the previous lead in place.
-4. The current lead can also apply for the opening.
-5. Whatever the result of the new opening is, a new `opening` proposal will be made 1 month after, repeating the process.
+- To comply with [**Lead Opportunities**](https://joystream.gitbook.io/testnet-workspace/testnet/council-period-scoring#lead-opportunities) WG leads are preferably not FM. For FM in lead positions latest after one month the council is induced to start a transition of power to the Deputy Lead.
+- The council advises the lead to promote and train a worker as **Deputy Lead** by creating a signal proposal that informs the council to involve the worker in meetings to support the Onboarding process. The council is free to involve other candidates in job interviews.
+- The lead can define the time for the transition of power but latest after two weeks after the council terminates the FM lead and fills the lead opening.
+- During this period the candidates are hired as lead on a test network to train using the [CLI](https://github.com/Joystream/joystream/tree/master/cli) and other tools to perform all necessary tasks.
+- For Storage. Distribution and Builders this can include to prepare a fresh server in a shared session to set up a node and commonly needed tools.
+- The goal is to guarantee a smooth transition of power and to reduce the time until a lead is fully capable to perform all duties.
 
-Explanation of the types of proposals:
-
-- `Terminate` - This will fire the current lead if approved. In the current version of Joystream the lead must be fired for a new lead to be hired, but in a future version of Joystream this will not be required and a lead can be hired and it will override whoever the current lead is
-
-- `Add Opening` - This will create an opening that people can apply for. It mentions what the salary is and includes interview questions. It also has a variety of options for minimum stake, maximum number of applicants and some other things.
-
-- `Begin Review` - This will close the opening, and allow the council/community to begin reviewing applicants. No one else will be able to apply after the review has started. You also cannot hire someone until Begin Review has started.
-
-- `Fill Opening` - This proposal type allows the creator to choose an applicant, from an opening that is currently in the Review status and give an explanation of why they should be hired (as mentioned before, the current lead must be fired for this proposal type to work, if it is not empty then the proposal will fail to execute). There can be multiple of this type of proposal and whichever proposal is the first to be approved is the person that will be hired. If another proposal is approved afterwards it will fail to execute.
-
-In the event the current lead is fired, they can stay on as: 
-- a guide (to help the newly hired lead on how to manage the position for a week). This will be paid at the previous rate + 50% for one week (via `spending proposal`)
+When a lead is fired they can stay on as: 
+- a guide (to help the newly hired lead on how to manage the position for a week). This will be paid at the previous rate + 50% for one week (via [`Funding Request`](#proposal-types))
 - also as a worker if they apply for an opening. The new lead is encouraged to hire the old lead as a worker if there are enough places, since the old lead will have desirable skills to help with the group.
 
-* In the event of a firing, the exact criteria for the transition period between the old and new lead will be discussed on the forum with the old lead and issued as a text proposal for approval by the council
+* In the event of a firing, the exact criteria for the transition period between the old and new lead will be discussed on the forum with the old lead and issued as a signal proposal for approval by the council
 * In the event of a firing due to the soft term limit, it should not be considered that the lead was bad at the position, this is just a process to try and get a rotation of leads.
 
 ### Exceptions
-* In the event the current lead is still in mid-process of implementing something important, they can create a text proposal with a description of what they're working on to allow for a one-time 2 week extension to their term before the `opening` proposal is created by the council secretary or deputy council secretary.
+* In the event the current lead is still in mid-process of implementing something important, they can create a text proposal with a description of what they're working on to allow for a one-time 2 week extension to their term before the `opening` proposal is created by the council.
+
+### Proposal types
+
+- `Create Working Group Lead Opening` - Same effect as when creating an opening for workers in the given group with given inputs, except the opening type is for lead.
+- `Fill Working Group Lead Opening` - Same effect as when filling opening in group for worker with given inputs.
+- `Update Working Group Budget` - Same effect as when filling opening in group for worker with given inputs.
+- `Decrease Working Group Lead Stake` - Same effect as when decreasing worker stake in group with given inputs.
+- `Slash Working Group Lead` - Same effect as slashing worker in the group, the staking account gets slashed.
+- `Set Working Group Lead Reward` - Same effect as updating the reward of the worker.
+- `Terminate Working Group Lead` - Same as when terminating a worker in group with given inputs, and removing lead designation.
+- `Amend Constitution` - Proposal to amend constitution. Does not effect platform parameters.
+- `Cancel Working Group Lead Opening` - Same as when cancelling an opening for workers in the given group with given inputs.
+- `Funding Request` - Request to credit council budget and transfer tokens to specified accounts.
+- `Signal` - Think of signal as the what, whereas rationale parameter in other proposals would be the why. Signal proposal does not effect any platform parameters when accepted.
