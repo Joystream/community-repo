@@ -8,7 +8,7 @@ Note that this has been tested on a fresh images of `Ubuntu 20.04 LTS`.
 
 ## UPgrade 
 
-To upgrade the node please  [go here for the installation guide](./Upgrade/README.md)
+To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
  
 
 ## Initial setup
