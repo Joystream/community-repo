@@ -6,7 +6,7 @@ The instructions below will assume you are running as `root`. This makes the ins
 Note that this has been tested on a fresh images of `Ubuntu 20.04 LTS`.
 
 
-#Requirement 
+# Requirement 
 
 ## Initial setup
 
@@ -14,11 +14,11 @@ Note that this has been tested on a fresh images of `Ubuntu 20.04 LTS`.
 $ apt-get update && apt-get upgrade -y
 ```
 ## Setup hosting
-[Go here for the installation guide](./hosting/README.md)
+[Go here for the installation guide](../hosting/README.md)
 ## Setup joystream-node
-[Go here for the installation guide](./joystream-node/README.md)
+[Go here for the installation guide](../joystream-node/README.md)
 ## Setup Query Node
-[Go here for the installation guide](./query-node/README.md)
+[Go here for the installation guide](../query-node/README.md)
 
 
 
@@ -35,6 +35,7 @@ $ ssh user@ipOrURL
 $ cd joystream
 $ ./build-packages.sh
 $ yarn joystream-distributor --help
+```
 
 ### Applying for a Distributor opening
 
