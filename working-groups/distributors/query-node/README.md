@@ -1,29 +1,14 @@
-Table of Contents
-==
-<!-- TOC START min:1 max:3 link:true asterisk:false update:true -->
-- [Overview](#overview)
-  - [Get Started](#get-started)
-    - [Clone the Repo](#clone-the-repo)
-    - [Install a Newer Version of `docker-compose`](#install-a-newer-version-of-docker-compose)
-    - [Deploy](#deploy)
-    - [Confirm Everything is Working](#confirm-everything-is-working)
-  - [Setup Hosting](#setup-hosting)
-    - [Caddy](#caddy)
-    - [Run caddy as a service](#run-caddy-as-a-service)
-  - [Troubleshooting](#troubleshooting)
-<!-- TOC END -->
 
 # Overview
-This guide will help you deploy a working query-node.
 
 The following assumptions apply:
 1. You are `root`, and [cloning](#clone-the-repo) to `~/joystream`
 2. in most cases, you will want to run your own `joystream-node` on the same device, and this guide assumes you are.
 
-For instructions on how to set this up, go [here](/roles/validators). Note that you can disregard all the parts about keys before applying, and just install the software so it is ready to go. You do need to run with `--pruning=archive` though, and be synced past the blockheight you are exporting the db from.
+For instructions on how to set this up, go [here](./joystream-node/README.md). Note that you can disregard all the parts about keys before applying, and just install the software so it is ready to go. You do need to run with `--pruning=archive` though, and be synced past the blockheight you are exporting the db from.
 
 ## Get Started
-You don't need to host your query-node, but if you're connecting to your own node, docker will not "find" it on localhost. So first, go to [Setup Hosting](#setup-hosting).
+You don't need to host your query-node, but if you're connecting to your own node, docker will not "find" it on localhost. So first, go to [Setup Hosting](./hosting/README.md).
 
 ### Clone the Repo
 If you haven't already, clone the `Joystream/joystream` (mono)repo:
@@ -156,115 +141,6 @@ curl 'localhost:8081/graphql' -H 'Accept-Encoding: gzip, deflate, br' -H 'Conten
 Finally, if you included hosting of the `Query-node`, you can access the graphql server at `https://<your.cool.url>/server/graphql`.
 Note that you'd need to change `https://<your.cool.url>/graphql` address to `https://<your.cool.url>/server/graphql` as well for the server to be reached.
 
-## Setup Hosting
-In order to allow for users to upload and download, you have to setup hosting, with an actual domain as both Chrome and Firefox requires `https://`. If you have a "spare" domain or subdomain you don't mind using for this purpose, go to your domain registrar and point your domain to the IP you want. If you don't, you will need to purchase one.
 
-### Caddy
-To configure SSL-certificates the easiest option is to use [caddy](https://caddyserver.com/), but feel free to take a different approach. Note that if you are using caddy for commercial use, you need to acquire a license. Please check their terms and make sure you comply with what is considered personal use.
-
-For the best setup, you should use the "official" [documentation](https://caddyserver.com/docs/).
-
-The instructions below are for Caddy v2.4.6:
-```
-$ wget https://github.com/caddyserver/caddy/releases/download/v2.4.6/caddy_2.4.6_linux_amd64.tar.gz
-$ tar -vxf caddy_2.4.6_linux_amd64.tar.gz
-$ mv caddy /usr/bin/
-# Test that it's working:
-$ caddy version
-```
-
-Configure the `Caddyfile`:
-**Note** you only "need" the `Joystream-node`, whereas the `Query-node` will have you host the a (public) graphql server.
-```
-$ nano ~/Caddyfile
-# Modify, and paste in everything below the stapled line
----
-# Joystream-node
-wss://<your.cool.url>/rpc {
-	reverse_proxy localhost:9944
-}
-
-# Query-node
-https://<your.cool.url>{
-	log {
-		output stdout
-	}
-	route /server/* {
-		uri strip_prefix /server
-		reverse_proxy localhost:8081
-	}
-	route /gateway/* {
-		uri strip_prefix /gateway
-		reverse_proxy localhost:4000
-	}
-	route /@apollographql/* {
-		reverse_proxy localhost:8081
-	}
-}
-```
-
-Now you can check if you configured correctly, with:
-```
-$ caddy validate ~/Caddyfile
-# Which should return:
---
-...
-Valid configuration
---
-# You can now run caddy with:
-$ caddy run --config /root/Caddyfile
-# Which should return something like:
---
-...
-... [INFO] [<your.cool.url>] The server validated our request
-... [INFO] [<your.cool.url>] acme: Validations succeeded; requesting certificates
-... [INFO] [<your.cool.url>] Server responded with a certificate.
-... [INFO][<your.cool.url>] Certificate obtained successfully
-... [INFO][<your.cool.url>] Obtain: Releasing lock
-```
-
-### Run caddy as a service
-To ensure high uptime, it's best to set the system up as a `service`.
-
-Example file below:
-
-```
-$ nano /etc/systemd/system/caddy.service
-
-# Modify, and paste in everything below the stapled line
----
-[Unit]
-Description=Caddy
-Documentation=https://caddyserver.com/docs/
-After=network.target
-
-[Service]
-User=root
-ExecStart=/usr/bin/caddy run --config /root/Caddyfile
-ExecReload=/usr/bin/caddy reload --config /root/Caddyfile
-TimeoutStopSec=5s
-LimitNOFILE=1048576
-LimitNPROC=512
-PrivateTmp=true
-ProtectSystem=full
-AmbientCapabilities=CAP_NET_BIND_SERVICE
-
-[Install]
-WantedBy=multi-user.target
-```
-Save and exit. Close `caddy` if it's still running, then:
-```
-$ systemctl start caddy
-# If everything works, you should get an output. Verify with:
-$ systemctl status caddy
-# Which should produce something similar to the previous output.
-# To have caddy start automatically at reboot:
-$ systemctl enable caddy
-# If you want to stop caddy:
-$ systemctl stop caddy
-# If you want to edit your Caddfile, edit it, then run:
-$ caddy reload
-```
-
-## Troubleshooting
+### Troubleshooting
 Make sure your joystream node accept connections from your domain, use the flag `--rpc-cors` flag i.e. `--rpc-cors all`.

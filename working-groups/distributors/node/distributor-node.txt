@@ -1,0 +1,15 @@
+[Unit]
+Description=Joystream Distributor Node
+After=network.target joystream-node.service
+
+[Service]
+User=root
+WorkingDirectory=/root/joystream/
+LimitNOFILE=10000
+ExecStart=/root/.volta/bin/yarn joystream-distributor start \
+        -c /root/joystream/distributor-node/config.yml
+Restart=on-failure
+StartLimitInterval=600
+
+[Install]
+WantedBy=multi-user.target
