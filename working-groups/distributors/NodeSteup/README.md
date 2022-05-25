@@ -14,11 +14,11 @@ Note that this has been tested on a fresh images of `Ubuntu 20.04 LTS`.
 $ apt-get update && apt-get upgrade -y
 ```
 ## Setup hosting
-[Go here for the installation guide](../hosting/README.md)
+[Go here for the installation guide](./hosting/README.md)
 ## Setup joystream-node
-[Go here for the installation guide](../joystream-node/README.md)
+[Go here for the installation guide](./joystream-node/README.md)
 ## Setup Query Node
-[Go here for the installation guide](../query-node/README.md)
+[Go here for the installation guide](./query-node/README.md)
 
 
 
