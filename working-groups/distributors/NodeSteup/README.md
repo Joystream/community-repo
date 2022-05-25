@@ -6,7 +6,10 @@ The instructions below will assume you are running as `root`. This makes the ins
 Note that this has been tested on a fresh images of `Ubuntu 20.04 LTS`.
 
 
-# Requirement 
+## UPgrade 
+
+To upgrade the node please  [go here for the installation guide](./Upgrade/README.md)
+ 
 
 ## Initial setup
 
