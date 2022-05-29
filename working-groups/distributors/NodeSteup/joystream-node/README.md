@@ -9,8 +9,8 @@ Find the lasted release [here](https://github.com/Joystream/joystream/releases)
 
 ```
 $ cd ~/
-$ mkdir joystream
-$ cd joystream
+$ mkdir joystream-node
+$ cd joystream-node
 # 64 bit debian based Linux
 $ wget https://github.com/Joystream/joystream/releases/download/v10.7.1/joystream-node-6.7.0-bdec855-x86_64-linux-gnu.tar.gz
 $ tar -vxf joystream-node-6.7.0-bdec855-x86_64-linux-gnu.tar.gz
