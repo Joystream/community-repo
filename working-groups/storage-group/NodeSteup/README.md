@@ -63,7 +63,7 @@ storage-role-key.json
 $ scp storage-role-key.json <user>@<your.vps.ip.address>:/root/keys/
 ```
 
-**Make sure your [Joystream full node](#Setup joystream-node) and [Query Node](#Setup Query Node) is fully synced before you move to the next step(s)!**
+**Make sure your [Joystream full node](#Setup-joystream-node) and [Query Node](#Setup-Query-Node) is fully synced before you move to the next step(s)!**
 **The remaining of this guide assume the step [#Clone the Repo](./query-node/README.md) is already executed, if not please go back and execute that section even if you are not running a query node locally**
 
 ## Accept Invitation
