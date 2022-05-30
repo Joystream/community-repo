@@ -63,8 +63,8 @@ storage-role-key.json
 $ scp storage-role-key.json <user>@<your.vps.ip.address>:/root/keys/
 ```
 
-**Make sure your [Joystream full node](##Setup joystream-node) and [Query Node](##Setup Query Node) is fully synced before you move to the next step(s)!**
-**The remaining of this guide assume the step [###Clone the Repo](./query-node/README.md) is already executed, if not please go back and execute that section even if you are not running a query node locally**
+**Make sure your [Joystream full node](#Setup joystream-node) and [Query Node](#Setup Query Node) is fully synced before you move to the next step(s)!**
+**The remaining of this guide assume the step [#Clone the Repo](./query-node/README.md) is already executed, if not please go back and execute that section even if you are not running a query node locally**
 
 ## Accept Invitation
 Once hired, the Storage Lead will invite you a to "bucket". Before this is done, you will not be able to participate. Assuming:
@@ -73,7 +73,7 @@ Once hired, the Storage Lead will invite you a to "bucket". Before this is done,
 
 ```
 $ cd ~/joystream
-$ yarn run storage-node operator:accept-invitation -i <bucketId> -w <workerId> -t <5StorageOperatorKey> -k /root/keys/storage-role-key.json
+ection yarn run storage-node operator:accept-invitation -i <bucketId> -w <workerId> -t <5StorageOperatorKey> -k /root/keys/storage-role-key.json
 
 # With bucketId=1, workerId=2, and operatorkey=5StorageOperatorKey that would be:
 # yarn run storage-node operator:set-metadata -i 1 -w 2 -t 5StorageOperatorKey -k /root/keys/storage-role-key.json
