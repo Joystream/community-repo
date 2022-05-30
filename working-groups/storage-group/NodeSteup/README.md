@@ -34,7 +34,7 @@ The next steps (below) will only apply if you are a successful applicant.
 
 # Setup and Configure the Storage Node
 
-##Keys
+## Keys
 - Member key
 - Role key
 - Operator key: in the codebase it's referred to as the transactor key.
