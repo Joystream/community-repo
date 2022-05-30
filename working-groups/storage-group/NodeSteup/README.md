@@ -5,6 +5,11 @@ Note that this has been tested on a fresh images of `Ubuntu 20.04 LTS`.
 
 Please note that unless there are any openings for new storage providers (which you can check in [Pioneer](https://dao.joystream.org/#/working-groups/storage) , you will not be able to join.
 
+# Upgrade
+
+To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
+
+
 # Initial setup
 
 ```
