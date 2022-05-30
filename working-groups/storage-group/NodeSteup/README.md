@@ -167,5 +167,3 @@ $ systemctl stop storage-node
 In your browser, try:
 `https://<your.cool.url>/storage/api/v1/state/data`.
 
-# Troubleshooting
-If you had any issues setting it up, you may find your answer here!
