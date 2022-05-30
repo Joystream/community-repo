@@ -1,0 +1,46 @@
+# Joystream-node
+wss://joystream2.yyagi.cloud/rpc {
+        reverse_proxy localhost:9944
+}
+
+
+# Query-node
+https://joystream2.yyagi.cloud {
+        log {
+                output stdout
+        }
+        route /server/* {
+                uri strip_prefix /server
+                reverse_proxy localhost:8081
+        }
+        route /graphql {
+                reverse_proxy localhost:8081
+        }
+        route /graphql/* {
+                reverse_proxy localhost:8081
+        }
+        route /gateway/* {
+                uri strip_prefix /gateway
+                reverse_proxy localhost:4000
+        }
+        route /@apollographql/* {
+                reverse_proxy localhost:8081
+        }
+}
+# Storage Node
+https://joystream2.yyagi.cloud/storage/* {
+        log {
+                output stdout
+        }
+        route /storage/* {
+                uri strip_prefix /storage
+                reverse_proxy localhost:3333
+        }
+        header /storage/api/v1/ {
+                Access-Control-Allow-Methods "GET, PUT, HEAD, OPTIONS"
+                Access-Control-Allow-Headers "GET, PUT, HEAD, OPTIONS"
+        }
+        request_body {
+                max_size 10GB
+        }
+}
