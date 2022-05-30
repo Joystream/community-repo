@@ -15,18 +15,19 @@ To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
 
 ```
 $ apt-get update && apt-get upgrade -y
+$ apt install vim git curl -y
 ```
-## Setup hosting
+### Setup hosting
 [Go here for the installation guide](./hosting/README.md)
-## Setup joystream-node
+### Setup joystream-node
 [Go here for the installation guide](./joystream-node/README.md)
-## Setup Query Node
+### Setup Query Node
 [Go here for the installation guide](./query-node/README.md)
 
 
 
 ## Install and Setup the Distributor Node
-
+> If you have done this on the query node setup, you can skip this section.
 
 ```
 $ git clone https://github.com/Joystream/joystream.git
@@ -70,7 +71,7 @@ distributor-role-key.json
 $ scp distributor-role-key.json <user>@<your.vps.ip.address>:/root/keys/
 ```
 
-**Make sure your [Joystream full node](https://github.com/Joystream/joystream/releases) and [Query Node](#setup-query-node) is fully synced before you move to the next step(s)!**
+**Make sure your [Joystream full node](#Setup-joystream-node) and [Query Node](#Setup-Query-Node) is fully synced before you move to the next step(s)!**
 
 ### Config File
 The default `config.yml` file can be found below. Note that you only need to modify a few lines.
@@ -168,11 +169,11 @@ $ nano ~/joystream/distributor-node/metadata.json
       "longitude": 15
     }
   },
-  "extra": "Hello world!"
+  "extra": "<Node ID>: <Location>, Xcores, <RAM>G, <SSD>G "
 }
 ```
 Where:
-- The location should really be correct (you can google your way to latitude/longitude)
+- The location should really be correct, [IPLocation](https://www.iplocation.net/)
 - extra is not that critical. It could perhaps be nice to add some info on your max capacity?
 
 Then set it on-chain with:
