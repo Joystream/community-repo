@@ -78,7 +78,7 @@ $ ssh user@ipOrURL
 $ cd joystream
 $ ./build-packages.sh
 $ yarn joystream-distributor --help
-
+```
 
 ## Accept Invitation
 Once hired, the Storage Lead will invite you a to "bucket". Before this is done, you will not be able to participate. Assuming:
