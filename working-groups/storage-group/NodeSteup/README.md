@@ -64,7 +64,21 @@ $ scp storage-role-key.json <user>@<your.vps.ip.address>:/root/keys/
 ```
 
 **Make sure your [Joystream full node](#Setup-joystream-node) and [Query Node](#Setup-Query-Node) is fully synced before you move to the next step(s)!**
-**The remaining of this guide assume the step [Clone the Repo](./query-node/README.md#Clone-the-Repo) is already executed, if not please go back and execute that section even if you are not running a query node locally**
+
+## Install and Setup the Distributor Node
+> If you have done this on the query node setup, you can skip this section.
+
+```
+$ git clone https://github.com/Joystream/joystream.git
+$ cd joystream
+$ ./setup.sh
+# this requires you to start a new session. if you are using a vps:
+$ exit
+$ ssh user@ipOrURL
+$ cd joystream
+$ ./build-packages.sh
+$ yarn joystream-distributor --help
+
 
 ## Accept Invitation
 Once hired, the Storage Lead will invite you a to "bucket". Before this is done, you will not be able to participate. Assuming:
