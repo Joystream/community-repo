@@ -172,7 +172,7 @@ $ nano ~/joystream/distributor-node/metadata.json
 }
 ```
 Where:
-- The location should really be correct (you can google your way to latitude/longitude)
+- The location should really be correct, [IPLocation](https://www.iplocation.net/)
 - extra is not that critical. It could perhaps be nice to add some info on your max capacity?
 
 Then set it on-chain with:
