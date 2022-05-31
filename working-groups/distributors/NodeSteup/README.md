@@ -26,7 +26,7 @@ $ apt-get update && apt-get upgrade -y
 
 
 ## Install and Setup the Distributor Node
-
+> If you have done this on the query node setup, you can skip this section.
 
 ```
 $ git clone https://github.com/Joystream/joystream.git
