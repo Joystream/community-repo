@@ -10,6 +10,22 @@ For instructions on how to set this up, go [here](../joystream-node/README.md). 
 ## Get Started
 You don't need to host your query-node, but if you're connecting to your own node, docker will not "find" it on localhost. So first, go to [Setup Hosting](../hosting/README.md).
 
+### Install Docker
+```
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+sudo echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+
+### Install Docker-Compose
+```
+sudo curl -L https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
 ### Clone the Repo
 If you haven't already, clone the `Joystream/joystream` (mono)repo:
 

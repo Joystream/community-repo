@@ -14,7 +14,9 @@ To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
 
 ```
 $ apt-get update && apt-get upgrade -y
+$ apt install vim git curl -y
 ```
+
 ## Setup hosting
 [Go here for the installation guide](./hosting/README.md)
 ## Setup joystream-node
