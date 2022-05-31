@@ -96,7 +96,7 @@ $ nano metadata.json
       "longitude": 15
     }
   },
-  "extra": "Hello world!"
+  "extra": "<Node ID>: <Location>, Xcores, <RAM>G, <SSD>G "
 }
 ```
 Where:
