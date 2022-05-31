@@ -70,7 +70,7 @@ distributor-role-key.json
 $ scp distributor-role-key.json <user>@<your.vps.ip.address>:/root/keys/
 ```
 
-**Make sure your [Joystream full node](## Setup joystream-node) and [Query Node](## Setup Query Node) is fully synced before you move to the next step(s)!**
+**Make sure your [Joystream full node](#Setup-joystream-node) and [Query Node](#Setup-Query-Node) is fully synced before you move to the next step(s)!**
 
 ### Config File
 The default `config.yml` file can be found below. Note that you only need to modify a few lines.
