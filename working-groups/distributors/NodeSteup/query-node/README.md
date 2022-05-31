@@ -5,10 +5,10 @@ The following assumptions apply:
 1. You are `root`, and [cloning](#clone-the-repo) to `~/joystream`
 2. in most cases, you will want to run your own `joystream-node` on the same device, and this guide assumes you are.
 
-For instructions on how to set this up, go [here](./joystream-node/README.md). Note that you can disregard all the parts about keys before applying, and just install the software so it is ready to go. You do need to run with `--pruning=archive` though, and be synced past the blockheight you are exporting the db from.
+For instructions on how to set this up, go [here](../joystream-node/README.md). Note that you can disregard all the parts about keys before applying, and just install the software so it is ready to go. You do need to run with `--pruning=archive` though, and be synced past the blockheight you are exporting the db from.
 
 ## Get Started
-You don't need to host your query-node, but if you're connecting to your own node, docker will not "find" it on localhost. So first, go to [Setup Hosting](./hosting/README.md).
+You don't need to host your query-node, but if you're connecting to your own node, docker will not "find" it on localhost. So first, go to [Setup Hosting](../hosting/README.md).
 
 ### Clone the Repo
 If you haven't already, clone the `Joystream/joystream` (mono)repo:
