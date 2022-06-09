@@ -49,7 +49,7 @@ https://<your.cool.url> {
         }
 }
 # Storage Node
-https://joystream2.yyagi.cloud/storage/* {
+https://<your.cool.url>/storage/* {
         log {
                 output stdout
         }
