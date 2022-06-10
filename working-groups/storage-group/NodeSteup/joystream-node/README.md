@@ -104,9 +104,9 @@ After=network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/<path to work directory>/joystream/
+WorkingDirectory=/<path to work directory>/joystream-node/
 ExecStart=joystream-node \
-        --chain /<path to work directory>/joystream/joy-testnet-6.json \
+        --chain /<path to work directory>/joystream-node/joy-testnet-6.json \
         --pruning archive \
         --validator \
         --name <memberId-memberHandle> \
