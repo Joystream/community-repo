@@ -14,6 +14,14 @@ cp <root to folder>/distributor-node/metadata.json /someBackupLocation
 systemctl stop distributor-node.service
 ```
 ## Stop the query node
+In **./query-node/kill.sh** might want to change the below to keep the database
+```
+docker-compose -f ../docker-compose.yml rm -vsf db
+to
+docker-compose -f ../docker-compose.yml rm -sf db
+```
+
+Now kill the containers
 ```
 ./query-node/kill.sh
 ```
