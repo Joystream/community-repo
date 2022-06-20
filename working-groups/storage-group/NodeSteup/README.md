@@ -89,7 +89,7 @@ Once hired, the Storage Lead will invite you a to "bucket". Before this is done,
 
 ```
 $ cd ~/joystream
-ection yarn run storage-node operator:accept-invitation -i <bucketId> -w <workerId> -t <5StorageRolerKey> -k /root/keys/storage-role-key.json
+ection yarn run storage-node operator:accept-invitation -i <bucketId> -w <workerId> -t <5StorageRolerKey> --password=YourKeyPassword -k /root/keys/storage-role-key.json
 
 # With bucketId=1, workerId=2, and operatorkey=5StorageOperatorKey that would be:
 # yarn run storage-node operator:set-metadata -i 1 -w 2 -t 5StorageOperatorKey -k /root/keys/storage-role-key.json
