@@ -1,69 +1,50 @@
-<img style="align:center" src="contributions/creative/banner-competition/leSua-lab/CommunityRepo_banner.png" alt="Joystream Community Repository for reports, researches, tools and other community contributions." />
+Backup date: 27th May, 2022
+Approximate blockheight of backup: `5,489,400` (UNIX timestamp: `1651232508002`)
+Backup URL: https://pioneer.joystreamstats.live/
+Backup endpoint: wss://giza.joystreamstats.live/endpoint
+Person who did backup: `tomato`
 
-<div align="center">
-  <h4>
-    <a href="/council">Council Reports</a> | <a href="/governance">Documentation</a> | <a href="/working-groups">WG Reports</a> | <a href="/bounties">Bounties</a> |  <a href="/contributions/research">Research</a> | <a href="scripts">Scripts</a>
-  </h4>
-</div>
+This folder contains a partial backup of some on-chain data from the `giza` Joystream testnet. It was created to archive historical on-chain information from the project which never migrated across to newer testnets or the mainnet.
 
-Table of Contents
---
+This backup was completed by using a very old version of Pioneer that was used up until the launch of `Olympia`. The data was accessed by using simple chain state queries and copy pasting information. Therefore there may be some problems with the data, so it is provided as is.
 
-<!-- TOC START min:1 max:3 link:true asterisk:false update:true -->
-- [Overview](#overview)
-  - [Community Bounties](#community-bounties)
-  - [Workflow](#workflow)
-    - [KPI Related Submissions](#kpi-related-submissions)
-    - [Individual Submissions](#individual-submissions)
-    - [Jsgenesis Submissions](#jsgenesis-submissions)
-    - [Revisions & Improvements of Submissions](#revisions--improvements-of-submissions)
-<!-- TOC END -->
+This data was only available as a community member (@l1dev) had continued to run an endpoint for the old, no longer used testnet as a public service and without this it may have been near impossible to gather any of this. So a very big thank you is due to @l1dev for this!
 
-# Overview
+The `giza` testnet was discontinued once `olympia` was launched: https://blog.joystream.org/announcing-olympia/
 
-The Joystream Community Repo is meant both as a resource for the community members of the Joystream project, and a place to submit their work or contributions.
+This backup was created to document and archive the early history of the Joystream DAO and hopefully provide insight to future generations about how the early community of the Joystream project communicated and interacted using a very novel (and basic, not to mention extremely slow) on-chain forum and worked on 47 iterations of KPIs to help build a governance system on a highly experimental DAO.
 
-If a KPI requires submitting a deliverable, eg. reports or some code, it is expected that a PR is made to this repo in order to qualify.
+The interactions and governance things discussed in this data are from a highly unique point in the history of blockchains and the internet, when web3 and NFTs were not yet remotely widely used or known.
 
-Although the community is meant to control the repo, Jsgenesis will approve and merge any pull requests for now. Note that the repo is licensed under [GPLv3](/LICENSE).
+Included are:
+- All proposals and proposal threads (no comments--this would have taken too many resources to achieve)
+- All forum posts, threads & categories
+- All memberships
 
+Not included:
+- Full timestamp information
+- Balances
+- Proposal comments
+- Any part of the video/content directories
+- Any part of the Working Groups
+- Any part of the Validator or staking information
+- Any off-chain information (such as data relating to the Founding Members program)
+- Any data except for text (images and avatars will not be preserved)
 
-## Workflow
+Below are some timestamps which may help future generations to more fully understand the data as it would take too long to figure out how to dump all the data fully.
 
-The workflow for changing the repo depends on the reason and purpose behind the change.
-A consistent part is for the contributor to fork the repo, and create a pull request to the applicable branch.
-All changes need to be approved with a proposal, except for selected [files](governance/Files_and_Folders_Naming_Rules.md).
+Blocktime: `6 seconds` (`ideally)`
+ideally, there were many instances of fluctuating blocktimes so you'll have to guess some of it)
 
-### KPI Related Submissions
-When a KPI requires a deliverable to be successful, the following steps must be made:
-- A pull request is made to the master branch.
-- A proposal is made to the [Joystream testnet](https://testnet.joystream.org/).
-  - The proposal (`Text`, or in some cases, `Spending`) contains a link to the PR and other relevant information
-  - When (if) the proposal is voted through, @bwhm and @blrhc is tagged
-  - The time of the latest commit will be used as the time of submission
-- The PR is reviewed, and as long as it does not contain anything malicious or does not comply with license, it is merged.
-- The submission is added to the `Submission Log`
+Blockheight / Timestamp (UNIX):
+`1` / `1617803442006`
+`1000` / `1617809442000`
+`500,000` / `1620811566000`
+`1,000,000` / `1623814932000`
+`2,000,000` / `1629860844001`
+`3,000,000` / `1635913992000`
+`4,000,000` / `1642037730001`
+`5,000,000` / `1648068450000`
+`5,489,400` / `1651232508002`
 
-### Individual Submissions
-If the deliverable is made by an individual, eg. for an existing or upcoming funding proposal, the following steps must be made:
-- A pull request is made to the community branch, in a new folder within the `Community Contributions` directory.
-  - Example: `Bot project - Author Name`
-- A proposal is made to the [Joystream testnet](https://testnet.joystream.org/).
-  - The proposal (`Text`, or in some cases, `Spending`) contains a link to the PR and other relevant information.
-  - When (if) the proposal is voted through, @bwhm and @blrhc is tagged
-- The PR is reviewed, and as long as it does not contain anything malicious or does not comply with the license of the repo, it is merged.
-- The submission is added to the `Submission Log`
-
-### Jsgenesis Submissions
-If a member of the Jsgenesis team wants to make changes to the repo, the following steps must be taken:
-- A pull request is made to the master branch
-- A `Text` proposal is made to the [Joystream testnet](https://testnet.joystream.org/).
-  - The proposal contains a link to the PR and other relevant information
-  - When (if) the proposal is voted through, the PR is merged.
-- The submission is added to the `Submission Log`
-
-### Revisions & Improvements of Submissions
-* For general updates (updating links, text) these can just be gathered occasionally and submitted as a rolling update like this example: https://testnet.joystream.org/#/proposals/14 This does mean that it will take some time for the PRs to be approved by the council.
-* In the event of some highly important change, a proposal could be made so that the matter is addressed more quickly than waiting for a rolling update
-* If users want to be paid for updates or corrections, then they should open a PR (or multiple PRs) and link to it in a spending proposal, when this is approved it would have the same effect as approving the PR (which still has to be reviewed by Jsgenesis)
-* As an example, if a user wants to add functionality to the telegram bot and be paid for it, they can open a PR and create a spending proposal linking to the PR
+Nothing has been edited or modified on my end and to my knowledge this is an accurate backup of on-chain content when the `giza` network was discontinued.
