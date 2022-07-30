@@ -20,10 +20,17 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
 
-### Install Docker-Compose
+### Install a Newer Version of `docker-compose`
+The package manager `apt-get` installs an old version of `docker-compose`, that doesn't take the `.env` file format we have used. We recommend removing the old one, and install the new one, with:
+
 ```
-sudo curl -L https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+$docker-compose version
+# if you see `1.29.2` skip to Deploy
+$ cd ~/
+$ apt-get remove docker-compose
+$ curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+$ chmod +x /usr/local/bin/docker-compose
+$ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
 ### Clone the Repo
@@ -43,18 +50,7 @@ $ ./build-packages.sh
 The last command will take a while...
 
 
-### Install a Newer Version of `docker-compose`
-The package manager `apt-get` installs an old version of `docker-compose`, that doesn't take the `.env` file format we have used. We recommend removing the old one, and install the new one, with:
 
-```
-$docker-compose version
-# if you see `1.29.2` skip to Deploy
-$ cd ~/
-$ apt-get remove docker-compose
-$ curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-$ chmod +x /usr/local/bin/docker-compose
-$ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-```
 
 ### Deploy
 
