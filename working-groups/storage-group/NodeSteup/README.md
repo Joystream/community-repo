@@ -67,7 +67,7 @@ $ scp storage-role-key.json <user>@<your.vps.ip.address>:/root/keys/
 
 **Make sure your [Joystream full node](#Setup-joystream-node) and [Query Node](#Setup-Query-Node) is fully synced before you move to the next step(s)!**
 
-## Install and Setup the Distributor Node
+## Install and Setup the  Node
 > If you have done this on the query node setup, you can skip this section.
 
 ```
