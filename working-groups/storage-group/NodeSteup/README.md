@@ -79,7 +79,7 @@ $ exit
 $ ssh user@ipOrURL
 $ cd joystream
 $ ./build-packages.sh
-$ yarn joystream-distributor --help
+$ yarn storage-node --help
 ```
 
 ## Accept Invitation
