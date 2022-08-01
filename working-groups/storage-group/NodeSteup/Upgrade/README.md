@@ -49,7 +49,7 @@ docker logs -f -n 100 indexer
 docker logs -f -n 100 processor
 ```
 
-### Verify distribution 
+### Verify  
 ```
 https://<your.cool.url>/storage/api/v1/state/data
 ```
