@@ -67,7 +67,7 @@ yarn storage-node leader:delete-bucket -i 8 -k /root/keys/storage-role-key.json 
  yarn joystream-cli working-groups:evictWorker 7 --group=storageProviders
  ```
  
- # GrapQL
+ # GraphQL
  > URL: https://graphql-console.subsquid.io/?graphql_api=https://orion.joystream.org/graphql
  
  ## Failed uploads
