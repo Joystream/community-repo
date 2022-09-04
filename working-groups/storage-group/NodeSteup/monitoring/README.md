@@ -30,7 +30,6 @@ Edit config/packetbeat/packetbeat.yml:
 * name:  Node Name 
 * tags:
   - SP : Storage Provider
-  - DP : Distributor Provicder
   - PB : Packetbeat
   - MB : Metricsbeat
 * packetbeat.interfaces.device: Your device interface
