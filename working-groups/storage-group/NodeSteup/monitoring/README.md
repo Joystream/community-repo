@@ -28,10 +28,8 @@ cd elasticsearch-docker/client/
 
 Edit config/packetbeat/packetbeat.yml:
 * name:  Node Name 
-* tags:
-  - SP : Storage Provider
-  - PB : Packetbeat
-  - MB : Metricsbeat
+* tags: ["SP", "Your Node Name", "PB"]
+
 * packetbeat.interfaces.device: Your device interface
 * hosts : The elasticsearch host
 * username: Username provided by the admin
@@ -40,10 +38,8 @@ Edit config/packetbeat/packetbeat.yml:
 
 Edit config/metricbeat/metricbeat.yml:
 * name:  Node Name
-* tags:
-  - SP : Storage Provider
-  - PB : Packetbeat
-  - MB : Metricsbeat
+* tags: ["SP", "Your Node Name", "MB"]
+
 * hosts : The elasticsearch host
 * username: Username provided by the admin
 * password: Username provided by the admin
