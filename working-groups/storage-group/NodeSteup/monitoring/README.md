@@ -42,7 +42,6 @@ Edit config/metricbeat/metricbeat.yml:
 * name:  Node Name
 * tags:
   - SP : Storage Provider
-  - DP : Distributor Provicder
   - PB : Packetbeat
   - MB : Metricsbeat
 * hosts : The elasticsearch host
