@@ -57,12 +57,14 @@ done
 ```
 
 ## Delete Bucket
+Can only delete empty buckets
 ```
 yarn storage-node leader:remove-operator -i 8 -k /root/keys/storage-role-key.json -p xxxxx
 yarn storage-node leader:delete-bucket -i 8 -k /root/keys/storage-role-key.json -p xxxxx
 ```
 
 ## Evict worker 
+Make sure the bucket is empty and deleted
 ```
  yarn joystream-cli working-groups:evictWorker 7 --group=storageProviders
  ```
