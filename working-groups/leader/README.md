@@ -125,7 +125,7 @@ yarn storage-node leader:delete-bucket -i 8 -k /root/keys/storage-role-key.json 
 
 ## Bags
 
-### Backets asscoated with a bag
+### Buckets asscoated with a bag
 ```
 {
   storageBags(where: {id_eq: "dynamic:channel:2000"}) {
