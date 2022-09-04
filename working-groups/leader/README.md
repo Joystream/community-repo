@@ -66,3 +66,58 @@ yarn storage-node leader:delete-bucket -i 8 -k /root/keys/storage-role-key.json 
 ```
  yarn joystream-cli working-groups:evictWorker 7 --group=storageProviders
  ```
+ 
+ # GrapQL
+ > URL: https://graphql-console.subsquid.io/?graphql_api=https://orion.joystream.org/graphql
+ 
+ ## Failed uploads
+ 
+ 
+ ```
+ {
+  storageDataObjects(limit: 3000, offset: 0, where: {isAccepted_eq: false, createdAt_gt: "2022-09-02T00:00:00.000Z", createdAt_lt: "2022-09-04T03:00:54.000Z"}) {
+    createdAt
+    id
+    storageBag {
+      storageBuckets {
+        id
+      }
+      id
+    }
+  }
+}
+```
+
+## Bucket
+
+### Bags in Storage Bucket
+```
+{
+  storageBuckets(where: {id_eq: "6"}) {
+    id
+    bags {
+      id
+    }
+  }
+}
+```
+
+### Bucket end point and worker 
+
+```
+{
+  storageBuckets(where: {id_eq: "1"}) {
+    id
+    acceptingNewBags
+    operatorMetadata {
+      nodeEndpoint
+    }
+    operatorStatus {
+      ... on StorageBucketOperatorStatusActive {
+        __typename
+        workerId
+      }
+    }
+  }
+  ```
+}
