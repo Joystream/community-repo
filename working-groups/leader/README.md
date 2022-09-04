@@ -119,5 +119,5 @@ yarn storage-node leader:delete-bucket -i 8 -k /root/keys/storage-role-key.json 
       }
     }
   }
-  ```
 }
+  ``
