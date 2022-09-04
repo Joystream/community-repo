@@ -2,15 +2,6 @@
 
 
 
-## Distributor Node
-
-In joystream/distributor-node/config.yml configure the below section
-```
-logs:
-  elastic:
-    level: info
-    endpoint: https://<elasticsearch.your.cool.url>
-```
 
 ## Storage Node
 
