@@ -108,11 +108,15 @@ Make sure the bucket is empty and deleted
 
 ```
 {
-  storageBuckets(where: {id_eq: "1"}) {
+  storageBuckets(where: {id_eq: "2"}) {
     id
     acceptingNewBags
     operatorMetadata {
       nodeEndpoint
+      nodeLocation {
+        id
+      }
+      extra
     }
     operatorStatus {
       ... on StorageBucketOperatorStatusActive {
@@ -122,6 +126,7 @@ Make sure the bucket is empty and deleted
     }
   }
 }
+
 ```
 
 
