@@ -137,3 +137,31 @@ Make sure the bucket is empty and deleted
   }
 }
 ```
+## Worker 
+
+```
+{
+  workers(where: {groupId_eq: "storageWorkingGroup", id_eq: "storageWorkingGroup-16"}) {
+    id
+    groupId
+    membershipId
+    membership {
+      handle
+    }
+    status {
+      ... on WorkerStatusActive {
+        phantom
+      }
+      ... on WorkerStatusLeaving {
+        __typename
+      }
+      ... on WorkerStatusLeft {
+        __typename
+      }
+      ... on WorkerStatusTerminated {
+        __typename
+      }
+    }
+  }
+}
+```
