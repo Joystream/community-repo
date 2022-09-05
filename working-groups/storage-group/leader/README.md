@@ -113,9 +113,6 @@ Make sure the bucket is empty and deleted
     acceptingNewBags
     operatorMetadata {
       nodeEndpoint
-      nodeLocation {
-        id
-      }
       extra
     }
     operatorStatus {
@@ -126,6 +123,7 @@ Make sure the bucket is empty and deleted
     }
   }
 }
+
 
 ```
 
