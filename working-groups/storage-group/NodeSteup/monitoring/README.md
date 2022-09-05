@@ -27,7 +27,7 @@ cd elasticsearch-docker/client/
 ```
 
 Edit config/packetbeat/packetbeat.yml:
-* name:  Node Name 
+* name:  NodeName_SP 
 * tags: ["SP", "Your Node Name", "PB"]
 
 * packetbeat.interfaces.device: Your device interface
@@ -37,7 +37,7 @@ Edit config/packetbeat/packetbeat.yml:
 
 
 Edit config/metricbeat/metricbeat.yml:
-* name:  Node Name
+* name:  NodeName_SP
 * tags: ["SP", "Your Node Name", "MB"]
 
 * hosts : The elasticsearch host
