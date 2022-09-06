@@ -57,6 +57,17 @@ done
 
 or 
 
+curl 'https://joystream2.yyagi.cloud/graphql'  \
+     -s \
+     -H 'Accept-Encoding: gzip, deflate, br'  \
+     -H 'Content-Type: application/json' \
+     -H 'Accept: application/json'  \
+     -H 'Connection: keep-alive'  \
+     -H 'DNT: 1'  \
+     -H 'Origin: https://joystream2.yyagi.cloud'  \
+     --data-binary '{"query":"query MyQuery { storageBuckets(where: {id_eq: 2}) {  bags { id } } }\n"}'   2>&1\
+     | jq . | grep dynamic | sed 's/"id"://g;s/"//g;s/ //g' > bags_file
+     
 for i in $(cat ~/bags_file) ; do
     yarn storage-node leader:update-bag -i $i -k /root/keys/storage-role-key.json -r 1 -p xxxxx
 done
