@@ -185,3 +185,7 @@ Make sure the bucket is empty and deleted
   }
 }
 ```
+
+
+# Ref 
+## Storage dir :/root/.joystream-storage/
