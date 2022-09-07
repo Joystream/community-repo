@@ -189,5 +189,5 @@ Make sure the bucket is empty and deleted
 
 # Ref 
 > Storage dir :/root/.joystream-storage/
->  GraphQL URL: https://graphql-console.subsquid.io/?graphql_api=https://orion.joystream.org/graphql
+> GraphQL URL : https://graphql-console.subsquid.io/?graphql_api=https://orion.joystream.org/graphql
 
