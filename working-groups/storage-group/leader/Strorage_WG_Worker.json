@@ -1,0 +1,46 @@
+{
+    "applicationDetails": "Storage WG Worker",
+    "title": "Storage WG Worker needed",
+    "shortDescription": "Joystream Video DAO (https://joystream.org) is actively looking for a Storage WG Worker",
+    "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage WG Worker to join our [Pioneer Governance App](https://dao.joystream.org) community Storage team.\n\n**W
+ho are we:**\n\n- Joystream is an open-source blockchain project that will be truly user-governed. \n\n - [Storage](https://www.notion.so/joystream/Storage-9dc5a16444934dc4bda08b596bc15375) are a small g
+roups of node maintainers helping to make Jsgenesis products works smoothly and reliably\n\n**Who are you:** \n\n- Experienced with how to setup and maintain blockchain nodes \n\n- Have access to highly
+performant and reliable IT infrastructure (dedicated servers) with storage capacity of 2TB and more \n\n In order to apply for the opening, every applicant should make a test task (bounty) https://www.no
+tion.so/joystream/Bounty-Storage-WG-Entry-Level-74b13f81a32d4efb811f8259d6fbeee0 ",
+    "applicationFormQuestions": [{
+            "question": "Are you currently employed?"
+        },
+        {
+            "question": "What is your timezone?"
+        },
+        {
+            "question": "Are you based in US?"
+        },
+        {
+            "question": "Do you have experience with Linux? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with blockchain nodes? If yes, please describe it"
+        },
+        {
+            "question": "Tell us a bit about youself"
+        },
+        {
+            "question": "Your availability, in hours per day"
+        },
+        {
+            "question": "Do you understand the compensation model?"
+        },
+        {
+            "question": "Tell us a bit more about your experience in IT"
+        },
+        {
+            "question": "Your Discord"
+        }
+    ],
+    "stakingPolicy": {
+        "amount": 40000,
+        "unstakingPeriod": 43201
+    },
+    "rewardPerBlock": 1
+}
