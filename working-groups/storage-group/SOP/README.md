@@ -42,7 +42,7 @@ Exception: exclude down time arranged with the lead in advance.
 - **1 hr  : Disable new bags**
 - **3 hrs : Remove all Bags**
 - **24 hrs:  Disable rewards till the node is back in service and verified** 
-- **48 hrs: Evict worker**
+- **120 hrs: Evict worker**
 
 Exception: exclude down time arranged with the lead in advance.
 
@@ -51,7 +51,7 @@ Exception: exclude down time arranged with the lead in advance.
 - **1 hr : Disable new bags**
 - **3 hrs: Remove all Bags**
 - **24 hrs: Disable rewards till the node is back in service and verified** 
-- **48 hrs: Evict worker**
+- **120 hrs: Evict worker**
 
 Exception: exclude down time arranged with the lead in advance.
 
