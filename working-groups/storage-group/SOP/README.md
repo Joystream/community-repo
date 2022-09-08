@@ -12,7 +12,7 @@ All storage nodes are required to:
 
 Failure will result in the rewards reduced by %75
 
-# metadata in format
+# Metadata in format
 All storage nodes are required to configure metadata as per the guide.
 Failure will result in the rewards reduced by %25
 
