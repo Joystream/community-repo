@@ -64,3 +64,4 @@ All storage nodes are required to comply to any requirement by the council withi
 # Ref
 - All rewards reduction is from full salary.
 - Reduction can happen till minimum rewards of 1 Joy. 
+- Reward reduction is reverted once the issue is addressed.
