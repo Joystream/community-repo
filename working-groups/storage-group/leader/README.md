@@ -47,6 +47,7 @@ Needed :
 - URL : https://play.joystream.org/studio/videos
 - test bag ID: YYAGI:2705,2706 
 - test bag ID: 0x2bc:2222, 2223, 2227 
+- Or create new channel in Atlas
 
 
 Check buckets assigned to the bag 
