@@ -1,6 +1,7 @@
 # Run Query node
-All storage nodes are required to run a QN locally in the storage node.
-All storage node are required to provide a link to thier QN GrapqL.
+All storage nodes are required to :
+- Run a QN locally in the storage node.
+- Provide a link to thier QN GrapqL.
 
 **Failure will result in the rewards reduced by %25**
 
