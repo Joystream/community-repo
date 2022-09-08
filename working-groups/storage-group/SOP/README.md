@@ -35,6 +35,8 @@ All storage nodes are required to
 - **Remove all Bags**
 - **Rewards reduced by %50**
 
+Exception: exclude down time arranged with the lead.
+
 # Down time (Hours): 
 **Failure will result in:**
 - **1 hr  : Disable new bags**
@@ -42,9 +44,13 @@ All storage nodes are required to
 - **24 hrs:  Disable rewards** 
 - **48 hrs: Evict worker**
 
+Exception: exclude down time arranged with the lead.
+
 # Node not accepting upload (Hours):
 **Failure will result in:**
 - **1 hr : Disable new bags**
 - **3 hrs: Remove all Bags**
 - **24 hrs: Disable rewards** 
 - **48 hrs: Evict worker**
+
+Exception: exclude down time arranged with the lead.
