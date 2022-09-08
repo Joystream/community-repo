@@ -35,7 +35,7 @@ All storage nodes are required to
 - **Remove all Bags**
 - **Rewards reduced by %50**
 
-Exception: exclude down time arranged with the lead.
+Exception: exclude down time arranged with the lead in advance.
 
 # Down time (Hours): 
 **Failure will result in:**
@@ -44,7 +44,7 @@ Exception: exclude down time arranged with the lead.
 - **24 hrs:  Disable rewards** 
 - **48 hrs: Evict worker**
 
-Exception: exclude down time arranged with the lead.
+Exception: exclude down time arranged with the lead in advance.
 
 # Node not accepting upload (Hours):
 **Failure will result in:**
@@ -53,4 +53,9 @@ Exception: exclude down time arranged with the lead.
 - **24 hrs: Disable rewards** 
 - **48 hrs: Evict worker**
 
-Exception: exclude down time arranged with the lead.
+Exception: exclude down time arranged with the lead in advance.
+
+
+# Ref
+- All rewards reduction is from full salary.
+- Reduction can happen tillminimum rewards of 1 Joy. 
