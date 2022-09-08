@@ -41,7 +41,7 @@ Exception: exclude down time arranged with the lead in advance.
 **Failure will result in:**
 - **1 hr  : Disable new bags**
 - **3 hrs : Remove all Bags**
-- **24 hrs:  Disable rewards** 
+- **24 hrs:  Disable rewards till the node is back in service and verified** 
 - **48 hrs: Evict worker**
 
 Exception: exclude down time arranged with the lead in advance.
@@ -50,11 +50,16 @@ Exception: exclude down time arranged with the lead in advance.
 **Failure will result in:**
 - **1 hr : Disable new bags**
 - **3 hrs: Remove all Bags**
-- **24 hrs: Disable rewards** 
+- **24 hrs: Disable rewards till the node is back in service and verified** 
 - **48 hrs: Evict worker**
 
 Exception: exclude down time arranged with the lead in advance.
 
+
+# Comply to new requirement by the council 
+All storage nodes are required to comply to any requirement by the council within 7 days. 
+
+**Failure will result in the rewards reduced by %25**
 
 # Ref
 - All rewards reduction is from full salary.
