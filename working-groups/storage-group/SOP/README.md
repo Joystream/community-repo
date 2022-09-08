@@ -58,4 +58,4 @@ Exception: exclude down time arranged with the lead in advance.
 
 # Ref
 - All rewards reduction is from full salary.
-- Reduction can happen tillminimum rewards of 1 Joy. 
+- Reduction can happen till minimum rewards of 1 Joy. 
