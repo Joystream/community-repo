@@ -64,8 +64,10 @@ Check buckets assigned to the bag
 Remove all buckets and leave only allow bucket to be tested 
 
 ```
-yarn storage-node leader:update-bag -i dynamic:channel:2706 -k /root/keys/storage-role-key.json -a 16 -p xxxxxxx
 yarn storage-node leader:update-bag -i dynamic:channel:2705 -k /root/keys/storage-role-key.json -r 17 -p xxxxxxx
+yarn storage-node leader:update-bag -i dynamic:channel:2705 -k /root/keys/storage-role-key.json -r 14 -p xxxxxxx
+yarn storage-node leader:update-bag -i dynamic:channel:2706 -k /root/keys/storage-role-key.json -a 16 -p xxxxxxx
+
 ```
 
 ## Overview 
