@@ -255,6 +255,18 @@ Make sure the bucket is empty and deleted
 }
 ```
 
+# Budget
+
+Go [here](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc.joystream.org%3A9944#/explorer) and collect the hashes for begining and end of period.
+![image](https://user-images.githubusercontent.com/4862448/189320289-1d09ff85-f5d1-4a83-861d-6e2d45f7e6a3.png)
+
+Go [here](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc.joystream.org%3A9944#/chainstate):
+- StorageWorkingGroup
+- Budget
+- Paste the hash
+- Press "+
+![image](https://user-images.githubusercontent.com/4862448/189320458-ef1c163a-2c3a-449d-9937-ec585e8bcea7.png)
+
 
 # Ref 
 > Storage dir :/root/.joystream-storage/
