@@ -1,11 +1,12 @@
-# Run Query node
+# Standard Operation procedure 
+## Run Query node
 All storage nodes are required to :
 - Run a QN locally in the storage node.
 - Provide a link to thier QN GrapqL.
 
 **Failure will result in the rewards reduced by %25**
 
-# Eleastic search
+# Elastic search
 All storage nodes are required to:
 - Configure the Storage node to send metrics  to ES
 - Configure  metricbeat to send metrics  to ES
@@ -13,19 +14,19 @@ All storage nodes are required to:
 
 **Failure will result in the rewards reduced by %75**
 
-# Metadata in format
+## Metadata in format
 All storage nodes are required to configure metadata as per the guide.
 
 **Failure will result in the rewards reduced by %25**
 
-# Keep a disk usage space less than 80%
+## Keep a disk usage space less than 80%
 All storage nodes are required to Keep a disk usage space less than 80%.
 
 **Failure will result in:**
 - **Remove all Bags**
 - **Rewards reduced by %75**
 
-# Up time
+## Up time
 
 All storage nodes are required to
 - Monthly up time %98
@@ -37,7 +38,7 @@ All storage nodes are required to
 
 Exception: exclude down time arranged with the lead in advance.
 
-# Down time (Hours): 
+## Down time (Hours): 
 **Failure will result in:**
 - **1 hr  : Disable new bags**
 - **3 hrs : Remove all Bags**
@@ -46,7 +47,7 @@ Exception: exclude down time arranged with the lead in advance.
 
 Exception: exclude down time arranged with the lead in advance.
 
-# Node not accepting upload (Hours):
+## Node not accepting upload (Hours):
 **Failure will result in:**
 - **1 hr : Disable new bags**
 - **3 hrs: Remove all Bags**
@@ -55,8 +56,9 @@ Exception: exclude down time arranged with the lead in advance.
 
 Exception: exclude down time arranged with the lead in advance.
 
+## Node performance
 
-# Comply to new requirement by the council 
+## Comply to new requirement by the council 
 All storage nodes are required to comply to any requirement by the council within 7 days. 
 
 **Failure will result in the rewards reduced by %25**
