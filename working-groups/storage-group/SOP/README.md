@@ -12,7 +12,7 @@ All storage nodes are required to:
 - Configure  metricbeat to send metrics  to ES
 - Configure  packetbeat to send metrics  to ES
 
-**Failure will result in the rewards reduced by %75**
+**Failure will result in the rewards reduced by %50**
 
 ## Metadata in format
 All storage nodes are required to configure metadata as per the guide.
