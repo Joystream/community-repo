@@ -44,3 +44,10 @@ Make sure the bucket is empty and deleted
  yarn joystream-cli working-groups:evictWorker 7 --group=storageProviders
  ```
  
+## Remove/add Bag to Bucket
+
+```
+yarn storage-node leader:update-bag -i dynamic:channel:2705 -k /root/keys/storage-role-key.json -r 17 -p xxxxxxx
+yarn storage-node leader:update-bag -i dynamic:channel:2706 -k /root/keys/storage-role-key.json -a 17 -p xxxxxxx
+
+```
