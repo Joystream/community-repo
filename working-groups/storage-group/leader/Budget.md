@@ -1,5 +1,6 @@
 # Budget
 
+[GraphQL](https://graphql-console.subsquid.io/?graphql_api=https://joystream2.yyagi.cloud/graphql)
 
 ```
 {
