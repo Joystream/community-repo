@@ -1,7 +1,5 @@
 ## Overview 
-```
-yarn joystream-cli working-groups:overview -g=storageProviders
-```
+
 ```
 root@joystream2 ~/joystream # yarn joystream-cli working-groups:overview -g=storageProviders
 yarn run v1.22.15
