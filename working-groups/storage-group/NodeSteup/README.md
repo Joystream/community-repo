@@ -12,6 +12,13 @@ To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
 
 # Initial setup
 
+## Min machine Requirement
+
+- CPU: 6 Core
+- RAM: 16G
+- Storage: 2T
+- Bandwidth: 1G
+
 ```
 $ apt-get update && apt-get upgrade -y
 $ apt install vim git curl -y
