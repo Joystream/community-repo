@@ -11,11 +11,15 @@ To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
 
 # Min Requirement
 
+## Hardware
 - CPU: 6 Core
 - RAM: 16G
 - Storage: 2T SSD
 - Bandwidth: 1G
--
+
+## Location
+No more that 15% of the current operator clustered at the same region.
+
 # Initial setup
 
 
