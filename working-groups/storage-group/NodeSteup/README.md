@@ -9,15 +9,16 @@ Please note that unless there are any openings for new storage providers (which 
 
 To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
 
-
-# Initial setup
-
-## Min machine Requirement
+# Min Requirement
 
 - CPU: 6 Core
 - RAM: 16G
 - Storage: 2T
 - Bandwidth: 1G
+-
+# Initial setup
+
+
 
 ```
 $ apt-get update && apt-get upgrade -y
