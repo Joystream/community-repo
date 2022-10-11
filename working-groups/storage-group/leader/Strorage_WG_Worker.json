@@ -42,5 +42,5 @@ tion.so/joystream/Bounty-Storage-WG-Entry-Level-74b13f81a32d4efb811f8259d6fbeee0
         "amount": 40000,
         "unstakingPeriod": 43201
     },
-    "rewardPerBlock": 1
+    "rewardPerBlock": 6
 }
