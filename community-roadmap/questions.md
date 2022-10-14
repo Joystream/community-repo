@@ -15,4 +15,4 @@
 - Tell what will be the USD (and JOY) salary for the position? Come up with the benchmark that will justify the USD (JOY) salary
 4. If there will be less seats in the WG compared to the number of seats in the current testnet, which people will you hire? Propose your criteria.
 5. How would you manage people who didn’t find their place in your WG, but who are still quite experienced? 
-6. Propose a model of _capacity_ utilization for your WG over time (in terms of capacity required over time/ staff number required over time/ overall budget required over time). For example, for the Storage WG _capacity_ will be the total storage space avaliable across all servers. 
+6. Propose a forecast of _capacity_ utilization for your WG over time (in terms of capacity required over time/ staff number required over time/ overall budget required over time). For example, for the Storage WG _capacity_ will be the total storage space avaliable across all servers. 
