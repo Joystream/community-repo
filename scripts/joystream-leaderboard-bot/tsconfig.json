@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "importHelpers": true,
+    "module": "commonjs",
+    "outDir": "lib",
+    "rootDir": "src",
+    "target": "es2017",
+    "esModuleInterop": true,
+    "types" : [ "node" ],
+    "baseUrl": ".",
+    "paths": {
+      "@polkadot/types/augment": ["../types/augment-codec/augment-types.ts"]
+    },
+    "resolveJsonModule": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

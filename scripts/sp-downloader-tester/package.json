@@ -1,0 +1,26 @@
+{
+  "name": "sp-downloader-tester",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "sp-downloader-tester": "bin/cli.js"
+  },
+  "scripts": {
+    "sp-downloader-tester": "bin/cli.js"
+  },
+  "author": "freakstatic",
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "@joystream/types": "^0.16.1",
+    "@polkadot/api": "4.2.1",
+    "@polkadot/api-contract": "4.2.1",
+    "@polkadot/keyring": "^6.0.5",
+    "@polkadot/metadata": "4.2.1",
+    "@polkadot/types": "4.2.1",
+    "@polkadot/util": "^6.0.5",
+    "@polkadot/util-crypto": "^6.0.5",
+    "@polkadot/wasm-crypto": "^4.0.2",
+    "axios": "^0.21.4",
+    "commander": "^8.2.0"
+  }
+}

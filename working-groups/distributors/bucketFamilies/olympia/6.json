@@ -1,0 +1,10 @@
+{
+    "region": "af-2",
+    "description": "Southern Africa",
+    "latencyTestTargets": [],
+    "areas": [
+        {
+            "continentCode": "AF"
+        }
+    ]
+}

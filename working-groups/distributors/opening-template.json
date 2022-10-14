@@ -1,0 +1,20 @@
+[
+    {
+        "activateAt": { "CurrentBlock": null },
+        "maxReviewPeriodLength": 432000,
+        "applicationStake": { "mode": "AtLeast", "value": 50000 },
+        "roleStake": {"mode": "AtLeast", "value": 1000000 }
+    },
+    {
+        "version": 1,
+        "headline": "Distributor in Northern Europe",
+        "job": {
+            "title": "EU Distributor",
+            "description": "Requirements: SSD, 1 TB SSD, synced validator and query node."
+        },
+        "application": {
+        },
+        "reward": "40k tJOY per 1200 blocks ($80 / week)",
+        "process": { "details": [] }
+    }
+]
