@@ -1,4 +1,4 @@
-Questions 
+## Questions 
 
 1. Write step by step guide how the work within your WG will be organized in the first term of the mainent 
 - Council will make a proposal for hiring a Lead
