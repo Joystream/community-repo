@@ -27,10 +27,10 @@ Working Group: Marketing WG
 
 ### 2. **Review [Gitbook Scores](https://joystream.gitbook.io/testnet-workspace/testnet/council-period-scoring/marketers-score) for your Work Group and tell:**
 
-- **Which scores should be excluded?**
+#### **Which scores should be excluded?**
 1. Recruiting score should excluded. Because there will very little changes in working groups in mainnet and recruitment will take place rarely. Also MWG recommend to transfer recruiting responsibility to HR working group just before mainnet start.
 2. Documentation score should exclude in mainnet, right now we have two documentation scores: system and testnet. Testnet part will become irrelevant in mainnet automatically. System part will also complete before mainnet. Then in mainnet, rarely we will propose changes in system part depending on needs of that time, so this score should exclude. 
-- **Which scores should be added?**
+#### **Which scores should be added?**
 - Brand awareness score should add in this way
     
     No. of users joined official discord
@@ -44,15 +44,15 @@ Working Group: Marketing WG
 
                    
 
-- **If you have scores that purely depend on the JSG decision, how can these scores be adjusted so the Council will be able to assess them in a more objective way?**
+#### **If you have scores that purely depend on the JSG decision, how can these scores be adjusted so the Council will be able to assess them in a more objective way?**
 
 n/a 
 
 ### 3. For each position of your WG in the mainnet, incl. the Lead:
 
-**Let’s suppose, 1 $JOY= 0.06USD**
+Let’s suppose, 1 $JOY= 0.06USD
 
-**• Develop the Job Descriptions and provide links to them**
+#### Develop the Job Descriptions and provide links to them
 
 Deputy Lead:  [Click on link](https://www.notion.so/Deputy-lead-364b1f1621704ac0abad1f8431ce424c)
 
@@ -60,7 +60,7 @@ Web3 Marketing Strategy Builder: [Click on link](https://www.notion.so/Web3-Mark
 
 Marketing Operations Manager: [Click on link](https://www.notion.so/Marketing-operations-manager-64dc24f423f642069d71df8c77d6e64b)
 
-**• Propose a stake amount in USD (and JOY) required by application for each position**
+#### Propose a stake amount in USD (and JOY) required by application for each position
 
 Deputy Lead: 6,000USD (100,000 $JOY)
 
@@ -76,7 +76,9 @@ Lead will hire following roles:
 2. Web3 Marketing Advisor 
 3. Marketing Operations Manager 
 
-**Propose your criteria:** Lead will hire those professionals who worked on same role in testnet. Because they know their job very well and they have proved themselves. Also their roles are very crucial for MWG. 
+#### Propose your criteria:
+
+Lead will hire those professionals who worked on same role in testnet. Because they know their job very well and they have proved themselves. Also their roles are very crucial for MWG. 
 
 ### 5. How would you manage people who didn’t find their place in your WG, but who are still quite experienced?
 
