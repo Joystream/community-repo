@@ -1,19 +1,8 @@
 # Mainnet Questions For Leads (MWG example)
 
-**Parameters:** 
-
 Working Group: Marketing WG
 
-Term period: 21 days
-
-WG weight: 2
-
-WG budget: $2k
-
-WG Size: 4 members (Including lead)
-
-### **Detailed plans of MWG in 1st term**
-
+### **1. Write step by step guide how the work within your WG will be organized in the first term of the mainent**
 (This plan doesn’t show the whole strategy of MWG, this is developed for first mainnet term, keep in mind, marketing is dynamic space, where things changes rapidly and accordingly existing strategies changes and new strategies develop)
 
 1. Lead will hire a following 3 workers:
@@ -36,7 +25,7 @@ WG Size: 4 members (Including lead)
 - How to collect video nft on gleev?
 1. We will start and keep doing outreach and networking with crypto journalists to reap benefits which are best in interest of joystream.
 
-### **Review [Gitbook Scores](https://joystream.gitbook.io/testnet-workspace/testnet/council-period-scoring/marketers-score) for your Work Group and tell:**
+### 2. **Review [Gitbook Scores](https://joystream.gitbook.io/testnet-workspace/testnet/council-period-scoring/marketers-score) for your Work Group and tell:**
 
 - **Which scores should be excluded?**
 1. Recruiting score should excluded. Because there will very little changes in working groups in mainnet and recruitment will take place rarely. Also MWG recommend to transfer recruiting responsibility to HR working group just before mainnet start.
@@ -59,7 +48,7 @@ WG Size: 4 members (Including lead)
 
 n/a 
 
-### For each position of your WG in the mainnet, incl. the Lead:
+### 3. For each position of your WG in the mainnet, incl. the Lead:
 
 **Let’s suppose, 1 $JOY= 0.06USD**
 
@@ -79,7 +68,7 @@ Web3 Marketing Advisor: 6,000USD (100,000 $JOY)
 
 Marketing Operations Manager: 6,000USD (100,000 $JOY)
 
-### If there will be less seats in the WG compared to the number of seats in the current testnet, which people will you hire? Propose your criteria.
+### 4. If there will be less seats in the WG compared to the number of seats in the current testnet, which people will you hire? Propose your criteria.
 
 Lead will hire following roles:
 
@@ -89,11 +78,11 @@ Lead will hire following roles:
 
 **Propose your criteria:** Lead will hire those professionals who worked on same role in testnet. Because they know their job very well and they have proved themselves. Also their roles are very crucial for MWG. 
 
-### How would you manage people who didn’t find their place in your WG, but who are still quite experienced?
+### 5. How would you manage people who didn’t find their place in your WG, but who are still quite experienced?
 
 We will keep them in touch definitely. And when we will need their any help, we will ask for their services through bounties and we will pay them through reserves which we saved for them from the budget (B-X/4).
 
-**Propose a forecast of *capacity* utilization for your WG over time (in terms of capacity required over time/ staff number required over time/ overall budget required over time). For example, for the Storage WG *capacity* will be the total storage space avaliable across all servers.**
+### 6. Propose a forecast of *capacity* utilization for your WG over time (in terms of capacity required over time/ staff number required over time/ overall budget required over time). For example, for the Storage WG *capacity* will be the total storage space avaliable across all servers.**
 
 With the passage of time;
 
