@@ -31,7 +31,7 @@ Working Group: Marketing WG
 1. Recruiting score should excluded. Because there will very little changes in working groups in mainnet and recruitment will take place rarely. Also MWG recommend to transfer recruiting responsibility to HR working group just before mainnet start.
 2. Documentation score should exclude in mainnet, right now we have two documentation scores: system and testnet. Testnet part will become irrelevant in mainnet automatically. System part will also complete before mainnet. Then in mainnet, rarely we will propose changes in system part depending on needs of that time, so this score should exclude. 
 #### **Which scores should be added?**
-- Brand awareness score should add in this way
+    Brand awareness score should add in this way
     
     No. of users joined official discord
     
