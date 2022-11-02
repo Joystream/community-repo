@@ -20,7 +20,9 @@
 NA
 3. For each position of your WG in the mainnet, incl. the Lead: 
 - Develop the Job Descriptions and provide links to them.
-- Propose a stake amount in USD (and JOY) required by application for each position. 
+Please find the job descriptions here :[Job descriptions](https://github.com/yasiryagi/community-repo/tree/master/working-groups/storage-group/leader/opening)
+- Propose a stake amount in USD (and JOY) required by application for each position.  
+See the job descriptions above.
 4. If there will be less seats in the WG compared to the number of seats in the current testnet, which people will you hire? Propose your criteria.
 This should be purely based on skills and abilities including machines. 
 6. How would you manage people who didn’t find their place in your WG, but who are still quite experienced? 
