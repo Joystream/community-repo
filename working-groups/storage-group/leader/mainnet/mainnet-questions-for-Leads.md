@@ -12,10 +12,10 @@
 2. Review [Gitbook Scores](https://joystream.gitbook.io/testnet-workspace/testnet/council-period-scoring/general-working-group-score) for your Work Group and tell: 
 - Which scores should be excluded? 
   The below shoudl be excluded:
-- BOUNTY_SCORE
-- Catastrophic Errors
- * No openings
-- Cancel the plan and summamry report. Simplify and automate report. 
+* BOUNTY_SCORE
+* Catastrophic Errors
+ - No openings
+* Cancel the plan and summary report. Simplify and automate report. 
 - Which scores should be added? 
 NA
 3. For each position of your WG in the mainnet, incl. the Lead: 
