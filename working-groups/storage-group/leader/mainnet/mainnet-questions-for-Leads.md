@@ -25,10 +25,12 @@ Please find the job descriptions here :[Job descriptions](https://github.com/yas
 - Propose a stake amount in USD (and JOY) required by application for each position.  
 See the job descriptions above.
 4. If there will be less seats in the WG compared to the number of seats in the current testnet, which people will you hire? Propose your criteria.
- This should be purely based on skills and abilities including:
+
+This should be purely based on skills and abilities including:
  - Linux and devops skill level
  - Machine specification
- - Will to commit time and expertise to develop tools and procedures. 
+ - Willing to commit time and expertise to develop tools and procedures i.e. addd value. 
+ -
 6. How would you manage people who didn’t find their place in your WG, but who are still quite experienced? 
 - Creare a waiting list.
 - Establish stringent practice of preformance measurement to weed out none performing members.  
