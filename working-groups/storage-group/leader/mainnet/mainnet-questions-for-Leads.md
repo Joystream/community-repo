@@ -10,12 +10,12 @@
  -  5. Lead will hire monitoring node worker (if ES still in use)
  -  4. lead will hire workers
 2. Review [Gitbook Scores](https://joystream.gitbook.io/testnet-workspace/testnet/council-period-scoring/general-working-group-score) for your Work Group and tell: 
-- Which scores should be excluded? 
+* Which scores should be excluded? 
   The below shoudl be excluded:
-* BOUNTY_SCORE
-* Catastrophic Errors
-  - No openings
-* Cancel the plan and summary report. Simplify and automate report. 
+  -  BOUNTY_SCORE
+  - Catastrophic Errors
+    *No openings
+  - Cancel the plan and summary report. Simplify and automate report. 
   
 - Which scores should be added? 
 NA
