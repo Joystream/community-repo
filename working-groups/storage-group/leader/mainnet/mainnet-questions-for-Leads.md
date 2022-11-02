@@ -24,13 +24,17 @@ Please find the job descriptions here :[Job descriptions](https://github.com/yas
 - Propose a stake amount in USD (and JOY) required by application for each position.  
 See the job descriptions above.
 4. If there will be less seats in the WG compared to the number of seats in the current testnet, which people will you hire? Propose your criteria.
-This should be purely based on skills and abilities including machines. 
+ This should be purely based on skills and abilities including:
+ - Linux and devops skill level
+ - Machine specification
+ - Will to commit time and expertise to develop tools and procedures. 
 6. How would you manage people who didn’t find their place in your WG, but who are still quite experienced? 
 - Creare a waiting list.
 - Establish stringent practice of preformance measurement to weed out none performing members.  
 - Establish a practice of weekly activities to improve the performance. Mmebers who do not comply risk been replaced. 
 8. Propose a forecast of _capacity_ utilization for your WG over time (in terms of capacity required over time/ staff number required over time/ overall budget required over time). For example, for the Storage WG _capacity_ will be the total storage space avaliable across all servers. 
 Storage WG _capacity_ will be the 
-- Total number of servers avaiable. Min requirement is replication requirement. 
-- total storage space avaliable across all servers. 
+- Min server storage is 2T.
+- Total number of servers avaiable should be 2.5 * Min requirement is replication requirement. 
+- total storage space avaliable across all servers has to be . 
 
