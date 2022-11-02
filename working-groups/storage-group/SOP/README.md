@@ -63,6 +63,11 @@ All storage nodes are required to comply to any requirement by the council withi
 
 **Failure will result in the rewards reduced by %25**
 
+## WG improvement 
+Each worker need  to develop a tool or a procedure that improve the group monthly.
+
+**Not comlying 3 times in a raw may result on eviction.
+
 # Ref
 - All rewards reduction is from full salary.
 - Reduction can happen till minimum rewards of 1 Joy. 
