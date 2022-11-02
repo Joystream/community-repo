@@ -14,9 +14,9 @@
   The below shoudl be excluded:
 * BOUNTY_SCORE
 * Catastrophic Errors
- - No openings
+  - No openings
 * Cancel the plan and summary report. Simplify and automate report. 
-- Which scores should be added? 
+  - Which scores should be added? 
 NA
 3. For each position of your WG in the mainnet, incl. the Lead: 
 - Develop the Job Descriptions and provide links to them.
