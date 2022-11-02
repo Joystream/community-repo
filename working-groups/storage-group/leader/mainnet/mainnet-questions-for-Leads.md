@@ -31,4 +31,4 @@ This should be purely based on skills and abilities including machines.
 Storage WG _capacity_ will be the 
 - Total number of servers avaiable. Min requirement is replication requirement. 
 - total storage space avaliable across all servers. 
--
+
