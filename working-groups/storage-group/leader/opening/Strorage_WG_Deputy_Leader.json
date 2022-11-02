@@ -2,10 +2,17 @@
     "applicationDetails": "Storage WG Deputy Lead",
     "title": "Storage WG Deputy Lead needed",
     "shortDescription": "Joystream Video DAO (https://joystream.org) is actively looking for a Storage WG Deputy Lead",
-    "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage WG Deputy Lead to join our [Pioneer Governance App](https://dao.joystream.org) community Storage team.\n
-\n Deputy Lead should be willing to learn how to manage Lead's responsibilities, including: \n\n - Maximize the Storage WG scores \n\n - Ensure that Storage Providers are performing adequately \n\n - Ana
-lyze current storage capacities utilized within the Storage WG and develop steps and processes to improve and expand upon them \n\n - Analyze current storage capacities utilized within the Storage WG and
- develop steps and processes to improve and expand upon them \n\n - Prepares weekly reports/plans/summary in a format approved by Council and Jsgenesis",
+    "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage WG Deputy Lead to join our [Pioneer Governance App](https://dao.joystream.org) community Storage team.\n\n 
+    **Deputy Lead should be willing to learn how to manage Lead's responsibilities, including::** \n\n
+    - Maximize the Storage WG scores \n\n - Ensure that Storage Providers are performing adequately \n\n 
+    - Analyze current storage capacities utilized within the Storage WG and develop steps and processes to improve and expand upon them \n\n 
+    - Analyze current storage capacities utilized within the Storage WG and develop steps and processes to improve and expand upon them \n\n 
+    - Prepares weekly reports/plans/summary in a format approved by Council and Jsgenesis",
+    **Who are you:** \n\n
+    - Experience in amanging team and help the team to reach it's objectives.
+    - Experienced with how to setup and maintain blockchain nodes \n\n
+    - Have access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 2TB and more \n\n 
+    - Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus/Grafana).
     "applicationFormQuestions": [{
             "question": "Are you currently employed?"
         },
@@ -17,6 +24,15 @@ lyze current storage capacities utilized within the Storage WG and develop steps
         },
         {
             "question": "Do you have experience with Linux? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with Docker? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with devops and automation? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with GraphQl? If yes, please describe it"
         },
         {
             "question": "Do you have experience with blockchain nodes? If yes, please describe it"
