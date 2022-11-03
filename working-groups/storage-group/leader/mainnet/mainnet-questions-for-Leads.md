@@ -30,7 +30,7 @@ This should be purely based on skills and abilities including:
  - Linux and devops skill level
  - Machine specification
  - Willing to commit time and expertise to develop tools and procedures i.e. addd value. 
- -
+ 
 6. How would you manage people who didn’t find their place in your WG, but who are still quite experienced? 
 - Creare a waiting list.
 - Establish stringent practice of preformance measurement to weed out none performing members.  
