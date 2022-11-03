@@ -36,9 +36,10 @@ This should be purely based on skills and abilities including:
 - Establish stringent practice of preformance measurement to weed out none performing members.  
 - Establish a practice of weekly activities to improve the performance. Mmebers who do not comply risk been replaced. 
 8. Propose a forecast of _capacity_ utilization for your WG over time (in terms of capacity required over time/ staff number required over time/ overall budget required over time). For example, for the Storage WG _capacity_ will be the total storage space avaliable across all servers. 
-Storage WG _capacity_ will be the 
+
 The calculation below taking assumption from [here](https://gist.github.com/bedeho/1b231111596e25b215bc66f0bd0e7ccc)
-- Min per server storage is 2T.
-- Total number of servers avaiable should be 1.5 * Min requirement is replication requirement. 
+
+- Min per server storage is 2T with a preference for 5T.
+- Initial min total number of servers avaiable should be <1.5 * Min requirement is replication requirement>. Current replication is 5, resulting on a min 5*1.5 ~= 8 nodes and capacity 16T to 40T. 
 - total storage space avaliable across all servers has to be . 
 
