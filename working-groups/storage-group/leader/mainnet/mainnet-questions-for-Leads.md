@@ -40,6 +40,6 @@ This should be purely based on skills and abilities including:
 The calculation below taking assumption from [here](https://gist.github.com/bedeho/1b231111596e25b215bc66f0bd0e7ccc)
 
 - Min per server storage is 2T with a preference for 5T.
-- Initial min total number of servers avaiable should be <1.5 * Min requirement is replication requirement>. Current replication is 5, resulting on a min 5*1.5 ~= 8 nodes and capacity 16T to 40T. 
+- Initial min total number of servers avaiable should be `1.5 * Min requirement is replication requirement`. Current replication is 5, resulting on a min 5*1.5 ~= 8 nodes and capacity 16T to 40T. 
 - total storage space avaliable across all servers has to be . 
 
