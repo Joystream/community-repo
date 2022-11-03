@@ -32,12 +32,13 @@ This should be purely based on skills and abilities including:
  - Willing to commit time and expertise to develop tools and procedures i.e. addd value. 
  
 6. How would you manage people who didn’t find their place in your WG, but who are still quite experienced? 
-- Creare a waiting list.
+- Create a waiting list.
 - Establish stringent practice of preformance measurement to weed out none performing members.  
 - Establish a practice of weekly activities to improve the performance. Mmebers who do not comply risk been replaced. 
 8. Propose a forecast of _capacity_ utilization for your WG over time (in terms of capacity required over time/ staff number required over time/ overall budget required over time). For example, for the Storage WG _capacity_ will be the total storage space avaliable across all servers. 
 Storage WG _capacity_ will be the 
-- Min server storage is 2T.
-- Total number of servers avaiable should be 2.5 * Min requirement is replication requirement. 
+The calculation below taking assumption from [here](https://gist.github.com/bedeho/1b231111596e25b215bc66f0bd0e7ccc)
+- Min per server storage is 2T.
+- Total number of servers avaiable should be 1.5 * Min requirement is replication requirement. 
 - total storage space avaliable across all servers has to be . 
 
