@@ -63,5 +63,5 @@
         "amount": 1000000,
         "unstakingPeriod": 43201
     },
-    "rewardPerBlock": 21
+    "rewardPerBlock": 10
 }
