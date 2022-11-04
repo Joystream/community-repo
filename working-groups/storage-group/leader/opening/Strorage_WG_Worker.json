@@ -56,5 +56,5 @@ In order to apply for the opening, every applicant should make a test task (boun
         "amount": 100000,
         "unstakingPeriod": 43201
     },
-    "rewardPerBlock": 6
+    "rewardPerBlock": 2
 }
