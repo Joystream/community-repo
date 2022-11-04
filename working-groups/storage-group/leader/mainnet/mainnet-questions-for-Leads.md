@@ -9,6 +9,8 @@
  -  4. Lead will hire a deputy.
  -  5. Lead will hire monitoring node worker (if ES still in use)
  -  4. lead will hire workers
+[Commands](https://github.com/yasiryagi/community-repo/blob/master/working-groups/storage-group/leader/Initial_%20setup_commands.md)
+
 2. Review [Gitbook Scores](https://joystream.gitbook.io/testnet-workspace/testnet/council-period-scoring/general-working-group-score) for your Work Group and tell: 
 * Which scores should be excluded? 
   The below shoudl be excluded:
@@ -30,6 +32,8 @@ This should be purely based on skills and abilities including:
  - Linux and devops skill level
  - Machine specification
  - Willing to commit time and expertise to develop tools and procedures i.e. addd value. 
+
+Preference will be made for testnet contributors who showed the above skills, reliability and commitment.
  
 6. How would you manage people who didn’t find their place in your WG, but who are still quite experienced? 
 - Create a waiting list.
