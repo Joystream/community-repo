@@ -43,7 +43,7 @@ Preference will be made for testnet contributors who showed the above skills, re
 
 The calculation below taking assumption from [here](https://gist.github.com/bedeho/1b231111596e25b215bc66f0bd0e7ccc)
 
-- Min per worker storage is 5TB with a preference for 10TB, max 25TB.
+- Min per worker storage is 5TB with a preference for 7TB, max 10TB.
 - Initial min total number of workers avaiable should be `2.5 * Min requirement is replication requirement`. Current replication is 5, resulting on a min 5*2.5 ~= 13 nodes and capacity 65T to 130T, taking into account replication capacity 13T to 26T. 
-- At 5PB as per docuement above we will be looking at ~ 50 workers with 100TB per worker. 
+- At 5PB as per docuement above we will be looking at ~ 50 workers with 100TB per worker or ~ 500 workers with 10T per worker. 
 
