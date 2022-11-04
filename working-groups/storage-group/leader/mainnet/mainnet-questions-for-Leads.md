@@ -43,7 +43,16 @@ Preference will be made for testnet contributors who showed the above skills, re
 
 The calculation below taking assumption from [here](https://gist.github.com/bedeho/1b231111596e25b215bc66f0bd0e7ccc)
 
-- Min per worker storage is 5TB with a preference for 7TB, max 10TB.
-- Initial min total number of workers avaiable should be `2.5 * Min requirement is replication requirement`. Current replication is 5, resulting on a min 5*2.5 ~= 13 nodes and capacity 65T to 130T, taking into account replication capacity 13T to 26T. 
-- At 5PB as per docuement above we will be looking at ~ 50 workers with 100TB per worker or ~ 500 workers with 10T per worker. 
+* Min per worker storage is 5TB with a preference for 7TB, max 10TB.
+* Initial min total number of workers avaiable should be `2.5 * Min requirement is replication requirement`. Current replication is 5, resulting on a min 5*2.5 ~= 13 nodes and capacity 65T to 130T, taking into account replication capacity 13T to 26T. 
+* At 5PB as per docuement above we will be looking at ~ 50 workers with 100TB per worker or ~ 500 workers with 10T per worker. 
+* Salaries: 
+  - Assuming initialy, 
+    * Worker: average 4 hrs weekly effort and a cost of $500 per worker.
+    * Deputy lead: average 7.5 hrs weekly effort and a cost of $500 per worker.
+    * Deputy lead: average 15 hrs weekly effort and a cost of $1000 per worker.
+  - Propose initial salaries as follow:
+    * Lead: $16k
+    * Deputy lead: $8k
+    * Worker: $4k
 
