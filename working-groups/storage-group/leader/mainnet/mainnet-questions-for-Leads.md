@@ -9,6 +9,7 @@
  -  4. Lead will hire a deputy.
  -  5. Lead will hire monitoring node worker (if ES still in use)
  -  4. lead will hire workers
+
 [Commands](https://github.com/yasiryagi/community-repo/blob/master/working-groups/storage-group/leader/Initial_%20setup_commands.md)
 
 2. Review [Gitbook Scores](https://joystream.gitbook.io/testnet-workspace/testnet/council-period-scoring/general-working-group-score) for your Work Group and tell: 
