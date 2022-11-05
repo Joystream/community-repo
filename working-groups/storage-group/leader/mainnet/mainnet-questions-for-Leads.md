@@ -55,5 +55,5 @@ The calculation below taking assumption from [here](https://gist.github.com/bede
   - Propose initial salaries as follow:
     * Lead: $16k (8 Joy/block)
     * Deputy lead: $6k (3 Joy/block)
-    * Worker: $4k (2 Joy/block)
+    * Worker: $2k (1 Joy/block)
 
