@@ -53,7 +53,7 @@ The calculation below taking assumption from [here](https://gist.github.com/bede
     * Deputy Lead: average 7.5 hrs weekly effort and a cost of $500 per worker.
     * Lead: average 15 hrs weekly effort and a cost of $1000 per worker.
   - Propose initial salaries as follow:
-    * Lead: $20k (10 Joy/block)
-    * Deputy lead: $8k (4 Joy/block)
+    * Lead: $16k (8 Joy/block)
+    * Deputy lead: $6k (3 Joy/block)
     * Worker: $4k (2 Joy/block)
 
