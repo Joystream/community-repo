@@ -23,7 +23,7 @@
     "moment": "^2.29.2",
     "node-localstorage": "^2.2.1",
     "node-schedule": "^2.0.0",
-    "nodemon": "^2.0.9",
+    "nodemon": "^2.0.20",
     "path": "^0.12.7"
   },
   "type": "module"
