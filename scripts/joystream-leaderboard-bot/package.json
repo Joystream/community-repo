@@ -37,7 +37,7 @@
     "it-first": "^1.0.4",
     "it-last": "^1.0.4",
     "it-to-buffer": "^1.0.4",
-    "json-schema": "^0.2.3",
+    "json-schema": "^0.4.0",
     "mongoose": "5.13.15",
     "node-telegram-bot-api": "^0.53.0",
     "puppeteer": "^10.2.0",
