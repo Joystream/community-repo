@@ -1,9 +1,9 @@
-import { joystreamBlue } from '../config'
+import { joystreamBlue } from '../../config'
 import { formatBalance } from '@polkadot/util';
 import { u128 } from '@polkadot/types';
 import { EventRecord } from '@polkadot/types/interfaces';
 import Discord from 'discord.js';
-import { ApplicationId, ApplicationOf, Membership, OpeningOf, RewardRelationship, Stake } from '@joystream/types/augment-codec/all';
+import { ApplicationId, ApplicationOf, Membership, OpeningOf, RewardRelationship, Stake, StakingPolicy } from '@joystream/types/augment-codec/all';
 
 
 export const getMintCapacityChangedEmbed = (minted: number, mint: u128, blockNumber: number, event: EventRecord): Discord.MessageEmbed => {
@@ -23,8 +23,8 @@ export const getOpeningAddedEmbed = (opening: any, openingObject: OpeningOf, blo
         .addFields(
             { name: 'ID', value: openingObject.hiring_opening_id + "", inline: true },
             { name: 'Reward', value: opening.reward, inline: true },
-            { name: 'Application Stake', value: openingObject.policy_commitment.application_staking_policy.unwrap().amount.toString() || 'Not Set', inline: true },
-            { name: 'Role Stake', value: openingObject.policy_commitment.role_staking_policy.unwrap().amount.toString() || 'Not Set', inline: true },
+            { name: 'Application Stake', value: openingObject.policy_commitment.application_staking_policy.unwrapOr({} as StakingPolicy).amount?.toString() || 'Not Set', inline: true },
+            { name: 'Role Stake', value: openingObject.policy_commitment.role_staking_policy.unwrapOr({} as StakingPolicy).amount?.toString() || 'Not Set', inline: true },
             { name: 'Created By', value: opening.creator.membership.handle, inline: true },
         ), blockNumber, event );
 }
@@ -39,7 +39,7 @@ export const getAppliedOnOpeningEmbed = (applicationId: ApplicationId, applicati
 
     return addCommonProperties(new Discord.MessageEmbed()
         .setTitle(`🏛 ${applicant.handle} applied to opening ${openingText.job.title}`)
-        .setDescription(hiringApplicationText['About you']['What makes you a good fit for the job?'])
+        .setDescription(hiringApplicationText['About you']['What makes you a good fit for the job?'] || 'No description provided by applicant')
         .addFields(
             { name: 'Application ID', value: applicationId.toString(), inline: true},
             { name: 'Opening', value:  openingText.headline, inline: true},
@@ -112,12 +112,11 @@ export const getApplicationTerminatedOrWithdrawEmbed = (action: string, applicat
         ), blockNumber, event );
 }
 
-export const getStakeUpdatedEmbed = (stake: Stake, member: Membership, action: string, blockNumber: number, event: EventRecord): Discord.MessageEmbed => {
-    
+export const getStakeUpdatedEmbed = (stake: Stake | null, member: Membership, action: string, blockNumber: number, event: EventRecord): Discord.MessageEmbed => {    
     return addCommonProperties(new Discord.MessageEmbed()
         .setTitle(`💰💰💰 ${member.handle}'s stake has been ${action}`)
         .addFields(
-            { name: 'Stake', value: formatBalance(stake.value.toString(), { withUnit: 'JOY' }), inline: true }
+            { name: "Stake", value: stake ? formatBalance(stake.value.toString(), { withUnit: "JOY" }) : "Not Set", inline: true }
         ), blockNumber, event );
 }
 

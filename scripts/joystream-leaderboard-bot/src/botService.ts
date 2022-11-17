@@ -6,7 +6,7 @@ import TelegramBot from 'node-telegram-bot-api';
 import { BotServiceProps } from './types';
 import AccountTransferTokens from './commands/transferTokens';
 import startCommand from './commands/start';
-import inductedCommand from './commands/inducted';
+// import inductedCommand from './commands/inducted';
 import faucetCommand from './commands/faucet';
 
 import getFmInfo from './getFmInfo';
@@ -159,7 +159,7 @@ async function changeFaucetBalanceNotifyTg(
       );
 
       // console.log('message', message);
-      
+
       await props.send(message, `Notifies ${enableNotify ? 'enabled' : 'disabled'}`);
     } else {
       await props.send(message, 'Set your handle througs /sethandle');
@@ -203,7 +203,7 @@ export default async function BotService(_bot, props: BotServiceProps) {
       }
     } catch (ex) {
       console.log('ex', ex);
-      
+
       await props.send(message, ex.message);
     }
   });

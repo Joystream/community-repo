@@ -1,7 +1,13 @@
 import { WsProvider, ApiPromise } from "@polkadot/api";
 import { types } from "@joystream/types";
-import { CouncilMember, CouncilStageElection } from "@joystream/types/council";
-import { Null, Option } from "@polkadot/types";
+import {
+  Announcing,
+  ElectionStage,
+  Revealing,
+  Seats,
+  Voting,
+} from "@joystream/types/council";
+import { Null, Option, u32 } from "@polkadot/types";
 import {
   CouncilData,
   CouncilMemberData,
@@ -10,6 +16,7 @@ import {
 } from "./interfaces";
 import { getParticipantAt } from "./functions";
 import { BalanceOf, BlockNumber, Hash } from "@polkadot/types/interfaces";
+import { Mint, MintId } from "@joystream/types/mint";
 
 async function main() {
   // Initialise the provider to connect to the local node
@@ -30,70 +37,63 @@ async function main() {
   for (let i = 0; i < blocks.length; i++) {
     const councilMembers: CouncilMemberData[] = [];
     const blockHash = (await api.rpc.chain.getBlockHash(blocks[i])) as Hash;
-    // const electionStatus = (await api.query.councilElection.stage.at(blockHash)) as Option<ElectionStage>;
-    const electionRound = +((await api.query.councilElection.announcementPeriodNr.at(
+    const electionStatus = (await api.query.councilElection.stage.at(
       blockHash
-    )))
-    // console.log(`
-    //   at block: ${blocks[i]},
-    //   the election stage was: ${electionStatus.value.toString()},
-    //   of election round: ${electionRound}
-    // // `);
-    // if (electionStatus.value instanceof CouncilStageElection) {
-    //   const electionStage = electionStatus.unwrap();
-    //   if (electionStage.value instanceof Announcing) {
-    //     console.log(
-    //       "In 'Announcing' stage - ends at block",
-    //       +electionStage.value
-    //     );
-    //   } else if (electionStage.value instanceof Voting) {
-    //     console.log("In 'Voting' stage - ends at block", +electionStage.value);
-    //   } else if (electionStage.value instanceof Revealing) {
-    //     console.log(
-    //       "In 'Revealing' stage - ends at block",
-    //       +electionStage.value
-    //     );
-    //   } else {
-    //   }
-    // }
-    const activeCouncil = (await api.query.council.activeCouncil.at(blockHash)) as CouncilMember[];
-    if (activeCouncil.length) {
+    )) as Option<ElectionStage>;
+    const electionRound = +((await api.query.councilElection.round.at(
+      blockHash
+    )) as u32);
+    console.log(`
+      at block: ${blocks[i]},
+      the election stage was: ${electionStatus.value.toString()},
+      of election round: ${electionRound}
+    `);
+    if (electionStatus.value instanceof ElectionStage) {
+      const electionStage = electionStatus.unwrap();
+      if (electionStage.value instanceof Announcing) {
+        console.log(
+          "In 'Announcing' stage - ends at block",
+          +electionStage.value
+        );
+      } else if (electionStage.value instanceof Voting) {
+        console.log("In 'Voting' stage - ends at block", +electionStage.value);
+      } else if (electionStage.value instanceof Revealing) {
+        console.log(
+          "In 'Revealing' stage - ends at block",
+          +electionStage.value
+        );
+      } else {
+      }
+    }
+    const activeCouncil = (await api.query.council.activeCouncil.at(
+      blockHash
+    )) as Seats;
+    if (!activeCouncil.isEmpty) {
       const elected: Participant[] = [];
       for (let member of activeCouncil) {
         let otherStake = 0;
         let jsgStake = 0;
         const councilMemberId = await getParticipantAt(
           api,
-          member.staking_account_id,                                  /// ???
+          member.member,
           blockHash
         );
         const voters: VoterData[] = [];
         elected.push(councilMemberId);
-
-        /* There is no backers anymore in @joystream\types\council\index.d.ts 
-
-        Changed code from old mersion in master branch:
-        declare const Seat_base: import("../JoyStruct").ExtendedStructDecoratedConstructor<{
-          member: typeof AccountId;
-          stake: typeof u128;
-          backers: typeof Backers;}>;
-
-        */
-
-        // for (let backer of member.backers) {
-        //   const voterId = await getParticipantAt(api, backer.member, blockHash);
-        //   const voter: VoterData = {
-        //     voterId,
-        //     voterStake: +backer.stake,
-        //     stakeRatioExJSGvotes: 0,
-        //     kpiRewardRatio: 0,
-        //   };
-        //   otherStake += +backer.stake;
-        //   if (backer.member.toString() === joystreamVoter) {
-        //     jsgStake += +backer.stake;
-        //   }
-        //   voters.push(voter);
-        // }
+        for (let backer of member.backers) {
+          const voterId = await getParticipantAt(api, backer.member, blockHash);
+          const voter: VoterData = {
+            voterId,
+            voterStake: +backer.stake,
+            stakeRatioExJSGvotes: 0,
+            kpiRewardRatio: 0,
+          };
+          otherStake += +backer.stake;
+          if (backer.member.toString() === joystreamVoter) {
+            jsgStake += +backer.stake;
+          }
+          voters.push(voter);
+        }
         const ownStake = +member.stake;
         const totalStakeExJSGvotes = +member.stake + otherStake - jsgStake;
         const totalStake = +member.stake + otherStake;
@@ -159,15 +159,14 @@ async function main() {
         electedHash
       )) as Option<BlockNumber>;
 
-      /**
       const councilMint = (await api.query.council.councilMint.at(
         electedHash
       )) as MintId;
       const mintAtStart = (await api.query.minting.mints.at(
         electedHash,
         councilMint
-      )) as Mint;**/
-      const mintCapacityAtStart = 0; //+mintAtStart.capacity;
+      )) as Mint;
+      const mintCapacityAtStart = +mintAtStart.capacity;
 
       let rewardInterval = 3600;
       if (!(getRewardInterval.value instanceof Null)) {
@@ -198,19 +197,19 @@ async function main() {
         elected,
         electionData: councilMembers,
       };
-      // const bestHeight = +(await api.derive.chain.bestNumber());
-      // if (bestHeight > newCouncilStartsAt) {
-      //   const endHash = (await api.rpc.chain.getBlockHash(
-      //     newCouncilStartsAt
-      //   )) as Hash;
-      //   const mintAtEnd = (await api.query.minting.mints.at(
-      //     endHash,
-      //     councilMint
-      //   )) as Mint;
-      //   council.mintCapacityAtEnd = +mintAtEnd.capacity;
-      //   council.councilSpending =
-      //     +mintAtEnd.total_minted - +mintAtStart.total_minted;
-      // }
+      const bestHeight = +(await api.derive.chain.bestNumber());
+      if (bestHeight > newCouncilStartsAt) {
+        const endHash = (await api.rpc.chain.getBlockHash(
+          newCouncilStartsAt
+        )) as Hash;
+        const mintAtEnd = (await api.query.minting.mints.at(
+          endHash,
+          councilMint
+        )) as Mint;
+        council.mintCapacityAtEnd = +mintAtEnd.capacity;
+        council.councilSpending =
+          +mintAtEnd.total_minted - +mintAtStart.total_minted;
+      }
       councils.push(council);
     }
   }
