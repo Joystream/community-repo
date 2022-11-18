@@ -1,4 +1,4 @@
-# Sumer - Council Election Round #{electionRound}  - Performance Review and Minutes
+# Giza - Council Election Round #{electionRound}  - Performance Review and Minutes
 ## 1 - Basic Information
 ### 1.1 - Introduction
 The council is expected to produce reports during each round and provide feedback in the form of workflow, challenges, thinking and performance as well as minutes covering important events during the council session.
@@ -32,7 +32,7 @@ The Council Round number is taken from the chain, the KPI rounds have an offset 
 * End minted: {endMinted}
 * Total minted during council round: {totalNewMinted} tokens (+{percNewMinted}% from start)
 
-* Budget proposal link: https://testnet.joystream.org/#/proposals/802
+* Budget proposal link: https://testnet.joystream.org/#/proposals/813
 * Budget forum link: https://testnet.joystream.org/#/forum/threads/717
 
 (Note: The council budget is now based on the rewards for roles, council payments and validator payments. Jsgenesis decides how much to set the mint to.)

@@ -27,7 +27,7 @@ dotenv.config();
 
 const tgApiKey = process.env.TG_API_KEY_EN || "";
 const bot = new TelegramBot(tgApiKey, { polling: true });
-const discordToken = process.env.DISCORD_TOKEN || "";
+const discordToken = process.env.DISCORD_TOKEN_EN || "";
 const client = new Client();
 
 let nextSyncDate = moment();
@@ -52,13 +52,14 @@ const loadScoringPeriodData = async () => {
 
 client.on("message", async (message) => {
   await reloadScoringData();
-  if (message.content === "!help") {
+
+  if ((message.content === "!help") || (message.content === "!start")) {
     const helpMessage = `Hello ${message.author.username}, I can help you with the status of Joystream Scoring Periods.\nIn channels I delete my messages after 30 seconds, but in DM they will be kept.\nSupported commands:\n!scoring - Get the scoring period information\n!help - Get this help`;
-    message.channel.send({content: helpMessage}).then( (msg: { delete: () => void; }) => {
+    message.channel.send({ content: helpMessage }).then((msg: { delete: () => void; }) => {
       if (message.channel.type !== "dm") {
         message.delete()
         setTimeout(() => {
-          msg.delete()  
+          msg.delete()
         }, messageDeletionTimeout)
       }
     });
@@ -71,12 +72,12 @@ client.on("message", async (message) => {
       submitReportLink,
       leaderboardLink
     );
-    message.channel.send({content: messageContent}).then( (msg: { suppressEmbeds: (arg0: boolean) => void; delete: () => void; }) => {
+    message.channel.send({ content: messageContent }).then((msg: { suppressEmbeds: (arg0: boolean) => void; delete: () => void; }) => {
       msg.suppressEmbeds(true)
       if (message.channel.type !== "dm") {
         message.delete()
         setTimeout(() => {
-          msg.delete()  
+          msg.delete()
         }, messageDeletionTimeout)
       }
     });
@@ -88,9 +89,8 @@ bot.on("message", async (msg: TelegramBot.Message) => {
   if (msg && msg.from) {
     console.log(msg.chat);
     const chatId = msg.chat.id;
-    const username = `${msg.from.first_name} ${
-      msg.from.last_name || ""
-    }`.trim();
+    const username = `${msg.from.first_name} ${msg.from.last_name || ""
+      }`.trim();
 
     const userParsed = `[${username}](tg://user?id=${msg.from.id})`;
     const leaderboardLink = ` - [Check scores](https://t.me/JoystreamLeaderboardBot)`;
@@ -98,7 +98,23 @@ bot.on("message", async (msg: TelegramBot.Message) => {
       parse_mode: "Markdown",
       disable_web_page_preview: true,
     };
+    if (msg.text?.startsWith("/help") || msg.text?.startsWith("/start")) {
+      const helpMessage = `Hello ${userParsed}, I can help you with the status of Joystream Scoring Periods.\n*In channels I delete my messages after 30 seconds, but in DM they will be kept.*\nSupported commands:\n/scoring - Get the scoring period information\n/help - Get this help`;
+      // const helpMessage = `${msg.chat.type}`;
+      bot.sendMessage(chatId, helpMessage, options).then((message) => {
+        if (message.chat.type !== "private") {
+          try {
+            bot.deleteMessage(chatId, msg.message_id.toString());
+          } catch (e) { }
 
+          setTimeout(() => {
+            try {
+              bot.deleteMessage(chatId, message.message_id.toString());
+            } catch (e) { }
+          }, messageDeletionTimeout);
+        }
+      });
+    }
     if (msg.text?.startsWith("/scoring")) {
       const submitReportLink = "[submit your report](https://www.joystream.org/founding-members/form)";
       const messageContent = generateScoringPeriodMessage(
@@ -107,14 +123,16 @@ bot.on("message", async (msg: TelegramBot.Message) => {
         leaderboardLink
       );
       bot.sendMessage(chatId, messageContent, options).then((message) => {
-        try {
-          bot.deleteMessage(chatId, msg.message_id.toString());
-        } catch (e) {}
-        setTimeout(() => {
+        if (message.chat.type !== "private") {
           try {
-            bot.deleteMessage(chatId, message.message_id.toString());
-          } catch (e) {}
-        }, messageDeletionTimeout);
+            bot.deleteMessage(chatId, msg.message_id.toString());
+          } catch (e) { }
+          setTimeout(() => {
+            try {
+              bot.deleteMessage(chatId, message.message_id.toString());
+            } catch (e) { }
+          }, messageDeletionTimeout);
+        }
       });
     }
   }
@@ -136,8 +154,8 @@ const generateScoringPeriodMessage = (
   const daysLeft = `***${duration
     .asDays()
     .toFixed()} ${dayText} on ${endDate.format(
-    "dddd DD MMM"
-  )} at ${endDate.format("HH:mm")}***`;
+      "dddd DD MMM"
+    )} at ${endDate.format("HH:mm")}***`;
   const deadline = endDate.add(5, "d").format("dddd DD MMM HH:mm");
   const prevDeadline = startDate.add(5, "d").format("dddd DD MMM HH:mm");
   const hello = `Hello ${userParsed}!\n`;
