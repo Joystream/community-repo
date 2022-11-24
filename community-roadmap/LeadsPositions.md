@@ -414,6 +414,3 @@ $62.5/hour ($10000 =160 hours per month \* $62.5/hour)
 
 1. See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#gateways-1](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#gateways-1)
 
-**JSON Format For CLI**
-
-[https://github.com/yasiryagi/community-repo/blob/master/working-groups/storage-group/leader/opening/Strorage\_WG\_Leader.json.json](https://github.com/yasiryagi/community-repo/blob/master/working-groups/storage-group/leader/opening/Strorage_WG_Leader.json.json)
