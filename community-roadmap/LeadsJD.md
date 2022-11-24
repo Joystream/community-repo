@@ -412,5 +412,5 @@ $62.5/hour ($10000 =160 hours per month \* $62.5/hour)
 
 **Tasks for Carthage**
 
-1. See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#gateways-1](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#gateways-1)
+- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#gateways-1](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#gateways-1)
 
