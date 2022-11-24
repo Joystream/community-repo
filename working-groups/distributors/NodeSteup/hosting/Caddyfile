@@ -1,0 +1,44 @@
+# Joystream-node
+wss://<your.cool.url>/rpc {
+        reverse_proxy localhost:9944
+}
+
+
+# Query-node
+https://<your.cool.url> {
+        log {
+                output stdout
+        }
+        route /server/* {
+                uri strip_prefix /server
+                reverse_proxy localhost:8081
+        }
+        route /graphql {
+                reverse_proxy localhost:8081
+        }
+        route /graphql/* {
+                reverse_proxy localhost:8081
+        }
+        route /gateway/* {
+                uri strip_prefix /gateway
+                reverse_proxy localhost:4000
+        }
+        route /@apollographql/* {
+                reverse_proxy localhost:8081
+        }
+}
+
+# Distributor Node
+https://<your.cool.url>/distributor/* {
+        log {
+                output stdout
+        }
+        route /distributor/* {
+                uri strip_prefix /distributor
+                reverse_proxy localhost:3334
+        }
+        header /distributor {
+                Access-Control-Allow-Methods "GET, PUT, HEAD, OPTIONS, POST"
+                Access-Control-Allow-Headers "GET, PUT, HEAD, OPTIONS, POST"
+        }
+}

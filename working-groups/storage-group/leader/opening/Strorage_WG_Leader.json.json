@@ -1,0 +1,67 @@
+{
+    "applicationDetails": "Storage WG Lead",
+    "title": "Storage WG Lead needed",
+    "shortDescription": "Joystream Video DAO (https://joystream.org) is actively looking for a Storage WG Lead",
+    "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage WG Deputy Lead to join our [Pioneer Governance App](https://dao.joystream.org) community Storage team.\n\n 
+    **Lead should be willing to learn how to manage Lead's responsibilities, including::** \n\n
+    - Maximize the Storage WG scores \n\n 
+    - Evalute the system capacity and react to the needs \n\n 
+    - Recruit new worker and expand on storage capacity as needed \n\n
+    - Evalute the system capacity and react to the needs \n\n 
+    - Ensure that Storage Providers are performing adequately \n\n 
+    - Analyze current storage capacities utilized within the Storage WG and develop steps and processes to improve and expand upon them \n\n  
+    - Ensure tight collaboration across other work groups, including Builders, to drive Storage initiatives \n\n
+    - Mentor and train Storage WG members, seek to continually improve processes DAO-wide
+    - Prepares weekly reports/plans/summary in a format approved by Council and Jsgenesis",
+    
+    **Who are you:** \n\n
+    - Experience in manging team and help the team to reach it's objectives.
+    - Experienced with how to setup and maintain blockchain nodes \n\n
+    - Have access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 2TB and more \n\n 
+    - Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus/Grafana).
+    "applicationFormQuestions": [{
+            "question": "Are you currently employed?"
+        },
+        {
+            "question": "What is your timezone?"
+        },
+        {
+            "question": "Are you based in US?"
+        },
+        {
+            "question": "Do you have experience with Linux? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with Docker? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with devops and automation? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with GraphQl? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with blockchain nodes? If yes, please describe it"
+        },
+        {
+            "question": "Tell us a bit about yourself"
+        },
+        {
+            "question": "Your availability, in hours per day"
+        },
+        {
+            "question": "Do you understand the compensation model?"
+        },
+        {
+            "question": "Tell us a bit more about your experience in IT"
+        },
+        {
+            "question": "Your Discord"
+        }
+    ],
+    "stakingPolicy": {
+        "amount": 1000000,
+        "unstakingPeriod": 43201
+    },
+    "rewardPerBlock": 10
+}
