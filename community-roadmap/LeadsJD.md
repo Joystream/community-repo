@@ -43,7 +43,7 @@ $10000
 
 **Salary**
 
-$62.5/hour ($10000 =160 hours per month \* $62.5/hour)
+$46.875/hour ($7500 =160 hours per month \* $46.875/hour)
 
 **Questions**
 
@@ -110,7 +110,7 @@ $10000
 
 **Salary**
 
-$62.5/hour ($10000 =160 hours per month \* $62.5/hour)
+$46.875/hour ($7500 =160 hours per month \* $46.875/hour)
 
 **Questions**
 
