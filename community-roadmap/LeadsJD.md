@@ -144,7 +144,7 @@ $10000 (166666 JOY)
 
 **Responsibilities**
 
-- MaximizingBuildersgroup scores (will be provided by the Council)
+- Maximizing Builder group scores (will be provided by the Council)
 - Preparing reports
 - Moderating #builders channel and updating BuildersNotion page
 - Managing budget
@@ -259,7 +259,7 @@ TBD later
 
 **Responsibilities**
 
-- MaximizingForum group scores (will be provided by the Council)
+- Maximizing Forum group scores (will be provided by the Council)
 - Preparing reports
 - Moderating group's Discord channel and updating Notion page
 - Managing budget
@@ -317,7 +317,7 @@ TBD later
 
 **Responsibilities**
 
-- MaximizingMarketing groupscores (will be provided by the Council)
+- Maximizing Marketing group scores (will be provided by the Council)
 - Developing and implementing Marketing strategy
 - Preparing reports
 - Moderating group's Discord channel and updating Notion page
@@ -369,7 +369,7 @@ TBD later
 
 **Responsibilities**
 
-- MaximizingContent groupscores (will be provided by the Council)
+- Maximizing Content group scores (will be provided by the Council)
 - Preparing reports
 - Moderates the #content-curator and #content-creator channels.
 - Updating CWG Notion page
