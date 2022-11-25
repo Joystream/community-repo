@@ -43,8 +43,9 @@ $10000 (166666 JOY)
 
 **Salary**
 
-$46.875/hour ($7500 =160 hours per month \* $46.875/hour)
-$7500 (125000JOY) per month
+- Monthly salary: $7500 (125000JOY)
+- If an employee works fewer than 160 hours per month, the Council may reduce their pay according to the hourly rate and actual number of hours worked
+- Hourly rate: $46.875/hour ($7500 =160 hours per month \* $46.875/hour)
 
 **Questions**
 
@@ -111,8 +112,9 @@ $10000 (166666 JOY)
 
 **Salary**
 
-$46.875/hour ($7500 =160 hours per month \* $46.875/hour)
-$7500 (125000JOY) per month
+- Monthly salary: $7500 (125000JOY)
+- If an employee works fewer than 160 hours per month, the Council may reduce their pay according to the hourly rate and actual number of hours worked
+- Hourly rate: $46.875/hour ($7500 =160 hours per month \* $46.875/hour)
 
 **Questions**
 
@@ -174,8 +176,9 @@ $10000 (166666 JOY)
 
 **Salary**
 
-$62.5/hour ($10000 =160 hours per month \* $62.5/hour)
-166666 JOY per month
+- Monthly salary: $10000 (166666 JOY)
+- If an employee works fewer than 160 hours per month, the Council may reduce their pay according to the hourly rate and actual number of hours worked
+- Hourly rate: $62.5/hour ($10000 =160 hours per month \* $62.5/hour)
 
 **Questions**
 
