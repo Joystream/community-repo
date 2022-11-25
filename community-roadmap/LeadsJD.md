@@ -6,9 +6,9 @@
 
 **Responsibilities**
 
-- Maximizing Storage groupScores (will be provided by the Council)
+- Maximizing Storage group scores (will be provided by the Council)
 - Preparing reports
-- Moderating group's Discord channel and updating Notion page
+- Moderating #storage Discord channel and updating Notion page
 - Managing budget
 - Tracking workers performance
 - Evaluating the system capacity and reacting to the needs
@@ -23,8 +23,8 @@
 - Experience in manging team
 - Strong communication skills
 - Proficiency in English
-- Experienced with how to setup and maintain blockchain nodes
-- Have access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 10TB and more
+- Experience with how to setup and maintain blockchain nodes
+- Having access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 10TB and more
 - Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus/Grafana)
 
 **Rules for firings**
