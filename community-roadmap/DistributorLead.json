@@ -1,32 +1,73 @@
 {
-    "applicationDetails": "Storage WG Lead",
-    "title": "Storage WG Lead needed",
-    "shortDescription": "Joystream Video DAO (https://joystream.org) is actively looking for a Storage WG Lead",
-    "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage WG Deputy Lead to join our [Pioneer Governance App](https://dao.joystream.org) community Storage team.\n\n 
-    **Lead should be willing to learn how to manage Lead's responsibilities, including::** \n\n
-    - Maximize the Storage WG scores \n\n 
-    - Evalute the system capacity and react to the needs \n\n 
+    "applicationDetails": "Distributor WG Lead",
+    "title": "Distributor WG Lead needed",
+    "shortDescription": "The Council is actively looking for a Distributor WG Lead",
+    "description": "The Council is actively looking for a Distributor WG Lead.\n\n 
+   **Tasks for Carthage** \n\n
+    - [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution) \n\n 
+    \n\n 
+    **Responsibilities** \n\n 
+    - Maximizing Distribution group scores (will be provided by the Council) \n\n  
+    - Preparing reports \n\n 
+    - Moderatingthe #distributors channel \n\n 
+    - Updating DWG Notion page \n\n 
+    - Managing budget \n\n 
+    - Tracking workers performance \n\n 
+    - Making sure that all worker nodes operational \n\n 
+    - Making sure that playback at https://play.joystream.org  goes smoothly, without error from the distributor side \n\n 
+    - Monitoring required changes for the distributor environment and ensure that all workers apply them \n\n 
+    - Monitoring the efficiency of worker nodes \n\n 
+    - Designing and keeping the structure of the distributor network across the world - in different regions of the globe \n\n 
+    - Helping new and existing members if they experience any issues with running nodes \n\n 
+    - Automating routine tasks using scripts and automated tools that help to increase the effectiveness of the work \n\n 
+    - Mentoring and train Distribution WG members \n\n 
     - Recruit new worker and expand on storage capacity as needed \n\n
     - Evalute the system capacity and react to the needs \n\n 
     - Ensure that Storage Providers are performing adequately \n\n 
     - Analyze current storage capacities utilized within the Storage WG and develop steps and processes to improve and expand upon them \n\n  
     - Ensure tight collaboration across other work groups, including Builders, to drive Storage initiatives \n\n
-    - Mentor and train Storage WG members, seek to continually improve processes DAO-wide
-    - Prepares weekly reports/plans/summary in a format approved by Council and Jsgenesis",
-    
-    **Who are you:** \n\n
-    - Experience in manging team and help the team to reach it's objectives.
-    - Experienced with how to setup and maintain blockchain nodes \n\n
-    - Have access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 2TB and more \n\n 
-    - Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus/Grafana).
+    - Mentor and train Storage WG members, seek to continually improve processes DAO-wide \n\n 
+    - Prepares weekly reports/plans/summary in a format approved by Council and Jsgenesis \n\n 
+    \n\n 
+    **Requirements** \n\n 
+    - Distribution Lead / Deputy / Worker experience is preferred \n\n 
+    - High availability: First few days after a Lead is hired will require high availability and lots of work \n\n 
+    - Experience in manging team \n\n 
+    - Strong communication skills \n\n 
+    - Proficiency in English \n\n 
+    - Good Linux and Docker knowledge \n\n 
+    - Experienced with how to setup and maintain blockchain nodes \n\n 
+    - Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus/Grafana) \n\n 
+     \n\n 
+    **Rules for firings** \n\n 
+    - If Lead says he is available but is nowhere to be found for 24h \n\n 
+    - If Lead doesn't deliver on time, without even keeping CMs informed \n\n 
+    \n\n
+    **About WG** \n\n 
+    - Notion page:  [https://joystream.notion.site/Distribution-1f4cfbbb2e934c79bf20b8db7f019d32](https://joystream.notion.site/Distribution-1f4cfbbb2e934c79bf20b8db7f019d32) \n\n 
+    - Discord channel:  [https://discord.gg/XSRNGvqU](https://discord.gg/XSRNGvqU)\n\n 
+    \n\n 
+    **Stake**\n\n 
+    $10000 (166666 JOY)\n\n 
+    \n\n 
+    **Salary**\n\n 
+    - Monthly salary: $7500 (125000JOY)\n\n 
+    - If an employee works fewer than 160 hours per month, the Council may reduce their pay according to the hourly rate and actual number of hours worked\n\n 
+    - Hourly rate: $46.875/hour ($7500 =160 hours per month \* $46.875/hour)\n\n ",
     "applicationFormQuestions": [{
-            "question": "Are you currently employed?"
-        },
-        {
             "question": "What is your timezone?"
         },
         {
             "question": "Are you based in US?"
+        },
+        {
+            "question": "Tell us a bit about yourself"
+        },
+        {
+            "question": "Tell us a bit more about your experience in IT"
+        },
+        {
+            "question": "Did you work in Joystream? If yes, please describe what you did"
         },
         {
             "question": "Do you have experience with Linux? If yes, please describe it"
@@ -44,24 +85,15 @@
             "question": "Do you have experience with blockchain nodes? If yes, please describe it"
         },
         {
-            "question": "Tell us a bit about yourself"
-        },
-        {
-            "question": "Your availability, in hours per day"
-        },
-        {
-            "question": "Do you understand the compensation model?"
-        },
-        {
-            "question": "Tell us a bit more about your experience in IT"
+            "question": "Your availability (max hours per day)"
         },
         {
             "question": "Your Discord"
         }
     ],
     "stakingPolicy": {
-        "amount": 1000000,
+        "amount": 166666,
         "unstakingPeriod": 43201
     },
-    "rewardPerBlock": 10
+    "rewardPerBlock": 1
 }
