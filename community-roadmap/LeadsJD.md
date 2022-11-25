@@ -69,7 +69,7 @@ $7500 (125000JOY) per month
 
 **Responsibilities**
 
-- MaximizingDistributiongroup scores (will be provided by the Council)
+- Maximizing Distribution group scores (will be provided by the Council)
 - Preparing reports
 - Moderatingthe #distributors channel.
 - Updating DWG Notion page
@@ -128,8 +128,6 @@ $7500 (125000JOY) per month
 - Do you have experience with blockchain nodes? If yes, please describe it
 - Your availability (max hours per day)
 - Your Discord
-
-
 
 ## Builders WG Lead
 
