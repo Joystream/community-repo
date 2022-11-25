@@ -170,7 +170,6 @@ $10000 (166666 JOY)
 
 **About WG**
 
-- Notion page:  [https://www.notion.so/joystream/Builders-Lead-Responsibilities-addf937d2f8c452ea93c46091c10d733](https://www.notion.so/joystream/Builders-Lead-Responsibilities-addf937d2f8c452ea93c46091c10d733)
 - Notion page: [https://www.notion.so/joystream/Builders-ffb1c9d1d1094fc4a6f04eb47677673d](https://www.notion.so/joystream/Builders-ffb1c9d1d1094fc4a6f04eb47677673d)
 - Discord channel:  [https://discord.gg/QN3rBYJr](https://discord.gg/QN3rBYJr)
 
