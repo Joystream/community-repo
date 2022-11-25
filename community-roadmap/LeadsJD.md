@@ -91,7 +91,7 @@ $10000 (166666 JOY)
 
 - Distribution Lead / Deputy / Worker experience is preferred
 - High availability: First few days after a Lead is hired will require high availability and lots of work
-- Experience in manging team
+- Experience in managing team
 - Strong communication skills
 - Proficiency in English
 - Good Linux and Docker knowledge
@@ -157,7 +157,7 @@ $10000 (166666 JOY)
 
 - Builders Lead / Deputy / Worker experience is preferred
 - High availability: First few days after a Lead is hired will require high availability and lots of work
-- Experience in manging team 2+ years
+- Experience in managing team 2+ years
 - Skills: programming experience 3+ years.
 - Deep understanding of Web3 and Distributed systems
 - Strong communication skills
@@ -219,7 +219,7 @@ $10000 (166666 JOY)
 **Requirements**
 
 - HR Lead / Deputy / Worker experience is preferred
-- Experience in manging team
+- Experience in managing team
 - Experience in Human Resources
 - Strong communication skills
 - Proficiency in English
@@ -274,7 +274,7 @@ TBD later
 
 - Forum Lead / Deputy / Worker experience is preferred
 - High availability: First few days after a Lead is hired will require high availability and lots of work
-- Experience in manging team
+- Experience in managing team
 - Experience in Forum moderation
 - Strong communication skills
 - Proficiency in English
@@ -328,7 +328,7 @@ TBD later
 
 - Marketing Lead / Deputy / Worker experience is preferred
 - High availability: First few days after a Lead is hired will require high availability and lots of work
-- Experience in manging team
+- Experience in managing team
 - Strong communication skills
 - Experience in Marketing
 - Proficiency in English
@@ -389,7 +389,7 @@ TBD later
 
 - Content Lead / Deputy / Worker experience is preferred
 - High availability: First few days after a Lead is hired will require high availability and lots of work
-- Experience in manging team
+- Experience in managing team
 - Strong communication skills
 - Experience in Content Management/ Content Creation
 - Proficiency in English
