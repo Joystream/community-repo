@@ -2,7 +2,7 @@
 
 **Tasks for Carthage**
 
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#hr](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#hr)
+- [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#hr](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#hr)
 
 **Responsibilities**
 
@@ -55,7 +55,7 @@ $1200 (20000 JOY)
 
 **Tasks for Carthage**
 
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#forum](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#forum)
+- [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#forum](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#forum)
 
 **Responsibilities**
 
@@ -174,6 +174,7 @@ $62.5/hour ($10000 =160 hours per month \* $62.5/hour)
 **Tasks for Carthage**
 
 - See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#marketing](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#marketing)
+- Develop long-term startegy
 
 **Responsibilities**
 
@@ -287,6 +288,7 @@ $1200 (20000 JOY)
 **Tasks for Carthage**
 
 - See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#builders](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#builders)
+- Long term dev startegy 
 
 **Responsibilities**
 
