@@ -1,3 +1,194 @@
+## Storage WG Lead
+
+**Tasks for Carthage**
+
+- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+
+**Responsibilities**
+
+- Maximizing Storage groupScores (will be provided by the Council)
+- Preparing reports
+- Moderating group's Discord channel and updating Notion page
+- Managing budget
+- Tracking workers performance
+- Evaluating the system capacity and reacting to the needs
+- Ensuring that Storage Providers are performing adequately
+- Analyzing current storage capacities utilized within the Storage WG and develop steps and processes to improve and expand upon them
+- Mentoring and train Storage WG members
+
+**Requirements**
+
+- Storage Lead / Deputy / Worker experience is preferred
+- High availability: First few days after a Lead is hired will require high availability and lots of work
+- Experience in manging team
+- Strong communication skills
+- Proficiency in English
+- Experienced with how to setup and maintain blockchain nodes
+- Have access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 10TB and more
+- Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus/Grafana)
+
+**Rules for firings**
+
+- If Lead says he is available but is nowhere to be found for 24h
+- If Lead doesn't deliver on time, without even keeping CMs informed
+
+**About WG**
+
+- Notion page:  [https://www.notion.so/joystream/Storage-9dc5a16444934dc4bda08b596bc15375](https://www.notion.so/joystream/Storage-9dc5a16444934dc4bda08b596bc15375)
+- Discord channel:  [https://discord.gg/fFRdNHsW](https://discord.gg/fFRdNHsW)
+
+**Stake**
+
+$10000
+
+**Salary**
+
+$62.5/hour ($10000 =160 hours per month \* $62.5/hour)
+
+**Questions**
+
+- What is your timezone?
+- Are you based in US?
+- Tell us a bit about yourself
+- Tell us a bit more about your experience in IT
+- Do you have experience with Linux? If yes, please describe it
+- Do you have experience with Docker? If yes, please describe it
+- Do you have experience with devops and automation? If yes, please describe it
+- Do you have experience with GraphQl? If yes, please describe it
+- Do you have experience with blockchain nodes? If yes, please describe it
+- Did you work in Joystream? If yes, please describe what you did
+- Your availability (max hours per day)
+- Your Discord
+
+## Distribution WG Lead
+
+**Tasks for Carthage**
+
+- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+
+**Responsibilities**
+
+- MaximizingDistributiongroup scores (will be provided by the Council)
+- Preparing reports
+- Moderatingthe #distributors channel.
+- Updating DWG Notion page
+- Managing budget
+- Tracking workers performance
+- Making sure that all worker nodes operational
+- Making sure that playback at [https://play.joystream.org/](https://play.joystream.org/) goes smoothly, without error from the distributor side
+- Monitoring required changes for the distributor environment and ensure that all workers apply them
+- Monitoring the efficiency of worker nodes
+- Designing and keeping the structure of the distributor network across the world - in different regions of the globe
+- Helping new and existing members if they experience any issues with running nodes
+- Automating routine tasks using scripts and automated tools that help to increase the effectiveness of the work
+- Mentoring and train Distribution WG members
+
+**Requirements**
+
+- Distribution Lead / Deputy / Worker experience is preferred
+- High availability: First few days after a Lead is hired will require high availability and lots of work
+- Experience in manging team
+- Strong communication skills
+- Proficiency in English
+- Good Linux and Docker knowledge
+- Experienced with how to setup and maintain blockchain nodes
+- Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus/Grafana)
+
+**Rules for firings**
+
+- If Lead says he is available but is nowhere to be found for 24h
+- If Lead doesn't deliver on time, without even keeping CMs informed
+
+**About WG**
+
+- Notion page:  [https://joystream.notion.site/Distribution-1f4cfbbb2e934c79bf20b8db7f019d32](https://joystream.notion.site/Distribution-1f4cfbbb2e934c79bf20b8db7f019d32)
+- Discord channel:  [https://discord.gg/XSRNGvqU](https://discord.gg/XSRNGvqU)
+
+**Stake**
+
+$10000
+
+**Salary**
+
+$62.5/hour ($10000 =160 hours per month \* $62.5/hour)
+
+**Questions**
+
+- What is your timezone?
+- Are you based in US?
+- Tell us a bit about yourself
+- Tell us a bit more about your experience in IT
+- Did you work in Joystream? If yes, please describe what you did
+- Do you have experience with Linux? If yes, please describe it
+- Do you have experience with Docker? If yes, please describe it
+- Do you have experience with devops and automation? If yes, please describe it
+- Do you have experience with GraphQl? If yes, please describe it
+- Do you have experience with blockchain nodes? If yes, please describe it
+- Your availability (max hours per day)
+- Your Discord
+
+
+
+## Builders WG Lead
+
+**Tasks for Carthage**
+
+- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#builders](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#builders)
+- Long term dev startegy 
+
+**Responsibilities**
+
+- MaximizingBuildersgroup scores (will be provided by the Council)
+- Preparing reports
+- Moderating #builders channel and updating BuildersNotion page
+- Managing budget
+- Tracking workers performance
+- Ensures each worker has at least one item to work on.
+- On a monthly basis, fires non-responsive workers who did not produce valuable deliverables.
+- Mentoring and train Builder WG members
+
+**Requirements**
+
+- Builders Lead / Deputy / Worker experience is preferred
+- High availability: First few days after a Lead is hired will require high availability and lots of work
+- Experience in manging team 2+ years
+- Skills: programming experience 3+ years.
+- Deep understanding of Web3 and Distributed systems
+- Strong communication skills
+- Proficiency in English
+
+**Rules for firings**
+
+- If Lead says he is available but is nowhere to be found for 24h
+- If Lead doesn't deliver on time, without even keeping CMs informed
+
+**About WG**
+
+- Notion page:  [https://www.notion.so/joystream/Builders-Lead-Responsibilities-addf937d2f8c452ea93c46091c10d733](https://www.notion.so/joystream/Builders-Lead-Responsibilities-addf937d2f8c452ea93c46091c10d733)
+- Notion page: [https://www.notion.so/joystream/Builders-ffb1c9d1d1094fc4a6f04eb47677673d](https://www.notion.so/joystream/Builders-ffb1c9d1d1094fc4a6f04eb47677673d)
+- Discord channel:  [https://discord.gg/QN3rBYJr](https://discord.gg/QN3rBYJr)
+
+**Stake**
+
+$10000
+
+**Salary**
+
+$62.5/hour ($10000 =160 hours per month \* $62.5/hour)
+
+**Questions**
+
+- What is your timezone?
+- Are you based in US?
+- Tell us a bit about yourself
+- Tell us a bit more about your experience in IT
+- Did you work in Joystream? If yes, please describe what you did
+- Do you have experience in team management? If yes, please describe it
+- Do you have experience in Web3 and Distributed systems? If yes, please describe it
+- Do you have experience in programming? If yes, please describe it
+- Your availability (max hours per day)
+- Your Discord
+
 ## HR Working Group Lead
 
 **Tasks for Carthage**
@@ -6,7 +197,7 @@
 
 **Responsibilities**
 
-- MaximizingHR group scores (will be provided by the Council)
+- Maximizing HR group scores (will be provided by the Council)
 - Preparing reports
 - Moderating group's Discord channel and updating Notion page
 - Assisting newcomer workers in the onboarding process
@@ -107,67 +298,6 @@ $1200
 - Did you work in Joystream? If yes, please describe what you did
 - Your availability (max hours per day)
 
-## Storage WG Lead
-
-**Tasks for Carthage**
-
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
-
-**Responsibilities**
-
-- Maximizing Storage groupScores (will be provided by the Council)
-- Preparing reports
-- Moderating group's Discord channel and updating Notion page
-- Managing budget
-- Tracking workers performance
-- Evaluating the system capacity and reacting to the needs
-- Ensuring that Storage Providers are performing adequately
-- Analyzing current storage capacities utilized within the Storage WG and develop steps and processes to improve and expand upon them
-- Mentoring and train Storage WG members
-
-**Requirements**
-
-- Storage Lead / Deputy / Worker experience is preferred
-- High availability: First few days after a Lead is hired will require high availability and lots of work
-- Experience in manging team
-- Strong communication skills
-- Proficiency in English
-- Experienced with how to setup and maintain blockchain nodes
-- Have access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 10TB and more
-- Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus/Grafana)
-
-**Rules for firings**
-
-- If Lead says he is available but is nowhere to be found for 24h
-- If Lead doesn't deliver on time, without even keeping CMs informed
-
-**About WG**
-
-- Notion page:  [https://www.notion.so/joystream/Storage-9dc5a16444934dc4bda08b596bc15375](https://www.notion.so/joystream/Storage-9dc5a16444934dc4bda08b596bc15375)
-- Discord channel:  [https://discord.gg/fFRdNHsW](https://discord.gg/fFRdNHsW)
-
-**Stake**
-
-$10000
-
-**Salary**
-
-$62.5/hour ($10000 =160 hours per month \* $62.5/hour)
-
-**Questions**
-
-- What is your timezone?
-- Are you based in US?
-- Tell us a bit about yourself
-- Tell us a bit more about your experience in IT
-- Do you have experience with Linux? If yes, please describe it
-- Do you have experience with Docker? If yes, please describe it
-- Do you have experience with devops and automation? If yes, please describe it
-- Do you have experience with GraphQl? If yes, please describe it
-- Do you have experience with blockchain nodes? If yes, please describe it
-- Did you work in Joystream? If yes, please describe what you did
-- Your availability (max hours per day)
-- Your Discord
 
 ## Marketing WG Lead
 
@@ -280,133 +410,6 @@ $1200 (20000 JOY)
 - Tell us a bit about yourself
 - Did you work in Joystream? If yes, please describe what you did
 - Do you have experience in Content Management/ Content Creation? If yes, please describe it
-- Your availability (max hours per day)
-- Your Discord
-
-## Builders WG Lead
-
-**Tasks for Carthage**
-
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#builders](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#builders)
-- Long term dev startegy 
-
-**Responsibilities**
-
-- MaximizingBuildersgroup scores (will be provided by the Council)
-- Preparing reports
-- Moderating #builders channel and updating BuildersNotion page
-- Managing budget
-- Tracking workers performance
-- Ensures each worker has at least one item to work on.
-- On a monthly basis, fires non-responsive workers who did not produce valuable deliverables.
-- Mentoring and train Builder WG members
-
-**Requirements**
-
-- Builders Lead / Deputy / Worker experience is preferred
-- High availability: First few days after a Lead is hired will require high availability and lots of work
-- Experience in manging team 2+ years
-- Skills: programming experience 3+ years.
-- Deep understanding of Web3 and Distributed systems
-- Strong communication skills
-- Proficiency in English
-
-**Rules for firings**
-
-- If Lead says he is available but is nowhere to be found for 24h
-- If Lead doesn't deliver on time, without even keeping CMs informed
-
-**About WG**
-
-- Notion page:  [https://www.notion.so/joystream/Builders-Lead-Responsibilities-addf937d2f8c452ea93c46091c10d733](https://www.notion.so/joystream/Builders-Lead-Responsibilities-addf937d2f8c452ea93c46091c10d733)
-- Notion page: [https://www.notion.so/joystream/Builders-ffb1c9d1d1094fc4a6f04eb47677673d](https://www.notion.so/joystream/Builders-ffb1c9d1d1094fc4a6f04eb47677673d)
-- Discord channel:  [https://discord.gg/QN3rBYJr](https://discord.gg/QN3rBYJr)
-
-**Stake**
-
-$10000
-
-**Salary**
-
-$62.5/hour ($10000 =160 hours per month \* $62.5/hour)
-
-**Questions**
-
-- What is your timezone?
-- Are you based in US?
-- Tell us a bit about yourself
-- Tell us a bit more about your experience in IT
-- Did you work in Joystream? If yes, please describe what you did
-- Do you have experience in team management? If yes, please describe it
-- Do you have experience in Web3 and Distributed systems? If yes, please describe it
-- Do you have experience in programming? If yes, please describe it
-- Your availability (max hours per day)
-- Your Discord
-
-## Distribution WG Lead
-
-**Tasks for Carthage**
-
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
-
-**Responsibilities**
-
-- MaximizingDistributiongroup scores (will be provided by the Council)
-- Preparing reports
-- Moderatingthe #distributors channel.
-- Updating DWG Notion page
-- Managing budget
-- Tracking workers performance
-- Making sure that all worker nodes operational
-- Making sure that playback at [https://play.joystream.org/](https://play.joystream.org/) goes smoothly, without error from the distributor side
-- Monitoring required changes for the distributor environment and ensure that all workers apply them
-- Monitoring the efficiency of worker nodes
-- Designing and keeping the structure of the distributor network across the world - in different regions of the globe
-- Helping new and existing members if they experience any issues with running nodes
-- Automating routine tasks using scripts and automated tools that help to increase the effectiveness of the work
-- Mentoring and train Distribution WG members
-
-**Requirements**
-
-- Distribution Lead / Deputy / Worker experience is preferred
-- High availability: First few days after a Lead is hired will require high availability and lots of work
-- Experience in manging team
-- Strong communication skills
-- Proficiency in English
-- Good Linux and Docker knowledge
-- Experienced with how to setup and maintain blockchain nodes
-- Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus/Grafana)
-
-**Rules for firings**
-
-- If Lead says he is available but is nowhere to be found for 24h
-- If Lead doesn't deliver on time, without even keeping CMs informed
-
-**About WG**
-
-- Notion page:  [https://joystream.notion.site/Distribution-1f4cfbbb2e934c79bf20b8db7f019d32](https://joystream.notion.site/Distribution-1f4cfbbb2e934c79bf20b8db7f019d32)
-- Discord channel:  [https://discord.gg/XSRNGvqU](https://discord.gg/XSRNGvqU)
-
-**Stake**
-
-$10000
-
-**Salary**
-
-$62.5/hour ($10000 =160 hours per month \* $62.5/hour)
-
-**Questions**
-
-- What is your timezone?
-- Are you based in US?
-- Tell us a bit about yourself
-- Tell us a bit more about your experience in IT
-- Did you work in Joystream? If yes, please describe what you did
-- Do you have experience with Linux? If yes, please describe it
-- Do you have experience with Docker? If yes, please describe it
-- Do you have experience with devops and automation? If yes, please describe it
-- Do you have experience with GraphQl? If yes, please describe it
-- Do you have experience with blockchain nodes? If yes, please describe it
 - Your availability (max hours per day)
 - Your Discord
 
