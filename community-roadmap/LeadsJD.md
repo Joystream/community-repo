@@ -43,7 +43,9 @@ $10000 (166666 JOY)
 
 **Salary**
 
-- Monthly salary: $7500 (125000JOY)
+- Salary per block: 0.2895 JOY 
+- 14400 [blocks/day] * 0.2895 [Joy/block] * 30 [days] * 0.06 [USD/JOY] = 7 500 [USD/month]
+- Salary per Month: $7500 (125000JOY)
 - If an employee works fewer than 160 hours per month, the Council may reduce their pay according to the hourly rate and actual number of hours worked
 - Hourly rate: $46.875/hour ($7500 =160 hours per month \* $46.875/hour)
 
@@ -112,6 +114,8 @@ $10000 (166666 JOY)
 
 **Salary**
 
+- Salary per block: 0.2895 JOY 
+- 14400 [blocks/day] * 0.2895 [Joy/block] * 30 [days] * 0.06 [USD/JOY] = 7 500 [USD/month]
 - Monthly salary: $7500 (125000JOY)
 - If an employee works fewer than 160 hours per month, the Council may reduce their pay according to the hourly rate and actual number of hours worked
 - Hourly rate: $46.875/hour ($7500 =160 hours per month \* $46.875/hour)
@@ -176,6 +180,8 @@ $10000 (166666 JOY)
 
 **Salary**
 
+- Salary per block: 0.386 JOY 
+- 14400 [blocks/day] * 0.386 [Joy/block] * 30 [days] * 0.06 [USD/JOY] = 10 000 [USD/month]
 - Monthly salary: $10000 (166666 JOY)
 - If an employee works fewer than 160 hours per month, the Council may reduce their pay according to the hourly rate and actual number of hours worked
 - Hourly rate: $62.5/hour ($10000 =160 hours per month \* $62.5/hour)
@@ -235,9 +241,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-$1200 (20000 JOY) per month
-The salary supposes a very little activity of the Lead. 
-It may be adjusted based on the actually completed work. 
+TBD later
 
 **Questions**
 
@@ -293,9 +297,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-$1200 (20000 JOY) per month
-The salary supposes a very little activity of the Lead. 
-It may be adjusted based on the actually completed work. 
+TBD later
 
 **Questions**
 
@@ -348,9 +350,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-$1200 (20000 JOY) per month
-The salary supposes a very little activity of the Lead. 
-It may be adjusted based on the actually completed work. 
+TBD later
 
 **Questions**
 
@@ -411,9 +411,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-$1200 (20000 JOY) per month
-The salary supposes a very little activity of the Lead. 
-It may be adjusted based on the actually completed work. 
+TBD later
 
 **Questions**
 
