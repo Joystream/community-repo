@@ -39,11 +39,12 @@
 
 **Stake**
 
-$10000
+$10000 (166666 JOY)
 
 **Salary**
 
 $46.875/hour ($7500 =160 hours per month \* $46.875/hour)
+$7500 (125000JOY) per month
 
 **Questions**
 
@@ -106,11 +107,12 @@ $46.875/hour ($7500 =160 hours per month \* $46.875/hour)
 
 **Stake**
 
-$10000
+$10000 (166666 JOY)
 
 **Salary**
 
 $46.875/hour ($7500 =160 hours per month \* $46.875/hour)
+$7500 (125000JOY) per month
 
 **Questions**
 
@@ -170,11 +172,12 @@ $46.875/hour ($7500 =160 hours per month \* $46.875/hour)
 
 **Stake**
 
-$10000
+$10000 (166666 JOY)
 
 **Salary**
 
 $62.5/hour ($10000 =160 hours per month \* $62.5/hour)
+166666 JOY per month
 
 **Questions**
 
@@ -231,7 +234,9 @@ $10000 (166666 JOY)
 
 **Salary**
 
-$1200 (20000 JOY)
+$1200 (20000 JOY) per month
+The salary supposes a very little activity of the Lead. 
+It may be adjusted based on the actually completed work. 
 
 **Questions**
 
@@ -287,7 +292,9 @@ $10000 (166666 JOY)
 
 **Salary**
 
-$1200
+$1200 (20000 JOY) per month
+The salary supposes a very little activity of the Lead. 
+It may be adjusted based on the actually completed work. 
 
 **Questions**
 
@@ -340,7 +347,9 @@ $10000 (166666 JOY)
 
 **Salary**
 
-$1200 (20000 JOY)
+$1200 (20000 JOY) per month
+The salary supposes a very little activity of the Lead. 
+It may be adjusted based on the actually completed work. 
 
 **Questions**
 
@@ -401,7 +410,9 @@ $10000 (166666 JOY)
 
 **Salary**
 
-$1200 (20000 JOY)
+$1200 (20000 JOY) per month
+The salary supposes a very little activity of the Lead. 
+It may be adjusted based on the actually completed work. 
 
 **Questions**
 
