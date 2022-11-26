@@ -5,7 +5,7 @@
   -  1st priority: Storage, Distribution, Forum
   -  2nd priority: Builders, Content, Marketing, HR
 - Communicated to Joystream community about new vacancies
-- Agreed on the time for daily stand-up Council's calls  
+- Agreed on the time for daily stand-up Council calls  
 
 **Day 2**
 - Hired Leads (24h is enough for all candidates to apply?)
