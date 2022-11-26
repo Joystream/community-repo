@@ -1,4 +1,4 @@
-## Carthage Launch: Council Step By Step Guide
+## Carthage Launch: Steps Performed By Council
 
 **Day 1**
 - Created and agreed proposals for Lead openings based on [these JDs](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/LeadsJD.md): 
