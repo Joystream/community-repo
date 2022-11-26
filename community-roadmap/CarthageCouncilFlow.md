@@ -10,7 +10,7 @@
 **Day 2**
 - Hired Leads (24h is enough for all candidates to apply?)
 - Asked Leads to write down all steps they performed in their first days at the position
-- Replenish budgets 
+- Replenished budgets <tbd>
 - ...
 
 **Day 3**
