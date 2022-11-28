@@ -24,17 +24,28 @@ yarn storage-node leader:update-bag-limit -l 10 -k /root/keys/storage-role-key.j
 
 ### hiring
 ```
-yarn joystream-cli working-groups:createOpening -o ~/joystream_working_dir/Strorage_WG_Worker.json
+
+yarn joystream-cli working-groups:createOpening -i /root/community-repo/working-groups/storage-group/leader/opening/Strorage_WG_Deputy_Leader.json
+yarn joystream-cli working-groups:createOpening -i /root/community-repo/working-groups/storage-group/leader/opening/Strorage_WG_Worker.json
+
+#list all opening
 yarn joystream-cli working-groups:openings
-yarn joystream-cli working-groups:opening --id 1
-yarn joystream-cli working-groups:application 2
-yarn joystream-cli working-groups:application 3
-yarn joystream-cli working-groups:fillOpening --openingId 1 --applicationIds 2 --applicationIds 3
-yarn joystream-cli working-groups:overview
-yarn joystream-cli working-groups:createOpening -i ~/joystream_working_dir/Strorage_WG_Worker.json
+
+#list an opening
+yarn joystream-cli working-groups:opening --id x
+
+#view application
+yarn joystream-cli working-groups:application x
+
+#Accept application
+yarn joystream-cli working-groups:fillOpening --openingId x --applicationIds x
+
 ```
 ### bucket mgmt
 ```
-yarn storage-node leader:create-bucket -i 18 -n 20000 -s 1500000000000 -k /root/keys/storage-role-key.json -p xxxxxx
-yarn storage-node leader:update-bucket-status -i 18 -s off -k /root/keys/storage-role-key.json -p xxxxxx
+yarn storage-node leader:create-bucket -i <worker_ID> -n 20000 -s 2000000000000 -k /root/keys/storage-role-key.json -p xxxxxx
+yarn storage-node leader:update-bucket-status -i <worker_ID> -s off -k /root/keys/storage-role-key.json -p xxxxxx
 ```
+
+
+yarn joystream-cli working-groups:overview
