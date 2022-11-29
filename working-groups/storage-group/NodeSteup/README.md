@@ -14,7 +14,7 @@ To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
 ## Hardware
 - CPU: 6 Core
 - RAM: 16G
-- Storage: 2T SSD
+- Storage: 10T SSD
 - Bandwidth: 1G
 
 ## Location
