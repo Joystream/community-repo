@@ -82,7 +82,6 @@ ExecStart=joystream-node \
         --pruning archive \
         --validator \
         --name <memberId-memberHandle> \
-        --telemetry-url "wss://telemetry.joystream.org/submit/ 0" \
         --rpc-cors all
 Restart=on-failure
 RestartSec=3
@@ -111,7 +110,6 @@ ExecStart=joystream-node \
         --pruning archive \
         --validator \
         --name YourCoolName \
-        --telemetry-url "wss://telemetry.joystream.org/submit/ 0" \
         --rpc-cors all
 Restart=on-failure
 RestartSec=3
