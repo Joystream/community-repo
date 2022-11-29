@@ -38,6 +38,11 @@ yarn storage-node leader:remove-operator -i 8 -k /root/keys/storage-role-key.jso
 yarn storage-node leader:delete-bucket -i 8 -k /root/keys/storage-role-key.json -p xxxxx
 ```
 
+## Re-invite
+```
+yarn storage-node leader:remove-operator -i 3 -k /root/keys/storage-role-key.json -p xxxxxx
+yarn storage-node leader:invite-operator -i 3  -w 3 -k /root/keys/storage-role-key.json -p xxxxx
+```
 ## Evict worker 
 Make sure the bucket is empty and deleted
 ```
