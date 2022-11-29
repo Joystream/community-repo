@@ -31,7 +31,7 @@ See the job descriptions above.
 
 This should be purely based on skills and abilities including:
  - Linux and devops skill level
- - Machine specification
+ - Infrastructure specification
  - Willing to commit time and expertise to develop tools and procedures i.e. addd value. 
 
 Preference will be made for testnet contributors who showed the above skills, reliability and commitment.
