@@ -19,7 +19,7 @@ The salaries for this first term may seem a bit rough and may be subject to chan
 - JSG [recommended](https://gist.github.com/bedeho/1b231111596e25b215bc66f0bd0e7ccc#budgets--spending-and-inflation) to spend as little as 10k USD per month totally for Content, Membership, Forum, HR, Marketing WGs  for the first few months
 
 #### Leads & Council
-- Council: 10k USD/month
+- Council: 10k USD/month (full-time positions)
 - Builders/Storage/Distribution: 5k USD/month + 50USD/hour (for every next working hour exceeding 80hours per month) 
 - Content/Membership: council will take these duties
 - Forum/HR/Marketing WGs: 50 USD/hour
