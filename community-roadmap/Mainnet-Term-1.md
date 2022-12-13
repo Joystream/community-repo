@@ -2,7 +2,8 @@
 
 Before the Council is chosen, it is important to have everything as ready as possible. However, there are still a few points that need to be discussed further within the community, such as the initial composition of the Working Groups and the initial salaries. To move forward on this, I have put forth my ideas on these matters below. This can be the first step in resolving the issues at hand. 
 
-I intentionally consider some Working Groups not fully staffed in the 1st term, as the process will be rolled out gradually. The salaries are defined for 1st term only and the compensation system will be adjusted for later terms based on the new scoring system (WIP on this).
+I intentionally suggest some Working Groups not fully staffed in the 1st term, as the process will be rolled out gradually. 
+The salaries for this first term may seem a bit rough and may be subject to change later based on the new scoring system (WIP).
 
 ## Composition
 ![WG composition](https://i.imgur.com/Y32t7ql.png)
