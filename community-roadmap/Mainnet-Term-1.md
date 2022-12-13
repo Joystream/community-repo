@@ -1,14 +1,21 @@
-# Composition
+## About
+
+Before the Council is chosen, it is important to have everything as ready as possible. However, there are still a few points that need to be discussed further within the community, such as the initial composition of the Working Groups and the initial salaries. To move forward on this, I have put forth my ideas on these matters below. This can be the first step in resolving the issues at hand. 
+
+I intentionally consider some Working Groups not fully staffed in the 1st term, as the process will be rolled out gradually. The salaries are defined for 1st term only and the compensation system will be adjusted for later terms based on the new scoring system (WIP on this).
+
+## Composition
 ![WG composition](https://i.imgur.com/Y32t7ql.png)
 
-# Salaries
+## Salaries
 
-#### Highlights: 
+#### Key principles:
+- Salaries are based on the [JSG's inputs](https://gist.github.com/bedeho/1b231111596e25b215bc66f0bd0e7ccc) and my own market sense 
 - Salaries are to be paid in JOY equivalent by the rate of 0.06 USD/JOY (assuming no exchange in 1st term)
 - Council will aim to reduce the number of people in the working groups, while increasing their commitment to the project. This will minimize communication costs and facilitate a more effective learning process, leading to better results.
 - Council members will combine the lead/workers roles in the beginning
 - Council will keep experimenting with salaries in 1st term and a more robust compensation system to be introduced in 2nd or 3rd term
-- Just a reminder: JSG recommended to spend as little as 10k USD per month totally for Content, Membership, Forum, HR, Marketing WGs  for the first few months
+- JSG [recommended](https://gist.github.com/bedeho/1b231111596e25b215bc66f0bd0e7ccc#budgets--spending-and-inflation) to spend as little as 10k USD per month totally for Content, Membership, Forum, HR, Marketing WGs  for the first few months
 
 #### Leads & Council
 - Council: 10k USD/month
