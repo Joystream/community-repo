@@ -1,6 +1,6 @@
 ## About
 
-Before the Mainnet Council is chosen, it is important to have everything as ready as possible. However, there are still a few points that need to be discussed further within the community, such as the initial composition of the Working Groups and the initial salaries. To move forward on this, I have put forth my ideas on these matters below. This can be the first step in resolving the issues at hand. 
+Before the Mainnet Council is chosen, it is important to have everything as ready as possible. However, there are still a few points that need to be discussed further within the community, such as the initial composition of the Working Groups and the initial salaries. To move forward on this, I have put forth my ideas on these matters below. This can be the first step in resolving the issues. 
 
 I intentionally suggest some Working Groups not fully staffed in the 1st term, as the process will be rolled out gradually. 
 The salaries for this first term may seem a bit rough and may be subject to change later based on the new scoring system (WIP).
