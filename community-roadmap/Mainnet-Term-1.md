@@ -13,7 +13,7 @@ The salaries for this first term may seem a bit rough and may be subject to chan
 #### Key principles:
 - Salaries are based on the [JSG's inputs](https://gist.github.com/bedeho/1b231111596e25b215bc66f0bd0e7ccc) and my own market sense 
 - Salaries are to be paid in JOY equivalent by the rate of 0.06 USD/JOY (assuming no exchange in 1st term)
-- Let's stick to the following: keep a smaller number of participants across the board, have a greater reliance on people who devote a large share of their time. Maintain a much smaller change, over time, in the set of people involved.
+- Let's stick to the following: Keep a smaller number of participants across the board. Have a greater reliance on people who devote a large share of their time. Maintain a much smaller change, over time, in the set of people involved.
 - Council members will combine or heavily assist the lead/workers roles in the beginning
 - Council will continue to experiment with salaries during the first term and will develop a more reliable compensation system in the second or third term
 - JSG [recommended](https://gist.github.com/bedeho/1b231111596e25b215bc66f0bd0e7ccc#budgets--spending-and-inflation) to spend as little as 10k USD per month totally for Content, Membership, Forum, HR, Marketing WGs during the launch period
