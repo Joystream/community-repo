@@ -14,7 +14,7 @@ The salaries for this first term may seem a bit rough and may be subject to chan
 - Salaries are based on the [JSG's inputs](https://gist.github.com/bedeho/1b231111596e25b215bc66f0bd0e7ccc) and my own market sense 
 - Salaries are to be paid in JOY equivalent by the rate of 0.06 USD/JOY (assuming no exchange in 1st term)
 - Council will aim to reduce the number of people in the working groups, while increasing their commitment to the project. This will minimize communication costs and facilitate a more effective learning process, leading to better results.
-- Council members will combine the lead/workers roles in the beginning
+- Council members will combine or heavily assist the lead/workers roles in the beginning
 - Council will keep experimenting with salaries in 1st term and a more robust compensation system to be introduced in 2nd or 3rd term
 - JSG [recommended](https://gist.github.com/bedeho/1b231111596e25b215bc66f0bd0e7ccc#budgets--spending-and-inflation) to spend as little as 10k USD per month totally for Content, Membership, Forum, HR, Marketing WGs  for the first few months
 
