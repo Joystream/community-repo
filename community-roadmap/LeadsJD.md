@@ -300,7 +300,7 @@ $10000 (166666 JOY)
 
 **Tasks for 1st term**
 
-- [See tasks] (https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#marketing-wg)
+- [See tasks](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#marketing-wg)
 
 **Responsibilities**
 
