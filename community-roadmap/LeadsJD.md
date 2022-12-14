@@ -39,7 +39,7 @@
 
 **Stake**
 
-$10000 (166666 JOY)
+166666 JOY
 
 **Salary**
 
@@ -106,7 +106,7 @@ $10000 (166666 JOY)
 
 **Stake**
 
-$10000 (166666 JOY)
+166666 JOY
 
 **Salary**
 
@@ -166,7 +166,7 @@ $10000 (166666 JOY)
 
 **Stake**
 
-$10000 (166666 JOY)
+166666 JOY
 
 **Salary**
 
@@ -185,7 +185,7 @@ $10000 (166666 JOY)
 - Your availability (max hours per day)
 - Your Discord
 
-## HR Working Group Lead
+## HR WG Lead
 
 **Tasks**
 
@@ -223,7 +223,7 @@ $10000 (166666 JOY)
 
 **Stake**
 
-$10000 (166666 JOY)
+83333 JOY 
 
 **Salary**
 
@@ -238,7 +238,7 @@ $10000 (166666 JOY)
 - Did you work in Joystream? If yes, please describe what you did
 - Your availability (max hours per day)
 
-## Forum Working Group Lead
+## Forum WG Lead
 
 **Tasks**
 
@@ -279,7 +279,7 @@ $10000 (166666 JOY)
 
 **Stake**
 
-$10000 (166666 JOY)
+83333 JOY 
 
 **Salary**
 
@@ -332,7 +332,7 @@ $10000 (166666 JOY)
 
 **Stake**
 
-$10000 (166666 JOY)
+83333 JOY 
 
 **Salary**
 
@@ -393,7 +393,7 @@ $10000 (166666 JOY)
 
 **Stake**
 
-$10000 (166666 JOY)
+83333 JOY 
 
 **Salary**
 
@@ -417,4 +417,4 @@ $10000 (166666 JOY)
 
 **Salary**
 
-[Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
+- [Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
