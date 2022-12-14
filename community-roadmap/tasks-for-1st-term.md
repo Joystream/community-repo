@@ -1,5 +1,6 @@
 the work is in progress here
-
+- general wg scores https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/general-working-group-score.md
+- 
 # Storage WG 
 
 ### Tasks for 1st term
@@ -26,8 +27,8 @@ Result:   xxx
 Purpose: xxx 
 Result:   xxx
 ```
-
-See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+- https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/storage-providers-score.md
+- [Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
 
 ## Distribution WG 
 
@@ -56,7 +57,9 @@ Purpose: xxx
 Result:   xxx
 ```
 
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+- [Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/distributors-score.md)
+- [Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+
 
 ## Builders WG 
 
@@ -85,9 +88,8 @@ Purpose: xxx
 Result:   xxx
 ```
 
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#builders](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#builders)
-- Long term dev startegy 
-
+- [Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/builders-score.md
 
 ## HR Working Group 
 
@@ -116,8 +118,8 @@ Purpose: xxx
 Result:   xxx
 ```
 
-- [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#hr](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#hr)
-
+- [Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/human-resources-score.md)
+- [Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
 
 ## Forum WG 
 
@@ -146,7 +148,8 @@ Purpose: xxx
 Result:   xxx
 ```
 
-- [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#forum](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#forum)
+- [Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+- https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/forum-score.md
 
 ## Marketing WG 
 
@@ -175,8 +178,9 @@ Purpose: xxx
 Result:   xxx
 ```
 
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#marketing](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#marketing)
-- Develop long-term startegy
+- [Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/marketers-score.md)
+- [Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+
 
 ## Content Curator WG 
 
@@ -205,37 +209,9 @@ Purpose: xxx
 Result:   xxx
 ```
 
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#curators](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#curators)
+- [Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/content-directory-score.md
 
 ## Gateways
 
-### Tasks for 1st term
-```
-1. Maintain Storage system. 
-Purpose: Set up and maintain 
-Result:   
-2. Develop Scoring. 
-Purpose: xxx 
-Result:   xxx
-3. Describe Processes and Procedures. 
-Purpose: xxx 
-Result:   xxx 
-4. Update Documentation
-Purpose: xxx 
-Result:   xxx
-5. Develop Roadmap.
-Purpose: xxx 
-Result:   xxx
-6. Maintain Storage system in public testnet. 
-Purpose: xxx 
-Result:   xxx
-7. Provide repors. 
-Purpose: xxx 
-Result:   xxx
-```
-
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#gateways-1](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#gateways-1)
-
-
-
-
+no tasks
