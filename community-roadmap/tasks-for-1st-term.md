@@ -1,40 +1,38 @@
+# Tasks for 1st term
+
 the work is in progress here
 
+## Storage WG 
 
-# Storage WG 
+#### 1. Maintain Storage system. 
+- Purpose: Set up and maintain 
+- Result:   
+#### 2. Develop Scoring. 
+- Purpose: xxx 
+- Result:   xxx
+#### 3. Describe Processes and Procedures. 
+- Purpose: xxx 
+- Result:   xxx 
+#### 4. Update Documentation
+- Purpose: xxx 
+- Result:   xxx
+#### 5. Develop Roadmap.
+- Purpose: xxx 
+- Result:   xxx
+#### 6. Maintain Storage system in public testnet. 
+- Purpose: xxx 
+- Result:   xxx
+#### 7. Provide repors. 
+- Purpose: xxx 
+- Result:   xxx
 
-### Tasks for 1st term
-```
-1. Maintain Storage system. 
-Purpose: Set up and maintain 
-Result:   
-2. Develop Scoring. 
-Purpose: xxx 
-Result:   xxx
-3. Describe Processes and Procedures. 
-Purpose: xxx 
-Result:   xxx 
-4. Update Documentation
-Purpose: xxx 
-Result:   xxx
-5. Develop Roadmap.
-Purpose: xxx 
-Result:   xxx
-6. Maintain Storage system in public testnet. 
-Purpose: xxx 
-Result:   xxx
-7. Provide repors. 
-Purpose: xxx 
-Result:   xxx
-```
+#### Links
 - [Storage Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/storage-providers-score.md)
 - [Storage Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
 - [General WG scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/general-working-group-score.md)
 
 ## Distribution WG 
 
-### Tasks for 1st term
-```
 1. Maintain Storage system. 
 Purpose: Set up and maintain 
 Result:   
