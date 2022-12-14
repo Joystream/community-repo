@@ -2,7 +2,7 @@
 
 **Tasks for 1st term**
 
-- [See tasks] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+- [See tasks](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#storage-wg)
 
 **Responsibilities**
 
@@ -64,7 +64,7 @@ $10000 (166666 JOY)
 
 **Tasks for 1st term**
 
-- [See tasks] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+- [See tasks](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#distribution-wg)
 
 **Responsibilities**
 
@@ -131,7 +131,7 @@ $10000 (166666 JOY)
 
 **Tasks for 1st term**
 
-- [See tasks] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+- [See tasks](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#builders-wg)
 
 **Responsibilities**
 
@@ -189,7 +189,7 @@ $10000 (166666 JOY)
 
 **Tasks for 1st term**
 
-- [See tasks] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+- [See tasks](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#hr-working-group)
 
 **Responsibilities**
 
@@ -242,7 +242,7 @@ $10000 (166666 JOY)
 
 **Tasks for 1st term**
 
-- [See tasks] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+- [See tasks](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#forum-wg)
 
 **Responsibilities**
 
@@ -300,7 +300,7 @@ $10000 (166666 JOY)
 
 **Tasks for 1st term**
 
-- [See tasks] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+- [See tasks] (https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#marketing-wg)
 
 **Responsibilities**
 
@@ -352,7 +352,7 @@ $10000 (166666 JOY)
 
 **Tasks for 1st term**
 
-- [See tasks] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+- [See tasks](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#content-curator-wg)
 
 **Responsibilities**
 
@@ -413,7 +413,7 @@ $10000 (166666 JOY)
 
 **Tasks for 1st term**
 
-- [Task list] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+- [Task list](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#gateways)
 
 **Salary**
 
