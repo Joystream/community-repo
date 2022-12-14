@@ -40,13 +40,13 @@ A confirmed data object can no longer be recovered from storage nodes, despite n
 ##### 4.2 Incorrect Reporting
 Whereas a failure to provide the storage specific report, or omission of certain values will simply cause a bad score, incorrect data will, if discovered, count as a catastrophic error.
 
-#### 5. Describe Processes and Procedures 
+#### 5. Formally introduce Processes and Procedures 
 Create and get approval from the Council (via proposal) for all significant Processes/Procedures/Standards your working group needs to function effectively.
 
 #### 6. Update Documentation
 Review all sources of documentation related to the Working Group (such as Notion, Github, Handbook, etc.) and update any outdated information. 
 
-#### 7. Maintain Storage system in public testnet. 
+#### 7. Maintain Storage system in public testnet 
 Provide any assistance needed if JSG/BWG reach you for the help in public testnet. You can assign the same worker to hold nodes both for testnet and mainnet. 
 
 #### 7. Provide reports  
