@@ -336,7 +336,7 @@
 
 **Salary**
 
-[Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
+- [Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
 
 **Questions**
 
@@ -397,7 +397,7 @@
 
 **Salary**
 
-[Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
+- [Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
 
 **Questions**
 
