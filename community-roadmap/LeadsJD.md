@@ -1,8 +1,8 @@
 ## Storage WG Lead
 
-**Tasks for 1st term**
+**Tasks**
 
-- [See tasks](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#storage-wg)
+- [Tasks for 1st term](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#storage-wg)
 
 **Responsibilities**
 
@@ -43,7 +43,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-[Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
+- [Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
 
 **Questions**
 
@@ -62,9 +62,9 @@ $10000 (166666 JOY)
 
 ## Distribution WG Lead
 
-**Tasks for 1st term**
+**Tasks**
 
-- [See tasks](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#distribution-wg)
+- [Tasks for 1st term](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#distribution-wg)
 
 **Responsibilities**
 
@@ -110,7 +110,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-[See reference](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
+- [Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
 
 **Questions**
 
@@ -129,9 +129,9 @@ $10000 (166666 JOY)
 
 ## Builders WG Lead
 
-**Tasks for 1st term**
+**Tasks**
 
-- [See tasks](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#builders-wg)
+- [Tasks for 1st term](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#builders-wg)
 
 **Responsibilities**
 
@@ -170,7 +170,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-[Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
+- [Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
 
 **Questions**
 
@@ -187,9 +187,9 @@ $10000 (166666 JOY)
 
 ## HR Working Group Lead
 
-**Tasks for 1st term**
+**Tasks**
 
-- [See tasks](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#hr-working-group)
+- [Tasks for 1st term](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#hr-working-group)
 
 **Responsibilities**
 
@@ -227,7 +227,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-[See reference](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
+- [Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
 
 **Questions**
 
@@ -240,9 +240,9 @@ $10000 (166666 JOY)
 
 ## Forum Working Group Lead
 
-**Tasks for 1st term**
+**Tasks**
 
-- [See tasks](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#forum-wg)
+- [Tasks for 1st term](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#forum-wg)
 
 **Responsibilities**
 
@@ -283,7 +283,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-[See reference](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
+- [Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
 
 
 **Questions**
@@ -336,7 +336,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-[See reference](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
+[Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
 
 **Questions**
 
@@ -350,9 +350,9 @@ $10000 (166666 JOY)
 
 ## Content Curator WG Lead
 
-**Tasks for 1st term**
+**Tasks**
 
-- [See tasks](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#content-curator-wg)
+- [Tasks for 1st term](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#content-curator-wg)
 
 **Responsibilities**
 
@@ -411,9 +411,9 @@ $10000 (166666 JOY)
 
 ## Gateways
 
-**Tasks for 1st term**
+**Tasks**
 
-- [Task list](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#gateways)
+- [Tasks for 1st term](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#gateways)
 
 **Salary**
 
