@@ -8,6 +8,16 @@ The salaries for this first term may seem a bit rough and may be subject to chan
 ## Composition
 ![WG composition](https://i.imgur.com/Y32t7ql.png)
 
+## Lead Job Description
+- [Storage WG Lead](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/LeadsJD.md#storage-wg-lead)
+- [Distribution WG Lead](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/LeadsJD.md#distribution-wg-lead)  
+- [Builders WG Lead](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/LeadsJD.md#builders-wg-lead)
+- [HR WG Lead](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/LeadsJD.md#hr-working-group-lead) 
+- [Forum WG Lead](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/LeadsJD.md#forum-working-group-lead)
+- [Marketing WG Lead](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/LeadsJD.md#marketing-wg-lead)
+- [Content Curator WG Lead](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/LeadsJD.md#content-curator-wg-lead)
+- [Gateways WG Lead](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/LeadsJD.md#gateways)
+
 ## Salaries
 
 #### Key principles:
