@@ -1,8 +1,8 @@
 ## Storage WG Lead
 
-**Tasks for Carthage**
+**Tasks for 1st term**
 
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+- [See tasks] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
 
 **Responsibilities**
 
@@ -43,11 +43,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-- Salary per block: 0.2895 JOY 
-- 14400 [blocks/day] * 0.2895 [Joy/block] * 30 [days] * 0.06 [USD/JOY] = 7 500 [USD/month]
-- Salary per Month: $7500 (125000JOY)
-- If an employee works fewer than 160 hours per month, the Council may reduce their pay according to the hourly rate and actual number of hours worked
-- Hourly rate: $46.875/hour ($7500 =160 hours per month \* $46.875/hour)
+[Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
 
 **Questions**
 
@@ -66,9 +62,9 @@ $10000 (166666 JOY)
 
 ## Distribution WG Lead
 
-**Tasks for Carthage**
+**Tasks for 1st term**
 
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
+- [See tasks] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
 
 **Responsibilities**
 
@@ -114,11 +110,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-- Salary per block: 0.2895 JOY 
-- 14400 [blocks/day] * 0.2895 [Joy/block] * 30 [days] * 0.06 [USD/JOY] = 7 500 [USD/month]
-- Monthly salary: $7500 (125000JOY)
-- If an employee works fewer than 160 hours per month, the Council may reduce their pay according to the hourly rate and actual number of hours worked
-- Hourly rate: $46.875/hour ($7500 =160 hours per month \* $46.875/hour)
+[See reference](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
 
 **Questions**
 
@@ -137,10 +129,9 @@ $10000 (166666 JOY)
 
 ## Builders WG Lead
 
-**Tasks for Carthage**
+**Tasks for 1st term**
 
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#builders](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#builders)
-- Long term dev startegy 
+- [See tasks] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
 
 **Responsibilities**
 
@@ -179,11 +170,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-- Salary per block: 0.386 JOY 
-- 14400 [blocks/day] * 0.386 [Joy/block] * 30 [days] * 0.06 [USD/JOY] = 10 000 [USD/month]
-- Monthly salary: $10000 (166666 JOY)
-- If an employee works fewer than 160 hours per month, the Council may reduce their pay according to the hourly rate and actual number of hours worked
-- Hourly rate: $62.5/hour ($10000 =160 hours per month \* $62.5/hour)
+[Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
 
 **Questions**
 
@@ -200,9 +187,9 @@ $10000 (166666 JOY)
 
 ## HR Working Group Lead
 
-**Tasks for Carthage**
+**Tasks for 1st term**
 
-- [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#hr](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#hr)
+- [See tasks] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
 
 **Responsibilities**
 
@@ -240,7 +227,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-TBD later
+[See reference](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
 
 **Questions**
 
@@ -253,9 +240,9 @@ TBD later
 
 ## Forum Working Group Lead
 
-**Tasks for Carthage**
+**Tasks for 1st term**
 
-- [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#forum](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#forum)
+- [See tasks] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
 
 **Responsibilities**
 
@@ -296,7 +283,8 @@ $10000 (166666 JOY)
 
 **Salary**
 
-TBD later
+[See reference](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
+
 
 **Questions**
 
@@ -310,10 +298,9 @@ TBD later
 
 ## Marketing WG Lead
 
-**Tasks for Carthage**
+**Tasks for 1st term**
 
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#marketing](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#marketing)
-- Develop long-term startegy
+- [See tasks] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
 
 **Responsibilities**
 
@@ -349,7 +336,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-TBD later
+[See reference](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
 
 **Questions**
 
@@ -363,9 +350,9 @@ TBD later
 
 ## Content Curator WG Lead
 
-**Tasks for Carthage**
+**Tasks for 1st term**
 
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#curators](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#curators)
+- [See tasks] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
 
 **Responsibilities**
 
@@ -410,7 +397,7 @@ $10000 (166666 JOY)
 
 **Salary**
 
-TBD later
+[Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
 
 **Questions**
 
@@ -424,7 +411,10 @@ TBD later
 
 ## Gateways
 
-**Tasks for Carthage**
+**Tasks for 1st term**
 
-- See [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#gateways-1](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#gateways-1)
+- [Task list] (https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
 
+**Salary**
+
+[Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
