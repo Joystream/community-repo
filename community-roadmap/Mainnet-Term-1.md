@@ -5,9 +5,6 @@ Before the mainnet council is chosen, it is important to have everything as read
 I intentionally suggest some working groups not fully staffed in the first mainnet term, as the process will be rolled out gradually. 
 The salaries for this first term may seem a bit rough and may be subject to change later based on the new scoring system (WIP).
 
-#### Update 14-Dec-2022
-I'm not fully sure we need 7 FTEs in the BWG right away. Following @l1dev's recent ideas, I suggest reconsidering the BWG scope and making a decision based on our objectives and the actual workload needed. More discussion [see here](https://discord.com/channels/811216481340751934/812343711870091285/1052465528834363492).
-
 ## Composition
 ![WG composition](https://i.imgur.com/Y32t7ql.png)
 
@@ -42,3 +39,7 @@ I'm not fully sure we need 7 FTEs in the BWG right away. Following @l1dev's rece
 - All WGs (except Storage/Distribution): 40 USD/hour
 - Storage/Distribution node runners: 1000 USD/month
 
+## Budget
+
+- [First draft](https://discord.com/channels/811216481340751934/812343711870091285/1052465528834363492) by @chaos77
+- I'm not fully sure we need 7 FTEs in the BWG right away. Following @l1dev's recent ideas, I suggest reconsidering the BWG scope and making a decision based on our objectives and the actual workload needed. More discussion [see here](https://discord.com/channels/811216481340751934/812343711870091285/1052465528834363492).
