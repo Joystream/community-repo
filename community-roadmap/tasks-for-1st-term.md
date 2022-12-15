@@ -69,14 +69,8 @@ A confirmed data object can no longer be recovered from storage nodes, despite n
 ##### 4.2 Incorrect Reporting
 Whereas a failure to provide the storage specific report, or omission of certain values will simply cause a bad score, incorrect data will, if discovered, count as a catastrophic error.
 
-#### 7. Maintain Storage system in public testnet 
+#### 5. Maintain Storage system in public testnet 
 Provide any assistance needed if JSG/BWG reach you for the help in public testnet. You can assign the same worker to hold nodes both for testnet and mainnet. 
-
-
-#### Links to old scores (FYI)
-- [Storage Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/storage-providers-score.md)
-- [Storage Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
-- [General WG scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/general-working-group-score.md)
 
 ## Distribution WG 
 
@@ -116,11 +110,6 @@ A node is operating (set as serving content) while being on an older version 4h 
 #### 5. Maintain Storage system in public testnet 
 Provide any assistance needed if JSG/BWG reach you for the help in public testnet. You can assign the same worker to hold nodes both for testnet and mainnet. 
 
-#### Links to old scores (FYI)
-- [Distribution Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/distributors-score.md)
-- [Distribution Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
-- [General WG scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/general-working-group-score.md)
-
 ## Builders WG 
 
 The operations working group is unlike other working groups, in that they are only really being measured based on the quality of their output, as judged by Council.
@@ -152,21 +141,17 @@ Check here for the [tickets](https://github.com/orgs/Joystream/projects/56).
 There is an open question whether Council has access to the dashboard or not. If not, a new link will be provided asap. 
 
 #### 4. Maintain Pioneer in public testnet
-Provide any assistance needed if JSG/BWG reach you for the help in public testnet. You can assign the same worker to hold nodes both for testnet and mainnet. 
+Provide any assistance needed if JSG reach you for the help in public testnet. 
 
-
-#### Links to old scores (FYI)
-- [Builders Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/builders-score.md)
-- [Builders Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
-- [General WG scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/general-working-group-score.md)
 
 ## HR Working Group 
 
-TBD
-#### Links to old scores (FYI)
-- [HR Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/human-resources-score.md)
-- [HR Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
-- [General WG scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/general-working-group-score.md)
+#### 4. Errors
+**Inadequate Report**
+An inadequate report addendum about the bounties was provided, for example by missing or incorrect information.
+
+**Missing Judgement**
+A bounty did not receive oracle judgement, and the person assigned the bounty wasn't compensated within 24h of the oracle judgement period expiring.
 
 
 ## Forum WG 
@@ -208,10 +193,7 @@ A confirmed data object can no longer be recovered from storage nodes, despite n
 ##### 4.2 Incorrect Reporting - XXXXXXXXXXXXX
 Whereas a failure to provide the storage specific report, or omission of certain values will simply cause a bad score, incorrect data will, if discovered, count as a catastrophic error.
 
-#### Links to old scores (FYI)
-- [Forum Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/forum-score.md)
-- [Forum Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
-- [General WG scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/general-working-group-score.md)
+
 
 
 ## Marketing WG 
@@ -253,10 +235,7 @@ A confirmed data object can no longer be recovered from storage nodes, despite n
 ##### 4.2 Incorrect Reporting - XXXXXXXXXXXXX
 Whereas a failure to provide the storage specific report, or omission of certain values will simply cause a bad score, incorrect data will, if discovered, count as a catastrophic error.
 
-#### Links to old scores (FYI)
-- [Marketing Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/marketers-score.md)
-- [Marketing Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
-- [General WG scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/general-working-group-score.md)
+
 
 ## Content Curator WG 
 
@@ -297,12 +276,18 @@ A confirmed data object can no longer be recovered from storage nodes, despite n
 ##### 4.2 Incorrect Reporting - XXXXXXXXXXXXX
 Whereas a failure to provide the storage specific report, or omission of certain values will simply cause a bad score, incorrect data will, if discovered, count as a catastrophic error.
 
-#### Links to old scores (FYI)
-- [Content Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/content-directory-score.md)
-- [Content Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
-- [General WG scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/general-working-group-score.md)
-
 ## Gateways
 
 TBD
 
+# Appendix 
+
+#### Outdated scoring guides 
+
+- [Marketing Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/marketers-score.md)
+- [Content Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/content-directory-score.md)
+- [Distribution Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/distributors-score.md)
+- [Forum Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/forum-score.md)
+- [HR Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/human-resources-score.md)
+- [Builders Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/builders-score.md)
+- [Storage Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/storage-providers-score.md)
