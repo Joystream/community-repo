@@ -1,6 +1,7 @@
 # Tasks for 1st term
 
 WIP
+
 Here you can find a plain list of tasks that each working group should perform. 
 There are no assessment criteria provided and no scoring points.
 In the first term, the Council will assess the tasks based on their own discretion. 
