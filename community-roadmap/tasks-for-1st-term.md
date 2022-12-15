@@ -55,6 +55,17 @@ Submit your plan for the next term no later than 14400 blocks before the end of 
 #### 8. Develop startegic plan 
 Create an initial outline for your Working Group's strategic plan that covers more than one year period. Please be as detailed as possible.
 
+#### 9. Intellectual property
+
+Let's find out which intellectual property and digital assets will stay with JSG and which will be transferred to your WG. 
+
+Some more questions on this:
+
+- Usage: How will we use these new assets?
+- Payments: Who will pay for the services? What's the procedure?
+- Asset protection: How will DAO protect their assets? Each time new members join the Joystream DAO council, it is important to ensure that they do not misuse its resources. These individuals will possess privileged information, which could cause harm to the DAO if it is not managed responsibly.
+
+
 #### Links to old scores (FYI)
 - [Storage Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/storage-providers-score.md)
 - [Storage Carthage Scores](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution)
