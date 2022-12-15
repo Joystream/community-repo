@@ -169,43 +169,37 @@ Bounties are created as per request of other WG or Council.
 ## Forum WG 
 
 
-#### 1. Setup storage system  - XXXXXXXXXXXXX
-Get the system operational as soon as possible which means:
-- Sufficient buckets (as required by the runtime) operational
-- System and bucket level configurations are "good"
-- Non-operational buckets are turned off, to avoid failed requests
-- Bags quickly "moved" as new buckets are online, and others fail
-- Expected replication rate should be no less than 5
+The forum working group activities relevant to scoring will, generally, fall into one of the following categories
+
+Maintain a reasonable set of categories, allowing users to easily navigate the forum
+- Moderate the forum: ideally, this means moving threads that were placed inappropriately, but also includes censoring anything that violates the content policy
+- Forum (tech) support, including maintaining guides for how the forum works from a user point of view
+
+Council may in some cases create posts or threads that the working group should deal with in one way or another.
+
+#### 1. Categories set up
+
+- Create a set of initial categories for the Forum, and ensure it works
+- Request feedback from the Community
+- With the below in mind, create a proposal to the Council outlining the categories and hierarchy within
+- If approved, implement the changes. If not, revise and repeat 4
  
-#### 2. Maintain storage system  - XXXXXXXXXXXXX
-Storage system should performs well in the following terms
-- Low latency and reliable uploading.
-- Very low probability of permanent data loss
-- High upload speed.
-- High upload volume capacity: many simultaneous parallel uploads.
-- A high upload speed to distributors.
-- A low replication latency for a new data objects to all providers for the given bag.
-- A low synchronization time of new storage providers.
-- Basic level of denial of service resistance at the public upload API.
+#### 2. Usage
 
-Council will be conducting experiments to put load on the system, including denial of service attacks, spamming, and also posing as malicious workers. Expect Council to rent botnet services or other denial of service infrastructure to simulate at scale attacks.
+Not (just) the Forum Lead to decide, but there a plethora of ways the community CAN communicate. Discord is probably the fastest, the proposal system is probably best for "big" things, and DMs are probably better for non-public communication or smalltalk.
 
-#### 3. Logging  - XXXXXXXXXXXXX
-Each transaction `tx:n` performed by the Lead role key, successful or not, must be logged.
+However, the forum has it's benefit given that it's easy for all to know who you're talking with, and the messages are (somewhat) permanent.
 
-This is not about the Council catching mistakes, but ensuring that the deployment is reproducible. 
-Helpful for reviewing improvements, and lessons learned.
+Draft a proposal outlining this.
 
-#### 4. Errors   - XXXXXXXXXXXXX
-You must avoid the following   
+#### 4. Errors  
+Try to avoid errors as much as you can
 
-##### 4.1 Permanent Data Object Loss - XXXXXXXXXXXXX
-A confirmed data object can no longer be recovered from storage nodes, despite not being deleted on chain.
+##### 4.1 Violation of Content Policy
+Although not strictly the same, the concepts in the content policy applies to the forum as well. Any post or thread fitting the above, left unmoderated for 12h.
 
-##### 4.2 Incorrect Reporting - XXXXXXXXXXXXX
-Whereas a failure to provide the storage specific report, or omission of certain values will simply cause a bad score, incorrect data will, if discovered, count as a catastrophic error.
-
-
+##### 4.1 Unwarrented deletion of a post or thread
+Any thread or post that gets deleted, for any reason, must be justified in the report. If the grounds are found unwarranted (ie. not in line with any policy), or simply not mentioned in any report, it counts as a catastrophic error.
 
 
 ## Marketing WG 
