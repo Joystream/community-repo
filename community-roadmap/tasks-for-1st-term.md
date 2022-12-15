@@ -1,6 +1,10 @@
 # Tasks for 1st term
 
 WIP
+Here you can find a plain list of tasks that each working group should perform. 
+There are no assessment criteria provided and no scoring points.
+In the first term, the Council will assess the tasks based on their own discretion. 
+A scoring system will be put into place in next terms.
 
 ## Storage WG 
 
@@ -106,13 +110,13 @@ A data object is not available from any distributor, despite being held be an av
 ##### 4.2 Old version
 A node is operating (set as serving content) while being on an older version 4h after an upgrade has been published.
 
-#### 5. Formally introduce Processes and Procedures  - XXXXXXXXXXXXX
+#### 5. Formally introduce Processes and Procedures  
 Create and get approval from the Council (via proposal) for all significant Processes/Procedures/Standards your working group needs to function effectively.
 
 #### 6. Update Documentation
 Review all sources of documentation related to the distribution WG (such as Notion, Github, Handbook, etc.) and update any outdated information. 
 
-#### 7. Maintain Storage system in public testnet  - XXXXXXXXXXXXX
+#### 7. Maintain Storage system in public testnet 
 Provide any assistance needed if JSG/BWG reach you for the help in public testnet. You can assign the same worker to hold nodes both for testnet and mainnet. 
 
 #### 7. Provide reports
@@ -138,27 +142,20 @@ Some more questions on this:
 
 ## Builders WG 
 
+The operations working group is unlike other working groups, in that they are only really being measured based on the quality of their output, as judged by Council.
 
-#### 1. Setup storage system  - XXXXXXXXXXXXX
-Get the system operational as soon as possible which means:
-- Sufficient buckets (as required by the runtime) operational
-- System and bucket level configurations are "good"
-- Non-operational buckets are turned off, to avoid failed requests
-- Bags quickly "moved" as new buckets are online, and others fail
-- Expected replication rate should be no less than 5
+The working group will generally focus on developing tools and enhancing existing applications (Pioneer, Atlas, CLI etc.) and the runtime which come together to make the Joystream platform as a whole. 
+
+Their contributions to these tools and the creation of new ones are represented as a development score, which attempts to measure the volume and quality of development based on the resources available to the working group.
+
+It should be kept in mind that this development activity is not purely restricted to Council tools and projects, but can also apply to community projects such as JoystreamStats.
+
+
+#### 1. Testing Issues
+A [github project](https://github.com/orgs/Joystream/projects/55) has been created for the Builder group. Go ahead and take a look at the issues and give it a try.
  
-#### 2. Maintain storage system  - XXXXXXXXXXXXX
-Storage system should performs well in the following terms
-- Low latency and reliable uploading.
-- Very low probability of permanent data loss
-- High upload speed.
-- High upload volume capacity: many simultaneous parallel uploads.
-- A high upload speed to distributors.
-- A low replication latency for a new data objects to all providers for the given bag.
-- A low synchronization time of new storage providers.
-- Basic level of denial of service resistance at the public upload API.
+#### 2. Pioneer Development
 
-Council will be conducting experiments to put load on the system, including denial of service attacks, spamming, and also posing as malicious workers. Expect Council to rent botnet services or other denial of service infrastructure to simulate at scale attacks.
 
 #### 3. Logging  - XXXXXXXXXXXXX
 Each transaction `tx:n` performed by the Lead role key, successful or not, must be logged.
