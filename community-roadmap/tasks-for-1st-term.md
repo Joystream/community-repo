@@ -7,6 +7,30 @@ There are no assessment criteria provided and no scoring points.
 In the first term, the Council will assess the tasks based on their own discretion. 
 A scoring system will be put into place in next terms.
 
+## All WGs 
+
+#### 1. Formally introduce processes/procedures/standards 
+Create and get approval from the Council (via proposal) for all significant processes/procedures/standards a working group needs to function effectively.
+
+#### 2. Update Documentation
+Review all sources of documentation related to a working group (such as Notion, Github, Handbook, etc.) and update any outdated information. 
+
+#### 3. Provide reports  
+Submit your plan for the next term no later than 14400 blocks before the end of the current term. Please follow the specified [format](https://joystream.notion.site/Working-Group-Summary-976c881decb744b08c8f375a06807fa3). 
+
+#### 4. Develop startegic plan 
+Create an initial outline for a working group's strategic plan that covers more than one year period. Please be as detailed as possible.
+
+#### 5. Intellectual property
+
+Let's find out which intellectual property and digital assets will stay with JSG and which will be transferred to a working group. Prepare the list of such assets with their name, description and URLs.
+
+Some more questions on this:
+
+- Usage: How will we use these new assets?
+- Payments: Who will pay for the services? What's the procedure?
+- Asset protection: How will DAO protect their assets? Each time new members join the Joystream DAO council, it is important to ensure that they do not misuse its resources. These individuals will possess privileged information, which could cause harm to the DAO if it is not managed responsibly.
+
 ## Storage WG 
 
 #### 1. Setup storage system 
@@ -45,30 +69,8 @@ A confirmed data object can no longer be recovered from storage nodes, despite n
 ##### 4.2 Incorrect Reporting
 Whereas a failure to provide the storage specific report, or omission of certain values will simply cause a bad score, incorrect data will, if discovered, count as a catastrophic error.
 
-#### 5. Formally introduce Processes and Procedures 
-Create and get approval from the Council (via proposal) for all significant Processes/Procedures/Standards your working group needs to function effectively.
-
-#### 6. Update Documentation
-Review all sources of documentation related to the Working Group (such as Notion, Github, Handbook, etc.) and update any outdated information. 
-
 #### 7. Maintain Storage system in public testnet 
 Provide any assistance needed if JSG/BWG reach you for the help in public testnet. You can assign the same worker to hold nodes both for testnet and mainnet. 
-
-#### 7. Provide reports  
-Submit your plan for the next term no later than 14400 blocks before the end of the current term. Please follow the specified [format](https://joystream.notion.site/Working-Group-Summary-976c881decb744b08c8f375a06807fa3). 
-
-#### 8. Develop startegic plan 
-Create an initial outline for storage WG's strategic plan that covers more than one year period. Please be as detailed as possible.
-
-#### 9. Intellectual property
-
-Let's find out which intellectual property and digital assets will stay with JSG and which will be transferred to storage WG. Prepare the list of such assets with their name, description and URLs.
-
-Some more questions on this:
-
-- Usage: How will we use these new assets?
-- Payments: Who will pay for the services? What's the procedure?
-- Asset protection: How will DAO protect their assets? Each time new members join the Joystream DAO council, it is important to ensure that they do not misuse its resources. These individuals will possess privileged information, which could cause harm to the DAO if it is not managed responsibly.
 
 
 #### Links to old scores (FYI)
