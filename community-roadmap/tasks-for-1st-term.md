@@ -153,44 +153,42 @@ It should be kept in mind that this development activity is not purely restricte
 
 
 #### 1. Testing Issues
-A [github project](https://github.com/orgs/Joystream/projects/55) has been created for the Builder group. Go ahead and take a look at the issues and give it a try.
+
+A [github project](https://github.com/orgs/Joystream/projects/55) has been created for the Builder group. Go ahead and take a look at the testing issues and give it a try.
+
+There is an open question whether Council has access to the dashboard or not. If not, a new link will be provided asap. 
  
 #### 2. Pioneer Development
 
+The Pioneer Development issues you can find in the sage GitHub spot as for [testing issues](https://github.com/orgs/Joystream/projects/55). 
 
-#### 3. Logging  - XXXXXXXXXXXXX
-Each transaction `tx:n` performed by the Lead role key, successful or not, must be logged.
+There is an open question whether Council has access to the dashboard or not. If not, a new link will be provided asap. 
 
-This is not about the Council catching mistakes, but ensuring that the deployment is reproducible. 
-Helpful for reviewing improvements, and lessons learned.
+#### 3. General development 
 
-#### 4. Errors   - XXXXXXXXXXXXX
-You must avoid the following   
+The General Development issues pretty similar to Pioneer Development, though they are not about Pioneer. 
+Check here for the [tickets](https://github.com/orgs/Joystream/projects/56). 
 
-##### 4.1 Permanent Data Object Loss - XXXXXXXXXXXXX
-A confirmed data object can no longer be recovered from storage nodes, despite not being deleted on chain.
+There is an open question whether Council has access to the dashboard or not. If not, a new link will be provided asap. 
 
-##### 4.2 Incorrect Reporting - XXXXXXXXXXXXX
-Whereas a failure to provide the storage specific report, or omission of certain values will simply cause a bad score, incorrect data will, if discovered, count as a catastrophic error.
-
-#### 5. Formally introduce Processes and Procedures  - XXXXXXXXXXXXX
+#### 4. Formally introduce Processes and Procedures 
 Create and get approval from the Council (via proposal) for all significant Processes/Procedures/Standards your working group needs to function effectively.
 
-#### 6. Update Documentation - XXXXXXXXXXXXX
+#### 5. Update Documentation 
 Review all sources of documentation related to the Working Group (such as Notion, Github, Handbook, etc.) and update any outdated information. 
 
-#### 7. Maintain Storage system in public testnet  - XXXXXXXXXXXXX
+#### 6. Maintain Pioneer in public testnet
 Provide any assistance needed if JSG/BWG reach you for the help in public testnet. You can assign the same worker to hold nodes both for testnet and mainnet. 
 
-#### 7. Provide reports   - XXXXXXXXXXXXX
+#### 7. Provide reports  
 Submit your plan for the next term no later than 14400 blocks before the end of the current term. Please follow the specified [format](https://joystream.notion.site/Working-Group-Summary-976c881decb744b08c8f375a06807fa3). 
 
-#### 8. Develop startegic plan  - XXXXXXXXXXXXX
-Create an initial outline for your Working Group's strategic plan that covers more than one year period. Please be as detailed as possible.
+#### 8. Develop startegic plan 
+Create an initial outline for builders working group's strategic plan that covers more than one year period. Please be as detailed as possible.
 
-#### 9. Intellectual property - XXXXXXXXXXXXX
+#### 9. Intellectual property 
 
-Let's find out which intellectual property and digital assets will stay with JSG and which will be transferred to your WG. Prepare the list of such assets with their name, description and URLs.
+Let's find out which intellectual property and digital assets will stay with JSG and which will be transferred to builders WG. Prepare the list of such assets with their name, description and URLs.
 
 Some more questions on this:
 
