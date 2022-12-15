@@ -2,7 +2,7 @@
 
 WIP
 
-Here you can find a plain list of tasks that each working group should perform. 
+Below you can find tasks for every Working Group to accomplish.
 There are no assessment criteria provided and no scoring points.
 In the first term, the Council will assess the tasks based on their own discretion. 
 A scoring system will be put into place in next terms.
