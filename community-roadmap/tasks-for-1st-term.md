@@ -146,6 +146,20 @@ Provide any assistance needed if JSG reach you for the help in public testnet.
 
 ## HR Working Group 
 
+#### 1. Bounty management
+
+Encourage both new and existing members of the DAO to take on small to medium-sized one-time tasks in order to accomplish work that requires certain skills which are not present within the DAO or when the existing DAO members are overwhelmed with their routine work.
+
+- Bounties are created as per request of other WG or Council
+- The Lead creating the on-chain bounty must make sure to select the appropriate oracle, which is most likely the WG Lead or Council member with most experience in the relevant area of the platform. 
+- If the bounty requires specific knowledge not currently available in the HR group, the HR group is responsible for recruiting in the system to perform this role, and agreeing on any payment for said service. Just as for the funding of a bounty, said reward must be set aside in the budget, and held in escrow in some reasonable way agreed by to by all parties.
+- Lastly, the Lead/worker must negotiate a plausible working period, and oracle judgement duration for the bounty.
+
+Be aware that Council will be conducting probing experiments to see how funds are allocated to bounties under false identities.
+
+#### 2. Grant management 
+
+
 #### 4. Errors
 **Inadequate Report**
 An inadequate report addendum about the bounties was provided, for example by missing or incorrect information.
