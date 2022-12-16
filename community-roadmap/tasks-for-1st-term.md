@@ -315,9 +315,9 @@ Lead Extra Hours:
 
 the Timesheet is not relevant for Storage and Distribution WGs.
 
-#### 6. List of completed tasks
+#### 4. List of completed tasks
 
-#### 7. Ideas to improve your Working Group
+#### 5. Ideas to improve your Working Group
 
 _Optional item._
 Write an Idea and a plan describing the implementation plan in detail to improve your WG.
