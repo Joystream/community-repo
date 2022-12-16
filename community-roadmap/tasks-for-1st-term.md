@@ -8,7 +8,13 @@ A scoring system will be put into place in next terms.
 ## All WGs 
 
 #### 1. Formally introduce processes/procedures/standards 
-Create and get approval from the Council (via proposal) for all significant processes/procedures/standards a working group needs to function effectively.
+Create and get approval from the Council (via proposal) for all significant processes/procedures/standards a working group needs to function effectively. 
+
+Good plan should have
+- Clarity of communication and organization.
+- Appropriate scope.
+- Accuracy of facts and information.
+- Quality of recommendations
 
 #### 2. Update Documentation
 Review all sources of documentation related to a working group (such as Notion, Github, Handbook, etc.) and update any outdated information. 
@@ -29,14 +35,30 @@ Some more questions on this:
 - Payments: Who will pay for the services? What's the procedure?
 - Asset protection: How will DAO protect their assets? Each time new members join the Joystream DAO council, it is important to ensure that they do not misuse its resources. These individuals will possess privileged information, which could cause harm to the DAO if it is not managed responsibly.
 
-#### 6. Errors
-This section provides prguidance on what to avoid when doing tasks.
+#### 6. Openings
 
-##### 6.1  Inadequate Report
+Maintain at least one opening for a role in the group at any point during a council period.
+The opening must be relevant, created in the current or last council period, and
+- be well written and outlining any requirements, conditions, nice to haves, that is needed to get the job
+- include a set of question that allows the applicant to distinguish themselves
+- include a link to a forum thread, where any interested parties or applicants can ask questions, and the discord handle of the Lead
+- include the latest bounty created by the group, to act as a skill test
+Anyone applies or asks questions in the forum must be followed up within 48h
+
+#### 7. Errors
+This section provides guidance on what to avoid when doing tasks.
+
+##### 7.1  Inadequate Report
 An inadequate report made aboit the work peformed, for example by missing or incorrect information.
 
-##### 6.2 Workflow Violation
+##### 7.2 Workflow Violation
 Any deviance from the workflows is not accepted.
+
+##### 7.2  Late plan
+The plan is late by >6 hours or more.
+
+##### 7.2  No openings
+No openings existed during the term.
 
 ## Storage WG 
 
@@ -68,7 +90,7 @@ This is not about the Council catching mistakes, but ensuring that the deploymen
 Helpful for reviewing improvements, and lessons learned.
 
 #### 4. Errors  
-This section provides prguidance on what to avoid when doing tasks.
+This section provides guidance on what to avoid when doing tasks.
 
 ##### 4.1 Permanent Data Object Loss
 A confirmed data object can no longer be recovered from storage nodes, despite not being deleted on chain.
@@ -106,7 +128,7 @@ This is not about the Council catching mistakes, but ensuring that the deploymen
 Helpful for reviewing improvements, and lessons learned.
 
 #### 4. Errors   
-This section provides prguidance on what to avoid when doing tasks.
+This section provides guidance on what to avoid when doing tasks.
 
 ##### 4.1 No available sources to fetch a data object from
 A data object is not available from any distributor, despite being held be an available storage node
@@ -126,7 +148,6 @@ The working group will generally focus on developing tools and enhancing existin
 Their contributions to these tools and the creation of new ones are represented as a development score, which attempts to measure the volume and quality of development based on the resources available to the working group.
 
 It should be kept in mind that this development activity is not purely restricted to Council tools and projects, but can also apply to community projects such as JoystreamStats.
-
 
 #### 1. Testing Issues
 
@@ -156,16 +177,19 @@ Provide any assistance needed if JSG reach you for the help in public testnet.
 #### 1. Recruitment
 
 Work hand-in-hand with Council and WG Leads on recruiting the most capable individuals according to the demands of the DAO.
+Recruitment can be initiated as per request of WG Leads or Council.
 
-#### 2. HR market data 
+#### 2. Talent pool 
 
-Prepare salary benchmark for all roles in the DAO
+Create a reserve of potential employees who are not currently part of any working groups, but can be tapped into if these working groups has a vacancy. This will give us an opportunity to quickly reach out these workers in case of need. Also the will help us identify where our greatest staffing needs may arise if we should to quickly increase our workforce.
 
 #### 3. Bounty management
 
 Encourage both new and existing members of the DAO to take on small to medium-sized one-time tasks in order to accomplish work that requires certain skills which are not present within the DAO or when the existing DAO members are overwhelmed with their routine work.
 
-Bounties are created as per request of other WG or Council.
+Bounties are created as per request of other WG Leads or Council.
+
+[Check what items should be included in the bounty.](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/general-working-group-score.md#bounty-score)
 
 ## Forum WG 
 
@@ -193,7 +217,7 @@ However, the forum has it's benefit given that it's easy for all to know who you
 Draft a proposal outlining this.
 
 #### 4. Errors  
-This section provides prguidance on what to avoid when doing tasks.
+This section provides guidance on what to avoid when doing tasks.
 
 ##### 4.1 Violation of Content Policy
 Although not strictly the same, the concepts in the content policy applies to the forum as well. Any post or thread fitting the above, left unmoderated for 12h.
@@ -224,7 +248,7 @@ Make sure you read and understand [Moderation, Featuring, Metadata Integrity rul
 Content moderation is applied swiftly and appropriately in accordance with the [Content Policy](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/content-policy.md).
 
 #### 2. Errors
-This section provides prguidance on what to avoid when doing tasks.
+This section provides guidance on what to avoid when doing tasks.
 
 ##### 2.1 Failure to apply moderation rules
 Any item which violates the content guidelines is unmoderated more than 36 hours after being uploaded
@@ -245,6 +269,8 @@ If the hero video, or the hero of any category, is not playable and is not dealt
 More clarity on the tasks for will appear upon roll out of the Gleev/ Atlas
 
 # Appendix 
+
+#### Plan Template  
 
 #### Outdated scoring guides 
 
