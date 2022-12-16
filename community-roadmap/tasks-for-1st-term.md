@@ -143,26 +143,25 @@ Provide any assistance needed if JSG/BWG reach you for the help in public testne
 
 The operations working group is unlike other working groups, in that they are only really being measured based on the quality of their output, as judged by Council. [More info on the Builders WG.](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/builders-score.md#overview) 
 
-#### 1. Testing Issues
+#### 1. Testing and Development Issues
 
-A [github project](https://github.com/orgs/Joystream/projects/55) has been created for the Builder group. Go ahead and take a look at the testing issues and give it a try.
-
-There is an open question whether Council has access to the dashboard or not. If not, a new link will be provided asap. 
+Keep working as you did during previous months. Pick up issues and give them a try.
+- [Testing](https://github.com/orgs/Joystream/projects/55) 
+- [Pioneer development and General development](https://github.com/orgs/Joystream/projects/56) 
  
-#### 2. Pioneer Development
+ #### 2. Prioritize work
 
-The Pioneer Development issues you can find in the sage GitHub spot as for [testing issues](https://github.com/orgs/Joystream/projects/55). 
+Work hand-in-hand with Council and WG Leads on Prioritizing the work  
+- Pioneer (UI fixes)
+- Security (runtime tests, fixes)
+- WG Tools: curation interface, CDN performance monitoring
+- Block Explorer
+- Status Page
+- Community GW (hosted atlas or alternative)
 
-There is an open question whether Council has access to the dashboard or not. If not, a new link will be provided asap. 
+Also, use a management method where you paint a picture how the system is supposed to work in full swing in a year or two, then trying to retrace steps to get there. Ask @l1dev for more details on this. 
 
-#### 3. General development 
-
-The General Development issues pretty similar to Pioneer Development, though they are not about Pioneer. 
-Check here for the [tickets](https://github.com/orgs/Joystream/projects/56). 
-
-There is an open question whether Council has access to the dashboard or not. If not, a new link will be provided asap. 
-
-#### 4. Maintain Pioneer in public testnet
+#### 3. Maintain Pioneer in public testnet
 Provide any assistance needed if JSG reach you for the help in public testnet. 
 
 
