@@ -1,9 +1,9 @@
 # Tasks for 1st term
 
-This page contains a list of tasks for every Working Group and Council to accomplish in the mainnet 1st term.
+This page contains a list of tasks for every Working Group and Council to accomplish in the 1st term of Mainnet.
 
-In the first term, the Council will assess the tasks based on their own discretion. 
-A scoring system will be put into place in next terms.
+Pay attention, the Council will assess the tasks based on their own discretion. 
+Proper scoring system will be put into place in next terms once it's fully reviewed and ready. 
 
 ## All WGs 
 
