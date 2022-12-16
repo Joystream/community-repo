@@ -1,6 +1,6 @@
 # Tasks for 1st term
 
-This page outlines the objectives that the Council and each Working Group should strive to achieve during the first term of the Mainnet.
+This page outlines the tasks that the Council and each Working Group should strive to complete during the first term of the Mainnet.
 
 Be aware that the Council will evaluate the assignments at their own discretion. A comprehensive scoring system will be implemented in subsequent terms when it has been completely examined and is ready for use.
 
