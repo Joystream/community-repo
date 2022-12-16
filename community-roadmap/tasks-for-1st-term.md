@@ -141,13 +141,7 @@ Provide any assistance needed if JSG/BWG reach you for the help in public testne
 
 ## Builders WG 
 
-The operations working group is unlike other working groups, in that they are only really being measured based on the quality of their output, as judged by Council.
-
-The working group will generally focus on developing tools and enhancing existing applications (Pioneer, Atlas, CLI etc.) and the runtime which come together to make the Joystream platform as a whole. 
-
-Their contributions to these tools and the creation of new ones are represented as a development score, which attempts to measure the volume and quality of development based on the resources available to the working group.
-
-It should be kept in mind that this development activity is not purely restricted to Council tools and projects, but can also apply to community projects such as JoystreamStats.
+The operations working group is unlike other working groups, in that they are only really being measured based on the quality of their output, as judged by Council. [More info on the Builders WG.](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/builders-score.md#overview) 
 
 #### 1. Testing Issues
 
@@ -268,11 +262,32 @@ If the hero video, or the hero of any category, is not playable and is not dealt
 
 More clarity on the tasks for will appear upon roll out of the Gleev/ Atlas
 
+# Council
+
+#### 1. Set up DAO and infrastructure
+- Have the working groups deployed and operational asap
+- Get the storage and distribution system up and running
+- Get the forum working
+- Set budgets for the groups, and if required, the council budget size and replenishment rate
+- Establish workflows, tasks and reporting requirements with Leads and other CMs
+
+Some more insights on how to make set up smooth you can [find here.](https://docs.google.com/document/d/1KC8TgIDAnxRViRP5PIOvNQOvM4DbgXHQ8xitq5ZSqt4/edit#heading=h.k7v1a9t94nlw) 
+
+#### 2. Errors
+This section provides guidance on what to avoid when doing tasks.
+
+##### 2.1 Block time too low
+The average time between blocks was greater than 10s for more than a 2 hour interval.
+
+##### 2.2 Member faucet empty
+The membership faucet requires both that the Membership working group budget has sufficient tJOY to pay the membershipPrice and that the Lead has sufficient invitations. If at any point during the council term, the faucet capacity is less than 5 new members, that counts as effectively empty.
+
+##### 2.3  Inadequate Report
+An inadequate report made aboit the work peformed, for example by missing or incorrect information.
+
 # Appendix 
 
-#### Plan Template  
-
-#### Outdated scoring guides 
+### Carthage scoring guides 
 
 - [Marketing Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/marketers-score.md)
 - [Content Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/content-directory-score.md)
@@ -281,3 +296,41 @@ More clarity on the tasks for will appear upon roll out of the Gleev/ Atlas
 - [HR Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/human-resources-score.md)
 - [Builders Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/builders-score.md)
 - [Storage Handbook Scores](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/storage-providers-score.md)
+
+
+### Working Group Summary (Template) 
+
+#### 1. 💵 Accounting
+
+**Budget at the start of the term:** X MtJOY 
+**Budget refilled during the term:** X MtJOY
+**Discretionary spendings**: X MtJOY
+**Lead rewards:** X MtJOY
+**Worker rewards:** X MtJOY
+**Budget at the end of the term:** X MtJOY
+
+#### 2. Group Changes
+
+##### Hires
+##### Slashes
+##### Firings
+
+#### 3. Timesheet
+
+|  | Work Hours |
+| --- | --- |
+| Lead |  |
+| Worker 1 |  |
+| <...> |  |
+
+Lead Extra Hours:
+
+the Timesheet is not relevant for Storage and Distribution WGs.
+
+#### 6. List of completed tasks
+
+#### 7. Ideas to improve your Working Group
+
+_Optional item._
+Write an Idea and a plan describing the implementation plan in detail to improve your WG.
+
