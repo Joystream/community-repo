@@ -1,9 +1,7 @@
 # Tasks for 1st term
 
-WIP
+This page contains a list of tasks for every Working Group to accomplish in the mainnet 1st term.
 
-Below you can find tasks for every Working Group to accomplish.
-There are no assessment criteria provided and no scoring points.
 In the first term, the Council will assess the tasks based on their own discretion. 
 A scoring system will be put into place in next terms.
 
@@ -32,7 +30,7 @@ Some more questions on this:
 - Asset protection: How will DAO protect their assets? Each time new members join the Joystream DAO council, it is important to ensure that they do not misuse its resources. These individuals will possess privileged information, which could cause harm to the DAO if it is not managed responsibly.
 
 #### 6. Errors
-This is a special section guidance on what to avoid when doing tasks.
+This section provides prguidance on what to avoid when doing tasks.
 
 ##### 6.1  Inadequate Report
 An inadequate report made aboit the work peformed, for example by missing or incorrect information.
@@ -70,7 +68,7 @@ This is not about the Council catching mistakes, but ensuring that the deploymen
 Helpful for reviewing improvements, and lessons learned.
 
 #### 4. Errors  
-This is a special section guidance on what to avoid when doing tasks.
+This section provides prguidance on what to avoid when doing tasks.
 
 ##### 4.1 Permanent Data Object Loss
 A confirmed data object can no longer be recovered from storage nodes, despite not being deleted on chain.
@@ -108,7 +106,7 @@ This is not about the Council catching mistakes, but ensuring that the deploymen
 Helpful for reviewing improvements, and lessons learned.
 
 #### 4. Errors   
-This is a special section guidance on what to avoid when doing tasks.
+This section provides prguidance on what to avoid when doing tasks.
 
 ##### 4.1 No available sources to fetch a data object from
 A data object is not available from any distributor, despite being held be an available storage node
@@ -195,7 +193,7 @@ However, the forum has it's benefit given that it's easy for all to know who you
 Draft a proposal outlining this.
 
 #### 4. Errors  
-This is a special section guidance on what to avoid when doing tasks.
+This section provides prguidance on what to avoid when doing tasks.
 
 ##### 4.1 Violation of Content Policy
 Although not strictly the same, the concepts in the content policy applies to the forum as well. Any post or thread fitting the above, left unmoderated for 12h.
@@ -226,7 +224,7 @@ Make sure you read and understand [Moderation, Featuring, Metadata Integrity rul
 Content moderation is applied swiftly and appropriately in accordance with the [Content Policy](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/content-policy.md).
 
 #### 2. Errors
-This is a special section guidance on what to avoid when doing tasks.
+This section provides prguidance on what to avoid when doing tasks.
 
 ##### 2.1 Failure to apply moderation rules
 Any item which violates the content guidelines is unmoderated more than 36 hours after being uploaded
