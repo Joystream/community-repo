@@ -2,7 +2,7 @@
 
 This page outlines the tasks that the Council and each Working Group should strive to complete during the first term of the Mainnet.
 
-Be aware that comprehensive scoring system will be implemented in subsequent terms when it has been completely examined and is ready for use. This term Council will evaluate the assignments at their own discretion
+Be aware that comprehensive scoring system will be implemented in subsequent terms when it has been completely examined and is ready for use. This term Council will evaluate the assignments at their own discretion.
 
 ## All WGs 
 
