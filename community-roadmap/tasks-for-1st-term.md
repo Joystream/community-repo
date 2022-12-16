@@ -20,7 +20,7 @@ Good plan should have
 Review all sources of documentation related to a working group (such as Notion, Github, Handbook, etc.) and update any outdated information. 
 
 #### 3. Provide reports  
-Submit your plan for the next term no later than 14400 blocks before the end of the current term. Please follow the specified [format](https://joystream.notion.site/Working-Group-Summary-976c881decb744b08c8f375a06807fa3). 
+Submit your plan for the next term no later than 14400 blocks before the end of the current term. Please follow the specified [format](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#working-group-summary-template). 
 
 #### 4. Develop startegic plan 
 Create an initial outline for a working group's strategic plan that covers more than one year period. Please be as detailed as possible.
