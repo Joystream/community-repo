@@ -140,9 +140,9 @@ A node is operating (set as serving content) while being on an older version 24h
 
 #### 1. Testing and Development Issues
 
-Continue to make progress as you have been doing in the past. Pick issues and attempt to resolve them.
-- [Testing](https://github.com/orgs/Joystream/projects/55) 
-- [Pioneer development and General development](https://github.com/orgs/Joystream/projects/56) 
+Continue to make progress as you have been doing in the past. Pick up testing or development issues and attempt to resolve them
+- [https://github.com/orgs/Joystream/projects/55](https://github.com/orgs/Joystream/projects/55) 
+- [https://github.com/orgs/Joystream/projects/56](https://github.com/orgs/Joystream/projects/56) 
  
  #### 2. Prioritize work
 
