@@ -42,4 +42,4 @@ The salaries for this first term may seem a bit rough and may be subject to chan
 ## Budget
 
 - [First draft](https://discord.com/channels/811216481340751934/812343711870091285/1052465528834363492) by @chaos77
-- I'm not fully sure we need 7 FTEs in the BWG right away. Following @l1dev's recent ideas, I suggest reconsidering the BWG scope and making a decision based on our objectives and the actual workload needed. More discussion [see here](https://discord.com/channels/811216481340751934/812343711870091285/1052465528834363492).
+- Pay attention that not all Builders workers are full-time on the project. As a result,budget of BWG is supposed to be of $20K ~ $30K (not including the lead). More discussion [see here](https://discord.com/channels/811216481340751934/812343711870091285/1052778778331451463).
