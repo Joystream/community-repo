@@ -1,6 +1,6 @@
 # Tasks for 1st term
 
-This page contains a list of tasks for every Working Group to accomplish in the mainnet 1st term.
+This page contains a list of tasks for every Working Group and Council to accomplish in the mainnet 1st term.
 
 In the first term, the Council will assess the tasks based on their own discretion. 
 A scoring system will be put into place in next terms.
