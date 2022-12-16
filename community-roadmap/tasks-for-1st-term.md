@@ -32,10 +32,13 @@ Some more questions on this:
 - Asset protection: How will DAO protect their assets? Each time new members join the Joystream DAO council, it is important to ensure that they do not misuse its resources. These individuals will possess privileged information, which could cause harm to the DAO if it is not managed responsibly.
 
 #### 6. Errors
-You should avoid the following situations
+This is a special section guidance on what to avoid when doing tasks.
 
-**Inadequate Report**
+##### 6.1  Inadequate Report
 An inadequate report made aboit the work peformed, for example by missing or incorrect information.
+
+##### 6.2 Workflow Violation
+Any deviance from the workflows is not accepted.
 
 ## Storage WG 
 
@@ -67,7 +70,7 @@ This is not about the Council catching mistakes, but ensuring that the deploymen
 Helpful for reviewing improvements, and lessons learned.
 
 #### 4. Errors  
-You must avoid the following   
+This is a special section guidance on what to avoid when doing tasks.
 
 ##### 4.1 Permanent Data Object Loss
 A confirmed data object can no longer be recovered from storage nodes, despite not being deleted on chain.
@@ -105,7 +108,7 @@ This is not about the Council catching mistakes, but ensuring that the deploymen
 Helpful for reviewing improvements, and lessons learned.
 
 #### 4. Errors   
-You must avoid the following   
+This is a special section guidance on what to avoid when doing tasks.
 
 ##### 4.1 No available sources to fetch a data object from
 A data object is not available from any distributor, despite being held be an available storage node
@@ -154,7 +157,7 @@ Provide any assistance needed if JSG reach you for the help in public testnet.
 
 #### 1. Recruitment
 
-Search for and employ the most capable individuals available according to the demands of WG Leads or Council.
+Work hand-in-hand with Council and WG Leads on recruiting the most capable individuals according to the demands of the DAO.
 
 #### 2. HR market data 
 
@@ -167,7 +170,6 @@ Encourage both new and existing members of the DAO to take on small to medium-si
 Bounties are created as per request of other WG or Council.
 
 ## Forum WG 
-
 
 The forum working group activities relevant to scoring will, generally, fall into one of the following categories
 
@@ -193,7 +195,7 @@ However, the forum has it's benefit given that it's easy for all to know who you
 Draft a proposal outlining this.
 
 #### 4. Errors  
-Try to avoid errors as much as you can
+This is a special section guidance on what to avoid when doing tasks.
 
 ##### 4.1 Violation of Content Policy
 Although not strictly the same, the concepts in the content policy applies to the forum as well. Any post or thread fitting the above, left unmoderated for 12h.
@@ -204,44 +206,18 @@ Any thread or post that gets deleted, for any reason, must be justified in the r
 
 ## Marketing WG 
 
+The marketing working group activities will generally fall into one of the following categories:
 
-#### 1. Setup storage system  - XXXXXXXXXXXXX
-Get the system operational as soon as possible which means:
-- Sufficient buckets (as required by the runtime) operational
-- System and bucket level configurations are "good"
-- Non-operational buckets are turned off, to avoid failed requests
-- Bags quickly "moved" as new buckets are online, and others fail
-- Expected replication rate should be no less than 5
- 
-#### 2. Maintain storage system  - XXXXXXXXXXXXX
-Storage system should performs well in the following terms
-- Low latency and reliable uploading.
-- Very low probability of permanent data loss
-- High upload speed.
-- High upload volume capacity: many simultaneous parallel uploads.
-- A high upload speed to distributors.
-- A low replication latency for a new data objects to all providers for the given bag.
-- A low synchronization time of new storage providers.
-- Basic level of denial of service resistance at the public upload API.
+- Research: Collecting information on the current state of the project and its base of participants, as well as researching other projects in the space as directed by the Council, or to facilitate current or future marketing campaigns.
+- Content Creation: Creating blog posts, videos, graphics and other content to promote the project, and remixing content which may already exist (e.g. community calls) to be used in marketing campaigns.
+- Partnerships: The field of work ranges from interacting with exchanges to collaborating with potential project applicants for Gateways.
 
-Council will be conducting experiments to put load on the system, including denial of service attacks, spamming, and also posing as malicious workers. Expect Council to rent botnet services or other denial of service infrastructure to simulate at scale attacks.
+#### 1. Update our external records 
+- Develop (revise) the standard description of the Joystream project for use on other websites. 
+- Reach out to other websites that feature information about Joystream, such as Coinmarketcap and Coingecko, and update the project information to ensure that details about the mainnet are accurate and current
 
-#### 3. Logging  - XXXXXXXXXXXXX
-Each transaction `tx:n` performed by the Lead role key, successful or not, must be logged.
-
-This is not about the Council catching mistakes, but ensuring that the deployment is reproducible. 
-Helpful for reviewing improvements, and lessons learned.
-
-#### 4. Errors   - XXXXXXXXXXXXX
-You must avoid the following   
-
-##### 4.1 Permanent Data Object Loss - XXXXXXXXXXXXX
-A confirmed data object can no longer be recovered from storage nodes, despite not being deleted on chain.
-
-##### 4.2 Incorrect Reporting - XXXXXXXXXXXXX
-Whereas a failure to provide the storage specific report, or omission of certain values will simply cause a bad score, incorrect data will, if discovered, count as a catastrophic error.
-
-
+#### 2. Assisst JSG
+If JSG requests assistance, help them in promoting their Gleev platform and performing other minor jobs related to it.
 
 ## Content Curator WG 
 
@@ -285,7 +261,7 @@ Curators, who should be very familiar with content licensing and attribution rul
 Content moderation is applied swiftly and appropriately in accordance with the [Content Policy](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/content-policy.md).
 
 #### 2. Errors
-You must avoid the following   
+This is a special section guidance on what to avoid when doing tasks.
 
 ##### 2.1 Failure to apply moderation rules
 Any item which violates the content guidelines is unmoderated more than 36 hours after being uploaded
