@@ -290,12 +290,12 @@ The membership faucet requires both that the Membership working group budget has
 
 #### 1. 💵 Accounting
 
-**Budget at the start of the term:** X MtJOY 
-**Budget refilled during the term:** X MtJOY
-**Discretionary spendings**: X MtJOY
-**Lead rewards:** X MtJOY
-**Worker rewards:** X MtJOY
-**Budget at the end of the term:** X MtJOY
+- **Budget at the start of the term:** X MtJOY 
+- **Budget refilled during the term:** X MtJOY
+- **Discretionary spendings**: X MtJOY
+- **Lead rewards:** X MtJOY
+- **Worker rewards:** X MtJOY
+- **Budget at the end of the term:** X MtJOY
 
 #### 2. Group Changes
 
