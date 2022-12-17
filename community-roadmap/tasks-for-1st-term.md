@@ -178,6 +178,10 @@ Bounties must be created by request Leads or Council.
 
 [Items to includ in the bounty description.](https://github.com/Joystream/handbook/blob/92697066f2bf2d09752bfda5fba5da378fa812f4/testnet/council-period-scoring/general-working-group-score.md#bounty-score)
 
+#### 4. "Contact" field in Membership
+
+Decide with BWG if we should require _mandatory_ contact information (like email, Discord, Telegram, etc.) when someone registers for a new membership, and if so, assess the extent of development work needed. For more information, reach out to @Codefi_keyz.
+
 ## Forum WG 
 
 The forum working group activities will, generally, fall into one of the following categories
