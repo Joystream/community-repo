@@ -1,3 +1,3 @@
-# Responsibility of WGs
+# WGs: Boundaries of responsibility
 
-![image](https://user-images.githubusercontent.com/2911961/208994855-e9a5c747-b4a1-4157-a5db-d13664a2f3b2.png)
+![image](https://user-images.githubusercontent.com/2911961/208995269-12998687-3249-4503-a465-c966f8091c0c.png)
