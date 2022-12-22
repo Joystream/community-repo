@@ -253,10 +253,21 @@ No logs are kept.
 ##### 2.4 Featured Content Unplayable
 If the hero video, or the hero of any category, is not playable and is not dealt within within 1 hour after the change
 
-## Gateways WG
+## Gateways WG Lead (Apps WG Lead)
 
 More clarity on tasks for Gateways will appear upon roll out of the Gleev/ Atlas
 
+## Apps WG Lead
+
+##### 1. Hire the 1st gateway operator, Gleev
+##### 2. Ensure Gleev is integrated smoothly and successfully
+##### 3. Help answer technical inquiries about integration with Joystream CDN from Gleev team
+##### 4. Set up the number of tokens going from the Gleev per unit of service.
+##### 5. Assist the accumulating discrepancies between requested payment magnitudes from the provider (Joystream DAO), and the reports accumulated by the Gleev
+##### 6. Ensure that Apps WG operator, Gleev, and suppliers are able to communicate efficiently and effectively.
+##### 7. Development of Apps WG strategy, 1st draft
+##### 8. Create the Apps WG page in Notion
+  
 # Council
 
 #### 1. Set up DAO 
