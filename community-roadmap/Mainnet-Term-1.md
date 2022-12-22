@@ -33,7 +33,7 @@ The salaries for this first term may seem a bit rough and may be subject to chan
 - Builders/Storage/Distribution: 5k USD/month + 50USD/hour (for every next working hour exceeding 80hours per month) 
 - Content/Membership: council will take these duties
 - Forum/HR/Marketing WGs: 50 USD/hour
-- Gateway WG: 50 USD/hour
+- Gateway WG: same as Builders WG Lead
 
 #### Workers
 - All WGs (except Storage/Distribution): 40 USD/hour
