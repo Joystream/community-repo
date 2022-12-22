@@ -35,6 +35,12 @@ The salaries for this first term may seem a bit rough and may be subject to chan
 - Forum/HR/Marketing WGs: 50 USD/hour
 - Gateway WG: same as Builders WG Lead
 
+``` diff
+- A negotiation is currently taking place between Council and @chaos77  
+- regarding the rate of story points completed, which could be used to measure 
+- the performance of Builders WG.
+```
+
 #### Workers
 - All WGs (except Storage/Distribution): 40 USD/hour
 - Storage/Distribution node runners: 1000 USD/month
