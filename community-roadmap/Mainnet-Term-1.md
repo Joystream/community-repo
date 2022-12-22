@@ -37,7 +37,7 @@ The salaries for this first term may seem a bit rough and may be subject to chan
 
 ``` diff
 - A negotiation is currently taking place between Council and @chaos77  
-- regarding the rate of story points completed, which could be used to measure 
+- regarding the rate of story points. These SP could be used to measure 
 - the performance of Builders WG.
 ```
 
