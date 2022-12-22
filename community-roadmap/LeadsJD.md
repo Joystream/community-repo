@@ -409,12 +409,67 @@
 - Your availability (max hours per day)
 - Your Discord
 
-## Gateways
+## Gateways WG Lead (Apps WG Lead)
 
 **Tasks**
 
 - [Tasks for 1st term](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/tasks-for-1st-term.md#gateways)
 
+**About**
+
+- **Apps WG Lead** which is sometimes called Gateway WG Lead is the lead in the corresponding working group.
+- A gateway is a user facing application delivery through traditional web 2.0 infrastructure, such DNS resolvable websites, mobile, tablet and TV app stores, and equivalents. Each gateway has its own bespoke mechanism for gating access to and monetising users. What mechanism may be relevant is not part of this proposal, and will likely vary with time. Each gateway is operated by a gateway operator, which is a new staked role in the system. Gateway operators participate in their own working group, meaning they are supervised by a leader, must be explicitly hired, may earn periodic rewards and operate under risk of slashing sanctions or termination.
+- [Gateway specification](https://github.com/Joystream/joystream/issues/2089)
+
+**Responsibilities**
+
+- Manage the number of tokens going from the Gleev or other Gateway platform per unit of service.
+- Help answer technical inquiries about integration with Joystream CDN from the Gleev team or other gateways.
+- Assist the accumulating discrepancies between requested payment magnitudes from the provider (Joystream DAO), and the reports accumulated by the gateway
+- Make sure maximizing Apps group scores (will be provided by the Council)
+- Hire and supervise gateway operators. These operators may be eligible for periodic rewards, however they are also subject to sanctions or termination based on Lead's discretion.
+- Preparing reports for the Council
+- Moderating #apps channel
+- Update Apps WG page in Notion
+- Mentoring and train Apps WG workers, operators and providers
+- Ensure that Apps WG workers, operators, and suppliers are able to communicate efficiently and effectively.
+- Plan and Implement tech solutions required for Gateways operations or that can
+- Development of Apps WG strategy
+
+**Requirements**
+
+- Builders Lead / Deputy / Worker experience is preferred
+- Good understanding of Pioneer, Atlas, Orion, Joystream CDN
+- Experience in managing team 2+ years
+- Skills: programming experience 3+ years.
+- Deep understanding of Web3 and Distributed systems
+- Strong communication skills
+- Proficiency in English
+
+**Rules for firings**
+- If Lead says he is available but is nowhere to be found for 24h
+- If Lead doesn't deliver on time, without even keeping CMs informed
+
+**About WG**
+- Discord channel: [https://discord.gg/QN3rBYJr](https://discord.gg/QN3rBYJr)
+
+**Stake**
+
+166666 JOY
+
 **Salary**
 
-- [Salary terms](https://github.com/0x2bc/community-repo/blob/master/community-roadmap/Mainnet-Term-1.md#salaries)
+- TBD
+
+**Questions**
+
+- What is your timezone?
+- Are you based in US?
+- Tell us a bit about yourself
+- Tell us a bit more about your experience in IT
+- Did you work in Joystream? If yes, please describe what you did
+- Do you have experience in team management? If yes, please describe it
+- Do you have experience in Web3 and Distributed systems? If yes, please describe it
+- Do you have experience in programming? If yes, please describe it
+- Your availability (max hours per day)
+- Your Discord
