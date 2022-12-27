@@ -16,14 +16,16 @@
 - Overseeing grant and bounty programs
 - Dealing with exchanges, market making
 - Developing tokenomics incl. new use cases 
+- Facilitating urgent financial issues
+
 
 ### CTO
 - Developing technology vision
 - Designing and overseeing development processes
 - Steering Builders towards needs submitted by WG leads
 - Harmonizing and prioritizing tech development of DP/SP/AWG
-- Facilitate urgent issues
 - Tracking performance of infrastructure
+- Facilitate urgent tech issues
 
 ### HR
 - Assisting newcomers
