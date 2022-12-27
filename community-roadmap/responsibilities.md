@@ -2,20 +2,27 @@
 
 
 ### CEO
-- Public meetings (AMA), press interviews, internal assignments
-- Sort, medium-term (6 month strategy)
-- Identify daily priority tasks, facilitate, direct connect to all roles on-demand
+- Developing a vision and strategy,
+- Looking for opportunities for ecosystem growth, 
+- Identifying people for executive positions, 
+- Conducting public meetings, AMA sessions 
+- Communicating with B2B,
+- Ensuring the DAO overall works smoothly and efficiently
+- Facilitating with urgent cross WG issues
 
 ### CFO
-- B2B talks, draft and propose deals
-- Review bounty ideas, suggest spending plan
-- WG budget proposals, screen, summarize incoming proposals for spending items
-- Leads hiring, firing, salaries
+- Making forecasts and financial planning
+- Spending management (WG budgets, salaries, funding, grants)
+- Dealing with exchanges, market making, 
+- Developing tokenomics incl. new use cases 
 
 ### CTO
-- Design and oversee development processes
-- Steer Builders towards needs submitted by WG leads
-- Hands-on: pick/facilitate urgent issues, set up/maintain infrastructure
+- Developing technology vision
+- Designing and oversee development processes
+- Steering Builders towards needs submitted by WG leads
+- Harmonizing and prioritizing tech development of DP/SP/AWG
+- Facilitate urgent issues
+- Tracking performance of infrastructure
 
 ### HR
 - Assisting newcomers
