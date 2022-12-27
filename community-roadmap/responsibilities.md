@@ -6,7 +6,7 @@
 - Looking for opportunities for ecosystem growth
 - Looking for best talent for executive positions (WG Leads)
 - Conducting public meetings, AMA sessions
-- Communicating with B2B
+- Communicating with B2B customers and partners
 - Ensuring the DAO overall works smoothly and efficiently
 - Facilitating urgent cross-WG issues
 
