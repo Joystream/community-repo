@@ -2,23 +2,24 @@
 
 
 ### CEO
-- Developing a vision and strategy,
-- Looking for opportunities for ecosystem growth, 
-- Identifying people for executive positions, 
-- Conducting public meetings, AMA sessions 
-- Communicating with B2B,
+- Developing vision and strategy
+- Looking for opportunities for ecosystem growth
+- Looking for best talent for executive positions (WG Leads)
+- Conducting public meetings, AMA sessions
+- Communicating with B2B
 - Ensuring the DAO overall works smoothly and efficiently
-- Facilitating with urgent cross WG issues
+- Facilitating urgent cross-WG issues
 
 ### CFO
 - Making forecasts and financial planning
-- Spending management (WG budgets, salaries, funding, grants)
-- Dealing with exchanges, market making, 
+- Managing DAO budget (WG budgets, salaries, funding, grants)
+- Overseeing grant and bounty programs
+- Dealing with exchanges, market making
 - Developing tokenomics incl. new use cases 
 
 ### CTO
 - Developing technology vision
-- Designing and oversee development processes
+- Designing and overseeing development processes
 - Steering Builders towards needs submitted by WG leads
 - Harmonizing and prioritizing tech development of DP/SP/AWG
 - Facilitate urgent issues
