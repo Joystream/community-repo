@@ -1,0 +1,3 @@
+1. How we will protect assests of DAO. because every time, there will new people who will join council and they will go after completing their terms. we need to make sure that they don’t abuse assests of Joystream DAO. They will have insider’s information too, which may lead DAO to troubles if gets leaked. 
+
+2. MWG channel is smallest assest of DAO, it is only accessible through seed phrase of polkadot which every council may know in future and anyone who will know the seed phrase they can misuse it anyway they want after getting out of council. We need to protect assests of DAO and make sure no one can misuse them even if they joined the council with intent to misuse the power and its assests.
