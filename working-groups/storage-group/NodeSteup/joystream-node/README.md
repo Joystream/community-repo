@@ -12,12 +12,12 @@ $ cd ~/
 $ mkdir joystream-node
 $ cd joystream-node
 # 64 bit debian based Linux
-$ wget https://github.com/Joystream/joystream/releases/download/v10.7.1/joystream-node-6.7.0-bdec855-x86_64-linux-gnu.tar.gz
-$ tar -vxf joystream-node-6.7.0-bdec855-x86_64-linux-gnu.tar.gz
+$ wget https://github.com/Joystream/joystream/releases/download/v11.3.0/joystream-node-7.4.1-d2243721017-x86_64-linux-gnu.tar.gz
+$ tar -vxf joystream-node-7.4.1-d2243721017-x86_64-linux-gnu.tar.gz
 $ mv joystream-node /usr/local/bin/
-$ wget https://github.com/Joystream/joystream/releases/download/v10.5.0/joy-testnet-6.json
+$ wget https://github.com/Joystream/joystream/releases/download/v11.3.0/joy-testnet-7-carthage.json
 # Test is it working. 
-$ joystream-node --chain joy-testnet-6.json --pruning archive --validator
+$ joystream-node --chain joy-testnet-7-carthage.json --pruning archive --validator
 ```
 - If you want your node to have a non-random identifier, add the flag:
   - `--name <nodename>`
@@ -78,11 +78,11 @@ Type=simple
 User=joystream
 WorkingDirectory=/<path to work directory>/joystream-node/
 ExecStart=joystream-node \
-        --chain /<path to work directory>/joystream-node/joy-testnet-6.json \
+        --chain /<path to work directory>/joystream-node/joy-testnet-7-carthage.json \
         --pruning archive \
         --validator \
         --name <memberId-memberHandle> \
-        --log runtime,txpool,transaction-pool,trace=sync
+        --rpc-cors all
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=10000
@@ -104,13 +104,13 @@ After=network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/<path to work directory>/joystream-node/
+WorkingDirectory=/root/joystream-node/joystream-node/
 ExecStart=joystream-node \
-        --chain /<path to work directory>/joystream-node/joy-testnet-6.json \
+        --chain /root/joystream-node/joy-testnet-7-carthage.json \
         --pruning archive \
         --validator \
-        --name <memberId-memberHandle> \
-        --log runtime,txpool,transaction-pool,trace=sync
+        --name YourCoolName \
+        --rpc-cors all
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=10000

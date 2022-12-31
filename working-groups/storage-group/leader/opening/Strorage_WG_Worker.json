@@ -1,17 +1,9 @@
 {
     "applicationDetails": "Storage WG Worker",
+    "hiringLimit": 5,
     "title": "Storage WG Worker needed",
     "shortDescription": "Joystream Video DAO (https://joystream.org) is actively looking for a Storage WG Worker",
-    "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage WG Worker to join our [Pioneer Governance App](https://dao.joystream.org) community Storage team.\n\n
-    **Who are we:**\n\n
-    - Joystream is an open-source blockchain project that will be truly user-governed. \n\n 
-    - [Storage](https://www.notion.so/joystream/Storage-9dc5a16444934dc4bda08b596bc15375) are a small groups of node maintainers helping to make Jsgenesis products works smoothly and reliably\n\n
-    **Who are you:** \n\n
-    - Experienced with how to setup and maintain blockchain nodes \n\n
-    - Have access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 2TB and more \n\n 
-    - Comply to the group standard operation procedures. \n\n
-    - Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus/Grafana).
-In order to apply for the opening, every applicant should make a test task (bounty) https://www.notion.so/joystream/Bounty-Storage-WG-Entry-Level-74b13f81a32d4efb811f8259d6fbeee0 ",
+    "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage WG Worker to join our [Pioneer Governance App](https://dao.joystream.org) community Storage team.\n\n**Tasks for Carthage:** \n\n- See https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution\n\n**Responsibilities:** \n\n- Operate a storage node and ensure high availability.\n\n**Requirements:** \n\n- Storage Worker experience is preferred\n\n- High availability: First few days after hired will require high availability and lots of work\n\n- Experience with how to setup and maintain blockchain nodes\n\n- Having access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 10TB and more\n\n- Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus/Grafana)\n\n**Rules for firings:** \n\n- https://github.com/Joystream/community-repo/tree/master/working-groups/storage-group/SOP\n\n**About WG:** \n\nNotion page: https://www.notion.so/joystream/Storage-9dc5a16444934dc4bda08b596bc15375\n\nDiscord channel: https://discord.gg/fFRdNHsW\n\n**Stake:** \n\n- $5000 (83,333 JOY)\n\n**Salary:** \n\n- $500 (8,333 JOY)/ month\n\n- If an employee works fewer than 160 hours per month, the Council may reduce their pay according to the hourly rate and actual number of hours worked",
     "applicationFormQuestions": [{
             "question": "Are you currently employed?"
         },
@@ -48,13 +40,16 @@ In order to apply for the opening, every applicant should make a test task (boun
         {
             "question": "Tell us a bit more about your experience in IT"
         },
+	{
+            "question": "Please provide infrastructure specification and location"
+        },
         {
             "question": "Your Discord"
         }
     ],
     "stakingPolicy": {
-        "amount": 100000,
-        "unstakingPeriod": 43201
+        "amount": 833330000000000,
+        "unstakingPeriod": 604800
     },
-    "rewardPerBlock": 2
+    "rewardPerBlock": 23116040
 }
