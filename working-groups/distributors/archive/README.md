@@ -4,7 +4,7 @@
 
 ## Tasks
 - **Bounty**: [Collect info for group reports](https://discord.com/channels/811216481340751934/943152435432669266/960206661753143367)
-- Develop tools to implement [Quality of Service](giza1.md#quality-of-service), https://github.com/Joystream/community-repo/issues/656
+- Develop tools to implement [Quality of Service](giza/README.md#quality-of-service), https://github.com/Joystream/community-repo/issues/656
 - Deputy role: Based on available buckets, which channels should be distributed where?
 - Create DP map: [discussion](https://discord.com/channels/811216481340751934/813361923172335648/939636962925641868)
 
