@@ -78,7 +78,7 @@ Type=simple
 User=joystream
 WorkingDirectory=/<path to work directory>/joystream-node/
 ExecStart=joystream-node \
-        --chain /<path to work directory>/joystream-node/joy-testnet-7-carthage.json \
+        --chain /<path to work directory>/joystream-node/joy-mainnet.json \
         --pruning archive \
         --validator \
         --name <memberId-memberHandle> \
@@ -106,7 +106,7 @@ Type=simple
 User=root
 WorkingDirectory=/root/joystream-node/joystream-node/
 ExecStart=joystream-node \
-        --chain /root/joystream-node/joy-testnet-7-carthage.json \
+        --chain /root/joystream-node/joy-mainnet.json \
         --pruning archive \
         --validator \
         --name YourCoolName \
