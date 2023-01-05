@@ -1,8 +1,8 @@
+Until launch guides and reports were maintained [here](https://joystream.notion.site/Joystream-Workspace-1175fcb1cc644fdb874558181fd2dbee).
+
 Groups
 - [curators](curator-group)
 - [storage](storage-group)
+- [distribution](distribution)
 - [operations](operations-group)
-
-Rules
-- [Warnings & Slashes](../council/rules/Warn-Slash-Fire_rules_for_leads.md)
-- [Lead term limits](../council/rules/WG_Lead_Term_Limits.md)
+- [marketing](marketing)
