@@ -1,6 +1,6 @@
 # Distribution Working Group
 
-- [Intro for Leads](skillshare.md)
+- [Intro for Leads](olympia/migration.md)
 
 ## Tasks
 - **Bounty**: [Collect info for group reports](https://discord.com/channels/811216481340751934/943152435432669266/960206661753143367)
@@ -18,7 +18,7 @@ Reports now on [Notion](https://www.notion.so/joystream/Distribution-1f4cfbbb2e9
 
 ## Giza
 
-With [release of the Giza Testnet](https://blog.joystream.org/giza-released/) selected channels were [migrated from Sumer](https://github.com/traumschule/community-repo/tree/patch-2/working-groups/distributors/Sumer-Giza-migration) previous IPFS based storage system to complete in-house hosting with [storage nodes](https://github.com/Joystream/helpdesk/tree/master/roles/distributors) for bigger portions of assets and local [distribution nodes](https://github.com/Joystream/helpdesk/tree/master/roles/distributors) (read first).
+With [release of the Giza Testnet](https://blog.joystream.org/giza-released/) selected channels were [migrated from Sumer](https://github.com/traumschule/community-repo/tree/patch-2/working-groups/distributors/Sumer-Giza-migration) previous IPFS based storage system to complete in-house hosting with [storage nodes](/helpdesk/tree/master/roles/distributors) for bigger portions of assets and local [distribution nodes](/helpdesk/tree/master/roles/distributors).
 
 ![Giza Testnet](img/joystream-org-giza.png)
 
