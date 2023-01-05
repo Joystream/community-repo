@@ -48,8 +48,8 @@
         }
     ],
     "stakingPolicy": {
-        "amount": 833330000000000,
+        "amount": 83333000000000,
         "unstakingPeriod": 604800
     },
-    "rewardPerBlock": 23116040
+    "rewardPerBlock": 38580247
 }
