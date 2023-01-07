@@ -37,7 +37,8 @@ The last command will take a while...
 #### Set the Environment
 
 <details>
-  <summary>If your joystream node running as docker skip this section</summary>
+  <summary>Expand if your joystream node running as a service</summary>
+</details>
 This change is needed only if you have your joystream node running as a service.
 If your joystream node running as docker skip this section
 ```
