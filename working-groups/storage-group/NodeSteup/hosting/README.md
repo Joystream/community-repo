@@ -118,8 +118,8 @@ $ docker logs -f -n 100  <container name>
 
 Make sure your containers running on the same network
 ```
-docker network ls
-docker network inspect <network name>
+$ docker network ls
+$ docker network inspect <network name>
 ```
 
 ## Option 2 - Service 
