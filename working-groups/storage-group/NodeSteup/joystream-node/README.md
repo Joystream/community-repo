@@ -51,13 +51,18 @@ Spin the container up
 $docker-compose up --detach --build joystream-node
 ```
 
-### Test 
+### Test and troubleshoot 
 
 ```
 docker logs -f -n 10 joystream-node
 ```
 
 
+Make sure your containers running on the same network
+```
+docker network ls
+docker network inspect <network name>
+```
 
 ## Option 2 - Service
   
