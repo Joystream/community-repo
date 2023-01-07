@@ -102,7 +102,9 @@ networks:
 $ docker-compose up -d
 ```
 
-### Check the logs 
+
+### Test and troubleshoot 
+
 Get the name of the container
 ```
 $ docker ps 
@@ -111,6 +113,13 @@ $ docker ps
 Check the log
 ```
 $ docker logs -f -n 100  <container name>
+```
+
+
+Make sure your containers running on the same network
+```
+docker network ls
+docker network inspect <network name>
 ```
 
 ## Option 2 - Service 
