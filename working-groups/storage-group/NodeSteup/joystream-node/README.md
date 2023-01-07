@@ -6,6 +6,7 @@ Find the lasted release [here](https://github.com/Joystream/joystream/releases)
 # Setup 
 ## Option 1 Docker 
 
+### Docker-compose
 ```
 $ cd ~/
 $ mkdir joystream-node
@@ -34,12 +35,19 @@ $ vim docker-compose.yml
 ```
 > create the dictories in the volumes if needed.
 Spin the container up
-```
-
-
-docker-compose up --detach --build joystream-node
 
 ```
+$docker-compose up --detach --build joystream-node
+```
+
+### Test 
+
+```
+docker logs -f -n 10 joystream-node
+```
+
+<details>
+  <summary>Option 2 as a service</summary>
 
 ## Option 2 as a service
 ### Run Node
@@ -202,3 +210,4 @@ Follow the instructions, and see if anything looks wrong. Correct it, then:
 $ systemctl daemon-reload
 $ systemctl start joystream-node
 ```
+</details>
