@@ -44,6 +44,7 @@ $ vim docker-compose.yml
       - "30333:30333"
 ```
 > create the dictories in the volumes if needed.
+
 Spin the container up
 
 ```
