@@ -6,6 +6,65 @@ To configure SSL-certificates the easiest option is to use [caddy](https://caddy
 
 For the best setup, you should use the "official" [documentation](https://caddyserver.com/docs/).
 
+## Option 1 - Docker 
+
+```
+$ mkdir ~/caddy
+$ cd ~/caddy
+
+```
+### Configure the `Caddyfile`:
+### Configure the `Caddyfile`:
+```
+$ nano ~/caddy/Caddyfile
+# Modify, and paste in everything below the stapled line
+# Joystream-node
+wss://<your.cool.url>/rpc {
+        reverse_proxy joystream-node:9944
+}
+
+# Query-node
+https://<your.cool.url> {
+        log {
+                output stdout
+        }
+        route /server/* {
+                uri strip_prefix /server
+                reverse_proxy graphql-server:8081
+        }
+        route /graphql {
+                reverse_proxy graphql-server:8081
+        }
+        route /graphql/* {
+                reverse_proxy graphql-server:8081
+        }
+        route /gateway/* {
+                uri strip_prefix /gateway
+                reverse_proxy graphql-server:4000
+        }
+        route /@apollographql/* {
+                reverse_proxy graphql-server:8081
+        }
+}
+# Storage Node
+https://<your.cool.url>/storage/* {
+        log {
+                output stdout
+        }
+        route /storage/* {
+                uri strip_prefix /storage
+                reverse_proxy colossus-1:3333
+        }
+        header /storage/api/v1/ {
+                Access-Control-Allow-Methods "GET, PUT, HEAD, OPTIONS"
+                Access-Control-Allow-Headers "GET, PUT, HEAD, OPTIONS"
+        }
+        request_body {
+                max_size 10GB
+        }
+}
+
+```
 
 ## Option 2 - Service 
 <details>
@@ -13,6 +72,8 @@ For the best setup, you should use the "official" [documentation](https://caddys
         
 The instructions below are for Caddy v2.4.6:
 ```
+$ mkdir ~/caddy
+$ cd ~/caddy
 $ wget https://github.com/caddyserver/caddy/releases/download/v2.4.6/caddy_2.4.6_linux_amd64.tar.gz
 $ tar -vxf caddy_2.4.6_linux_amd64.tar.gz
 $ mv caddy /usr/bin/
@@ -20,7 +81,7 @@ $ mv caddy /usr/bin/
 $ caddy version
 ```
 
-# Configure the `Caddyfile`:
+### Configure the `Caddyfile`:
 ```
 $ nano ~/Caddyfile
 # Modify, and paste in everything below the stapled line
@@ -53,7 +114,7 @@ https://<your.cool.url> {
                 reverse_proxy localhost:8081
         }
 }
-# Storage Node
+### Storage Node
 https://<your.cool.url>/storage/* {
         log {
                 output stdout
@@ -73,7 +134,7 @@ https://<your.cool.url>/storage/* {
 
 
 ```
-# Check
+### Check
 Now you can check if you configured correctly, with:
 ```
 $ caddy validate ~/Caddyfile
@@ -94,7 +155,7 @@ $ caddy run --config /root/Caddyfile
 ... [INFO][<your.cool.url>] Obtain: Releasing lock
 ```
 
-# Run caddy as a service
+### Run caddy as a service
 To ensure high uptime, it's best to set the system up as a `service`.
 
 Example file below:
