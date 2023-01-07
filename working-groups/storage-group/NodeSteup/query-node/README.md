@@ -34,7 +34,7 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
 ### Clone the Repo
-If you haven't already, clone the `Joystream/joystream` (mono)repo:
+If you haven't already, cloned the `Joystream/joystream` (mono)repo:
 
 ```
 # If you already clone the repo just skip the cloning command
