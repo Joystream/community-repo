@@ -13,11 +13,11 @@ $ mkdir joystream-node
 $ git clone https://github.com/Joystream/joystream.git
 $ cd joystream
 ```
-Edit the docker-compose file
+
 ```
 $ vim docker-compose.yml
 ```
-
+Edit service joystream-node
 ```
   joystream-node:
     image: joystream/node:latest
