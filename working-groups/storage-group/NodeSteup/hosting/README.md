@@ -13,8 +13,15 @@ $ mkdir ~/caddy
 $ cd ~/caddy
 
 ```
+
 ### Configure the `Caddyfile`:
-### Configure the `Caddyfile`:
+
+Please note below the names of the follwoing containers
+- GraphQl           : graphql-server
+- Joystream node    : joystream-node
+- Joystream Storange: colossus-1
+
+
 ```
 $ nano ~/caddy/Caddyfile
 # Modify, and paste in everything below the stapled line
