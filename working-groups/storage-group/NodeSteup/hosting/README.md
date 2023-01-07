@@ -72,6 +72,46 @@ https://<your.cool.url>/storage/* {
 }
 
 ```
+### Create docker-compose file
+
+```
+$ nano ~/caddy/docker-compose.yml
+# make sure all your containers are using the same network
+---
+version: "3.7"
+
+services:
+  caddy:
+    image: caddy:2.6
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /root/caddy:/data
+      - /root/caddy/Caddyfile:/etc/caddy/Caddyfile
+
+networks:
+  default:
+    external:
+      name: <network -name>
+```
+
+### Bring your service up
+```
+$ docker-compose up -d
+```
+
+### Check the logs 
+Get the name of the container
+```
+$ docker ps 
+```
+
+Check the log
+```
+$ docker logs -f -n 100  <container name>
+```
 
 ## Option 2 - Service 
 <details>
