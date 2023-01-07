@@ -228,6 +228,11 @@ $ docker-compose up --detach --build colossus-1
 $ docker logs -f -n 100 colossus-1
 ```
 
+Make sure your containers running on the same network
+```
+$ docker network ls
+$ docker network inspect <network name>
+```
 
 ### Option 2 - Service
 
