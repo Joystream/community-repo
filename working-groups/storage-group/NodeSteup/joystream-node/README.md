@@ -4,7 +4,7 @@ Find the lasted release [here](https://github.com/Joystream/joystream/releases)
 
 
 # Setup 
-## Option 1 Docker 
+## Option 1 - Docker 
 
 ### Docker-compose
 ```
@@ -48,7 +48,7 @@ docker logs -f -n 10 joystream-node
 
 
 
-## Option 2 as a service
+## Option - Service
   
 <details>
   <summary>Option 2 as a service</summary>
