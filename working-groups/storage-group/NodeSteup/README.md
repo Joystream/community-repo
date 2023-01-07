@@ -220,6 +220,15 @@ Edit service colossus-1
     ]
 
 ```
+
+Bring your node up and check logs
+```
+$ docker-compose up --detach --build colossus-1
+
+$ docker logs -f -n 100 colossus-1
+```
+
+
 ### Option 2 - Service
 
 <details>
