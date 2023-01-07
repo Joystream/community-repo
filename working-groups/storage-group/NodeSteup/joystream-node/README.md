@@ -50,6 +50,10 @@ docker logs -f -n 10 joystream-node
   <summary>Option 2 as a service</summary>
 
 ## Option 2 as a service
+  
+<details>
+  <summary>Option 2 as a service</summary>
+  
 ### Run Node
 
 ```
