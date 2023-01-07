@@ -159,6 +159,63 @@ $ yarn run storage-node operator:set-metadata -i <bucketId> -w <workerId> -j /pa
 ```
 
 ## Deploy the Storage Node
+### Option1 1 - Docker
+
+
+Edit .env
+
+``` 
+# Assuming hired lead has worker id 0
+COLOSSUS_1_WORKER_ID=0
+COLOSSUS_1_WORKER_URI=https://<your.cool.url>/storage//1
+COLOSSUS_1_TRANSACTOR_URI=//<your.key.name>
+
+#Add the password variable
+SUPER_PASSWORD=<My.cool.password>
+
+``` 
+
+
+``` 
+$ vim docker-compose.yml
+```
+
+Edit service colossus-1
+
+```
+  colossus-1:
+    image: node:14
+    container_name: colossus-1
+    restart: on-failure
+    volumes:
+      - /data/joystream-storage:/data
+      - /root/keys:/keystore
+      - /data/joystream-storage/log:/logs
+      - type: bind
+        source: .
+        target: /joystream
+    working_dir: /joystream/storage-node
+    ports:
+      - 3333:3333
+    env_file:
+      # relative to working directory where docker-compose was run from
+      - .env
+    command: [
+      'yarn', 'storage-node', 'server', '--worker=${COLOSSUS_1_WORKER_ID}', '--port=3333', '--uploads=/data',
+      '--sync', '--syncInterval=1',
+      '--queryNodeEndpoint=${COLOSSUS_QUERY_NODE_URL}',
+      '--apiUrl=${JOYSTREAM_NODE_WS}',
+      '--keyFile=//keystore/storage-role-key.json',
+      '--password=${SUPER_PASSWORD}',
+      '--logFilePath=/logs'
+    ]
+
+```
+### Option 2 - Service
+
+<details>
+  <summary>Option 2 as a service</summary>
+  
 First, create a `systemd` file. Example file below:
 
 ```
@@ -207,7 +264,8 @@ $ systemctl enable storage-node
 # If you want to stop the storage node, either to edit the storage-node.service file or some other reason:
 $ systemctl stop storage-node
 ```
-
+ </details>
+ 
 ### Verify everything is working
 
 In your browser, try:
