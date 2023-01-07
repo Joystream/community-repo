@@ -24,6 +24,7 @@ JOYSTREAM_NODE_TAG=latest
 Edit service joystream-node
 ```
 $ vim docker-compose.yml
+# make sure all your containers are using the same network
 -----
   joystream-node:
     image: joystream/node:$JOYSTREAM_NODE_TAG
