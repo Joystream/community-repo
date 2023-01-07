@@ -55,7 +55,8 @@ The last command will take a while...
 ### Deploy
 
 #### Set the Environment
-First, get your
+This change is needed only if you have your joystream node running as a service.
+If your joystream node running as docker skip this section
 ```
 $ cd ~/joystream
 $ nano .env
