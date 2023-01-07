@@ -46,8 +46,7 @@ $docker-compose up --detach --build joystream-node
 docker logs -f -n 10 joystream-node
 ```
 
-<details>
-  <summary>Option 2 as a service</summary>
+
 
 ## Option 2 as a service
   
