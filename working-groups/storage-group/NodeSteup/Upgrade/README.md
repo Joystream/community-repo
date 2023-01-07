@@ -8,7 +8,7 @@ cd joystream
 cp .env /someBackupLocation  //just to save old params
 cp <root to folder>/storage-node/metadata.json /someBackupLocation
 ```
-## Stop the distribution service 
+## Stop the service 
 ```
 systemctl stop storage-node.service
 ```
