@@ -159,7 +159,7 @@ $ yarn run storage-node operator:set-metadata -i <bucketId> -w <workerId> -j /pa
 ```
 
 ## Deploy the Storage Node
-### Option1 1 - Docker
+### Option 1 - Docker
 
 
 Edit .env
