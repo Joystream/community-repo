@@ -77,10 +77,12 @@ And you should be done!
 Go and [confirm everything is working](#confirm-everything-is-working)
 
 
+
+  
+#### Deploy - Elaborate
 <details>
   <summary>Elaborate</summary>
   
-#### Deploy - Elaborate
 If you want to use a version of `docker-compose` older than 1.29.0:
 
 First, you need to edit the `.env` file some more:
