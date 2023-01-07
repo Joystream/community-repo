@@ -35,6 +35,9 @@ The last command will take a while...
 ### Deploy
 
 #### Set the Environment
+
+<details>
+  <summary>If your joystream node running as docker skip this section</summary>
 This change is needed only if you have your joystream node running as a service.
 If your joystream node running as docker skip this section
 ```
@@ -45,7 +48,8 @@ $ nano .env
 #JOYSTREAM_NODE_WS=ws://joystream-node:9944/
 JOYSTREAM_NODE_WS=wss://<your.cool.url>/rpc
 ```
-
+</details>
+  
 #### Deploy - Easy
 Assuming you installed the newer version of [docker-compose](#install-a-newer-version-of-docker-compose):
 ```
