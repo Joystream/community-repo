@@ -37,6 +37,7 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 If you haven't already, clone the `Joystream/joystream` (mono)repo:
 
 ```
+# If you already clone the repo just skip the cloning command
 $ git clone https://github.com/Joystream/joystream.git
 $ cd joystream
 $ ./setup.sh
