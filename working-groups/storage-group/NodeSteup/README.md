@@ -175,7 +175,7 @@ Edit .env
 
 ``` 
 # Assuming hired lead has worker id 0
-COLOSSUS_1_WORKER_ID=0
+COLOSSUS_1_WORKER_ID=<your.worker.ID>
 COLOSSUS_1_WORKER_URI=https://<your.cool.url>/storage//1
 COLOSSUS_1_TRANSACTOR_URI=//<your.key.name>
 
