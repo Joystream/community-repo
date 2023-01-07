@@ -4,8 +4,45 @@ Find the lasted release [here](https://github.com/Joystream/joystream/releases)
 
 
 # Setup 
+## Option 1 Docker 
 
-## Run Node
+```
+$ cd ~/
+$ mkdir joystream-node
+$ git clone https://github.com/Joystream/joystream.git
+$ cd joystream
+```
+Edit the docker-compose file
+```
+$ vim docker-compose.yml
+```
+
+```
+  joystream-node:
+    image: joystream/node:latest
+    restart: unless-stopped
+    container_name: joystream-node
+    volumes:
+      - /root/.local/share/joystream-node/chain-data:/data
+      - /root/.local/share/joystream-node:/root/.local/share/joystream-node
+      - /root/joystream-node:/root/joystream-node
+    command: --chain /root/joystream-node/joy-mainnet.json --pruning archive --validator --name <memberId-memberHandle> --unsafe-ws-external --unsafe-rpc-external --rpc-methods Safe --rpc-cors all --base-path /data
+    ports:
+      - "127.0.0.1:9944:9944"
+      - "127.0.0.1:9933:9933"
+      - "30333:30333"
+```
+> create the dictories in the volumes if needed.
+Spin the container up
+```
+
+
+docker-compose up --detach --build joystream-node
+
+```
+
+## Option 2 as a service
+### Run Node
 
 ```
 $ cd ~/
@@ -51,7 +88,7 @@ When the `target=#block_height`is the same as `best: #"synced_height"`, your nod
 **Keep the terminal window open.** or recommended to [Run as a service](#run-as-a-service)
 
 
-## Configure the service
+### Configure the service
 
 Either as root, or a user with sudo privileges. If the latter, add `sudo` before commands.
 
@@ -63,7 +100,7 @@ $ touch joystream-node.service
 $ nano joystream-node.service
 ```
 
-#### Example with user joystream
+##### Example with user joystream
 
 The example below assumes the following:
 - You have setup a user `joystream` to run the node
@@ -91,7 +128,7 @@ LimitNOFILE=10000
 WantedBy=multi-user.target
 ```
 
-#### Example as root
+##### Example as root
 
 The example below assumes the following:
 - You have setup a user `root` to run the node
@@ -119,7 +156,7 @@ LimitNOFILE=10000
 WantedBy=multi-user.target
 ```
 
-### Starting the service
+#### Starting the service
 
 You can add/remove any `flags` as long as you remember to include `\` for every line but the last. Also note that systemd is very sensitive to syntax, so make sure there are no extra spaces before or after the `\`.
 
@@ -152,7 +189,7 @@ $ systemctl daemon-reload
 $ systemctl start joystream-node
 ```
 
-### Errors
+#### Errors
 
 If you make a mistake somewhere, `systemctl start joystream-node` will prompt:
 ```
