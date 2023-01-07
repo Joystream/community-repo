@@ -24,8 +24,11 @@ No more that 15% of the current operator clustered at the same region.
 
 ## Key directories
 > /root/joystream The main directory of the repo
+
 > /root/keys keys storage directory
+
 > /root/joystream-node joystream node sirectory
+
 > /data/joystream-storage main storage directory 
 
 ```
