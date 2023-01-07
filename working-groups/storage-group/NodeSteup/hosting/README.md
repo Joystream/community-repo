@@ -6,7 +6,12 @@ To configure SSL-certificates the easiest option is to use [caddy](https://caddy
 
 For the best setup, you should use the "official" [documentation](https://caddyserver.com/docs/).
 
-The instructions below are for Caddy v2.4.1:
+
+## Option 2 - Service 
+<details>
+   <summary>Option 2 - Service</summary>
+        
+The instructions below are for Caddy v2.4.6:
 ```
 $ wget https://github.com/caddyserver/caddy/releases/download/v2.4.6/caddy_2.4.6_linux_amd64.tar.gz
 $ tar -vxf caddy_2.4.6_linux_amd64.tar.gz
@@ -133,5 +138,4 @@ $ caddy reload
 ```
 
 
-
-```
+</details>
