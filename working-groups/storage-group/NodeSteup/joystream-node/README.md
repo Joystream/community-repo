@@ -6,7 +6,6 @@ Find the lasted release [here](https://github.com/Joystream/joystream/releases)
 # Setup 
 ## Option 1 - Docker 
 
-### Docker-compose
 ```
 $ cd ~/
 $ mkdir joystream-node
