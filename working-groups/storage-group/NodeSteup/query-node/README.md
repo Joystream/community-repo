@@ -76,6 +76,9 @@ And you should be done!
 
 Go and [confirm everything is working](#confirm-everything-is-working)
 
+
+<details>
+  <summary>Elaborate</summary>
 #### Deploy - Elaborate
 If you want to use a version of `docker-compose` older than 1.29.0:
 
@@ -130,7 +133,7 @@ Then, deploy!
 $ chmod +x deploy-qn.sh
 ./deploy-qn.sh
 ```
-
+</details>
 
 ### Confirm Everything is Working
 ```
