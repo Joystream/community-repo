@@ -31,6 +31,8 @@ No more that 15% of the current operator clustered at the same region.
 
 > /data/joystream-storage main storage directory 
 
+
+## Install needed tools
 ```
 $ apt-get update && apt-get upgrade -y
 $ apt install vim git curl -y
