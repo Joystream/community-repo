@@ -60,15 +60,6 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 [Go here for the installation guide](./query-node/README.md)
 
 
-# Applying for a Storage Provider opening
-
-Click [here](https://dao.joystream.org/#/working-groups/storage) to open the `Pioneer app` in your browser. 
-
-Make sure to save the `5YourJoyMemberAddress.json` file. This key will require tokens to be used as stake for the `Storage Provider` application (`application stake`) and further stake may be required if you are selected for the role (`role stake`).
-During this process you will be provided with a role key, which will be made available to download in the format `5YourStorageRoleKey.json`. If you set a password for this key, remember it :)
-
-The next steps (below) will only apply if you are a successful applicant.
-
 # Setup and Configure the Storage Node
 
 ## Keys
