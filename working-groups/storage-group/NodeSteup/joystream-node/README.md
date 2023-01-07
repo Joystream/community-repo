@@ -14,19 +14,29 @@ $ git clone https://github.com/Joystream/joystream.git
 $ cd joystream
 ```
 
+
+Edit the .env file 
 ```
-$ vim docker-compose.yml
+$ vim .env
+# make sure the variable below exist and uncommented
+JOYSTREAM_NODE_TAG=latest
 ```
+
 Edit service joystream-node
 ```
+$ vim docker-compose.yml
+-----
   joystream-node:
-    image: joystream/node:latest
+    image: joystream/node:$JOYSTREAM_NODE_TAG
     restart: unless-stopped
     container_name: joystream-node
     volumes:
       - /root/.local/share/joystream-node/chain-data:/data
       - /root/.local/share/joystream-node:/root/.local/share/joystream-node
       - /root/joystream-node:/root/joystream-node
+    env_file:
+      # relative to working directory where docker-compose was run from
+      - .env
     command: --chain /root/joystream-node/joy-mainnet.json --pruning archive --validator --name <memberId-memberHandle> --unsafe-ws-external --unsafe-rpc-external --rpc-methods Safe --rpc-cors all --base-path /data
     ports:
       - "127.0.0.1:9944:9944"
