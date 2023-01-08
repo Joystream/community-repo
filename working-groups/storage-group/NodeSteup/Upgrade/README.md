@@ -10,8 +10,17 @@ cp <root to folder>/storage-node/metadata.json /someBackupLocation
 ```
 ## Stop the service 
 ```
+docker-compose stop colossus-1
+docker-compose rm colossus-1
+
+```
+
+if you are running as a service
+
+```
 systemctl stop storage-node.service
 ```
+
 ## Stop the query node
 ```
 ./query-node/kill.sh
@@ -38,6 +47,13 @@ git pull
 ## Start the services
 ```
 query-node/start.sh
+docker-compose up --detach --build colossus-1
+
+```
+
+if you are running as a service
+
+```
 systemctl start storage-node.service
 ```
 
