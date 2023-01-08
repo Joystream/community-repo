@@ -27,7 +27,7 @@ No more that 15% of the current operator clustered at the same region.
 
 > /root/keys keys storage directory
 
-> /root/joystream-node joystream node sirectory
+> /root/joystream-node joystream node directory
 
 > /data/joystream-storage main storage directory 
 
@@ -61,13 +61,13 @@ $ chmod +x /usr/local/bin/docker-compose
 $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
-## Setup hosting
-[Go here for the installation guide](./hosting/README.md)
+
 ## Setup joystream-node
 [Go here for the installation guide](./joystream-node/README.md)
 ## Setup Query Node
 [Go here for the installation guide](./query-node/README.md)
-
+## Setup hosting
+[Go here for the installation guide](./hosting/README.md)
 
 # Setup and Configure the Storage Node
 
