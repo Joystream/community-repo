@@ -181,7 +181,7 @@ COLOSSUS_1_TRANSACTOR_URI=//<your.key.name>
 
 #Add the password variable
 SUPER_PASSWORD=<My.cool.password>
-
+JOYSTREAM_ES_URL=https://elastic.joystreamstats.live/
 ``` 
 
 
@@ -216,6 +216,7 @@ Edit service colossus-1
       '--apiUrl=${JOYSTREAM_NODE_WS}',
       '--keyFile=//keystore/storage-role-key.json',
       '--password=${SUPER_PASSWORD}',
+      '--elasticSearchEndpoint=${JOYSTREAM_ES_URL}',
       '--logFilePath=/logs'
     ]
 
