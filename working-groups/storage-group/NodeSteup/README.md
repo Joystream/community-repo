@@ -264,6 +264,7 @@ ExecStart=/root/.volta/bin/yarn storage-node server \
         -q http://localhost:8081/graphql \
 	-p <Passowrd> \
         -k /root/keys/storage-role-key.json \
+	-e https://<elasticsearch.your.cool.url> \
         -s
 Restart=on-failure
 StartLimitInterval=600
