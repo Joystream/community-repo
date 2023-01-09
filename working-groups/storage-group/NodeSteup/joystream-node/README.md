@@ -49,13 +49,13 @@ $ vim docker-compose.yml
 Spin the container up
 
 ```
-$docker-compose up --detach --build joystream-node
+$ docker-compose up --detach --build joystream-node
 ```
 
 ### Test and troubleshoot 
 
 ```
-docker logs -f -n 10 joystream-node
+$ docker logs -f -n 10 joystream-node
 ```
 
 
