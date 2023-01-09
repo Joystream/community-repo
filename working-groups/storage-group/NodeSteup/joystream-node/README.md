@@ -41,6 +41,7 @@ $ vim docker-compose.yml
     ports:
       - "127.0.0.1:9944:9944"
       - "127.0.0.1:9933:9933"
+      - "127.0.0.1:9615:9615"
       - "30333:30333"
 ```
 > create the dictories in the volumes if needed.
