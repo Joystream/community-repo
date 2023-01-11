@@ -80,10 +80,17 @@ $ cd ~/
 $ mkdir joystream-node
 $ cd joystream-node
 # 64 bit debian based Linux
+<<<<<<< HEAD
 $ wget https://github.com/Joystream/joystream/releases/download/v12.1000.0/joystream-node-8.0.0-1a0d1f677df-x86_64-linux-gnu.tar.gz
 $ tar -vxf joystream-node-7.4.1-d2243721017-x86_64-linux-gnu.tar.gz
 $ mv joystream-node /usr/local/bin/
 $ wget https://github.com/Joystream/joystream/releases/download/v12.1000.0/joy-mainnet.json
+=======
+$ wget https://github.com/Joystream/joystream/releases/download/v11.3.0/joystream-node-7.4.1-d2243721017-x86_64-linux-gnu.tar.gz
+$ tar -vxf joystream-node-7.4.1-d2243721017-x86_64-linux-gnu.tar.gz
+$ mv joystream-node /usr/local/bin/
+$ wget https://github.com/Joystream/joystream/releases/download/v11.3.0/joy-testnet-7-carthage.json
+>>>>>>> ffa526b6f06f5cf2a59b94d9f6c38be0aa5ae01b
 # Test is it working. 
 $ joystream-node --chain joy-testnet-7-carthage.json --pruning archive --validator
 ```
@@ -146,7 +153,11 @@ Type=simple
 User=joystream
 WorkingDirectory=/<path to work directory>/joystream-node/
 ExecStart=joystream-node \
+<<<<<<< HEAD
         --chain /<path to work directory>/joystream-node/joy-mainnet.json \
+=======
+        --chain /<path to work directory>/joystream-node/joy-testnet-7-carthage.json \
+>>>>>>> ffa526b6f06f5cf2a59b94d9f6c38be0aa5ae01b
         --pruning archive \
         --validator \
         --name <memberId-memberHandle> \
@@ -174,7 +185,11 @@ Type=simple
 User=root
 WorkingDirectory=/root/joystream-node/joystream-node/
 ExecStart=joystream-node \
+<<<<<<< HEAD
         --chain /root/joystream-node/joy-mainnet.json \
+=======
+        --chain /root/joystream-node/joy-testnet-7-carthage.json \
+>>>>>>> ffa526b6f06f5cf2a59b94d9f6c38be0aa5ae01b
         --pruning archive \
         --validator \
         --name YourCoolName \

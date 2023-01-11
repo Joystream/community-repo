@@ -1,0 +1,92 @@
+{
+    "applicationDetails": "Distributor WG Lead",
+    "title": "Distributor WG Lead needed",
+    "shortDescription": "The Council is actively looking for a Distributor WG Lead",
+    "description": "The Council is actively looking for a Distributor WG Lead.\n\n 
+   **Tasks for Carthage** \n\n
+    - [https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution](https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution) \n\n 
+    \n\n 
+    **Responsibilities** \n\n 
+    - Maximizing Distribution group scores (will be provided by the Council) \n\n 
+    - Preparing reports \n\n 
+    - Moderatingthe #distributors channel \n\n 
+    - Updating DWG Notion page \n\n 
+    - Managing budget \n\n 
+    - Tracking workers performance \n\n 
+    - Making sure that all worker nodes operational \n\n 
+    - Making sure that playback at https://play.joystream.org  goes smoothly, without error from the distributor side \n\n 
+    - Monitoring required changes for the distributor environment and ensure that all workers apply them \n\n 
+    - Monitoring the efficiency of worker nodes \n\n 
+    - Designing and keeping the structure of the distributor network across the world - in different regions of the globe \n\n 
+    - Helping new and existing members if they experience any issues with running nodes \n\n 
+    - Automating routine tasks using scripts and automated tools that help to increase the effectiveness of the work \n\n 
+    - Mentoring and train Distribution WG members \n\n 
+    \n\n 
+    **Requirements** \n\n 
+    - Distribution Lead / Deputy / Worker experience is preferred \n\n 
+    - High availability: First few days after a Lead is hired will require high availability and lots of work \n\n 
+    - Experience in manging team \n\n 
+    - Strong communication skills \n\n 
+    - Proficiency in English \n\n 
+    - Good Linux and Docker knowledge \n\n 
+    - Experienced with how to setup and maintain blockchain nodes \n\n 
+    - Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus/Grafana) \n\n 
+     \n\n 
+    **Rules for firings** \n\n 
+    - If Lead says he is available but is nowhere to be found for 24h \n\n 
+    - If Lead doesn't deliver on time, without even keeping CMs informed \n\n 
+    \n\n
+    **About WG** \n\n 
+    - Notion page:  [https://joystream.notion.site/Distribution-1f4cfbbb2e934c79bf20b8db7f019d32](https://joystream.notion.site/Distribution-1f4cfbbb2e934c79bf20b8db7f019d32) \n\n 
+    - Discord channel:  [https://discord.gg/XSRNGvqU](https://discord.gg/XSRNGvqU)\n\n 
+    \n\n 
+    **Stake**\n\n 
+    $10000 (166666 JOY)\n\n 
+    \n\n 
+    **Salary**\n\n 
+    - Monthly salary: $7500 (125000JOY)\n\n 
+    - If an employee works fewer than 160 hours per month, the Council may reduce their pay according to the hourly rate and actual number of hours worked\n\n 
+    - Hourly rate: $46.875/hour ($7500 =160 hours per month \* $46.875/hour)\n\n ",
+    "applicationFormQuestions": [{
+            "question": "What is your timezone?"
+        },
+        {
+            "question": "Are you based in US?"
+        },
+        {
+            "question": "Tell us a bit about yourself"
+        },
+        {
+            "question": "Tell us a bit more about your experience in IT"
+        },
+        {
+            "question": "Did you work in Joystream? If yes, please describe what you did"
+        },
+        {
+            "question": "Do you have experience with Linux? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with Docker? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with devops and automation? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with GraphQl? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with blockchain nodes? If yes, please describe it"
+        },
+        {
+            "question": "Your availability (max hours per day)"
+        },
+        {
+            "question": "Your Discord"
+        }
+    ],
+    "stakingPolicy": {
+        "amount": 166666,
+        "unstakingPeriod": 43201
+    },
+    "rewardPerBlock": 1
+}
