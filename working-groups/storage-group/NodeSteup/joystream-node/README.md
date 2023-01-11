@@ -8,6 +8,7 @@ Find the lasted release [here](https://github.com/Joystream/joystream/releases)
 
 ```
 $ cd ~/
+$ mkdir joystream-node
 $ git clone https://github.com/Joystream/joystream.git
 $ cd joystream
 ```
