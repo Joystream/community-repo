@@ -9,6 +9,9 @@ Find the lasted release [here](https://github.com/Joystream/joystream/releases)
 ```
 $ cd ~/
 $ mkdir joystream-node
+$ cd joystream-node
+$ wget https://github.com/Joystream/joystream/releases/download/v12.1000.0/joy-mainnet.json
+$ cd ~/
 $ git clone https://github.com/Joystream/joystream.git
 $ cd joystream
 ```
