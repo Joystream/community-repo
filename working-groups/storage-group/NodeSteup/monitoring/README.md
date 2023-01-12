@@ -1,10 +1,10 @@
 # Configure Telegram
 * Go here and create a Bot: https://core.telegram.org/bots#6-botfather, save:
-- Token
-- Bot's name
+  - Token
+  - Bot's name
 * Create a channel and invite the bot to the channel as admin
 * Test your Bot and get chat ID https://api.telegram.org/bot{token}/getUpdates, save:
-- chat ID
+  - chat ID
 
 # Configure Prometheus
 Review the .env file and provide the variables
