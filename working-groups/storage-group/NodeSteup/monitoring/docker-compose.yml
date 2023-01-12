@@ -38,8 +38,8 @@ services:
     restart: unless-stopped
     expose:
       - 9090
-    networks:
-      - monitor-net
+#    networks:
+#      - monitor-net
     labels:
       org.label-schema.group: "monitoring"
     logging: *default-logging
@@ -57,8 +57,8 @@ services:
     restart: unless-stopped
     expose:
       - 9093
-    networks:
-      - monitor-net
+#    networks:
+#      - monitor-net
     labels:
       org.label-schema.group: "monitoring"
     logging: *default-logging
@@ -80,8 +80,8 @@ services:
     restart: unless-stopped
     expose:
       - 9100
-    networks:
-      - monitor-net
+#    networks:
+#      - monitor-net
     labels:
       org.label-schema.group: "monitoring"
     logging: *default-logging
@@ -100,8 +100,8 @@ services:
     restart: unless-stopped
     expose:
       - 8080
-    networks:
-      - monitor-net
+#    networks:
+#      - monitor-net
     labels:
       org.label-schema.group: "monitoring"
     logging: *default-logging
@@ -125,8 +125,13 @@ services:
     restart: unless-stopped
     expose:
       - 3000
-    networks:
-      - monitor-net
+#    networks:
+#      - monitor-net
     labels:
       org.label-schema.group: "monitoring"
     logging: *default-logging
+
+networks:
+  default:
+    external:
+      name: joystream_default
