@@ -41,10 +41,14 @@ $ vim docker-compose.yml
       # relative to working directory where docker-compose was run from
       - .env
     command: --chain /root/joystream-node/joy-mainnet.json --pruning archive --validator --name <memberId-memberHandle> --unsafe-ws-external --unsafe-rpc-external --rpc-methods Safe --rpc-cors all --base-path /data
+    expose:
+      - 9615
+      - 9944
+      - 9933
     ports:
-      - "127.0.0.1:9944:9944"
-      - "127.0.0.1:9933:9933"
-      - "127.0.0.1:9615:9615"
+      #- "127.0.0.1:9944:9944"
+      #- "127.0.0.1:9933:9933"
+      #- "127.0.0.1:9615:9615"
       - "30333:30333"
 ```
 > create the dictories in the volumes if needed.
