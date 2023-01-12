@@ -8,18 +8,20 @@
 
 # Configure PROMETHEUS
 Review the .env file and provide the variables
-
+```
 PROMETHEUS_HOST=<prometheus.your.cool.url>
 ADMIN_USER=<username>
 ADMIN_PASSWORD=<Password>
 GRAFANA_HOST=<grafana.your.cool.url>
-
+```
 
 > Review prometheus.yml and add or remove jobs.
+
 > Review aleret.rules and add or remove alerts
 
 # Configure Alert Manger
 
+```
 receivers:
     - name: 'telegramBot'
       telegram_configs:
@@ -27,12 +29,12 @@ receivers:
         api_url: https://api.telegram.org
         chat_id: <your chat ID>
         parse_mode: ''
-
+```
 # Spin it up
 
-$ git clone https://github.com/yasiryagi/community-repo.git
-$ cp -R community-repo/working-groups/storage-group/NodeSteup/monitoring ~/
-$ cd ~/monitoring
-$ docker-compose up -d
-$ docker-compose logs -f --tail 100
+ $ git clone https://github.com/yasiryagi/community-repo.git
+ $ cp -R community-repo/working-groups/storage-group/NodeSteup/monitoring ~/
+ $ cd ~/monitoring
+ $ docker-compose up -d
+ $ docker-compose logs -f --tail 100
 
