@@ -6,6 +6,12 @@ To configure SSL-certificates the easiest option is to use [caddy](https://caddy
 
 For the best setup, you should use the "official" [documentation](https://caddyserver.com/docs/).
 
+## DNS
+
+Make sure the below resolve to your server:
+- <your.cool.url>
+- prometheus.<your.cool.url>
+- grafana.<your.cool.url>
 
 ## Option 1 - Docker 
 
