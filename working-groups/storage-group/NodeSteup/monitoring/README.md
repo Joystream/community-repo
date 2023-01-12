@@ -32,6 +32,8 @@ receivers:
         parse_mode: ''
 ```
 # Spin it up
+
+> Note: Make usre the hosting is configured for monitoring. Also make sure you joystream node has the correct flags
 ```
 $ git clone https://github.com/yasiryagi/community-repo.git
 $ cp -R community-repo/working-groups/storage-group/NodeSteup/monitoring ~/
