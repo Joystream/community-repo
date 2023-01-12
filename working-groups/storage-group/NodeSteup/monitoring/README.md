@@ -6,7 +6,7 @@
 * Test your Bot and get chat ID https://api.telegram.org/bot{token}/getUpdates, save:
 - chat ID
 
-# Configure PROMETHEUS
+# Configure PrometheusS
 Review the .env file and provide the variables
 ```
 PROMETHEUS_HOST=<prometheus.your.cool.url>
