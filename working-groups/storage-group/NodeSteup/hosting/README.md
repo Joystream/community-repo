@@ -6,6 +6,7 @@ To configure SSL-certificates the easiest option is to use [caddy](https://caddy
 
 For the best setup, you should use the "official" [documentation](https://caddyserver.com/docs/).
 
+
 ## Option 1 - Docker 
 
 ```
@@ -28,6 +29,19 @@ $ nano ~/caddy/Caddyfile
 # Joystream-node
 wss://<your.cool.url>/rpc {
         reverse_proxy joystream-node:9944
+}
+
+# Prometheus
+https://prometheus.<your.cool.url> {
+        basicauth /* {
+        admin JDJhJDE0JFdVTjhqWW1zODdUUVM1OUJ4amRWb09SNm1Rd1VmVndiQUJjRlRjSnA0U0hjUXQ0bXZIT0Ft
+        }
+        reverse_proxy prometheus:9090
+}
+
+# Grafana
+https://grafana.<your.cool.url> {
+        reverse_proxy prometheus:3000
 }
 
 # Query-node
