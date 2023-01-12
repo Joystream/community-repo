@@ -32,9 +32,13 @@ receivers:
 ```
 # Spin it up
 
- $ git clone https://github.com/yasiryagi/community-repo.git
- $ cp -R community-repo/working-groups/storage-group/NodeSteup/monitoring ~/
- $ cd ~/monitoring
- $ docker-compose up -d
- $ docker-compose logs -f --tail 100
+$ git clone https://github.com/yasiryagi/community-repo.git
+ 
+$ cp -R community-repo/working-groups/storage-group/NodeSteup/monitoring ~/
+
+$ cd ~/monitoring
+ 
+$ docker-compose up -d
+ 
+$ docker-compose logs -f --tail 100
 
