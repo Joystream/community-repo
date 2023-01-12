@@ -18,7 +18,7 @@ GRAFANA_HOST=grafana.<your.cool.url>
 
 > Review prometheus.yml and add or remove jobs.
 
-> Review aleret.rules and add or remove alerts
+> Review alert.rules and add or remove alerts
 
 # Configure Alert Manger
 
