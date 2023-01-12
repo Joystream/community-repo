@@ -8,6 +8,13 @@
   - chat ID
 
 # Configure Prometheus
+
+```
+$ git clone https://github.com/yasiryagi/community-repo.git
+$ cp -R community-repo/working-groups/storage-group/NodeSteup/monitoring ~/
+$ cd ~/monitoring
+
+```
 Review the .env file and provide the variables
 ```
 PROMETHEUS_HOST=prometheus.<your.cool.url>
@@ -34,10 +41,8 @@ receivers:
 # Spin it up
 
 > Note: Make usre the hosting is configured for monitoring. Also make sure you joystream node has the correct flags
+
 ```
-$ git clone https://github.com/yasiryagi/community-repo.git
-$ cp -R community-repo/working-groups/storage-group/NodeSteup/monitoring ~/
-$ cd ~/monitoring
 $ docker-compose up -d
 $ docker-compose logs -f --tail 100
 ```
