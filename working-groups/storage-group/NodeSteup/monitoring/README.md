@@ -9,10 +9,10 @@
 # Configure Prometheus
 Review the .env file and provide the variables
 ```
-PROMETHEUS_HOST=<prometheus.your.cool.url>
+PROMETHEUS_HOST=prometheus.<your.cool.url>
 ADMIN_USER=<username>
 ADMIN_PASSWORD=<Password>
-GRAFANA_HOST=<grafana.your.cool.url>
+GRAFANA_HOST=grafana.<your.cool.url>
 ```
 
 > Review prometheus.yml and add or remove jobs.
