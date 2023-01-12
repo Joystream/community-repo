@@ -5,7 +5,7 @@ route:
 receivers:
     - name: 'telegramBot'
       telegram_configs:
-      - bot_token: 5726753220:AAE9SaEQupRmVB74fYNxubHE6AqNOIqOZMk
+      - bot_token: <your token>
         api_url: https://api.telegram.org
-        chat_id: -1001691419198
+        chat_id: <chat ID>
         parse_mode: ''
