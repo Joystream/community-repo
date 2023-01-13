@@ -47,7 +47,7 @@ https://prometheus.<your.cool.url> {
 
 # Grafana
 https://grafana.<your.cool.url> {
-        reverse_proxy prometheus:3000
+        reverse_proxy grafana:3000
 }
 
 # Query-node
