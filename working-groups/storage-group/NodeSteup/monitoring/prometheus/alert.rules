@@ -60,7 +60,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: joystreamnode_high_memory
-    expr: sum(container_memory_usage_bytes{name=~"joystream-node.*"}) > 10000000000
+    expr: sum(container_memory_usage_bytes{name=~"joystream-node.*"}) > 12000000000
     for: 30s
     labels:
       severity: warning
