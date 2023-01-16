@@ -60,7 +60,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: joystreamnode_high_memory
-    expr: sum(container_memory_usage_bytes{name=~"joystream-node.*"}) > 1200000000
+    expr: sum(container_memory_usage_bytes{name=~"joystream-node.*"}) > 10000000000
     for: 30s
     labels:
       severity: warning
@@ -87,7 +87,7 @@ groups:
       description: "{{ $labels.instance }} node CPU usage is {{ humanize $value}}%."
 
   - alert: colossus1_high_memory
-    expr: sum(container_memory_usage_bytes{name=~"colossus-1.*"}) > 1200000000
+    expr: sum(container_memory_usage_bytes{name=~"colossus-1.*"}) > 10000000000
     for: 30s
     labels:
       severity: warning
@@ -114,7 +114,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: db_high_memory
-    expr: sum(container_memory_usage_bytes{name=~"db.*"}) > 1200000000
+    expr: sum(container_memory_usage_bytes{name=~"db.*"}) > 10000000000
     for: 30s
     labels:
       severity: warning
@@ -142,7 +142,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: processor_high_memory
-    expr: sum(container_memory_usage_bytes{name=~"processor.*"}) > 1200000000
+    expr: sum(container_memory_usage_bytes{name=~"processor.*"}) > 5000000000
     for: 30s
     labels:
       severity: warning
@@ -169,7 +169,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: caddy_caddy_1_high_memory
-    expr: sum(container_memory_usage_bytes{name=~"caddy_caddy_1.*"}) > 1200000000
+    expr: sum(container_memory_usage_bytes{name=~"caddy_caddy_1.*"}) > 5000000000
     for: 30s
     labels:
       severity: warning
@@ -196,7 +196,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: redis_high_memory
-    expr: sum(container_memory_usage_bytes{name=~"redis.*"}) > 1200000000
+    expr: sum(container_memory_usage_bytes{name=~"redis.*"}) > 5000000000
     for: 30s
     labels:
       severity: warning
@@ -223,7 +223,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: hydraindexergateway_high_memory
-    expr: sum(container_memory_usage_bytes{name=~"hydra-indexer-gateway.*"}) > 1200000000
+    expr: sum(container_memory_usage_bytes{name=~"hydra-indexer-gateway.*"}) > 5000000000
     for: 30s
     labels:
       severity: warning
