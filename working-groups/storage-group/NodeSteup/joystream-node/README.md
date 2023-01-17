@@ -84,7 +84,7 @@ $ cd joystream-node
 # 64 bit debian based Linux
 <<<<<<< HEAD
 $ wget https://github.com/Joystream/joystream/releases/download/v12.1000.0/joystream-node-8.0.0-1a0d1f677df-x86_64-linux-gnu.tar.gz
-$ tar -vxf joystream-node-7.4.1-d2243721017-x86_64-linux-gnu.tar.gz
+$ tar -vxf joystream-node-8.0.0-1a0d1f677df-x86_64-linux-gnu.tar.gz
 $ mv joystream-node /usr/local/bin/
 $ wget https://github.com/Joystream/joystream/releases/download/v12.1000.0/joy-mainnet.json
 =======
