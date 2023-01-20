@@ -23,7 +23,7 @@ After=network-online.target
 User=node_exporter
 Group=node_exporter
 Type=simple
-ExecStart=/usr/local/bin/node_exporter
+ExecStart=/usr/local/bin/node_exporter --collector.systemd --collector.systemd.unit-include=storage-node.*
 [Install]
 WantedBy=multi-user.target
 EOF
