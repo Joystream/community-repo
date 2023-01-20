@@ -9,7 +9,7 @@ Note: The script assumes you are running as `root` and it has been tested on a h
 You should first clone the repo and modify the following variables according to your preference.
 
 ```
-git clone https://github.com/yasiryagi/community-repo
+git clone https://github.com/yasiryagi/community-repo.git
 cd community-repo/working-groups/storage-group/NodeSetup/monitoring-systemd
 
 # use your preferred text editor such as vi/vim/nano
