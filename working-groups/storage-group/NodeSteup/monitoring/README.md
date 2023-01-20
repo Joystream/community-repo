@@ -46,3 +46,16 @@ receivers:
 $ docker-compose up -d
 $ docker-compose logs -f --tail 100
 ```
+
+# Node and Storage are running as service
+<details>
+  <summary>Node and Storage are running as service</summary>
+```
+$ mv docker-compose_service.yml docker-compose.yml
+$ mv prometheus_service.yml prometheus.yml
+
+$ docker-compose up -d
+$ docker-compose logs -f --tail 100
+```
+
+ </details>

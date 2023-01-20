@@ -230,3 +230,22 @@ groups:
     annotations:
       summary: "{{ $labels.instance }} high memory usage"
       description: "{{ $labels.instance }} memory consumption is at {{ humanize $value}}."
+
+- name: Services monitoring
+  rules:
+  - alert: Joystream Node Service is down
+    expr: node_systemd_unit_state{name="joystream-node.service", state="active"} == 0
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "service is down on host {{ $labels.instance }}"
+      description: "{{ $labels.instance }}  Service is down"
+  - alert: Joystream Storage Node Service is down
+    expr: node_systemd_unit_state{name="storage-node.service", state="active"} == 0
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "service is down on host {{ $labels.instance }}"
+      description: "{{ $labels.instance }}  Service is down"
