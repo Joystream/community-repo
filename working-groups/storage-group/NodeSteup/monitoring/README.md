@@ -23,9 +23,9 @@ ADMIN_PASSWORD=<Password>
 GRAFANA_HOST=grafana.<your.cool.url>
 ```
 
-> Review prometheus.yml and add or remove jobs.
+> Review prometheus.yml and add or remove jobs. Make sure the name of containers/service match.
 
-> Review alert.rules and add or remove alerts
+> Review alert.rules and add or remove alerts. Make sure the name of containers/service match
 
 # Configure Alert Manger
 
