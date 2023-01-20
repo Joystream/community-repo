@@ -23,9 +23,9 @@ ADMIN_PASSWORD=<Password>
 GRAFANA_HOST=grafana.<your.cool.url>
 ```
 
-> Review prometheus.yml and add or remove jobs.
+> Review prometheus.yml and add or remove jobs. Make sure the name of containers/services match.
 
-> Review alert.rules and add or remove alerts
+> Review alert.rules and add or remove alerts. Make sure the name of containers/services match
 
 # Configure Alert Manger
 
@@ -46,3 +46,17 @@ receivers:
 $ docker-compose up -d
 $ docker-compose logs -f --tail 100
 ```
+
+# Node and Storage are running as service
+<details>
+  <summary>Node and Storage are running as service</summary>
+  
+```
+$ mv docker-compose_service.yml docker-compose.yml
+$ mv prometheus_service.yml prometheus.yml
+
+$ docker-compose up -d
+$ docker-compose logs -f --tail 100
+```
+
+ </details>
