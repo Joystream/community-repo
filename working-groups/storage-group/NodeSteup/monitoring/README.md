@@ -51,6 +51,7 @@ $ docker-compose logs -f --tail 100
 <details>
   <summary>Node and Storage are running as service</summary>
   
+## Option 1 - Docker 
 ```
 $ mv docker-compose_service.yml docker-compose.yml
 $ mv prometheus_service.yml prometheus.yml
@@ -58,5 +59,10 @@ $ mv prometheus_service.yml prometheus.yml
 $ docker-compose up -d
 $ docker-compose logs -f --tail 100
 ```
+
+## Option 2 - As a service
+
+[Go here for the installation guide](./monitoring-systemd/README.md)
+
 
  </details>
