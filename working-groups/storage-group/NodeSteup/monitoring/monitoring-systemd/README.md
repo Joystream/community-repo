@@ -10,7 +10,7 @@ You should first clone the repo and modify the following variables according to 
 
 ```
 git clone https://github.com/yasiryagi/community-repo.git
-cd community-repo/working-groups/storage-group/NodeSetup/monitoring-systemd
+cd community-repo/working-groups/storage-group/NodeSteup/monitoring/monitoring-systemd
 
 # use your preferred text editor such as vi/vim/nano
 vi install_monitoring_stack.sh
