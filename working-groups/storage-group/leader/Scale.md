@@ -55,16 +55,15 @@ Sever cán scale to 1PB (1000 TB)
 
 Consideration:
 - IOP ((input/output operations)
-- Bandwidth
+- Bandwidth: IG min
 - Cost
-
-> Note: 100TB and more are HDD which has a lower IOP.
-
-### Cost 
 
 | Capacity                     | 10TB | 100TB | 500TB | 1PB  |
 |------------------------------|------|-------|-------|------|
 | Estimated monthly cost (USD) | 200  | 500   | 1250  | 3000 |
+
+
+> Note: 100TB and more are HDD which has a lower IOP.
 
 ## Horizontally  
 
