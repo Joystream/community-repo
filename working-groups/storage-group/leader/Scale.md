@@ -52,9 +52,9 @@ Consideration:
 
 ### Cost 
 
-| Capacity               | 10TB | 100TB | 500TB | 1PB  |
-|------------------------|------|-------|-------|------|
-| Estimated monthly cost | 250  | 500   | 1250  | 3000 |
+| Capacity                     | 10TB | 100TB | 500TB | 1PB  |
+|------------------------------|------|-------|-------|------|
+| Estimated monthly cost (USD) | 250  | 500   | 1250  | 3000 |
 
 ## Horizontally  
 
