@@ -8,7 +8,6 @@
 ## Youtube 
 
 Hours of contents uploaded per minutes 
-![image](https://user-images.githubusercontent.com/4862448/214620028-8d7c47a4-239e-4aea-915d-ae0d51a23330.png)
 
 ![image](https://user-images.githubusercontent.com/4862448/214617329-937f43e2-6a81-416a-8599-c762455ce9ae.png)
 
