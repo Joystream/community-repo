@@ -38,13 +38,22 @@ Hours of contents uploaded every minute: 60
 
 Scaling vertically by adding move storage per server. 
 
-Initial recommended Joystream storage per server is 10T
+Initial recommended Joystream storage per server is 10T.
 
-Sever cán scale to 1TP (1000 TB)
+Sever cán scale to 1PB (1000 TB)
 
 Consideration:
 - IOP ((input/output operations)
+- Bandwidth
 - Cost
+
+> Note: 100TB are more are HDD which has a lower 
+
+### Cost 
+
+| Capacity               | 10TB | 100TB | 500TB | 1PB  |
+|------------------------|------|-------|-------|------|
+| Estimated monthly cost | 250  | 500   | 1250  | 3000 |
 
 ## Horizontally  
 
