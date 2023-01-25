@@ -33,7 +33,7 @@ All the calaculation on this page assume a replication of 4.
 # Capacity 
 
 
-Below the required storage capacity per year as demand for video upload increase. The numbers below driven form Youtube annd Vimeo data above.
+Below the required storage capacity per year as demand for video upload increase. The numbers below driven form Youtube and Vimeo data above.
 
 | Hours uploaded per min | 0.01      | 0.05     | 0.25     | 0.5      | 1         | 3         | 8         | 12         | 22         | 53         | 500        |
 |------------------------|-----------|----------|----------|----------|-----------|-----------|-----------|------------|------------|------------|------------|
