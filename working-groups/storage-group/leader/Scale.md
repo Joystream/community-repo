@@ -47,7 +47,7 @@ Consideration:
 - Bandwidth
 - Cost
 
-> Note: 100TB are more are HDD which has a lower 
+> Note: 100TB and more are HDD which has a lower IOP.
 
 ### Cost 
 
