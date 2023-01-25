@@ -46,6 +46,8 @@ Below the required storage capacity per year as demand for video upload increase
 ## Vertically 
 
 Scaling vertically by adding move storage per server. 
+![image](https://user-images.githubusercontent.com/4862448/214621246-30e12914-a5ec-4097-9ce0-4ca478238717.png)
+
 
 Initial recommended Joystream storage per server is 10T.
 
@@ -70,6 +72,8 @@ Scaling Horizontally by adding more servers, with two options:
 
 1- More worker assign to th existing team members
 2- More new worker
+
+![image](https://user-images.githubusercontent.com/4862448/214621362-638d192b-9ee8-4ab4-a91a-d3db2280906e.png)
 
 
 Below are three models with a server capacity of 10,100 and 500TB
