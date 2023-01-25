@@ -20,14 +20,12 @@ Hours of contents uploaded per minutes
 
 (This year)
 
-Number of videos uploaded daily  : 350,000
-
+Number of videos uploaded daily  : 350,000\
 Hours of contents uploaded every minute: 60
 
 # Replication
 
-Joystream implement a replication policy for data los prevention. All videos uploaded are replicated to number of server per the configured replication.
-
+Joystream implement a replication policy for data los prevention. All videos uploaded are replicated to number of server per the configured replication.\
 All the calaculation on this page assume a replication of 4.
 
 # Capacity 
@@ -72,8 +70,8 @@ Consideration:
 
 Scaling Horizontally by adding more servers, with two options:
 
-1- More worker assign to th existing team members
-2- More new worker
+1- More worker assign to th existing team members.\
+2- More new worker.
 
 
 ![image](https://user-images.githubusercontent.com/4862448/214621362-638d192b-9ee8-4ab4-a91a-d3db2280906e.png)
