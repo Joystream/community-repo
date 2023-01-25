@@ -6,7 +6,7 @@ Joystream implement a replication policy for data los prevention. All videos upl
 All the calaculation on this page assume a replication of 4.
 
 
-## You tube 
+## Youtube 
 
 Hours of contents uploaded per minutes 
 
