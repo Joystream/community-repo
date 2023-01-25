@@ -4,6 +4,7 @@
 
 Hours of contents uploaded per minutes 
 
+
 | 2006 | 2007 | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 |
 |------|------|------|------|------|------|------|------|------|------|------|------|
 | 1    | 3    | 5    | 8    | 12   | 22   | 37   | 53   | 86   | 187  | 336  | 500  |
@@ -11,6 +12,7 @@ Hours of contents uploaded per minutes
 ## Vimeo 
 
 Number of videos uploaded daily : 350,000
+
 Hours of contents uploaded every minute: 60
 
 # Capacity 
