@@ -1,5 +1,11 @@
 # Modeling 
 
+## Replication
+
+Joystream implement a replication policy for data los prevention. All videos uploaded are replicated to number of server per the configured replication. 
+All the calaculation on this page assume a replication of 4.
+
+
 ## You tube 
 
 Hours of contents uploaded per minutes 
