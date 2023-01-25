@@ -11,7 +11,9 @@ Hours of contents uploaded per minutes
 
 ## Vimeo 
 
-Number of videos uploaded daily : 350,000
+(This year)
+
+Number of videos uploaded daily  : 350,000
 
 Hours of contents uploaded every minute: 60
 
@@ -25,9 +27,29 @@ Hours of contents uploaded every minute: 60
 
 # Scaling 
 
+
 ## Vertically 
 
+Scaling vertically by adding move storage per server. 
 
+Initial recommended Joystream storage per server is 10T
 
+Sever cán scale to 1TP (1000 TB)
+
+Consideration:
+- IOP ((input/output operations)
+- Cost
 
 ## Horizontally  
+
+Scaling Horizontally by adding more servers 
+
+### More worker assign to th existing team members
+### More new worker
+
+
+
+
+
+
+
