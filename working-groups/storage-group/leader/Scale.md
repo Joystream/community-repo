@@ -75,6 +75,7 @@ Scaling Horizontally by adding more servers, with two options:
 1- More worker assign to th existing team members
 2- More new worker
 
+
 ![image](https://user-images.githubusercontent.com/4862448/214621362-638d192b-9ee8-4ab4-a91a-d3db2280906e.png)
 
 
