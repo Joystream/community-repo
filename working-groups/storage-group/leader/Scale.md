@@ -140,6 +140,6 @@ Below are three models with a server capacity of 10,100 and 500TB
 * Joystream should follow a combination of vertical and horizontal scaling.
 * Each update should be considered at 65% capacity 
 * Each upgrade 
-- Stage 1 : a horizontal update for a bigger servers, with exisitng team members or new.
-- Stage 2 : Vertical update with the existing team members
-- Stage 3 : Migrate exisitng worker to new server
+  - Stage 1 : a horizontal update for a bigger servers, with exisitng team members or new.
+  - Stage 2 : Vertical update with the existing team members
+  - Stage 3 : Migrate exisitng worker to new server
