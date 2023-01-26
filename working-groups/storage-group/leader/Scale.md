@@ -41,6 +41,18 @@ All the calaculation on this page assume a replication of 4.
 | Average video lenght  | 15 |
 |-----------------------|----|
 
+
+## Storage type
+- File
+- Block
+- Object 
+
+
+![image](https://user-images.githubusercontent.com/4862448/214873516-ed3156bd-e025-4e41-91c5-664e54d0da12.png)
+
+![image](https://user-images.githubusercontent.com/4862448/214873826-ba5d41ba-fb83-455d-82ed-64f3e29dd342.png)
+
+
 # Capacity 
 
 
@@ -122,3 +134,8 @@ Below are three models with a server capacity of 10,100 and 500TB
 | Workers                | 4         | 4        | 4        | 8        | 12        | 32        | 76        | 116        | 208        | 500        | 4704     |
 
 
+
+# Proposed scaling plan
+
+Joystream should follow a combination of vertical and horizontal scaling.
+- 
