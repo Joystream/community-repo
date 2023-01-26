@@ -3,9 +3,10 @@
 
 
 
-# Model
+# Model Paramters
 
-## Youtube 
+## Video Platforms
+### Youtube 
 
 Hours of contents uploaded per minutes 
 
@@ -16,17 +17,29 @@ Hours of contents uploaded per minutes
 |------|------|------|------|------|------|------|------|------|------|------|------|
 | 1    | 3    | 5    | 8    | 12   | 22   | 37   | 53   | 86   | 187  | 336  | 500  |
 
-## Vimeo 
+### Vimeo 
 
 (This year)
 
 Number of videos uploaded daily  : 350,000\
 Hours of contents uploaded every minute: 60
 
-# Replication
+## Replication
 
 Joystream implement a replication policy for data los prevention. All videos uploaded are replicated to number of server per the configured replication.\
 All the calaculation on this page assume a replication of 4.
+
+## Video data rates
+
+| RESOLUTION  | BITRATE MBPS | %    | RECORDING DURATION PER GB |
+|-------------|--------------|------|---------------------------|
+| 4K (UHD)    | 20           | 0.01 | 12 minutes                |
+| 1080p (FHD) | 8            | 0.19 | 50 minutes                |
+| 720p (HD)   | 5            | 0.5  | 3.5 hours                 |
+| 480p (SD)   | 2.5          | 0.3  | 8 Hours                   |
+
+| Average video lenght  | 15 |
+|-----------------------|----|
 
 # Capacity 
 
