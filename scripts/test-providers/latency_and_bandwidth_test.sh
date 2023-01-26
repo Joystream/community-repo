@@ -1,7 +1,9 @@
 #/bin/bash
 
+# Specify the number of latency tests to perform
 PINGS=5
 
+# Specify the domain name of providers to test
 PROVIDER1_DOMAIN=dp.0x2bc.com
 PROVIDER2_DOMAIN=sieemmanodes.com
 PROVIDER3_DOMAIN=joystream.koalva.io
