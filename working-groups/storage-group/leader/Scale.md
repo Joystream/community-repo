@@ -44,7 +44,7 @@ All the calaculation on this page assume a replication of 4.
 
 ## Storage type
 - File
-- Block
+- Block (Most appropriate) 
 - Object 
 
 
