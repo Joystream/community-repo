@@ -67,7 +67,7 @@ Initial recommended Joystream storage per server is 10T.
 Sever cán scale to 1PB (1000 TB)
 
 Consideration:
-- IOP ((input/output operations): 100-160 MB/s
+- IOP ((input/output operations): 100-160 MB/s for HDD
 - Bandwidth: IG min
 - Cost
 
