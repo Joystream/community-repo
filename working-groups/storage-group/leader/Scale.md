@@ -31,12 +31,12 @@ All the calaculation on this page assume a replication of 4.
 
 ## Video data rates
 
-| RESOLUTION  | BITRATE MBPS | %    | RECORDING DURATION PER GB |
-|-------------|--------------|------|---------------------------|
-| 4K (UHD)    | 20           | 0.01 | 12 minutes                |
-| 1080p (FHD) | 8            | 0.19 | 50 minutes                |
-| 720p (HD)   | 5            | 0.5  | 3.5 hours                 |
-| 480p (SD)   | 2.5          | 0.3  | 8 Hours                   |
+| RESOLUTION  | BITRATE MBPS | % of Videos | RECORDING DURATION PER GB |
+|-------------|--------------|-------------|---------------------------|
+| 4K (UHD)    | 20           | 0.01        | 12 minutes                |
+| 1080p (FHD) | 8            | 0.19        | 50 minutes                |
+| 720p (HD)   | 5            | 0.5         | 3.5 hours                 |
+| 480p (SD)   | 2.5          | 0.3         | 8 Hours                   |
 
 | Average video lenght  | 15 |
 |-----------------------|----|
