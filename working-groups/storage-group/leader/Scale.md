@@ -149,3 +149,5 @@ Required metrics to be monitored:
   - Stage 1 : a horizontal update for a bigger servers, with exisitng or new team members.
   - Stage 2 : Vertical update with the existing team members
   - Stage 3 : Migrate exisitng worker to new server
+
+If Joystream follows the same growth trajectory of Youtube, it is expect a max of one scaling event in the first 2 years. Followed by mutiple yearly of the years to follow. 
