@@ -43,7 +43,7 @@ else
 echo -e "Round trip to $PROVIDER_URL in mili-second: $((($(date +%s%N) - $ts)/1000000))\n"
 fi
 done
-ASSET_URL="https://"$PROVIDER_DOMAIN"/distributor/api/v1/assets/493"
+ASSET_URL="https://"$PROVIDER2_DOMAIN"/distributor/api/v1/assets/493"
 PROVIDER_BW=$(wget $ASSET_URL -O /dev/null  2>&1 | grep -oP '(?<= \()\d+\.?\d+ \SB/s(?=\) )')
 echo Download Rate = $PROVIDER_BW
 }
