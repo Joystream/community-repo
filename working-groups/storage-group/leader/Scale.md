@@ -3,7 +3,7 @@
 
 
 
-# Model Paramters
+# Paramters
 
 ## Video Platforms
 ### Youtube 
@@ -101,7 +101,7 @@ Scaling Horizontally by adding more servers, with two options:
 ![image](https://user-images.githubusercontent.com/4862448/214621362-638d192b-9ee8-4ab4-a91a-d3db2280906e.png)
 
 
-# Calaculation of required workers
+## Calaculation of required workers
 
 Below are three models with a server capacity of 10,100 and 500TB
 
@@ -137,7 +137,7 @@ Below are three models with a server capacity of 10,100 and 500TB
 
 
 
-# Proposed scaling plan
+## Proposed scaling plan
 
 Required metrics to be monitored:
 - Storage system capacity
