@@ -157,8 +157,8 @@ Below are three models with a server capacity of 10,100 and 500TB
 # Proposed scaling plan
 
 Required metrics to be monitored:
-- Storage system capacity
-- Rate of daily upload
+  - Storage system capacity
+  - Rate of daily upload
  
 * Joystream should follow a combination of vertical and horizontal scaling.
 * Each update should be considered at 75% capacity 
