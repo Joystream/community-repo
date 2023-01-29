@@ -99,8 +99,8 @@ Consideration:
 
 |                | Storage  | Bandwidth | 
 |----------------|----------|-----------|
-| Server stage 1 | 10T      | 1G        |
-| Server stage 2 | 100T     | 10G       |
+| Server stage 1&2 | 10T      | 1G        |
+| Server stage 3+ | 100T     | 10G       |
 
 ### Horizontally  
 
