@@ -79,8 +79,14 @@ Initial recommended Joystream storage per server is 10T.
 Sever cán scale to 1PB (1000 TB)
 
 Consideration:
-- IOP ((input/output operations): 100-160 MB/s for HDD
-- Bandwidth: IG min
+- Disk read/write &  IOP ((input/output operations): 100-160 MB/s for HDD
+|      | Read/Write | IPOS   | Capacity GB | Reliability (MTBF) | Price per GB (USD) |
+|------|------------|--------|-------------|--------------------|--------------------|
+| HDD  | 100-130    | 100    | 500-14000   | 50k hrs            | 0.014-0.04         |
+| SSD  | 300-500    | 100000 | 250-40000   | 1.5M hrs           | 0.05-0.4           |
+| NVME | 3500       | 500000 | 250-2000    | 1.5M hrs           | 0.05-0.5           |
+
+- Bandwidth: IG & 10G
 - Cost
 
 | Capacity                     | 10TB | 100TB | 500TB | 1PB  |
