@@ -163,9 +163,11 @@ Required metrics to be monitored:
  
 * Joystream should follow a combination of vertical and horizontal scaling.
 * Each update should be considered at 65% capacity 
-* Each upgrade 
-  - Stage 1 : a horizontal update for a bigger servers, with exisitng or new team members.
-  - Stage 2 : Vertical update with the existing team members
+* Stages
+  - Stage 1 : Boot strage the system:
+    - Capacity : 10T
+    - Workers  : 5 
+  - Stage 2 : a horizontal update for a bigger servers, with exisitng or new team members.
   - Stage 3 : Migrate exisitng worker to new server
 
 If Joystream follows the same growth trajectory of Youtube, it is expect a max of one scaling event in the first 2 years. Followed by mutiple yearly of the years to follow. 
