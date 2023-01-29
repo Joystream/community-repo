@@ -156,7 +156,7 @@ Below are three models with a server capacity of 10,100 and 500TB
 
 # Proposed scaling plan
 
-Required metrics to be monitored:
+- Required metrics to be monitored:
   - Storage system capacity
   - Rate of daily upload
  
