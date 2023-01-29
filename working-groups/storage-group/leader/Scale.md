@@ -80,6 +80,7 @@ Sever cán scale to 1PB (1000 TB)
 
 Consideration:
 - Disk read/write &  IOP ((input/output operations): 100-160 MB/s for HDD
+
 |      | Read/Write | IPOS   | Capacity GB | Reliability (MTBF) | Price per GB (USD) |
 |------|------------|--------|-------------|--------------------|--------------------|
 | HDD  | 100-130    | 100    | 500-14000   | 50k hrs            | 0.014-0.04         |
