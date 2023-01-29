@@ -177,10 +177,10 @@ Below are three models with a server capacity of 10,100 and 500TB
   - Stage 3 : Horizontal and Vertical upgrade
     - Stage 3.1: Hire 5 new workers with higher vertical capacity
       - Workers : 5
-      - Capacity : 500T 
+      - Capacity : 100T 
     - Stage 3.2: Upgrade exisitng workers to a higher virtical capacity 
       - Workers: 30
-      - Capacity: 3000T (3PB)
+      - Capacity: 750T 
   - Stage 4: continuous expantion horizonly  
   
 
