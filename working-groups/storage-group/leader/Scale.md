@@ -74,7 +74,6 @@ Scaling vertically by adding move storage per server.
 
 
 
-Initial recommended Joystream storage per server is 10T.
 
 Sever cán scale to 1PB (1000 TB)
 
@@ -95,7 +94,14 @@ Consideration:
 | Estimated monthly cost (USD) | 200  | 500   | 1250  | 3000 |
 
 
-> Note: 100TB and more are HDD which has a lower IOP.
+> Note: 100TB and more are HDD which has a lower read/write.
+
+### Recommended servers
+
+|                | Storage  | Bandwith  |
+|----------------|----------|-----------|
+| Server stage 1 | 10T      | 1G        |
+| Server stage 2 | 100T     | 10G       |
 
 ## Horizontally  
 
