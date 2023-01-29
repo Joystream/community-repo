@@ -174,10 +174,10 @@ If Joystream follows the same growth trajectory of Youtube, it is expect a max o
 
 # Refs
 
-[https://pex.com/blog/what-content-dominates-youtube/			](https://pex.com/blog/what-content-dominates-youtube/)
-[https://www.statista.com/topics/2019/youtube/#topicHeader__wrapper			](https://www.statista.com/topics/2019/youtube/#topicHeader__wrapper)
-[https://www.soladrive.com/hard-drive-vs-ssd-vs-nvme/](https://www.soladrive.com/hard-drive-vs-ssd-vs-nvme/)
-[[https://diskprices.com/?locale=uk&condition=new,used&units=gb](https://diskprices.com/)](https://diskprices.com/)
+- [https://pex.com/blog/what-content-dominates-youtube/			](https://pex.com/blog/what-content-dominates-youtube/)
+- [https://www.statista.com/topics/2019/youtube/#topicHeader__wrapper			](https://www.statista.com/topics/2019/youtube/#topicHeader__wrapper)
+- [https://www.soladrive.com/hard-drive-vs-ssd-vs-nvme/](https://www.soladrive.com/hard-drive-vs-ssd-vs-nvme/)
+- [[https://diskprices.com/?locale=uk&condition=new,used&units=gb](https://diskprices.com/)](https://diskprices.com/)
 
 
 
