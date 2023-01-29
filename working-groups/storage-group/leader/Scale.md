@@ -113,7 +113,13 @@ Scaling Horizontally by adding more servers, with two options:
 
 ![image](https://user-images.githubusercontent.com/4862448/214621362-638d192b-9ee8-4ab4-a91a-d3db2280906e.png)
 
-
+## Formulas
+```
+Formula: Worker Disk size GB=	 (((uploaded hrs per mins* 60(hr) * 24 (day) * 365 (year))*3600) * (%4k * Bitrate-4k + %1080 * Bitrate1080 + %720 * Bitrate720 + %480 * Bitrate48  ))  / (8 (Bytes) *1000)		
+```
+```
+Formula: Workers= 	MAX(ROUNDUP(Total Stoage GB / Worker Disk size GB)* Replication,Replication)											
+```
 ## Calaculation of required workers
 
 Below are three models with a server capacity of 10,100 and 500TB
