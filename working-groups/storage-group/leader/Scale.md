@@ -75,7 +75,7 @@ Scaling vertically by adding move storage per server.
 
 
 
-Sever cán scale to 1PB (1000 TB)
+Sever can scale to 1PB (1000 TB)
 
 Consideration:
 - Disk read/write &  IOP ((input/output operations): 100-160 MB/s for HDD
