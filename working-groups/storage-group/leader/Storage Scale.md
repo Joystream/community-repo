@@ -183,7 +183,7 @@ Below are three models with a server capacity of 10,100 and 500TB
     - Stage 3.2: Upgrade exisitng workers to a higher virtical capacity 
       - Workers: 30
       - Capacity: 750T 
-  - Stage 4: continuous expantion horizonly  
+  - Stage 4: continuous expantion horizonly and Verically (using advanced techniques)
   
 
 If Joystream follows the same growth trajectory of Youtube, it is expect a max of one scaling event in the first 2 years. Followed by mutiple yearly of the years to follow. 
