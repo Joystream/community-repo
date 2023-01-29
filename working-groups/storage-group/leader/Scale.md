@@ -166,14 +166,22 @@ Required metrics to be monitored:
 * Stages
   - Stage 1 : Bootstrap the system:
     - Capacity : 10T
-    - Workers  : 5 
+    - Workers  : 5 (replication + 1)
   - Stage 2 : A horizontal upgrades with exisitng or new team members.
     - Each upgrade:
       -  Capacity : 10T
-      -  Workers  : 5
-    - Limit is 25 worker 
+      -  Workers  : 5 (replication + 1)
+    - Limit: 
+      - Capacity: 62T
+      - Workers : 25
     - New workers to have priority 
-  - Stage 3 : Migrate exisitng worker to new server
+  - Stage 3 : Horizontal and Vertical upgrade
+    - Stage 3.1: Hire 5 new workers with higher vertical capacity
+      - Workers : 5
+      - Capacity : 500T 
+    - Stage 3.2: Upgrade exisitng workers to a higher virtical capcity 
+      - Workers: 30
+      - Capacity: 3000T (3PB)
 
 If Joystream follows the same growth trajectory of Youtube, it is expect a max of one scaling event in the first 2 years. Followed by mutiple yearly of the years to follow. 
 
