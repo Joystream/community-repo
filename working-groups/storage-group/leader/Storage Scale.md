@@ -200,6 +200,7 @@ If Joystream follows the same growth trajectory of Youtube, it is expect a max o
 - [statista](https://www.statista.com/topics/2019/youtube/#topicHeader__wrapper)
 - [hard-drive-vs-ssd-vs-nvme](https://www.soladrive.com/hard-drive-vs-ssd-vs-nvme/)
 - [diskprices](https://diskprices.com/)
+- [data-storage](https://www.redhat.com/en/topics/data-storage)
 
 
 
