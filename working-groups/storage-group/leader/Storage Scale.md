@@ -95,6 +95,10 @@ Consideration:
 
 > Note: 100TB and more are HDD which has a lower read/write.
 
+#### Advanced techniques
+- SAN
+- NAS 
+
 ### Recommended servers
 
 |                | Storage  | Bandwidth | 
