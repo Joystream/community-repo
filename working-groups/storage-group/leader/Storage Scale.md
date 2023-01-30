@@ -165,6 +165,7 @@ Below are three models with a server capacity of 10,100 and 500TB
  
 * Joystream should follow a combination of vertical and horizontal scaling.
 * Each update should be considered at 75% capacity 
+* Each upgrade is consist of replication+1 workers
 * Stages
   - Stage 1 : Bootstrap the system:
     - Capacity : 10T
@@ -186,6 +187,11 @@ Below are three models with a server capacity of 10,100 and 500TB
       - Capacity: 750T 
   - Stage 4: continuous expantion horizonly and Verically (using advanced techniques)
   
+|                    | Sage 1  | Stage 2 | Stage 3.1 | Stage 3.2 | Stage 4 |
+|--------------------|---------|---------|-----------|-----------|---------|
+| New node capacity  | NA      | 10T     | 100T      | 100T      |         |
+| Workers            | 5       | 25      | 30        | 30        |         |
+| Max capacity       | 10T     | 62T     | 185T      | 750T      |         |
 
 If Joystream follows the same growth trajectory of Youtube, it is expect a max of one scaling event in the first 2 years. Followed by mutiple yearly of the years to follow. 
 
