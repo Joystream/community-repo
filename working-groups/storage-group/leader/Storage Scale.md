@@ -120,7 +120,7 @@ Scaling Horizontally by adding more servers, with two options:
 # Calculation  of required workers
 
 ## Formulas
-```
+```wrap
 Formula: Worker Disk size GB=	 (((uploaded hrs per mins* 60(hr) * 24 (day) * 365 (year))*3600) * (%4k * Bitrate-4k + %1080 * Bitrate1080 + %720 * Bitrate720 + %480 * Bitrate48  ))  / (8 (Bytes) *1000)		
 ```
 ```
