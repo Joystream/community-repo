@@ -1,0 +1,1 @@
+This folder contains contributions by founding members during testnets before the mainnet launch and are no longer updated.
