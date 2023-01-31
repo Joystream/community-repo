@@ -11,5 +11,5 @@ This document lists out the usernames of people who sit on the council or are wo
 | yyagi               | @yasir|YYAGI#4678     | 403604155299528725 | @yasir_yagi         | yasiryagi       | SWG   Lead                |
 | 0x2bc               | @xJames#8645          | 428886460004040704 | @mikhail0x          | 0x2bc           | Council Member            |
 | jen4ph              | @jen4ph#5477          | 428872614035849216 | @jen4               | jen4ph          | Council Member            |
-| chaos77             | @Chaos77#8632         |                    | @chaos77            | chrlschwb       | BWG   Lead                |
+| chaos77             | @Chaos77#8632         | 1027733209942859787 | @chaos77            | chrlschwb       | BWG   Lead                |
 | songoku             | @songoku#1691         | 871337080775639061 | @piccolokun         | songoku1691     | FWG   Lead                |
