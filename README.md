@@ -6,6 +6,7 @@ Table of Contents
 <!-- TOC START min:1 max:3 link:true asterisk:false update:true -->
 - [Overview](#overview)
   - [Testnet Archives](archives)
+    - [Council](archives/council)
     - [Community Bounties](archives/bounties)
     - [FM History](archives/FM_history)
     - [Giza Backup](archives/giza_backup)
