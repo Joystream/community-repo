@@ -205,7 +205,7 @@ If Joystream follows the same growth trajectory of Youtube, it is expect a max o
   - Deactivated 
   - Active   
 ### Monitoring structure 
-- How to scale monitoring as the system scales up. Currently expected monitoring i.e. Lighthouse is centeralized, which is good for now, but could failure to function as the system grow. Below is a proposal for a dynamic monitoring system 
+- How to scale monitoring as the system scales up. Currently expected monitoring i.e. [Lighthouse](https://github.com/Joystream/joystream/issues/4270) is centeralized, which is good for now, but could failure to function as the system grow. Below is a proposal for a dynamic monitoring system 
   - Each node monitor a configurable number of nodes, with min 2.  
   - Each node monitored by configurable number of node, with min 2.  
   - Create a Merkle tree to track who is monitoring who.
