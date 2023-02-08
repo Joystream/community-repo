@@ -221,7 +221,7 @@ Edit service colossus-1
       '--sync', '--syncInterval=1',
       '--queryNodeEndpoint=${COLOSSUS_QUERY_NODE_URL}',
       '--apiUrl=${JOYSTREAM_NODE_WS}',
-      '--keyFile=//keystore/storage-role-key.json',
+      '--keyFile=/keystore/storage-role-key.json',
       '--password=${SUPER_PASSWORD}',
       '--elasticSearchEndpoint=${JOYSTREAM_ES_URL}',
       '--logFilePath=/logs'
