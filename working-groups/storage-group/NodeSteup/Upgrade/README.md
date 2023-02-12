@@ -47,6 +47,7 @@ $ ./build-packages.sh
 ## Start the services
 ```
 $ query-node/start.sh
+or
 $ docker-compose up --detach --build colossus-1
 
 ```
