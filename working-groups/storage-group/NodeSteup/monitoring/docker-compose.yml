@@ -122,6 +122,7 @@ services:
       - VIRTUAL_HOST=${GRAFANA_HOST}
       - VIRTUAL_PORT=3000
       - LETSENCRYPT_HOST=${GRAFANA_HOST}
+      - GF_INSTALL_PLUGINS=marcusolsson-json-datasource,fifemon-graphql-datasource
     restart: unless-stopped
     expose:
       - 3000
