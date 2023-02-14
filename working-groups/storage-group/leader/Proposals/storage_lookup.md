@@ -41,3 +41,8 @@ A Command line tool to integrate storage objects:
     * Upload test
     * Download test
     * Compare objects in the storage with QN.
+    * Filters
+        -Time period filter for objected created and deleted
+        - Objects
+        - Buckets
+        - bags
