@@ -164,7 +164,7 @@ Below are three models with a server capacity of 10,100 and 500TB
   - Rate of daily upload
  
 * Joystream should follow a combination of vertical and horizontal scaling.
-* Each update should be considered at 75% capacity 
+* Each upgrade should be considered at 75% capacity 
 * Each upgrade is consist of replication+1 workers
 * Stages
   - Stage 1 : Bootstrap the system:
