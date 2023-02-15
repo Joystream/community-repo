@@ -197,7 +197,7 @@ If Joystream follows the same growth trajectory of Youtube, it is expect a max o
 
 # Need research 
 
-- [Monitoring](https://github.com/yasiryagi/community-repo/tree/master/working-groups/storage-group/leader/Proposals) 
+- [proposals](https://github.com/yasiryagi/community-repo/tree/master/working-groups/storage-group/leader/Proposals) 
 
 
 # Refs
