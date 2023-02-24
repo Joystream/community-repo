@@ -39,7 +39,7 @@ All storage nodes are required to Keep a disk usage space less than 80%.
 
 All storage nodes are required to
 
-- Monthly up time %98
+- Monthly up time %99
 - weekly uptime %95
 
 ### **Failure will result in:**
