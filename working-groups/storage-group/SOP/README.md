@@ -84,15 +84,7 @@ All storage nodes are required to comply to any requirement by the council withi
 
 **Failure will result in the rewards reduced by %100**
 
-<style>
-    .heatMap tr:nth-child(0) { background: Gray; }
-    .heatMap tr:nth-child(1) { background: blue; }
-    .heatMap tr:nth-child(5) { background: blue; }
-    .heatMap tr:nth-child(10) { background: blue; }
-	.heatMap tr:nth-child(12) { background: blue; }
-</style>
 
-<div class="heatMap">
 
 | Storage setup                                                |                                                                                                                                                                             |                                                                                                                                                                                             |                                                      |
 | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
@@ -112,7 +104,7 @@ All storage nodes are required to comply to any requirement by the council withi
 | Council                                                      |                                                                                                                                                                             |                                                                                                                                                                                             |                                                      |
 | Comply to new requirement by the council                     | All storage nodes are required to comply to any requirement by the council within 7 days.                                                                                   | **Rewards reduced by %100**                                                                                                                                                                 |                                                      |
 
-</div>
+
 
 # Ref
 - All rewards reduction is from full salary.
