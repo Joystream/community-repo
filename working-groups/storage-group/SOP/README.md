@@ -1,44 +1,54 @@
 # Standard Operation procedure 
-## Run Query node
-All storage nodes are required to :
-- Run a QN locally in the storage node.
-- Provide a link to thier QN GrapqL.
 
-**Failure will result in the rewards reduced by %25**
 
-# Elastic search
-All storage nodes are required to:
-- Configure the Storage node to send metrics  to ES
-- Configure  metricbeat to send metrics  to ES
-- Configure  packetbeat to send metrics  to ES
+## Storage setup 
 
-**Failure will result in the rewards reduced by %50**
+All storage node are required to run/configure:
+- Run a local validator 
+- Run a local Query node
+- Run Storage node
+- Configure Storage node for Elastic search
+- Storage node Metadata in format: All storage nodes are required to configure metadata as per the guide.
+- Run Prometheus providing host, storage node and docker metrics
 
-## Metadata in format
-All storage nodes are required to configure metadata as per the guide.
 
-**Failure will result in the rewards reduced by %25**
+All storage node are required to provide access to:
+- QN GraphQL URL
+- Storage node URL
+- Storage node URL
+- Promrtheus URL
 
-## Keep a disk usage space less than 80%
-All storage nodes are required to Keep a disk usage space less than 80%.
 
 **Failure will result in:**
 - **Remove all Bags**
+- **Rewards reduced by %100**
+
+
+
+## Node performance
+
+## Keep a disk usage space less than 80%
+
+All storage nodes are required to Keep a disk usage space less than 80%.
+
+**Failure will result in:**
+- **Disable new bags**
 - **Rewards reduced by %75**
 
-## Up time
+### Up time
 
 All storage nodes are required to
+
 - Monthly up time %98
 - weekly uptime %95
 
 **Failure will result in:**
-- **Remove all Bags**
-- **Rewards reduced by %50**
+- **Rewards reduced by %50 for the next council**
 
 Exception: exclude down time arranged with the lead in advance.
 
-## Down time (Hours): 
+### Down time (Hours from point of detection)
+
 **Failure will result in:**
 - **1 hr  : Disable new bags**
 - **3 hrs : Remove all Bags**
@@ -47,7 +57,8 @@ Exception: exclude down time arranged with the lead in advance.
 
 Exception: exclude down time arranged with the lead in advance.
 
-## Node not accepting upload (Hours):
+### Node not accepting upload (Hours from point of detection)
+
 **Failure will result in:**
 - **1 hr : Disable new bags**
 - **3 hrs: Remove all Bags**
@@ -56,17 +67,26 @@ Exception: exclude down time arranged with the lead in advance.
 
 Exception: exclude down time arranged with the lead in advance.
 
-## Node performance
+
+## Communication
+
+### Responsiveness 
+
+All workers are required to respond to queries within 24 hrs
+
+- Urgent:        : (12 hrs) bug fix, server issue, system issue  etc..
+- Medium priority: (36 hrs) work related queries.
+- Low priority:    (48 hrs) none work related queries
+
+**Failure will result in:**
+- **Rewards reduced by %10 every 12 hours**
 
 ## Comply to new requirement by the council 
 All storage nodes are required to comply to any requirement by the council within 7 days. 
 
-**Failure will result in the rewards reduced by %25**
+**Failure will result in the rewards reduced by %100**
 
-## WG improvement 
-Each worker need  to develop a tool or a procedure that improve the group monthly.
 
-**Not comlying 3 times in a raw may result on eviction.
 
 # Ref
 - All rewards reduction is from full salary.
