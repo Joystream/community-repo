@@ -10,7 +10,7 @@
 # Configure Prometheus
 
 ```
-$ git clone https://github.com/yasiryagi/community-repo.git
+$ git clone https://github.com/joystream/community-repo.git
 $ cp -R community-repo/working-groups/storage-group/NodeSteup/monitoring ~/
 $ cd ~/monitoring
 
