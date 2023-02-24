@@ -27,11 +27,11 @@ All storage node are required to provide access to:
 
 ## Node performance
 
-## Keep a disk usage space less than 80%
+### Keep a disk usage space less than 80%
 
 All storage nodes are required to Keep a disk usage space less than 80%.
 
-### **Failure will result in:**
+#### **Failure will result in:**
 - **Disable new bags**
 - **Rewards reduced by %75**
 
@@ -42,7 +42,7 @@ All storage nodes are required to
 - Monthly up time %99
 - weekly uptime %95
 
-### **Failure will result in:**
+#### **Failure will result in:**
 - **Rewards reduced by %50 for the next council**
 
 Exception: exclude down time arranged with the lead in advance.
