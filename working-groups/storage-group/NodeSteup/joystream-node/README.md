@@ -40,7 +40,7 @@ $ vim docker-compose.yml
     env_file:
       # relative to working directory where docker-compose was run from
       - .env
-    command: --chain /root/joystream-node/joy-mainnet.json --pruning archive --validator --name <memberId-memberHandle> --unsafe-ws-external --unsafe-rpc-external --rpc-methods Safe --rpc-cors all --prometheus-port 9615 --prometheus-external --base-path /data
+    command: --chain /root/joystream-node/joy-mainnet.json --pruning archive --validator --name <memberId-memberHandle> --unsafe-ws-external --unsafe-rpc-external --rpc-methods Unsafe --rpc-cors all --prometheus-port 9615 --prometheus-external --base-path /data
     expose:
       - 9615
     ports:
