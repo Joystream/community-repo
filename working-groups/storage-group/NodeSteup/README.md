@@ -54,6 +54,12 @@ $ echo \
 $ sudo apt-get update
 $ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
+# Test docker installation
+docker run hello-world
+
+# Might also need this if the test is not successful 
+apt install apparmor
+
 
 ```
 
