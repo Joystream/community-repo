@@ -47,5 +47,7 @@ yarn storage-node leader:create-bucket -i <worker_ID> -n 20000 -s 2000000000000 
 yarn storage-node leader:update-bucket-status -i <worker_ID> -s off -k /root/keys/storage-role-key.json -p xxxxxx
 ```
 
-
+```
+```
 yarn joystream-cli working-groups:overview
+```
