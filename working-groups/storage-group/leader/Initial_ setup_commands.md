@@ -48,6 +48,5 @@ yarn storage-node leader:update-bucket-status -i <worker_ID> -s off -k /root/key
 ```
 
 ```
-```
 yarn joystream-cli working-groups:overview
 ```
