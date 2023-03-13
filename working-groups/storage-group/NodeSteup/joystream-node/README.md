@@ -4,20 +4,90 @@ Find the lasted release [here](https://github.com/Joystream/joystream/releases)
 
 
 # Setup 
+## Option 1 - Docker 
 
-## Run Node
+```
+$ cd ~/
+$ mkdir joystream-node
+$ cd joystream-node
+$ wget https://github.com/Joystream/joystream/releases/download/v12.1000.0/joy-mainnet.json
+$ cd ~/
+$ git clone https://github.com/Joystream/joystream.git
+$ cd joystream
+```
+
+
+Edit the .env file 
+```
+$ vim .env
+# make sure the variable below exist and uncommented
+JOYSTREAM_NODE_TAG=latest
+```
+
+Edit service joystream-node
+```
+$ vim docker-compose.yml
+# make sure all your containers are using the same network
+-----
+  joystream-node:
+    image: joystream/node:$JOYSTREAM_NODE_TAG
+    restart: unless-stopped
+    container_name: joystream-node
+    volumes:
+      - /root/.local/share/joystream-node/chain-data:/data
+      - /root/.local/share/joystream-node:/root/.local/share/joystream-node
+      - /root/joystream-node:/root/joystream-node
+    env_file:
+      # relative to working directory where docker-compose was run from
+      - .env
+    command: --chain /root/joystream-node/joy-mainnet.json --pruning archive --validator --name <memberId-memberHandle> --unsafe-ws-external --unsafe-rpc-external --rpc-methods Unsafe --rpc-cors all --prometheus-port 9615 --prometheus-external --base-path /data
+    expose:
+      - 9615
+    ports:
+      - "127.0.0.1:9944:9944"
+      - "127.0.0.1:9933:9933"
+      #- "127.0.0.1:9615:9615"
+      - "30333:30333"
+```
+> create the dictories in the volumes if needed.
+
+Spin the container up
+
+```
+$ docker-compose up --detach --build joystream-node
+```
+
+### Test and troubleshoot 
+
+```
+$ docker logs -f -n 10 joystream-node
+```
+
+
+Make sure your containers running on the same network
+```
+$ docker network ls
+$ docker network inspect <network name>
+```
+
+## Option 2 - Service
+  
+<details>
+  <summary>Option 2 as a service</summary>
+  
+### Run Node
 
 ```
 $ cd ~/
 $ mkdir joystream-node
 $ cd joystream-node
 # 64 bit debian based Linux
-$ wget https://github.com/Joystream/joystream/releases/download/v11.3.0/joystream-node-7.4.1-d2243721017-x86_64-linux-gnu.tar.gz
-$ tar -vxf joystream-node-7.4.1-d2243721017-x86_64-linux-gnu.tar.gz
+$ wget https://github.com/Joystream/joystream/releases/download/v12.1000.0/joystream-node-8.0.0-1a0d1f677df-x86_64-linux-gnu.tar.gz
+$ tar -vxf joystream-node-8.0.0-1a0d1f677df-x86_64-linux-gnu.tar.gz
 $ mv joystream-node /usr/local/bin/
-$ wget https://github.com/Joystream/joystream/releases/download/v11.3.0/joy-testnet-7-carthage.json
+$ wget https://github.com/Joystream/joystream/releases/download/v12.1000.0/joy-mainnet.json
 # Test is it working. 
-$ joystream-node --chain joy-testnet-7-carthage.json --pruning archive --validator
+$ joystream-node --chain joy-mainnet.json  --pruning archive --validator
 ```
 - If you want your node to have a non-random identifier, add the flag:
   - `--name <nodename>`
@@ -51,7 +121,7 @@ When the `target=#block_height`is the same as `best: #"synced_height"`, your nod
 **Keep the terminal window open.** or recommended to [Run as a service](#run-as-a-service)
 
 
-## Configure the service
+### Configure the service
 
 Either as root, or a user with sudo privileges. If the latter, add `sudo` before commands.
 
@@ -63,7 +133,7 @@ $ touch joystream-node.service
 $ nano joystream-node.service
 ```
 
-#### Example with user joystream
+##### Example with user joystream
 
 The example below assumes the following:
 - You have setup a user `joystream` to run the node
@@ -78,8 +148,7 @@ Type=simple
 User=joystream
 WorkingDirectory=/<path to work directory>/joystream-node/
 ExecStart=joystream-node \
-        --chain /<path to work directory>/joystream-node/joy-testnet-7-carthage.json \
-        --pruning archive \
+        --chain /<path to work directory>/joystream-node/joy-mainnet.json \
         --validator \
         --name <memberId-memberHandle> \
         --rpc-cors all
@@ -91,7 +160,7 @@ LimitNOFILE=10000
 WantedBy=multi-user.target
 ```
 
-#### Example as root
+##### Example as root
 
 The example below assumes the following:
 - You have setup a user `root` to run the node
@@ -106,7 +175,7 @@ Type=simple
 User=root
 WorkingDirectory=/root/joystream-node/joystream-node/
 ExecStart=joystream-node \
-        --chain /root/joystream-node/joy-testnet-7-carthage.json \
+        --chain /root/joystream-node/joy-mainnet.json \
         --pruning archive \
         --validator \
         --name YourCoolName \
@@ -119,7 +188,7 @@ LimitNOFILE=10000
 WantedBy=multi-user.target
 ```
 
-### Starting the service
+#### Starting the service
 
 You can add/remove any `flags` as long as you remember to include `\` for every line but the last. Also note that systemd is very sensitive to syntax, so make sure there are no extra spaces before or after the `\`.
 
@@ -152,7 +221,7 @@ $ systemctl daemon-reload
 $ systemctl start joystream-node
 ```
 
-### Errors
+#### Errors
 
 If you make a mistake somewhere, `systemctl start joystream-node` will prompt:
 ```
@@ -165,3 +234,4 @@ Follow the instructions, and see if anything looks wrong. Correct it, then:
 $ systemctl daemon-reload
 $ systemctl start joystream-node
 ```
+</details>

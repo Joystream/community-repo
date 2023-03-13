@@ -1,0 +1,11 @@
+route:
+    receiver: 'telegramBot'
+    group_by: ['...']
+
+receivers:
+    - name: 'telegramBot'
+      telegram_configs:
+      - bot_token: <your token>
+        api_url: https://api.telegram.org
+        chat_id: <chat ID>
+        parse_mode: ''
