@@ -19,11 +19,14 @@ To take part
 
 ### Topics
 
-[TOC with list of tools]
+- [Apps & Community](#apps--community)
+- [CLI & Infrastructure](#cli--infrastructure)
+- [Games & Entertainment](#apps--community)
+- [Governance](#governance)
+- [Media browsers](#media-browsers)
+- [CDN](#cdn)
 
-[Tools sections with issues and reward]
-
-### Apps & Community
+#### Apps & Community
 - Atlas tipping https://github.com/Joystream/joystream/issues/2585
 - Privacy tools + Guide https://coinguides.org/metamask-security
 set auto timer lock, turn on privacy mode, turn off experimental features, clear privacy data, browser history and cookies at regular intervals.
@@ -34,7 +37,7 @@ set auto timer lock, turn on privacy mode, turn off experimental features, clear
 | joint ventures with other video communities |  | high |
 | compiling documentation from GH issues | Create a PR to the CR with links to relevant issues on the topic and compile instructions or explanations from the contents. |  |
 
-### CLI & Infrastructure
+#### CLI & Infrastructure
 
 | Title  | Description | Reward | Status |
 |--|--|--|--|
@@ -44,7 +47,7 @@ set auto timer lock, turn on privacy mode, turn off experimental features, clear
 | Validator payout bot | https://github.com/turboflakes/crunch/pull/27 |  |
 | Bridging | https://gist.github.com/ignazio-bovo/8a96121535be1be730a507b2de9a198e | high |
 
-### Games & Entertainment
+#### Games & Entertainment
 
 
 #### Governance
