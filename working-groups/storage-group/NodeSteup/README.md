@@ -12,7 +12,7 @@ To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
 # Min Requirement
 
 ## Hardware
-- CPU: 6 Core
+- CPU: 8 Core
 - RAM: 32G
 - Storage: 10T 
 - Bandwidth: 1G
