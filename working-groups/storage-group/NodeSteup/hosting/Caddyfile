@@ -53,6 +53,6 @@ https://<your.cool.url>/storage/* {
                 Access-Control-Allow-Headers "GET, PUT, HEAD, OPTIONS"
         }
         request_body {
-                max_size 10GB
+                max_size 60GB
         }
 }
