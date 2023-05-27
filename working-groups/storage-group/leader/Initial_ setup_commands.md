@@ -43,8 +43,8 @@ yarn joystream-cli working-groups:fillOpening --openingId x --applicationIds x
 ```
 ### bucket mgmt
 ```
-yarn storage-node leader:create-bucket -i <worker_ID> -n 20000 -s 2000000000000 -k /root/keys/storage-role-key.json -p xxxxxx
-yarn storage-node leader:update-bucket-status -i <worker_ID> -s off -k /root/keys/storage-role-key.json -p xxxxxx
+yarn storage-node leader:create-bucket -i <bucketId> -n 20000 -s 2000000000000 -k /root/keys/storage-role-key.json -p xxxxxx
+yarn storage-node leader:update-bucket-status -i <bucketId> -s off -k /root/keys/storage-role-key.json -p xxxxxx
 ```
 
 ```
