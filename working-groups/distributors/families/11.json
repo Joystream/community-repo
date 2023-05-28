@@ -1,0 +1,10 @@
+{
+    "region": "na-central-1",
+    "description": "Central North America",
+    "latencyTestTargets": [],
+    "areas": [
+        {
+            "continentCode": "NA"
+        }
+    ]
+}

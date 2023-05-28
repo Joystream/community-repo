@@ -1,0 +1,10 @@
+{
+    "region": "eu-west-1",
+    "description": "Western Europe",
+    "latencyTestTargets": [],
+    "areas": [
+        {
+            "continentCode": "EU"
+        }
+    ]
+}
