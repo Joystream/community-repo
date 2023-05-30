@@ -9,3 +9,4 @@
     c.	Candidate apply for a storage position e.g. https://pioneerapp.xyz/#/working-groups/openings/storage-10.
 3.	Candidate install the storage node and join the network.
 4.	Candidate up his stake each term by half of earning till total staked 41,666 Joy.
+5.	
