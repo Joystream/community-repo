@@ -13,3 +13,4 @@
 5.	Candidate pay back the loan each term by a max of half of earning till the loan is paied off.
 6.	After the loan is paied, candidate up his stake each term by half of earning till total staked 41,666 Joy.
 
+
