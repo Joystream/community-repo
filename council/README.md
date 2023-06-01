@@ -1,6 +1,6 @@
 # Joystream Council
 
-The [Council](https://pioneerapp.xyz/#/council) is governance body on the Joystream blockchain [elected by shareholders](https://pioneerapp.xyz/#/election) to vote on [proposals](https://pioneerapp.xyz/#/proposals/current).
+The [Council](https://pioneerapp.xyz/#/council) is the governance body on the [Joystream blockchain](https://handbook.joystream.org/system/blockchain) [elected by shareholders](https://pioneerapp.xyz/#/election) to vote on [proposals](https://pioneerapp.xyz/#/proposals/current).
 
 ## Proposals
 
@@ -10,8 +10,8 @@ The [Council](https://pioneerapp.xyz/#/council) is governance body on the Joystr
 ### Proceess
 - [Handover meeting flow](processes/Handover_Meeting_Flow.md) to ensure knowledge transfer between terms
 - [Reporting Cycle](processes/Reporting_Cycle.md)
-- OKRs For Q2 2023
-- Development Teams
+- [OKRs For Q2 2023](okr/2023_Q2.md)
+- [Development Teams](dev.md)
 
 #### Templates
 - [WG Term Plan Template](templates/WG_Plan.md)

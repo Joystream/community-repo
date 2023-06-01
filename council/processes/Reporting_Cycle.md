@@ -15,10 +15,10 @@ For the sake of convenience, we assume that 1 day period is equal to 14400 block
 
 Item |	Period | Reports
 --|--|--
-1 | Term start → Term start + 1 2hours | Working Group Reports
-2 |	Term start → Term start + 1 day	| Council Report*
-3 |	Term start + 1day → Term start + 2 days	| Council Plan
-4 |	Term start + 2day → Term start + 3 days	| Working Group Plans
+1 | Term start → Term start + 12 hours		| Working Group Reports
+2 | Term start → Term start + 1 day		| Council Report
+3 | Term start + 1day → Term start + 2 days	| Council Plan
+4 | Term start + 2day → Term start + 3 days	| Working Group Plans
 
 * The members of the Council from the previous term are to be tasked with delivering a report on the 1st day of the Council period.
 
