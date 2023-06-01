@@ -11,7 +11,7 @@ The [Council](https://pioneerapp.xyz/#/council) is the governance body on the [J
 - [Handover meeting flow](processes/Handover_Meeting_Flow.md) to ensure knowledge transfer between terms
 - [Reporting Cycle](processes/Reporting_Cycle.md)
 - [OKRs For Q2 2023](okr/2023_Q2.md)
-- [Development Teams](dev.md)
+- [Development Teams](processes/Dev_Teams.md)
 
 #### Templates
 - [WG Term Plan Template](templates/WG_Plan.md)
