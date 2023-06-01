@@ -9,22 +9,16 @@ The [Council](https://pioneerapp.xyz/#/council) is governance body on the Joystr
 
 ### Proceess
 - [Handover meeting flow](processes/Handover_Meeting_Flow.md) to ensure knowledge transfer between terms
-- Reporting Cycle
+- [Reporting Cycle](processes/Reporting_Cycle.md)
 - OKRs For Q2 2023
-- Mandatory Handover/Retro Meeting
 - Development Teams
-- Change In Reporting Cycle
 
 #### Templates
-- WGs Plan Template
-- WG Term Report Template
-Training: Making Effective Proposals
-- Storage WG Report Submission Format
-- New Council Term Report Template
-- New Council Term Plan Template
-- Meeting Notes Template
-- Council Term Report Template
-- Council Term Plan Template - Examples: Council Plan Term 6, Council Plan For 5th Term
+- [WG Term Plan Template](templates/WG_Plan.md)
+- [WG Term Report Template](templates/WG_Report.md)
+- [Council Term Plan Template](templates/Council_Plan.md)
+- [Council Term Report Template](templates/Council_Report.md)
+- [Meeting Notes](templates/Meeting_Minutes.md)
 
 ## Useful links
 
