@@ -166,7 +166,18 @@ $ nano ~/Caddyfile
 wss://<your.cool.url>/rpc {
         reverse_proxy localhost:9944
 }
+# Prometheus
+https://prometheus.<your.cool.url> {
+        basicauth /* {
+        admin JDJhJDE0JFdVTjhqWW1zODdUUVM1OUJ4amRWb09SNm1Rd1VmVndiQUJjRlRjSnA0U0hjUXQ0bXZIT0Ft
+        }
+        reverse_proxy prometheus:9090
+}
 
+# Grafana
+https://grafana.<your.cool.url> {
+        reverse_proxy grafana:3000
+}
 # Query-node
 https://<your.cool.url> {
         log {
