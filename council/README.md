@@ -19,10 +19,15 @@ The [Council](https://pioneerapp.xyz/#/council) is the governance body on the [J
 - [Council Term Plan Template](templates/Council_Plan.md)
 - [Council Term Report Template](templates/Council_Report.md)
 - [Meeting Notes](templates/Meeting_Minutes.md)
+- [WG Opening](templates/Opening.md)
 
 ## Useful links
 
-- [JSG Query node](https://query.joystream.org/graphql)
-- [tomato's Council + Election Leaderboard](https://docs.google.com/spreadsheets/d/1I4Tb0Z4L9Jytra6jqusIYqos6I4pmY7QUyVPGDbsNj0/edit#gid=709381723)
-- [jscan.io](https://jscan.io)
+- [JSG Query node](https://query.joystream.org/graphql), [Subsquid Events Expolorer](https://joystream.explorer.subsquid.io/graphql)
+- [Calamar Explorer](https://calamar.app/joystream)
+- [jscan.io](https://jscan.io) (@chaos77)
+- [Joystream Utils](https://joyutils.org/) (@kdembler)
 - Dapplooker [Council](https://dapplooker.com/dashboard/joystream-council-overall-spending-dashboard-355) + [WG Spending](https://dapplooker.com/dashboard/joystream-working-group-spending-dashboard-356)
+- [tomato's Council + Election Leaderboard](https://docs.google.com/spreadsheets/d/1I4Tb0Z4L9Jytra6jqusIYqos6I4pmY7QUyVPGDbsNj0/edit#gid=709381723)
+- [joystreamstats.live](https://joystreamstats.live/)
+
