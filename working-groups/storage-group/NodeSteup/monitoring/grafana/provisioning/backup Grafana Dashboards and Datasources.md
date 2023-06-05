@@ -1,0 +1,18 @@
+export token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=
+export grafanaurl=https://grafana.joystream.yyagi.cloud/api
+
+
+curl -o out  -s -H "Authorization: Bearer $token" -X GET $grafanaurl/search?folderIds=0&query=&starred=false
+curl -o datasources -s -H "Authorization: Bearer $token" -X GET $grafanaurl/datasources
+
+
+for uid in $(echo $out | jq -r '.[] | .uid'); do
+  curl -H "Authorization: Bearer $token" $grafanaurl/dashboards/uid/$uid | jq > grafana-dashboard-$uid.json
+  echo "DASH $uid EXPORTED"
+done
+
+
+for uid in $(echo $datasources | jq -r '.[] | .uid'); do
+  curl -s -H "Authorization: Bearer $token" -X GET $grafanaurl/datasources/uid/$uid | jq > datasource-$uid.json
+  echo "DATASOURCE $uid exported"
+done
