@@ -6,14 +6,14 @@
     "canAdmin": true,
     "canStar": true,
     "canDelete": true,
-    "slug": "storage-host-dashboad",
-    "url": "/d/gukTpcA4z/storage-host-dashboad",
+    "slug": "storage-work-group-dashboard",
+    "url": "/d/gukTpcA4z/storage-work-group-dashboard",
     "expires": "0001-01-01T00:00:00Z",
     "created": "2023-02-02T18:11:17Z",
-    "updated": "2023-06-05T11:48:57Z",
+    "updated": "2023-06-05T20:02:00Z",
     "updatedBy": "admin",
     "createdBy": "admin",
-    "version": 67,
+    "version": 70,
     "hasAcl": false,
     "isFolder": false,
     "folderId": 0,
@@ -84,6 +84,18 @@
         "title": "Grafana",
         "type": "link",
         "url": "https://grafana.com/grafana/dashboards/1860"
+      },
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": false,
+        "title": "New link",
+        "tooltip": "",
+        "type": "dashboards",
+        "url": ""
       }
     ],
     "liveNow": false,
@@ -203,7 +215,7 @@
           ]
         },
         "gridPos": {
-          "h": 12,
+          "h": 9,
           "w": 24,
           "x": 0,
           "y": 0
@@ -291,7 +303,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green"
+                  "color": "green",
+                  "value": null
                 },
                 {
                   "color": "red",
@@ -313,7 +326,8 @@
                     "mode": "absolute",
                     "steps": [
                       {
-                        "color": "red"
+                        "color": "red",
+                        "value": null
                       },
                       {
                         "color": "green",
@@ -340,7 +354,8 @@
                     "mode": "absolute",
                     "steps": [
                       {
-                        "color": "green"
+                        "color": "green",
+                        "value": null
                       },
                       {
                         "color": "red",
@@ -363,7 +378,8 @@
                     "mode": "absolute",
                     "steps": [
                       {
-                        "color": "green"
+                        "color": "green",
+                        "value": null
                       },
                       {
                         "color": "red",
@@ -380,7 +396,7 @@
           "h": 11,
           "w": 24,
           "x": 0,
-          "y": 12
+          "y": 9
         },
         "id": 18,
         "options": {
@@ -558,7 +574,7 @@
           "h": 9,
           "w": 24,
           "x": 0,
-          "y": 23
+          "y": 20
         },
         "id": 265,
         "options": {
@@ -626,7 +642,7 @@
           "h": 8,
           "w": 24,
           "x": 0,
-          "y": 32
+          "y": 29
         },
         "id": 267,
         "options": {
@@ -655,7 +671,8 @@
               {
                 "jsonPath": "totalSize",
                 "language": "jsonata",
-                "name": "Size"
+                "name": "Bytes",
+                "type": "number"
               }
             ],
             "method": "GET",
@@ -673,7 +690,8 @@
               {
                 "jsonPath": "totalSize",
                 "language": "jsonpath",
-                "name": "Size"
+                "name": "Bytes",
+                "type": "number"
               }
             ],
             "hide": false,
@@ -692,7 +710,8 @@
               {
                 "jsonPath": "totalSize",
                 "language": "jsonpath",
-                "name": "Size"
+                "name": "Bytes",
+                "type": "number"
               }
             ],
             "hide": false,
@@ -711,7 +730,8 @@
               {
                 "jsonPath": "totalSize",
                 "language": "jsonpath",
-                "name": "Size"
+                "name": "Bytes",
+                "type": "number"
               }
             ],
             "hide": false,
@@ -730,7 +750,8 @@
               {
                 "jsonPath": "totalSize",
                 "language": "jsonpath",
-                "name": "Size"
+                "name": "Bytes",
+                "type": "number"
               }
             ],
             "hide": false,
@@ -749,7 +770,8 @@
               {
                 "jsonPath": "totalSize",
                 "language": "jsonpath",
-                "name": "Size"
+                "name": "Bytes",
+                "type": "number"
               }
             ],
             "hide": false,
@@ -783,7 +805,7 @@
                 },
                 {
                   "color": "red",
-                  "value": 10000000000000
+                  "value": 750000
                 }
               ]
             }
@@ -794,7 +816,7 @@
           "h": 8,
           "w": 24,
           "x": 0,
-          "y": 40
+          "y": 37
         },
         "id": 268,
         "options": {
@@ -936,7 +958,7 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 48
+          "y": 45
         },
         "id": 263,
         "panels": [],
@@ -1017,7 +1039,7 @@
           "h": 7,
           "w": 12,
           "x": 0,
-          "y": 49
+          "y": 46
         },
         "id": 77,
         "links": [],
@@ -1563,7 +1585,7 @@
           "h": 7,
           "w": 12,
           "x": 12,
-          "y": 49
+          "y": 46
         },
         "id": 78,
         "links": [],
@@ -1741,7 +1763,7 @@
           "h": 17,
           "w": 12,
           "x": 0,
-          "y": 56
+          "y": 53
         },
         "id": 43,
         "links": [],
@@ -1930,7 +1952,7 @@
           "h": 17,
           "w": 12,
           "x": 12,
-          "y": 56
+          "y": 53
         },
         "id": 152,
         "links": [],
@@ -2088,8 +2110,7 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
+                  "color": "green"
                 },
                 {
                   "color": "red",
@@ -2105,7 +2126,7 @@
           "h": 16,
           "w": 24,
           "x": 0,
-          "y": 73
+          "y": 70
         },
         "id": 74,
         "links": [],
@@ -2318,8 +2339,8 @@
             "text": "All",
             "value": "$__all"
           },
-          "hide": 0,
-          "includeAll": true,
+          "hide": 2,
+          "includeAll": false,
           "label": "datasource",
           "multi": false,
           "name": "DS_PROMETHEUS",
@@ -2342,7 +2363,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "definition": "",
-          "hide": 0,
+          "hide": 2,
           "includeAll": false,
           "label": "Job",
           "multi": false,
@@ -2441,6 +2462,23 @@
           "tagsQuery": "",
           "type": "query",
           "useTags": false
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "storage-0x2bc",
+            "value": "storage-0x2bc"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "storage_jason",
+          "options": [],
+          "query": "marcusolsson-json-datasource",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "type": "datasource"
         }
       ]
     },
@@ -2474,9 +2512,9 @@
       ]
     },
     "timezone": "browser",
-    "title": "Storage Host Dashboad",
+    "title": "Storage Work Group Dashboard",
     "uid": "gukTpcA4z",
-    "version": 67,
+    "version": 70,
     "weekStart": ""
   }
 }

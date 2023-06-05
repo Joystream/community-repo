@@ -10,10 +10,10 @@
     "url": "/d/sXz7nyYVk/docker-host_ds_prometheus",
     "expires": "0001-01-01T00:00:00Z",
     "created": "2023-04-10T01:36:09Z",
-    "updated": "2023-04-10T01:36:09Z",
+    "updated": "2023-06-05T14:02:51Z",
     "updatedBy": "admin",
     "createdBy": "admin",
-    "version": 1,
+    "version": 2,
     "hasAcl": false,
     "isFolder": false,
     "folderId": 0,
@@ -96,7 +96,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green"
+                  "color": "green",
+                  "value": null
                 },
                 {
                   "color": "red",
@@ -175,7 +176,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green"
+                  "color": "green",
+                  "value": null
                 },
                 {
                   "color": "red",
@@ -255,7 +257,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green"
+                  "color": "green",
+                  "value": null
                 },
                 {
                   "color": "red",
@@ -334,7 +337,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green"
+                  "color": "green",
+                  "value": null
                 },
                 {
                   "color": "red",
@@ -414,7 +418,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green"
+                  "color": "green",
+                  "value": null
                 },
                 {
                   "color": "red",
@@ -493,7 +498,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green"
+                  "color": "green",
+                  "value": null
                 },
                 {
                   "color": "red",
@@ -1588,7 +1594,7 @@
     "timezone": "browser",
     "title": "Docker Host_DS_PROMETHEUS",
     "uid": "sXz7nyYVk",
-    "version": 1,
+    "version": 2,
     "weekStart": ""
   }
 }
