@@ -119,7 +119,7 @@ networks:
 
 ### Bring your service up
 ```
-$ docker-compose up -d
+$ docker-compose up -d --build
 ```
 
 
