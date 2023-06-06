@@ -113,6 +113,7 @@ cat /root/.local/share/joystream-cli/accounts/storage-operator-key.json
 ```
 This will give show you the address:
 `..."address":"5StorageOperatorKey"...`
+```
  </details>
 
 ```
