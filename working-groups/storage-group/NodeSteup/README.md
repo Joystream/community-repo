@@ -96,6 +96,9 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 - Role key
 - Operator key: in the codebase it's referred to as the transactor key.
 
+
+<details>
+  <summary>IGNORE</summary>
 ```
 $ mkdir ~/keys/
 $ cd ~/joystream/
@@ -110,14 +113,12 @@ cat /root/.local/share/joystream-cli/accounts/storage-operator-key.json
 ```
 This will give show you the address:
 `..."address":"5StorageOperatorKey"...`
-
+ </details>
 
 ```
-# Go the directory where you saved your <5YourStorageRoleKey.json>, then rename it to
+# Paste your <YourStorageRoleKey.json> in the file below
 
-storage-role-key.json
-#copy the role key to your keys directory, the below if you are copying from another server.
-$ scp storage-role-key.json <user>@<your.vps.ip.address>:/root/keys/
+nano /root/keys/storage-role-key.json
 ```
 
 **Make sure your [Joystream full node](#Setup-joystream-node) and [Query Node](#Setup-Query-Node) is fully synced before you move to the next step(s)!**
