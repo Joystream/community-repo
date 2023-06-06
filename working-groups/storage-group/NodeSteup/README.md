@@ -20,7 +20,8 @@ To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
 
 ## Test your node 
 ```
-curl -sL yabs.sh | bash -s -- -ig
+(1) speed test: curl -sL yabs.sh | bash -s -- -fg 
+(2) disk test : curl -sL yabs.sh | bash -s -- -ig
 ```
 ## Location
 No more that 15% of the current operator clustered at the same region.
