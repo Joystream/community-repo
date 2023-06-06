@@ -99,6 +99,7 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 <details>
   <summary>IGNORE</summary>
+	
 ```
 $ mkdir ~/keys/
 $ cd ~/joystream/
@@ -113,7 +114,7 @@ cat /root/.local/share/joystream-cli/accounts/storage-operator-key.json
 ```
 This will give show you the address:
 `..."address":"5StorageOperatorKey"...`
-```
+
  </details>
 
 ```
