@@ -17,6 +17,11 @@ To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
 - Storage: 10T 
 - Bandwidth: 1G
 
+
+## Test your node 
+```
+curl -sL yabs.sh | bash -s -- -ig
+```
 ## Location
 No more that 15% of the current operator clustered at the same region.
 
