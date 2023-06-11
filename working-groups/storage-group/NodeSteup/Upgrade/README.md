@@ -29,6 +29,7 @@ $ ./query-node/kill.sh
 ```
 $ git stash
 $ git pull
+$ git stash pop
 ```
 
 ## apply .env sh - you can use values from old backup file
@@ -37,6 +38,7 @@ $ git pull
 ```
  $ ./setup.sh
 ```
+check if docker is ok 'docker ps', if not reinstall docker.
 ## logout here and login back 
 
 ## Build
