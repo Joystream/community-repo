@@ -205,7 +205,10 @@ COLOSSUS_1_TRANSACTOR_URI=//<your.key.name>
 
 #Add the password variable
 SUPER_PASSWORD=<My.cool.password>
-JOYSTREAM_ES_URL=https://elastic.joystreamstats.live/
+JOYSTREAM_ES_URL=https://joystream.koalva.io/operator-elastic
+JOYSTREAM_ES_USERNAME=storage-xxx
+JOYSTREAM_ES_INDEX=storage-node-xxx
+JOYSTREAM_ES_PASSWORD=xxxxxxxxx
 ``` 
 
 
@@ -241,6 +244,9 @@ Edit service colossus-1
       '--keyFile=/keystore/storage-role-key.json',
       '--password=${SUPER_PASSWORD}',
       '--elasticSearchEndpoint=${JOYSTREAM_ES_URL}',
+      '--elasticSearchIndex=${JOYSTREAM_ES_INDEX}',
+      '--elasticSearchPassword=${JOYSTREAM_ES_PASSWORD}',
+      '--elasticSearchUser=${JOYSTREAM_ES_USERNAME}',
       '--logFilePath=/logs'
     ]
 
