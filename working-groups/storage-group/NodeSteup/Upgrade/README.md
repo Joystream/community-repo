@@ -39,6 +39,10 @@ $ git stash pop
  $ ./setup.sh
 ```
 check if docker is ok 'docker ps', if not reinstall docker.
+```
+$ docker ps
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
 ## logout here and login back 
 
 ## Build
