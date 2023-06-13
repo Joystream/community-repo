@@ -21,7 +21,7 @@ if you are running as a service
 $ systemctl stop storage-node.service
 ```
 
-## Stop the query node
+## Stop the query node (Only if the QN upgrade is part of the upgrade)
 ```
 $ ./query-node/kill.sh
 ```
@@ -50,9 +50,15 @@ $ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugi
 ```
 $ ./build-packages.sh 
 ```
-## Start the services
+
+## Start the QN (Only if the QN upgrade is part of the upgrade)
 ```
 $ query-node/start.sh
+
+```
+
+## Start the Storage service
+```
 $ docker-compose up --detach --build colossus-1
 
 ```
