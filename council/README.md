@@ -7,7 +7,7 @@ The [Council](https://pioneerapp.xyz/#/council) is the governance body on the [J
 - [Approved Signal proposals](https://www.notion.so/joystream/97fd07b6db8d4ff39aa8a15ea501f865?v=e193bfa27252497ea085a602ff69a912) constitute rules and processes within the DAO.
 - New ideas are being discussed in so called [pre-proposal threads](https://pioneerapp.xyz/#/forum/category/8).
 
-### Proceess
+### Process
 - [Handover meeting flow](processes/Handover_Meeting_Flow.md) to ensure knowledge transfer between terms
 - [Reporting Cycle](processes/Reporting_Cycle.md)
 - [OKRs For Q2 2023](okr/2023_Q2.md)
