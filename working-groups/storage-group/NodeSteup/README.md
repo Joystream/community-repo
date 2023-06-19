@@ -13,8 +13,8 @@ To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
 
 ## Hardware
 - CPU: 6 Core
-- RAM: 16G
-- Storage: 10T SSD
+- RAM: 32G
+- Storage: 10T 
 - Bandwidth: 1G
 
 ## Location
@@ -22,29 +22,67 @@ No more that 15% of the current operator clustered at the same region.
 
 # Initial setup
 
+## Key directories
+> /root/joystream The main directory of the repo
+
+> /root/keys keys storage directory
+
+> /root/joystream-node joystream node directory
+
+> /data/joystream-storage main storage directory 
 
 
+## Install needed tools
 ```
 $ apt-get update && apt-get upgrade -y
 $ apt install vim git curl -y
 ```
 
-## Setup hosting
-[Go here for the installation guide](./hosting/README.md)
+## Install Docker
+```
+$ sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+$ sudo mkdir -p /etc/apt/keyrings
+$ sudo mkdir -m 0755 -p /etc/apt/keyrings
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+$ echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+$ sudo apt-get update
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Test docker installation
+docker run hello-world
+
+# Might also need this if the test is not successful 
+apt install apparmor
+
+
+```
+
+## Install a Newer Version of `docker-compose`
+The package manager `apt-get` installs an old version of `docker-compose`, that doesn't take the `.env` file format we have used. We recommend removing the old one, and install the new one, with:
+
+```
+$ docker-compose version
+# if you see `1.29.2` skip to Deploy
+$ cd ~/
+$ apt-get remove docker-compose
+$ curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+$ chmod +x /usr/local/bin/docker-compose
+$ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
+
+
 ## Setup joystream-node
 [Go here for the installation guide](./joystream-node/README.md)
 ## Setup Query Node
 [Go here for the installation guide](./query-node/README.md)
-
-
-# Applying for a Storage Provider opening
-
-Click [here](https://dao.joystream.org/#/working-groups/storage) to open the `Pioneer app` in your browser. 
-
-Make sure to save the `5YourJoyMemberAddress.json` file. This key will require tokens to be used as stake for the `Storage Provider` application (`application stake`) and further stake may be required if you are selected for the role (`role stake`).
-During this process you will be provided with a role key, which will be made available to download in the format `5YourStorageRoleKey.json`. If you set a password for this key, remember it :)
-
-The next steps (below) will only apply if you are a successful applicant.
+## Setup hosting
+[Go here for the installation guide](./hosting/README.md)
 
 # Setup and Configure the Storage Node
 
@@ -80,7 +118,10 @@ $ scp storage-role-key.json <user>@<your.vps.ip.address>:/root/keys/
 **Make sure your [Joystream full node](#Setup-joystream-node) and [Query Node](#Setup-Query-Node) is fully synced before you move to the next step(s)!**
 
 ## Install and Setup the  Node
-> If you have done this on the query node setup, you can skip this section.
+
+<details>
+  <summary>If you have done this on the query node setup, you can skip this section.</summary>
+
 
 ```
 $ git clone https://github.com/Joystream/joystream.git
@@ -93,7 +134,8 @@ $ cd joystream
 $ ./build-packages.sh
 $ yarn storage-node --help
 ```
-
+ </details>
+ 
 ## Accept Invitation
 Once hired, the Storage Lead will invite you a to "bucket". Before this is done, you will not be able to participate. Assuming:
 - your Worker ID is `<workerId>`
@@ -141,6 +183,78 @@ $ yarn run storage-node operator:set-metadata -i <bucketId> -w <workerId> -j /pa
 ```
 
 ## Deploy the Storage Node
+### Option 1 - Docker
+
+
+Edit .env
+
+``` 
+# Assuming hired lead has worker id 0
+COLOSSUS_1_WORKER_ID=<your.worker.ID>
+COLOSSUS_1_WORKER_URI=https://<your.cool.url>/storage//1
+COLOSSUS_1_TRANSACTOR_URI=//<your.key.name>
+
+#Add the password variable
+SUPER_PASSWORD=<My.cool.password>
+JOYSTREAM_ES_URL=https://elastic.joystreamstats.live/
+``` 
+
+
+``` 
+$ vim docker-compose.yml
+```
+
+Edit service colossus-1
+
+```
+  colossus-1:
+    image: node:14
+    container_name: colossus-1
+    restart: on-failure
+    volumes:
+      - /data/joystream-storage:/data
+      - /root/keys:/keystore
+      - /data/joystream-storage/log:/logs
+      - type: bind
+        source: .
+        target: /joystream
+    working_dir: /joystream/storage-node
+    ports:
+      - 3333:3333
+    env_file:
+      # relative to working directory where docker-compose was run from
+      - .env
+    command: [
+      'yarn', 'storage-node', 'server', '--worker=${COLOSSUS_1_WORKER_ID}', '--port=3333', '--uploads=/data',
+      '--sync', '--syncInterval=1',
+      '--queryNodeEndpoint=${COLOSSUS_QUERY_NODE_URL}',
+      '--apiUrl=${JOYSTREAM_NODE_WS}',
+      '--keyFile=/keystore/storage-role-key.json',
+      '--password=${SUPER_PASSWORD}',
+      '--elasticSearchEndpoint=${JOYSTREAM_ES_URL}',
+      '--logFilePath=/logs'
+    ]
+
+```
+
+Bring your node up and check logs
+```
+$ docker-compose up --detach --build colossus-1
+
+$ docker logs -f -n 100 colossus-1
+```
+
+Make sure your containers running on the same network
+```
+$ docker network ls
+$ docker network inspect <network name>
+```
+
+### Option 2 - Service
+
+<details>
+  <summary>Option 2 as a service</summary>
+  
 First, create a `systemd` file. Example file below:
 
 ```
@@ -165,6 +279,7 @@ ExecStart=/root/.volta/bin/yarn storage-node server \
         -q http://localhost:8081/graphql \
 	-p <Passowrd> \
         -k /root/keys/storage-role-key.json \
+	-e https://<elasticsearch.your.cool.url> \
         -s
 Restart=on-failure
 StartLimitInterval=600
@@ -189,7 +304,8 @@ $ systemctl enable storage-node
 # If you want to stop the storage node, either to edit the storage-node.service file or some other reason:
 $ systemctl stop storage-node
 ```
-
+ </details>
+ 
 ### Verify everything is working
 
 In your browser, try:

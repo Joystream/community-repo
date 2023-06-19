@@ -10,33 +10,13 @@ For instructions on how to set this up, go [here](../joystream-node/README.md). 
 ## Get Started
 You don't need to host your query-node, but if you're connecting to your own node, docker will not "find" it on localhost. So first, go to [Setup Hosting](../hosting/README.md).
 
-### Install Docker
-```
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-sudo echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-```
 
-### Install a Newer Version of `docker-compose`
-The package manager `apt-get` installs an old version of `docker-compose`, that doesn't take the `.env` file format we have used. We recommend removing the old one, and install the new one, with:
-
-```
-$docker-compose version
-# if you see `1.29.2` skip to Deploy
-$ cd ~/
-$ apt-get remove docker-compose
-$ curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-$ chmod +x /usr/local/bin/docker-compose
-$ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-```
 
 ### Clone the Repo
-If you haven't already, clone the `Joystream/joystream` (mono)repo:
+If you haven't already, cloned the `Joystream/joystream` (mono)repo:
 
 ```
+# If you already clone the repo just skip the cloning command
 $ git clone https://github.com/Joystream/joystream.git
 $ cd joystream
 $ ./setup.sh
@@ -55,7 +35,12 @@ The last command will take a while...
 ### Deploy
 
 #### Set the Environment
-First, get your
+
+<details>
+  <summary>Expand if your joystream node running as a service</summary>
+  
+This change is needed only if you have your joystream node running as a service.
+If your joystream node running as docker skip this section
 ```
 $ cd ~/joystream
 $ nano .env
@@ -65,6 +50,8 @@ $ nano .env
 JOYSTREAM_NODE_WS=wss://<your.cool.url>/rpc
 ```
 
+</details>
+  
 #### Deploy - Easy
 Assuming you installed the newer version of [docker-compose](#install-a-newer-version-of-docker-compose):
 ```
@@ -75,7 +62,13 @@ And you should be done!
 
 Go and [confirm everything is working](#confirm-everything-is-working)
 
+
+
+  
 #### Deploy - Elaborate
+<details>
+  <summary>Elaborate</summary>
+  
 If you want to use a version of `docker-compose` older than 1.29.0:
 
 First, you need to edit the `.env` file some more:
@@ -129,7 +122,7 @@ Then, deploy!
 $ chmod +x deploy-qn.sh
 ./deploy-qn.sh
 ```
-
+</details>
 
 ### Confirm Everything is Working
 ```

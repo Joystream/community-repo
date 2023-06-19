@@ -1,0 +1,13 @@
+{
+    "region": "eu-east-1",
+    "description": "Eastern Europe / CIS",
+    "latencyTestTargets": [],
+    "areas": [
+        {
+            "continentCode": "AS"
+        },
+        {
+            "continentCode": "EU"
+        }
+    ]
+}

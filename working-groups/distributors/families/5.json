@@ -1,0 +1,10 @@
+{
+    "region": "as-east-1",
+    "description": "Eastern Asia",
+    "latencyTestTargets": [],
+    "areas": [
+        {
+            "continentCode": "AS"
+        }
+    ]
+}

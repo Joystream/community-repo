@@ -6,8 +6,150 @@ To configure SSL-certificates the easiest option is to use [caddy](https://caddy
 
 For the best setup, you should use the "official" [documentation](https://caddyserver.com/docs/).
 
-The instructions below are for Caddy v2.4.1:
+## DNS
+
+Make sure the below resolve to your server:
+- <your.cool.url>
+- prometheus.<your.cool.url>
+- grafana.<your.cool.url>
+
+## Option 1 - Docker 
+
 ```
+$ mkdir ~/caddy
+$ cd ~/caddy
+
+```
+
+### Configure the `Caddyfile`:
+
+Please note below the names of the follwoing containers
+- GraphQl           : graphql-server
+- Joystream node    : joystream-node
+- Joystream Storange: colossus-1
+
+
+```
+$ nano ~/caddy/Caddyfile
+# Modify, and paste in everything below the stapled line
+# Joystream-node
+wss://<your.cool.url>/rpc {
+        reverse_proxy joystream-node:9944
+}
+
+# Prometheus
+https://prometheus.<your.cool.url> {
+        basicauth /* {
+        admin JDJhJDE0JFdVTjhqWW1zODdUUVM1OUJ4amRWb09SNm1Rd1VmVndiQUJjRlRjSnA0U0hjUXQ0bXZIT0Ft
+        }
+        reverse_proxy prometheus:9090
+}
+
+# Grafana
+https://grafana.<your.cool.url> {
+        reverse_proxy grafana:3000
+}
+
+# Query-node
+https://<your.cool.url> {
+        log {
+                output stdout
+        }
+        route /server/* {
+                uri strip_prefix /server
+                reverse_proxy graphql-server:8081
+        }
+        route /graphql {
+                reverse_proxy graphql-server:8081
+        }
+        route /graphql/* {
+                reverse_proxy graphql-server:8081
+        }
+        route /gateway/* {
+                uri strip_prefix /gateway
+                reverse_proxy graphql-server:4000
+        }
+        route /@apollographql/* {
+                reverse_proxy graphql-server:8081
+        }
+}
+# Storage Node
+https://<your.cool.url>/storage/* {
+        log {
+                output stdout
+        }
+        route /storage/* {
+                uri strip_prefix /storage
+                reverse_proxy colossus-1:3333
+        }
+        header /storage/api/v1/ {
+                Access-Control-Allow-Methods "GET, PUT, HEAD, OPTIONS"
+                Access-Control-Allow-Headers "GET, PUT, HEAD, OPTIONS"
+        }
+        request_body {
+                max_size 10GB
+        }
+}
+
+```
+### Create docker-compose file
+
+```
+$ nano ~/caddy/docker-compose.yml
+# make sure all your containers are using the same network
+---
+version: "3.7"
+
+services:
+  caddy:
+    image: caddy:2.6
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /root/caddy:/data
+      - /root/caddy/Caddyfile:/etc/caddy/Caddyfile
+
+networks:
+  default:
+    external:
+      name: <network -name>
+```
+
+### Bring your service up
+```
+$ docker-compose up -d
+```
+
+
+### Test and troubleshoot 
+
+Get the name of the container
+```
+$ docker ps 
+```
+
+Check the log
+```
+$ docker logs -f -n 100  <container name>
+```
+
+
+Make sure your containers running on the same network
+```
+$ docker network ls
+$ docker network inspect <network name>
+```
+
+## Option 2 - Service 
+<details>
+   <summary>Option 2 - Service</summary>
+        
+The instructions below are for Caddy v2.4.6:
+```
+$ mkdir ~/caddy
+$ cd ~/caddy
 $ wget https://github.com/caddyserver/caddy/releases/download/v2.4.6/caddy_2.4.6_linux_amd64.tar.gz
 $ tar -vxf caddy_2.4.6_linux_amd64.tar.gz
 $ mv caddy /usr/bin/
@@ -15,7 +157,7 @@ $ mv caddy /usr/bin/
 $ caddy version
 ```
 
-# Configure the `Caddyfile`:
+### Configure the `Caddyfile`:
 ```
 $ nano ~/Caddyfile
 # Modify, and paste in everything below the stapled line
@@ -48,7 +190,7 @@ https://<your.cool.url> {
                 reverse_proxy localhost:8081
         }
 }
-# Storage Node
+### Storage Node
 https://<your.cool.url>/storage/* {
         log {
                 output stdout
@@ -68,7 +210,7 @@ https://<your.cool.url>/storage/* {
 
 
 ```
-# Check
+### Check
 Now you can check if you configured correctly, with:
 ```
 $ caddy validate ~/Caddyfile
@@ -89,7 +231,7 @@ $ caddy run --config /root/Caddyfile
 ... [INFO][<your.cool.url>] Obtain: Releasing lock
 ```
 
-# Run caddy as a service
+### Run caddy as a service
 To ensure high uptime, it's best to set the system up as a `service`.
 
 Example file below:
@@ -133,5 +275,4 @@ $ caddy reload
 ```
 
 
-
-```
+</details>
