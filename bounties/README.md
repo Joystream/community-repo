@@ -4,17 +4,17 @@
 
 ## Process
 
-Community Bounties are bounties made available for the community to work on, with a reward available for completing some or all of the work for each bounty.
+Community Bounties are made available for the community to work on, with a reward available for completing some or all of the work for each bounty.
 
 Bounties are created by the [Apps working group](https://pioneerapp.xyz/#/working-groups/apps) and managed by @codefi_keys ([HR WG](https://pioneerapp.xyz/#/working-groups/hr)) on behalf of the [council](https://pioneerapp.xyz/#/council).
 
 The bounties can be for a variety of tasks including coding, producing documentation or producing media content.
 
-Tasks marked open can be worked on right away without confirmation.
+Tasks marked open can be worked on right away without confirmation, except if stated otherwise.
+
+If you have questions about a bounty or want to apply, you should primarily use the [#bounties channel](https://discord.gg/dCM5Vf6z) and let others know to avoid that multiple people work on the same.
 
 The forum is the primary place to suggest new bounties [here](https://pioneerapp.xyz/#/forum/thread/449).
-
-If you have questions about a bounty or want to apply for a bounty, you should primarily use the #bounties [discord channel](https://discord.gg/jv458weD). If you plan to work on a bounty, you should let others know to get added to the table so that multiple people do not work on the same thing.
 
 ## Non-Technical
 
