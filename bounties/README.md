@@ -21,7 +21,7 @@ If you have questions about a bounty or want to apply for a bounty, you should p
 | Bounty ID | Category | Task | Brief Description | Reward in $JOY | Status |
 | --- | --- | --- | --- | --- | --- |
 | 001 | Translation | Translate lightpaper: korean | If dual language applies, use the most acceptable version | 10000 | open |
-| 002 | Translation | Translate Lightpaper: Russian | If dual language applies, use the most acceptable version | 10000 | open |
+| 002 | Translation | Translate Lightpaper: Russian | If dual language applies, use the most acceptable version | 10000 | [review](https://discord.com/channels/811216481340751934/943152333427191859/1121658575190765648) |
 | 003 | Documentation, Graphic Design, Animation | Explain burning, how to gather stats | Clearly explain how tokens are burnt on Joystream and the data is drawn and create a free-style visualization | 10000 | open |
 | 004 | Graphic Design | Staking info-graphic | Make a high quality infographics on staking in Joystream, rewards plus other important info | 10000 | open |
 | 005 | Animation | Joystream Governance Orientation Video | Make a HD quality video explaining the governance system of Joystream  | 10000 | open |
