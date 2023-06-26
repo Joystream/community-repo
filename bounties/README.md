@@ -26,6 +26,13 @@ If you have questions about a bounty or want to apply for a bounty, you should p
 | 004 | Graphic Design | Staking info-graphic | Make a high quality infographics on staking in Joystream, rewards plus other important info | 10000 | open |
 | 005 | Animation | Joystream Governance Orientation Video | Make a HD quality video explaining the governance system of Joystream  | 10000 | open |
 | 006 | Documentation | Extend handbook + community repo | Update the Joystream handbook and https://github.com/Joystream/community-repo from GH issues and Notion | 500 / hr | open |
+| 007 | Translation | Translate lightpaper: turkish | | 10000 | [assigned](https://discord.com/channels/811216481340751934/943152333427191859/1121444337235009639) |
+| 008 | Translation | lightpaper: french | Please ask for template in #bounties channel. | 10000 | open |
+| 009 | Translation | lightpaper: german | Please ask for template in #bounties channel. | 10000 | open |
+| 010 | Translation | lightpaper: spanish | Please ask for template in #bounties channel. | 10000 | open |
+| 011 | Translation | lightpaper: mandarin | Please ask for template in #bounties channel. | 10000 | open |
+| 012 | Translation | lightpaper: hindi | Please ask for template in #bounties channel. | 10000 | open |
+| 013 | Translation | lightpaper: urdu | Please ask for template in #bounties channel. | 10000 | open |
 
 ## Development
 
