@@ -24,7 +24,7 @@ The forum is the primary place to suggest new bounties [here](https://pioneerapp
 | 004 | Video Infographic | Staking info-graphic | Make a high quality infographics on staking in Joystream, rewards plus other important info | 10000 | [assigned](https://discord.com/channels/811216481340751934/1121756889483583589/1122961027416469504) |
 | 005 | Animation | Joystream Governance Orientation Video | Make a HD quality video explaining the governance system of Joystream  | 10000 | open |
 | 006 | Documentation | Extend handbook + community repo | Update the Joystream handbook and https://github.com/Joystream/community-repo from GH issues and Notion | 500 / hr | open |
-| 007 | Translation | Translate lightpaper: turkish | | 10000 | [assigned](https://discord.com/channels/811216481340751934/943152333427191859/1121444337235009639) |
+| 007 | Translation | Translate lightpaper: turkish | | 10000 | [review](https://discord.com/channels/811216481340751934/1121756889483583589/1123138897623396393) |
 | 008 | Translation | lightpaper: french | Please ask for template in #bounties channel. | 10000 | open |
 | 009 | Translation | lightpaper: german | Please ask for template in #bounties channel. | 10000 | open |
 | 010 | Translation | lightpaper: spanish | Please ask for template in #bounties channel. | 10000 | open |
