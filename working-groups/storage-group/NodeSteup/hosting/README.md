@@ -174,10 +174,12 @@ https://prometheus.<your.cool.url> {
         reverse_proxy prometheus:9090
 }
 
+
 # Grafana
 https://grafana.<your.cool.url> {
-        reverse_proxy grafana:3000
+        reverse_proxy localhost:3000
 }
+
 # Query-node
 https://<your.cool.url> {
         log {

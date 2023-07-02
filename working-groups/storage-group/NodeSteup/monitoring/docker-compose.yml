@@ -36,8 +36,8 @@ services:
       - '--storage.tsdb.retention.time=200h'
       - '--web.enable-lifecycle'
     restart: unless-stopped
-    expose:
-      - 9090
+    ports:
+      - 9090:9090
 #    networks:
 #      - monitor-net
     labels:
@@ -55,8 +55,8 @@ services:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
     restart: unless-stopped
-    expose:
-      - 9093
+    ports:
+      - 9093:9093
 #    networks:
 #      - monitor-net
     labels:
@@ -78,8 +78,8 @@ services:
       - '--path.sysfs=/host/sys'
       - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
     restart: unless-stopped
-    expose:
-      - 9100
+    ports:
+      - 9100:9100
 #    networks:
 #      - monitor-net
     labels:
@@ -98,8 +98,8 @@ services:
       - /var/lib/docker:/var/lib/docker:ro
       - /cgroup:/cgroup:ro 
     restart: unless-stopped
-    expose:
-      - 8080
+    ports:
+      - 8080:8080
 #    networks:
 #      - monitor-net
     labels:
@@ -124,8 +124,8 @@ services:
       - LETSENCRYPT_HOST=${GRAFANA_HOST}
       - GF_INSTALL_PLUGINS=marcusolsson-json-datasource,fifemon-graphql-datasource
     restart: unless-stopped
-    expose:
-      - 3000
+    ports:
+      - 3000:3000
 #    networks:
 #      - monitor-net
     labels:
