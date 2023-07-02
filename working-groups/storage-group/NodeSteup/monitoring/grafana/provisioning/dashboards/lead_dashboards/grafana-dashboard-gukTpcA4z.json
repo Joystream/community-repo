@@ -10,10 +10,10 @@
     "url": "/d/gukTpcA4z/storage-work-group-dashboard",
     "expires": "0001-01-01T00:00:00Z",
     "created": "2023-02-02T18:11:17Z",
-    "updated": "2023-06-05T20:02:00Z",
+    "updated": "2023-06-18T11:17:40Z",
     "updatedBy": "admin",
     "createdBy": "admin",
-    "version": 70,
+    "version": 133,
     "hasAcl": false,
     "isFolder": false,
     "folderId": 0,
@@ -100,177 +100,6 @@
     ],
     "liveNow": false,
     "panels": [
-      {
-        "datasource": {
-          "type": "fifemon-graphql-datasource",
-          "uid": "yjvIiS_4k"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": "auto",
-              "displayMode": "auto",
-              "inspect": false
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "worker id"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 88
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "id"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 43
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "dataObjectsSize"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 129
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "dataObjectsCount"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 143
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "dataObjectsSizeLimit"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 161
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "dataObjectCountLimit"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 168
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "acceptingNewBags"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 149
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 24,
-          "x": 0,
-          "y": 0
-        },
-        "id": 14,
-        "options": {
-          "footer": {
-            "countRows": false,
-            "fields": "",
-            "reducer": [
-              "sum"
-            ],
-            "show": false
-          },
-          "showHeader": true,
-          "sortBy": []
-        },
-        "pluginVersion": "9.3.2",
-        "targets": [
-          {
-            "aliasBy": "",
-            "annotationTags": "",
-            "annotationText": "",
-            "annotationTitle": "",
-            "constant": 6.5,
-            "dataPath": "data",
-            "datasource": {
-              "type": "fifemon-graphql-datasource",
-              "uid": "yjvIiS_4k"
-            },
-            "endTimePath": "endTime",
-            "groupBy": "",
-            "queryText": "query {\n  data:storageBuckets {\n    id\n    acceptingNewBags\n    dataObjectCountLimit\n    dataObjectsSizeLimit\n    dataObjectsCount\n    dataObjectsSize\n    operatorMetadata {\n      nodeEndpoint\n      nodeLocation {\n        city\n        countryCode\n      }\n    }\n  }\n}\n",
-            "refId": "A",
-            "timePath": "Time"
-          }
-        ],
-        "title": "Bucket list",
-        "transformations": [
-          {
-            "id": "organize",
-            "options": {
-              "excludeByName": {},
-              "indexByName": {},
-              "renameByName": {
-                "membership.handle": "member handle",
-                "membership.id": "member id",
-                "rewardPerBlock": "reward",
-                "workerId": "worker id"
-              }
-            }
-          }
-        ],
-        "type": "table"
-      },
       {
         "datasource": {
           "type": "datasource",
@@ -396,7 +225,7 @@
           "h": 11,
           "w": 24,
           "x": 0,
-          "y": 9
+          "y": 0
         },
         "id": 18,
         "options": {
@@ -574,7 +403,7 @@
           "h": 9,
           "w": 24,
           "x": 0,
-          "y": 20
+          "y": 11
         },
         "id": 265,
         "options": {
@@ -609,6 +438,481 @@
           }
         ],
         "title": "Worker list",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "membership.handle": "Membership Handle",
+                "membership.id": "Membership ID",
+                "rewardAccount": "Account",
+                "rewardPerBlock": "Rewards Per Block",
+                "workerId": "Worker ID"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "worker id"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 88
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "id"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 43
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "dataObjectsSize"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 129
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "dataObjectsCount"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 143
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "dataObjectsSizeLimit"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 161
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "dataObjectCountLimit"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 168
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "acceptingNewBags"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 149
+                },
+                {
+                  "id": "custom.displayMode",
+                  "value": "color-text"
+                },
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "false": {
+                          "color": "dark-red",
+                          "index": 0
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Bucket ID"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 90
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Worker ID"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 98
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Objects Size Limit"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Objects Size"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 20
+        },
+        "id": 14,
+        "options": {
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query {\n  data:storageBuckets {\n    id\n    operatorStatus {\n      ... on StorageBucketOperatorStatusActive {\n        workerId\n      }\n    }\n    acceptingNewBags\n    dataObjectCountLimit\n    dataObjectsSizeLimit\n    dataObjectsCount\n    dataObjectsSize\n    operatorMetadata {\n      nodeEndpoint\n      nodeLocation {\n        city\n        countryCode\n      }\n    }\n\n  }\n\n}",
+            "refId": "A",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Bucket list",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "acceptingNewBags": "Accepting New Bags",
+                "dataObjectCountLimit": "Object Count Limit",
+                "dataObjectsCount": "Objects Count",
+                "dataObjectsSize": "Objects Size",
+                "dataObjectsSizeLimit": "Objects Size Limit",
+                "id": "Bucket ID",
+                "membership.handle": "member handle",
+                "membership.id": "member id",
+                "operatorMetadata.nodeEndpoint": "NodeEndpoint",
+                "operatorMetadata.nodeLocation.city": "City",
+                "operatorMetadata.nodeLocation.countryCode": "CountryCode",
+                "operatorStatus.workerId": "Worker ID",
+                "rewardPerBlock": "Reward",
+                "workerId": "worker id"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "noValue": "NA",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 29
+        },
+        "id": 269,
+        "options": {
+          "footer": {
+            "enablePagination": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "frameIndex": 0,
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": false,
+              "displayName": "0x2bc ·  "
+            }
+          ]
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "4TJuVS_Vk"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "language": "jsonata",
+                "name": " "
+              }
+            ],
+            "method": "GET",
+            "queryParams": "",
+            "refId": "0x2bc",
+            "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "ujGUVI_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "bewarelabs",
+            "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "z7n9VSl4z"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "coin-side",
+            "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "DX_9VI_4k"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "freakstatic",
+            "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "ePH24S_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "YYAGI",
+            "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "KPWv6p_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "iTor",
+            "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "AJUC4SlVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "kalpakci",
+            "urlPath": "/storage/api/v1/version"
+          }
+        ],
+        "title": "Storage Status - Version",
+        "transformations": [
+          {
+            "id": "reduce",
+            "options": {
+              "reducers": [
+                "last"
+              ]
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "Field": "Storage Operator",
+                "Last": "Node Version"
+              }
+            }
+          }
+        ],
+        "transparent": true,
         "type": "table"
       },
       {
@@ -622,27 +926,67 @@
               "mode": "continuous-GrYlRd"
             },
             "mappings": [],
+            "max": 10000000000000,
+            "noValue": "0",
             "thresholds": {
-              "mode": "absolute",
+              "mode": "percentage",
               "steps": [
                 {
                   "color": "green",
                   "value": null
                 },
                 {
-                  "color": "red",
-                  "value": 10000
+                  "color": "dark-red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "freakstatic  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 6700000000000
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "0x2bc  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 25000000000000
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "iTor  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 9000000000000
                 }
               ]
             }
-          },
-          "overrides": []
+          ]
         },
         "gridPos": {
           "h": 8,
           "w": 24,
           "x": 0,
-          "y": 29
+          "y": 37
         },
         "id": 267,
         "options": {
@@ -669,16 +1013,16 @@
             },
             "fields": [
               {
-                "jsonPath": "totalSize",
+                "jsonPath": "totalSize + tempDirSize",
                 "language": "jsonata",
-                "name": "Bytes",
+                "name": " ",
                 "type": "number"
               }
             ],
             "method": "GET",
             "queryParams": "",
             "refId": "0x2bc",
-            "urlPath": "/"
+            "urlPath": "/storage/api/v1/state/data"
           },
           {
             "cacheDurationSeconds": 300,
@@ -688,9 +1032,9 @@
             },
             "fields": [
               {
-                "jsonPath": "totalSize",
-                "language": "jsonpath",
-                "name": "Bytes",
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": " ",
                 "type": "number"
               }
             ],
@@ -698,7 +1042,7 @@
             "method": "GET",
             "queryParams": "",
             "refId": "bewarelabs",
-            "urlPath": "/"
+            "urlPath": "/storage/api/v1/state/data"
           },
           {
             "cacheDurationSeconds": 300,
@@ -708,9 +1052,9 @@
             },
             "fields": [
               {
-                "jsonPath": "totalSize",
-                "language": "jsonpath",
-                "name": "Bytes",
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": " ",
                 "type": "number"
               }
             ],
@@ -718,7 +1062,7 @@
             "method": "GET",
             "queryParams": "",
             "refId": "coin-side",
-            "urlPath": "/"
+            "urlPath": "/storage/api/v1/state/data"
           },
           {
             "cacheDurationSeconds": 300,
@@ -728,9 +1072,9 @@
             },
             "fields": [
               {
-                "jsonPath": "totalSize",
-                "language": "jsonpath",
-                "name": "Bytes",
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": " ",
                 "type": "number"
               }
             ],
@@ -738,7 +1082,7 @@
             "method": "GET",
             "queryParams": "",
             "refId": "freakstatic",
-            "urlPath": "/"
+            "urlPath": "/storage/api/v1/state/data"
           },
           {
             "cacheDurationSeconds": 300,
@@ -748,9 +1092,9 @@
             },
             "fields": [
               {
-                "jsonPath": "totalSize",
-                "language": "jsonpath",
-                "name": "Bytes",
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": "  ",
                 "type": "number"
               }
             ],
@@ -758,7 +1102,7 @@
             "method": "GET",
             "queryParams": "",
             "refId": "kalpakci",
-            "urlPath": "/"
+            "urlPath": "/storage/api/v1/state/data"
           },
           {
             "cacheDurationSeconds": 300,
@@ -768,9 +1112,9 @@
             },
             "fields": [
               {
-                "jsonPath": "totalSize",
-                "language": "jsonpath",
-                "name": "Bytes",
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": " ",
                 "type": "number"
               }
             ],
@@ -778,10 +1122,31 @@
             "method": "GET",
             "queryParams": "",
             "refId": "YYAGI",
-            "urlPath": "/"
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "KPWv6p_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": " ",
+                "type": "number"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "iTor",
+            "urlPath": "/storage/api/v1/state/data"
           }
         ],
-        "title": "Storage Status - Capacity(Size)",
+        "title": "Storage Status - Capacity(Size TB)",
+        "transformations": [],
         "transparent": true,
         "type": "bargauge"
       },
@@ -796,8 +1161,11 @@
               "mode": "continuous-GrYlRd"
             },
             "mappings": [],
+            "max": 125000,
+            "min": 0,
+            "noValue": "0",
             "thresholds": {
-              "mode": "absolute",
+              "mode": "percentage",
               "steps": [
                 {
                   "color": "green",
@@ -805,18 +1173,44 @@
                 },
                 {
                   "color": "red",
-                  "value": 750000
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "0x2bc  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 300000
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "freakstatic  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 100000
                 }
               ]
             }
-          },
-          "overrides": []
+          ]
         },
         "gridPos": {
           "h": 8,
           "w": 24,
           "x": 0,
-          "y": 37
+          "y": 45
         },
         "id": 268,
         "options": {
@@ -845,13 +1239,13 @@
               {
                 "jsonPath": "objectNumber",
                 "language": "jsonata",
-                "name": "Number of Objects"
+                "name": " "
               }
             ],
             "method": "GET",
             "queryParams": "",
             "refId": "0x2bc",
-            "urlPath": "/"
+            "urlPath": "/storage/api/v1/state/data"
           },
           {
             "cacheDurationSeconds": 300,
@@ -862,14 +1256,14 @@
             "fields": [
               {
                 "jsonPath": "objectNumber",
-                "name": "Number of Objects"
+                "name": " "
               }
             ],
             "hide": false,
             "method": "GET",
             "queryParams": "",
             "refId": "bewarelabs",
-            "urlPath": "/"
+            "urlPath": "/storage/api/v1/state/data"
           },
           {
             "cacheDurationSeconds": 300,
@@ -880,14 +1274,14 @@
             "fields": [
               {
                 "jsonPath": "objectNumber",
-                "name": "Number of Objects"
+                "name": " "
               }
             ],
             "hide": false,
             "method": "GET",
             "queryParams": "",
             "refId": "coin-side",
-            "urlPath": "/"
+            "urlPath": "/storage/api/v1/state/data"
           },
           {
             "cacheDurationSeconds": 300,
@@ -898,32 +1292,14 @@
             "fields": [
               {
                 "jsonPath": "objectNumber",
-                "name": "Number of Objects"
+                "name": " "
               }
             ],
             "hide": false,
             "method": "GET",
             "queryParams": "",
             "refId": "freakstatic",
-            "urlPath": "/"
-          },
-          {
-            "cacheDurationSeconds": 300,
-            "datasource": {
-              "type": "marcusolsson-json-datasource",
-              "uid": "AJUC4SlVz"
-            },
-            "fields": [
-              {
-                "jsonPath": "objectNumber",
-                "name": "Number of Objects"
-              }
-            ],
-            "hide": false,
-            "method": "GET",
-            "queryParams": "",
-            "refId": "kalpakci",
-            "urlPath": "/"
+            "urlPath": "/storage/api/v1/state/data"
           },
           {
             "cacheDurationSeconds": 300,
@@ -934,14 +1310,50 @@
             "fields": [
               {
                 "jsonPath": "objectNumber",
-                "name": "Number of Objects"
+                "name": " "
               }
             ],
             "hide": false,
             "method": "GET",
             "queryParams": "",
             "refId": "YYAGI",
-            "urlPath": "/"
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "KPWv6p_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "objectNumber",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "iTor",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "AJUC4SlVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "objectNumber",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "kalpakci",
+            "urlPath": "/storage/api/v1/state/data"
           }
         ],
         "title": "Storage Status - Number of Objects",
@@ -958,7 +1370,7 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 45
+          "y": 53
         },
         "id": 263,
         "panels": [],
@@ -1039,7 +1451,7 @@
           "h": 7,
           "w": 12,
           "x": 0,
-          "y": 46
+          "y": 54
         },
         "id": 77,
         "links": [],
@@ -1147,9 +1559,22 @@
             "range": true,
             "refId": "F",
             "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "sum by (instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))",
+            "hide": false,
+            "legendFormat": "Busy System-iTor",
+            "range": true,
+            "refId": "G"
           }
         ],
         "title": "CPU Basic",
+        "transparent": true,
         "type": "timeseries"
       },
       {
@@ -1585,7 +2010,7 @@
           "h": 7,
           "w": 12,
           "x": 12,
-          "y": 46
+          "y": 54
         },
         "id": 78,
         "links": [],
@@ -1693,9 +2118,25 @@
             "range": true,
             "refId": "F",
             "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemFree_bytes - (node_memory_Cached_bytes + node_memory_Buffers_bytes + node_memory_SReclaimable_bytes)",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "RAM Used - iTor",
+            "range": true,
+            "refId": "G",
+            "step": 240
           }
         ],
         "title": "Memory Basic",
+        "transparent": true,
         "type": "timeseries"
       },
       {
@@ -1763,7 +2204,7 @@
           "h": 17,
           "w": 12,
           "x": 0,
-          "y": 53
+          "y": 61
         },
         "id": 43,
         "links": [],
@@ -1796,7 +2237,7 @@
             "format": "time_series",
             "hide": false,
             "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - Available- 0x2bc",
+            "legendFormat": "{{mountpoint}} - 0x2bc",
             "metric": "",
             "range": true,
             "refId": "A",
@@ -1812,7 +2253,7 @@
             "format": "time_series",
             "hide": false,
             "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - Available- bewarelabs",
+            "legendFormat": "{{mountpoint}} - bewarelabs",
             "metric": "",
             "range": true,
             "refId": "B",
@@ -1828,7 +2269,7 @@
             "format": "time_series",
             "hide": false,
             "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - Available- coin-side",
+            "legendFormat": "{{mountpoint}} - coin-side",
             "metric": "",
             "range": true,
             "refId": "C",
@@ -1844,7 +2285,7 @@
             "format": "time_series",
             "hide": false,
             "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - Available- freakstatic",
+            "legendFormat": "{{mountpoint}} - freakstatic",
             "metric": "",
             "range": true,
             "refId": "D",
@@ -1860,7 +2301,7 @@
             "format": "time_series",
             "hide": false,
             "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - Available- kalpakci",
+            "legendFormat": "{{mountpoint}} - kalpakci",
             "metric": "",
             "range": true,
             "refId": "E",
@@ -1876,10 +2317,26 @@
             "format": "time_series",
             "hide": false,
             "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - Available- YYAGI",
+            "legendFormat": "{{mountpoint}} - YYAGI",
             "metric": "",
             "range": true,
             "refId": "F",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - iTor",
+            "metric": "",
+            "range": true,
+            "refId": "G",
             "step": 240
           }
         ],
@@ -1952,7 +2409,7 @@
           "h": 17,
           "w": 12,
           "x": 12,
-          "y": 53
+          "y": 61
         },
         "id": 152,
         "links": [],
@@ -2058,9 +2515,220 @@
             "range": true,
             "refId": "F",
             "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - iTor",
+            "range": true,
+            "refId": "G",
+            "step": 240
           }
         ],
         "title": "Disk Space Used Basic",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "bytes",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 40,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "links": [],
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 15,
+          "w": 12,
+          "x": 0,
+          "y": 78
+        },
+        "id": 156,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [
+              "mean",
+              "lastNotNull",
+              "max",
+              "min"
+            ],
+            "displayMode": "table",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.2.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "65eMF5AVz"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - 0x2bc",
+            "range": true,
+            "refId": "A",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "i2FRFcAVk"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - bewarelabs",
+            "range": true,
+            "refId": "B",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "dCmDFcAVk"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - coin-side",
+            "range": true,
+            "refId": "C",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ova4UXQVk"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - freakstatic",
+            "range": true,
+            "refId": "E",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - iTor",
+            "range": true,
+            "refId": "D",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "0xCRUXQ4k"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - kalpakci",
+            "range": true,
+            "refId": "F",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "1230"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - YYAGI",
+            "range": true,
+            "refId": "G",
+            "step": 240
+          }
+        ],
+        "title": "Disk Space Used",
         "type": "timeseries"
       },
       {
@@ -2110,7 +2778,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green"
+                  "color": "green",
+                  "value": null
                 },
                 {
                   "color": "red",
@@ -2123,10 +2792,10 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 16,
-          "w": 24,
-          "x": 0,
-          "y": 70
+          "h": 15,
+          "w": 12,
+          "x": 12,
+          "y": 78
         },
         "id": 74,
         "links": [],
@@ -2321,13 +2990,525 @@
             "range": true,
             "refId": "L",
             "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_receive_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "recv {{device}} - iTor",
+            "range": true,
+            "refId": "N",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_transmit_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "trans {{device}}-  iTor",
+            "range": true,
+            "refId": "M",
+            "step": 240
           }
         ],
         "title": "Network Traffic Basic",
         "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "6ajIcX_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "#EAB839",
+                  "value": 250
+                },
+                {
+                  "color": "red",
+                  "value": 500
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 93
+        },
+        "id": 273,
+        "options": {
+          "displayMode": "gradient",
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "alias": "",
+            "bucketAggs": [],
+            "datasource": {
+              "type": "elasticsearch",
+              "uid": "6ajIcX_4k"
+            },
+            "metrics": [
+              {
+                "id": "1",
+                "settings": {},
+                "type": "logs"
+              }
+            ],
+            "query": "fields.meta.res.statusCode: 200",
+            "refId": "A",
+            "timeField": "@timestamp"
+          }
+        ],
+        "title": "Global Averages Response Time",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "@timestamp": true,
+                "_id": true,
+                "_index": true,
+                "_source": true,
+                "_type": true,
+                "fields.meta.req.headers.accept": true,
+                "fields.meta.req.headers.accept-encoding": true,
+                "fields.meta.req.headers.accept-language": true,
+                "fields.meta.req.headers.cdn-loop": true,
+                "fields.meta.req.headers.cf-connecting-ip": true,
+                "fields.meta.req.headers.cf-ipcountry": true,
+                "fields.meta.req.headers.cf-ray": true,
+                "fields.meta.req.headers.cf-visitor": true,
+                "fields.meta.req.headers.connection": true,
+                "fields.meta.req.headers.host": true,
+                "fields.meta.req.headers.if-none-match": true,
+                "fields.meta.req.headers.sec-ch-ua": true,
+                "fields.meta.req.headers.sec-ch-ua-mobile": true,
+                "fields.meta.req.headers.sec-ch-ua-platform": true,
+                "fields.meta.req.headers.sec-fetch-dest": true,
+                "fields.meta.req.headers.sec-fetch-mode": true,
+                "fields.meta.req.headers.sec-fetch-site": true,
+                "fields.meta.req.headers.sec-gpc": true,
+                "fields.meta.req.headers.user-agent": true,
+                "fields.meta.req.headers.x-forwarded-for": true,
+                "fields.meta.req.headers.x-forwarded-host": true,
+                "fields.meta.req.headers.x-forwarded-proto": true,
+                "fields.meta.req.headers.x-grafana-org-id": true,
+                "fields.meta.req.httpVersion": true,
+                "fields.meta.req.method": true,
+                "fields.meta.req.originalUrl": true,
+                "fields.meta.req.query": true,
+                "fields.meta.req.url": true,
+                "fields.meta.res.statusCode": true,
+                "fields.meta.responseTime": false,
+                "highlight": true,
+                "message": true,
+                "severity": true,
+                "sort": true
+              },
+              "indexByName": {},
+              "renameByName": {}
+            }
+          },
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "fields.meta.responseTime": {
+                  "aggregations": [
+                    "mean"
+                  ],
+                  "operation": "aggregate"
+                },
+                "source": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "sortBy",
+            "options": {
+              "fields": {},
+              "sort": [
+                {
+                  "field": "fields.meta.responseTime (mean)"
+                }
+              ]
+            }
+          },
+          {
+            "id": "rowsToFields",
+            "options": {}
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "StorageProvider_0": "YYAGI",
+                "StorageProvider_2": "Craci_BwareLabs",
+                "StorageProvider_4": "0x2bc",
+                "StorageProvider_6": "Kalpakci",
+                "StorageProvider_7": "Freakstatic",
+                "StorageProvider_8": "Itor"
+              }
+            }
+          }
+        ],
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "6ajIcX_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "severity"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 73
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "@timestamp"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 207
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "_index"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 228
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "message"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 1276
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Status Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 104
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Node"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 189
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Time"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 101
+        },
+        "id": 271,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "alias": "",
+            "bucketAggs": [
+              {
+                "field": "@timestamp",
+                "id": "2",
+                "settings": {
+                  "interval": "auto"
+                },
+                "type": "date_histogram"
+              }
+            ],
+            "datasource": {
+              "type": "elasticsearch",
+              "uid": "6ajIcX_4k"
+            },
+            "metrics": [
+              {
+                "hide": false,
+                "id": "1",
+                "type": "logs"
+              }
+            ],
+            "query": "severity: error NOT message: \"^Sync.*\"",
+            "refId": "A",
+            "timeField": "@timestamp"
+          }
+        ],
+        "title": "Error logs",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "_id": true,
+                "_source": true,
+                "_type": true,
+                "fields": true,
+                "fields.err": true,
+                "fields.err.code": true,
+                "fields.err.errno": true,
+                "fields.err.timeout": true,
+                "fields.meta.date": true,
+                "fields.meta.error.errors": true,
+                "fields.meta.error.name": true,
+                "fields.meta.error.path": true,
+                "fields.meta.error.status": true,
+                "fields.meta.exception": true,
+                "fields.meta.level": true,
+                "fields.meta.message": true,
+                "fields.meta.os.loadavg": true,
+                "fields.meta.os.uptime": true,
+                "fields.meta.process.argv": true,
+                "fields.meta.process.cwd": true,
+                "fields.meta.process.execPath": true,
+                "fields.meta.process.gid": true,
+                "fields.meta.process.memoryUsage.arrayBuffers": true,
+                "fields.meta.process.memoryUsage.external": true,
+                "fields.meta.process.memoryUsage.heapTotal": true,
+                "fields.meta.process.memoryUsage.heapUsed": true,
+                "fields.meta.process.memoryUsage.rss": true,
+                "fields.meta.process.pid": true,
+                "fields.meta.process.uid": true,
+                "fields.meta.process.version": true,
+                "fields.meta.req.headers.accept": true,
+                "fields.meta.req.headers.accept-encoding": true,
+                "fields.meta.req.headers.accept-language": true,
+                "fields.meta.req.headers.content-length": true,
+                "fields.meta.req.headers.content-type": true,
+                "fields.meta.req.headers.dnt": true,
+                "fields.meta.req.headers.host": true,
+                "fields.meta.req.headers.origin": true,
+                "fields.meta.req.headers.referer": true,
+                "fields.meta.req.headers.sec-ch-ua": true,
+                "fields.meta.req.headers.sec-ch-ua-mobile": true,
+                "fields.meta.req.headers.sec-ch-ua-platform": true,
+                "fields.meta.req.headers.sec-fetch-dest": true,
+                "fields.meta.req.headers.sec-fetch-mode": true,
+                "fields.meta.req.headers.sec-fetch-site": true,
+                "fields.meta.req.headers.user-agent": true,
+                "fields.meta.req.headers.x-forwarded-for": true,
+                "fields.meta.req.headers.x-forwarded-host": true,
+                "fields.meta.req.headers.x-forwarded-proto": true,
+                "fields.meta.req.httpVersion": true,
+                "fields.meta.req.method": true,
+                "fields.meta.req.originalUrl": true,
+                "fields.meta.req.query.bagId": true,
+                "fields.meta.req.query.dataObjectId": true,
+                "fields.meta.req.query.storageBucketId": true,
+                "fields.meta.req.url": true,
+                "fields.meta.stack": true,
+                "fields.meta.trace": true,
+                "highlight": true,
+                "sort": true,
+                "source": true
+              },
+              "indexByName": {
+                "@timestamp": 0,
+                "_id": 1,
+                "_index": 2,
+                "_source": 3,
+                "_type": 4,
+                "fields": 5,
+                "fields.meta.date": 6,
+                "fields.meta.error.errors": 7,
+                "fields.meta.error.httpStatusCode": 57,
+                "fields.meta.error.name": 8,
+                "fields.meta.error.path": 9,
+                "fields.meta.error.status": 10,
+                "fields.meta.exception": 11,
+                "fields.meta.level": 12,
+                "fields.meta.message": 13,
+                "fields.meta.os.loadavg": 14,
+                "fields.meta.os.uptime": 15,
+                "fields.meta.process.argv": 16,
+                "fields.meta.process.cwd": 17,
+                "fields.meta.process.execPath": 18,
+                "fields.meta.process.gid": 19,
+                "fields.meta.process.memoryUsage.arrayBuffers": 20,
+                "fields.meta.process.memoryUsage.external": 21,
+                "fields.meta.process.memoryUsage.heapTotal": 22,
+                "fields.meta.process.memoryUsage.heapUsed": 23,
+                "fields.meta.process.memoryUsage.rss": 24,
+                "fields.meta.process.pid": 25,
+                "fields.meta.process.uid": 26,
+                "fields.meta.process.version": 27,
+                "fields.meta.req.headers.accept": 28,
+                "fields.meta.req.headers.accept-encoding": 29,
+                "fields.meta.req.headers.accept-language": 30,
+                "fields.meta.req.headers.content-length": 31,
+                "fields.meta.req.headers.content-type": 32,
+                "fields.meta.req.headers.dnt": 61,
+                "fields.meta.req.headers.host": 33,
+                "fields.meta.req.headers.origin": 34,
+                "fields.meta.req.headers.referer": 35,
+                "fields.meta.req.headers.sec-ch-ua": 36,
+                "fields.meta.req.headers.sec-ch-ua-mobile": 37,
+                "fields.meta.req.headers.sec-ch-ua-platform": 38,
+                "fields.meta.req.headers.sec-fetch-dest": 39,
+                "fields.meta.req.headers.sec-fetch-mode": 40,
+                "fields.meta.req.headers.sec-fetch-site": 41,
+                "fields.meta.req.headers.user-agent": 42,
+                "fields.meta.req.headers.x-forwarded-for": 43,
+                "fields.meta.req.headers.x-forwarded-host": 44,
+                "fields.meta.req.headers.x-forwarded-proto": 45,
+                "fields.meta.req.httpVersion": 46,
+                "fields.meta.req.method": 47,
+                "fields.meta.req.originalUrl": 48,
+                "fields.meta.req.query.bagId": 49,
+                "fields.meta.req.query.dataObjectId": 50,
+                "fields.meta.req.query.storageBucketId": 51,
+                "fields.meta.req.url": 52,
+                "fields.meta.stack": 53,
+                "fields.meta.trace": 54,
+                "highlight": 55,
+                "message": 58,
+                "severity": 56,
+                "sort": 59,
+                "source": 60
+              },
+              "renameByName": {
+                "@timestamp": "Time",
+                "_index": "Node",
+                "fields.meta.error.httpStatusCode": "Status Code",
+                "message": "",
+                "severity": ""
+              }
+            }
+          }
+        ],
+        "type": "table"
       }
     ],
-    "refresh": false,
+    "refresh": "1h",
     "schemaVersion": 37,
     "style": "dark",
     "tags": [],
@@ -2336,8 +3517,8 @@
         {
           "current": {
             "selected": false,
-            "text": "All",
-            "value": "$__all"
+            "text": "Prometheus-0x2bc",
+            "value": "Prometheus-0x2bc"
           },
           "hide": 2,
           "includeAll": false,
@@ -2514,7 +3695,7 @@
     "timezone": "browser",
     "title": "Storage Work Group Dashboard",
     "uid": "gukTpcA4z",
-    "version": 70,
+    "version": 133,
     "weekStart": ""
   }
 }

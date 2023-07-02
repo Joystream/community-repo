@@ -1,12 +1,12 @@
 {
-  "id": 19,
-  "uid": "4TJuVS_Vk",
+  "id": 20,
+  "uid": "z7n9VSl4z",
   "orgId": 1,
-  "name": "storage-0x2bc",
+  "name": "storage-coin-side",
   "type": "marcusolsson-json-datasource",
   "typeLogoUrl": "",
   "access": "proxy",
-  "url": "https://storage.0x2bc.com/storage/api/v1/state/data",
+  "url": "https://joy.coin-side.com",
   "user": "",
   "database": "",
   "basicAuth": false,
@@ -15,6 +15,6 @@
   "isDefault": false,
   "jsonData": {},
   "secureJsonFields": {},
-  "version": 2,
+  "version": 3,
   "readOnly": false
 }

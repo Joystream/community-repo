@@ -1,12 +1,12 @@
 {
-  "id": 22,
-  "uid": "AJUC4SlVz",
+  "id": 17,
+  "uid": "ePH24S_Vz",
   "orgId": 1,
-  "name": "storage-kalpakci",
+  "name": "storage-yyagi",
   "type": "marcusolsson-json-datasource",
   "typeLogoUrl": "",
   "access": "proxy",
-  "url": "https://joystream.name/storage/api/v1/state/data",
+  "url": "https://joystream.yyagi.cloud",
   "user": "",
   "database": "",
   "basicAuth": false,
@@ -15,6 +15,6 @@
   "isDefault": false,
   "jsonData": {},
   "secureJsonFields": {},
-  "version": 2,
+  "version": 6,
   "readOnly": false
 }

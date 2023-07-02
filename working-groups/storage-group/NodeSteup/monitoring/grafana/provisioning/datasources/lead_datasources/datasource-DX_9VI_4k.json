@@ -1,12 +1,12 @@
 {
-  "id": 17,
-  "uid": "ePH24S_Vz",
+  "id": 21,
+  "uid": "DX_9VI_4k",
   "orgId": 1,
-  "name": "storage-yyagi",
+  "name": "storage-freakstatic",
   "type": "marcusolsson-json-datasource",
   "typeLogoUrl": "",
   "access": "proxy",
-  "url": "https://joystream.yyagi.cloud/storage/api/v1/state/data",
+  "url": "https://storage.freakstatic.com",
   "user": "",
   "database": "",
   "basicAuth": false,
@@ -15,6 +15,6 @@
   "isDefault": false,
   "jsonData": {},
   "secureJsonFields": {},
-  "version": 5,
+  "version": 3,
   "readOnly": false
 }
