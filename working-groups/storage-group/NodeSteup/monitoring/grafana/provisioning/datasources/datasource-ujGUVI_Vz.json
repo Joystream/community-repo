@@ -1,0 +1,20 @@
+{
+  "id": 18,
+  "uid": "ujGUVI_Vz",
+  "orgId": 1,
+  "name": "storage-bwarelabs",
+  "type": "marcusolsson-json-datasource",
+  "typeLogoUrl": "",
+  "access": "proxy",
+  "url": "https://joystream-storage.bwarelabs.com/storage/api/v1/state/data",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {},
+  "secureJsonFields": {},
+  "version": 2,
+  "readOnly": false
+}

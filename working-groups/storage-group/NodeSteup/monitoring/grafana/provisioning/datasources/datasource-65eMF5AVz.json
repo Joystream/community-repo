@@ -1,0 +1,24 @@
+{
+  "id": 3,
+  "uid": "65eMF5AVz",
+  "orgId": 1,
+  "name": "Prometheus-0x2bc",
+  "type": "prometheus",
+  "typeLogoUrl": "",
+  "access": "proxy",
+  "url": "https://prometheus-storage.0x2bc.com/",
+  "user": "",
+  "database": "",
+  "basicAuth": true,
+  "basicAuthUser": "admin",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {
+    "httpMethod": "POST"
+  },
+  "secureJsonFields": {
+    "basicAuthPassword": true
+  },
+  "version": 4,
+  "readOnly": false
+}

@@ -1,0 +1,20 @@
+{
+  "id": 22,
+  "uid": "AJUC4SlVz",
+  "orgId": 1,
+  "name": "storage-kalpakci",
+  "type": "marcusolsson-json-datasource",
+  "typeLogoUrl": "",
+  "access": "proxy",
+  "url": "https://joystream.name/storage/api/v1/state/data",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {},
+  "secureJsonFields": {},
+  "version": 2,
+  "readOnly": false
+}

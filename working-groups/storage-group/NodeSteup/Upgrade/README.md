@@ -21,7 +21,7 @@ if you are running as a service
 $ systemctl stop storage-node.service
 ```
 
-## Stop the query node
+## Stop the query node (Only if the QN upgrade is part of the upgrade)
 ```
 $ ./query-node/kill.sh
 ```
@@ -29,6 +29,7 @@ $ ./query-node/kill.sh
 ```
 $ git stash
 $ git pull
+$ git stash pop
 ```
 
 ## apply .env sh - you can use values from old backup file
@@ -37,6 +38,11 @@ $ git pull
 ```
  $ ./setup.sh
 ```
+check if docker is ok 'docker ps', if not reinstall docker.
+```
+$ docker ps
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
 ## logout here and login back 
 
 ## Build
@@ -44,10 +50,15 @@ $ git pull
 ```
 $ ./build-packages.sh 
 ```
-## Start the services
+
+## Start the QN (Only if the QN upgrade is part of the upgrade)
 ```
 $ query-node/start.sh
-or
+
+```
+
+## Start the Storage service
+```
 $ docker-compose up --detach --build colossus-1
 
 ```

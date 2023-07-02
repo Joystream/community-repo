@@ -14,9 +14,15 @@ To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
 ## Hardware
 - CPU: 8 Core
 - RAM: 32G
-- Storage: 10T 
+- Storage: 25T 
 - Bandwidth: 1G
 
+
+## Test your node 
+```
+(1) speed test: curl -sL yabs.sh | bash -s -- -fg 
+(2) disk test : curl -sL yabs.sh | bash -s -- -ig
+```
 ## Location
 No more that 15% of the current operator clustered at the same region.
 
@@ -91,6 +97,10 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 - Role key
 - Operator key: in the codebase it's referred to as the transactor key.
 
+
+<details>
+  <summary>IGNORE</summary>
+	
 ```
 $ mkdir ~/keys/
 $ cd ~/joystream/
@@ -106,13 +116,12 @@ cat /root/.local/share/joystream-cli/accounts/storage-operator-key.json
 This will give show you the address:
 `..."address":"5StorageOperatorKey"...`
 
+ </details>
 
 ```
-# Go the directory where you saved your <5YourStorageRoleKey.json>, then rename it to
+# Paste your <YourStorageRoleKey.json> in the file below
 
-storage-role-key.json
-#copy the role key to your keys directory, the below if you are copying from another server.
-$ scp storage-role-key.json <user>@<your.vps.ip.address>:/root/keys/
+nano /root/keys/storage-role-key.json
 ```
 
 **Make sure your [Joystream full node](#Setup-joystream-node) and [Query Node](#Setup-Query-Node) is fully synced before you move to the next step(s)!**
@@ -196,7 +205,10 @@ COLOSSUS_1_TRANSACTOR_URI=//<your.key.name>
 
 #Add the password variable
 SUPER_PASSWORD=<My.cool.password>
-JOYSTREAM_ES_URL=https://elastic.joystreamstats.live/
+JOYSTREAM_ES_URL=https://joystream.koalva.io/operator-elastic
+JOYSTREAM_ES_USERNAME=storage-xxx
+JOYSTREAM_ES_INDEX=storage-node-xxx
+JOYSTREAM_ES_PASSWORD=xxxxxxxxx
 ``` 
 
 
@@ -232,6 +244,9 @@ Edit service colossus-1
       '--keyFile=/keystore/storage-role-key.json',
       '--password=${SUPER_PASSWORD}',
       '--elasticSearchEndpoint=${JOYSTREAM_ES_URL}',
+      '--elasticSearchIndex=${JOYSTREAM_ES_INDEX}',
+      '--elasticSearchPassword=${JOYSTREAM_ES_PASSWORD}',
+      '--elasticSearchUser=${JOYSTREAM_ES_USERNAME}',
       '--logFilePath=/logs'
     ]
 
