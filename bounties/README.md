@@ -27,10 +27,11 @@ The forum is the primary place to suggest new bounties [here](https://pioneerapp
 | 007 | Translation | Translate lightpaper: turkish | | 10000 | [complete](https://discordapp.com/channels/811216481340751934/1121756889483583589/1128371307210363031) |
 | 008 | Translation | lightpaper: french | Please ask for template in #bounties channel. | 10000 | open |
 | 009 | Translation | lightpaper: german | Please ask for template in #bounties channel. | 10000 | open |
-| 010 | Translation | lightpaper: spanish | Please ask for template in #bounties channel. | 10000 | [review](https://discord.com/channels/811216481340751934/1121756889483583589/1126529771682140200) |
+| 010 | Translation | lightpaper: spanish | Please ask for template in #bounties channel. | 10000 | [complete](https://discordapp.com/channels/811216481340751934/1121756889483583589/1128667481779748904) |
 | 011 | Translation | lightpaper: mandarin | Please ask for template in #bounties channel. | 10000 | open |
 | 012 | Translation | lightpaper: hindi | Please ask for template in #bounties channel. | 10000 | open |
 | 013 | Translation | lightpaper: urdu | Please ask for template in #bounties channel. | 10000 | open |
+| 014 | Transcription | Transcribe 14th Council mid-term meeting | Transcribe the audio recording of the council's midterm meeting in english | 10000 | in progress |
 
 ## Development
 
