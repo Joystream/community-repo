@@ -19,7 +19,7 @@ The forum is the primary place to suggest new bounties [here](https://pioneerapp
 | Bounty ID | Category | Task | Brief Description | Reward in $JOY | Status |
 | --- | --- | --- | --- | --- | --- |
 | 001 | Translation | Translate lightpaper: korean | If dual language applies, use the most acceptable version | 10000 | open |
-| 002 | Translation | Translate Lightpaper: Russian | If dual language applies, use the most acceptable version | 10000 | [review](https://discord.com/channels/811216481340751934/943152333427191859/1121658575190765648) |
+| 002 | Translation | Translate Lightpaper: Russian | If dual language applies, use the most acceptable version | 10000 | [complete](https://discord.com/channels/811216481340751934/943152333427191859/1102971365688086589) |
 | 003 | Documentation, Graphic Design, Animation | Explain burning, how to gather stats | Clearly explain how tokens are burnt on Joystream and the data is drawn and create a free-style visualization | 10000 | open |
 | 004 | Video Infographic | Staking info-graphic | Make a high quality infographics on staking in Joystream, rewards plus other important info | 10000 | [assigned](https://discord.com/channels/811216481340751934/1121756889483583589/1122961027416469504) |
 | 005 | Animation | Joystream Governance Orientation Video | Make a HD quality video explaining the governance system of Joystream  | 10000 | [assigned](https://discord.com/channels/811216481340751934/1121756889483583589/1127385529802039426) |
@@ -31,7 +31,7 @@ The forum is the primary place to suggest new bounties [here](https://pioneerapp
 | 011 | Translation | lightpaper: mandarin | Please ask for template in #bounties channel. | 10000 | open |
 | 012 | Translation | lightpaper: hindi | Please ask for template in #bounties channel. | 10000 | open |
 | 013 | Translation | lightpaper: urdu | Please ask for template in #bounties channel. | 10000 | open |
-| 014 | Transcription | Transcribe 14th Council mid-term meeting | Transcribe the audio recording of the council's midterm meeting in english | 10000 | in progress |
+| 014 | Transcription | Transcribe 14th Council mid-term meeting | Transcribe the audio recording of the council's midterm meeting in english | 10000 | [complete](https://discord.com/channels/811216481340751934/1121756889483583589/1129146111517536337) |
 
 ## Development
 
