@@ -31,7 +31,7 @@ The forum is the primary place to suggest new bounties [here](https://pioneerapp
 | 011 | Translation | lightpaper: mandarin | Please ask for template in #bounties channel. | 10000 | open |
 | 012 | Translation | lightpaper: hindi | Please ask for template in #bounties channel. | 10000 | open |
 | 013 | Translation | lightpaper: urdu | Please ask for template in #bounties channel. | 10000 | open |
-| 014 | Transcription | Transcribe 14th Council mid-term meeting | Transcribe the audio recording of the council's midterm meeting in english | 10000 | complete | (https://discord.com/channels/811216481340751934/1121756889483583589/1129146111517536337) |
+| 014 | Transcription | Transcribe 14th Council mid-term meeting | Transcribe the audio recording of the council's midterm meeting in english | 10000 | [complete](https://discord.com/channels/811216481340751934/1121756889483583589/1129146111517536337) |
 
 ## Development
 
