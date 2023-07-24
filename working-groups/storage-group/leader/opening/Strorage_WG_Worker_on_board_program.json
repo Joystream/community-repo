@@ -1,0 +1,56 @@
+{
+    "applicationDetails": "Storage WG Worker",
+    "hiringLimit": 4,
+    "title": "Storage WG Worker New Member onboarding Program",
+    "shortDescription": "Joystream Video DAO (https://joystream.org) is actively looking for a Storage WG Worker",
+    "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage WG Worker to join our [Pioneer Governance App](https://dao.joystream.org) community Storage team.\n\n**Storage group onboarding program**\n\n - Objective of the program to help interested community member who do not have enough Joy to join the storage team.\n\n - Each member of the program will commit to increasing his stake each DAO term with half of the rewards earned, till the total staked is 41,666 Joy.\n\n**Responsibilities:** \n\n- Operate a storage node and ensure high availability.\n\n**Requirements:** \n\n- Storage Worker experience is preferred\n\n- High availability: First few days after hired will require high availability and lots of work\n\n- Experience with how to setup and maintain blockchain nodes\n\n- Having access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 25TB and more\n\n- Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus)\n\n**Rules for firings:** \n\n- https://github.com/Joystream/community-repo/tree/master/working-groups/storage-group/SOP\n\n**About WG:** \n\nNotion page: https://www.notion.so/joystream/Storage-9dc5a16444934dc4bda08b596bc15375\n\nDiscord channel: https://discord.gg/fFRdNHsW\n\n**Stake:** \n\n- $500 (8,333 JOY)\n\n**Salary:** \n\n- $1000 (16,666 JOY)/ month\n\n",
+    "applicationFormQuestions": [{
+            "question": "Are you currently employed?"
+        },
+        {
+            "question": "What is your timezone?"
+        },
+        {
+            "question": "Are you based in US?"
+        },
+        {
+            "question": "Do you have experience with Linux? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with Docker? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with devops and automation? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with GraphQl? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with blockchain nodes? If yes, please describe it"
+        },
+        {
+            "question": "Tell us a bit about youself"
+        },
+        {
+            "question": "Your availability, in hours per day"
+        },
+        {
+            "question": "Do you understand the compensation model?"
+        },
+        {
+            "question": "Tell us a bit more about your experience in IT"
+        },
+        {
+            "question": "Please provide infrastructure specification and location"
+        },
+        {
+            "question": "Your Discord"
+        }
+    ],
+    "stakingPolicy": {
+        "amount": 83330000000000,
+        "unstakingPeriod": 604800
+    },
+    "rewardPerBlock": 385802470
+}
+
