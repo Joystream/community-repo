@@ -1,0 +1,24 @@
+{
+  "id": 28,
+  "uid": "p51PjKq4k",
+  "orgId": 1,
+  "name": "Prometheus-sieemma",
+  "type": "prometheus",
+  "typeLogoUrl": "",
+  "access": "proxy",
+  "url": "https://prometheus.sieemmastorage.com",
+  "user": "",
+  "database": "",
+  "basicAuth": true,
+  "basicAuthUser": "admin",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {
+    "httpMethod": "POST"
+  },
+  "secureJsonFields": {
+    "basicAuthPassword": true
+  },
+  "version": 2,
+  "readOnly": false
+}
