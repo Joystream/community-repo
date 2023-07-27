@@ -7,9 +7,6 @@ x-logging:
     compress: 'false'
   driver: local
 
-networks:
-  monitor-net:
-    driver: bridge
 volumes:
     prometheus_data: {}
     grafana_data: {}
