@@ -3,7 +3,7 @@
     "hiringLimit": 4,
     "title": "Storage WG Worker needed",
     "shortDescription": "Joystream Video DAO (https://joystream.org) is actively looking for a Storage WG Worker",
-    "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage WG Worker to join our [Pioneer Governance App](https://dao.joystream.org) community Storage team.\n\n**Responsibilities:** \n\n- Operate a storage node and ensure high availability.\n\n**Requirements:** \n\n- Storage Worker experience is preferred\n\n- High availability: First few days after hired will require high availability and lots of work\n\n- Experience with how to setup and maintain blockchain nodes\n\n- Having access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 25TB and more\n\n- Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus)\n\n**Rules for firings:** \n\n- https://github.com/Joystream/community-repo/tree/master/working-groups/storage-group/SOP\n\n**About WG:** \n\nNotion page: https://www.notion.so/joystream/Storage-9dc5a16444934dc4bda08b596bc15375\n\nDiscord channel: https://discord.gg/fFRdNHsW\n\n**Stake:** \n\n-  41,666 JOY\n\n**Salary:** \n\n- 16,666 JOY/ month\n\n",
+    "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage WG Worker to join our [Pioneer Governance App](https://dao.joystream.org) community Storage team.\n\n**Responsibilities:** \n\n- Operate a storage node and ensure high availability.\n\n**Requirements:** \n\n- Storage Worker experience is preferred\n\n- High availability: First few days after hired will require high availability and lots of work\n\n- Experience with how to setup and maintain blockchain nodes\n\n- Having access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 25TB and more\n\n- Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus)\n\n**Rules for firings:** \n\n- https://github.com/Joystream/community-repo/tree/master/working-groups/storage-group/SOP\n\n**About WG:** \n\nNotion page: https://www.notion.so/joystream/Storage-9dc5a16444934dc4bda08b596bc15375\n\nDiscord channel: https://discord.gg/fFRdNHsW\n\n**Stake:** \n\n-  41,666 JOY\n\n**Salary:** \n\n- 33k JOY/ month\n\n",
     "applicationFormQuestions": [{
             "question": "Are you currently employed?"
         },
@@ -51,6 +51,6 @@
         "amount": 416660000000000,
         "unstakingPeriod": 604800
     },
-    "rewardPerBlock": 385802470
+    "rewardPerBlock": 771604940
 }
 

@@ -10,10 +10,10 @@
     "url": "/d/PUYzGbwWz/substrate-node-template-metrics",
     "expires": "0001-01-01T00:00:00Z",
     "created": "2023-01-15T11:48:19Z",
-    "updated": "2023-04-10T01:42:19Z",
+    "updated": "2023-07-09T00:55:05Z",
     "updatedBy": "admin",
     "createdBy": "Anonymous",
-    "version": 3,
+    "version": 4,
     "hasAcl": false,
     "isFolder": false,
     "folderId": 0,
@@ -84,7 +84,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "super-light-yellow"
+                  "color": "super-light-yellow",
+                  "value": null
                 }
               ]
             }
@@ -135,7 +136,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green"
+                  "color": "green",
+                  "value": null
                 }
               ]
             }
@@ -192,7 +194,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green"
+                  "color": "green",
+                  "value": null
                 },
                 {
                   "color": "yellow",
@@ -253,7 +256,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green"
+                  "color": "green",
+                  "value": null
                 },
                 {
                   "color": "yellow",
@@ -504,10 +508,7 @@
     "tags": [
       "substrate",
       "blockchain",
-      "node",
-      "template",
-      "polkadot",
-      "kusama"
+      "node"
     ],
     "templating": {
       "list": [
@@ -552,7 +553,7 @@
     "timezone": "",
     "title": "Substrate Node Template Metrics",
     "uid": "PUYzGbwWz",
-    "version": 3,
+    "version": 4,
     "weekStart": ""
   }
 }
