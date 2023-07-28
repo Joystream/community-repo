@@ -155,7 +155,7 @@ $ cd ~/joystream
 yarn run storage-node operator:accept-invitation -i <bucketId> -w <workerId> -t <5StorageRolerKey> --password=YourKeyPassword -k /root/keys/storage-role-key.json
 
 # With bucketId=1, workerId=2, and operatorkey=5StorageOperatorKey that would be:
-# yarn run storage-node operator:accept-invitation -i 1 -w 1 -t $5StorageRolerKey -k /root/keys/storage-role-key.json
+# yarn run storage-node operator:accept-invitation -i 1 -w 1 -t $5StorageRolerKey --password=YourKeyPassword -k /root/keys/storage-role-key.json
 ```
 
 ## Set Metadata
@@ -188,7 +188,7 @@ $ cd ~/joystream
 $ yarn run storage-node operator:set-metadata -i <bucketId> -w <workerId> -j /path/to/metadata.json -k /root/keys/storage-role-key.json
 
 # With bucketId=1, workerId=2, that would be:
-# yarn run storage-node operator:set-metadata -i 1 -w 2 -j /path/to/metadata.json -k /root/keys/storage-role-key.json
+# yarn run storage-node operator:set-metadata -i 1 -w 2 -j /path/to/metadata.json --password=YourKeyPassword -k /root/keys/storage-role-key.json
 ```
 
 ## Deploy the Storage Node
