@@ -1,0 +1,24 @@
+{
+  "id": 33,
+  "uid": "tUFkqqq4k",
+  "orgId": 1,
+  "name": "Prometheus-jonnyboy",
+  "type": "prometheus",
+  "typeLogoUrl": "",
+  "access": "proxy",
+  "url": "https://prometheus.jonnyboy.cloud/",
+  "user": "",
+  "database": "",
+  "basicAuth": true,
+  "basicAuthUser": "admin",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {
+    "httpMethod": "POST"
+  },
+  "secureJsonFields": {
+    "basicAuthPassword": true
+  },
+  "version": 2,
+  "readOnly": false
+}

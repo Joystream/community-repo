@@ -1,0 +1,20 @@
+{
+  "id": 31,
+  "uid": "T5jRlPqVz",
+  "orgId": 1,
+  "name": "storage-jonnyboy",
+  "type": "marcusolsson-json-datasource",
+  "typeLogoUrl": "",
+  "access": "proxy",
+  "url": "https://joystreamstorage.jonnyboy.cloud/",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {},
+  "secureJsonFields": {},
+  "version": 3,
+  "readOnly": false
+}
