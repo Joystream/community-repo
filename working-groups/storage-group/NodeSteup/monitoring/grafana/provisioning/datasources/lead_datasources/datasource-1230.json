@@ -6,15 +6,19 @@
   "type": "prometheus",
   "typeLogoUrl": "",
   "access": "proxy",
-  "url": "http://prometheus:9090",
+  "url": "https://prometheus.joystream.yyagi.cloud/",
   "user": "",
   "database": "",
-  "basicAuth": false,
-  "basicAuthUser": "",
+  "basicAuth": true,
+  "basicAuthUser": "admin",
   "withCredentials": false,
   "isDefault": true,
-  "jsonData": {},
-  "secureJsonFields": {},
-  "version": 1,
+  "jsonData": {
+    "httpMethod": "POST"
+  },
+  "secureJsonFields": {
+    "basicAuthPassword": true
+  },
+  "version": 3,
   "readOnly": false
 }

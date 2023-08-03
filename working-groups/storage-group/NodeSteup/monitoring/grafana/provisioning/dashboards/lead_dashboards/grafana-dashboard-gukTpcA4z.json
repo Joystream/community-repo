@@ -10,10 +10,10 @@
     "url": "/d/gukTpcA4z/storage-work-group-dashboard",
     "expires": "0001-01-01T00:00:00Z",
     "created": "2023-02-02T18:11:17Z",
-    "updated": "2023-07-26T13:21:08Z",
+    "updated": "2023-08-02T23:04:14Z",
     "updatedBy": "admin",
     "createdBy": "admin",
-    "version": 143,
+    "version": 182,
     "hasAcl": false,
     "isFolder": false,
     "folderId": 0,
@@ -400,7 +400,7 @@
           ]
         },
         "gridPos": {
-          "h": 9,
+          "h": 11,
           "w": 24,
           "x": 0,
           "y": 11
@@ -637,10 +637,10 @@
           ]
         },
         "gridPos": {
-          "h": 9,
+          "h": 11,
           "w": 24,
           "x": 0,
-          "y": 20
+          "y": 22
         },
         "id": 14,
         "options": {
@@ -734,10 +734,10 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 9,
+          "h": 11,
           "w": 24,
           "x": 0,
-          "y": 29
+          "y": 33
         },
         "id": 269,
         "options": {
@@ -888,6 +888,44 @@
             "queryParams": "",
             "refId": "Sieemma",
             "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "HFwKqJ34k"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "Tomato",
+            "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "T5jRlPqVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "JonnyBoy",
+            "urlPath": "/storage/api/v1/version"
           }
         ],
         "title": "Storage Status - Version",
@@ -952,10 +990,10 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 9,
+          "h": 11,
           "w": 24,
           "x": 0,
-          "y": 38
+          "y": 44
         },
         "id": 275,
         "options": {
@@ -966,7 +1004,13 @@
             ],
             "show": false
           },
-          "showHeader": true
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": false,
+              "displayName": "QN URL"
+            }
+          ]
         },
         "pluginVersion": "9.3.2",
         "targets": [
@@ -979,7 +1023,7 @@
             "fields": [
               {
                 "jsonPath": "queryNodeStatus.url",
-                "name": " "
+                "name": "  "
               }
             ],
             "hide": false,
@@ -997,7 +1041,7 @@
             "fields": [
               {
                 "jsonPath": "queryNodeStatus.url",
-                "name": " "
+                "name": "  "
               }
             ],
             "hide": false,
@@ -1015,7 +1059,7 @@
             "fields": [
               {
                 "jsonPath": "queryNodeStatus.url",
-                "name": ""
+                "name": " "
               }
             ],
             "hide": false,
@@ -1033,7 +1077,7 @@
             "fields": [
               {
                 "jsonPath": "queryNodeStatus.url",
-                "name": " "
+                "name": "  "
               }
             ],
             "hide": false,
@@ -1051,7 +1095,7 @@
             "fields": [
               {
                 "jsonPath": "queryNodeStatus.url",
-                "name": "",
+                "name": " ",
                 "type": "string"
               }
             ],
@@ -1070,7 +1114,7 @@
             "fields": [
               {
                 "jsonPath": "queryNodeStatus.url",
-                "name": "",
+                "name": " ",
                 "type": "string"
               }
             ],
@@ -1090,13 +1134,51 @@
               {
                 "jsonPath": "queryNodeStatus.url",
                 "language": "jsonpath",
-                "name": ""
+                "name": " "
               }
             ],
             "hide": false,
             "method": "GET",
             "queryParams": "",
             "refId": "0x2bc",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "HFwKqJ34k"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.url",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "Tomato",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "T5jRlPqVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.url",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "JonnyBoy",
             "urlPath": "/storage/api/v1/status"
           }
         ],
@@ -1174,7 +1256,7 @@
               "properties": [
                 {
                   "id": "max",
-                  "value": 25000000000000
+                  "value": 28000000000000
                 }
               ]
             },
@@ -1189,14 +1271,62 @@
                   "value": 9000000000000
                 }
               ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "YYAGI  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 28000000000000
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Sieemma  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 21999999999998
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Tomato  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 35000000000000
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "JonnyBoy  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 220000000000000
+                }
+              ]
             }
           ]
         },
         "gridPos": {
-          "h": 10,
+          "h": 11,
           "w": 24,
           "x": 0,
-          "y": 47
+          "y": 55
         },
         "id": 267,
         "options": {
@@ -1353,9 +1483,49 @@
             "queryParams": "",
             "refId": "Sieemma",
             "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "HFwKqJ34k"
+            },
+            "fields": [
+              {
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": " ",
+                "type": "number"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "Tomato",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "T5jRlPqVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": " ",
+                "type": "number"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "JonnyBoy",
+            "urlPath": "/storage/api/v1/state/data"
           }
         ],
-        "title": "Storage Status - Capacity(Size TB)",
+        "title": "Storage Status - Node - Capacity(Size TB)",
         "transformations": [],
         "transparent": true,
         "type": "bargauge"
@@ -1413,14 +1583,26 @@
                   "value": 100000
                 }
               ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "JonnyBoy  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 300000
+                }
+              ]
             }
           ]
         },
         "gridPos": {
-          "h": 10,
+          "h": 11,
           "w": 24,
           "x": 0,
-          "y": 57
+          "y": 66
         },
         "id": 268,
         "options": {
@@ -1564,9 +1746,45 @@
             "queryParams": "",
             "refId": "Sieemma",
             "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "HFwKqJ34k"
+            },
+            "fields": [
+              {
+                "jsonPath": "objectNumber",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "Tomato",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "T5jRlPqVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "objectNumber",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "JonnyBoy",
+            "urlPath": "/storage/api/v1/state/data"
           }
         ],
-        "title": "Storage Status - Number of Objects",
+        "title": "Storage Status - Node - Number of Objects",
         "transparent": true,
         "type": "bargauge"
       },
@@ -1605,7 +1823,7 @@
           "h": 12,
           "w": 24,
           "x": 0,
-          "y": 67
+          "y": 77
         },
         "id": 274,
         "options": {
@@ -1768,6 +1986,44 @@
             "queryParams": "",
             "refId": "0x2bc",
             "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "HFwKqJ34k"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.blocksProcessed",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "Tomato",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "T5jRlPqVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.blocksProcessed",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "JonnyBoy",
+            "urlPath": "/storage/api/v1/status"
           }
         ],
         "title": "Storage Status - QN Block Processed",
@@ -1784,7 +2040,7 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 79
+          "y": 89
         },
         "id": 263,
         "panels": [],
@@ -1865,7 +2121,7 @@
           "h": 7,
           "w": 12,
           "x": 0,
-          "y": 80
+          "y": 90
         },
         "id": 77,
         "links": [],
@@ -1982,6 +2238,30 @@
             "legendFormat": "Busy System-siemma",
             "range": true,
             "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "MXAw1-q4z"
+            },
+            "editorMode": "code",
+            "expr": "sum by (instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))",
+            "hide": false,
+            "legendFormat": "Busy System-tomato",
+            "range": true,
+            "refId": "H"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "tUFkqqq4k"
+            },
+            "editorMode": "code",
+            "expr": "sum by (instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))",
+            "hide": false,
+            "legendFormat": "Busy System-jonnyboy",
+            "range": true,
+            "refId": "I"
           }
         ],
         "title": "CPU Basic",
@@ -2421,7 +2701,7 @@
           "h": 7,
           "w": 12,
           "x": 12,
-          "y": 80
+          "y": 90
         },
         "id": 78,
         "links": [],
@@ -2544,602 +2824,40 @@
             "range": true,
             "refId": "C",
             "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "MXAw1-q4z"
+            },
+            "editorMode": "code",
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemFree_bytes - (node_memory_Cached_bytes + node_memory_Buffers_bytes + node_memory_SReclaimable_bytes)",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "RAM Used - tomato",
+            "range": true,
+            "refId": "H",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "tUFkqqq4k"
+            },
+            "editorMode": "code",
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemFree_bytes - (node_memory_Cached_bytes + node_memory_Buffers_bytes + node_memory_SReclaimable_bytes)",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "RAM Used - jonnyboy",
+            "range": true,
+            "refId": "I",
+            "step": 240
           }
         ],
         "title": "Memory Basic",
         "transparent": true,
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "datasource",
-          "uid": "-- Mixed --"
-        },
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "bytes",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 20,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "never",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "links": [],
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "bytes"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 17,
-          "w": 12,
-          "x": 0,
-          "y": 87
-        },
-        "id": 43,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [
-              "mean",
-              "lastNotNull",
-              "max",
-              "min"
-            ],
-            "displayMode": "table",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "mode": "multi",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "9.2.0",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "65eMF5AVz"
-            },
-            "editorMode": "code",
-            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - 0x2bc",
-            "metric": "",
-            "range": true,
-            "refId": "A",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "i2FRFcAVk"
-            },
-            "editorMode": "code",
-            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - bewarelabs",
-            "metric": "",
-            "range": true,
-            "refId": "B",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "ova4UXQVk"
-            },
-            "editorMode": "code",
-            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - freakstatic",
-            "metric": "",
-            "range": true,
-            "refId": "D",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "0xCRUXQ4k"
-            },
-            "editorMode": "code",
-            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - kalpakci",
-            "metric": "",
-            "range": true,
-            "refId": "E",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "1230"
-            },
-            "editorMode": "code",
-            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - YYAGI",
-            "metric": "",
-            "range": true,
-            "refId": "F",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "UhTu3pl4z"
-            },
-            "editorMode": "code",
-            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - iTor",
-            "metric": "",
-            "range": true,
-            "refId": "G",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "p51PjKq4k"
-            },
-            "editorMode": "code",
-            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - siemma",
-            "metric": "",
-            "range": true,
-            "refId": "C",
-            "step": 240
-          }
-        ],
-        "title": "Filesystem space available",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "datasource",
-          "uid": "-- Mixed --"
-        },
-        "description": "Disk space used of all filesystems mounted",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 40,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "never",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "links": [],
-            "mappings": [],
-            "max": 100,
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "percent"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 17,
-          "w": 12,
-          "x": 12,
-          "y": 87
-        },
-        "id": 152,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "mode": "multi",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "9.2.0",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "65eMF5AVz"
-            },
-            "editorMode": "code",
-            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
-            "format": "time_series",
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - 0x2bc",
-            "range": true,
-            "refId": "A",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "i2FRFcAVk"
-            },
-            "editorMode": "code",
-            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - bewarelabs",
-            "range": true,
-            "refId": "B",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "ova4UXQVk"
-            },
-            "editorMode": "code",
-            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - freakstatic",
-            "range": true,
-            "refId": "D",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "0xCRUXQ4k"
-            },
-            "editorMode": "code",
-            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - kalpakci",
-            "range": true,
-            "refId": "E",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "1230"
-            },
-            "editorMode": "code",
-            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - YYAGI",
-            "range": true,
-            "refId": "F",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "UhTu3pl4z"
-            },
-            "editorMode": "code",
-            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - iTor",
-            "range": true,
-            "refId": "G",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "p51PjKq4k"
-            },
-            "editorMode": "code",
-            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - siemma",
-            "range": true,
-            "refId": "C",
-            "step": 240
-          }
-        ],
-        "title": "Disk Space Used Basic",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "datasource",
-          "uid": "-- Mixed --"
-        },
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "bytes",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 40,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "never",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "links": [],
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "bytes"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 15,
-          "w": 12,
-          "x": 0,
-          "y": 104
-        },
-        "id": 156,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [
-              "mean",
-              "lastNotNull",
-              "max",
-              "min"
-            ],
-            "displayMode": "table",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "mode": "multi",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "9.2.0",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "65eMF5AVz"
-            },
-            "editorMode": "code",
-            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
-            "format": "time_series",
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - 0x2bc",
-            "range": true,
-            "refId": "A",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "i2FRFcAVk"
-            },
-            "editorMode": "code",
-            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - bewarelabs",
-            "range": true,
-            "refId": "B",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "ova4UXQVk"
-            },
-            "editorMode": "code",
-            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - freakstatic",
-            "range": true,
-            "refId": "E",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "UhTu3pl4z"
-            },
-            "editorMode": "code",
-            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - iTor",
-            "range": true,
-            "refId": "D",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "0xCRUXQ4k"
-            },
-            "editorMode": "code",
-            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - kalpakci",
-            "range": true,
-            "refId": "F",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "1230"
-            },
-            "editorMode": "code",
-            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - YYAGI",
-            "range": true,
-            "refId": "G",
-            "step": 240
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "p51PjKq4k"
-            },
-            "editorMode": "code",
-            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
-            "format": "time_series",
-            "hide": false,
-            "intervalFactor": 1,
-            "legendFormat": "{{mountpoint}} - siemma",
-            "range": true,
-            "refId": "C",
-            "step": 240
-          }
-        ],
-        "title": "Disk Space Used",
         "type": "timeseries"
       },
       {
@@ -3200,38 +2918,13 @@
             },
             "unit": "bps"
           },
-          "overrides": [
-            {
-              "__systemRef": "hideSeriesFrom",
-              "matcher": {
-                "id": "byNames",
-                "options": {
-                  "mode": "exclude",
-                  "names": [
-                    "trans eth0-  siemma"
-                  ],
-                  "prefix": "All except:",
-                  "readOnly": true
-                }
-              },
-              "properties": [
-                {
-                  "id": "custom.hideFrom",
-                  "value": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": true
-                  }
-                }
-              ]
-            }
-          ]
+          "overrides": []
         },
         "gridPos": {
           "h": 15,
           "w": 12,
-          "x": 12,
-          "y": 104
+          "x": 0,
+          "y": 97
         },
         "id": 74,
         "links": [],
@@ -3456,9 +3149,753 @@
             "range": true,
             "refId": "F",
             "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "MXAw1-q4z"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_transmit_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "trans {{device}}-  tmato",
+            "range": true,
+            "refId": "O",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "tUFkqqq4k"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_transmit_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "trans {{device}}-  jonnyboy",
+            "range": true,
+            "refId": "Q",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "MXAw1-q4z"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_receive_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "recv {{device}} - tomato",
+            "range": true,
+            "refId": "R",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "tUFkqqq4k"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_receive_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "recv {{device}} - jonnyboy",
+            "range": true,
+            "refId": "S",
+            "step": 240
           }
         ],
         "title": "Network Traffic Basic",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "description": "Disk space used of all filesystems mounted",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 40,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "links": [],
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 15,
+          "w": 12,
+          "x": 12,
+          "y": 97
+        },
+        "id": 152,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.2.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "65eMF5AVz"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - 0x2bc",
+            "range": true,
+            "refId": "A",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "i2FRFcAVk"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - bewarelabs",
+            "range": true,
+            "refId": "B",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ova4UXQVk"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - freakstatic",
+            "range": true,
+            "refId": "D",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "0xCRUXQ4k"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - kalpakci",
+            "range": true,
+            "refId": "E",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "1230"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - YYAGI",
+            "range": true,
+            "refId": "F",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - iTor",
+            "range": true,
+            "refId": "G",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "p51PjKq4k"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - siemma",
+            "range": true,
+            "refId": "C",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "MXAw1-q4z"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - tomato",
+            "range": true,
+            "refId": "H",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "tUFkqqq4k"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - jonnyboy",
+            "range": true,
+            "refId": "I",
+            "step": 240
+          }
+        ],
+        "title": "Disk Space Used Basic",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "bytes",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 40,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "links": [],
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 29,
+          "w": 12,
+          "x": 0,
+          "y": 112
+        },
+        "id": 156,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [
+              "mean",
+              "lastNotNull",
+              "max",
+              "min"
+            ],
+            "displayMode": "table",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.2.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "65eMF5AVz"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - 0x2bc",
+            "range": true,
+            "refId": "A",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "i2FRFcAVk"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - bewarelabs",
+            "range": true,
+            "refId": "B",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ova4UXQVk"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - freakstatic",
+            "range": true,
+            "refId": "E",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - iTor",
+            "range": true,
+            "refId": "D",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "0xCRUXQ4k"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - kalpakci",
+            "range": true,
+            "refId": "F",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "1230"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - YYAGI",
+            "range": true,
+            "refId": "G",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "p51PjKq4k"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - siemma",
+            "range": true,
+            "refId": "C",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "MXAw1-q4z"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - tomato",
+            "range": true,
+            "refId": "H",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "tUFkqqq4k"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - jonny",
+            "range": true,
+            "refId": "I",
+            "step": 240
+          }
+        ],
+        "title": "Disk Space Used",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "bytes",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 20,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "links": [],
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 29,
+          "w": 12,
+          "x": 12,
+          "y": 112
+        },
+        "id": 43,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [
+              "mean",
+              "lastNotNull",
+              "max",
+              "min"
+            ],
+            "displayMode": "table",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.2.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "65eMF5AVz"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - 0x2bc",
+            "metric": "",
+            "range": true,
+            "refId": "A",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "i2FRFcAVk"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - bewarelabs",
+            "metric": "",
+            "range": true,
+            "refId": "B",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ova4UXQVk"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - freakstatic",
+            "metric": "",
+            "range": true,
+            "refId": "D",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "0xCRUXQ4k"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - kalpakci",
+            "metric": "",
+            "range": true,
+            "refId": "E",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "1230"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - YYAGI",
+            "metric": "",
+            "range": true,
+            "refId": "F",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - iTor",
+            "metric": "",
+            "range": true,
+            "refId": "G",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "p51PjKq4k"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - siemma",
+            "metric": "",
+            "range": true,
+            "refId": "C",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "MXAw1-q4z"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - tomato",
+            "metric": "",
+            "range": true,
+            "refId": "H",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "tUFkqqq4k"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - jonnyboy",
+            "metric": "",
+            "range": true,
+            "refId": "I",
+            "step": 240
+          }
+        ],
+        "title": "Filesystem space available",
         "type": "timeseries"
       },
       {
@@ -3496,7 +3933,7 @@
           "h": 8,
           "w": 24,
           "x": 0,
-          "y": 119
+          "y": 141
         },
         "id": 273,
         "options": {
@@ -3623,11 +4060,14 @@
               "indexByName": {},
               "renameByName": {
                 "StorageProvider_0": "YYAGI",
+                "StorageProvider_10": "JonnyBoy",
+                "StorageProvider_11": "Tomato",
                 "StorageProvider_2": "Craci_BwareLabs",
                 "StorageProvider_4": "0x2bc",
                 "StorageProvider_6": "Kalpakci",
                 "StorageProvider_7": "Freakstatic",
-                "StorageProvider_8": "Itor"
+                "StorageProvider_8": "Itor",
+                "StorageProvider_9": "Sieemma"
               }
             }
           }
@@ -3754,7 +4194,7 @@
           "h": 8,
           "w": 24,
           "x": 0,
-          "y": 127
+          "y": 149
         },
         "id": 271,
         "options": {
@@ -3943,7 +4383,7 @@
         "type": "table"
       }
     ],
-    "refresh": false,
+    "refresh": "",
     "schemaVersion": 37,
     "style": "dark",
     "tags": [],
@@ -4130,7 +4570,7 @@
     "timezone": "browser",
     "title": "Storage Work Group Dashboard",
     "uid": "gukTpcA4z",
-    "version": 143,
+    "version": 182,
     "weekStart": ""
   }
 }
