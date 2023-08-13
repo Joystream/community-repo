@@ -57,15 +57,7 @@ Consideration:
 - NAS 
 
 
-### Horizontally  
 
-Scaling Horizontally by adding more servers, with two options:
-
-1- More worker assign to th existing team members.\
-2- More new worker.
-
-
-![image](https://user-images.githubusercontent.com/4862448/214621362-638d192b-9ee8-4ab4-a91a-d3db2280906e.png)
 
 
 # Calculation  of required workers
@@ -120,7 +112,12 @@ Below are three models with a server capacity of 10,100 and 500TB
  Consilderation:
 - Increase replication                                                             
 - change the compensation mode to be: base%+server%+Used storage%+ Unused storage%
-  
+
+# Dashboards
+
+https://dapplooker.com/dashboard/joystream-mainnet-dashboard-328
+https://grafana.joystream.yyagi.cloud/d/gukTpcA4z/storage-work-group-dashboard?orgId=1
+
 # Need research 
 
 - [proposals](https://github.com/yasiryagi/community-repo/tree/master/working-groups/storage-group/leader/Proposals) 
