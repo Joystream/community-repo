@@ -2,7 +2,7 @@
 
 
 
-## Scaling cosiderations
+## Scaling Consideration
 
 ### Replication
 
