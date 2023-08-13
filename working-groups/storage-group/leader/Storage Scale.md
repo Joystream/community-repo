@@ -22,7 +22,7 @@ All the calculation on this page assume a replication of 4.
 |-----------------------|----|
 
 
-### Capacity planning
+### Required Capacity
 
 
 Below the required storage capacity per year as demand for video upload increase. The numbers below driven form parameters above.
@@ -33,7 +33,7 @@ Below the required storage capacity per year as demand for video upload increase
 | Total Storage TB       | 11.755044 | 58.77522 | 293.8761 | 587.7522 | 1175.5044 | 3526.5132 | 9404.0352 | 14106.0528 | 25861.0968 | 62301.7332 | 587752.2   |
 
 
-###  Consideration:
+###  Disk
 
 - Disk read/write &  IOP ((input/output operations): 100-160 MB/s for HDD
 
@@ -43,15 +43,15 @@ Below the required storage capacity per year as demand for video upload increase
 | SSD  | 300-500    | 100000 | 250-80000   | 1.5M hrs           | 0.05-0.4           |
 | NVME | 3500       | 500000 | 250-4000    | 1.5M hrs           | 0.05-0.5           |
 
-- Bandwidth: IG & 10G
-- Cost
+
+#### Cost
 
 | Capacity                     | 10TB | 50TB  | 100TB | 
 |------------------------------|------|-------|-------|
 | Estimated monthly cost (USD) | 150  | 250   | 500   | 
 
-
-##### Advanced techniques
+#### Bandwidth: IG & 10G
+#### Advanced techniques
 - SAN
 - NAS 
 
