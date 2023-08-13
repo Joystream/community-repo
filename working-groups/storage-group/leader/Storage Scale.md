@@ -86,9 +86,9 @@ Below are three models with a server capacity of 10,100 and 500TB
 
 
 ## Current
-Workers: 10
-Buckets: 10
-Total Capacity: 245.7TB
+- Workers: 10
+- Buckets: 10
+- Total Capacity: 245.7TB
 
 ## Scaling plan
 
