@@ -2,6 +2,7 @@
 
 
 
+## Scaling cosiderations
 
 ### Replication
 
@@ -55,19 +56,16 @@ Below the required storage capacity per year as demand for video upload increase
 - NAS 
 
 
+### Calculation  of required workers
 
-
-
-## Calculation  of required workers
-
-### Formulas
+#### Formulas
 >```Formula: Worker Disk size GB=	 (((uploaded hrs per mins* 60(hr) * 24 (day) * 365 (year))*3600) * (%4k * Bitrate-4k + %1080 * Bitrate1080 + %720 * Bitrate720 + %480 * Bitrate48  ))  / (8 (Bytes) *1000)```
 
 >```Formula: Workers= MAX(ROUNDUP(Total Storage GB / Worker Disk size GB)* Replication, Replication)```
 
 Below are three models with a server capacity of 10,100 and 500TB
 
-### Server - 10T
+#### Server - 10T
 
 
 | Hours uploaded per min | 0.01      | 0.05     | 0.25     | 0.5      | 1         | 3         | 8         | 12         | 22         | 53         | 500        |
@@ -77,7 +75,7 @@ Below are three models with a server capacity of 10,100 and 500TB
 | Worker Disk size TB    | 10        | 10       | 10       | 10       | 10        | 10        | 10        | 10         | 10         | 10         | 10         |
 | Workers                | 8         | 24       | 120      | 236      | 472       | 1412      | 3764      | 5644       | 10348      | 24924      | 235104     |
 
-### Server - 100T
+#### Server - 100T
 
 
 | Hours uploaded per min | 0.01      | 0.05     | 0.25     | 0.5      | 1         | 3         | 8         | 12         | 22         | 53         | 500      |
@@ -88,7 +86,7 @@ Below are three models with a server capacity of 10,100 and 500TB
 
 
 
-# Scaling plan
+## Scaling plan
 
 | Stage   | Started        | Node Size    | Max Number of Node | Max Number of operators | Available Storage in TB | Weekly System evaluation criteria to add a node | Weekly Per worker evaluation criteria to add a node                                                      | Comments |
 | ------- | -------------- | ------------ | ------------------ | ----------------------- | ----------------------- | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------- |
@@ -113,15 +111,15 @@ Below are three models with a server capacity of 10,100 and 500TB
 
 ## Dashboards
 
-https://dapplooker.com/dashboard/joystream-mainnet-dashboard-328
-https://grafana.joystream.yyagi.cloud/d/gukTpcA4z/storage-work-group-dashboard?orgId=1
-
+- [Joystream Dashboard](https://dapplooker.com/dashboard/joystream-mainnet-dashboard-328) 
+- [Storage Group Dashboard](https://grafana.joystream.yyagi.cloud/d/gukTpcA4z/storage-work-group-dashboard?orgId=1)
+  
 ## Need research 
 
 - [proposals](https://github.com/yasiryagi/community-repo/tree/master/working-groups/storage-group/leader/Proposals) 
 
 
-# Refs
+## Refs
 
 - [what-content-dominates-youtube](https://pex.com/blog/what-content-dominates-youtube/)
 - [statista](https://www.statista.com/topics/2019/youtube/#topicHeader__wrapper)
