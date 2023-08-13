@@ -3,12 +3,12 @@
 
 
 
-# Replication
+## Replication
 
 Joystream implement a replication policy for data loss prevention. All videos uploaded are replicated to number of server per the configured replication.\
 All the calculation on this page assume a replication of 4.
 
-# Video data rates and Average video length
+## Video data rates and Average video length
 
 | RESOLUTION  | BITRATE MBPS | % of Videos | RECORDING DURATION PER GB |
 |-------------|--------------|-------------|---------------------------|
@@ -21,7 +21,7 @@ All the calculation on this page assume a replication of 4.
 |-----------------------|----|
 
 
-## Capacity 
+## Capacity planning
 
 
 Below the required storage capacity per year as demand for video upload increase. The numbers below driven form parameters above.
@@ -35,7 +35,7 @@ Below the required storage capacity per year as demand for video upload increase
 ## Scaling 
 
 
-Consideration:
+### Consideration:
 - Disk read/write &  IOP ((input/output operations): 100-160 MB/s for HDD
 
 |      | Read/Write | IPOS   | Capacity GB | Reliability (MTBF) | Price per GB (USD) |
@@ -90,7 +90,7 @@ Below are three models with a server capacity of 10,100 and 500TB
 
 
 
-# Proposed scaling plan
+# Scaling plan
 
 | Stage   | Started        | Node Size    | Max Number of Node | Max Number of operators | Available Storage in TB | Weekly System evaluation criteria to add a node | Weekly Per worker evaluation criteria to add a node                                                      | Comments |
 | ------- | -------------- | ------------ | ------------------ | ----------------------- | ----------------------- | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------- |
@@ -103,22 +103,22 @@ Below are three models with a server capacity of 10,100 and 500TB
 |         |                |              |                    |                         |                         |                                                 | Add extra node or add disks at 70%                                                                       |          |
 |         |                |              |                    |                         |                         |                                                 | Replace node operator at 85%"                                                                            |          |
 
-# Improvements to achieve scaling:
+## Improvements to achieve scaling:
 - Enable pruning                                                          
 - Enable multi node per operator/bucket                                   
 - Increase onchain number of operators 
 - Consider using sharding                                   
 
- Consilderation:
+## Consilderation:
 - Increase replication                                                             
 - change the compensation mode to be: base%+server%+Used storage%+ Unused storage%
 
-# Dashboards
+## Dashboards
 
 https://dapplooker.com/dashboard/joystream-mainnet-dashboard-328
 https://grafana.joystream.yyagi.cloud/d/gukTpcA4z/storage-work-group-dashboard?orgId=1
 
-# Need research 
+## Need research 
 
 - [proposals](https://github.com/yasiryagi/community-repo/tree/master/working-groups/storage-group/leader/Proposals) 
 
