@@ -3,12 +3,12 @@
 
 
 
-## Replication
+### Replication
 
 Joystream implement a replication policy for data loss prevention. All videos uploaded are replicated to number of server per the configured replication.\
 All the calculation on this page assume a replication of 4.
 
-## Video data rates and Average video length
+### Video data rates and Average video length
 
 | RESOLUTION  | BITRATE MBPS | % of Videos | RECORDING DURATION PER GB |
 |-------------|--------------|-------------|---------------------------|
@@ -21,7 +21,7 @@ All the calculation on this page assume a replication of 4.
 |-----------------------|----|
 
 
-## Capacity planning
+### Capacity planning
 
 
 Below the required storage capacity per year as demand for video upload increase. The numbers below driven form parameters above.
@@ -32,10 +32,8 @@ Below the required storage capacity per year as demand for video upload increase
 | Total Storage TB       | 11.755044 | 58.77522 | 293.8761 | 587.7522 | 1175.5044 | 3526.5132 | 9404.0352 | 14106.0528 | 25861.0968 | 62301.7332 | 587752.2   |
 
 
-## Scaling 
+###  Consideration:
 
-
-### Consideration:
 - Disk read/write &  IOP ((input/output operations): 100-160 MB/s for HDD
 
 |      | Read/Write | IPOS   | Capacity GB | Reliability (MTBF) | Price per GB (USD) |
@@ -52,7 +50,7 @@ Below the required storage capacity per year as demand for video upload increase
 | Estimated monthly cost (USD) | 150  | 250   | 500   | 
 
 
-#### Advanced techniques
+##### Advanced techniques
 - SAN
 - NAS 
 
@@ -60,16 +58,16 @@ Below the required storage capacity per year as demand for video upload increase
 
 
 
-# Calculation  of required workers
+## Calculation  of required workers
 
-## Formulas
+### Formulas
 >```Formula: Worker Disk size GB=	 (((uploaded hrs per mins* 60(hr) * 24 (day) * 365 (year))*3600) * (%4k * Bitrate-4k + %1080 * Bitrate1080 + %720 * Bitrate720 + %480 * Bitrate48  ))  / (8 (Bytes) *1000)```
 
 >```Formula: Workers= MAX(ROUNDUP(Total Storage GB / Worker Disk size GB)* Replication, Replication)```
 
 Below are three models with a server capacity of 10,100 and 500TB
 
-## Server - 10T
+### Server - 10T
 
 
 | Hours uploaded per min | 0.01      | 0.05     | 0.25     | 0.5      | 1         | 3         | 8         | 12         | 22         | 53         | 500        |
@@ -79,7 +77,7 @@ Below are three models with a server capacity of 10,100 and 500TB
 | Worker Disk size TB    | 10        | 10       | 10       | 10       | 10        | 10        | 10        | 10         | 10         | 10         | 10         |
 | Workers                | 8         | 24       | 120      | 236      | 472       | 1412      | 3764      | 5644       | 10348      | 24924      | 235104     |
 
-## Server - 100T
+### Server - 100T
 
 
 | Hours uploaded per min | 0.01      | 0.05     | 0.25     | 0.5      | 1         | 3         | 8         | 12         | 22         | 53         | 500      |
