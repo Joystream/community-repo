@@ -114,11 +114,6 @@ Below are three models with a server capacity of 10,100 and 500TB
 - [Joystream Dashboard](https://dapplooker.com/dashboard/joystream-mainnet-dashboard-328) 
 - [Storage Group Dashboard](https://grafana.joystream.yyagi.cloud/d/gukTpcA4z/storage-work-group-dashboard?orgId=1)
   
-## Need research 
-
-- [proposals](https://github.com/yasiryagi/community-repo/tree/master/working-groups/storage-group/leader/Proposals) 
-
-
 ## Refs
 
 - [what-content-dominates-youtube](https://pex.com/blog/what-content-dominates-youtube/)
