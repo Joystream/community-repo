@@ -164,12 +164,17 @@ The objective of this section is to offer assurance and pay for the basic servic
 
 | Storage   | PRICE_PER_GB |                                                                 |
 | --------- | ------------ | --------------------------------------------------------------- |
-| > 20TB    | 0.0150       | For this it should consider the storage 20TB even if it is less |
+| < 20TB    | 0.0150       | For this it should consider the storage 20TB even if it is less |
 | 20TB-30TB | 0.0075       |                                                                 |
 | 30TB-40TB | 0.0050       |                                                                 |
 | 40TB-50TB | 0.0025       |                                                                 |
 | > 50TB    | 0.0010       |                                                                 |  
 
+#### %UPPER_STORAGE_LIMIT 
+- Define the upper limit for the storage that is rewarded.
+- Dfeault SWG: 50TB
+- Dfeault DWG: 20TB
+  
 ### %BONUS
 -	Default: 0 
 -	Totally discretionary 
@@ -190,7 +195,8 @@ The objective of this section is to offer assurance and pay for the basic servic
   - %JOY_PRICE
   - %SERVER_COST_MULTIPLIER
   - %AVERAGE_COST_OF_SERVER
-  - %PRICE_PER_GB 
+  - %PRICE_PER_GB
+  - %UPPER_STORAGE_LIMIT 
 - Salary changes should be approved by two councils.
 - Salary changes take effect at the next council period after council approval. 
 
