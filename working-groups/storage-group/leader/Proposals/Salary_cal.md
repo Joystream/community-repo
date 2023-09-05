@@ -213,6 +213,7 @@ Current monthly projection as per this proposal
 - Pay a higher %BASE_SALARY (higher %SERVER_COST_MULTIPLIER)
 - Make the %REWARDS vesting
 
-Ref. 
+# Ref. 
 https://www.techradar.com/features/how-much-does-cloud-storage-cost
+
 https://builtin.com/salaries/dev-engineer/devops-engineer
