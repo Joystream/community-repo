@@ -1,4 +1,5 @@
 
+
 # Objective 
 
 This document to address the server operator's compensation. 
