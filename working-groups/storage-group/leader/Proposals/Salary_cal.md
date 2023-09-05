@@ -164,7 +164,8 @@ The objective of this section is to offer assurance and pay for the basic servic
 | --------------------- | ------- | -------------------------------------------------------------- |
 | %TOTAL_CAPACITY       |         | the storage provided in GB                                     |
 | %PRICE_PER_GB         |  0.0125 | Range: $0.005 - $0.05. The price the DAO willing to pay per GB |
-| %BANDWIDTH_MULTIPLIER |  1      | 1G   -> 1 (Default)                                            |
+| %BANDWIDTH_MULTIPLIER |  1      | Upper limit to authorized by lead in the group                 |
+|                       |         | 1G   -> 1 (Default)                                            |
 |                       |         | 10G -> 1.25                                                    |
 |                       |         | 40G -> 1.5                                                     |
 
