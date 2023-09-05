@@ -212,8 +212,8 @@ The objective of this section is to offer assurance and pay for the basic servic
 ## Summary
 
 Current monthly projection as per this proposal
-- SWG: ($495- $637.5  ) - (33000 - 42500) Joy
-- DWG: ($450  -    ?  ) - (30000 - ) Joy
+- SWG: ($495 - $637.5  ) - (33000 - 42500) Joy
+- DWG: ($450 - ?       ) - (30000 - ?    ) Joy
 
 ## Option:
 - Pay a higher %BASE_SALARY (higher %SERVER_COST_MULTIPLIER)
