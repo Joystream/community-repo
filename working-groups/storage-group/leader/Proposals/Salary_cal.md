@@ -110,11 +110,19 @@ The below formula was used initially to come with SWG salary.
 
 # Proposal 
 
-This proposal focus's on deliverables
+## This proposal focus's on deliverables
 - Services availability
 - Storage capacity
 - Bandwidth capacity
 - Providing performance metrics.
+
+## The proposal made to encourage:
+- Node operator to optimize server cost
+- Storage provider to provide the max storage rewardable
+- Distribution provider to provide higher bandwidth
+- Maximum uptime
+- Operator availability
+
 
 This proposal assumes the cost of the skills and time is encompassed in the deliverable cost. 
 
