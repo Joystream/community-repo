@@ -208,7 +208,8 @@ The objective of this section is to offer assurance and pay for the basic servic
   - %BANDWIDTH_MULTIPLIER
   - %UPPER_STORAGE_LIMIT 
 - Salary changes should be approved by two councils.
-- Salary changes take effect at the next council period after council approval. 
+- Salary changes take effect at the next council period after council approval.
+- All changes to the the salary must not exceed 25% of the current salary in Joy.
 
 ## Advantages 
 - Focus on deliverables and group added value to the DAO
