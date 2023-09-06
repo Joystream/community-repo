@@ -173,7 +173,7 @@ The objective of this section is to offer assurance and pay for the basic servic
 
 | Storage   | PRICE_PER_GB |                                                                 |
 | --------- | ------------ | --------------------------------------------------------------- |
-| < 20TB    | 0.0150       | For this it should consider the storage 20TB even if it is less |
+| < 20TB    | 0.0200       | For this it should consider the storage 20TB even if it is less |
 | 20TB-30TB | 0.0100       |                                                                 |
 | 30TB-40TB | 0.0050       |                                                                 |
 | 40TB-50TB | 0.0025       |                                                                 |
@@ -223,8 +223,8 @@ The objective of this section is to offer assurance and pay for the basic servic
 Current monthly projection as per this proposal
 |     | Lower band - USD | Upper band - USD | Lower band - Joy | Upper band - Joy |
 | --- | ---------------- | ---------------- | ---------------- | ---------------- |
-| SWG | $497             | $662.5           | 33166            | 44166            |
-| DWG | $450             | ??               | 30000            | ??               |
+| SWG | $597             | $726             | 39833            | 50833            |
+| DWG | $550             | ??               | 36666            | ??               |
 
 ## Option:
 - Pay a higher %BASE_SALARY (higher %SERVER_COST_MULTIPLIER)
