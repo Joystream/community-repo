@@ -205,6 +205,7 @@ The objective of this section is to offer assurance and pay for the basic servic
   - %SERVER_COST_MULTIPLIER
   - %AVERAGE_COST_OF_SERVER
   - %PRICE_PER_GB
+  - %BANDWIDTH_MULTIPLIER
   - %UPPER_STORAGE_LIMIT 
 - Salary changes should be approved by two councils.
 - Salary changes take effect at the next council period after council approval. 
