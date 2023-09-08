@@ -34,6 +34,7 @@ This document to address the server operator's compensation.
 ## Rewards approaches
 - Skill and time
   - DAO have to compensate for both active and standby time.
+  - DAO have to compensate for server cost risk free. 
 - Deliverable
 
 
