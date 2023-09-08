@@ -220,6 +220,7 @@ The objective of this section is to offer assurance and pay for the basic servic
 
 ## Disadvantages 
 - Different compensation scheme to the rest of the DAO (Rest of the DAO worker are compensated passed of skills and time)
+- Long term need accurate collection of the data.
 
 ## Summary
 
