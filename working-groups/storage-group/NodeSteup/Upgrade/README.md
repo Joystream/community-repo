@@ -23,7 +23,8 @@ $ systemctl stop storage-node.service
 
 ## Stop the query node (Only if the QN upgrade is part of the upgrade)
 ```
-$ ./query-node/kill.sh
+$ docker stop indexer processor graphql-server
+$ docker rm indexer processor graphql-server
 ```
 ## Get the lastest and greatest repo
 ```
