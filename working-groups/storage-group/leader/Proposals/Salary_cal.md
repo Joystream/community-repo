@@ -193,12 +193,14 @@ The objective of this section is to offer assurance and pay for the basic servic
 
 -	Default: 1 
 
-| Variable                                 | Default | Detail                         |
-| ---------------------------------------- | ------- | ------------------------------ |
-| Server up time                           | 1       | Set Penalty to %SERVERS_UPTIME |
-| Respond to emergency within 24hrs        | 1       | Set Penalty to 0.5             |
-| Respond to routine upgrade within 72hrs  | 1       | Set Penalty to 0.75            |
-| Upgrade capacity within 30 days          | 1       | Set Penalty to 0               |
+| Variable                                                                         | Default | Detail                         |
+| -------------------------------------------------------------------------------- | ------- | ------------------------------ |
+| Server up time                                                                   | 1       | Set Penalty to %SERVERS_UPTIME |
+| Respond to emergency within 24hrs                                                | 1       | Set Penalty to 0.5             |
+| Respond to routine upgrade within 72hrs                                          | 1       | Set Penalty to 0.75            |
+| Upgrade capacity within 30 days                                                  | 1       | Set Penalty to 0               |
+| channel/video creation extrinsic failing due to bag/bucket configurations        | 1       | Set Penalty to 0.95            |
+| More than 5% content loss                                                        | 1       | Set Penalty to 0.80            |
 
 ## Process
 - The salaries are set with each OKR with the below variables reviewed
