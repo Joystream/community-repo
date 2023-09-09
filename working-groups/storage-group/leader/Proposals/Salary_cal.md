@@ -156,10 +156,11 @@ The objective of this section is to offer assurance and pay for the basic servic
 
 ### %REWARDS   
 ```
-%TOTAL_CAPACITY * %PRICE_PER_GB * %BANDWIDTH_MULTIPLIER
+sum(%TOTAL_CAPACITY * %PRICE_PER_GB * %BANDWIDTH_MULTIPLIER)
 ```
 
 -	Current projection: SWG(307-450) DWG(300-?)
+-	sum, adding for each server
 
 | Variable              | Default | Detail                                                         |
 | --------------------- | ------- | -------------------------------------------------------------- |
