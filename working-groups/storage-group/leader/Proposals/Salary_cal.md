@@ -123,6 +123,7 @@ The below formula was used initially to come with SWG salary.
 - Distribution provider to provide higher bandwidth
 - Maximum uptime
 - Operator availability
+- Make it advantageous for operator to add more servers and cheaper for the DAO.
 
 
 This proposal assumes the cost of the skills and time is encompassed in the deliverable cost. 
@@ -156,11 +157,11 @@ The objective of this section is to offer assurance and pay for the basic servic
 
 ### %REWARDS   
 ```
-sum(%TOTAL_CAPACITY * %PRICE_PER_GB * %BANDWIDTH_MULTIPLIER)
+%TOTAL_CAPACITY * %PRICE_PER_GB * %BANDWIDTH_MULTIPLIER
 ```
 
 -	Current projection: SWG(307-450) DWG(300-?)
--	sum, adding for each server
+
 
 | Variable              | Default | Detail                                                         |
 | --------------------- | ------- | -------------------------------------------------------------- |
