@@ -7,7 +7,7 @@ yarn joystream-cli working-groups:setDefaultGroup -g storageProviders
 ```
 > Set "global" storage limits to 2000 GB and 200000 files:
 ```
-yarn storage-node leader:update-voucher-limits -s 2000000000000 -o 20000 -k /root/keys/storage-role-key.json
+yarn storage-node leader:update-voucher-limits -s 2000000000000 -o 200000 -k /root/keys/storage-role-key.json
 ```
 
 > Update/set the dynamic bag policy:
