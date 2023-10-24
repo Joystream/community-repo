@@ -60,7 +60,7 @@ $ query-node/start.sh
 
 ## Start the Storage service
 ```
-$ docker-compose up --detach --build colossus-1
+$ docker-compose up --detach --force-recreate --remove-orphans  colossus-1
 
 ```
 
