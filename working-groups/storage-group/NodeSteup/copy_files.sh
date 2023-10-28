@@ -15,7 +15,7 @@ cd WORKDIR
 # install needed software
 apt install sshpass rsync -y
 
-#Create files with list of files to be transfered
+#Create 10 files with list of files to be transfered
 find $FILEDIR -maxdepth 1  -type f  > my_files.txt 
 split my_files.txt -n l/10 split_
 
