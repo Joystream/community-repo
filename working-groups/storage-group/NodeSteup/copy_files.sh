@@ -5,7 +5,7 @@
 SERVER="server.name"
 USERNAME="username"
 PASSWORD="password"
-DIR="/target/to/copy/to/directory"
+TARGET_DIR="/target/to/copy/to/directory"
 FILEDIR="/local/files/directory"
 
 # Create work Directory 
@@ -22,5 +22,5 @@ split my_files.txt -n l/10 split_
 
 #Transfer files
 for file in split_*; do sshpass -p $PASSWORD rsync -avz -e "ssh -o StrictHostKeyChecking=no" --files-from=$file / $USERNAME@$SERVER:$DIR & done; wait
-#for file in split_*; do tmux new-session -d -s $file 'sshpass -p $PASSWORD rsync -avz -e "ssh -o StrictHostKeyChecking=no" --files-from=$file / $USERNAME@$SERVER:$DIR | pv -lep ' done; wait
+#for file in split_*; do tmux new-session -d -s $file 'sshpass -p $PASSWORD rsync -avz -e "ssh -o StrictHostKeyChecking=no" --files-from=$file / $USERNAME@$SERVER:$TARGET_DIR | pv -lep -s $(wc -l $FILEDIR | cut -d " " -f1) ' done; wait
 
