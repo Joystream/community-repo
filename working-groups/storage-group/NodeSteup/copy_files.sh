@@ -21,3 +21,5 @@ split my_files.txt -n l/10 split_
 
 #Transfer files
 for file in split_*; do sshpass -p $PASSWORD rsync -avz -e "ssh -o StrictHostKeyChecking=no" --files-from=$file / $USERNAME@$SERVER:$DIR & done; wait
+#for file in split_*; do tmux new-session -d -s $file 'sshpass -p $PASSWORD rsync -avz -p -e "ssh -o StrictHostKeyChecking=no" --files-from=$file / $USERNAME@$SERVER:$DIR' done; wait
+
