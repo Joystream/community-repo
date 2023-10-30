@@ -2,6 +2,7 @@
 # Copy files in 10 concurrent transfer
 # Needed variables below
 
+NUM_PROCESSORS=10
 SERVER="server.name"
 USERNAME="username"
 PASSWORD="password"
@@ -18,7 +19,7 @@ apt install sshpass rsync -y
 
 #Create 10 files with list of files to be transfered
 find $FILEDIR -maxdepth 1  -type f  > my_files.txt 
-split my_files.txt -n l/10 split_
+split my_files.txt -n l/$NUM_PROCESSORS split_
 
 #Transfer files
 for file in split_*; do sshpass -p $PASSWORD rsync -avz -e "ssh -o StrictHostKeyChecking=no" --files-from=$file / $USERNAME@$SERVER:$DIR & done; wait
