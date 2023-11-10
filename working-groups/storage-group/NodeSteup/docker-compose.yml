@@ -9,6 +9,7 @@ services:
       - /root/.local/share/joystream-node/chain-data:/data
       - /root/.local/share/joystream-node:/root/.local/share/joystream-node
       - /root/joystream-node:/root/joystream-node
+      - ./entrypoints/storage.sh:/joystream/entrypoints/storage.sh:ro
     env_file:
       # relative to working directory where docker-compose was run from
       - .env
