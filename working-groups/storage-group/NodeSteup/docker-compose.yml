@@ -23,7 +23,7 @@ services:
 
 
   colossus-1:
-    image: node:14
+    image: joystream/storage-node:3.7.1
     container_name: colossus-1
     restart: on-failure
     volumes:
