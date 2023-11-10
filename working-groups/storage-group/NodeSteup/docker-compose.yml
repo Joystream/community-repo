@@ -39,8 +39,14 @@ services:
     env_file:
       # relative to working directory where docker-compose was run from
       - .env
+    environment:
+      # ACCOUNT_URI overrides command line arg --accountUri
+      #- ACCOUNT_URI=${COLOSSUS_1_TRANSACTOR_URI}
+      #- OTEL_EXPORTER_OTLP_ENDPOINT=${TELEMETRY_ENDPOINT}
+      - OTEL_RESOURCE_ATTRIBUTES=service.name=colossus-1,deployment.environment=production
+    entrypoint: ['/joystream/entrypoints/storage.sh']
     command: [
-      'yarn', 'storage-node', 'server', '--worker=${COLOSSUS_1_WORKER_ID}', '--port=3333', '--uploads=/data',
+      'server', '--worker=${COLOSSUS_1_WORKER_ID}', '--port=3333', '--uploads=/data',
       '--sync', '--syncInterval=1',
       '--queryNodeEndpoint=${COLOSSUS_QUERY_NODE_URL}',
       '--apiUrl=${JOYSTREAM_NODE_WS}',
@@ -52,6 +58,7 @@ services:
       '--elasticSearchUser=${JOYSTREAM_ES_USERNAME}',
       '--logFilePath=/logs'
     ]
+
 
   distributor-1:
     image: node:14
