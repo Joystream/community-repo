@@ -1,6 +1,7 @@
 # Joystream-node
 wss://<your.cool.url>/rpc {
-        reverse_proxy localhost:9944
+        #reverse_proxy localhost:9944
+        reverse_proxy joystream-node:9944
 }
 
 # Prometheus
@@ -23,20 +24,25 @@ https://<your.cool.url> {
         }
         route /server/* {
                 uri strip_prefix /server
-                reverse_proxy localhost:8081
+                reverse_proxy graphql-server:8081
+                #reverse_proxy localhost:8081
         }
         route /graphql {
-                reverse_proxy localhost:8081
+                reverse_proxy graphql-server:8081
+                #reverse_proxy localhost:8081
         }
         route /graphql/* {
-                reverse_proxy localhost:8081
+                reverse_proxy graphql-server:8081
+                #reverse_proxy localhost:8081
         }
         route /gateway/* {
                 uri strip_prefix /gateway
-                reverse_proxy localhost:4000
+                reverse_proxy graphql-server:4000
+                #reverse_proxy localhost:8081
         }
         route /@apollographql/* {
-                reverse_proxy localhost:8081
+                reverse_proxy graphql-server:8081
+                #reverse_proxy localhost:8081
         }
 }
 # Storage Node
@@ -46,7 +52,8 @@ https://<your.cool.url>/storage/* {
         }
         route /storage/* {
                 uri strip_prefix /storage
-                reverse_proxy localhost:3333
+                reverse_proxy colossus-1:3333
+                #reverse_proxy localhost:3333
         }
         header /storage/api/v1/ {
                 Access-Control-Allow-Methods "GET, PUT, HEAD, OPTIONS"
