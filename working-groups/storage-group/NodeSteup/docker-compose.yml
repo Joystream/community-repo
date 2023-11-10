@@ -30,9 +30,6 @@ services:
       - /data/joystream-storage:/data
       - /root/keys:/keystore
       - /data/joystream-storage/log:/logs
-      - type: bind
-        source: .
-        target: /joystream
     working_dir: /joystream/storage-node
     ports:
       - 3333:3333
