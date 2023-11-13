@@ -228,7 +228,7 @@ Edit service colossus-1
       - type: bind
         source: .
         target: /joystream
-    working_dir: /joystream/storage-node
+    working_dir: /root/joystream/storage-node
     ports:
       - 3333:3333
     env_file:
