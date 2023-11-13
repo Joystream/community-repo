@@ -4,6 +4,7 @@ NUM_PROCESSORS=1000
 PASSWORD="password"
 KEYFILE="/target/to/copy/to/directory/keyfile"
 FILEDIR="/target/to/copy/to/directory"
+JOYSTREAMDIR='/root/joystream'
 SRC_BUCKET_ID="2"
 DES_BUCKET_ID="18"
 GRAPHQL="https://joystream.yyagi.cloud/graphql"
@@ -14,6 +15,7 @@ curl --header "Content-Type: application/json"  --request POST   --data "$QUERY"
 
 split $FILEDIR/bags_bucket${SRC_BUCKET_ID}.txt -n l/$NUM_PROCESSORS $FILEDIR/split_bucket${SRC_BUCKET_ID}_
 
+cd $JOYSTREAMDIR
 yarn storage-node leader:update-bucket-status -i $DES_BUCKET_ID -s on -k $KEYFILE -p $PASSWORD
 
 for file in $FILEDIR/split_bucket2_*
