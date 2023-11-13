@@ -18,7 +18,7 @@ split $FILEDIR/bags_bucket${SRC_BUCKET_ID}.txt -n l/$NUM_PROCESSORS $FILEDIR/spl
 cd $JOYSTREAMDIR
 yarn storage-node leader:update-bucket-status -i $DES_BUCKET_ID -s on -k $KEYFILE -p $PASSWORD
 
-for file in $FILEDIR/split_bucket2_*
+for file in $FILEDIR/split_bucket${SRC_BUCKET_ID}_*
 do
   patch=""
   for ch in $(cat $file)
