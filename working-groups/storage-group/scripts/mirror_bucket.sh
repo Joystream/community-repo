@@ -18,6 +18,7 @@ curl --header "Content-Type: application/json"  --request POST   --data "$DES_QU
 diff $FILEDIR/bags_bucket${SRC_BUCKET_ID}.txt $FILEDIR/bags_bucket${DES_BUCKET_ID}.txt  | grep "<" | cut -d " " -f 2 > $FILEDIR/bags_bucket${SRC_BUCKET_ID}_diff_${DES_BUCKET_ID}.txt
 #cat bags_bucket${SRC_BUCKET_ID}_diff_${DES_BUCKET_ID}.txt
 
+rm $FILEDIR/split_bucket${SRC_BUCKET_ID}_*
 split bags_bucket${SRC_BUCKET_ID}_diff_${DES_BUCKET_ID}.txt -n l/$NUM_PROCESSORS $FILEDIR/split_bucket${SRC_BUCKET_ID}_
 
 cd $JOYSTREAMDIR
