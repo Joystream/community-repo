@@ -18,6 +18,7 @@ cd $WORKDIR
 apt install sshpass rsync -y
 #apt install sshpass rsync pv tmux -y
 
+rm split_
 #Create 10 files with list of files to be transfered
 find $FILEDIR -maxdepth 1  -type f  > files_list.txt 
 split files_list.txt -n l/$NUM_PROCESSORS split_
@@ -26,3 +27,4 @@ split files_list.txt -n l/$NUM_PROCESSORS split_
 for file in split_*; do sshpass -p $PASSWORD rsync -avz -e "ssh -o StrictHostKeyChecking=no" --files-from=$file / $USERNAME@$SERVER:$DIR & done; wait
 #for file in split_*; do tmux new-session -d -s $file 'sshpass -p $PASSWORD rsync -avz -e "ssh -o StrictHostKeyChecking=no" --files-from=$file / $USERNAME@$SERVER:$TARGET_DIR | pv -lep -s $(wc -l $FILEDIR | cut -d " " -f1) ' done; wait
 
+rm split_
