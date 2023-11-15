@@ -34,3 +34,4 @@ do
   yarn storage-node leader:update-bags -i $patch -a $DES_BUCKET_ID -k $KEYFILE -p $PASSWORD
 done
 
+rm $FILEDIR/split_bucket${SRC_BUCKET_ID}_*
