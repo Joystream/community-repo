@@ -11,7 +11,7 @@ FILEDIR="/local/files/directory"
 WORKDIR="WORKDIR"
 
 # Create work Directory 
-mkdir $WORKDIR
+mkdir -p $WORKDIR
 cd $WORKDIR
 
 # install needed software
