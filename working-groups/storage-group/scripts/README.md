@@ -9,7 +9,7 @@ Operation scripts
 ``` 
 git clone https://github.com/joyutils/swg-compare-files
 cd swg-compare-files
-node index.js localFiles /data/joystream-storage/
-node index.js bucketObjects 4
+node index.js localFiles < storage folder i.e. /data/joystream-storage/>
+node index.js bucketObjects <bucket ID>
 node index.js diff
 ```
