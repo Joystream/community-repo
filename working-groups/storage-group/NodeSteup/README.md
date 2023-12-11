@@ -198,7 +198,6 @@ $ yarn run storage-node operator:set-metadata -i <bucketId> -w <workerId> -j /pa
 Edit .env
 
 ``` 
-# Assuming hired lead has worker id 0
 COLOSSUS_1_WORKER_ID=<your.worker.ID>
 
 #Add the password variable
