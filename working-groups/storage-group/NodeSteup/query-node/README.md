@@ -29,8 +29,18 @@ $ ./build-packages.sh
 ```
 The last command will take a while...
 
+Make sure the images as below
 
-
+```
+  hydra-indexer-gateway:
+    image: joystream/hydra-indexer-gateway:5.0.0-alpha.1
+  indexer:
+    image: joystream/hydra-indexer:v5.0.0-alpha.1
+  processor:
+    image: joystream/query-node:1.6.0
+  graphql-server:
+    image: joystream/query-node:1.6.0 
+```
 
 ### Deploy
 
