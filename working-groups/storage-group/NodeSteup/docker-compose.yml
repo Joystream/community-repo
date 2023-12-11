@@ -24,7 +24,7 @@ services:
 
 
   colossus-1:
-    image: joystream/storage-node:3.7.1
+    image: joystream/storage-node:3.9.0
     container_name: colossus-1
     restart: on-failure
     volumes:
@@ -51,7 +51,6 @@ services:
       '--keyFile=/keystore/storage-role-key.json',
       '--password=${SUPER_PASSWORD}',
       '--elasticSearchEndpoint=${JOYSTREAM_ES_URL}',
-      '--elasticSearchIndex=${JOYSTREAM_ES_INDEX}',
       '--elasticSearchPassword=${JOYSTREAM_ES_PASSWORD}',
       '--elasticSearchUser=${JOYSTREAM_ES_USERNAME}',
       '--logFilePath=/logs'
