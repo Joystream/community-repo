@@ -217,16 +217,14 @@ Edit service colossus-1
 
 ```
   colossus-1:
-    image: node:14
+    image: joystream/storage-node:3.7.1
     container_name: colossus-1
     restart: on-failure
     volumes:
       - /data/joystream-storage:/data
       - /root/keys:/keystore
       - /data/joystream-storage/log:/logs
-      - type: bind
-        source: .
-        target: /joystream
+      - ./entrypoints/storage.sh:/joystream/entrypoints/storage.sh:ro
     working_dir: /root/joystream/storage-node
     ports:
       - 3333:3333
@@ -234,18 +232,18 @@ Edit service colossus-1
       # relative to working directory where docker-compose was run from
       - .env
     command: [
-      'yarn', 'storage-node', 'server', '--worker=${COLOSSUS_1_WORKER_ID}', '--port=3333', '--uploads=/data',
+      'server', '--worker=${COLOSSUS_1_WORKER_ID}', '--port=3333', '--uploads=/data',
       '--sync', '--syncInterval=1',
       '--queryNodeEndpoint=${COLOSSUS_QUERY_NODE_URL}',
       '--apiUrl=${JOYSTREAM_NODE_WS}',
       '--keyFile=/keystore/storage-role-key.json',
       '--password=${SUPER_PASSWORD}',
       '--elasticSearchEndpoint=${JOYSTREAM_ES_URL}',
-      '--elasticSearchIndex=${JOYSTREAM_ES_INDEX}',
       '--elasticSearchPassword=${JOYSTREAM_ES_PASSWORD}',
       '--elasticSearchUser=${JOYSTREAM_ES_USERNAME}',
       '--logFilePath=/logs'
     ]
+
 
 ```
 
