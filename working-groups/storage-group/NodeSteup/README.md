@@ -217,7 +217,7 @@ Edit service colossus-1
 
 ```
   colossus-1:
-    image: joystream/storage-node:3.7.1
+    image: joystream/storage-node:3.9.0
     container_name: colossus-1
     restart: on-failure
     volumes:
