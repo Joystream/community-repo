@@ -203,9 +203,8 @@ COLOSSUS_1_WORKER_ID=<your.worker.ID>
 
 #Add the password variable
 SUPER_PASSWORD=<My.cool.password>
-JOYSTREAM_ES_URL=https://joystream.koalva.io/operator-elastic
+JOYSTREAM_ES_URL=https://elastic.joyutils.org/
 JOYSTREAM_ES_USERNAME=storage-xxx
-JOYSTREAM_ES_INDEX=storage-node-xxx
 JOYSTREAM_ES_PASSWORD=xxxxxxxxx
 ``` 
 
