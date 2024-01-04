@@ -289,6 +289,8 @@ ExecStart=/root/.volta/bin/yarn storage-node server \
 	-p <Passowrd> \
         -k /root/keys/storage-role-key.json \
 	-e https://<elasticsearch.your.cool.url> \
+        --elasticSearchPassword=<elasticSearchPassword> \    
+        --elasticSearchUser=<elasticSearchUser> \
         -s
 Restart=on-failure
 StartLimitInterval=600
