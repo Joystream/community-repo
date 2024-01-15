@@ -40,7 +40,7 @@
   pvdisplay
   lvs
   
-  reload
+  reboot
 ```
   
 ##  Extend a volume group  
