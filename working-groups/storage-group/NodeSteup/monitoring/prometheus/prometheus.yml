@@ -8,8 +8,8 @@ global:
       monitor: 'docker-host-alpha'
 
 # Load and evaluate rules in this file every 'evaluation_interval' seconds.
-rule_files:
-  - "alert.rules"
+#rule_files:
+#  - "alert.rules"
 
 # A scrape configuration containing exactly one endpoint to scrape.
 scrape_configs:
@@ -39,10 +39,10 @@ scrape_configs:
     static_configs:
       - targets: ['joystream-node:9615']
 
-  - job_name: 'grafana'
-    scrape_interval: 10s
-    static_configs:
-      - targets: ['grafana:3000']
+# - job_name: 'grafana'
+#   scrape_interval: 10s
+#   static_configs:
+#     - targets: ['grafana:3000']
 
 #  - job_name: 'caddy'
 #    scrape_interval: 15s
@@ -54,12 +54,12 @@ scrape_configs:
 #    static_configs:
 #      - targets: ['nginxexporter:9113']
 
-alerting:
-  alertmanagers:
-  - scheme: http
-    static_configs:
-    - targets:
-      - 'alertmanager:9093'
+#alerting:
+#  alertmanagers:
+#  - scheme: http
+#    static_configs:
+#    - targets:
+#      - 'alertmanager:9093'
 
 
 
