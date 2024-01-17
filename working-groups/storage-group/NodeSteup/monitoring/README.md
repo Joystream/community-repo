@@ -22,8 +22,23 @@ GRAFANA_HOST=grafana.<your.cool.url>
 
 
 # Alert Manger
-
-Uncomment alert manager section in docker-compose.yml
+<details>
+  <summary>only if you want to use alert manager.</summary>
+  
+- Uncomment alert manager section in docker-compose.yml
+- In monitoring/prometheus/prometheus.yml uncomment
+```
+#rule_files:
+#  - "alert.rules"
+```
+```
+#alerting:
+#  alertmanagers:
+#  - scheme: http
+#    static_configs:
+#    - targets:
+#      - 'alertmanager:9093'
+```
 
 ## Configure Telegram
 * Go here and create a Bot: https://core.telegram.org/bots#6-botfather, save:
@@ -46,7 +61,8 @@ receivers:
         parse_mode: ''
 ```
 
-
+ </details>
+ 
 # Spin it up
 
 > Note: Make usre the hosting is configured for monitoring. Also make sure you joystream node has the correct flags
