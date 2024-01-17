@@ -16,9 +16,15 @@ You don't need to host your query-node, but if you're connecting to your own nod
 If you haven't already, cloned the `Joystream/joystream` (mono)repo:
 
 ```
-# If you already clone the repo just skip the cloning command
 $ git clone https://github.com/Joystream/joystream.git
 $ cd joystream
+$ ./setup.sh
+# this requires you to start a new session. if you are using a vps:
+$ exit
+$ ssh user@ipOrURL
+$ cd joystream
+$ ./build-packages.sh
+$ yarn storage-node --help
 ```
 
 Make sure the images as below
