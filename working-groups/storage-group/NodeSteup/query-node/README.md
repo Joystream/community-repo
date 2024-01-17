@@ -34,6 +34,14 @@ Make sure the images as below
     image: joystream/query-node:1.6.0 
 ```
 
+
+Under volume comment out this for all containers
+
+```
+   # type: bind
+   #       source: .
+   #       target: /joystream
+```
 ### Deploy
 
 #### Set the Environment
