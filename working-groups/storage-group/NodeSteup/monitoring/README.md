@@ -1,11 +1,4 @@
-# Configure Telegram
-* Go here and create a Bot: https://core.telegram.org/bots#6-botfather, save:
-  - Token
-  - Bot's name
-* Start the Bot
-* Create a channel and invite the bot to the channel as admin
-* Test your Bot and get chat ID https://api.telegram.org/bot{token}/getUpdates, save:
-  - chat ID
+
 
 # Configure Prometheus
 
@@ -27,7 +20,21 @@ GRAFANA_HOST=grafana.<your.cool.url>
 
 > Review alert.rules and add or remove alerts. Make sure the name of containers/services match
 
-# Configure Alert Manger
+
+# Alert Manger
+
+Uncomment alert manager section in docker-compose.yml
+
+## Configure Telegram
+* Go here and create a Bot: https://core.telegram.org/bots#6-botfather, save:
+  - Token
+  - Bot's name
+* Start the Bot
+* Create a channel and invite the bot to the channel as admin
+* Test your Bot and get chat ID https://api.telegram.org/bot{token}/getUpdates, save:
+  - chat ID
+  - 
+## Configure Alert Manger
 
 ```
 receivers:
@@ -38,6 +45,8 @@ receivers:
         chat_id: <your chat ID>
         parse_mode: ''
 ```
+
+
 # Spin it up
 
 > Note: Make usre the hosting is configured for monitoring. Also make sure you joystream node has the correct flags
