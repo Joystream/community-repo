@@ -18,7 +18,7 @@ GRAFANA_HOST=grafana.<your.cool.url>
 
 > Review prometheus.yml and add or remove jobs. Make sure the name of containers/services match.
 
-> Review alert.rules and add or remove alerts. Make sure the name of containers/services match
+
 
 
 # Alert Manger
@@ -26,7 +26,7 @@ GRAFANA_HOST=grafana.<your.cool.url>
   <summary>only if you want to use alert manager.</summary>
   
 - Uncomment alert manager section in docker-compose.yml
-- In monitoring/prometheus/prometheus.yml uncomment
+- ./monitoring/prometheus/prometheus.yml uncomment:
 ```
 #rule_files:
 #  - "alert.rules"
@@ -40,6 +40,8 @@ GRAFANA_HOST=grafana.<your.cool.url>
 #      - 'alertmanager:9093'
 ```
 
+> Review ./monitoring/prometheus/alert.rules and add or remove alerts. Make sure the name of containers/services match
+
 ## Configure Telegram
 * Go here and create a Bot: https://core.telegram.org/bots#6-botfather, save:
   - Token
@@ -50,6 +52,7 @@ GRAFANA_HOST=grafana.<your.cool.url>
   - chat ID
     
 ## Configure Alert Manger
+- ./alertmanager/config.yml
 
 ```
 receivers:
