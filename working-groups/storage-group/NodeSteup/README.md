@@ -259,7 +259,7 @@ $ docker network ls
 $ docker network inspect <network name>
 ```
 
-### Option 2 - Service
+### Option 2 - Service (your own responsibilities - not maintained)
 
 <details>
   <summary>Option 2 as a service</summary>
