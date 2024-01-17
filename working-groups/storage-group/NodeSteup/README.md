@@ -246,6 +246,14 @@ Edit service colossus-1
 
 ```
 
+Under volume make sure to comment out this for all containers
+
+```
+   # type: bind
+   #       source: .
+   #       target: /joystream
+```
+
 Bring your node up and check logs
 ```
 $ docker-compose up --detach --build colossus-1
