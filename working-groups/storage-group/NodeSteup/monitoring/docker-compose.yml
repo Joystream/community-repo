@@ -43,22 +43,22 @@ services:
 ######################################################################################
 #####################          ALERT MANAGER CONTAINER         #######################
 ######################################################################################
-  alertmanager:
-    image: prom/alertmanager
-    container_name: alertmanager
-    volumes:
-      - ./alertmanager:/etc/alertmanager
-    command:
-      - '--config.file=/etc/alertmanager/config.yml'
-      - '--storage.path=/alertmanager'
-    restart: unless-stopped
-    expose:
-      - 9093
+#  alertmanager:
+#    image: prom/alertmanager
+#    container_name: alertmanager
+#   volumes:
+#      - ./alertmanager:/etc/alertmanager
+#    command:
+#      - '--config.file=/etc/alertmanager/config.yml'
+#      - '--storage.path=/alertmanager'
+#    restart: unless-stopped
+#    expose:
+#      - 9093
 #    networks:
 #      - monitor-net
-    labels:
-      org.label-schema.group: "monitoring"
-    logging: *default-logging
+#    labels:
+#      org.label-schema.group: "monitoring"
+#    logging: *default-logging
 ######################################################################################
 #####################         NODE EXPORTER CONTAINER          #######################
 ######################################################################################
@@ -105,30 +105,30 @@ services:
 ######################################################################################
 #####################           GRAFANA CONTAINER              #######################
 ######################################################################################
-  grafana:
-    image: grafana/grafana
-    container_name: grafana
-    volumes:
-      - grafana_data:/var/lib/grafana
-      - ./grafana/provisioning:/etc/grafana/provisioning
-    environment:
-      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
-      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_USERS_ALLOW_SIGN_UP=false
-      - GF_SECURITY_DISABLE_BRUTE_FORCE_LOGIN_PROTECTION=true
-      - VIRTUAL_HOST=${GRAFANA_HOST}
-      - VIRTUAL_PORT=3000
-      - LETSENCRYPT_HOST=${GRAFANA_HOST}
-      - GF_INSTALL_PLUGINS=marcusolsson-json-datasource,fifemon-graphql-datasource
-    restart: unless-stopped
-    expose:
-      - 3000
+#  grafana:
+#    image: grafana/grafana
+#    container_name: grafana
+#    volumes:
+#      - grafana_data:/var/lib/grafana
+#      - ./grafana/provisioning:/etc/grafana/provisioning
+#    environment:
+#      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
+#      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+#      - GF_AUTH_ANONYMOUS_ENABLED=true
+#      - GF_USERS_ALLOW_SIGN_UP=false
+#      - GF_SECURITY_DISABLE_BRUTE_FORCE_LOGIN_PROTECTION=true
+#      - VIRTUAL_HOST=${GRAFANA_HOST}
+#      - VIRTUAL_PORT=3000
+#      - LETSENCRYPT_HOST=${GRAFANA_HOST}
+#      - GF_INSTALL_PLUGINS=marcusolsson-json-datasource,fifemon-graphql-datasource
+#    restart: unless-stopped
+#    expose:
+#      - 3000
 #    networks:
 #      - monitor-net
-    labels:
-      org.label-schema.group: "monitoring"
-    logging: *default-logging
+#    labels:
+#      org.label-schema.group: "monitoring"
+#    logging: *default-logging
 
 networks:
   default:
