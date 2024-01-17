@@ -20,7 +20,6 @@ If you haven't already, cloned the `Joystream/joystream` (mono)repo:
 $ git clone https://github.com/Joystream/joystream.git
 $ cd joystream
 ```
-The last command will take a while...
 
 Make sure the images as below
 
