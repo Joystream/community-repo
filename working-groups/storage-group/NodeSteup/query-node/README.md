@@ -19,13 +19,6 @@ If you haven't already, cloned the `Joystream/joystream` (mono)repo:
 # If you already clone the repo just skip the cloning command
 $ git clone https://github.com/Joystream/joystream.git
 $ cd joystream
-$ ./setup.sh
-# this requires you to start a new session. if you are using a vps:
-$ exit
-#
-# Login back again
-$ cd joystream
-$ ./build-packages.sh
 ```
 The last command will take a while...
 
