@@ -48,7 +48,7 @@ GRAFANA_HOST=grafana.<your.cool.url>
 * Create a channel and invite the bot to the channel as admin
 * Test your Bot and get chat ID https://api.telegram.org/bot{token}/getUpdates, save:
   - chat ID
-  - 
+    
 ## Configure Alert Manger
 
 ```
