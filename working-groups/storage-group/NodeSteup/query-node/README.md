@@ -41,12 +41,13 @@ Make sure the images as below
 ```
 
 
-Under volume comment out this for all containers
+delete this section for both graphql-server and processor containers 
 
 ```
-   # type: bind
-   #       source: .
-   #       target: /joystream
+     volumes:
+       - type: bind
+         source: .
+         target: /joystream
 ```
 ### Deploy
 
