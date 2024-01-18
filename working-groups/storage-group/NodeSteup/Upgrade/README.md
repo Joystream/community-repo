@@ -39,19 +39,14 @@ $ git stash pop
 ```
  $ ./setup.sh
 ```
-check if docker is ok 'docker ps', if not reinstall docker.
-```
-$ docker ps
-$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-## logout here and login back 
 
-## Build
+## Update container image 
 
+Below example for colossus
 ```
-$ ./build-packages.sh 
+  colossus-1:
+    image: joystream/storage-node:3.10.2
 ```
-
 ## Start the QN (Only if the QN upgrade is part of the upgrade)
 ```
 $ query-node/start.sh
