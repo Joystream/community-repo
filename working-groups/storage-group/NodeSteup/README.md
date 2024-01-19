@@ -201,7 +201,7 @@ Edit .env
 COLOSSUS_1_WORKER_ID=<your.worker.ID>
 
 #Add the password variable
-SUPER_PASSWORD=<your.cool.role.key.password>
+SUPER_PASSWORD=<your.cool.key.password>
 JOYSTREAM_ES_URL=https://elastic.joyutils.org/
 JOYSTREAM_ES_USERNAME=storage-xxx
 JOYSTREAM_ES_PASSWORD=xxxxxxxxx
