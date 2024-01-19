@@ -224,7 +224,7 @@ Edit service colossus-1
       - /root/keys:/keystore
       - /data/joystream-storage/log:/logs
       - ./entrypoints/storage.sh:/joystream/entrypoints/storage.sh:ro
-    working_dir: /root/joystream/storage-node
+    working_dir: /joystream/storage-node
     ports:
       - 3333:3333
     env_file:
