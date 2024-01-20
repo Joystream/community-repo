@@ -38,6 +38,15 @@ $ git stash pop
 ## Run the setup script
 ```
  $ ./setup.sh
+
+  hydra-indexer-gateway:
+    image: joystream/hydra-indexer-gateway:5.0.0-alpha.1
+  indexer:
+    image: joystream/hydra-indexer:v5.0.0-alpha.1
+  processor:
+    image: joystream/query-node:1.6.0
+  graphql-server:
+    image: joystream/query-node:1.6.0 
 ```
 
 ## Update container image 
