@@ -39,6 +39,8 @@ $ git stash pop
 ```
  $ ./setup.sh
 
+
+$ nono docker-compose.yml
   hydra-indexer-gateway:
     image: joystream/hydra-indexer-gateway:5.0.0-alpha.1
   indexer:
