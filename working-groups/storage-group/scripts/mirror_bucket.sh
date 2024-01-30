@@ -16,6 +16,7 @@ curl --header "Content-Type: application/json"  --request POST   --data "$SRC_QU
 curl --header "Content-Type: application/json"  --request POST   --data "$DES_QUERY"  $GRAPHQL | jq -r $PARSER  | sort -u > $FILEDIR/bags_bucket${DES_BUCKET_ID}.txt
 
 diff $FILEDIR/bags_bucket${SRC_BUCKET_ID}.txt $FILEDIR/bags_bucket${DES_BUCKET_ID}.txt  | grep "<" | cut -d " " -f 2 > $FILEDIR/bags_bucket${SRC_BUCKET_ID}_diff_${DES_BUCKET_ID}.txt
+diff $FILEDIR/bags_bucket${SRC_BUCKET_ID}.txt $FILEDIR/bags_bucket${SRC_BUCKET_ID}_diff_${DES_BUCKET_ID}.txt  | grep "<" | cut -d " " -f 2 > $FILEDIR/bags_bucket${DES_BUCKET_ID}_union_${SRC_BUCKET_ID}.txt
 #cat bags_bucket${SRC_BUCKET_ID}_diff_${DES_BUCKET_ID}.txt
 
 rm $FILEDIR/split_bucket${SRC_BUCKET_ID}_*
