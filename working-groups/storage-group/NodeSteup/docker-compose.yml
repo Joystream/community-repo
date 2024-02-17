@@ -30,9 +30,6 @@ services:
       - /root/keys:/keystore
       - /data/joystream-storage/log:/logs
       - ./entrypoints/storage.sh:/joystream/entrypoints/storage.sh:ro
-      #- type: bind
-        #  source: .
-        #target: /joystream
     working_dir: /joystream/storage-node
     ports:
       - 3333:3333
@@ -51,7 +48,6 @@ services:
       '--queryNodeEndpoint=${COLOSSUS_QUERY_NODE_URL}',
       '--apiUrl=${JOYSTREAM_NODE_WS}',
       '--keyFile=/keystore/storage-role-key.json',
-      '--password=${SUPER_PASSWORD}',
       '--elasticSearchEndpoint=${JOYSTREAM_ES_URL}',
       '--elasticSearchPassword=${JOYSTREAM_ES_PASSWORD}',
       '--elasticSearchUser=${JOYSTREAM_ES_USERNAME}',
