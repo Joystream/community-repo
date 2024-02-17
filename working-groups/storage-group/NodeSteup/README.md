@@ -201,7 +201,7 @@ Edit .env
 COLOSSUS_1_WORKER_ID=<your.worker.ID>
 
 #Add the password variable
-SUPER_PASSWORD=<your.cool.key.password>
+ACCOUNT_PWD=<your.cool.key.password>
 JOYSTREAM_ES_URL=https://elastic.joyutils.org/
 JOYSTREAM_ES_USERNAME=storage-xxx
 JOYSTREAM_ES_PASSWORD=xxxxxxxxx
@@ -236,7 +236,6 @@ Edit service colossus-1
       '--queryNodeEndpoint=${COLOSSUS_QUERY_NODE_URL}',
       '--apiUrl=${JOYSTREAM_NODE_WS}',
       '--keyFile=/keystore/storage-role-key.json',
-      '--password=${SUPER_PASSWORD}',
       '--elasticSearchEndpoint=${JOYSTREAM_ES_URL}',
       '--elasticSearchPassword=${JOYSTREAM_ES_PASSWORD}',
       '--elasticSearchUser=${JOYSTREAM_ES_USERNAME}',
