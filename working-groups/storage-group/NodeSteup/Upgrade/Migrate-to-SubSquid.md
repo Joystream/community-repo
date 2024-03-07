@@ -27,6 +27,8 @@ cp docker-compose.yml docker-compose.yml.bk
 3- Create new .env and update variables:
 [New .env](./.env)
 
+Update the below variables in your new .env
+
 ```
 JOYSTREAM_NODE_WS
 KEY_FILE
