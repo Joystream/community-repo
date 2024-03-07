@@ -80,3 +80,44 @@ docker-compose up --detach storage
 docker ps
 docker logs -f storage --tail 100
 ```
+
+## 8- Update caddy
+
+```
+cd caddy
+vim Caddyfile
+# dosable access to the joystream node and QN (QN should be accessed with the docker name not public URL)
+#wss://YOUR.URL/rpc {
+#        reverse_proxy joystream-node:9944
+#}
+#https://joystream.yyagi.cloud {
+#        log {
+#                output stdout
+#        }
+#        route /server/* {
+#                uri strip_prefix /server
+#                reverse_proxy graphql-server:8081
+#        }
+#        route /graphql {
+#                reverse_proxy graphql-server:8081
+#        }
+#        route /graphql/* {
+#                reverse_proxy graphql-server:8081
+#        }
+#        route /gateway/* {
+#                uri strip_prefix /gateway
+#                reverse_proxy graphql-server:4000
+#        }
+#        route /@apollographql/* {
+#                reverse_proxy graphql-server:8081
+#        }
+#}
+
+#Replace 
+reverse_proxy colossus-1:3333
+#With
+reverse_proxy storage:3333
+
+
+docker-compose up --detach --force-recreate --remove-orphans caddy
+```
