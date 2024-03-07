@@ -16,7 +16,9 @@ cp docker-compose.yml docker-compose.yml.bk
 
 ## 2- Create new .env and update variables:
 [New .env](./.env)
-
+```
+wget https://github.com/yasiryagi/community-repo/blob/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/.env
+```
 Update the below variables in your new .env
 
 ```
@@ -39,6 +41,14 @@ STORAGESQUIDENDPOINT
 [docker-compose.yml](./docker-compose.yml)
 
 Copy directories 'database and entrypoints' in this guide into your joystream directory 
+
+```
+wget https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/docker-compose.yml
+mkdir database
+cd database
+wget [https://github.com/yasiryagi/community-repo/blob/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/database/pg_hba.conf](https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/database/pg_hba.conf)
+wget [https://github.com/yasiryagi/community-repo/blob/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/database/postgres.conf](https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/database/postgres.conf)
+```
 
 ## 4- Bring up SubSquid 
 
