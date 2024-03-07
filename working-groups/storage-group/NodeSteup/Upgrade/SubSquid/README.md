@@ -119,7 +119,7 @@ reverse_proxy storage:3333
 docker-compose up --detach --force-recreate --remove-orphans caddy
 ```
 ## 10- Update prometheus 
-If using prometheus alerts update  alert.rules with the correct containers names and restart prometheus 
+If using prometheus prometheus/alerts update  alert.rules with the correct containers names and restart prometheus 
 ```
 docker-compose up --detach --force-recreate --remove-orphans prometheus
 ```
