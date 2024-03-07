@@ -11,7 +11,7 @@ vim .env
 COLOSSUS_QUERY_NODE_URL=https://query.joyutils.org/graphql
 ```
 
-## 2- Restart your Colossus server 
+## 2- Restart your Colossus server  (After Squid is  synced)
 ```
 docker-compose up --detach --force-recreate --remove-orphans colossus-1
 ```
