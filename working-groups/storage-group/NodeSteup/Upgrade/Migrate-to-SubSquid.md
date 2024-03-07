@@ -20,11 +20,11 @@ docker rm graphql-server processor hydra-indexer-gateway indexer redis db
 
 3- Backup exisitng .env
 ```
-vp .env .env.bk
+cp .env .env.bk
 ```
 
 Update variables:
-[.env](./env)
+[.env](./.env)
 
 ```
 JOYSTREAM_NODE_WS
