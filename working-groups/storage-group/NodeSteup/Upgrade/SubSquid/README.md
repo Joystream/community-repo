@@ -3,6 +3,8 @@
  cd /your/joystream/directory
 ```
 
+Copy directories 'database and entrypoints' in this guide into your joystream directory  
+
 ## 1- Repoint your storage to public QN
 
 ```
