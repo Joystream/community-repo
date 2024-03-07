@@ -1,5 +1,7 @@
 ## 0- Make sure you are in the right directory 
+```
  cd /your/joystream/directory
+```
 
 ## 1- Repoint your storage to public QN
 
