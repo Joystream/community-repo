@@ -47,7 +47,6 @@ wget -O /your/joystream/directory/docker-compose.yml https://raw.githubuserconte
 
 # Make folder database
 mkdir /your/joystream/directory/database
-cd database
 wget -O /your/joystream/directory/database/pg_hba.conf https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/database/pg_hba.conf
 wget -O /your/joystream/directory/database/postgres.conf https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/database/postgres.conf
 ```
