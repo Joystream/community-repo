@@ -18,13 +18,14 @@ docker stop graphql-server processor hydra-indexer-gateway indexer redis db
 docker rm graphql-server processor hydra-indexer-gateway indexer redis db
 ```
 
-3- Backup exisitng .env
+3- Backup exisitng files 
 ```
 cp .env .env.bk
+cp docker-compose.yml docker-compose.yml.bk
 ```
 
-Update variables:
-[.env](./.env)
+3- Create new .env and update variables:
+[New .env](./.env)
 
 ```
 JOYSTREAM_NODE_WS
@@ -38,3 +39,5 @@ LOG_FOLDER
 ENDPOINT
 STORAGESQUIDENDPOINT
 ```
+
+4- 
