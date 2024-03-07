@@ -1,37 +1,20 @@
+
+
+
 ## 0- Make sure you are in the right directory 
 ```
  cd /your/joystream/directory
 ```
 
-Copy directories 'database and entrypoints' in this guide into your joystream directory  
 
-## 1- Repoint your storage to public QN
-
-```
-vim .env
-#COLOSSUS_QUERY_NODE_URL=http://graphql-server:8081/graphql
-COLOSSUS_QUERY_NODE_URL=https://query.joyutils.org/graphql
-```
-
-## 2- Restart your Colossus server  
-```
-docker-compose up --detach --force-recreate --remove-orphans colossus-1
-```
-
-## 3- Stop old query node 
-
-```
-docker stop graphql-server processor hydra-indexer-gateway indexer redis db
-docker rm graphql-server processor hydra-indexer-gateway indexer redis db
-```
-
-## 4- Backup exisitng files 
+## 1- Backup exisitng files 
 ```
 cp .env .env.bk
 cp docker-compose.yml docker-compose.yml.bk
-```
+``` 
 
-## 5- Create new .env and update variables:
+
+## 2- Create new .env and update variables:
 [New .env](./.env)
 
 Update the below variables in your new .env
@@ -49,17 +32,22 @@ ENDPOINT
 STORAGESQUIDENDPOINT
 ```
 
-## 6- Update docker-compose.yml 
+
+
+## 3- Update docker-compose.yml 
 
 [docker-compose.yml](./docker-compose.yml)
 
-## 7- Bring up SubSquid 
+Copy directories 'database and entrypoints' in this guide into your joystream directory 
+
+## 4- Bring up SubSquid 
 
 (be careful you do not want to stop your current storage container, the storage container in the new docker-compose.yml is pointing to SubSquid)
 ```
 docker-compose up --detach squid-db squid-processor squid-graphql-server
+
 ```
-## 8- Check and monitor 
+## 5- Check and monitor 
 ```
 # are all containers up and healthy
 docker ps
@@ -69,11 +57,18 @@ docker logs -f squid-graphql-server --tail 100
 ```
 
 
-## 9- Restart your Colossus server (After Squid is  synced)
+## 6- Restart your Colossus server (After Squid is  synced)
 ```
 docker stop colossus-1
 docker rm colossus-1
 docker-compose up --detach storage
+```
+
+## 7- Stop old query node and storage
+
+```
+docker stop graphql-server processor hydra-indexer-gateway indexer redis db 
+docker rm graphql-server processor hydra-indexer-gateway indexer redis db 
 ```
 
 ## 8- Check and monitor 
@@ -83,7 +78,7 @@ docker ps
 docker logs -f storage --tail 100
 ```
 
-## 8- Update caddy
+## 9- Update caddy
 
 ```
 cd caddy
