@@ -90,7 +90,7 @@ vim Caddyfile
 #wss://YOUR.URL/rpc {
 #        reverse_proxy joystream-node:9944
 #}
-#https://joystream.yyagi.cloud {
+#https://YOUR.UR {
 #        log {
 #                output stdout
 #        }
