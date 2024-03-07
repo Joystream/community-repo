@@ -54,3 +54,11 @@ docker logs -f squid-db --tail 100
 docker logs -f squid-processor --tail 100
 docker logs -f squid-graphql-server --tail 100
 ```
+
+
+2- Restart your Colossus server 
+```
+docker stop colossus-1
+docker rm colossus-1
+docker-compose up --detach storage
+```
