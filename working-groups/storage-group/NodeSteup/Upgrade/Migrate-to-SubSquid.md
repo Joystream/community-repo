@@ -73,3 +73,10 @@ docker stop colossus-1
 docker rm colossus-1
 docker-compose up --detach storage
 ```
+
+## 8- Check and monitor 
+```
+# are all containers up and healthy
+docker ps
+docker logs -f storage --tail 100
+```
