@@ -1,3 +1,6 @@
+## 0- Make sure you are in the right directory 
+ cd /your/joystream/directory
+
 ## 1- Repoint your storage to public QN
 
 ```
@@ -42,9 +45,13 @@ ENDPOINT
 STORAGESQUIDENDPOINT
 ```
 
-## 6- Update docker-compose.yml [docker-compose.yml](./docker-compose.yml)
+## 6- Update docker-compose.yml 
 
-## 7- Bring up SubSquid (be careful you do not want to stop your current storage container, the storage container in the new docker-compose.yml is pointing to SubSquid)
+[docker-compose.yml](./docker-compose.yml)
+
+## 7- Bring up SubSquid 
+
+(be careful you do not want to stop your current storage container, the storage container in the new docker-compose.yml is pointing to SubSquid)
 ```
 docker-compose up --detach squid-db squid-processor squid-graphql-server
 ```
