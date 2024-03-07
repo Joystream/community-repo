@@ -40,4 +40,17 @@ ENDPOINT
 STORAGESQUIDENDPOINT
 ```
 
-4- 
+4- Update docker-compose.yml [docker-compose.yml](./docker-compose.yml)
+
+5- Bring up SubSquid (be careful you do not want to stop your current storage container, the storage container in the new docker-compose.yml is pointing to SubSquid)
+```
+docker-compose up --detach squid-db squid-processor squid-graphql-server
+```
+6- Check and monitor 
+```
+# are all containers up and healthy
+docker ps
+docker logs -f squid-db --tail 100
+docker logs -f squid-processor --tail 100
+docker logs -f squid-graphql-server --tail 100
+```
