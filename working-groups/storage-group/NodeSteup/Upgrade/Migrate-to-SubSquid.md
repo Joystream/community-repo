@@ -86,7 +86,7 @@ docker logs -f storage --tail 100
 ```
 cd caddy
 vim Caddyfile
-# dosable access to the joystream node and QN (QN should be accessed with the docker name not public URL)
+# disable access to the joystream node and QN (QN should be accessed with the docker name not public URL)
 #wss://YOUR.URL/rpc {
 #        reverse_proxy joystream-node:9944
 #}
