@@ -14,7 +14,7 @@ To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
 ## Hardware
 - CPU: 8 Core
 - RAM: 32G
-- Storage: 1TB nvme OS, 50TB data
+- Storage: 1TB nvme OS, 100TB data
 - Bandwidth: 1G
 
 
@@ -26,7 +26,6 @@ To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
 ## Location
 No more that 15% of the current operator clustered at the same region.
 
-# Initial setup
 
 ## Key directories
 > /root/joystream The main directory of the repo
@@ -92,15 +91,16 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 # Setup and Configure the Storage Node
 
+
+Make sure you have [docker-compose.yml](./docker-compose.yml) and [New .env](./.env)
+
 ## Keys
 - Member key
 - Role key
 - Operator key: in the codebase it's referred to as the transactor key.
 
 
-<details>
-  <summary>IGNORE</summary>
-	
+### Create Operator key	
 ```
 $ mkdir ~/keys/
 $ cd ~/joystream/
@@ -113,10 +113,7 @@ $ yarn joystream-cli account:create
 
 cat /root/.local/share/joystream-cli/accounts/storage-operator-key.json
 ```
-This will give show you the address:
-`..."address":"5StorageOperatorKey"...`
 
- </details>
 
 ```
 # Paste your <YourStorageRoleKey.json> in the file below
@@ -126,25 +123,49 @@ nano /root/keys/storage-role-key.json
 
 **Make sure your [Joystream full node](#Setup-joystream-node) and [Query Node](#Setup-Query-Node) is fully synced before you move to the next step(s)!**
 
-## Install and Setup the  Node
+## Deploy the Storage Node
 
-<details>
-  <summary>If you have done this on the query node setup, you can skip this section.</summary>
 
+### Edit .env
 
 ```
-$ git clone https://github.com/Joystream/joystream.git
-$ cd joystream
-$ ./setup.sh
-# this requires you to start a new session. if you are using a vps:
-$ exit
-$ ssh user@ipOrURL
-$ cd joystream
-$ ./build-packages.sh
-$ yarn storage-node --help
+COLOSSUS_PORT=3333
+COLOSSUS_VERSION=4.0.0
+STORAGE_SQUID_VERSION=1.4.
+COLOSSUS_1_WORKER_ID=<your.worker.ID>
+
+#Add the password variable
+ACCOUNT_PWD=<your.cool.key.password>
+JOYSTREAM_ES_URL=https://elastic.joyutils.org/
+JOYSTREAM_ES_USERNAME=storage-xxx
+JOYSTREAM_ES_PASSWORD=xxxxxxxxx
+KEY_FILE
+DATA_FOLDER
+KEY_FOLDER
+LOG_FOLDER
+ENDPOINT
+STORAGESQUIDENDPOINT
 ```
- </details>
- 
+
+### Colossus server (After Squid is  synced)
+```
+# Create folder entrypoints
+mkdir /your/joystream/directory/entrypoints
+wget -O /your/joystream/directory/entrypoints/storage.sh https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/entrypoints/storage.sh
+```
+
+```
+docker-compose up --detach storage
+```
+
+### Check and monitor 
+```
+# are all containers up and healthy
+docker ps
+docker logs -f storage --tail 100
+```
+
+
 ## Accept Invitation
 Once hired, the Storage Lead will invite you a to "bucket". Before this is done, you will not be able to participate. Assuming:
 - your Worker ID is `<workerId>`
@@ -152,7 +173,7 @@ Once hired, the Storage Lead will invite you a to "bucket". Before this is done,
 
 ```
 $ cd ~/joystream
-yarn run storage-node operator:accept-invitation -i <bucketId> -w <workerId> -t <StorageRolerKey> --password=YourKeyPassword -k /root/keys/storage-role-key.json
+yarn run storage-node operator:accept-invitation -i <bucketId> -w <workerId> -t <StorageOperatorKey> --password=YourKeyPassword -k /root/keys/storage-role-key.json
 
 # With bucketId=1, workerId=2, and operatorkey=5StorageOperatorKey that would be:
 # yarn run storage-node operator:accept-invitation -i 1 -w 1 -t $5StorageRolerKey --password=YourKeyPassword -k /root/keys/storage-role-key.json
@@ -192,12 +213,14 @@ $ yarn run storage-node operator:set-metadata -i <bucketId> -w <workerId> -j /pa
 ```
 
 ## Deploy the Storage Node
-### Option 1 - Docker
 
 
 Edit .env
 
 ``` 
+COLOSSUS_PORT=3333
+COLOSSUS_VERSION=4.0.0
+STORAGE_SQUID_VERSION=1.4.
 COLOSSUS_1_WORKER_ID=<your.worker.ID>
 
 #Add the password variable
@@ -205,127 +228,23 @@ ACCOUNT_PWD=<your.cool.key.password>
 JOYSTREAM_ES_URL=https://elastic.joyutils.org/
 JOYSTREAM_ES_USERNAME=storage-xxx
 JOYSTREAM_ES_PASSWORD=xxxxxxxxx
+KEY_FILE
+DATA_FOLDER
+KEY_FOLDER
+LOG_FOLDER
+ENDPOINT
+STORAGESQUIDENDPOINT
 ``` 
 
 
-``` 
-$ vim docker-compose.yml
-```
-
-Edit service colossus-1
-
-```
-  colossus-1:
-    image: joystream/storage-node:3.10.2
-    container_name: colossus-1
-    restart: on-failure
-    volumes:
-      - /data/joystream-storage:/data
-      - /root/keys:/keystore
-      - /data/joystream-storage/log:/logs
-      - ./entrypoints/storage.sh:/joystream/entrypoints/storage.sh:ro
-    working_dir: /joystream/storage-node
-    ports:
-      - 3333:3333
-    env_file:
-      # relative to working directory where docker-compose was run from
-      - .env
-    command: [
-      'server', '--worker=${COLOSSUS_1_WORKER_ID}', '--port=3333', '--uploads=/data',
-      '--sync', '--syncInterval=1',
-      '--queryNodeEndpoint=${COLOSSUS_QUERY_NODE_URL}',
-      '--apiUrl=${JOYSTREAM_NODE_WS}',
-      '--keyFile=/keystore/storage-role-key.json',
-      '--elasticSearchEndpoint=${JOYSTREAM_ES_URL}',
-      '--elasticSearchPassword=${JOYSTREAM_ES_PASSWORD}',
-      '--elasticSearchUser=${JOYSTREAM_ES_USERNAME}',
-      '--logFilePath=/logs'
-    ]
-
-
-```
-
-Under volume make sure to comment out this for all containers
-
-```
-   # type: bind
-   #       source: .
-   #       target: /joystream
-```
-
-Bring your node up and check logs
-```
-$ docker-compose up --detach --build colossus-1
-
-$ docker logs -f -n 100 colossus-1
-```
-
-Make sure your containers running on the same network
-```
-$ docker network ls
-$ docker network inspect <network name>
-```
-
-### Option 2 - Service (your own responsibilities - not maintained)
-
-<details>
-  <summary>Option 2 as a service</summary>
-  
-First, create a `systemd` file. Example file below:
-
-```
-$ nano /etc/systemd/system/storage-node.service
-
-# Modify, and paste in everything below the stapled line
----
-[Unit]
-Description=Joystream Storage Node
-After=network.target joystream-node.service
-
-[Service]
-User=root
-WorkingDirectory=/root/joystream/
-LimitNOFILE=10000
-ExecStart=/root/.volta/bin/yarn storage-node server \
-        -u ws://localhost:9944 \
-        -w <workerId> \
-        -o 3333 \
-        -l /<root/joystream-storage>/log/ \
-        -d /<root/joystream-storage> \
-        -q http://localhost:8081/graphql \
-	-p <Passowrd> \
-        -k /root/keys/storage-role-key.json \
-	-e https://<elasticsearch.your.cool.url> \
-        --elasticSearchPassword=<elasticSearchPassword> \    
-        --elasticSearchUser=<elasticSearchUser> \
-        -s
-Restart=on-failure
-StartLimitInterval=600
-
-[Install]
-WantedBy=multi-user.target
-```
-
-If you (like most) have needed to buy extra storage volume, remember to set `-d /path/to/volume`
-Save and exit.
-
-```
-$ systemctl start storage-node
-# If everything works, you should get an output. Verify with:
-$ journalctl -f -n 200 -u storage-node
 
 # If it looks ok, it probably is :)
 ---
 
-# To have colossus start automatically at reboot:
-$ systemctl enable storage-node
-# If you want to stop the storage node, either to edit the storage-node.service file or some other reason:
-$ systemctl stop storage-node
-```
- </details>
  
 ### Verify everything is working
 
 In your browser, try:
 `https://<your.cool.url>/storage/api/v1/version`.
 `https://<your.cool.url>/storage/api/v1/state/data`.
+# Overview

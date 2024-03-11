@@ -1,8 +1,4 @@
 # Joystream-node
-wss://<your.cool.url>/rpc {
-        #reverse_proxy localhost:9944
-        reverse_proxy joystream-node:9944
-}
 
 # Prometheus
 https://prometheus.<your.cool.url> {
@@ -17,34 +13,6 @@ https://grafana.<your.cool.url> {
         reverse_proxy grafana:3000
 }
 
-# Query-node
-https://<your.cool.url> {
-        log {
-                output stdout
-        }
-        route /server/* {
-                uri strip_prefix /server
-                reverse_proxy graphql-server:8081
-                #reverse_proxy localhost:8081
-        }
-        route /graphql {
-                reverse_proxy graphql-server:8081
-                #reverse_proxy localhost:8081
-        }
-        route /graphql/* {
-                reverse_proxy graphql-server:8081
-                #reverse_proxy localhost:8081
-        }
-        route /gateway/* {
-                uri strip_prefix /gateway
-                reverse_proxy graphql-server:4000
-                #reverse_proxy localhost:8081
-        }
-        route /@apollographql/* {
-                reverse_proxy graphql-server:8081
-                #reverse_proxy localhost:8081
-        }
-}
 # Storage Node
 https://<your.cool.url>/storage/* {
         log {
