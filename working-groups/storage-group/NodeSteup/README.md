@@ -149,7 +149,7 @@ STORAGESQUIDENDPOINT
 
 ### Colossus server (After Squid is  synced)
 ```
-# Create folder entrypoints
+### Create folder entrypoints
 mkdir /your/joystream/directory/entrypoints
 wget -O /your/joystream/directory/entrypoints/storage.sh https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/entrypoints/storage.sh
 ```
@@ -160,7 +160,7 @@ docker-compose up --detach storage
 
 ### Check and monitor 
 ```
-# are all containers up and healthy
+### are all containers up and healthy
 docker ps
 docker logs -f storage --tail 100
 ```
@@ -172,11 +172,10 @@ Once hired, the Storage Lead will invite you a to "bucket". Before this is done,
 - the Lead has invited to bucket `<bucketId>`
 
 ```
-$ cd ~/joystream
-yarn run storage-node operator:accept-invitation -i <bucketId> -w <workerId> -t <StorageOperatorKey> --password=YourKeyPassword -k /root/keys/storage-role-key.json
+docker exec -it storage yarn run storage-node operator:accept-invitation -i <bucketId> -w <workerId> -t <StorageOperatorKey> --password=YourKeyPassword -k /root/keys/storage-role-key.json
 
 # With bucketId=1, workerId=2, and operatorkey=5StorageOperatorKey that would be:
-# yarn run storage-node operator:accept-invitation -i 1 -w 1 -t $5StorageRolerKey --password=YourKeyPassword -k /root/keys/storage-role-key.json
+# docker exec -it storage yarn run storage-node operator:accept-invitation -i 1 -w 1 -t $5StorageRolerKey --password=YourKeyPassword -k /root/keys/storage-role-key.json
 ```
 
 ## Set Metadata
@@ -205,38 +204,18 @@ Where:
 
 Then, set it on-chain with:
 ```
-$ cd ~/joystream
-$ yarn run storage-node operator:set-metadata -i <bucketId> -w <workerId> -j /path/to/metadata.json -k /root/keys/storage-role-key.json
+docker exec -it storage yarn run storage-node operator:set-metadata -i <bucketId> -w <workerId> -j /path/to/metadata.json -k /root/keys/storage-role-key.json
 
 # With bucketId=1, workerId=2, that would be:
-# yarn run storage-node operator:set-metadata -i 1 -w 2 -j /path/to/metadata.json --password=YourKeyPassword -k /root/keys/storage-role-key.json
+docker exec -it storage  yarn run storage-node operator:set-metadata -i 1 -w 2 -j /path/to/metadata.json --password=YourKeyPassword -k /root/keys/storage-role-key.json
 ```
 
-## Deploy the Storage Node
-
-
-Edit .env
-
-``` 
-COLOSSUS_PORT=3333
-COLOSSUS_VERSION=4.0.0
-STORAGE_SQUID_VERSION=1.4.
-COLOSSUS_1_WORKER_ID=<your.worker.ID>
-
-#Add the password variable
-ACCOUNT_PWD=<your.cool.key.password>
-JOYSTREAM_ES_URL=https://elastic.joyutils.org/
-JOYSTREAM_ES_USERNAME=storage-xxx
-JOYSTREAM_ES_PASSWORD=xxxxxxxxx
-KEY_FILE
-DATA_FOLDER
-KEY_FOLDER
-LOG_FOLDER
-ENDPOINT
-STORAGESQUIDENDPOINT
-``` 
-
-
+## Check and monitor
+```
+## are all containers up and healthy
+docker ps
+docker logs -f storage --tail 100
+```
 
 # If it looks ok, it probably is :)
 ---
