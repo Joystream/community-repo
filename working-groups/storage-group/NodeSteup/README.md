@@ -28,7 +28,7 @@ No more that 15% of the current operator clustered at the same region.
 
 
 ## Key directories
-> /root/joystream The main directory of the repo
+> /your/joystream/directory/joystream The main directory of the repo
 
 > /root/keys keys storage directory
 
@@ -41,6 +41,7 @@ No more that 15% of the current operator clustered at the same region.
 ```
 $ apt-get update && apt-get upgrade -y
 $ apt install vim git curl -y
+mkdir /your/joystream/directory/joystream/
 ```
 
 ## Install Docker
@@ -93,6 +94,11 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 
 Make sure you have [docker-compose.yml](./docker-compose.yml) and [New .env](./.env)
+```
+wget -O /your/joystream/directory/joystreami/.env https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/.env
+wget -O /your/joystream/directory/joystream/docker-compose.yml https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/docker-compose.yml
+
+```
 
 ## Keys
 - Member key
@@ -122,11 +128,11 @@ nano /root/keys/storage-role-key.json
 ```
 
 **Make sure your [Joystream full node](#Setup-joystream-node) and [Query Node](#Setup-Query-Node) is fully synced before you move to the next step(s)!**
-```
-wget -O /your/joystream/directory/.env https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/.env
-wget -O /your/joystream/directory/docker-compose.yml https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/docker-compose.yml
 
-```
+
+
+
+
 
 ## Deploy the Storage Node
 
@@ -155,8 +161,8 @@ STORAGESQUIDENDPOINT
 
 ### Create entrypoints folder
 ```
-mkdir /your/joystream/directory/entrypoints
-wget -O /your/joystream/directory/entrypoints/storage.sh https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/entrypoints/storage.sh
+mkdir /your/joystream/directory/joystream/entrypoints
+wget -O /your/joystream/directory/joystream/entrypoints/storage.sh https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/entrypoints/storage.sh
 ```
 
 ```
@@ -231,4 +237,4 @@ docker logs -f storage --tail 100
 In your browser, try:
 `https://<your.cool.url>/storage/api/v1/version`.
 `https://<your.cool.url>/storage/api/v1/state/data`.
-# Overview
+
