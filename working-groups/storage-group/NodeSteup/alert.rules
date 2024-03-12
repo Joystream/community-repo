@@ -60,31 +60,30 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: joystream-node_high_memory
-    expr: sum(container_memory_working_set_bytes{name=~"joystream-node.*"}) > 15000000000
+    expr: sum(container_memory_working_set_bytes{name=~"joystream-node.*"}) > 25000000000
     for: 30s
     labels:
       severity: warning
     annotations:
       summary: "{{ $labels.instance }} high memory usage"
       description: "{{ $labels.instance }} memory consumption is at {{ humanize $value}}."
+#  - alert: joystreamnode_high_cpu
+#    expr: sum(rate(container_cpu_usage_seconds_total{name=~"joystream-node.*"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 10
+#    for: 30s
+#    labels:
+#      severity: warning
+#    annotations:
+#      summary: "{{ $labels.instance }} high CPU usage"
+#      description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
-  - alert: joystreamnode_high_cpu
-    expr: sum(rate(container_cpu_usage_seconds_total{name=~"joystream-node.*"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 10
-    for: 30s
-    labels:
-      severity: warning
-    annotations:
-      summary: "{{ $labels.instance }} high CPU usage"
-      description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
-
-  - alert: joystreamnode_high_memory
-    expr: sum(container_memory_working_set_bytes{name=~"joystream-node.*"}) > 15000000000
-    for: 30s
-    labels:
-      severity: warning
-    annotations:
-      summary: "{{ $labels.instance }} high memory usage"
-      description: "{{ $labels.instance }} memory consumption is at {{ humanize $value}}."
+#  - alert: joystreamnode_high_memory
+#    expr: sum(container_memory_working_set_bytes{name=~"joystream-node.*"}) > 25000000000
+#    for: 30s
+#    labels:
+#      severity: warning
+#    annotations:
+#      summary: "{{ $labels.instance }} high memory usage"
+#      description: "{{ $labels.instance }} memory consumption is at {{ humanize $value}}."
 
   - alert: storage_down
     expr: absent((time() - container_last_seen{name=~"storage.*"}) < 10)
@@ -105,7 +104,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: storage_high_memory
-    expr: sum(container_memory_working_set_bytes{name=~"storage.*"}) > 15000000000
+    expr: sum(container_memory_working_set_bytes{name=~"storage.*"}) > 60000000000
     for: 30s
     labels:
       severity: warning
@@ -132,7 +131,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: db_high_memory
-    expr: sum(container_memory_working_set_bytes{name=~"squid-db.*"}) > 20000000000
+    expr: sum(container_memory_working_set_bytes{name=~"squid-db.*"}) > 60000000000
     for: 30s
     labels:
       severity: warning
@@ -159,7 +158,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: squid_processor_high_memory
-    expr: sum(container_memory_working_set_bytes{name=~"squid-processor.*"}) > 15000000000
+    expr: sum(container_memory_working_set_bytes{name=~"squid-processor.*"}) > 50000000000
     for: 30s
     labels:
       severity: warning
@@ -186,7 +185,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: squid_graphql_server_high_memory
-    expr: sum(container_memory_working_set_bytes{name=~"squid-graphql-server.*"}) > 15000000000
+    expr: sum(container_memory_working_set_bytes{name=~"squid-graphql-server.*"}) > 50000000000
     for: 30s
     labels:
       severity: warning
@@ -212,7 +211,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: caddy_high_memory
-    expr: sum(container_memory_working_set_bytes{name=~"caddy.*"}) > 15000000000
+    expr: sum(container_memory_working_set_bytes{name=~"caddy.*"}) > 60000000000
     for: 30s
     labels:
       severity: warning
