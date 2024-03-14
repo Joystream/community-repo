@@ -159,7 +159,7 @@ STORAGESQUIDENDPOINT
 ```
 
 
-### Create entrypoints folder
+### Start Storage node
 ```
 mkdir /your/joystream/directory/joystream/entrypoints
 wget -O /your/joystream/directory/joystream/entrypoints/storage.sh https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/entrypoints/storage.sh
