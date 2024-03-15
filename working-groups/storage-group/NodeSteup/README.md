@@ -14,7 +14,7 @@ To upgrade the node please  [go here for the upgrade guide](./Upgrade/README.md)
 ## Hardware
 - CPU: 8 Core
 - RAM: 32G
-- Storage: 1TB nvme OS, 100TB data
+- Storage: 250G nvme OS, 100TB data
 - Bandwidth: 1G
 
 
