@@ -10,6 +10,9 @@ $ ssh user@ipOrURL
 $ cd joystream
 $ ./build-packages.sh
 $ yarn storage-node --help
+
+$ yarn joystream-cli api:setQueryNodeEndpoint https://query.joyutils.org/graphql
+$ yarn joystream-cli account:import  --backupFilePath /root/keys/storage-role-key.json
 ```
 
 ## Overview 
