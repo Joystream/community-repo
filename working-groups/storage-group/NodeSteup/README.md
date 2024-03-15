@@ -100,6 +100,23 @@ wget -O /your/joystream/directory/joystream/docker-compose.yml https://raw.githu
 
 ```
 
+## Setup CLI
+
+```
+$ git clone https://github.com/Joystream/joystream.git
+$ cd joystream
+$ ./setup.sh
+# this requires you to start a new session. if you are using a vps:
+$ exit
+$ ssh user@ipOrURL
+$ cd joystream
+$ ./build-packages.sh
+$ yarn storage-node --help
+
+$ yarn joystream-cli api:setQueryNodeEndpoint https://query.joyutils.org/graphql
+$ yarn joystream-cli account:import  --backupFilePath /root/keys/storage-role-key.json
+```
+
 ## Keys
 - Member key
 - Role key
