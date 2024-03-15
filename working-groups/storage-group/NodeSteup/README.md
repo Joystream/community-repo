@@ -117,6 +117,15 @@ $ yarn joystream-cli api:setQueryNodeEndpoint https://query.joyutils.org/graphql
 $ yarn joystream-cli account:import  --backupFilePath /root/keys/storage-role-key.json
 ```
 
+## Get files
+
+Make sure you have [docker-compose.yml](./docker-compose.yml) and [New .env](./.env)
+```
+wget -O /your/joystream/directory/joystream/.env https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/.env
+wget -O /your/joystream/directory/joystream/docker-compose.yml https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/docker-compose.yml
+
+```
+
 ## Keys
 - Member key
 - Role key
