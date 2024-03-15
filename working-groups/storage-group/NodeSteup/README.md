@@ -95,7 +95,7 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 Make sure you have [docker-compose.yml](./docker-compose.yml) and [New .env](./.env)
 ```
-wget -O /your/joystream/directory/joystreami/.env https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/.env
+wget -O /your/joystream/directory/joystream/.env https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/.env
 wget -O /your/joystream/directory/joystream/docker-compose.yml https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/docker-compose.yml
 
 ```
