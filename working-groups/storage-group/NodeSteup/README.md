@@ -103,13 +103,13 @@ wget -O /your/joystream/directory/joystream/docker-compose.yml https://raw.githu
 ## Setup CLI
 
 ```
-$ git clone https://github.com/Joystream/joystream.git
-$ cd joystream
+$ git clone https://github.com/Joystream/joystream.git joystream-cli
+$ cd joystream-cli
 $ ./setup.sh
 # this requires you to start a new session. if you are using a vps:
 $ exit
 $ ssh user@ipOrURL
-$ cd joystream
+$ cd joystream-cli
 $ ./build-packages.sh
 $ yarn storage-node --help
 
