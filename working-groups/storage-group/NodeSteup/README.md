@@ -135,7 +135,7 @@ wget -O /your/joystream/directory/joystream/docker-compose.yml https://raw.githu
 ### Create Operator key	
 ```
 $ mkdir ~/keys/
-$ cd ~/joystream/
+$ cd ~joystream-cli
 $ yarn joystream-cli account:create
 
 # give it the name:
