@@ -209,10 +209,11 @@ Once hired, the Storage Lead will invite you a to "bucket". Before this is done,
 - the Lead has invited to bucket `<bucketId>`
 
 ```
-docker exec -it storage yarn run storage-node operator:accept-invitation -i <bucketId> -w <workerId> -t <StorageOperatorKey> --password=YourRoleKeyPassword -k /keystore/storage-role-key.json
+cd joystream-cli
+yarn run storage-node operator:accept-invitation -i <bucketId> -w <workerId> -t <StorageOperatorKey> --password=YourRoleKeyPassword -k /keystore/storage-role-key.json
 
 # With bucketId=1, workerId=2, and operatorkey=5StorageOperatorKey that would be:
-# docker exec -it storage yarn run storage-node operator:accept-invitation -i 1 -w 1 -t  $5StorageOperatorKey --password=YourRoleKeyPassword -k /keystore/storage-role-key.json
+# yarn run storage-node operator:accept-invitation -i 1 -w 1 -t  $5StorageOperatorKey --password=YourRoleKeyPassword -k /keystore/storage-role-key.json
 ```
 
 ## Set Metadata
@@ -241,10 +242,11 @@ Where:
 
 Then, set it on-chain with:
 ```
-docker exec -it storage yarn run storage-node operator:set-metadata -i <bucketId> -w <workerId> -j /path/to/metadata.json -k /keystore/storage-role-key.json
+cd joystream-cli
+yarn run storage-node operator:set-metadata -i <bucketId> -w <workerId> -j /path/to/metadata.json -k /keystore/storage-role-key.json
 
 # With bucketId=1, workerId=2, that would be:
-docker exec -it storage  yarn run storage-node operator:set-metadata -i 1 -w 2 -j /path/to/metadata.json --password=YourKeyPassword -k /keystore/storage-role-key.json
+yarn run storage-node operator:set-metadata -i 1 -w 2 -j /path/to/metadata.json --password=YourKeyPassword -k /keystore/storage-role-key.json
 ```
 
 ## Check and monitor
