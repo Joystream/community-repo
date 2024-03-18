@@ -266,3 +266,6 @@ In your browser, try:
 `https://<your.cool.url>/storage/api/v1/version`.
 `https://<your.cool.url>/storage/api/v1/state/data`.
 
+## Time to setup monitoring 
+[Go here for the installation guide](./monitoring/README.md)
+
