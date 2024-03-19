@@ -53,7 +53,7 @@ https://<your.cool.url>/storage/* {
         }
         route /storage/* {
                 uri strip_prefix /storage
-                reverse_proxy colossus-1:3333
+                reverse_proxy storage:3333
         }
         header /storage/api/v1/ {
                 Access-Control-Allow-Methods "GET, PUT, HEAD, OPTIONS"
