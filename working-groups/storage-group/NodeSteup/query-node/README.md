@@ -2,7 +2,7 @@
 # Overview
 
 The following assumptions apply:
-1. You are `root`, and [cloning](#clone-the-repo) to `~/joystream`
+1. You are `root`
 2. in most cases, you will want to run your own `joystream-node` on the same device, and this guide assumes you are.
 
 For instructions on how to set this up, go [here](../joystream-node/README.md). Note that you can disregard all the parts about keys before applying, and just install the software so it is ready to go. You do need to run with `--pruning=archive` though, and be synced past the blockheight you are exporting the db from.
@@ -11,7 +11,7 @@ For instructions on how to set this up, go [here](../joystream-node/README.md). 
 
 .env and update variables [New .env](../.env)
 ```
-wget wget -O /your/joystream/directory/joystream/.env https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/.env
+wget -O /your/joystream/directory/joystream/.env https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/.env
 ```
 Update the below variables in your new .env
 
