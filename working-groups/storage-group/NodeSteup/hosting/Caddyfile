@@ -20,7 +20,7 @@ https://<your.cool.url>/storage/* {
         }
         route /storage/* {
                 uri strip_prefix /storage
-                reverse_proxy storage-1:3333
+                reverse_proxy storage:3333
                 #reverse_proxy localhost:3333
         }
         header /storage/api/v1/ {
