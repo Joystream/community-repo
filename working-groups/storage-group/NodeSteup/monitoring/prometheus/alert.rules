@@ -78,7 +78,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: joystreamnode_high_memory
-    expr: sum(container_memory_working_set_bytes{name=~"joystream-node.*"}) > 20000000000
+    expr: sum(container_memory_working_set_bytes{name=~"joystream-node.*"}) > 25000000000
     for: 30s
     labels:
       severity: warning
@@ -105,7 +105,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: storage_high_memory
-    expr: sum(container_memory_working_set_bytes{name=~"storage.*"}) > 20000000000
+    expr: sum(container_memory_working_set_bytes{name=~"storage.*"}) > 60000000000
     for: 30s
     labels:
       severity: warning
@@ -132,7 +132,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: db_high_memory
-    expr: sum(container_memory_working_set_bytes{name=~"squid-db.*"}) > 20000000000
+    expr: sum(container_memory_working_set_bytes{name=~"squid-db.*"}) > 60000000000
     for: 30s
     labels:
       severity: warning
@@ -159,7 +159,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: squid_processor_high_memory
-    expr: sum(container_memory_working_set_bytes{name=~"squid-processor.*"}) > 20000000000
+    expr: sum(container_memory_working_set_bytes{name=~"squid-processor.*"}) > 50000000000
     for: 30s
     labels:
       severity: warning
@@ -186,7 +186,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: squid_graphql_server_high_memory
-    expr: sum(container_memory_working_set_bytes{name=~"squid-graphql-server.*"}) > 20000000000
+    expr: sum(container_memory_working_set_bytes{name=~"squid-graphql-server.*"}) > 50000000000
     for: 30s
     labels:
       severity: warning
@@ -212,7 +212,7 @@ groups:
       description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
 
   - alert: caddy_high_memory
-    expr: sum(container_memory_working_set_bytes{name=~"caddy.*"}) > 20000000000
+    expr: sum(container_memory_working_set_bytes{name=~"caddy.*"}) > 60000000000
     for: 30s
     labels:
       severity: warning
