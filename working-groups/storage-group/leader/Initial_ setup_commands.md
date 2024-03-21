@@ -41,6 +41,12 @@ yarn joystream-cli working-groups:application x
 yarn joystream-cli working-groups:fillOpening --openingId x --applicationIds x
 
 ```
+### Fees
+
+```
+yarn storage-node leader:update-data-object-bloat-bond -v 394599471 -k /root/keys/storage-role-key.json -p xxxxx
+yarn storage-node leader:update-data-fee -f 833333 -k /root/keys/storage-role-key.json -p xxxxx
+```
 ### bucket mgmt
 ```
 yarn storage-node leader:create-bucket -i <WorkerId> -n 20000 -s 2000000000000 -k /root/keys/storage-role-key.json -p xxxxxx
