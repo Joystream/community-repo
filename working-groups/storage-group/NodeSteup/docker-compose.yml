@@ -55,7 +55,7 @@ services:
       '--syncWorkersNumber 20',
       '--storageSquidEndpoint ${STORAGESQUIDENDPOINT}',
       '--apiUrl=${JOYSTREAM_NODE_WS}',
-      '--keyFile=/keystore/storage-role-key.json',
+      '--keyFile=${KEY_FILE}',
       '--elasticSearchEndpoint=${JOYSTREAM_ES_URL}',
       '--elasticSearchPassword=${JOYSTREAM_ES_PASSWORD}',
       '--elasticSearchUser=${JOYSTREAM_ES_USERNAME}',
