@@ -144,6 +144,7 @@ $ yarn joystream-cli account:create
 # this guide assumes you don't set a password
 
 cat /root/.local/share/joystream-cli/accounts/storage-operator-key.json
+cp /root/.local/share/joystream-cli/accounts/storage-operator-key.json /root/keys/
 ```
 
 
