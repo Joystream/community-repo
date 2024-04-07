@@ -12,7 +12,7 @@ services:
       --validator
       --unsafe-ws-external
       --unsafe-rpc-external
-      --rpc-methods Safe
+      --rpc-methods Unsafe
       --rpc-cors all
       --base-path /chain
       --chain joy-mainnet.json
