@@ -40,7 +40,7 @@ trap "echo 'Script interrupted by user. Exiting...'; exit" SIGINT
 for file in split_*; do
     while IFS= read -r line; do
         sshpass -p $PASSWORD rsync -avz -e "ssh -o StrictHostKeyChecking=no" "$line" $USERNAME@$SERVER:"$TARGET_DIR" >/dev/null 2>&1 && echo "$line" >>$LOGFILE && echo "$line"
-    done <"$file"
+    done <"$file" &
     #sshpass -p $PASSWORD rsync -avz -e "ssh -o StrictHostKeyChecking=no" --files-from=$file / $USERNAME@$SERVER:$DIR >/dev/null 2>&1 && echo "$line" >>$LOGFILE && echo "$line"
 done
 
