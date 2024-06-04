@@ -9,3 +9,8 @@ https://polkadot.js.org/apps/#/extrinsics
 https://joyutils.org/
 
 
+### Vested spending
+
+
+
+![image](https://github.com/yasiryagi/community-repo/assets/4862448/f1b28cd0-c06b-49ff-a8ca-46dca22ec56c)
