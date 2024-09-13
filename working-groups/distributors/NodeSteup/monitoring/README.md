@@ -31,7 +31,7 @@ ExecStart=/root/.volta/bin/yarn storage-node server \
 ## Configure Packetbeat and Metricbeat
 
 ```
-git clone https://github.com/yasiryagi/elasticsearch-docker.git
+git clone https://github.com/Joystream/elasticsearch-docker.git
 cd elasticsearch-docker/client/
 ```
 

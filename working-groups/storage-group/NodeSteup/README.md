@@ -95,8 +95,8 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 Make sure you have [docker-compose.yml](./docker-compose.yml) and [New .env](./.env)
 ```
-wget -O /your/joystream/directory/joystream/.env https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/.env
-wget -O /your/joystream/directory/joystream/docker-compose.yml https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/docker-compose.yml
+wget -O /your/joystream/directory/joystream/.env https://raw.githubusercontent.com/Joystream/community-repo/master/working-groups/storage-group/NodeSteup/.env
+wget -O /your/joystream/directory/joystream/docker-compose.yml https://raw.githubusercontent.com/Joystream/community-repo/master/working-groups/storage-group/NodeSteup/docker-compose.yml
 
 ```
 
@@ -121,8 +121,8 @@ $ yarn joystream-cli account:import  --backupFilePath /root/keys/storage-role-ke
 
 Make sure you have [docker-compose.yml](./docker-compose.yml) and [New .env](./.env)
 ```
-wget -O /your/joystream/directory/joystream/.env https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/.env
-wget -O /your/joystream/directory/joystream/docker-compose.yml https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/docker-compose.yml
+wget -O /your/joystream/directory/joystream/.env https://raw.githubusercontent.com/Joystream/community-repo/master/working-groups/storage-group/NodeSteup/.env
+wget -O /your/joystream/directory/joystream/docker-compose.yml https://raw.githubusercontent.com/Joystream/community-repo/master/working-groups/storage-group/NodeSteup/docker-compose.yml
 
 ```
 
@@ -189,7 +189,7 @@ STORAGESQUIDENDPOINT
 ### Start Storage node
 ```
 mkdir /your/joystream/directory/joystream/entrypoints
-wget -O /your/joystream/directory/joystream/entrypoints/storage.sh https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/entrypoints/storage.sh
+wget -O /your/joystream/directory/joystream/entrypoints/storage.sh https://raw.githubusercontent.com/Joystream/community-repo/master/working-groups/storage-group/NodeSteup/entrypoints/storage.sh
 ```
 
 ```

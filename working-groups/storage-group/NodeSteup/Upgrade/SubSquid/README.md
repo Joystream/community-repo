@@ -17,7 +17,7 @@ cp docker-compose.yml docker-compose.yml.bk
 ## 2- Create new .env and update variables:
 [New .env](./.env)
 ```
-wget wget -O /your/joystream/directory/.env https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/.env
+wget wget -O /your/joystream/directory/.env https://raw.githubusercontent.com/Joystream/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/.env
 ```
 Update the below variables in your new .env
 
@@ -43,12 +43,12 @@ STORAGESQUIDENDPOINT
 Copy directories 'database and entrypoints' in this guide into your joystream directory 
 
 ```
-wget -O /your/joystream/directory/docker-compose.yml https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/docker-compose.yml
+wget -O /your/joystream/directory/docker-compose.yml https://raw.githubusercontent.com/Joystream/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/docker-compose.yml
 
 # Make folder database
 mkdir /your/joystream/directory/database
-wget -O /your/joystream/directory/database/pg_hba.conf https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/database/pg_hba.conf
-wget -O /your/joystream/directory/database/postgres.conf https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/database/postgres.conf
+wget -O /your/joystream/directory/database/pg_hba.conf https://raw.githubusercontent.com/Joystream/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/database/pg_hba.conf
+wget -O /your/joystream/directory/database/postgres.conf https://raw.githubusercontent.com/Joystream/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/database/postgres.conf
 ```
 
 ## 4- Bring up SubSquid 
@@ -72,7 +72,7 @@ docker logs -f squid-graphql-server --tail 100
 ```
 # Create folder entrypoints
 mkdir /your/joystream/directory/entrypoints
-wget -O /your/joystream/directory/entrypoints/storage.sh https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/entrypoints/storage.sh
+wget -O /your/joystream/directory/entrypoints/storage.sh https://raw.githubusercontent.com/Joystream/community-repo/master/working-groups/storage-group/NodeSteup/Upgrade/SubSquid/entrypoints/storage.sh
 ```
 
 

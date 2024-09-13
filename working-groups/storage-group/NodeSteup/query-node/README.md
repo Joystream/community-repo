@@ -11,7 +11,7 @@ For instructions on how to set this up, go [here](../joystream-node/README.md). 
 
 .env and update variables [New .env](../.env)
 ```
-wget -O /your/joystream/directory/joystream/.env https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/.env
+wget -O /your/joystream/directory/joystream/.env https://raw.githubusercontent.com/Joystream/community-repo/master/working-groups/storage-group/NodeSteup/.env
 ```
 Update the below variables in your new .env
 
@@ -37,12 +37,12 @@ Get docker-compose.yml [docker-compose.yml](../docker-compose.yml)
 Copy directories 'database and entrypoints' in this guide into your joystream directory 
 
 ```
-wget -O /your/joystream/directory/docker-compose.yml https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/docker-compose.yml
+wget -O /your/joystream/directory/docker-compose.yml https://raw.githubusercontent.com/Joystream/community-repo/master/working-groups/storage-group/NodeSteup/docker-compose.yml
 
 # Make folder database
 mkdir /your/joystream/directory/joystream/database
-wget -O /your/joystream/directory/joystream/database/pg_hba.conf https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/database/pg_hba.conf
-wget -O /your/joystream/directory/joystream/database/postgres.conf https://raw.githubusercontent.com/yasiryagi/community-repo/master/working-groups/storage-group/NodeSteup/database/postgres.conf
+wget -O /your/joystream/directory/joystream/database/pg_hba.conf https://raw.githubusercontent.com/Joystream/community-repo/master/working-groups/storage-group/NodeSteup/database/pg_hba.conf
+wget -O /your/joystream/directory/joystream/database/postgres.conf https://raw.githubusercontent.com/Joystream/community-repo/master/working-groups/storage-group/NodeSteup/database/postgres.conf
 ```
 
 #### Bring up SubSquid 
