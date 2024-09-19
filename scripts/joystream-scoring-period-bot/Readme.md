@@ -6,14 +6,22 @@ Send Notification with the scoring period date.
 
 Can be updated using `.env` file.
 
-`TG_API_KEY_RU` - api key of the telegram bot for the Russion Version
-`TG_API_KEY_EN` - api key of the telegram bot for the English Version
+`TG_API_KEY_RU` - api token of the telegram bot for the Russion Version
+`TG_API_KEY_EN` - api token of the telegram bot for the English Version
+`DISCORD_TOKEN_RU` - api token of the Discord bot for the Russion Version
+`DISCORD_TOKEN_EN` - api token of the Discord bot for the English Version
 
 ## Commands
 
 `yarn` install dependencies
 
-`yarn start-en` run english version in dev mode
-`yarn start-ru` run russian version in dev mode
-`yarn pm2en` run english version using pm2
-`yarn pm2ru` run russian version using pm2
+Start the bots with the following commands:
+`yarn pm2en`
+`yarn pm2ru`
+
+Check status:
+`pm2 status`
+
+Stop the bots with the following commands:
+`pm2 stop bot-en` 
+`pm2 stop bot-ru` 

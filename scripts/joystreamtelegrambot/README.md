@@ -66,6 +66,65 @@ Run `npm run start` (for example inside screen/tmux window or systemd).
 
 If you need other combinations, add them to `package.json`
 
+
+# Storage size notification bot for discord
+
+Sends actual volume for Joystream Storage Providers to a channel every X hours or via PM with `/storagesize`.
+
+## Development
+
+- Take a copy of .env.example and add token of the bot and rename to .env
+- `npm install`
+- `nodemon`
+
+## Deployment
+
+- Take a copy of .env.example and add token of the bot and rename to .env
+- `npm install`
+- Use pm2 or any process managers to deploy
+  - `npm install pm2@latest -g`
+    or
+    `yarn global add pm2`
+  - `pm2 start --name storagesize node index.js`
+
+
+# Joystream Discord Video Bot ####
+
+This Discord bot announces new video uploads. 
+
+## Installation
+
+```
+git clone https://github.com/Joystream/community-repo
+cd community-repo/community-contributions/joystreamvideobot 
+yarn && yarn run build
+```
+
+## Configuration
+
+### Get the channelid
+
+You should use the channnel id instead of it's name.
+How to get the channel id of a channel:
+1- Open up your Discord Settings
+2- Go to Appearance
+3- Tick Developer Mode (And close the Discord settings)
+4- Right click on your desired channel
+5- Now there's an option Copy ID to copy the channel id
+
+Open `config.ts` and set `channelId`.
+Run `yarn && yarn run build` to apply your changes. 
+
+### Get the Discord Token
+
+Follow the [procedure](https://github.com/Joystream/community-repo/tree/master/community-contributions/discordbot)
+
+
+### Running the bot
+
+`TOKEN=<YOUR DISCORD TOOKEN HERE> node lib/src/bot.js`
+
+
 ## Development
 
 To test api queries open `https://testnet.joystream.org/` -> Settings -> change interface operation mode to `Fully featured` and got to `https://testnet.joystream.org/#/chainstate`.
@@ -74,8 +133,13 @@ To test api queries open `https://testnet.joystream.org/` -> Settings -> change 
 
 [GPLv3](https://github.com/bitoven-dev/joystreamtelegrambot/blob/master/LICENSE)
 
-### Notes
+### Contributions
 
 - bitoven created the first version written in javascript.
 
-- traumschule migrated and refactored it to typescript.
+- Oct 2020: migration to typescript (l1dev)
+
+- 2021: maintenance and more functions (l1dev)
+
+- Feb 2022: merged `storagesizebot` (nexusfallout) and `joystreamvideobot` (isonar)
+

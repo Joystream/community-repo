@@ -1,0 +1,55 @@
+{
+    "applicationDetails": "Storage WG Deputy Lead",
+    "title": "Storage WG Deputy Lead needed",
+    "shortDescription": "Joystream Video DAO (https://joystream.org) is actively looking for a Storage WG Deputy Lead",
+    "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage WG Deputy Lead to join our [Pioneer Governance App](https://dao.joystream.org) community Storage team.\n\n**Responsibilities:** \n\nSupport lead in the day to day tasks including but not limited to:\n\n- Preparing council period reports.\n\n- Representing WG on DAO-wide meetings (Council handover, etc.) if the Lead is unavailable.\n\n- Moderating storage Discord channel and updating Notion page\n\n- Support lead in  monitoring and ensuring that Storage Providers are performing adequately\n\n- Support lead analysing, evaluating and research the system capacity and develop steps and processes to improve and expand upon them\n\n- Mentoring and train Storage WG members\n\n- Develop and improve of monitoring systems and dashboards.\n\n- Develop and improve of documentation systems and dashboards.\n\n**Requirements:** \n\n- Storage Lead / Deputy / Worker experience is preferred\n\n- High availability \n\n- Strong communication skills\n\n- Proficiency in English\n\n- Experience with how to setup and maintain blockchain nodes\n\n- Having access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 25TB and more\n\n**Skills:**\n\n- Linux\n\n- devops, Docker/Docker-compose\n\n- Monitoring: Prometheus, Grafana, Elasticsearch\n\n- scripting: bash, python or others\n\n- nginx or Caddy\n\n- GraphQl\n\n**Rules for firings:** \n\n- If Deputy Lead says he is available but is nowhere to be found for 24h\n\n- If Deputy Lead doesn't deliver on time, without even keeping lead informed\n\n-https://github.com/Joystream/community-repo/tree/master/working-groups/storage-group/SOP\n\n**About WG:** \n\nNotion page: https://www.notion.so/joystream/Storage-9dc5a16444934dc4bda08b596bc15375\n\nDiscord channel: https://discord.gg/fFRdNHsW\n\n**Stake:** \n\n- $2500 (41,666 JOY)\n\n**Salary:** \n\n- $1500 (25,000 JOY)/ month\n\n- If an employee works fewer than 160 hours per month, the Council may reduce their pay according to the hourly rate and actual number of hours worked",
+    "applicationFormQuestions": [{
+            "question": "Are you currently employed?"
+        },
+        {
+            "question": "What is your timezone?"
+        },
+        {
+            "question": "Are you based in US?"
+        },
+        {
+            "question": "Do you have experience with Linux? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with Docker? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with devops and automation/scripting? If yes, please describe it including scripting languages"
+        },
+        {
+            "question": "Do you have experience with GraphQl? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with Prometheus, Grafna and Elasticsearch? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with blockchain nodes? If yes, please describe it"
+        },
+        {
+            "question": "Tell us a bit about yourself"
+        },
+        {
+            "question": "Your availability, in hours per day"
+        },
+        {
+            "question": "Do you understand the compensation model?"
+        },
+        {
+            "question": "Tell us a bit more about your experience in IT"
+        },
+        {
+            "question": "Your Discord"
+        }
+    ],
+    "stakingPolicy": {
+        "amount": 416660000000000,
+        "unstakingPeriod": 604800
+    },
+    "rewardPerBlock": 581511789
+}
+

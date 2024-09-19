@@ -1,0 +1,58 @@
+{
+    "applicationDetails": "Storage Clustering Solution Architect ",
+    "hiringLimit": 1,
+    "title": "Storage Clustering Solution Architect",
+    "shortDescription": "Joystream Video DAO (https://joystream.org) is actively looking for a Storage Clustering Solution Architect",
+    "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage Clustering Solution Architect to design, prototype  and document Kubernetes and CEPH storage node implementation, to be adapted and used by the storage group workers.\n\nAs the Joystream DAO grows and accrue more creators the requirement for more storage capacity grows faster. Currently SWG workers are running standalone servers with as many disks as the server can take. This naturally have problems: \n\n- Max server capacity \n\n- Migrating data to new bigger servers. \n\n- Cost is not optimized. \n\nThe DAO is looking for midterm solution of clustering servers storage and providing a headend server/s a mountable elastic storage capacity that can be expanded at will. \n\nThe DAO is looking for long-term solution of clustering servers storage and providing a object storage that is elastic storage capacity and can be expanded at will.\n\n**Deliverable:** \n\n- Design Kubernetes and CEPH storage node implementation for: block storage and object storage\n\n- Prototype Kubernetes implementation that includes for each storage type:\n\n\t- Colossus storage server\n\n\t- Query node and joystream-node.\n\n\t- Ngnix front end\n\n\t- At least three storage CEPH integrated servers.\n\n\t- Monitoring: Prometheus, nodeexporter, cadvisor, Grafana and alertmanager.\n\n- Full documentation of the  implementation in Github. \n\n**Requirements:** \n\n- High availability\n\n- Having access to IT infrastructure.\n\n- Skills: Linux, Docker, Kubernetes, CEPH, docker/docker-compose, nginx or Caddy, GraphQl, Prometheus, git/github, bash/java script/Python\n\n- Dilver within the agreed time frame.\n\n**About WG:** \n\nDiscord channel: https://discord.gg/fFRdNHsW\n\n**Stake:** \n\n-  333 JOY\n\n**Salary:** \n\n- 3k USD in Joy one time payment upon delivery, there is  room for negotiation",
+    "applicationFormQuestions": [{
+            "question": "Are you currently employed?"
+        },
+        {
+            "question": "What is your time zone?"
+        },
+        {
+            "question": "Are you based in US?"
+        },
+        {
+            "question": "Do you have experience with Linux? If yes, please describe it"
+        },
+            {
+            "question": "Do you have experience with Kubernetes? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with CEPH? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with Docker? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with scripting ? If yes, please describe it"
+        },
+                        {
+            "question": "Do you have experience with NGNIX ? If yes, please describe it"
+        },
+        {
+            "question": "Tell us a bit about yourself"
+        },
+        {
+            "question": "Your availability, in hours per day"
+        },
+        {
+            "question": "Do you understand the compensation model?"
+        },
+        {
+            "question": "Tell us a bit more about your experience in IT"
+        },
+        {
+            "question": "Please provide infrastructure specification and location"
+        },
+        {
+            "question": "Your Discord"
+        }
+    ],
+    "stakingPolicy": {
+        "amount": 3333333333333,
+        "unstakingPeriod": 604800
+    },
+    "rewardPerBlock": 1
+}

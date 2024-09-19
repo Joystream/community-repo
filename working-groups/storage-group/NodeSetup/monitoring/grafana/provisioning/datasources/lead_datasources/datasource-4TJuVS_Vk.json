@@ -1,0 +1,20 @@
+{
+  "id": 19,
+  "uid": "4TJuVS_Vk",
+  "orgId": 1,
+  "name": "storage-0x2bc",
+  "type": "marcusolsson-json-datasource",
+  "typeLogoUrl": "",
+  "access": "proxy",
+  "url": "https://storage.0x2bc.com",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {},
+  "secureJsonFields": {},
+  "version": 3,
+  "readOnly": false
+}

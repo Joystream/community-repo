@@ -1,0 +1,20 @@
+{
+  "id": 20,
+  "uid": "z7n9VSl4z",
+  "orgId": 1,
+  "name": "storage-coin-side",
+  "type": "marcusolsson-json-datasource",
+  "typeLogoUrl": "",
+  "access": "proxy",
+  "url": "https://joy.coin-side.com",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {},
+  "secureJsonFields": {},
+  "version": 3,
+  "readOnly": false
+}

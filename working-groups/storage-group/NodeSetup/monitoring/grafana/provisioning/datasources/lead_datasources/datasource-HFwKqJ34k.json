@@ -1,0 +1,20 @@
+{
+  "id": 29,
+  "uid": "HFwKqJ34k",
+  "orgId": 1,
+  "name": "storage-tomato",
+  "type": "marcusolsson-json-datasource",
+  "typeLogoUrl": "",
+  "access": "proxy",
+  "url": "https://tomato-joystream.yyagi.cloud",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {},
+  "secureJsonFields": {},
+  "version": 2,
+  "readOnly": false
+}

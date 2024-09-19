@@ -1,0 +1,133 @@
+# QueryNode Infrastructure
+version: "3.8"
+services:
+  joystream-node:
+    image: joystream/node:latest
+    restart: unless-stopped
+    container_name: joystream-node
+    volumes:
+      - /root/joystream-node:/chain
+    command: >
+      --pruning archive
+      --validator
+      --unsafe-ws-external
+      --unsafe-rpc-external
+      --rpc-methods Safe
+      --rpc-cors all
+      --base-path /chain
+      --chain joy-mainnet.json
+      --prometheus-port 9615
+      --prometheus-external
+      --name COOL-NAME
+    expose:
+      - 9615
+    ports:
+      - "127.0.0.1:9944:9944"
+      - "127.0.0.1:9933:9933"
+      - 30333:30333
+
+  storage:
+    image: joystream/storage-node:${COLOSSUS_VERSION}
+    container_name: storage
+    restart: unless-stopped
+    volumes:
+      - ${DATA_FOLDER}:/data
+      - ${KEY_FOLDER}:/keystore
+      - ${LOG_FOLDER}:/logs
+      - ${ENDPOINT}:/joystream/storage-node/runner.sh:ro
+    working_dir: /joystream/storage-node
+    ports:
+      - 3333:3333
+    env_file:
+      - .env
+    environment:
+      ENABLE_TELEMETRY: ${ENABLE_TELEMETRY:-no}
+      OTEL_RESOURCE_ATTRIBUTES: service.name=colossus,deployment.environment=production
+      NODE_ENV: ${NODE_ENV}
+    entrypoint: ['/joystream/storage-node/runner.sh']
+    command: [
+      'server',
+      '--worker=${COLOSSUS_1_WORKER_ID}',
+      '--port=3333',
+      '--uploads=/data',
+      '--sync',
+      '--syncInterval=10',
+      '--syncWorkersNumber 20',
+      '--storageSquidEndpoint ${STORAGESQUIDENDPOINT}',
+      '--apiUrl=${JOYSTREAM_NODE_WS}',
+      '--keyFile=${KEY_FILE}',
+      '--elasticSearchEndpoint=${JOYSTREAM_ES_URL}',
+      '--elasticSearchPassword=${JOYSTREAM_ES_PASSWORD}',
+      '--elasticSearchUser=${JOYSTREAM_ES_USERNAME}',
+      '--logFilePath=/logs',
+      '--pendingFolder=/data/pending/'
+    ]
+
+  squid-db:
+    container_name: squid-db
+    hostname: squid-db
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${SQUID_DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      PGPORT: ${SQUID_DB_PORT}
+    ports:
+      - '127.0.0.1:${SQUID_DB_PORT}:${SQUID_DB_PORT}'
+    command: ['postgres', '-c', 'config_file=/etc/postgresql/postgresql.conf', '-p', '${SQUID_DB_PORT}']
+    shm_size: 1.1g # A bit higher than `shared_buffers` value in postgres.conf
+    volumes:
+      - squid-db-data:/var/lib/postgresql/data
+      - ./database/postgres.conf:/etc/postgresql/postgresql.conf:ro
+      - ./database/pg_hba.conf:/etc/postgresql/pg_hba.conf
+
+  squid-processor:
+    image: joystream/storage-squid:${STORAGE_SQUID_VERSION}
+    container_name: squid-processor
+    hostname: squid-processor
+    restart: unless-stopped
+    environment:
+      - DB_NAME=${SQUID_DB_NAME}
+      - DB_PASS=${DB_PASS}
+      - DB_USER=${DB_USER}
+      - DB_PORT=${SQUID_DB_PORT}
+      - DB_HOST=${DB_HOST}
+      - GQL_PORT=${SQUID_GQL_PORT}
+      - ARCHIVE_GATEWAY_URL=${SQUID_ARCHIVE_GATEWAY_URL}
+      - RPC_ENDPOINT=${JOYSTREAM_NODE_WS}
+      - RPC_RATE_LIMIT=${SQUID_RPC_RATE_LIMIT}
+    depends_on:
+      - squid-db
+    command: >
+      sh -c "npx squid-typeorm-migration apply && \
+             node -r dotenv-expand/config lib/processor.js"
+
+  squid-graphql-server:
+    image: joystream/storage-squid:${STORAGE_SQUID_VERSION}
+    container_name: squid-graphql-server
+    hostname: squid-graphql-server
+    restart: unless-stopped
+    environment:
+      - DB_NAME=${SQUID_DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_PORT=${SQUID_DB_PORT}
+      - DB_HOST=${DB_HOST}
+      - GQL_PORT=${SQUID_GQL_PORT}
+    depends_on:
+      - squid-db
+    command: ['npm', 'run', 'graphql-server-start']
+    ports:
+      - '127.0.0.1:${SQUID_GQL_PORT}:${SQUID_GQL_PORT}'
+
+
+
+
+
+volumes:
+  squid-db-data: {}
+
+networks:
+  default:
+    name: joystream_default

@@ -1,0 +1,221 @@
+groups:
+- name: targets
+  rules:
+  - alert: monitor_service_down
+    expr: up == 0
+    for: 30s
+    labels:
+      severity: critical
+    annotations:
+      summary: "Monitor service non-operational"
+      description: "Service {{ $labels.instance }} is down."
+
+- name: host
+  rules:
+  - alert: high_cpu_load
+    expr: node_load1 > 16
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "Server under high load"
+      description: "Docker host is under high load, the avg load 1m is at {{ $value}}. Reported by instance {{ $labels.instance }} of job {{ $labels.job }}."
+
+  - alert: high_memory_load
+    expr: (sum(node_memory_MemTotal_bytes) - sum(node_memory_MemFree_bytes + node_memory_Buffers_bytes + node_memory_Cached_bytes) ) / sum(node_memory_MemTotal_bytes) * 100 > 85
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "Server memory is almost full"
+      description: "Docker host memory usage is {{ humanize $value}}%. Reported by instance {{ $labels.instance }} of job {{ $labels.job }}."
+
+  - alert: high_storage_load
+    expr: (node_filesystem_size_bytes{fstype="aufs"} - node_filesystem_free_bytes{fstype="aufs"}) / node_filesystem_size_bytes{fstype="aufs"}  * 100 > 85
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "Server storage is almost full"
+      description: "Docker host storage usage is {{ humanize $value}}%. Reported by instance {{ $labels.instance }} of job {{ $labels.job }}."
+
+- name: containers
+  rules:
+  - alert: joystream_node_down
+    expr: absent((time() - container_last_seen{name=~"joystream-node.*"}) < 10)
+    for: 30s
+    labels:
+      severity: critical
+    annotations:
+      summary: "{{ $labels.instance }} is down"
+      description: "{{ $labels.instance }} container is down for more than 30 seconds."
+
+  - alert: joystream-node_high_cpu
+    expr: sum(rate(container_cpu_usage_seconds_total{name=~"joystream-node.*"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 75
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{ $labels.instance }} high CPU usage"
+      description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
+
+  - alert: joystream-node_high_memory
+    expr: sum(container_memory_working_set_bytes{name=~"joystream-node.*"}) > 25000000000
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{ $labels.instance }} high memory usage"
+      description: "{{ $labels.instance }} memory consumption is at {{ humanize $value}}."
+
+  - alert: joystreamnode_high_cpu
+    expr: sum(rate(container_cpu_usage_seconds_total{name=~"joystream-node.*"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 10
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{ $labels.instance }} high CPU usage"
+      description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
+
+  - alert: joystreamnode_high_memory
+    expr: sum(container_memory_working_set_bytes{name=~"joystream-node.*"}) > 25000000000
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{ $labels.instance }} high memory usage"
+      description: "{{ $labels.instance }} memory consumption is at {{ humanize $value}}."
+
+  - alert: storage_down
+    expr: absent((time() - container_last_seen{name=~"storage.*"}) < 10)
+    for: 30s
+    labels:
+      severity: critical
+    annotations:
+      summary: "{{ $labels.instance }} is down"
+      description: "{{ $labels.instance }} container is down for more than 30 seconds."
+
+  - alert: storage_high_cpu
+    expr: sum(rate(container_cpu_usage_seconds_total{name=~"storage.*"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 75
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{ $labels.instance }} high CPU usage"
+      description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
+
+  - alert: storage_high_memory
+    expr: sum(container_memory_working_set_bytes{name=~"storage.*"}) > 60000000000
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{ $labels.instance }} high memory usage"
+      description: "{{ $labels.instance }} memory consumption is at {{ humanize $value}}."
+
+  - alert: db_down
+    expr: absent((time() - container_last_seen{name=~"squid-db.*"}) < 10)
+    for: 10s
+    labels:
+      severity: critical
+    annotations:
+      summary: "{{ $labels.instance }} down"
+      description: "{{ $labels.instance }} container is down for more than 30 seconds."
+
+  - alert: db_high_cpu
+    expr: sum(rate(container_cpu_usage_seconds_total{name=~"squid-db..*"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 75
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{ $labels.instance }} high CPU usage"
+      description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
+
+  - alert: db_high_memory
+    expr: sum(container_memory_working_set_bytes{name=~"squid-db.*"}) > 60000000000
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{ $labels.instance }} high memory usage"
+      description: "{{ $labels.instance }} memory consumption is at {{ humanize $value}}."
+
+  - alert: squid_processor_down
+    expr: absent((time() - container_last_seen{name=~"squid-processor.*"}) < 10)
+    for: 10s
+    labels:
+      severity: critical
+    annotations:
+      summary: "{{ $labels.instance }} down"
+      description: "{{ $labels.instance }} container is down for more than 30 seconds."
+
+  - alert: squid_processor_high_cpu
+    expr: sum(rate(container_cpu_usage_seconds_total{name=~"squid-processor.*"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 75
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{ $labels.instance }} high CPU usage"
+      description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
+
+  - alert: squid_processor_high_memory
+    expr: sum(container_memory_working_set_bytes{name=~"squid-processor.*"}) > 50000000000
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{ $labels.instance }} high memory usage"
+      description: "{{ $labels.instance }} memory consumption is at {{ humanize $value}}."
+
+  - alert: squid_graphql_server_down
+    expr: absent((time() - container_last_seen{name=~"squid-graphql-server.*"}) < 10)
+    for: 10s
+    labels:
+      severity: critical
+    annotations:
+      summary: "{{ $labels.instance }} down"
+      description: "{{ $labels.instance }} container is down for more than 30 seconds."
+
+  - alert: squid_graphql_server_high_cpu
+    expr: sum(rate(container_cpu_usage_seconds_total{name=~"squid-graphql-server.*"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 75
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{ $labels.instance }} high CPU usage"
+      description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
+
+  - alert: squid_graphql_server_high_memory
+    expr: sum(container_memory_working_set_bytes{name=~"squid-graphql-server.*"}) > 50000000000
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{ $labels.instance }} high memory usage"
+      description: "{{ $labels.instance }} memory consumption is at {{ humanize $value}}."
+
+  - alert: caddy_down
+    expr: absent((time() - container_last_seen{name=~"caddy.*"}) < 10)
+    for: 10s
+    labels:
+      severity: critical
+    annotations:
+      summary: "{{ $labels.instance }} down"
+
+  - alert: caddy_high_cpu
+    expr: sum(rate(container_cpu_usage_seconds_total{name=~"caddy.*"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 75
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{ $labels.instance }} high CPU usage"
+      description: "{{ $labels.instance }} CPU usage is {{ humanize $value}}%."
+
+  - alert: caddy_high_memory
+    expr: sum(container_memory_working_set_bytes{name=~"caddy.*"}) > 60000000000
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{ $labels.instance }} high memory usage"
+      description: "{{ $labels.instance }} memory consumption is at {{ humanize $value}}."

@@ -1,0 +1,23 @@
+TOTAL SALARY = (%BASE_SALARY + % SERVER_COST + %BONUS) * %PENALTY
+
+
+
+BASE_SALARY = %DEVOPS_MONTHLY_SALARY *[{1/3*30+ %EXTRA_HOURS}/160]
+DEVOPS_MONTHLY_SALARY (default 11K USD)
+EXTRA_HOURS = (default 0) decided by the Lead
+1/3*30 = worker needs to spend 20 minutes (1/3 of an hour) per day * 30 days per month.
+160 = 20*8 = number of hours in an average working month, 8 hr per day for 20 days. 
+
+SERVER_COST = 2 * %AVERAGE_SERVER_COST * ( %STORAGE_CAPACITY_PROVIDED_IN_TB / %RECOMMENDED_CAPACITY_IN_TB )
+AVERAGE_SERVER_COST (default $150)
+STORAGE_CAPACITY_PROVIDED_IN_TB = The capacity of the server storage in TB, max is RECOMMENDED_CAPACITY_IN_TB.
+RECOMMENDED_CAPACITY_IN_TB = The recommended server capacity set by the lead in TB, currently 10T
+
+BONUS (default 0)
+
+PENALTY = uptime/total_time in the previous council period (default 1)
+
+
+
+Ref: 
+1) DEVOPS_MONTHLY_SALARY: https://builtin.com/salaries/dev-engineer/devops-engineer

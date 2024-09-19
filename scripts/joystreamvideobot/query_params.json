@@ -1,8 +1,0 @@
-{
-    "_v0_where":{
-      "createdAt_gte":"__DATE_AFTER__",
-      "isPublic_eq": true,
-      "isCensored_eq": false
-    },
-    "_v0_orderBy":"createdAt_ASC"
-}

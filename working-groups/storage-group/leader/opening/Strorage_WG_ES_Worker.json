@@ -1,0 +1,58 @@
+{
+    "applicationDetails": "Storage WG ElasticSearch Worker",
+    "hiringLimit": 1,
+    "title": "Storage WG ElasticSearch Worker needed",
+    "shortDescription": "Joystream Video DAO (https://joystream.org) is actively looking for a Storage WG ElasticSearch Worker",
+    "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage WG ElasticSearch Worker to join our [Pioneer Governance App](https://dao.joystream.org) community Storage team.\n\n**Tasks for Carthage:** \n\n- See https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution\n\n**Responsibilities:** \n\n- Operate a ElasticSearch server and ensure high availability.\n\n- Work with other workgroup members to setup their ElasticSearch clients and make sure the server is collecting their data. - Setup monitoring templates and dashboards to give visibility into the health of the infrastructure **Requirements:** \n\n- ElasticSearch experience is preferred\n\n- High availability: First few days after hired will require high availability and lots of work\n\n- Experience with how to setup and maintain blockchain and ElasticSearch nodes\n\n- Having access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 4TB and more\n\n- Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, ElasticSearch, (nice to have prometheus/Grafana)\n\n**Rules for firings:** \n\n- https://github.com/Joystream/community-repo/tree/master/working-groups/storage-group/SOP\n\n**About WG:** \n\nNotion page: https://www.notion.so/joystream/Storage-9dc5a16444934dc4bda08b596bc15375\n\nDiscord channel: https://discord.gg/fFRdNHsW\n\n**Stake:** \n\n- $5000 (83,333 JOY)\n\n**Salary:** \n\n- $500 (8,333 JOY)/ month\n\n- If an employee works fewer than 160 hours per month, the Council may reduce their pay according to the hourly rate and actual number of hours worked",
+    "applicationFormQuestions": [{
+            "question": "Are you currently employed?"
+        },
+        {
+            "question": "What is your timezone?"
+        },
+        {
+            "question": "Are you based in US?"
+        },
+        {
+            "question": "Do you have experience with Linux? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with Docker? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with devops and automation? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with GraphQl? If yes, please describe it"
+        },
+        {
+            "question": "Do you have experience with blockchain nodes? If yes, please describe it"
+        },
+	{
+            "question": "Do you have experience with ElasticSearch server? If yes, please describe it"
+        },
+        {
+            "question": "Tell us a bit about youself"
+        },
+        {
+            "question": "Your availability, in hours per day"
+        },
+        {
+            "question": "Do you understand the compensation model?"
+        },
+        {
+            "question": "Tell us a bit more about your experience in IT"
+        },
+	{
+            "question": "Please provide infrastructure specification and location"
+        },
+        {
+            "question": "Your Discord"
+        }
+    ],
+    "stakingPolicy": {
+        "amount": 833330000000000,
+        "unstakingPeriod": 604800
+    },
+    "rewardPerBlock": 192700000
+}

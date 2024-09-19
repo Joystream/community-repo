@@ -7,7 +7,7 @@ export interface BotServiceProps {
   client: any; // TelegramBot | DiscordBot,
   getId: Function;
   getName: Function;
-  getChatId?: Function;
+  getChatId?: Function; // TelegramBot
   isPrivate?: Function;
   deleteMessage?: Function;
   getText: Function;

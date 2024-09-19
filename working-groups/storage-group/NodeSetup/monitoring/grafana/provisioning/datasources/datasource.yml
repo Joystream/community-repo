@@ -1,0 +1,13 @@
+apiVersion: 1
+
+datasources:
+  - name: YYAGI Prometheus
+    type: prometheus
+    access: proxy
+    orgId: 1
+    uid: "1230"
+    version: 1
+    url: http://prometheus:9090
+    basicAuth: false
+    isDefault: true
+    editable: true

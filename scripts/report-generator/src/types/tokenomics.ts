@@ -15,17 +15,13 @@ export interface Config {
 }
 
 export class Statistics {
-  [key: string]: number | string;
+  [key: string]: number | string | { [key: string]: number | string };
   councilRound: number = 0;
   councilMembers: number = 0;
 
-  electionApplicants: number = 0;
-  electionAvgApplicants: number = 0;
-  perElectionApplicants: number = 0;
-
-  electionApplicantsStakes: number = 0;
-  electionVotes: number = 0;
-  avgVotePerApplicant: number = 0;
+  tokenomics: string;
+  mintStats: string;
+  workingGroups: string;
 
   dateStart: string = "";
   dateEnd: string = "";
@@ -81,26 +77,6 @@ export class Statistics {
 
   totalMintCapacityIncrease: number = 0;
 
-  startCouncilMinted: number = 0;
-  endCouncilMinted: number = 0;
-  newCouncilMinted: number = 0;
-  percNewCouncilMinted: number = 0;
-
-  startCuratorMinted: number = 0;
-  endCuratorMinted: number = 0;
-  newCuratorMinted: number = 0;
-  percCuratorMinted: number = 0;
-
-  startStorageMinted: number = 0;
-  endStorageMinted: number = 0;
-  newStorageMinted: number = 0;
-  percStorageMinted: number = 0;
-
-  startOperationsMinted: number = 0;
-  endOperationsMinted: number = 0;
-  newOperationsMinted: number = 0;
-  percOperationsMinted: number = 0;
-
   startIssuance: number = 0;
   endIssuance: number = 0;
   newIssuance: number = 0;
@@ -116,29 +92,7 @@ export class Statistics {
   endValidatorsStake: number = 0;
   percNewValidatorsStake: number = 0;
 
-  startStorageProviders: number = 0;
-  endStorageProviders: number = 0;
-  percNewStorageProviders: number = 0;
-  newStorageProviderReward: number = 0;
-  startStorageProvidersStake: number = 0;
-  endStorageProvidersStake: number = 0;
-  percNewStorageProviderStake: number = 0;
-
-  startOperationsWorkers: number = 0;
-  endOperationsWorkers: number = 0;
-  percNewOperationsWorkers: number = 0;
-  newOperationsReward: number = 0;
-  startOperationsStake: number = 0;
-  endOperationsStake: number = 0;
-  percNewOperationstake: number = 0;
-
   newCouncilRewards: number = 0;
-
-  startCurators: number = 0;
-  endCurators: number = 0;
-  percNewCurators: number = 0;
-  newCuratorRewards: number = 0;
-
   startUsedSpace: number = 0;
   newUsedSpace: number = 0;
   endUsedSpace: number = 0;
@@ -179,12 +133,12 @@ export class ValidatorReward {
   blockNumber: number = 0;
 }
 
-export class WorkersInfo {
-  rewards: number = 0;
-  startStake: number = 0;
-  endStake: number = 0;
-  startNrOfWorkers: number = 0;
-  endNrOfWorkers: number = 0;
+export interface WorkersInfo {
+  index: number;
+  labels: string[];
+  stakes: { start: number; end: number; change: number };
+  workers: { start: number; end: number; change: number };
+  workersTable: string;
 }
 
 export class Exchange {
@@ -206,23 +160,11 @@ export enum ProposalTypes {
   SetStorageRoleParameters = "SetStorageRoleParameters",
 }
 
-export class MintStatistics {
-  startMinted: number;
-  endMinted: number;
-  diffMinted: number;
-  percMinted: number;
-
-  constructor(
-    startMinted: number = 0,
-    endMinted: number = 0,
-    diffMinted: number = 0,
-    percMinted: number = 0
-  ) {
-    this.startMinted = startMinted;
-    this.endMinted = endMinted;
-    this.diffMinted = diffMinted;
-    this.percMinted = percMinted;
-  }
+export interface MintStats {
+  start: string;
+  end: string;
+  diff: number;
+  change: number;
 }
 
 export class Media {
