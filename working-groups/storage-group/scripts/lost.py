@@ -10,7 +10,6 @@ url = 'https://query.joystream.org/graphql'
 #url = 'https://query.joystream.org/graphql'
 file_name = "{}-12:00-objects.txt"
 file_server = "http://87.236.146.74:8000/"
-operators = [{'id':"0x2bc", 'bucket': 0},{'id':"alexznet", 'bucket': 2},{'id':"Craci_BwareLabs", 'bucket': 10},{'id':"GodsHunter", 'bucket': 6},{'id':"joystreamstats", 'bucket': 1},{'id':"l1dev", 'bucket': 4},{'id':"maxlevush", 'bucket': 3},{'id':"mmx1916", 'bucket': 9},{'id':"razumv", 'bucket': 11},{'id':"yyagi", 'bucket': 8}, {'id':"sieemma", 'bucket': 12} ]
 credential = {'username': '', 'password' :'joystream'}
 query_group = "storageWorkingGroup"
 
