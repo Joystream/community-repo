@@ -1,0 +1,3218 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "storage-work-group-report",
+    "url": "/d/PjSUz0_Vz/storage-work-group-report",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2023-06-08T10:40:31Z",
+    "updated": "2023-06-09T16:03:35Z",
+    "updatedBy": "admin",
+    "createdBy": "admin",
+    "version": 48,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 0,
+    "folderUid": "",
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 14,
+    "links": [
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": false,
+        "title": "Storage Group Report ",
+        "tooltip": "",
+        "type": "dashboards",
+        "url": ""
+      }
+    ],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": [
+              {
+                "options": {
+                  "false": {
+                    "color": "red",
+                    "index": 0
+                  }
+                },
+                "type": "value"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "success %"
+              },
+              "properties": [
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "red",
+                        "value": null
+                      },
+                      {
+                        "color": "green",
+                        "value": 99
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "failures"
+              },
+              "properties": [
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 1
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "timeouts"
+              },
+              "properties": [
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 5
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 18,
+        "options": {
+          "basemap": {
+            "config": {},
+            "name": "Layer 0",
+            "type": "default"
+          },
+          "controls": {
+            "mouseWheelZoom": true,
+            "showAttribution": true,
+            "showDebug": false,
+            "showMeasure": false,
+            "showScale": false,
+            "showZoom": true
+          },
+          "layers": [
+            {
+              "config": {
+                "showLegend": true,
+                "style": {
+                  "color": {
+                    "fixed": "dark-green"
+                  },
+                  "opacity": 0.6,
+                  "rotation": {
+                    "fixed": 0,
+                    "max": 360,
+                    "min": -360,
+                    "mode": "mod"
+                  },
+                  "size": {
+                    "fixed": 5,
+                    "max": 15,
+                    "min": 2
+                  },
+                  "symbol": {
+                    "fixed": "img/icons/marker/circle.svg",
+                    "mode": "fixed"
+                  },
+                  "textConfig": {
+                    "fontSize": 12,
+                    "offsetX": 0,
+                    "offsetY": 0,
+                    "textAlign": "center",
+                    "textBaseline": "middle"
+                  }
+                }
+              },
+              "location": {
+                "mode": "auto"
+              },
+              "name": "Nodes",
+              "tooltip": true,
+              "type": "markers"
+            }
+          ],
+          "tooltip": {
+            "mode": "details"
+          },
+          "view": {
+            "allLayers": true,
+            "id": "fit",
+            "lat": 38.972522,
+            "lon": 11.338247,
+            "padding": 10,
+            "zoom": 15
+          }
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query {\n data:storageBuckets {\n    acceptingNewBags\n    id\n    operatorMetadata {\n      nodeLocation {\n        coordinates {\n          latitude\n          longitude\n        }\n        city\n        countryCode\n      }\n}}}",
+            "refId": "A",
+            "timePath": ""
+          }
+        ],
+        "title": "Nodes locations",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {
+                "acceptingNewBags": "true",
+                "failureCount": 5,
+                "id": 0,
+                "metricsCount": 6,
+                "operatorMetadata.city": 10,
+                "operatorMetadata.nodeEndpoint": 2,
+                "operatorMetadata.nodeLocation.coordinates.latitude": 8,
+                "operatorMetadata.nodeLocation.coordinates.longitude": 9,
+                "operatorMetadata.nodeLocation.countryCode": 11,
+                "successPercentage": 3,
+                "timeoutCount": 4,
+                "workerId": 7
+              },
+              "renameByName": {
+                "acceptingNewBags": "Accepting New Bags",
+                "failureCount": "failures",
+                "id": "bucket ID",
+                "metricsCount": "tests count",
+                "operatorMetadata.nodeEndpoint": "endpoint",
+                "operatorMetadata.nodeLocation.city": "city",
+                "operatorMetadata.nodeLocation.coordinates.latitude": "latitude",
+                "operatorMetadata.nodeLocation.coordinates.longitude": "longitude",
+                "operatorMetadata.nodeLocation.countryCode": "country",
+                "successPercentage": "success %",
+                "timeoutCount": "timeouts",
+                "workerId": "worker id"
+              }
+            }
+          }
+        ],
+        "type": "geomap"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "workerId"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 99
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Rewards Per Block"
+              },
+              "properties": [
+                {
+                  "id": "custom.align",
+                  "value": "auto"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Lead"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "false": {
+                          "index": 0,
+                          "text": "-"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 24,
+          "x": 0,
+          "y": 11
+        },
+        "id": 265,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query {\ndata:workers(\n    where: { createdAt_lt: \"$end_time\", group: { id_eq: \"storageWorkingGroup\" }, terminatedworkereventworker_none: { createdAt_gte: \"$end_time\", createdAt_lte: \"$start_time\"}}) {\n   workerId:runtimeId\n   isLead\n   membership {\n   id\n   handle\n   }\n   rewardPerBlock\n   rewardAccount\n   terminatedworkereventworker {\n      createdAt\n    }\n   }\n   }",
+            "refId": "A",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Worker list",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "isLead": "Lead",
+                "membership.handle": "Membership Handle",
+                "membership.id": "Membership ID",
+                "rewardAccount": "Account",
+                "rewardPerBlock": "Rewards Per Block",
+                "terminatedworkereventworker.0.createdAt": "Termination Date",
+                "workerId": "Worker ID"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "worker id"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 88
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "id"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 43
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "dataObjectsSize"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 129
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "dataObjectsCount"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 143
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "dataObjectsSizeLimit"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 161
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "dataObjectCountLimit"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 168
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "acceptingNewBags"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 149
+                },
+                {
+                  "id": "custom.displayMode",
+                  "value": "color-text"
+                },
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "false": {
+                          "color": "dark-red",
+                          "index": 0
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Bucket ID"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 90
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Worker ID"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 98
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Objects Size"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Objects Size Limit"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 21
+        },
+        "id": 14,
+        "options": {
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query {\n  data:storageBuckets( where: {  createdAt_lt: \"$end_time\"} ) {\n    id\n    operatorStatus {\n      ... on StorageBucketOperatorStatusActive {\n        workerId\n      }\n    }\n    acceptingNewBags\n    dataObjectCountLimit\n    dataObjectsSizeLimit\n    dataObjectsCount\n    dataObjectsSize\n    operatorMetadata {\n      nodeEndpoint\n      nodeLocation {\n        city\n        countryCode\n      }\n    }\n\n  }\n\n}",
+            "refId": "A",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Bucket list",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "acceptingNewBags": "Accepting New Bags",
+                "dataObjectCountLimit": "Object Count Limit",
+                "dataObjectsCount": "Objects Count",
+                "dataObjectsSize": "Objects Size",
+                "dataObjectsSizeLimit": "Objects Size Limit",
+                "id": "Bucket ID",
+                "membership.handle": "member handle",
+                "membership.id": "member id",
+                "operatorMetadata.nodeEndpoint": "NodeEndpoint",
+                "operatorMetadata.nodeLocation.city": "City",
+                "operatorMetadata.nodeLocation.countryCode": "CountryCode",
+                "operatorStatus.workerId": "Worker ID",
+                "rewardPerBlock": "Reward",
+                "workerId": "worker id"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "left",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "noValue": "0",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "string"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Membership ID"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 354
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "amount (sum)"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "none"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 0,
+          "y": 29
+        },
+        "id": 267,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query  {\n  data:rewardPaidEvents(limit: 33000, offset: 0, where: {group: {id_eq: \"storageWorkingGroup\"}, createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\"}) {\n      workerId\n      worker {\n      membership {\n        handle\n      }\n    }\n    amount\n  }\n}",
+            "refId": "A",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Rewards Per Period(nJoy)",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "amount": "",
+                "amount (sum)": "Total",
+                "worker.membership.handle": "Membership Handle",
+                "worker.membership.id": "Membership ID",
+                "workerId": "Worker ID"
+              }
+            }
+          },
+          {
+            "id": "convertFieldType",
+            "options": {
+              "conversions": [
+                {
+                  "destinationType": "number",
+                  "targetField": "amount"
+                }
+              ],
+              "fields": {}
+            }
+          },
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Membership Handle": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "Worker ID": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "amount": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                }
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "testdata",
+          "uid": "ztQ4BAlVk"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 12,
+          "y": 29
+        },
+        "id": 269,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "alias": "Cost",
+            "csvContent": "Worker ID,Joystream Name,\"Server cost, USD\",Capacity\r\n0,yyagi,$110,12T\r\n1,maxlevush,$90,3T\r\n2,Craci_BwareLabsv,$350,12T\r\n4,0x2bc,$92,32T\r\n5,kalpakci,$97,16T\r\n3,freakstatic,$40,8T\r\n8,itornews,150$,10T",
+            "datasource": {
+              "type": "testdata",
+              "uid": "ztQ4BAlVk"
+            },
+            "refId": "A",
+            "scenarioId": "csv_content"
+          }
+        ],
+        "title": "Cost",
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Worker ID"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 193
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 6,
+          "x": 0,
+          "y": 39
+        },
+        "id": 271,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query  { \ndata:openingFilledEvents   (where: {group: {id_eq: \"storageWorkingGroup\"}, createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\"}) { createdAt  workersHired { id membershipId}}\n}",
+            "refId": "A",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Hiring",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "createdAt": "Date ",
+                "workersHired.0.id": "Worker ID",
+                "workersHired.0.membershipId": "Worker Membership ID"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 7,
+          "x": 6,
+          "y": 39
+        },
+        "id": 273,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query  { data:terminatedWorkerEvents(where: {group: {id_eq: \"storageWorkingGroup\"}, createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\"}) { createdAt  worker { id membershipId} }}",
+            "refId": "A",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Firing",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "createdAt": "Date",
+                "worker.id": "Worker ID",
+                "worker.membershipId": "Worker Membership ID"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 11,
+          "x": 13,
+          "y": 39
+        },
+        "id": 275,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query  { data:stakeSlashedEvents    (where: {group: {id_eq: \"storageWorkingGroup\"}, createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\"}) { createdAt  worker { membershipId } slashedAmount workerId }}\n",
+            "refId": "A",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Slashing",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-text",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Total Objects Size"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 24,
+          "x": 0,
+          "y": 45
+        },
+        "id": 292,
+        "options": {
+          "footer": {
+            "enablePagination": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Total Objects Size"
+            }
+          ]
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query  { data:storageDataObjects(limit: 1000000, offset: 0, where: {createdAt_lte: \"$end_time\"}) {  size   }}",
+            "refId": "A",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Objects Grand Total  ",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "dataObjectsCount": "Count",
+                "dataObjectsSize": "Size",
+                "id": "ID",
+                "size": "Size"
+              }
+            }
+          },
+          {
+            "id": "convertFieldType",
+            "options": {
+              "conversions": [
+                {
+                  "destinationType": "number",
+                  "targetField": "Size"
+                }
+              ],
+              "fields": {}
+            }
+          },
+          {
+            "id": "reduce",
+            "options": {
+              "includeTimeField": false,
+              "mode": "seriesToRows",
+              "reducers": [
+                "count",
+                "sum"
+              ]
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Field": true
+              },
+              "indexByName": {},
+              "renameByName": {
+                "Count": "Total Objects:",
+                "Total": "Total Objects Size"
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-text",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Total Objects Size"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 24,
+          "x": 0,
+          "y": 49
+        },
+        "id": 293,
+        "options": {
+          "footer": {
+            "enablePagination": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Total Objects Size"
+            }
+          ]
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query  { data:storageBags(limit: 1000000, offset: 0, where: {createdAt_lte: \"$end_time\"}) {  id }}",
+            "refId": "B",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query  { data:storageDataObjects(limit: 1000000, offset: 0, where: {createdAt_lte: \"$end_time\"}) {  storageBagId }}",
+            "refId": "A",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Bags Total  ",
+        "transformations": [
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "id": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "storageBagId": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "reduce",
+            "options": {
+              "includeTimeField": false,
+              "mode": "seriesToRows",
+              "reducers": [
+                "count"
+              ]
+            }
+          },
+          {
+            "id": "rowsToFields",
+            "options": {}
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "id": "Grand Total Number of Bags",
+                "storageBagId": "Total Number of Bags in use"
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "id"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 45
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Size"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 13,
+          "x": 0,
+          "y": 53
+        },
+        "id": 277,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query  {  data:storageBuckets ( where: {createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\"}){    id    dataObjectsSize     dataObjectsCount    }}",
+            "refId": "A",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Bucket Create",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "dataObjectsCount": "Count",
+                "dataObjectsSize": "Size",
+                "id": "ID"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Buckets Created "
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 137
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Bags Created "
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 115
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Objects Uploaded "
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 138
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Objects Lost "
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 124
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Percentage Lost Objects:"
+              },
+              "properties": [
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 0.01
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "custom.displayMode",
+                  "value": "color-text"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 11,
+          "x": 13,
+          "y": 53
+        },
+        "id": 281,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": false,
+              "displayName": "Bags Created "
+            }
+          ]
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query { data:storageBags( limit: 33000, offset: 0, where: {createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\"}) {  id } }",
+            "refId": "A",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query  {  data:storageBuckets( limit: 33000, offset: 0, where: {createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\"}){    id  }  }\n",
+            "refId": "B",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query  { data:storageDataObjects(limit: 30000, offset: 0, where: {  createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\"} ) { id  }} ",
+            "refId": "C",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query  { data:storageDataObjects(limit: 3000, offset: 0, where: {isAccepted_eq: false, createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\"} ) { id  }} ",
+            "refId": "D",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Number Buckets & Bags created",
+        "transformations": [
+          {
+            "id": "reduce",
+            "options": {
+              "includeTimeField": false,
+              "labelsToFields": false,
+              "mode": "seriesToRows",
+              "reducers": [
+                "count"
+              ]
+            }
+          },
+          {
+            "id": "rowsToFields",
+            "options": {
+              "mappings": [
+                {
+                  "fieldName": "Field",
+                  "handlerKey": "field.name"
+                }
+              ]
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "id 4": false
+              },
+              "indexByName": {},
+              "renameByName": {
+                "id 1": "Bags Created ",
+                "id 2": "Buckets Created ",
+                "id 3": "Objects Uploaded ",
+                "id 4": "Objects Lost ",
+                "size": "Total Objects Size:"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Percentage Lost Objects:",
+              "binary": {
+                "left": "Objects Lost ",
+                "operator": "/",
+                "reducer": "sum",
+                "right": "Objects Uploaded "
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              },
+              "replaceFields": false
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 13,
+          "x": 0,
+          "y": 59
+        },
+        "id": 283,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query { data:storageBags( limit: 33000, offset: 0, where: {deletedAt_gt: \"$start_time\", deletedAt_lt: \"$end_time\"}) {  id } }",
+            "refId": "A",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query  {  data:storageBuckets( limit: 33000, offset: 0, where: {deletedAt_gt: \"$start_time\", deletedAt_lt: \"$end_time\"}){    id  }  }\n",
+            "refId": "B",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Number of Buckets and Bags Deleted",
+        "transformations": [
+          {
+            "id": "reduce",
+            "options": {
+              "reducers": [
+                "count"
+              ]
+            }
+          },
+          {
+            "id": "rowsToFields",
+            "options": {}
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "id 1": "Bags",
+                "id 2": "Buckets"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 11,
+          "x": 13,
+          "y": 59
+        },
+        "id": 279,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query  {  data:storageBuckets ( where: {deletedAt_gt: \"$start_time\" ,deletedAt_lt: \"$end_time\"}){    id    dataObjectsSize    dataObjectsSizeLimit    dataObjectsCount     }}",
+            "refId": "A",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Buckets Deleted",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Average Objects size"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Total Objects size"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 24,
+          "w": 12,
+          "x": 0,
+          "y": 65
+        },
+        "id": 287,
+        "options": {
+          "footer": {
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query  { data:storageDataObjects(limit: 30000, offset: 0, where: {createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\"}) { storageBagId  size  }}",
+            "refId": "A",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Objects Size Distribution Per Bag during this Council Period",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "createdAt": "Date Created",
+                "id": "Object ID",
+                "size": "Size",
+                "storageBagId": "Bag ID"
+              }
+            }
+          },
+          {
+            "id": "convertFieldType",
+            "options": {
+              "conversions": [
+                {
+                  "destinationType": "number",
+                  "targetField": "Size"
+                }
+              ],
+              "fields": {}
+            }
+          },
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Bag ID": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "Size": {
+                  "aggregations": [
+                    "sum",
+                    "count",
+                    "mean"
+                  ],
+                  "operation": "aggregate"
+                }
+              }
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "Bag ID": "Bag ID",
+                "Size (count)": "Number of Objects",
+                "Size (mean)": "Average Objects size",
+                "Size (sum)": "Total Objects size"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Size"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 24,
+          "w": 12,
+          "x": 12,
+          "y": 65
+        },
+        "id": 285,
+        "options": {
+          "footer": {
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query  { data:storageDataObjects(limit: 30000, offset: 0, where: {isAccepted_eq: false, createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\"}) { id createdAt size  storageBagId }}",
+            "refId": "A",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Lost Objects",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "createdAt": "Date created",
+                "id": "Object ID",
+                "size": "Size",
+                "storageBagId": "Bag ID"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "noValue": "0",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 12,
+          "x": 0,
+          "y": 89
+        },
+        "id": 289,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": false,
+              "displayName": "size"
+            }
+          ]
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "0-10 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 10000, offset: 0 , where: { createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\", size_lt: \"10485760\"}) { size } }\n",
+            "refId": "B",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "10-100 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 10000, offset: 0 , where: { createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\", size_gt: \"10485760\",      size_lt: \"104857600\"}) { size } }\n",
+            "refId": "A",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "100-1000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 10000, offset: 0 , where: { createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\", size_gt: \"104857600\",     size_lt: \"1048576000\"}) { size } }\n",
+            "refId": "C",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "1000-10000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 10000, offset: 0 , where: { createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\", size_gt: \"1048576000\",    size_lt: \"10485760000\"}) { size } }\n",
+            "refId": "D",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "10000-100000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 10000, offset: 0 , where: { createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\", size_gt: \"10485760000\",   size_lt: \"104857600000\"}) { size } }\n",
+            "refId": "E",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "100000-10000000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 10000, offset: 0 , where: { createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\", size_gt: \"104857600000\",  size_lt: \"1048576000000\"}) { size } }\n",
+            "refId": "F",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Objects Size Range Distribution during this Council Period",
+        "transformations": [
+          {
+            "id": "convertFieldType",
+            "options": {}
+          },
+          {
+            "id": "reduce",
+            "options": {
+              "reducers": [
+                "count"
+              ]
+            }
+          },
+          {
+            "id": "rowsToFields",
+            "options": {}
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "<10 MB"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 12,
+          "x": 12,
+          "y": 89
+        },
+        "id": 291,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "<10 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\", size_lt: \"10485760\"}) { size } }\n",
+            "refId": "A",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": " <100 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\", size_lt: \"104857600\"}) { size } }\n",
+            "refId": "B",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "<1000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\", size_lt: \"1048576000\"}) { size } }",
+            "refId": "C",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "<10000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\", size_lt: \"10485760000\"}) { size } }\n",
+            "refId": "D",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "<100000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\", size_lt: \"104857600000\"}) { size } }\n",
+            "refId": "E",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "<1000000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_gt: \"$start_time\", createdAt_lt: \"$end_time\", size_lt: \"1048576000000\"}) { size } }\n",
+            "refId": "F",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Objects Size Distribution during this Council Period",
+        "transformations": [
+          {
+            "id": "convertFieldType",
+            "options": {}
+          },
+          {
+            "id": "reduce",
+            "options": {
+              "reducers": [
+                "count"
+              ]
+            }
+          },
+          {
+            "id": "rowsToFields",
+            "options": {}
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "noValue": "0",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 12,
+          "x": 0,
+          "y": 93
+        },
+        "id": 294,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": false,
+              "displayName": "size"
+            }
+          ]
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "0-10 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_lt: \"$end_time\", size_lt: \"10485760\"}) { size } }\n",
+            "refId": "B",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "10-100 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: {  createdAt_lt: \"$end_time\", size_gt: \"10485760\",      size_lt: \"104857600\"}) { size } }\n",
+            "refId": "A",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "100-1000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_lt: \"$end_time\", size_gt: \"104857600\",     size_lt: \"1048576000\"}) { size } }\n",
+            "refId": "C",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "1000-10000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_lt: \"$end_time\", size_gt: \"1048576000\",    size_lt: \"10485760000\"}) { size } }\n",
+            "refId": "D",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "10000-100000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_lt: \"$end_time\", size_gt: \"10485760000\",   size_lt: \"104857600000\"}) { size } }\n",
+            "refId": "E",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "100000-10000000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_lt: \"$end_time\", size_gt: \"104857600000\",  size_lt: \"1048576000000\"}) { size } }\n",
+            "refId": "F",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Objects Size Range Distribution Over all time",
+        "transformations": [
+          {
+            "id": "convertFieldType",
+            "options": {}
+          },
+          {
+            "id": "reduce",
+            "options": {
+              "reducers": [
+                "count"
+              ]
+            }
+          },
+          {
+            "id": "rowsToFields",
+            "options": {}
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "<10 MB"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 12,
+          "x": 12,
+          "y": 93
+        },
+        "id": 295,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "<10 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_lt: \"$end_time\", size_lt: \"10485760\"}) { size } }\n",
+            "refId": "A",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": " <100 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_lt: \"$end_time\", size_lt: \"104857600\"}) { size } }\n",
+            "refId": "B",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "<1000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_lt: \"$end_time\", size_lt: \"1048576000\"}) { size } }",
+            "refId": "C",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "<10000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_lt: \"$end_time\", size_lt: \"10485760000\"}) { size } }\n",
+            "refId": "D",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "<100000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_lt: \"$end_time\", size_lt: \"104857600000\"}) { size } }\n",
+            "refId": "E",
+            "timePath": "Time"
+          },
+          {
+            "aliasBy": "<1000000 MB",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "hide": false,
+            "queryText": "query { data:storageDataObjects(limit: 100000, offset: 0 , where: { createdAt_lt: \"$end_time\", size_lt: \"1048576000000\"}) { size } }\n",
+            "refId": "F",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Objects Size Distribution Over all time",
+        "transformations": [
+          {
+            "id": "convertFieldType",
+            "options": {}
+          },
+          {
+            "id": "reduce",
+            "options": {
+              "reducers": [
+                "count"
+              ]
+            }
+          },
+          {
+            "id": "rowsToFields",
+            "options": {}
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": false,
+            "text": "2023-05-18T03:07:18.000Z",
+            "value": "2023-05-18T03:07:18.000Z"
+          },
+          "datasource": {
+            "type": "fifemon-graphql-datasource",
+            "uid": "yjvIiS_4k"
+          },
+          "definition": "query { data:electedCouncils(where: {id_eq: \"$Council_Period\"}) { electedAtTime } } (data)",
+          "hide": 0,
+          "includeAll": false,
+          "label": "Start Time",
+          "multi": false,
+          "name": "start_time",
+          "options": [],
+          "query": {
+            "dataPath": "data",
+            "queryText": "query { data:electedCouncils(where: {id_eq: \"$Council_Period\"}) { electedAtTime } }"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "2023-06-02T04:44:42.002Z",
+            "value": "2023-06-02T04:44:42.002Z"
+          },
+          "datasource": {
+            "type": "fifemon-graphql-datasource",
+            "uid": "yjvIiS_4k"
+          },
+          "definition": "query { data:electedCouncils(where: {id_eq: \"$Council_Period\"}) { endedAtTime } } (data)",
+          "hide": 0,
+          "includeAll": false,
+          "label": "End Time",
+          "multi": false,
+          "name": "end_time",
+          "options": [],
+          "query": {
+            "dataPath": "data",
+            "queryText": "query { data:electedCouncils(where: {id_eq: \"$Council_Period\"}) { endedAtTime } }"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "0000000b",
+            "value": "0000000b"
+          },
+          "datasource": {
+            "type": "fifemon-graphql-datasource",
+            "uid": "yjvIiS_4k"
+          },
+          "definition": "query { data:electedCouncils { id } } (data)",
+          "hide": 0,
+          "includeAll": false,
+          "label": "Council Period",
+          "multi": false,
+          "name": "Council_Period",
+          "options": [],
+          "query": {
+            "dataPath": "data",
+            "queryText": "query { data:electedCouncils { id } }"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Storage Work Group Report",
+    "uid": "PjSUz0_Vz",
+    "version": 48,
+    "weekStart": ""
+  }
+}

@@ -1,0 +1,116 @@
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+      monitor: 'docker-host-alpha'
+
+# Load and evaluate rules in this file every 'evaluation_interval' seconds.
+rule_files:
+  - "alert.rules"
+
+# A scrape configuration containing exactly one endpoint to scrape.
+scrape_configs:
+  - job_name: 'nodeexporter'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['nodeexporter:9100']
+
+  - job_name: 'cadvisor'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['cadvisor:8080']
+
+  - job_name: 'prometheus'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['localhost:9090']
+
+#  - job_name: 'pushgateway'
+#    scrape_interval: 10s
+#    honor_labels: true
+#    static_configs:
+#      - targets: ['pushgateway:9091']
+
+  - job_name: 'joystream-node'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['joystream-node:9615']
+
+  - job_name: 'grafana'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['grafana:3000']
+  
+  - job_name: 'json_exporter'
+    scrape_interval: 5m
+    scrape_timeout: 1m
+    honor_labels: true
+    metrics_path: /probe
+    file_sd_configs:
+      - files: ['./json_exporter/targets.yml']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+        regex: ^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$
+        action: replace
+        replacement: ${3}
+      - target_label: __address__
+        replacement: json_exporter:7979
+
+  - job_name: 'blackbox_exporter'
+    scrape_interval: 5m
+    scrape_timeout: 1m
+    honor_labels: true
+    metrics_path: /probe
+    file_sd_configs:
+      - files: ['./blackbox_exporter/targets.yml']
+    params:
+       module: [http_2xx]       
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+        regex: ^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$
+        action: replace
+        replacement: ${3}-${6}
+      - source_labels: [__param_target]
+        target_label: node
+        regex: ^((http[s]?|ftp):\/)?\/?([^:\/\s]+)?\/?([^:\/\s]+)?((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$
+        action: replace
+        replacement: ${4}
+      - source_labels: [__param_target]
+        target_label: asset
+        regex: ^((http[s]?|ftp):\/)?\/?([^:\/\s]+)?\/?([^:\/\s]+)?((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$
+        action: replace
+        replacement: ${7}
+      - target_label: __address__
+        replacement: blackbox_exporter:9115
+
+  - job_name: 'caddy'
+    scrape_interval: 15s
+    static_configs:
+     - targets: ['caddy:2019']
+   
+#  - job_name: metrics-from-otlp-collector
+#    static_configs:
+#     - targets: ['collector:8889']
+ 
+ # - job_name: 'nginx'
+ #   scrape_interval: 10s
+ #   static_configs:
+ #    - targets: ['nginxexporter:9113']
+alerting:
+  alertmanagers:
+  - scheme: http
+    static_configs:
+    - targets:
+      - 'alertmanager:9093'
+
+
+

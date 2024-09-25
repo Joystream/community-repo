@@ -1,0 +1,16 @@
+modules:
+  default:
+    headers:
+      MyHeader: MyHeaderValue
+    metrics:
+      - name: storage_node
+        type: object
+        help: storage network status
+        path: '{@}'
+        #labels:
+          #id: 'json_exporter'
+        values:
+          objectNumber: '{.objectNumber}'
+          totalSize: '{.totalSize}'
+          tempDownloads: '{.tempDownloads}'
+          tempDirSize: '{.tempDirSize}'

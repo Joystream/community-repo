@@ -1,0 +1,24 @@
+{
+  "id": 36,
+  "uid": "fdee7ff9-3f29-412d-8f65-945da7bf8cfc",
+  "orgId": 1,
+  "name": "Prometheus-mmx2",
+  "type": "prometheus",
+  "typeLogoUrl": "/public/app/plugins/datasource/prometheus/img/prometheus_logo.svg",
+  "access": "proxy",
+  "url": "https://prometheus.js.8k.pm/",
+  "user": "",
+  "database": "",
+  "basicAuth": true,
+  "basicAuthUser": "admin",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {
+    "httpMethod": "POST"
+  },
+  "secureJsonFields": {
+    "basicAuthPassword": true
+  },
+  "version": 3,
+  "readOnly": false
+}

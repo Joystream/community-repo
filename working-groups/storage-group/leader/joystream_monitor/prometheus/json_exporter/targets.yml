@@ -1,0 +1,8 @@
+- targets:
+  - https://storage.0x2bc.com/storage/api/v1/state/data
+  - https://joystream.name/storage/api/v1/state/data
+  - https://sieemmastorage.com/storage/api/v1/state/data
+  - https://storage2.sieemmastorage.com/storage/api/v1/state/data
+  - https://storage.mrbovo.xyz/storage/api/v1/state/data
+  - https://storage.js.8k.pm/storage/api/v1/state/data
+  - https://storage.joystream.8k.pm/storage/api/v1/state/data
