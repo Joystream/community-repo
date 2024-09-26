@@ -630,17 +630,17 @@ if __name__ == '__main__':
   #report += 'Total Lost Objects: {} \n\n'.format(lost_object)
   #report += 'Percentage Lost Objects: %{} \n\n'.format(100*lost_object/total_objects)
   # report += tble+' \n'
-  print('# Lost Objects - GraphQl')
-  report += '# Lost Objects - GraphQl \n'
+  print('# Failed upload Objects - GraphQl')
+  report += '# Failed upload Objects - GraphQl \n'
   number_lost, lost = get_lost(start_time,end_time)
   print('Total Objects: {}\n'.format(objects_num_qn))
-  print('Total Lost Objects: {}\n'.format(number_lost))
-  print('Percentage Lost Objects: %{}\n'.format(100*number_lost/objects_num_qn))
+  print('Total Failed upload Objects Objects: {}\n'.format(number_lost))
+  print('Percentage Failed upload Objects: %{}\n'.format(100*number_lost/objects_num_qn))
   if number_lost > 0:
     tble = print_table(lost, master_key = 'id')
   report += 'Total Objects: {} \n\n'.format(objects_num_qn)
-  report += 'Total Lost Objects: {} \n\n'.format(number_lost)
-  report += 'Percentage Lost Objects: %{} \n\n'.format(100*number_lost/objects_num_qn)
+  report += 'Total Failed upload Objects: {} \n\n'.format(number_lost)
+  report += 'Percentage Failed upload Objects: %{} \n\n'.format(100*number_lost/objects_num_qn)
   report += tble+' \n'
   file_name = 'report_'+end_time+'.md'
   with open(file_name, 'w') as file:
