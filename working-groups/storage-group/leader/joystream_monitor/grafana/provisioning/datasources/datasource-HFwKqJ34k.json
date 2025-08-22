@@ -1,0 +1,20 @@
+{
+  "id": 29,
+  "uid": "HFwKqJ34k",
+  "orgId": 1,
+  "name": "storage-mmx2",
+  "type": "marcusolsson-json-datasource",
+  "typeLogoUrl": "/public/plugins/marcusolsson-json-datasource/img/logo.svg",
+  "access": "proxy",
+  "url": "https://storage.js.8k.pm",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {},
+  "secureJsonFields": {},
+  "version": 6,
+  "readOnly": false
+}

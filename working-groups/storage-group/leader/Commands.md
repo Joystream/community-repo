@@ -59,5 +59,5 @@ yarn storage-node leader:update-bag -i dynamic:channel:2706 -k /root/keys/storag
 
 ## Change rewards
 ```
-joystream-cli working-groups:updateWorkerReward  8  6 --group=storageProviders
+yarn joystream-cli working-groups:updateWorkerReward  8  6 --group=storageProviders
 ```

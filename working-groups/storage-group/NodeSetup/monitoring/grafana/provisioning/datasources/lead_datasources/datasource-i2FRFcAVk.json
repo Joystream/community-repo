@@ -1,0 +1,24 @@
+{
+  "id": 2,
+  "uid": "i2FRFcAVk",
+  "orgId": 1,
+  "name": "Prometheus-bwarelabs.com",
+  "type": "prometheus",
+  "typeLogoUrl": "",
+  "access": "proxy",
+  "url": "https://joystream-storage-prometheus.bwarelabs.com/",
+  "user": "",
+  "database": "",
+  "basicAuth": true,
+  "basicAuthUser": "prometheus",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {
+    "httpMethod": "POST"
+  },
+  "secureJsonFields": {
+    "basicAuthPassword": true
+  },
+  "version": 3,
+  "readOnly": false
+}

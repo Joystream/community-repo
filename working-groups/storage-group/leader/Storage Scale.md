@@ -1,33 +1,10 @@
-
-
-
-
-
-# Video Platforms
-## Youtube 
-
-Hours of contents uploaded per minutes 
-
-![image](https://user-images.githubusercontent.com/4862448/214617329-937f43e2-6a81-416a-8599-c762455ce9ae.png)
-
-
-| Year                   | 2006 | 2007 | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 |
-|------------------------|------|------|------|------|------|------|------|------|------|------|------|------|
-| Hours uploaded per min | 1    | 3    | 5    | 8    | 12   | 22   | 37   | 53   | 86   | 187  | 336  | 500  |
-
-## Vimeo 
-
-(This year)
-
-Number of videos uploaded daily  : 350,000\
-Hours of contents uploaded every minute: 60
-
-# Replication
+## Scaling Consideration
+### Replication
 
 Joystream implement a replication policy for data loss prevention. All videos uploaded are replicated to number of server per the configured replication.\
 All the calculation on this page assume a replication of 4.
 
-# Video data rates and Average video length
+### Video data rates and Average video length
 
 | RESOLUTION  | BITRATE MBPS | % of Videos | RECORDING DURATION PER GB |
 |-------------|--------------|-------------|---------------------------|
@@ -39,22 +16,8 @@ All the calculation on this page assume a replication of 4.
 | Average video length  | 15 |
 |-----------------------|----|
 
-# Storage
 
-## Storage type
-- File
-- Block (Most appropriate) 
-- Object 
-
-
-![image](https://user-images.githubusercontent.com/4862448/214873516-ed3156bd-e025-4e41-91c5-664e54d0da12.png)
-
-![image](https://user-images.githubusercontent.com/4862448/214873826-ba5d41ba-fb83-455d-82ed-64f3e29dd342.png)
-
-
-## Capacity 
-
-
+### Required Capacity
 Below the required storage capacity per year as demand for video upload increase. The numbers below driven form parameters above.
 
 | Hours uploaded per min | 0.01      | 0.05     | 0.25     | 0.5      | 1         | 3         | 8         | 12         | 22         | 53         | 500        |
@@ -63,20 +26,7 @@ Below the required storage capacity per year as demand for video upload increase
 | Total Storage TB       | 11.755044 | 58.77522 | 293.8761 | 587.7522 | 1175.5044 | 3526.5132 | 9404.0352 | 14106.0528 | 25861.0968 | 62301.7332 | 587752.2   |
 
 
-## Scaling 
-
-### Vertically 
-
-Scaling vertically by adding move storage per server. 
-
-![image](https://user-images.githubusercontent.com/4862448/214621246-30e12914-a5ec-4097-9ce0-4ca478238717.png)
-
-
-
-
-Server can scale to 1PB (1000 TB)
-
-Consideration:
+###  Disk
 - Disk read/write &  IOP ((input/output operations): 100-160 MB/s for HDD
 
 |      | Read/Write | IPOS   | Capacity GB | Reliability (MTBF) | Price per GB (USD) |
@@ -85,49 +35,27 @@ Consideration:
 | SSD  | 300-500    | 100000 | 250-80000   | 1.5M hrs           | 0.05-0.4           |
 | NVME | 3500       | 500000 | 250-4000    | 1.5M hrs           | 0.05-0.5           |
 
-- Bandwidth: IG & 10G
-- Cost
 
-| Capacity                     | 10TB | 100TB | 500TB | 1PB  |
-|------------------------------|------|-------|-------|------|
-| Estimated monthly cost (USD) | 200  | 500   | 1250  | 3000 |
+#### Cost
 
+| Capacity                     | 10TB | 50TB  | 100TB | 
+|------------------------------|------|-------|-------|
+| Estimated monthly cost (USD) | 150  | 250   | 500   | 
 
-> Note: 100TB and more are HDD which has a lower read/write.
-
+#### Bandwidth: IG & 10G
 #### Advanced techniques
 - SAN
 - NAS 
 
-### Recommended servers
-
-|                | Storage  | Bandwidth | 
-|----------------|----------|-----------|
-| Server stage 1&2 | 10T      | 1G        |
-| Server stage 3 | 100T     | 10G       |
-
-### Horizontally  
-
-Scaling Horizontally by adding more servers, with two options:
-
-1- More worker assign to th existing team members.\
-2- More new worker.
-
-
-![image](https://user-images.githubusercontent.com/4862448/214621362-638d192b-9ee8-4ab4-a91a-d3db2280906e.png)
-
-
-# Calculation  of required workers
-
-## Formulas
+### Calculation  of required workers
+#### Formulas
 >```Formula: Worker Disk size GB=	 (((uploaded hrs per mins* 60(hr) * 24 (day) * 365 (year))*3600) * (%4k * Bitrate-4k + %1080 * Bitrate1080 + %720 * Bitrate720 + %480 * Bitrate48  ))  / (8 (Bytes) *1000)```
 
 >```Formula: Workers= MAX(ROUNDUP(Total Storage GB / Worker Disk size GB)* Replication, Replication)```
 
 Below are three models with a server capacity of 10,100 and 500TB
 
-## Server - 10T
-
+#### Server - 10T
 
 | Hours uploaded per min | 0.01      | 0.05     | 0.25     | 0.5      | 1         | 3         | 8         | 12         | 22         | 53         | 500        |
 |------------------------|-----------|----------|----------|----------|-----------|-----------|-----------|------------|------------|------------|------------|
@@ -136,8 +64,7 @@ Below are three models with a server capacity of 10,100 and 500TB
 | Worker Disk size TB    | 10        | 10       | 10       | 10       | 10        | 10        | 10        | 10         | 10         | 10         | 10         |
 | Workers                | 8         | 24       | 120      | 236      | 472       | 1412      | 3764      | 5644       | 10348      | 24924      | 235104     |
 
-## Server - 100T
-
+#### Server - 100T
 
 | Hours uploaded per min | 0.01      | 0.05     | 0.25     | 0.5      | 1         | 3         | 8         | 12         | 22         | 53         | 500      |
 |------------------------|-----------|----------|----------|----------|-----------|-----------|-----------|------------|------------|------------|----------|
@@ -146,67 +73,41 @@ Below are three models with a server capacity of 10,100 and 500TB
 | Workers                | 4         | 4        | 12       | 24       | 48        | 144       | 380       | 568        | 1036       | 2496       | 23512    |
 
 
-## Server - 500T
+## Current
+- Workers: 10
+- Buckets: 10
+- Total Capacity: 245.7TB
 
+## Scaling plan
 
-| Hours uploaded per min | 0.01      | 0.05     | 0.25     | 0.5      | 1         | 3         | 8         | 12         | 22         | 53         | 500      |
-|------------------------|-----------|----------|----------|----------|-----------|-----------|-----------|------------|------------|------------|----------|
-| Total Storage TB       | 11.755044 | 58.77522 | 293.8761 | 587.7522 | 1175.5044 | 3526.5132 | 9404.0352 | 14106.0528 | 25861.0968 | 62301.7332 | 587752.2 |
-| Worker Disk size TB    | 500       | 500      | 500      | 500      | 500       | 500       | 500       | 500        | 500        | 500        | 500      |
-| Workers                | 4         | 4        | 4        | 8        | 12        | 32        | 76        | 116        | 208        | 500        | 4704     |
+| Stage   | Started        | Node Size    | Max Number of Node | Max Number of operators | Available Storage in TB | Weekly System evaluation criteria to add a node | Weekly Per worker evaluation criteria to add a node                                                      | Comments |
+| ------- | -------------- | ------------ | ------------------ | ----------------------- | ----------------------- | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------- |
+| Stage 1 | Mainnet launch | ~10TB        | 5                  | 5                       | 50TB                    |                                                 |                                                                                                          |          |
+| Stage 2 | Period 15      | ~25TB        | 10                 | 10                      | 250TB                   |                                                 |                                                                                                          |          |
+| Stage 3 | Period 17      | 50TB         | 30-60              | 30                      | 1250TB-2750TB           | add extra node  at 50%                          | Disable accepting new bags at 70%                                                                        |          |
+|         |                |              |                    |                         |                         |                                                 | Add extra node or add disks at 70%                                                                       |          |
+|         |                |              |                    |                         |                         |                                                 | Replace node operator at 85%"                                                                            |          |
+| Stage 4 | Period y       | 50TB - 100TB | 100-200            | 100                     | 4750TB-9750TB           | Add extra 2 node at 65%                         | Disable accepting new bags at 70%                                                                        |          |
+|         |                |              |                    |                         |                         |                                                 | Add extra node or add disks at 70%                                                                       |          |
+|         |                |              |                    |                         |                         |                                                 | Replace node operator at 85%"                                                                            |          |
 
+## Improvements to achieve scaling:
+- Enable pruning
+- Enable multi node per operator / bucket
+- Increase onchain number of operators
+- Consider using sharding
 
+## Consilderation:
+- Increase replication
+- change the compensation mode to be: base%+server%+Used storage%+ Unused storage%
 
-# Proposed scaling plan
+## Dashboards
+- [Joystream Dashboard](https://dapplooker.com/dashboard/joystream-mainnet-dashboard-328)
+- [Storage Group Dashboard](https://grafana.joystream.yyagi.cloud/d/gukTpcA4z/storage-work-group-dashboard?orgId=1)
 
-- Required metrics to be monitored:
-  - Storage system capacity
-  - Rate of daily upload
- 
-* Joystream should follow a combination of vertical and horizontal scaling.
-* Each upgrade should be considered at 75% capacity 
-* Each upgrade is consist of replication+1 workers
-* Stages
-  - Stage 1 : Bootstrap the system:
-    - Capacity : 10T
-    - Workers  : 5 (replication + 1)
-  - Stage 2 : A horizontal upgrades with exisitng or new team members.
-    - Each upgrade:
-      -  Capacity : 10T
-      -  Workers  : 5 (replication + 1)
-    - Limit: 
-      - Capacity: 62T
-      - Workers : 25
-    - New workers to have priority 
-  - Stage 3 : Horizontal and Vertical upgrade
-    - Stage 3.1: Hire 5 new workers with higher vertical capacity
-      - Workers : 5
-      - Capacity : 100T 
-    - Stage 3.2: Upgrade exisitng workers to a higher virtical capacity 
-      - Workers: 30
-      - Capacity: 750T 
-  - Stage 4: continuous expantion horizonly and Verically (using advanced techniques)
-  
-|                    | Sage 1  | Stage 2 | Stage 3.1 | Stage 3.2 | Stage 4 |
-|--------------------|---------|---------|-----------|-----------|---------|
-| New node capacity  | NA      | 10T     | 100T      | 100T      |         |
-| Workers            | 5       | 25      | 30        | 30        |         |
-| Max capacity       | 10T     | 62T     | 185T      | 750T      |         |
-
-If Joystream follows the same growth trajectory of Youtube, it is expect a max of one scaling event in the first 2 years. Followed by mutiple yearly of the years to follow. 
-
-# Need research 
-
-- [proposals](https://github.com/yasiryagi/community-repo/tree/master/working-groups/storage-group/leader/Proposals) 
-
-
-# Refs
-
+## Refs
 - [what-content-dominates-youtube](https://pex.com/blog/what-content-dominates-youtube/)
 - [statista](https://www.statista.com/topics/2019/youtube/#topicHeader__wrapper)
 - [hard-drive-vs-ssd-vs-nvme](https://www.soladrive.com/hard-drive-vs-ssd-vs-nvme/)
 - [diskprices](https://diskprices.com/)
 - [data-storage](https://www.redhat.com/en/topics/data-storage)
-
-
-

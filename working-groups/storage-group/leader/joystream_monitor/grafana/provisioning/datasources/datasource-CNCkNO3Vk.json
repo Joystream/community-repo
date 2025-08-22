@@ -1,0 +1,20 @@
+{
+  "id": 27,
+  "uid": "CNCkNO3Vk",
+  "orgId": 1,
+  "name": "storage-sieemma",
+  "type": "marcusolsson-json-datasource",
+  "typeLogoUrl": "/public/plugins/marcusolsson-json-datasource/img/logo.svg",
+  "access": "proxy",
+  "url": "https://sieemmastorage.com",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {},
+  "secureJsonFields": {},
+  "version": 3,
+  "readOnly": false
+}

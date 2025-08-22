@@ -1,0 +1,32 @@
+{
+  "id": 26,
+  "uid": "6ajIcX_4k",
+  "orgId": 1,
+  "name": "Elasticsearch",
+  "type": "elasticsearch",
+  "typeLogoUrl": "/public/app/plugins/datasource/elasticsearch/img/elasticsearch.svg",
+  "access": "proxy",
+  "url": "https://elastic.joyutils.org/",
+  "user": "",
+  "database": "",
+  "basicAuth": true,
+  "basicAuthUser": "storage-lead",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {
+    "esVersion": "8.0.0",
+    "includeFrozen": false,
+    "index": "logs-colossus-storageprovider_*",
+    "logLevelField": "",
+    "logMessageField": "",
+    "maxConcurrentShardRequests": 5,
+    "oauthPassThru": false,
+    "timeField": "@timestamp",
+    "tlsAuth": false
+  },
+  "secureJsonFields": {
+    "basicAuthPassword": true
+  },
+  "version": 14,
+  "readOnly": false
+}

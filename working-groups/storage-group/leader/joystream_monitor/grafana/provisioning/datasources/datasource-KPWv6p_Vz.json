@@ -1,0 +1,20 @@
+{
+  "id": 24,
+  "uid": "KPWv6p_Vz",
+  "orgId": 1,
+  "name": "storage-sieemma2",
+  "type": "marcusolsson-json-datasource",
+  "typeLogoUrl": "/public/plugins/marcusolsson-json-datasource/img/logo.svg",
+  "access": "proxy",
+  "url": "https://storage2.sieemmastorage.com",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {},
+  "secureJsonFields": {},
+  "version": 5,
+  "readOnly": false
+}

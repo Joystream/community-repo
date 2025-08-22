@@ -1,0 +1,20 @@
+{
+  "id": 43,
+  "uid": "b6186fa8-8cc7-4717-92a7-d47423299d97",
+  "orgId": 1,
+  "name": "JSON API-1",
+  "type": "marcusolsson-json-datasource",
+  "typeLogoUrl": "/public/plugins/marcusolsson-json-datasource/img/logo.svg",
+  "access": "proxy",
+  "url": "",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {},
+  "secureJsonFields": {},
+  "version": 1,
+  "readOnly": false
+}

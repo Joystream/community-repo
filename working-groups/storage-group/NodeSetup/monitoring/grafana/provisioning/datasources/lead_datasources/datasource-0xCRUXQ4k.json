@@ -1,0 +1,24 @@
+{
+  "id": 9,
+  "uid": "0xCRUXQ4k",
+  "orgId": 1,
+  "name": "Prometheus-kalpakci",
+  "type": "prometheus",
+  "typeLogoUrl": "",
+  "access": "proxy",
+  "url": "https://prometheus.joystream.name",
+  "user": "",
+  "database": "",
+  "basicAuth": true,
+  "basicAuthUser": "admin",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {
+    "httpMethod": "POST"
+  },
+  "secureJsonFields": {
+    "basicAuthPassword": true
+  },
+  "version": 7,
+  "readOnly": false
+}

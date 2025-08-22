@@ -1,0 +1,159 @@
+version: '3.8'
+
+x-logging:
+  &default-logging
+  options:
+    max-file: '1'
+    compress: 'false'
+  driver: local
+
+volumes:
+    prometheus_data: {}
+    grafana_data: {}
+
+services:
+######################################################################################
+#####################          PROMETHEUS CONTAINER            #######################
+######################################################################################
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    environment:
+      VIRTUAL_HOST: ${PROMETHEUS_HOST}
+      VIRTUAL_PORT: 9090
+      LETSENCRYPT_HOST: ${PROMETHEUS_HOST}
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=90d'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    expose:
+      - 9090
+#    networks:
+#      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+    logging: *default-logging
+######################################################################################
+#####################          ALERT MANAGER CONTAINER         #######################
+######################################################################################
+  alertmanager:
+    image: prom/alertmanager
+    container_name: alertmanager
+    volumes:
+      - ./alertmanager:/etc/alertmanager
+    command:
+      - '--config.file=/etc/alertmanager/config.yml'
+      - '--storage.path=/alertmanager'
+    restart: unless-stopped
+    expose:
+      - 9093
+#    networks:
+#      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+    logging: *default-logging
+######################################################################################
+#####################         NODE EXPORTER CONTAINER          #######################
+######################################################################################
+  nodeexporter:
+    image: prom/node-exporter
+    container_name: nodeexporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
+    restart: unless-stopped
+    expose:
+      - 9100
+#    networks:
+#      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+    logging: *default-logging
+######################################################################################
+#####################         JSON EXPORTER CONTAINER          #######################
+######################################################################################
+  json_exporter:
+    image: prometheuscommunity/json-exporter
+    container_name: json_exporter
+    volumes:
+      - ./prometheus/json_exporter/config.yml:/config.yml:ro
+    expose:
+      - 7979:7979
+######################################################################################
+#####################         Blackbox EXPORTER CONTAINER          #######################
+######################################################################################
+  blackbox_exporter:
+    image: prom/blackbox-exporter:latest
+    container_name: blackbox_exporter
+    privileged: true
+    volumes:
+      - ./prometheus/blackbox_exporter/blackbox.yml:/etc/blackbox_exporter/config.yml
+    expose:
+      - '9115:9115'
+######################################################################################
+#####################             CADVISOR CONTAINER           #######################
+######################################################################################
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor
+    container_name: cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /cgroup:/cgroup:ro 
+    restart: unless-stopped
+    expose:
+      - 8080
+#    networks:
+#      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+    logging: *default-logging
+######################################################################################
+#####################           GRAFANA CONTAINER              #######################
+######################################################################################
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    user: nobody 
+    volumes:
+      - ./grafana/var/lib/grafana:/var/lib/grafana
+      - ./grafana/etc/grafana/:/etc/grafana/
+      #- ./grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SECURITY_DISABLE_BRUTE_FORCE_LOGIN_PROTECTION=true
+      - VIRTUAL_HOST=${GRAFANA_HOST}
+      - VIRTUAL_PORT=3000
+      - LETSENCRYPT_HOST=${GRAFANA_HOST}
+      - GF_INSTALL_PLUGINS=marcusolsson-json-datasource,fifemon-graphql-datasource
+    restart: unless-stopped
+    expose:
+      - 3000
+#    networks:
+#      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+    logging: *default-logging
+
+networks:
+  default:
+    external:
+      name: joystream_default

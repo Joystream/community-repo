@@ -1,13 +1,10 @@
 {
     "applicationDetails": "Storage WG Worker",
-    "hiringLimit": 5,
-    "title": "Storage WG Worker needed",
+    "hiringLimit": 1,
+    "title": "Storage WG Worker",
     "shortDescription": "Joystream Video DAO (https://joystream.org) is actively looking for a Storage WG Worker",
-<<<<<<< HEAD
-    "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage WG Worker to join our [Pioneer Governance App](https://dao.joystream.org) community Storage team.\n\n**Tasks for Carthage:** \n\n- See https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution\n\n**Responsibilities:** \n\n- Operate a storage node and ensure high availability.\n\n**Requirements:** \n\n- Storage Worker experience is preferred\n\n- High availability: First few days after hired will require high availability and lots of work\n\n- Experience with how to setup and maintain blockchain nodes\n\n- Having access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 10TB and more\n\n- Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus/Grafana)\n\n**Rules for firings:** \n\n- https://github.com/Joystream/community-repo/tree/master/working-groups/storage-group/SOP\n\n**About WG:** \n\nNotion page: https://www.notion.so/joystream/Storage-9dc5a16444934dc4bda08b596bc15375\n\nDiscord channel: https://discord.gg/fFRdNHsW\n\n**Stake:** \n\n- $5000 (83,333 JOY)\n\n**Salary:** \n\n- $1000 (16,666 JOY)/ month\n\n",
-=======
     "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage WG Worker to join our [Pioneer Governance App](https://dao.joystream.org) community Storage team.\n\n**Tasks for Carthage:** \n\n- See https://gist.github.com/bwhm/2a8733fe35974d4cb90a34ab1916d2ca#storage-and-distribution\n\n**Responsibilities:** \n\n- Operate a storage node and ensure high availability.\n\n**Requirements:** \n\n- Storage Worker experience is preferred\n\n- High availability: First few days after hired will require high availability and lots of work\n\n- Experience with how to setup and maintain blockchain nodes\n\n- Having access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 10TB and more\n\n- Skills: Linux, devops, bash, Docker/Docker-compose, nginx or Caddy, GraphQl, (nice to have prometheus/Grafana)\n\n**Rules for firings:** \n\n- https://github.com/Joystream/community-repo/tree/master/working-groups/storage-group/SOP\n\n**About WG:** \n\nNotion page: https://www.notion.so/joystream/Storage-9dc5a16444934dc4bda08b596bc15375\n\nDiscord channel: https://discord.gg/fFRdNHsW\n\n**Stake:** \n\n- $5000 (83,333 JOY)\n\n**Salary:** \n\n- $500 (8,333 JOY)/ month\n\n- If an employee works fewer than 160 hours per month, the Council may reduce their pay according to the hourly rate and actual number of hours worked",
->>>>>>> ffa526b6f06f5cf2a59b94d9f6c38be0aa5ae01b
+    "description": "[Joystream Video DAO](https://joystream.org) is actively looking for a Storage WG Worker to join our [Pioneer Governance App](https://dao.joystream.org) community Storage team.\n\n**Responsibilities:** \n\n- Operate a storage node and ensure high availability.\n\n**Requirements:** \n\n- Storage Worker experience is preferred\n\n- High availability: First few days after hired will require high availability and lots of work\n\n- Experience with how to setup and maintain blockchain nodes\n\n- Having access to highly performant and reliable IT infrastructure (dedicated servers) with storage capacity of 100TB and more\n\n- Skills: Linux, Docker,  docker/docker-compose, nginx or Caddy, GraphQl, prometheus, git/github, bash/java script/Python, AWS S3 storage, CEPH,\n\n**Rules for firings:** \n\n- https://github.com/Joystream/community-repo/tree/master/working-groups/storage-group/SOP\n\n**About WG:** \n\nNotion page: https://www.notion.so/joystream/Storage-9dc5a16444934dc4bda08b596bc15375\n\nDiscord channel: https://discord.gg/fFRdNHsW\n\n**Stake:** \n\n-  41,666 JOY\n\n**Salary:** \n\n- ~ 550 USD in JOY/month\n\n- https://pioneerapp.xyz/#/proposals/preview/594\n\n",
     "applicationFormQuestions": [{
             "question": "Are you currently employed?"
         },
@@ -24,7 +21,7 @@
             "question": "Do you have experience with Docker? If yes, please describe it"
         },
         {
-            "question": "Do you have experience with devops and automation? If yes, please describe it"
+            "question": "Do you have experience with AWS and CEPH? If yes, please describe it"
         },
         {
             "question": "Do you have experience with GraphQl? If yes, please describe it"
@@ -44,7 +41,7 @@
         {
             "question": "Tell us a bit more about your experience in IT"
         },
-	{
+        {
             "question": "Please provide infrastructure specification and location"
         },
         {
@@ -52,15 +49,13 @@
         }
     ],
     "stakingPolicy": {
-<<<<<<< HEAD
-        "amount": 83333000000000,
-        "unstakingPeriod": 604800
-    },
-    "rewardPerBlock": 38580247
-=======
         "amount": 833330000000000,
         "unstakingPeriod": 604800
     },
     "rewardPerBlock": 23116040
->>>>>>> ffa526b6f06f5cf2a59b94d9f6c38be0aa5ae01b
+        "amount": 416660000000000,
+        "unstakingPeriod": 604800
+    },
+    "rewardPerBlock": 250000000
 }
+

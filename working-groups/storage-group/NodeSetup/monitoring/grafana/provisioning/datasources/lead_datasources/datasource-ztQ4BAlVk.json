@@ -1,0 +1,20 @@
+{
+  "id": 25,
+  "uid": "ztQ4BAlVk",
+  "orgId": 1,
+  "name": "TestData DB",
+  "type": "testdata",
+  "typeLogoUrl": "",
+  "access": "proxy",
+  "url": "",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {},
+  "secureJsonFields": {},
+  "version": 2,
+  "readOnly": false
+}

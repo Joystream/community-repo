@@ -1,0 +1,4576 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "storage-work-group-dashboard",
+    "url": "/d/gukTpcA4z/storage-work-group-dashboard",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2023-02-02T18:11:17Z",
+    "updated": "2023-08-02T23:04:14Z",
+    "updatedBy": "admin",
+    "createdBy": "admin",
+    "version": 182,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 0,
+    "folderUid": "",
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    },
+    "hasPublicDashboard": false,
+    "publicDashboardAccessToken": "",
+    "publicDashboardUid": "",
+    "publicDashboardEnabled": false
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "$$hashKey": "object:1058",
+          "builtIn": 1,
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "gnetId": 1860,
+    "graphTooltip": 0,
+    "id": 10,
+    "links": [
+      {
+        "icon": "external link",
+        "tags": [],
+        "targetBlank": true,
+        "title": "GitHub",
+        "type": "link",
+        "url": "https://github.com/rfmoz/grafana-dashboards"
+      },
+      {
+        "icon": "external link",
+        "tags": [],
+        "targetBlank": true,
+        "title": "Grafana",
+        "type": "link",
+        "url": "https://grafana.com/grafana/dashboards/1860"
+      },
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": false,
+        "title": "New link",
+        "tooltip": "",
+        "type": "dashboards",
+        "url": ""
+      }
+    ],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": [
+              {
+                "options": {
+                  "false": {
+                    "color": "red",
+                    "index": 0
+                  }
+                },
+                "type": "value"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "success %"
+              },
+              "properties": [
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "red",
+                        "value": null
+                      },
+                      {
+                        "color": "green",
+                        "value": 99
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "failures"
+              },
+              "properties": [
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 1
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "timeouts"
+              },
+              "properties": [
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 5
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 18,
+        "options": {
+          "basemap": {
+            "config": {},
+            "name": "Layer 0",
+            "type": "default"
+          },
+          "controls": {
+            "mouseWheelZoom": true,
+            "showAttribution": true,
+            "showDebug": false,
+            "showMeasure": false,
+            "showScale": false,
+            "showZoom": true
+          },
+          "layers": [
+            {
+              "config": {
+                "showLegend": true,
+                "style": {
+                  "color": {
+                    "fixed": "dark-green"
+                  },
+                  "opacity": 0.6,
+                  "rotation": {
+                    "fixed": 0,
+                    "max": 360,
+                    "min": -360,
+                    "mode": "mod"
+                  },
+                  "size": {
+                    "fixed": 5,
+                    "max": 15,
+                    "min": 2
+                  },
+                  "symbol": {
+                    "fixed": "img/icons/marker/circle.svg",
+                    "mode": "fixed"
+                  },
+                  "textConfig": {
+                    "fontSize": 12,
+                    "offsetX": 0,
+                    "offsetY": 0,
+                    "textAlign": "center",
+                    "textBaseline": "middle"
+                  }
+                }
+              },
+              "location": {
+                "mode": "auto"
+              },
+              "name": "Nodes",
+              "tooltip": true,
+              "type": "markers"
+            }
+          ],
+          "tooltip": {
+            "mode": "details"
+          },
+          "view": {
+            "allLayers": true,
+            "id": "fit",
+            "lat": 38.972522,
+            "lon": 11.338247,
+            "padding": 10,
+            "zoom": 15
+          }
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query {\n data:storageBuckets {\n    acceptingNewBags\n    id\n    operatorMetadata {\n      nodeLocation {\n        coordinates {\n          latitude\n          longitude\n        }\n        city\n        countryCode\n      }\n}}}",
+            "refId": "A",
+            "timePath": ""
+          }
+        ],
+        "title": "Nodes locations",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {
+                "acceptingNewBags": "true",
+                "failureCount": 5,
+                "id": 0,
+                "metricsCount": 6,
+                "operatorMetadata.city": 10,
+                "operatorMetadata.nodeEndpoint": 2,
+                "operatorMetadata.nodeLocation.coordinates.latitude": 8,
+                "operatorMetadata.nodeLocation.coordinates.longitude": 9,
+                "operatorMetadata.nodeLocation.countryCode": 11,
+                "successPercentage": 3,
+                "timeoutCount": 4,
+                "workerId": 7
+              },
+              "renameByName": {
+                "acceptingNewBags": "Accepting New Bags",
+                "failureCount": "failures",
+                "id": "bucket ID",
+                "metricsCount": "tests count",
+                "operatorMetadata.nodeEndpoint": "endpoint",
+                "operatorMetadata.nodeLocation.city": "city",
+                "operatorMetadata.nodeLocation.coordinates.latitude": "latitude",
+                "operatorMetadata.nodeLocation.coordinates.longitude": "longitude",
+                "operatorMetadata.nodeLocation.countryCode": "country",
+                "successPercentage": "success %",
+                "timeoutCount": "timeouts",
+                "workerId": "worker id"
+              }
+            }
+          }
+        ],
+        "type": "geomap"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "workerId"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 99
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 11
+        },
+        "id": 265,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query {\ndata:workers(\n    where: { group: { id_eq: \"storageWorkingGroup\" }, isActive_eq: true }) {\n   workerId:runtimeId\n   membership {\n   id\n   handle\n   }\n   rewardPerBlock\n   rewardAccount\n   }\n   }",
+            "refId": "A",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Worker list",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "membership.handle": "Membership Handle",
+                "membership.id": "Membership ID",
+                "rewardAccount": "Account",
+                "rewardPerBlock": "Rewards Per Block",
+                "workerId": "Worker ID"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "fifemon-graphql-datasource",
+          "uid": "yjvIiS_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "worker id"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 88
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "id"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 43
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "dataObjectsSize"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 129
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "dataObjectsCount"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 143
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "dataObjectsSizeLimit"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 161
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "dataObjectCountLimit"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 168
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "acceptingNewBags"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 149
+                },
+                {
+                  "id": "custom.displayMode",
+                  "value": "color-text"
+                },
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "false": {
+                          "color": "dark-red",
+                          "index": 0
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Bucket ID"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 90
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Worker ID"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 98
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Objects Size Limit"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Objects Size"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 22
+        },
+        "id": 14,
+        "options": {
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "aliasBy": "",
+            "annotationTags": "",
+            "annotationText": "",
+            "annotationTitle": "",
+            "constant": 6.5,
+            "dataPath": "data",
+            "datasource": {
+              "type": "fifemon-graphql-datasource",
+              "uid": "yjvIiS_4k"
+            },
+            "endTimePath": "endTime",
+            "groupBy": "",
+            "queryText": "query {\n  data:storageBuckets {\n    id\n    operatorStatus {\n      ... on StorageBucketOperatorStatusActive {\n        workerId\n      }\n    }\n    acceptingNewBags\n    dataObjectCountLimit\n    dataObjectsSizeLimit\n    dataObjectsCount\n    dataObjectsSize\n    operatorMetadata {\n      nodeEndpoint\n      nodeLocation {\n        city\n        countryCode\n      }\n    }\n\n  }\n\n}",
+            "refId": "A",
+            "timePath": "Time"
+          }
+        ],
+        "title": "Bucket list",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "acceptingNewBags": "Accepting New Bags",
+                "dataObjectCountLimit": "Object Count Limit",
+                "dataObjectsCount": "Objects Count",
+                "dataObjectsSize": "Objects Size",
+                "dataObjectsSizeLimit": "Objects Size Limit",
+                "id": "Bucket ID",
+                "membership.handle": "member handle",
+                "membership.id": "member id",
+                "operatorMetadata.nodeEndpoint": "NodeEndpoint",
+                "operatorMetadata.nodeLocation.city": "City",
+                "operatorMetadata.nodeLocation.countryCode": "CountryCode",
+                "operatorStatus.workerId": "Worker ID",
+                "rewardPerBlock": "Reward",
+                "workerId": "worker id"
+              }
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "filterable": false,
+              "inspect": false
+            },
+            "mappings": [],
+            "noValue": "NA",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 33
+        },
+        "id": 269,
+        "options": {
+          "footer": {
+            "enablePagination": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "frameIndex": 0,
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": false,
+              "displayName": "0x2bc ·  "
+            }
+          ]
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "4TJuVS_Vk"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "language": "jsonata",
+                "name": " "
+              }
+            ],
+            "method": "GET",
+            "queryParams": "",
+            "refId": "0x2bc",
+            "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "ujGUVI_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "bewarelabs",
+            "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "DX_9VI_4k"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "freakstatic",
+            "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "ePH24S_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "YYAGI",
+            "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "KPWv6p_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "iTor",
+            "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "AJUC4SlVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "kalpakci",
+            "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "CNCkNO3Vk"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "Sieemma",
+            "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "HFwKqJ34k"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "Tomato",
+            "urlPath": "/storage/api/v1/version"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "T5jRlPqVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "version",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "JonnyBoy",
+            "urlPath": "/storage/api/v1/version"
+          }
+        ],
+        "title": "Storage Status - Version",
+        "transformations": [
+          {
+            "id": "reduce",
+            "options": {
+              "reducers": [
+                "last"
+              ]
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "Field": "Storage Operator",
+                "Last": "Node Version"
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-GrYlRd"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "max": 125000,
+            "min": 0,
+            "noValue": "0",
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "string"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 44
+        },
+        "id": 275,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": false,
+              "displayName": "QN URL"
+            }
+          ]
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "ujGUVI_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.url",
+                "name": "  "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "bewarelabs",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "DX_9VI_4k"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.url",
+                "name": "  "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "freakstatic",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "ePH24S_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.url",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "YYAGI",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "KPWv6p_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.url",
+                "name": "  "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "iTor",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "AJUC4SlVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.url",
+                "name": " ",
+                "type": "string"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "kalpakci",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "CNCkNO3Vk"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.url",
+                "name": " ",
+                "type": "string"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "Sieemma",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "4TJuVS_Vk"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.url",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "0x2bc",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "HFwKqJ34k"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.url",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "Tomato",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "T5jRlPqVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.url",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "JonnyBoy",
+            "urlPath": "/storage/api/v1/status"
+          }
+        ],
+        "title": "Storage Status - QN URL",
+        "transformations": [
+          {
+            "id": "reduce",
+            "options": {
+              "reducers": [
+                "last"
+              ]
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "Field": "Storage Node",
+                "Last": "QN URL"
+              }
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-GrYlRd"
+            },
+            "mappings": [],
+            "max": 10000000000000,
+            "noValue": "0",
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "dark-red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "freakstatic  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 6700000000000
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "0x2bc  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 28000000000000
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "iTor  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 9000000000000
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "YYAGI  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 28000000000000
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Sieemma  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 21999999999998
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Tomato  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 35000000000000
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "JonnyBoy  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 220000000000000
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 55
+        },
+        "id": 267,
+        "options": {
+          "displayMode": "lcd",
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "4TJuVS_Vk"
+            },
+            "fields": [
+              {
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": " ",
+                "type": "number"
+              }
+            ],
+            "method": "GET",
+            "queryParams": "",
+            "refId": "0x2bc",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "ujGUVI_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": " ",
+                "type": "number"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "bewarelabs",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "DX_9VI_4k"
+            },
+            "fields": [
+              {
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": " ",
+                "type": "number"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "freakstatic",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "AJUC4SlVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": "  ",
+                "type": "number"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "kalpakci",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "ePH24S_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": " ",
+                "type": "number"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "YYAGI",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "KPWv6p_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": " ",
+                "type": "number"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "iTor",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "CNCkNO3Vk"
+            },
+            "fields": [
+              {
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": " ",
+                "type": "number"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "Sieemma",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "HFwKqJ34k"
+            },
+            "fields": [
+              {
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": " ",
+                "type": "number"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "Tomato",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "T5jRlPqVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "totalSize + tempDirSize",
+                "language": "jsonata",
+                "name": " ",
+                "type": "number"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "JonnyBoy",
+            "urlPath": "/storage/api/v1/state/data"
+          }
+        ],
+        "title": "Storage Status - Node - Capacity(Size TB)",
+        "transformations": [],
+        "transparent": true,
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-GrYlRd"
+            },
+            "mappings": [],
+            "max": 125000,
+            "min": 0,
+            "noValue": "0",
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "0x2bc  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 300000
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "freakstatic  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 100000
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "JonnyBoy  "
+              },
+              "properties": [
+                {
+                  "id": "max",
+                  "value": 300000
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 66
+        },
+        "id": 268,
+        "options": {
+          "displayMode": "lcd",
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "4TJuVS_Vk"
+            },
+            "fields": [
+              {
+                "jsonPath": "objectNumber",
+                "language": "jsonata",
+                "name": " "
+              }
+            ],
+            "method": "GET",
+            "queryParams": "",
+            "refId": "0x2bc",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "ujGUVI_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "objectNumber",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "bewarelabs",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "DX_9VI_4k"
+            },
+            "fields": [
+              {
+                "jsonPath": "objectNumber",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "freakstatic",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "ePH24S_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "objectNumber",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "YYAGI",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "KPWv6p_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "objectNumber",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "iTor",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "AJUC4SlVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "objectNumber",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "kalpakci",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "CNCkNO3Vk"
+            },
+            "fields": [
+              {
+                "jsonPath": "objectNumber",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "Sieemma",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "HFwKqJ34k"
+            },
+            "fields": [
+              {
+                "jsonPath": "objectNumber",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "Tomato",
+            "urlPath": "/storage/api/v1/state/data"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "T5jRlPqVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "objectNumber",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "JonnyBoy",
+            "urlPath": "/storage/api/v1/state/data"
+          }
+        ],
+        "title": "Storage Status - Node - Number of Objects",
+        "transparent": true,
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-GrYlRd"
+            },
+            "mappings": [],
+            "max": 125000,
+            "min": 0,
+            "noValue": "0",
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "dark-green",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 24,
+          "x": 0,
+          "y": 77
+        },
+        "id": 274,
+        "options": {
+          "displayMode": "lcd",
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "ePH24S_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.chainHead",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "method": "GET",
+            "queryParams": "",
+            "refId": "chain Head",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "ujGUVI_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.blocksProcessed",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "bewarelabs",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "DX_9VI_4k"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.blocksProcessed",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "freakstatic",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "ePH24S_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.blocksProcessed",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "YYAGI",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "KPWv6p_Vz"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.blocksProcessed",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "iTor",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "AJUC4SlVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.blocksProcessed",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "kalpakci",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "CNCkNO3Vk"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.blocksProcessed",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "Sieemma",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "4TJuVS_Vk"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.blocksProcessed",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "0x2bc",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "HFwKqJ34k"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.blocksProcessed",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "Tomato",
+            "urlPath": "/storage/api/v1/status"
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "T5jRlPqVz"
+            },
+            "fields": [
+              {
+                "jsonPath": "queryNodeStatus.blocksProcessed",
+                "language": "jsonpath",
+                "name": " "
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "queryParams": "",
+            "refId": "JonnyBoy",
+            "urlPath": "/storage/api/v1/status"
+          }
+        ],
+        "title": "Storage Status - QN Block Processed",
+        "transparent": true,
+        "type": "bargauge"
+      },
+      {
+        "collapsed": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 89
+        },
+        "id": 263,
+        "panels": [],
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${DS_PROMETHEUS}"
+            },
+            "refId": "A"
+          }
+        ],
+        "title": "Basic CPU / Mem / Net / Disk",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "description": "Basic CPU info",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 40,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "percent"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "links": [],
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 12,
+          "x": 0,
+          "y": 90
+        },
+        "id": 77,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true,
+            "width": 250
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "desc"
+          }
+        },
+        "pluginVersion": "9.2.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "65eMF5AVz"
+            },
+            "editorMode": "code",
+            "expr": "sum by (instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "Busy System-0xbc",
+            "range": true,
+            "refId": "A",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "i2FRFcAVk"
+            },
+            "editorMode": "code",
+            "expr": "sum by (instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "Busy System-bewarelabs",
+            "range": true,
+            "refId": "B",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ova4UXQVk"
+            },
+            "editorMode": "code",
+            "expr": "sum by (instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "Busy System-freakstatic",
+            "range": true,
+            "refId": "D",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "0xCRUXQ4k"
+            },
+            "editorMode": "code",
+            "expr": "sum by (instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "Busy System-kalpakci",
+            "range": true,
+            "refId": "E",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "1230"
+            },
+            "editorMode": "code",
+            "expr": "sum by (instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "Busy System-YYAGI",
+            "range": true,
+            "refId": "F",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "sum by (instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))",
+            "hide": false,
+            "legendFormat": "Busy System-iTor",
+            "range": true,
+            "refId": "G"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "p51PjKq4k"
+            },
+            "editorMode": "code",
+            "expr": "sum by (instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))",
+            "hide": false,
+            "legendFormat": "Busy System-siemma",
+            "range": true,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "MXAw1-q4z"
+            },
+            "editorMode": "code",
+            "expr": "sum by (instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))",
+            "hide": false,
+            "legendFormat": "Busy System-tomato",
+            "range": true,
+            "refId": "H"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "tUFkqqq4k"
+            },
+            "editorMode": "code",
+            "expr": "sum by (instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))",
+            "hide": false,
+            "legendFormat": "Busy System-jonnyboy",
+            "range": true,
+            "refId": "I"
+          }
+        ],
+        "title": "CPU Basic",
+        "transparent": true,
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "description": "Basic memory usage",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 40,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "normal"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "links": [],
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Apps"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#629E51",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Buffers"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#614D93",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Cache"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#6D1F62",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Cached"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#511749",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Committed"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#508642",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Free"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#0A437C",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Hardware Corrupted - Amount of RAM that the kernel identified as corrupted / not working"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#CFFAFF",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Inactive"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#584477",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "PageTables"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#0A50A1",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Page_Tables"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#0A50A1",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "RAM_Free"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#E0F9D7",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "SWAP Used"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#BF1B00",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Slab"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#806EB7",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Slab_Cache"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#E0752D",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Swap"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#BF1B00",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Swap Used"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#BF1B00",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Swap_Cache"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#C15C17",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Swap_Free"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#2F575E",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Unused"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#EAB839",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "RAM Total"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#E0F9D7",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "custom.fillOpacity",
+                  "value": 0
+                },
+                {
+                  "id": "custom.stacking",
+                  "value": {
+                    "group": false,
+                    "mode": "normal"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "RAM Cache + Buffer"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#052B51",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "RAM Free"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#7EB26D",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Avaliable"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#DEDAF7",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "custom.fillOpacity",
+                  "value": 0
+                },
+                {
+                  "id": "custom.stacking",
+                  "value": {
+                    "group": false,
+                    "mode": "normal"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 12,
+          "x": 12,
+          "y": 90
+        },
+        "id": 78,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true,
+            "width": 350
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.2.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "65eMF5AVz"
+            },
+            "editorMode": "code",
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemFree_bytes - (node_memory_Cached_bytes + node_memory_Buffers_bytes + node_memory_SReclaimable_bytes)",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "RAM Used - 0x2bc",
+            "range": true,
+            "refId": "B",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "i2FRFcAVk"
+            },
+            "editorMode": "code",
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemFree_bytes - (node_memory_Cached_bytes + node_memory_Buffers_bytes + node_memory_SReclaimable_bytes)",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "RAM Used - bewarelabs",
+            "range": true,
+            "refId": "A",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ova4UXQVk"
+            },
+            "editorMode": "code",
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemFree_bytes - (node_memory_Cached_bytes + node_memory_Buffers_bytes + node_memory_SReclaimable_bytes)",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "RAM Used - freakstatic",
+            "range": true,
+            "refId": "D",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "0xCRUXQ4k"
+            },
+            "editorMode": "code",
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemFree_bytes - (node_memory_Cached_bytes + node_memory_Buffers_bytes + node_memory_SReclaimable_bytes)",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "RAM Used - kalpakci",
+            "range": true,
+            "refId": "E",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "1230"
+            },
+            "editorMode": "code",
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemFree_bytes - (node_memory_Cached_bytes + node_memory_Buffers_bytes + node_memory_SReclaimable_bytes)",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "RAM Used - YYAGI",
+            "range": true,
+            "refId": "F",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemFree_bytes - (node_memory_Cached_bytes + node_memory_Buffers_bytes + node_memory_SReclaimable_bytes)",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "RAM Used - iTor",
+            "range": true,
+            "refId": "G",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "p51PjKq4k"
+            },
+            "editorMode": "code",
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemFree_bytes - (node_memory_Cached_bytes + node_memory_Buffers_bytes + node_memory_SReclaimable_bytes)",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "RAM Used - siemma",
+            "range": true,
+            "refId": "C",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "MXAw1-q4z"
+            },
+            "editorMode": "code",
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemFree_bytes - (node_memory_Cached_bytes + node_memory_Buffers_bytes + node_memory_SReclaimable_bytes)",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "RAM Used - tomato",
+            "range": true,
+            "refId": "H",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "tUFkqqq4k"
+            },
+            "editorMode": "code",
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemFree_bytes - (node_memory_Cached_bytes + node_memory_Buffers_bytes + node_memory_SReclaimable_bytes)",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "RAM Used - jonnyboy",
+            "range": true,
+            "refId": "I",
+            "step": 240
+          }
+        ],
+        "title": "Memory Basic",
+        "transparent": true,
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "description": "Basic network info per interface",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 40,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "links": [],
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bps"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 15,
+          "w": 12,
+          "x": 0,
+          "y": 97
+        },
+        "id": 74,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.2.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "65eMF5AVz"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_receive_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "legendFormat": "recv {{device}} - 0x2bc",
+            "range": true,
+            "refId": "A",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "65eMF5AVz"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_transmit_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "legendFormat": "trans {{device}} - 0x2bc",
+            "range": true,
+            "refId": "B",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "i2FRFcAVk"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_receive_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "recv {{device}} - bewarelabs",
+            "range": true,
+            "refId": "C",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "i2FRFcAVk"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_transmit_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "trans {{device}}- bewarelabs",
+            "range": true,
+            "refId": "D",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ova4UXQVk"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_receive_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "recv {{device}} - freakstatic",
+            "range": true,
+            "refId": "G",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ova4UXQVk"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_transmit_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "trans {{device}}-  freakstatic",
+            "range": true,
+            "refId": "H",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "0xCRUXQ4k"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_receive_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "recv {{device}} - kalpakci",
+            "range": true,
+            "refId": "I",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "0xCRUXQ4k"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_transmit_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "trans {{device}}-  kalpakci",
+            "range": true,
+            "refId": "J",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "1230"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_receive_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "recv {{device}} - YYAGI",
+            "range": true,
+            "refId": "K",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "1230"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_transmit_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "trans {{device}}-  YYAGI",
+            "range": true,
+            "refId": "L",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_receive_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "recv {{device}} - iTor",
+            "range": true,
+            "refId": "N",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_transmit_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "trans {{device}}-  iTor",
+            "range": true,
+            "refId": "M",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "p51PjKq4k"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_transmit_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "trans {{device}}-  siemma",
+            "range": true,
+            "refId": "E",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "p51PjKq4k"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_receive_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "recv {{device}} - siemma",
+            "range": true,
+            "refId": "F",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "MXAw1-q4z"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_transmit_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "trans {{device}}-  tmato",
+            "range": true,
+            "refId": "O",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "tUFkqqq4k"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_transmit_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "trans {{device}}-  jonnyboy",
+            "range": true,
+            "refId": "Q",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "MXAw1-q4z"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_receive_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "recv {{device}} - tomato",
+            "range": true,
+            "refId": "R",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "tUFkqqq4k"
+            },
+            "editorMode": "code",
+            "expr": "irate(node_network_receive_bytes_total{device!~'lo.*|docker.*|br.*|veth.*'}[$__rate_interval])*8",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "recv {{device}} - jonnyboy",
+            "range": true,
+            "refId": "S",
+            "step": 240
+          }
+        ],
+        "title": "Network Traffic Basic",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "description": "Disk space used of all filesystems mounted",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 40,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "links": [],
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 15,
+          "w": 12,
+          "x": 12,
+          "y": 97
+        },
+        "id": 152,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.2.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "65eMF5AVz"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - 0x2bc",
+            "range": true,
+            "refId": "A",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "i2FRFcAVk"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - bewarelabs",
+            "range": true,
+            "refId": "B",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ova4UXQVk"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - freakstatic",
+            "range": true,
+            "refId": "D",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "0xCRUXQ4k"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - kalpakci",
+            "range": true,
+            "refId": "E",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "1230"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - YYAGI",
+            "range": true,
+            "refId": "F",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - iTor",
+            "range": true,
+            "refId": "G",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "p51PjKq4k"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - siemma",
+            "range": true,
+            "refId": "C",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "MXAw1-q4z"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - tomato",
+            "range": true,
+            "refId": "H",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "tUFkqqq4k"
+            },
+            "editorMode": "code",
+            "expr": "100 - ((node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} * 100) / node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'})",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - jonnyboy",
+            "range": true,
+            "refId": "I",
+            "step": 240
+          }
+        ],
+        "title": "Disk Space Used Basic",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "bytes",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 40,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "links": [],
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 29,
+          "w": 12,
+          "x": 0,
+          "y": 112
+        },
+        "id": 156,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [
+              "mean",
+              "lastNotNull",
+              "max",
+              "min"
+            ],
+            "displayMode": "table",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.2.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "65eMF5AVz"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - 0x2bc",
+            "range": true,
+            "refId": "A",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "i2FRFcAVk"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - bewarelabs",
+            "range": true,
+            "refId": "B",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ova4UXQVk"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - freakstatic",
+            "range": true,
+            "refId": "E",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - iTor",
+            "range": true,
+            "refId": "D",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "0xCRUXQ4k"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - kalpakci",
+            "range": true,
+            "refId": "F",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "1230"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - YYAGI",
+            "range": true,
+            "refId": "G",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "p51PjKq4k"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - siemma",
+            "range": true,
+            "refId": "C",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "MXAw1-q4z"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - tomato",
+            "range": true,
+            "refId": "H",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "tUFkqqq4k"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_size_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'} - node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - jonny",
+            "range": true,
+            "refId": "I",
+            "step": 240
+          }
+        ],
+        "title": "Disk Space Used",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "bytes",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 20,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "links": [],
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 29,
+          "w": 12,
+          "x": 12,
+          "y": 112
+        },
+        "id": 43,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [
+              "mean",
+              "lastNotNull",
+              "max",
+              "min"
+            ],
+            "displayMode": "table",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.2.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "65eMF5AVz"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - 0x2bc",
+            "metric": "",
+            "range": true,
+            "refId": "A",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "i2FRFcAVk"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - bewarelabs",
+            "metric": "",
+            "range": true,
+            "refId": "B",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "ova4UXQVk"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - freakstatic",
+            "metric": "",
+            "range": true,
+            "refId": "D",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "0xCRUXQ4k"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - kalpakci",
+            "metric": "",
+            "range": true,
+            "refId": "E",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "1230"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - YYAGI",
+            "metric": "",
+            "range": true,
+            "refId": "F",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "UhTu3pl4z"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - iTor",
+            "metric": "",
+            "range": true,
+            "refId": "G",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "p51PjKq4k"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - siemma",
+            "metric": "",
+            "range": true,
+            "refId": "C",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "MXAw1-q4z"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - tomato",
+            "metric": "",
+            "range": true,
+            "refId": "H",
+            "step": 240
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "tUFkqqq4k"
+            },
+            "editorMode": "code",
+            "expr": "node_filesystem_avail_bytes{device!~'rootfs',fstype!~'tmpfs',mountpoint!~'/boot.*'}",
+            "format": "time_series",
+            "hide": false,
+            "intervalFactor": 1,
+            "legendFormat": "{{mountpoint}} - jonnyboy",
+            "metric": "",
+            "range": true,
+            "refId": "I",
+            "step": 240
+          }
+        ],
+        "title": "Filesystem space available",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "6ajIcX_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "#EAB839",
+                  "value": 250
+                },
+                {
+                  "color": "red",
+                  "value": 500
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 141
+        },
+        "id": 273,
+        "options": {
+          "displayMode": "gradient",
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "alias": "",
+            "bucketAggs": [],
+            "datasource": {
+              "type": "elasticsearch",
+              "uid": "6ajIcX_4k"
+            },
+            "metrics": [
+              {
+                "id": "1",
+                "settings": {},
+                "type": "logs"
+              }
+            ],
+            "query": "fields.meta.res.statusCode: 200",
+            "refId": "A",
+            "timeField": "@timestamp"
+          }
+        ],
+        "title": "Global Averages Response Time",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "@timestamp": true,
+                "_id": true,
+                "_index": true,
+                "_source": true,
+                "_type": true,
+                "fields.meta.req.headers.accept": true,
+                "fields.meta.req.headers.accept-encoding": true,
+                "fields.meta.req.headers.accept-language": true,
+                "fields.meta.req.headers.cdn-loop": true,
+                "fields.meta.req.headers.cf-connecting-ip": true,
+                "fields.meta.req.headers.cf-ipcountry": true,
+                "fields.meta.req.headers.cf-ray": true,
+                "fields.meta.req.headers.cf-visitor": true,
+                "fields.meta.req.headers.connection": true,
+                "fields.meta.req.headers.host": true,
+                "fields.meta.req.headers.if-none-match": true,
+                "fields.meta.req.headers.sec-ch-ua": true,
+                "fields.meta.req.headers.sec-ch-ua-mobile": true,
+                "fields.meta.req.headers.sec-ch-ua-platform": true,
+                "fields.meta.req.headers.sec-fetch-dest": true,
+                "fields.meta.req.headers.sec-fetch-mode": true,
+                "fields.meta.req.headers.sec-fetch-site": true,
+                "fields.meta.req.headers.sec-gpc": true,
+                "fields.meta.req.headers.user-agent": true,
+                "fields.meta.req.headers.x-forwarded-for": true,
+                "fields.meta.req.headers.x-forwarded-host": true,
+                "fields.meta.req.headers.x-forwarded-proto": true,
+                "fields.meta.req.headers.x-grafana-org-id": true,
+                "fields.meta.req.httpVersion": true,
+                "fields.meta.req.method": true,
+                "fields.meta.req.originalUrl": true,
+                "fields.meta.req.query": true,
+                "fields.meta.req.url": true,
+                "fields.meta.res.statusCode": true,
+                "fields.meta.responseTime": false,
+                "highlight": true,
+                "message": true,
+                "severity": true,
+                "sort": true
+              },
+              "indexByName": {},
+              "renameByName": {}
+            }
+          },
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "fields.meta.responseTime": {
+                  "aggregations": [
+                    "mean"
+                  ],
+                  "operation": "aggregate"
+                },
+                "source": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "sortBy",
+            "options": {
+              "fields": {},
+              "sort": [
+                {
+                  "field": "fields.meta.responseTime (mean)"
+                }
+              ]
+            }
+          },
+          {
+            "id": "rowsToFields",
+            "options": {}
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "StorageProvider_0": "YYAGI",
+                "StorageProvider_10": "JonnyBoy",
+                "StorageProvider_11": "Tomato",
+                "StorageProvider_2": "Craci_BwareLabs",
+                "StorageProvider_4": "0x2bc",
+                "StorageProvider_6": "Kalpakci",
+                "StorageProvider_7": "Freakstatic",
+                "StorageProvider_8": "Itor",
+                "StorageProvider_9": "Sieemma"
+              }
+            }
+          }
+        ],
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "6ajIcX_4k"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "severity"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 73
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "@timestamp"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 207
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "_index"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 228
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "message"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 1276
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Status Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 104
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Node"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 189
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Time"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 149
+        },
+        "id": 271,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "alias": "",
+            "bucketAggs": [
+              {
+                "field": "@timestamp",
+                "id": "2",
+                "settings": {
+                  "interval": "auto"
+                },
+                "type": "date_histogram"
+              }
+            ],
+            "datasource": {
+              "type": "elasticsearch",
+              "uid": "6ajIcX_4k"
+            },
+            "metrics": [
+              {
+                "hide": false,
+                "id": "1",
+                "type": "logs"
+              }
+            ],
+            "query": "severity: error NOT message: \"^Sync.*\"",
+            "refId": "A",
+            "timeField": "@timestamp"
+          }
+        ],
+        "title": "Error logs",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "_id": true,
+                "_source": true,
+                "_type": true,
+                "fields": true,
+                "fields.err": true,
+                "fields.err.code": true,
+                "fields.err.errno": true,
+                "fields.err.timeout": true,
+                "fields.meta.date": true,
+                "fields.meta.error.errors": true,
+                "fields.meta.error.name": true,
+                "fields.meta.error.path": true,
+                "fields.meta.error.status": true,
+                "fields.meta.exception": true,
+                "fields.meta.level": true,
+                "fields.meta.message": true,
+                "fields.meta.os.loadavg": true,
+                "fields.meta.os.uptime": true,
+                "fields.meta.process.argv": true,
+                "fields.meta.process.cwd": true,
+                "fields.meta.process.execPath": true,
+                "fields.meta.process.gid": true,
+                "fields.meta.process.memoryUsage.arrayBuffers": true,
+                "fields.meta.process.memoryUsage.external": true,
+                "fields.meta.process.memoryUsage.heapTotal": true,
+                "fields.meta.process.memoryUsage.heapUsed": true,
+                "fields.meta.process.memoryUsage.rss": true,
+                "fields.meta.process.pid": true,
+                "fields.meta.process.uid": true,
+                "fields.meta.process.version": true,
+                "fields.meta.req.headers.accept": true,
+                "fields.meta.req.headers.accept-encoding": true,
+                "fields.meta.req.headers.accept-language": true,
+                "fields.meta.req.headers.content-length": true,
+                "fields.meta.req.headers.content-type": true,
+                "fields.meta.req.headers.dnt": true,
+                "fields.meta.req.headers.host": true,
+                "fields.meta.req.headers.origin": true,
+                "fields.meta.req.headers.referer": true,
+                "fields.meta.req.headers.sec-ch-ua": true,
+                "fields.meta.req.headers.sec-ch-ua-mobile": true,
+                "fields.meta.req.headers.sec-ch-ua-platform": true,
+                "fields.meta.req.headers.sec-fetch-dest": true,
+                "fields.meta.req.headers.sec-fetch-mode": true,
+                "fields.meta.req.headers.sec-fetch-site": true,
+                "fields.meta.req.headers.user-agent": true,
+                "fields.meta.req.headers.x-forwarded-for": true,
+                "fields.meta.req.headers.x-forwarded-host": true,
+                "fields.meta.req.headers.x-forwarded-proto": true,
+                "fields.meta.req.httpVersion": true,
+                "fields.meta.req.method": true,
+                "fields.meta.req.originalUrl": true,
+                "fields.meta.req.query.bagId": true,
+                "fields.meta.req.query.dataObjectId": true,
+                "fields.meta.req.query.storageBucketId": true,
+                "fields.meta.req.url": true,
+                "fields.meta.stack": true,
+                "fields.meta.trace": true,
+                "highlight": true,
+                "sort": true,
+                "source": true
+              },
+              "indexByName": {
+                "@timestamp": 0,
+                "_id": 1,
+                "_index": 2,
+                "_source": 3,
+                "_type": 4,
+                "fields": 5,
+                "fields.meta.date": 6,
+                "fields.meta.error.errors": 7,
+                "fields.meta.error.httpStatusCode": 57,
+                "fields.meta.error.name": 8,
+                "fields.meta.error.path": 9,
+                "fields.meta.error.status": 10,
+                "fields.meta.exception": 11,
+                "fields.meta.level": 12,
+                "fields.meta.message": 13,
+                "fields.meta.os.loadavg": 14,
+                "fields.meta.os.uptime": 15,
+                "fields.meta.process.argv": 16,
+                "fields.meta.process.cwd": 17,
+                "fields.meta.process.execPath": 18,
+                "fields.meta.process.gid": 19,
+                "fields.meta.process.memoryUsage.arrayBuffers": 20,
+                "fields.meta.process.memoryUsage.external": 21,
+                "fields.meta.process.memoryUsage.heapTotal": 22,
+                "fields.meta.process.memoryUsage.heapUsed": 23,
+                "fields.meta.process.memoryUsage.rss": 24,
+                "fields.meta.process.pid": 25,
+                "fields.meta.process.uid": 26,
+                "fields.meta.process.version": 27,
+                "fields.meta.req.headers.accept": 28,
+                "fields.meta.req.headers.accept-encoding": 29,
+                "fields.meta.req.headers.accept-language": 30,
+                "fields.meta.req.headers.content-length": 31,
+                "fields.meta.req.headers.content-type": 32,
+                "fields.meta.req.headers.dnt": 61,
+                "fields.meta.req.headers.host": 33,
+                "fields.meta.req.headers.origin": 34,
+                "fields.meta.req.headers.referer": 35,
+                "fields.meta.req.headers.sec-ch-ua": 36,
+                "fields.meta.req.headers.sec-ch-ua-mobile": 37,
+                "fields.meta.req.headers.sec-ch-ua-platform": 38,
+                "fields.meta.req.headers.sec-fetch-dest": 39,
+                "fields.meta.req.headers.sec-fetch-mode": 40,
+                "fields.meta.req.headers.sec-fetch-site": 41,
+                "fields.meta.req.headers.user-agent": 42,
+                "fields.meta.req.headers.x-forwarded-for": 43,
+                "fields.meta.req.headers.x-forwarded-host": 44,
+                "fields.meta.req.headers.x-forwarded-proto": 45,
+                "fields.meta.req.httpVersion": 46,
+                "fields.meta.req.method": 47,
+                "fields.meta.req.originalUrl": 48,
+                "fields.meta.req.query.bagId": 49,
+                "fields.meta.req.query.dataObjectId": 50,
+                "fields.meta.req.query.storageBucketId": 51,
+                "fields.meta.req.url": 52,
+                "fields.meta.stack": 53,
+                "fields.meta.trace": 54,
+                "highlight": 55,
+                "message": 58,
+                "severity": 56,
+                "sort": 59,
+                "source": 60
+              },
+              "renameByName": {
+                "@timestamp": "Time",
+                "_index": "Node",
+                "fields.meta.error.httpStatusCode": "Status Code",
+                "message": "",
+                "severity": ""
+              }
+            }
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": false,
+            "text": "Prometheus-0x2bc",
+            "value": "Prometheus-0x2bc"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "label": "datasource",
+          "multi": false,
+          "name": "DS_PROMETHEUS",
+          "options": [],
+          "query": "prometheus",
+          "queryValue": "",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "type": "datasource"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "nodeexporter",
+            "value": "nodeexporter"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "definition": "",
+          "hide": 2,
+          "includeAll": false,
+          "label": "Job",
+          "multi": false,
+          "name": "job",
+          "options": [],
+          "query": {
+            "query": "label_values(node_uname_info, job)",
+            "refId": "Prometheus-job-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 1,
+          "tagValuesQuery": "",
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "nodeexporter:9100",
+            "value": "nodeexporter:9100"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "definition": "label_values(node_uname_info{job=\"$job\"}, instance)",
+          "hide": 2,
+          "includeAll": false,
+          "label": "host",
+          "multi": false,
+          "name": "node",
+          "options": [],
+          "query": {
+            "query": "label_values(node_uname_info{job=\"$job\"}, instance)",
+            "refId": "Prometheus-node-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 1,
+          "tagValuesQuery": "",
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "[a-z]+|nvme[0-9]+n[0-9]+|mmcblk[0-9]+",
+            "value": "[a-z]+|nvme[0-9]+n[0-9]+|mmcblk[0-9]+"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "diskdevices",
+          "options": [
+            {
+              "selected": true,
+              "text": "[a-z]+|nvme[0-9]+n[0-9]+|mmcblk[0-9]+",
+              "value": "[a-z]+|nvme[0-9]+n[0-9]+|mmcblk[0-9]+"
+            }
+          ],
+          "query": "[a-z]+|nvme[0-9]+n[0-9]+|mmcblk[0-9]+",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "23bae257b1af",
+            "value": "23bae257b1af"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "definition": "label_values(node_uname_info{job=\"$job\"}, nodename)",
+          "hide": 2,
+          "includeAll": false,
+          "label": "nodename",
+          "multi": false,
+          "name": "nodename",
+          "options": [],
+          "query": {
+            "query": "label_values(node_uname_info{job=\"$job\"}, nodename)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 1,
+          "tagValuesQuery": "",
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "storage-0x2bc",
+            "value": "storage-0x2bc"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "multi": false,
+          "name": "storage_jason",
+          "options": [],
+          "query": "marcusolsson-json-datasource",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "type": "datasource"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "timezone": "browser",
+    "title": "Storage Work Group Dashboard",
+    "uid": "gukTpcA4z",
+    "version": 182,
+    "weekStart": ""
+  }
+}

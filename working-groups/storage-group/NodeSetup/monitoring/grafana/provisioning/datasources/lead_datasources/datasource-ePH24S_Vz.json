@@ -1,0 +1,20 @@
+{
+  "id": 17,
+  "uid": "ePH24S_Vz",
+  "orgId": 1,
+  "name": "storage-yyagi",
+  "type": "marcusolsson-json-datasource",
+  "typeLogoUrl": "",
+  "access": "proxy",
+  "url": "https://joystream.yyagi.cloud",
+  "user": "",
+  "database": "",
+  "basicAuth": false,
+  "basicAuthUser": "",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {},
+  "secureJsonFields": {},
+  "version": 8,
+  "readOnly": false
+}

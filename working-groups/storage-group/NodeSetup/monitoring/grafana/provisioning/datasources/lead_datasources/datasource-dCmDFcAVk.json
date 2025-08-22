@@ -1,0 +1,24 @@
+{
+  "id": 5,
+  "uid": "dCmDFcAVk",
+  "orgId": 1,
+  "name": "Prometheus-coin-side",
+  "type": "prometheus",
+  "typeLogoUrl": "",
+  "access": "proxy",
+  "url": "https://prometheus.coin-side.com/",
+  "user": "",
+  "database": "",
+  "basicAuth": true,
+  "basicAuthUser": "admin",
+  "withCredentials": false,
+  "isDefault": false,
+  "jsonData": {
+    "httpMethod": "POST"
+  },
+  "secureJsonFields": {
+    "basicAuthPassword": true
+  },
+  "version": 4,
+  "readOnly": false
+}
