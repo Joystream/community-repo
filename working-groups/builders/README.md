@@ -4,6 +4,7 @@
 
 ## Software development
 - [Outlook](https://dao.l1.media/#/forum/thread/92?post=7333)
+- [Handbook](https://handbook.joystream.org/)
 
 ### Pioneer
 * [pioneer](https://github.com/Joystream/pioneer)
@@ -23,4 +24,4 @@
 - [SDK](https://github.com/Joystream/sdk) - [draft](https://github.com/Joystream/sdk/pull/4)
 
 ### CLI
-- [CLI]https://github.com/Joystream/joystream/tree/master/cli)
+- [CLI](https://github.com/Joystream/joystream/tree/master/cli)
