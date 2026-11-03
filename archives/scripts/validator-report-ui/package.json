@@ -27,7 +27,7 @@
         "cors": "^2.8.5",
         "cross-fetch": "^3.1.5",
         "dotenv": "^8.2.0",
-        "express": "^4.17.1",
+        "express": "^4.22.3",
         "gh-pages": "^3.2.3",
         "inquirer": "^7.3.3",
         "locks": "^0.2.2",
